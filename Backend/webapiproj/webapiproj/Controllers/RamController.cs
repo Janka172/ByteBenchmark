@@ -25,22 +25,23 @@ namespace webapiproj.Controllers
         public HttpResponseMessage Get()
         {
             IEnumerable<RamModel> result = null;
-            result = ctx.Ramok.Select(x=>new RamModel
+            result = ctx.Ramok.Select(x => new RamModel
             {
-                Nev=x.Nev,
-                MemoriaTipus=x.MemoriaTipus,
-                Frekvencia=x.Frekvencia,
-                Meret=x.Meret
+                Nev = x.Nev,
+                MemoriaTipus = x.MemoriaTipus,
+                Frekvencia = x.Frekvencia,
+                Meret = x.Meret
             }).ToList();
-            return Request.CreateResponse(HttpStatusCode.OK,result);
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(RamModel))]
-        public HttpResponseMessage Get(int id,string name)
+        public HttpResponseMessage Get(int id, string name)
         {
             RamModel result = null;
-            result = ctx.Ramok.Where(x => x.Nev == name).Select(x => new RamModel{
+            result = ctx.Ramok.Where(x => x.Nev == name).Select(x => new RamModel
+            {
                 Nev = x.Nev,
                 MemoriaTipus = x.MemoriaTipus,
                 Frekvencia = x.Frekvencia,

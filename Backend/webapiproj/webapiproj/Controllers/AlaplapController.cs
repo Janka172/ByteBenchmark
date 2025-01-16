@@ -30,26 +30,28 @@ namespace webapiproj.Controllers
         {
             IEnumerable<AlaplapModel> result = null;
 
-            result = ctx.Alaplapok.Select(x=>new AlaplapModel { 
-                Nev=x.Nev,
-                CpuFoglalat=x.CpuFoglalat,
-                AlaplapFormatum=x.AlaplapFormatum,
-                MaxFrekvencia=x.MaxFrekvencia,
-                MemoriaTipusa=x.MemoriaTipusa,
-                Lapkakeszlet=x.Lapkakeszlet,
-                SlotSzam=x.SlotSzam,
-                Hangkartya=x.Hangkartya
+            result = ctx.Alaplapok.Select(x => new AlaplapModel
+            {
+                Nev = x.Nev,
+                CpuFoglalat = x.CpuFoglalat,
+                AlaplapFormatum = x.AlaplapFormatum,
+                MaxFrekvencia = x.MaxFrekvencia,
+                MemoriaTipusa = x.MemoriaTipusa,
+                Lapkakeszlet = x.Lapkakeszlet,
+                SlotSzam = x.SlotSzam,
+                Hangkartya = x.Hangkartya
             }).ToList();
 
-            return Request.CreateResponse(HttpStatusCode.OK,result);
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(AlaplapModel))]
-        public HttpResponseMessage Get(int id,string name)
+        public HttpResponseMessage Get(int id, string name)
         {
             AlaplapModel result = null;
-            result = ctx.Alaplapok.Where(x=>x.Nev==name).Select(x=>new AlaplapModel {
+            result = ctx.Alaplapok.Where(x => x.Nev == name).Select(x => new AlaplapModel
+            {
                 Nev = x.Nev,
                 CpuFoglalat = x.CpuFoglalat,
                 AlaplapFormatum = x.AlaplapFormatum,

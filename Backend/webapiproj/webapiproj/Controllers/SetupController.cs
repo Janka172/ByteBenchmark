@@ -12,10 +12,18 @@ namespace webapiproj.Controllers
 {
     public class SetupModel
     {
-        public string Vidknev { get; set; }
-        public string Processzornev { get; set; }
-        public string Ramnev { get; set; }
-        public string Oprendszernev { get; set; }
+        public string ApplikacioNeve { get; set; }
+        public string Gepigeny { get; set; }
+        public string VidekortyaNev { get; set; }
+        public int VideokartyaVram { get; set; }
+        public string ProcesszorNev { get; set; }
+        public int ProcesszorSzalakSzama { get; set; }
+        public int ProcesszorMagokSzama { get; set; }
+        public double ProcesszorFrekvencia { get; set; }
+        public double RamFrekvencia { get; set; }
+        public int RamMeret { get; set; }
+        public string OprendszerNev { get; set; }
+        public int Tarhely { get; set; }
     }
     public class SetupController : ApiController
     {
@@ -25,28 +33,44 @@ namespace webapiproj.Controllers
         public HttpResponseMessage Get()
         {
             IEnumerable<SetupModel> result = null;
-            result = ctx.Setupok.Include(x => x.Alaplap).Include(x => x.Oprendszer).Include(x => x.Processzor).Include(x => x.Ram).Include(x => x.Videokartya).Select(x => new SetupModel
+            result = ctx.Setupok.Include(x => x.Alaplap).Include(x => x.Oprendszer).Include(x => x.Processzor).Include(x => x.Ram).Include(x => x.Videokartya).Include(x => x.Applikacio).Select(x => new SetupModel
             {
-                Vidknev=x.Videokartya.Nev,
-                Processzornev=x.Processzor.Nev,
-                Ramnev=x.Ram.Nev,
-                Oprendszernev=x.Oprendszer.Nev
+                ApplikacioNeve = x.Applikacio.Nev,
+                Gepigeny = x.Gp,
+                VidekortyaNev = x.Videokartya.Nev,
+                VideokartyaVram = x.Videokartya.Vram,
+                ProcesszorNev = x.Processzor.Nev,
+                ProcesszorSzalakSzama = x.Processzor.SzalakSzama,
+                ProcesszorMagokSzama = x.Processzor.ProcesszormagokSzama,
+                ProcesszorFrekvencia = x.Processzor.ProcesszorFrekvencia,
+                RamMeret = x.Ram.Meret,
+                RamFrekvencia = x.Ram.Frekvencia,
+                OprendszerNev = x.Oprendszer.Nev,
+                Tarhely = x.Applikacio.Tarhely
             }).ToList();
-            return Request.CreateResponse(HttpStatusCode.OK,result);
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(SetupModel))]
-        public HttpResponseMessage Get(int id)
+        public HttpResponseMessage Get(int id, string name)
         {
-            SetupModel result = null;
-            result = ctx.Setupok.Include(x => x.Alaplap).Include(x => x.Oprendszer).Include(x => x.Processzor).Include(x => x.Ram).Include(x => x.Videokartya).Where(x=>x.Id==id).Select(x=>new SetupModel
+            IEnumerable<SetupModel> result = null;
+            result = ctx.Setupok.Include(x => x.Alaplap).Include(x => x.Oprendszer).Include(x => x.Processzor).Include(x => x.Ram).Include(x => x.Videokartya).Include(x => x.Applikacio).Where(x => x.Applikacio.Nev == name).Select(x => new SetupModel
             {
-                Vidknev = x.Videokartya.Nev,
-                Processzornev = x.Processzor.Nev,
-                Ramnev = x.Ram.Nev,
-                Oprendszernev = x.Oprendszer.Nev
-            }).FirstOrDefault();
+                ApplikacioNeve = x.Applikacio.Nev,
+                Gepigeny = x.Gp,
+                VidekortyaNev = x.Videokartya.Nev,
+                VideokartyaVram = x.Videokartya.Vram,
+                ProcesszorNev = x.Processzor.Nev,
+                ProcesszorSzalakSzama = x.Processzor.SzalakSzama,
+                ProcesszorMagokSzama = x.Processzor.ProcesszormagokSzama,
+                ProcesszorFrekvencia = x.Processzor.ProcesszorFrekvencia,
+                RamMeret = x.Ram.Meret,
+                RamFrekvencia = x.Ram.Frekvencia,
+                OprendszerNev = x.Oprendszer.Nev,
+                Tarhely = x.Applikacio.Tarhely
+            }).ToList();
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 

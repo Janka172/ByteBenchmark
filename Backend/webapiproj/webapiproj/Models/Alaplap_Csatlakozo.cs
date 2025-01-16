@@ -21,16 +21,5 @@ namespace webapiproj.Models
         [ForeignKey("AlaplapId")]
         public virtual Alaplap Alaplap { get; set; }
 
-
-        ////csatlakozo kapcsolat
-        //[ForeignKey("Csatlakozo")]
-        //[Column("Id")]
-        //public int CsatlakozoId { get; set; }
-        //public virtual Csatlakozo Csatlakozok { get; set; }
-        ////alaplap kapcsolat
-        //[ForeignKey("Alaplap")]
-        //[Column("Id")]
-        //public int AlaplapId { get; set; }
-        //public virtual Alaplap Alaplapok { get; set; }
     }
 }

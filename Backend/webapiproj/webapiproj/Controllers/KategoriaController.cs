@@ -22,20 +22,22 @@ namespace webapiproj.Controllers
         public HttpResponseMessage Get()
         {
             IEnumerable<KategoriaModel> result = null;
-            result = ctx.Kategoriak.Select(x=>new KategoriaModel { 
-                Nev=x.Nev
+            result = ctx.Kategoriak.Select(x => new KategoriaModel
+            {
+                Nev = x.Nev
             }).ToList();
-            return Request.CreateResponse(HttpStatusCode.OK,result);
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(KategoriaModel))]
-        public HttpResponseMessage Get(int id,string name)
+        public HttpResponseMessage Get(int id, string name)
         {
             KategoriaModel result = null;
-                result = ctx.Kategoriak.Where(x=>x.Nev==name).Select(x=>new KategoriaModel{
-                    Nev=x.Nev
-                }).FirstOrDefault();
+            result = ctx.Kategoriak.Where(x => x.Nev == name).Select(x => new KategoriaModel
+            {
+                Nev = x.Nev
+            }).FirstOrDefault();
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 

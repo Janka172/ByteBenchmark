@@ -23,22 +23,24 @@ namespace webapiproj.Controllers
         {
             IEnumerable<CsatlakozoModel> result = null;
 
-           result = ctx.Csatlakozok.Select(x=>new CsatlakozoModel{
-               Nev=x.Nev
-           }).ToList();
+            result = ctx.Csatlakozok.Select(x => new CsatlakozoModel
+            {
+                Nev = x.Nev
+            }).ToList();
 
-            return Request.CreateResponse(HttpStatusCode.OK,result);
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(CsatlakozoModel))]
-        public HttpResponseMessage Get(int id,string name)
+        public HttpResponseMessage Get(int id, string name)
         {
             CsatlakozoModel result = null;
             using (var ctx = new ProjektContext())
             {
-                result = ctx.Csatlakozok.Where(x=>x.Nev==name).Select(x=>new CsatlakozoModel { 
-                    Nev=x.Nev
+                result = ctx.Csatlakozok.Where(x => x.Nev == name).Select(x => new CsatlakozoModel
+                {
+                    Nev = x.Nev
                 }).FirstOrDefault();
             }
             return Request.CreateResponse(HttpStatusCode.OK, result);

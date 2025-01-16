@@ -31,13 +31,14 @@ namespace webapiproj.Controllers
         {
             IEnumerable<ProcesszorModel> result = null;
 
-            result = ctx.Processzorok.Select(x => new ProcesszorModel {
+            result = ctx.Processzorok.Select(x => new ProcesszorModel
+            {
                 Nev = x.Nev,
                 AlaplapFoglalat = x.AlaplapFoglalat,
                 SzalakSzama = x.SzalakSzama,
                 TamogatottMemoriatipus = x.TamogatottMemoriatipus,
                 ProcesszormagokSzama = x.ProcesszormagokSzama,
-                ProcesszorFrekvencia=x.ProcesszorFrekvencia,
+                ProcesszorFrekvencia = x.ProcesszorFrekvencia,
                 Gyarto = x.Gyarto,
                 AjanlottTapegyseg = x.AjanlottTapegyseg,
                 IntegraltVideokartya = x.IntegraltVideokartya
@@ -48,22 +49,23 @@ namespace webapiproj.Controllers
 
         // GET api/<controller>/5
         [ResponseType(typeof(ProcesszorModel))]
-        public HttpResponseMessage Get(int id,string name)
+        public HttpResponseMessage Get(int id, string name)
         {
             ProcesszorModel result = null;
 
-           result = ctx.Processzorok.Where(x => x.Nev == name).Select(x=>new ProcesszorModel {
-               Nev = x.Nev,
-               AlaplapFoglalat = x.AlaplapFoglalat,
-               SzalakSzama = x.SzalakSzama,
-               TamogatottMemoriatipus = x.TamogatottMemoriatipus,
-               ProcesszormagokSzama = x.ProcesszormagokSzama,
-               ProcesszorFrekvencia = x.ProcesszorFrekvencia,
-               Gyarto = x.Gyarto,
-               AjanlottTapegyseg = x.AjanlottTapegyseg,
-               IntegraltVideokartya = x.IntegraltVideokartya
-           }).FirstOrDefault();
-           return Request.CreateResponse(HttpStatusCode.OK,result);
+            result = ctx.Processzorok.Where(x => x.Nev == name).Select(x => new ProcesszorModel
+            {
+                Nev = x.Nev,
+                AlaplapFoglalat = x.AlaplapFoglalat,
+                SzalakSzama = x.SzalakSzama,
+                TamogatottMemoriatipus = x.TamogatottMemoriatipus,
+                ProcesszormagokSzama = x.ProcesszormagokSzama,
+                ProcesszorFrekvencia = x.ProcesszorFrekvencia,
+                Gyarto = x.Gyarto,
+                AjanlottTapegyseg = x.AjanlottTapegyseg,
+                IntegraltVideokartya = x.IntegraltVideokartya
+            }).FirstOrDefault();
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // POST api/<controller>

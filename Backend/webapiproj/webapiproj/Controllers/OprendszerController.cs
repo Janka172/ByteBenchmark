@@ -25,14 +25,14 @@ namespace webapiproj.Controllers
         {
             IEnumerable<OprendszerModel> result = null;
 
-            result = ctx.Oprendszerek.Select(x=>new OprendszerModel
+            result = ctx.Oprendszerek.Select(x => new OprendszerModel
             {
-                Nev=x.Nev,
-                BuildSzam=x.BuildSzam,
-                Verzio=x.Verzio
+                Nev = x.Nev,
+                BuildSzam = x.BuildSzam,
+                Verzio = x.Verzio
             }).ToList();
 
-            return Request.CreateResponse(HttpStatusCode.OK,result);
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // GET api/<controller>/5
@@ -41,13 +41,14 @@ namespace webapiproj.Controllers
         {
             OprendszerModel result = null;
 
-            result = ctx.Oprendszerek.Where(x => x.Nev == name).Select(x=>new OprendszerModel{
+            result = ctx.Oprendszerek.Where(x => x.Nev == name).Select(x => new OprendszerModel
+            {
                 Nev = x.Nev,
                 BuildSzam = x.BuildSzam,
                 Verzio = x.Verzio
             }).FirstOrDefault();
 
-            return Request.CreateResponse(HttpStatusCode.OK,result);
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // POST api/<controller>

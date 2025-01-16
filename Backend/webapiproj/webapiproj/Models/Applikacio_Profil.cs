@@ -18,17 +18,5 @@ namespace webapiproj.Models
         public virtual Applikacio Applikacio { get; set; }
         [ForeignKey("ProfilId")]
         public virtual Profil Profil { get; set; }
-
-        ////app kapcsolat
-        //[ForeignKey("Csatlakozo")]
-        //[Column("Id")]
-        //public int AppId { get; set; }
-        //public virtual Applikacio Applikacio { get; set; }
-
-        //[ForeignKey("Csatlakozo")]
-        //[Column("Id")]
-        ////profil kapcsolat
-        //public int ProfilId { get; set; }
-        //public virtual Profil Profil { get; set; }
     }
 }

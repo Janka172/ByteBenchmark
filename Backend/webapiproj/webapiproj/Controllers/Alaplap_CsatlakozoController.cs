@@ -23,19 +23,20 @@ namespace webapiproj.Controllers
         public HttpResponseMessage Get()
         {
             IEnumerable<AlaplapCsatlakozModel> result = null;
-            result = ctx.Alaplap_Csatlakozok.Include(x => x.Csatlakozo).Include(x => x.Alaplap).Select(x=>new AlaplapCsatlakozModel {
-                AlaplapNev=x.Alaplap.Nev,
-                CsatlakozoNev=x.Csatlakozo.Nev
+            result = ctx.Alaplap_Csatlakozok.Include(x => x.Csatlakozo).Include(x => x.Alaplap).Select(x => new AlaplapCsatlakozModel
+            {
+                AlaplapNev = x.Alaplap.Nev,
+                CsatlakozoNev = x.Csatlakozo.Nev
             }).ToList();
-            return Request.CreateResponse(HttpStatusCode.OK,result);
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(AlaplapModel))]
-        public HttpResponseMessage Get(int id,string name)
+        public HttpResponseMessage Get(int id, string name)
         {
             IEnumerable<AlaplapCsatlakozModel> result = null;
-            result = ctx.Alaplap_Csatlakozok.Include(x => x.Csatlakozo).Include(x => x.Alaplap).Where(x =>x.Alaplap.Nev == name).Select(x => new AlaplapCsatlakozModel
+            result = ctx.Alaplap_Csatlakozok.Include(x => x.Csatlakozo).Include(x => x.Alaplap).Where(x => x.Alaplap.Nev == name).Select(x => new AlaplapCsatlakozModel
             {
                 AlaplapNev = x.Alaplap.Nev,
                 CsatlakozoNev = x.Csatlakozo.Nev

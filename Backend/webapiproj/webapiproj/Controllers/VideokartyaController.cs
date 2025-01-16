@@ -10,13 +10,13 @@ using System.Web.Http.Description;
 
 namespace webapiproj.Controllers
 {
-    
+
     public class VideokartyaModel
     {
         public string Nev { get; set; }
         public string alaplapiCsatlakozas { get; set; }
         public int ajanlottTapegyseg { get; set; }
-        public string momonitorCsatlakozas { get; set; }
+        public string monitorCsatlakozas { get; set; }
         public string chipGyartoja { get; set; }
         public int vram { get; set; }
     }
@@ -27,38 +27,61 @@ namespace webapiproj.Controllers
         [ResponseType(typeof(VideokartyaModel))]
         public HttpResponseMessage Get()
         {
-                IEnumerable<VideokartyaModel> result = null;
-                result = ctx.Videokartyak.Select(x=>new VideokartyaModel
-                {
-                    Nev=x.Nev,
-                    alaplapiCsatlakozas=x.AlaplapiCsatlakozas,
-                    ajanlottTapegyseg=x.AjanlottTapegyseg,
-                    momonitorCsatlakozas=x.MonitorCsatlakozas,
-                    chipGyartoja=x.ChipGyartoja,
-                    vram=x.Vram
-                }).ToList();
-            return Request.CreateResponse(HttpStatusCode.OK,result);
+            IEnumerable<VideokartyaModel> result = null;
+            result = ctx.Videokartyak.Select(x => new VideokartyaModel
+            {
+                Nev = x.Nev,
+                alaplapiCsatlakozas = x.AlaplapiCsatlakozas,
+                ajanlottTapegyseg = x.AjanlottTapegyseg,
+                monitorCsatlakozas = x.MonitorCsatlakozas,
+                chipGyartoja = x.ChipGyartoja,
+                vram = x.Vram
+            }).ToList();
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(VideokartyaModel))]
-        public HttpResponseMessage Get(int id,string name)
+        public HttpResponseMessage Get(int id, string name)
         {
             VideokartyaModel result = null;
-            result = ctx.Videokartyak.Where(x => x.Nev == name).Select(x => new VideokartyaModel {
+            result = ctx.Videokartyak.Where(x => x.Nev == name).Select(x => new VideokartyaModel
+            {
                 Nev = x.Nev,
                 alaplapiCsatlakozas = x.AlaplapiCsatlakozas,
                 ajanlottTapegyseg = x.AjanlottTapegyseg,
-                momonitorCsatlakozas = x.MonitorCsatlakozas,
+                monitorCsatlakozas = x.MonitorCsatlakozas,
                 chipGyartoja = x.ChipGyartoja,
                 vram = x.Vram
             }).FirstOrDefault();
-            return Request.CreateResponse(HttpStatusCode.OK,result);
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        public HttpResponseMessage Post([FromBody] VideokartyaModel value)
         {
+            try
+            {
+                var result = ctx.Videokartyak.Add(new Videokartya
+                {
+                    Nev = value.Nev,
+                    AlaplapiCsatlakozas = value.alaplapiCsatlakozas,
+                    AjanlottTapegyseg = value.ajanlottTapegyseg,
+                    MonitorCsatlakozas = value.monitorCsatlakozas,
+                    ChipGyartoja = value.chipGyartoja,
+                    Vram = value.vram
+                });
+                ctx.SaveChanges();
+
+
+                return Request.CreateResponse(HttpStatusCode.Created, result);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         // PUT api/<controller>/5

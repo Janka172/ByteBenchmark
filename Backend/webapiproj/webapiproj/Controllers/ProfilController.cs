@@ -36,31 +36,32 @@ namespace webapiproj.Controllers
         {
             IEnumerable<ProfilResponseModel> result = null;
 
-            result = ctx.Profilok.Select(x=>new ProfilResponseModel
+            result = ctx.Profilok.Select(x => new ProfilResponseModel
             {
-                Felhasznalonev=x.Felhasznalonev,
-                Email=x.Email,
-                Jogosultsag=x.Jogosultsag,
-                Tema=x.Tema,
-                LogoEleresiUtja=x.LogoEleresiUtja
+                Felhasznalonev = x.Felhasznalonev,
+                Email = x.Email,
+                Jogosultsag = x.Jogosultsag,
+                Tema = x.Tema,
+                LogoEleresiUtja = x.LogoEleresiUtja
             }).ToList();
-            return Request.CreateResponse(HttpStatusCode.OK,result);
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(ProfilResponseModel))]
-        public HttpResponseMessage Get(int id,string name)
+        public HttpResponseMessage Get(int id, string name)
         {
             ProfilResponseModel result = null;
 
-                result = ctx.Profilok.Where(x=>x.Felhasznalonev==name).Select(x=>new ProfilResponseModel {
-                    Felhasznalonev = x.Felhasznalonev,
-                    Email = x.Email,
-                    Jogosultsag = x.Jogosultsag,
-                    Tema = x.Tema,
-                    LogoEleresiUtja = x.LogoEleresiUtja
-                }).FirstOrDefault();
-            return Request.CreateResponse(HttpStatusCode.OK,result);
+            result = ctx.Profilok.Where(x => x.Felhasznalonev == name).Select(x => new ProfilResponseModel
+            {
+                Felhasznalonev = x.Felhasznalonev,
+                Email = x.Email,
+                Jogosultsag = x.Jogosultsag,
+                Tema = x.Tema,
+                LogoEleresiUtja = x.LogoEleresiUtja
+            }).FirstOrDefault();
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // POST api/<controller>

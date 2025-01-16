@@ -19,11 +19,5 @@ namespace webapiproj.Models
         [ForeignKey("KatId")]
         public virtual Kategoria Kategoria { get; set; }
 
-        //setup kapcsolat
-        public int SetupId { get; set; }
-        [ForeignKey("SetupId")]
-        public virtual Setup Setup { get; set; }
-
-
     }
 }
