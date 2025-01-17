@@ -47,6 +47,15 @@ namespace webapiproj
             modelBuilder.Entity<Applikacio_Profil>().HasKey(ap => new { ap.AppId, ap.ProfilId });
             base.OnModelCreating(modelBuilder);
 
+            //Videokartya osszetett message
+            modelBuilder.Entity<Videokartya>()
+                .HasIndex(v => new { v.Nev, v.Vram })
+                .IsUnique()
+                .HasName("Nev_Vram");
+            base.OnModelCreating(modelBuilder);
+
+            
+
         }
 
     }

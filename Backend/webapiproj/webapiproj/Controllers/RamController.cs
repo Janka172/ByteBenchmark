@@ -51,8 +51,27 @@ namespace webapiproj.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        public HttpResponseMessage Post([FromBody] RamModel value)
         {
+            try
+            {
+                var result = ctx.Ramok.Add(new Ram
+                {
+                    Nev = value.Nev,
+                    MemoriaTipus=value.MemoriaTipus,
+                    Frekvencia=value.Frekvencia,
+                    Meret=value.Meret
+                });
+                ctx.SaveChanges();
+
+
+                return Request.CreateResponse(HttpStatusCode.Created, result);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { error = "RAM feltoltése sikertelen." });
+            }
+
         }
 
         // PUT api/<controller>/5

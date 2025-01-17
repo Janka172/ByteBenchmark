@@ -78,8 +78,7 @@ namespace webapiproj.Controllers
             }
             catch (Exception)
             {
-
-                throw;
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { error = "Video kártya feltoltése sikertelen." });
             }
 
         }

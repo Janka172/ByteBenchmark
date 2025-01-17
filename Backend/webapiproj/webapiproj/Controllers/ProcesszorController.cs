@@ -18,6 +18,7 @@ namespace webapiproj.Controllers
         public string TamogatottMemoriatipus { get; set; }
         public int ProcesszormagokSzama { get; set; }
         public double ProcesszorFrekvencia { get; set; }
+        public double BProcesszorFrekvencia{get; set;}
         public string Gyarto { get; set; }
         public int AjanlottTapegyseg { get; set; }
         public bool IntegraltVideokartya { get; set; }
@@ -39,6 +40,7 @@ namespace webapiproj.Controllers
                 TamogatottMemoriatipus = x.TamogatottMemoriatipus,
                 ProcesszormagokSzama = x.ProcesszormagokSzama,
                 ProcesszorFrekvencia = x.ProcesszorFrekvencia,
+                BProcesszorFrekvencia=x.BFrekvencia,
                 Gyarto = x.Gyarto,
                 AjanlottTapegyseg = x.AjanlottTapegyseg,
                 IntegraltVideokartya = x.IntegraltVideokartya
@@ -61,6 +63,7 @@ namespace webapiproj.Controllers
                 TamogatottMemoriatipus = x.TamogatottMemoriatipus,
                 ProcesszormagokSzama = x.ProcesszormagokSzama,
                 ProcesszorFrekvencia = x.ProcesszorFrekvencia,
+                BProcesszorFrekvencia = x.BFrekvencia,
                 Gyarto = x.Gyarto,
                 AjanlottTapegyseg = x.AjanlottTapegyseg,
                 IntegraltVideokartya = x.IntegraltVideokartya
@@ -69,8 +72,34 @@ namespace webapiproj.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        public HttpResponseMessage Post([FromBody] ProcesszorModel value)
         {
+            try
+            {
+                var result = ctx.Processzorok.Add(new Processzor
+                {
+                    Nev = value.Nev,
+                    AlaplapFoglalat= value.AlaplapFoglalat,
+                    SzalakSzama = value.SzalakSzama,
+                    TamogatottMemoriatipus = value.TamogatottMemoriatipus,
+                    ProcesszormagokSzama=value.ProcesszormagokSzama,
+                    ProcesszorFrekvencia=value.ProcesszorFrekvencia,
+                    BFrekvencia=value.BProcesszorFrekvencia,
+                    Gyarto=value.Gyarto,
+                    AjanlottTapegyseg=value.AjanlottTapegyseg,
+                    IntegraltVideokartya=value.IntegraltVideokartya
+
+                });
+                ctx.SaveChanges();
+
+
+                return Request.CreateResponse(HttpStatusCode.Created, result);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { error = " Processzor feltoltése sikertelen." });
+            }
+
         }
 
         // PUT api/<controller>/5

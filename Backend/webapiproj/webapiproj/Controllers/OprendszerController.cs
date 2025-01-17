@@ -52,8 +52,27 @@ namespace webapiproj.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        public HttpResponseMessage Post([FromBody] OprendszerModel value)
         {
+            try
+            {
+                var result = ctx.Oprendszerek.Add(new Operaciosrendszer
+                {
+                    Nev = value.Nev,
+                    BuildSzam=value.BuildSzam,
+                    Verzio=value.Verzio,
+
+                });
+                ctx.SaveChanges();
+
+
+                return Request.CreateResponse(HttpStatusCode.Created, result);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { error = "Operácios rendszer feltoltése sikertelen." });
+            }
+
         }
 
         // PUT api/<controller>/5
