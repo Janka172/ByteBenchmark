@@ -51,6 +51,7 @@ namespace webapiproj.Controllers
         }
 
         // POST api/<controller>
+        [ResponseType(typeof(RamModel))]
         public HttpResponseMessage Post([FromBody] RamModel value)
         {
             try
