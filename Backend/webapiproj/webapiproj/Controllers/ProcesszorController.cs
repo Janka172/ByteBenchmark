@@ -72,6 +72,7 @@ namespace webapiproj.Controllers
         }
 
         // POST api/<controller>
+        [ResponseType(typeof(ProcesszorModel))]
         public HttpResponseMessage Post([FromBody] ProcesszorModel value)
         {
             try

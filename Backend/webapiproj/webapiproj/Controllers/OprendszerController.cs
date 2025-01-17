@@ -52,6 +52,7 @@ namespace webapiproj.Controllers
         }
 
         // POST api/<controller>
+        [ResponseType(typeof(OprendszerModel))]
         public HttpResponseMessage Post([FromBody] OprendszerModel value)
         {
             try

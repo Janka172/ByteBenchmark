@@ -58,6 +58,7 @@ namespace webapiproj.Controllers
         }
 
         // POST api/<controller>
+        [ResponseType(typeof(VideokartyaModel))]
         public HttpResponseMessage Post([FromBody] VideokartyaModel value)
         {
             try
