@@ -50,7 +50,8 @@ function AppLista() {
 
   function nevSzures() {
     if(feltetel.keresesiAdatok.nev != ''){
-      var nevreSzurt = szurtApp.filter(x => x.AppNev.includes(feltetel.keresesiAdatok.nev));
+      console.log(szurtApp)
+      var nevreSzurt = szurtApp.filter(x => x.Nev.includes(feltetel.keresesiAdatok.nev));
       setSzurtApp(nevreSzurt);
     }
   }
