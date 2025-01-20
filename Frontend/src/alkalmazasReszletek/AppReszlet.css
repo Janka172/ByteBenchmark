@@ -1,0 +1,91 @@
+.keret{
+    display: flex;
+    flex-direction: column;
+}
+
+.appNev{
+    text-align: left;
+    font-size: 3.8vw;
+    margin-left: 3vw;
+    margin-top: 3vw;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.oszlopok{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+}
+
+.nagyKep{
+    width: 90%;
+    margin: 1vw;
+    border: 0.5vw solid black;
+    border-radius: 0vw 7vw;
+}
+
+.jobOszlop{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.elem{
+    display: flex;
+    flex-direction: row;
+    padding-left: 3vw;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.sorCim{
+    font-size: 2.8vw;
+    font-weight: bold;
+}
+
+.kovetMegnyitas{
+    padding: 1.5vw 2vw;
+    font-size: 2.5vw;
+    width: 100%;
+    border-radius: 30% 0%;
+    background-color: rgba(184, 70, 70, 0.8);
+    border: none;
+    color: black;
+    margin-bottom: 2vw;
+}
+.kovetMegnyitas:hover{
+    background-color: rgb(184, 70, 70);
+}
+
+@media (max-width: 767px){
+    .appNev{
+        font-size: 8vw;
+    }
+
+    .sorCim{
+        font-size: 6vw;
+    }
+}
+
+@media (min-width: 1500px){
+    .appNev{
+        font-size: 2.5vw;
+    }
+    .sorCim{
+        font-size: 1.9vw;
+    }
+    h2{
+        font-size: 1vw;
+    }
+    .kovetelm h1{
+        font-size: 2.5vw;
+    }
+    .sorfCime{
+        font-size: 1.9vw;
+    }
+    .keret{
+        width: 70%;
+        margin: auto;
+    }
+}

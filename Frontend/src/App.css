@@ -1,0 +1,17 @@
+body{
+  margin: 0;
+  background-color: rgb(61, 61, 61);
+  overflow-x: hidden;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.App{
+  display: grid;
+}
+
+.ndp{
+  display: none;
+}

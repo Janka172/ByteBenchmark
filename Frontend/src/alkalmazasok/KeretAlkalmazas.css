@@ -1,0 +1,48 @@
+@media (max-width: 767px){
+  .nagyKerete {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: auto;
+  }
+
+  .kisSzuro{
+    display: block;
+  }
+
+  .kisAblak{
+    display: flex;
+    align-items: center;
+  }
+
+  .nagyAblak{
+    display: none;
+  }
+
+}
+
+@media (min-width: 768px){
+  .nagyKerete {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    width: auto;
+  }
+
+  .kisSzuro {
+    display: none;
+  }
+
+  .kisAblak{
+    display: none;
+  }
+
+  .nagyAblak{
+    display: flex;
+  }
+}
+
+@media (min-width: 1500px){
+  .nagyKerete{
+    width: 75%;
+    margin: auto;
+  }
+}
