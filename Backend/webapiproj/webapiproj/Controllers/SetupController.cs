@@ -24,6 +24,8 @@ namespace webapiproj.Controllers
         public int RamMeret { get; set; }
         public string OprendszerNev { get; set; }
         public int Tarhely { get; set; }
+        public string RamNeve { get; set; }
+        public string AlaplapNeve { get; set; }
     }
     public class SetupController : ApiController
     {
@@ -69,7 +71,9 @@ namespace webapiproj.Controllers
                 RamMeret = x.Ram.Meret,
                 RamFrekvencia = x.Ram.Frekvencia,
                 OprendszerNev = x.Oprendszer.Nev,
-                Tarhely = x.Applikacio.Tarhely
+                Tarhely = x.Applikacio.Tarhely,
+                RamNeve = x.Ram.Nev,
+                AlaplapNeve = x.Alaplap.Nev
             }).ToList();
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }

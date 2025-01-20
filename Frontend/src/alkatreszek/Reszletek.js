@@ -6,11 +6,11 @@ function Reszletek({ adat }) {
 
   useEffect(() => {
     elemekBetoltese();
-  }, [adat]); // Az adat változásakor újra betölti az elemeket
+  }, [adat]);
 
   function elemekBetoltese() {
-    let ujMind = []; // Létrehozzuk az új tömböt
-console.log(adat)
+    let ujMind = []; 
+
     for (let sor in adat) {
       var kiirando=sor;
 

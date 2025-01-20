@@ -44,6 +44,10 @@
     font-weight: bold;
 }
 
+.sorTartalom{
+    font-size: 1.5vw;
+}
+
 .kovetMegnyitas{
     padding: 1.5vw 2vw;
     font-size: 2.5vw;

@@ -12,7 +12,6 @@ function Gorgeto({ tema }) {
   var [tartalom, setTartalom] = useState('További részletek');
 
   var atmenetiKepUrl='/kepek/kep.png';
-console.log(tema)
   // Különböző témák megkölönböztetési adatai
   const AlkatTulajdonsagok = {
     'Videókártyák': [ { rovidit: 'v' } ],

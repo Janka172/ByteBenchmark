@@ -23,20 +23,17 @@ function AppLista() {
       setMindenApp(data);
       setSzurtApp(data);
       setBetoltA(false);
-      console.log(data)
     } catch (error) {
       console.error(error);
     }
   }
-  useEffect(() => {
-    getMindenApp();
-  }, []);
+  useEffect(() => {getMindenApp();}, []);
 
   var Mind = [];
   function mindenElemBetoltese() {
     var AppIndex = szurtApp.length;
     for (let i = 0; i < AppIndex; i++) {
-      const adat = { id: szurtApp[i].Id };
+      const adat = { nev: szurtApp[i].Nev };
       Mind.push(
         <div className="korKepKeret alKorKepKeret" key={i}>
           <img src={atmenetiKepLink} className="korKep" />
