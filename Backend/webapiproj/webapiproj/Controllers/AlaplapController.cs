@@ -20,7 +20,8 @@ namespace webapiproj.Controllers
         public string Lapkakeszlet { get; set; }
         public int SlotSzam { get; set; }
         public bool Hangkartya { get; set; }
-        public string CsatlakozoNev { get;set; }
+        public List<string> Csatlakozok { get; set; }
+        //public string CsatlakozoNev { get;set; }
     }
 
     public class AlaplapModel
@@ -79,6 +80,7 @@ namespace webapiproj.Controllers
         [ResponseType(typeof(AlaplapUploadModel))]
         public HttpResponseMessage Post([FromBody] AlaplapUploadModel value)
         {
+            List<int> storageport = new List<int>();
             try
             {
                 var result = ctx.Alaplapok.Add(new Alaplap
@@ -96,14 +98,23 @@ namespace webapiproj.Controllers
 
                 try
                 {
-                    var storageport = ctx.Csatlakozok.Where(x => x.Nev == value.CsatlakozoNev).FirstOrDefault();
-                    var storagemboard = ctx.Alaplapok.Where(x => x.Nev == value.Nev).FirstOrDefault();
-                    var resultconnect = ctx.Alaplap_Csatlakozok.Add(new Alaplap_Csatlakozo
+
+                    foreach (var item in value.Csatlakozok)
                     {
-                        AlaplapId = storagemboard.Id,
-                        CsatlakozoId = storageport.Id
-                    });
-                    ctx.SaveChanges();
+                        storageport.Add(ctx.Csatlakozok.Where(x => x.Nev == item).Select(x => x.Id).FirstOrDefault());
+                    }
+
+                    var storagemboard = ctx.Alaplapok.Where(x => x.Nev == value.Nev).FirstOrDefault();
+                    foreach (var item in storageport)
+                    {
+                        var resultconnect = ctx.Alaplap_Csatlakozok.Add(new Alaplap_Csatlakozo
+                        {
+                            AlaplapId = storagemboard.Id,
+                            CsatlakozoId = item,
+                        });
+                        ctx.SaveChanges();
+                    }
+
                 }
                 catch (Exception)
                 {
