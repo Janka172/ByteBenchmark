@@ -8,7 +8,6 @@ import VisszaOsszesitobe from './VisszaOsszesitobe';
 function AppReszlet() {
     const location = useLocation();
     const appNev = location.state.nev;
-console.log(appNev)
     var atmenetiKepLink = '/kepek/nkSSO.png';
 
     var [appAdat, setAppAdat] = useState('');

@@ -38,7 +38,6 @@ function AppLista() {
         <div className="korKepKeret alKorKepKeret" key={i}>
           <img src={atmenetiKepLink} className="korKep" />
           <h4 className="appNeve">{szurtApp[i].Nev}</h4>
-          <h5 className="katNeve">{szurtApp[i].KategoriaNev}</h5>
           <Link to="/oldalak/AlkalmazasReszletek" state={adat}>
             <button className="reszletGomb">További részletek</button>
           </Link>
@@ -174,10 +173,11 @@ function AppLista() {
 
 return (
     <div className="kartyak">
-      {betoltA ? console.log('Betöltés folyamatban !') : mindenElemBetoltese()}
-      
+      {betoltA ? console.log('Betöltés folyamatban !') : mindenElemBetoltese()}    
     </div>
   );
 }
 
 export default AppLista;
+
+//<h5 className="katNeve">{szurtApp[i].KategoriaNev}</h5>

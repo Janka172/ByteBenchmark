@@ -74,7 +74,18 @@ function Szuro() {
   const [ram, setRam] = useState('');
   const [tarhely, setTarhely] = useState('');
 
-  const kicsie = window.innerWidth <= 767;
+  const [kicsie, setKicsie] = useState(window.innerWidth <= 767);
+  useEffect(() => {
+    const handleResize = () => {
+      setKicsie(window.innerWidth <= 767);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const [hatter, setHatter] = useState('rgba(196, 84, 84, 0.8)');
   const [displ, setDispl] = useState('block');

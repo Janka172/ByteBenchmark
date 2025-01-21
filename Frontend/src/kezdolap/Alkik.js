@@ -52,7 +52,7 @@ function Alkik({egy, ketto, harom, negy}){
         const ujMasodikSor = [];
         for (let i = 0; i < 2 && i < randomIndexek.length; i++) {
             ujElsoSor.push(
-                <Link key={i} to='/oldalak/AlkalmazasReszletek' state={mindenApp[randomIndexek[i]].Nev}>
+                <Link key={i} to='/oldalak/AlkalmazasReszletek' state={{'nev' : mindenApp[randomIndexek[i]].Nev}}>
                     <div className="korKepKeret">
                         <img src={atmenetiKepLink} className="korKep" alt="App" />
                         <h4 className="kezd">{ mindenApp[randomIndexek[i]].Nev}</h4>
@@ -63,7 +63,7 @@ function Alkik({egy, ketto, harom, negy}){
 
         for (let i = 2; i < randomIndexek.length; i++) {
             ujMasodikSor.push(
-                <Link key={i} to='/oldalak/AlkalmazasReszletek' state={mindenApp[randomIndexek[i]].Nev}>
+                <Link key={i} to='/oldalak/AlkalmazasReszletek' state={{'nev' : mindenApp[randomIndexek[i]].Nev}}>
                     <div className="korKepKeret">
                         <img src={atmenetiKepLink} className="korKep" alt="App" />
                         <h4 className="kezd">{mindenApp[randomIndexek[i]].Nev}</h4>
