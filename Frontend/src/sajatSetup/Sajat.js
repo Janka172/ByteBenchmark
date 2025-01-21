@@ -105,7 +105,6 @@ function Sajat() {
     setAktuRam(valasztottRam);
     const valasztottAlaplap=mindenAlaplap[0];
     setAktuAlaplap(valasztottAlaplap);
-    console.log(aktuAlaplap)
   }
   useEffect(() => {
     if (!betoltV && !betoltP && !betoltO && !betoltR && !betoltA) {

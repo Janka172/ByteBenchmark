@@ -8,7 +8,6 @@ function AlkatreszReszletek() {
   
   const location = useLocation();
   const info = location.state;
-  console.log(info)
 
   var [Gorgi, setGorgi] = useState('');
   useEffect(() => {
