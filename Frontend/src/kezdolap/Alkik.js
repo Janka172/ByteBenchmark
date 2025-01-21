@@ -41,7 +41,7 @@ function Alkik({egy, ketto, harom, negy}){
     }
 
     useEffect(() => {
-        appokMegjelenitese();
+        if(!betoltA) appokMegjelenitese();
     }, [randomIndexek]);
 
     var [elsoSor, setElsoSor] = useState([]);
@@ -50,13 +50,12 @@ function Alkik({egy, ketto, harom, negy}){
     function appokMegjelenitese() {
         const ujElsoSor = [];
         const ujMasodikSor = [];
-
         for (let i = 0; i < 2 && i < randomIndexek.length; i++) {
             ujElsoSor.push(
-                <Link key={i} to='/oldalak/AlkalmazasReszletek' state={mindenApp[randomIndexek[i]]}>
+                <Link key={i} to='/oldalak/AlkalmazasReszletek' state={mindenApp[randomIndexek[i]].Nev}>
                     <div className="korKepKeret">
                         <img src={atmenetiKepLink} className="korKep" alt="App" />
-                        <h4 className="kezd">{mindenApp[randomIndexek[i]].Nev}</h4>
+                        <h4 className="kezd">{ mindenApp[randomIndexek[i]].Nev}</h4>
                     </div>
                 </Link>
             );
@@ -64,7 +63,7 @@ function Alkik({egy, ketto, harom, negy}){
 
         for (let i = 2; i < randomIndexek.length; i++) {
             ujMasodikSor.push(
-                <Link key={i} to='/oldalak/AlkalmazasReszletek' state={mindenApp[randomIndexek[i]]}>
+                <Link key={i} to='/oldalak/AlkalmazasReszletek' state={mindenApp[randomIndexek[i]].Nev}>
                     <div className="korKepKeret">
                         <img src={atmenetiKepLink} className="korKep" alt="App" />
                         <h4 className="kezd">{mindenApp[randomIndexek[i]].Nev}</h4>

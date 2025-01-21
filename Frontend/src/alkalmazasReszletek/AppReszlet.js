@@ -8,6 +8,8 @@ import VisszaOsszesitobe from './VisszaOsszesitobe';
 function AppReszlet() {
     const location = useLocation();
     const appNev = location.state.nev;
+console.log(appNev)
+    var atmenetiKepLink = '/kepek/nkSSO.png';
 
     var [appAdat, setAppAdat] = useState('');
     const [betoltA, setBetoltA] = useState(true);
@@ -17,41 +19,6 @@ function AppReszlet() {
     const [betoltO, setBetoltO] = useState(true);
     var [minimumK, setMinimumK] = useState('');
     var [optimumK, setOptimumK] = useState('');
-
-    //Index alapján kikeresi az aktuális adatot: ezket kell majd visszaküldeni
-    var kivalasztottApp= {
-        'nev': 'Appli neve',
-        'tahrely': '50',
-        'kepEleresiUtja': '/kepek/nkSSO.png',
-        'kategoria': 'Kategória Neve'
-    }
-    var minimumKovetelmeny={
-        'GP':'M',
-        'vidkaId':'0',
-        'vidkaNeve':'Videókártya Neve',
-        'procId':'0',
-        'procNeve':'Processzor Neve',
-        'ramId':'0',
-        'ramNeve':'RAM Neve',
-        'opId':'0',
-        'opNeve':'Oprendszer Neve',
-        'alaplapId':'0',
-        'alaplapNeve':'Alaplap Neve'
-    }
-    var optimumKovetelmeny={
-        'GP':'O',
-        'vidkaId':'0',
-        'vidkaNeve':'Videókártya Neve',
-        'procId':'0',
-        'procNeve':'Processzor Neve',
-        'ramId':'0',
-        'ramNeve':'RAM Neve',
-        'opId':'0',
-        'opNeve':'Oprendszer Neve',
-        'alaplapId':'0',
-        'alaplapNeve':'Alaplap Neve'
-    }
-    //---
 
     async function getAppAdat() {
       try {
@@ -108,7 +75,7 @@ function AppReszlet() {
                     </div>
                 </div>
                 <div className='jobOSzlop'>
-                    <img src={kivalasztottApp.kepEleresiUtja} className='nagyKep'></img>
+                    <img src={atmenetiKepLink} className='nagyKep'></img>
                 </div>
             </div>
             
