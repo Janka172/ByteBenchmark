@@ -18,6 +18,7 @@ function AppReszlet() {
     const [betoltO, setBetoltO] = useState(true);
     var [minimumK, setMinimumK] = useState('');
     var [optimumK, setOptimumK] = useState('');
+    var [tarhelyAdat, setTarhelyAdat] = useState('');
 
     async function getAppAdat() {
       try {
@@ -45,6 +46,7 @@ function AppReszlet() {
 
     useEffect(() => {
         if(!(betoltA && betoltK)){
+            if(appKovetelmeny[0] == undefined) setTarhelyAdat('- ')
             for(let elem of appKovetelmeny){
                 if(elem.Gepigeny=='minimum') {
                     setMinimumK(elem);
@@ -70,7 +72,7 @@ function AppReszlet() {
                     </div>
                     <div className='elem'>
                         <h2 className='sorCim'>Szükséges tárhely: </h2>
-                        <h2 className='sorTartalom'>{betoltK ? '-' : appKovetelmeny[0].Tarhely } GB</h2>
+                        <h2 className='sorTartalom'>{betoltK ? '-' : tarhelyAdat } GB</h2>
                     </div>
                 </div>
                 <div className='jobOSzlop'>

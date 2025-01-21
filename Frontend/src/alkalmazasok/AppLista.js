@@ -9,6 +9,9 @@ function AppLista() {
   const [mindenApp, setMindenApp] = useState([]);
   const [szurtApp, setSzurtApp] = useState([]);
   const [betoltA, setBetoltA] = useState(true);
+  const [setup, setSetup] = useState([]);
+  //const [aktuSetup, setAktuSetup] = useState('');
+  const [betoltS, setBetoltS] = useState(true);
 
   const  feltetel  = useKeresesiAdatok();
   useEffect(() => {
@@ -28,6 +31,19 @@ function AppLista() {
     }
   }
   useEffect(() => {getMindenApp();}, []);
+
+  async function getSetup() {
+    try{
+        const response = await fetch(`https://localhost:44316/api/Setup`);
+        const data = await response.json();
+        setSetup(data);
+        setBetoltS(false);
+        console.log(data)
+    } catch (error){
+        console.error(error);
+    }
+}
+useEffect(() => { getSetup(); }, []);
 
   var Mind = [];
   function mindenElemBetoltese() {
@@ -133,9 +149,14 @@ function AppLista() {
 
   function opSzures() {
     if(feltetel.keresesiAdatok.opRendszer != '-'){
-      var opraSzurt = szurtApp.filter(x => x.OprendszerNev == feltetel.keresesiAdatok.opRendszer);
+      var opraSzurt = szurtApp.filter(x =>  {
+        let aktu = setup.filter(s => s.ApplikacioNeve == x.Nev);
+
+        console.log(aktu)
+      });
       setSzurtApp(opraSzurt);
-    }
+    }//== feltetel.keresesiAdatok.opRendszer
+    //console.log(x)
   }
 
   function ramSzures() {
