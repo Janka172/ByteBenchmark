@@ -10,7 +10,7 @@ function AppLista() {
   const [szurtApp, setSzurtApp] = useState([]);
   const [betoltA, setBetoltA] = useState(true);
   const [setup, setSetup] = useState([]);
-  //const [aktuSetup, setAktuSetup] = useState('');
+  const [aktuSetup, setAktuSetup] = useState('');
   const [betoltS, setBetoltS] = useState(true);
 
   const  feltetel  = useKeresesiAdatok();
@@ -43,7 +43,7 @@ function AppLista() {
         console.error(error);
     }
   }
-  //useEffect(() => { getSetup(); }, []);
+  useEffect(() => { getSetup(); }, []);
 
   var Mind = [];
   function mindenElemBetoltese() {
@@ -150,10 +150,19 @@ function AppLista() {
   function opSzures() {
     if(feltetel.keresesiAdatok.opRendszer != '-'){
       var opraSzurt = szurtApp.filter(x =>  {
-        let aktu = setup.filter(s => s.ApplikacioNeve == x.Nev);
+        
+        console.log(x.Nev);
 
-        console.log('AKTU:')
-        console.log(aktu)
+        let aktu = setup.filter(s => s.ApplikacioNeve == x.Nev);
+        let feltetel = [];
+        
+        if(aktu.length > 1) {
+          feltetel = aktu.filter(e => e.Gepigeny == 'minimum')[0];
+        }
+        else feltetel = aktu[0];
+
+        
+        console.log(feltetel)
       });
       setSzurtApp(opraSzurt);
     }//== feltetel.keresesiAdatok.opRendszer
