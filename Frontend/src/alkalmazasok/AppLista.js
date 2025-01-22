@@ -19,6 +19,14 @@ function AppLista() {
     szur();
   }, [feltetel]);
 
+  function MinSetupKereso(setup, Nev){
+    let aktu = setup.filter(s => s.ApplikacioNeve == Nev);
+    if(aktu.length > 1) {
+      return aktu.filter(e => e.Gepigeny == 'minimum')[0];
+    }
+    return aktu[0];
+  }
+
   async function getMindenApp() {
     try {
       const response = await fetch('https://localhost:44316/api/Applikacio');
@@ -78,7 +86,8 @@ function AppLista() {
     } 
   }
 
-  const [hasVid, setHasVid] = useState('');
+console.log(feltetel.keresesiAdatok.videokartya)
+const [hasVid, setHasVid] = useState('');
   async function getHasVidi(neve) {
     try {
       const response = await fetch(`https://localhost:44316/api/Videokartya/0?name=${neve}`);
@@ -93,17 +102,30 @@ function AppLista() {
       vidiSz(hasVid);
     }
   }, [hasVid]);
+  
+  function vidkSzures() {
+    if (feltetel.keresesiAdatok.videokartya != '-') {
+      getHasVidi(feltetel.keresesiAdatok.videokartya);
+
+      //melyikVideokartyaJobb(hasVid, MinSetupKereso(setup, x.Nev).
+      var vidkraSzurt = szurtApp.filter(x => {
+        console.log(MinSetupKereso(setup, x.Nev))
+      }
+    );
+    }
+  }
   function vidiSz(hasV) {
-    const vidkraSzurt = szurtApp.filter(x => 
-      melyikVideokartyaJobb(hasV, x)
+    const vidkraSzurt = szurtApp.filter(x => {
+      console.log(hasV)
+      console.log(x)
+      melyikVideokartyaJobb(MinSetupKereso(setup, hasV.Nev), x)
+    }
+      
     );
     setSzurtApp(vidkraSzurt);
   }
-  function vidkSzures() {
-    if (feltetel.keresesiAdatok.videokartya !== '-') {
-      getHasVidi(feltetel.keresesiAdatok.videokartya);
-    }
-  }
+console.log(szurtApp)
+
   function melyikVideokartyaJobb(alap, hasonlitott) {
     if (alap.vram <= hasonlitott.VideokartyaVram) {
       return true;
@@ -111,6 +133,7 @@ function AppLista() {
       return false;
     }
   }
+  
 
   const [hasonlitott, setHasonlitott] = useState('');
   async function getHasProci(neve) {
@@ -149,36 +172,21 @@ function AppLista() {
 
   function opSzures() {
     if(feltetel.keresesiAdatok.opRendszer != '-'){
-      var opraSzurt = szurtApp.filter(x =>  {
-        
-        console.log(x.Nev);
-
-        let aktu = setup.filter(s => s.ApplikacioNeve == x.Nev);
-        let feltetel = [];
-        
-        if(aktu.length > 1) {
-          feltetel = aktu.filter(e => e.Gepigeny == 'minimum')[0];
-        }
-        else feltetel = aktu[0];
-
-        
-        console.log(feltetel)
-      });
+      var opraSzurt = szurtApp.filter(x => MinSetupKereso(setup, x.Nev).OprendszerNev == feltetel.keresesiAdatok.opRendszer);
       setSzurtApp(opraSzurt);
-    }//== feltetel.keresesiAdatok.opRendszer
-    //console.log(x)
+    }
   }
 
   function ramSzures() {
     if(feltetel.keresesiAdatok.ram != ''){
-      var ramraSzurt = szurtApp.filter(x => x.RamMeret <= feltetel.keresesiAdatok.ram);
+      var ramraSzurt = szurtApp.filter(x => MinSetupKereso(setup, x.Nev).RamMeret <= feltetel.keresesiAdatok.ram);
       setSzurtApp(ramraSzurt);
     }
   }
 
   function tarSzures() {
     if(feltetel.keresesiAdatok.tarhely != ''){
-      var tarraSzurt = szurtApp.filter(x => x.Tarhely <= feltetel.keresesiAdatok.tarhely);
+      var tarraSzurt = szurtApp.filter(x => MinSetupKereso(setup, x.Nev).Tarhely <= feltetel.keresesiAdatok.tarhely);
       setSzurtApp(tarraSzurt);
     }
   }
