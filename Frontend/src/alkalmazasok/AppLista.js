@@ -42,8 +42,8 @@ function AppLista() {
     } catch (error){
         console.error(error);
     }
-}
-useEffect(() => { getSetup(); }, []);
+  }
+  //useEffect(() => { getSetup(); }, []);
 
   var Mind = [];
   function mindenElemBetoltese() {
@@ -152,6 +152,7 @@ useEffect(() => { getSetup(); }, []);
       var opraSzurt = szurtApp.filter(x =>  {
         let aktu = setup.filter(s => s.ApplikacioNeve == x.Nev);
 
+        console.log('AKTU:')
         console.log(aktu)
       });
       setSzurtApp(opraSzurt);

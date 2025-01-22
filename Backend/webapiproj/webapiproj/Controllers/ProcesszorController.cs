@@ -40,7 +40,7 @@ namespace webapiproj.Controllers
                 TamogatottMemoriatipus = x.TamogatottMemoriatipus,
                 ProcesszormagokSzama = x.ProcesszormagokSzama,
                 ProcesszorFrekvencia = x.ProcesszorFrekvencia,
-                BProcesszorFrekvencia=x.BFrekvencia,
+                //BProcesszorFrekvencia=x.BFrekvencia,
                 Gyarto = x.Gyarto,
                 AjanlottTapegyseg = x.AjanlottTapegyseg,
                 IntegraltVideokartya = x.IntegraltVideokartya
@@ -63,7 +63,7 @@ namespace webapiproj.Controllers
                 TamogatottMemoriatipus = x.TamogatottMemoriatipus,
                 ProcesszormagokSzama = x.ProcesszormagokSzama,
                 ProcesszorFrekvencia = x.ProcesszorFrekvencia,
-                BProcesszorFrekvencia = x.BFrekvencia,
+                //BProcesszorFrekvencia = x.BFrekvencia,
                 Gyarto = x.Gyarto,
                 AjanlottTapegyseg = x.AjanlottTapegyseg,
                 IntegraltVideokartya = x.IntegraltVideokartya
