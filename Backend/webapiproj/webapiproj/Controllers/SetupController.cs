@@ -15,13 +15,13 @@ namespace webapiproj.Controllers
         public string ApplikacioNeve { get; set; }
         public string Gepigeny { get; set; }
         public string VidekortyaNev { get; set; }
-        public int VideokartyaVram { get; set; }
+        public int? VideokartyaVram { get; set; }
         public string ProcesszorNev { get; set; }
-        public int ProcesszorSzalakSzama { get; set; }
+        public int? ProcesszorSzalakSzama { get; set; }
         public int ProcesszorMagokSzama { get; set; }
-        public double ProcesszorFrekvencia { get; set; }
-        public double RamFrekvencia { get; set; }
-        public int RamMeret { get; set; }
+        public double? ProcesszorFrekvencia { get; set; }
+        public double? RamFrekvencia { get; set; }
+        public int? RamMeret { get; set; }
         public string OprendszerNev { get; set; }
         public int Tarhely { get; set; }
         public string RamNeve { get; set; }

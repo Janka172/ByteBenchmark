@@ -149,7 +149,7 @@ namespace webapiproj.Controllers
             {
                 var validate = PasswdManager.VerifyPasswordHash(value.Jelszo, res.Jelszo, res.JelszoUjra);
                 if(validate) return Request.CreateResponse(HttpStatusCode.OK);
-                else  return Request.CreateResponse(HttpStatusCode.Unauthorized, "Nem megfelelo a jelszo vagy az email");
+                else  return Request.CreateResponse(HttpStatusCode.Unauthorized, "Nem megfelelo a jelszo");
             }
             return Request.CreateResponse(HttpStatusCode.NotFound);
         }

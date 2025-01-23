@@ -113,6 +113,15 @@ namespace webapiproj.Controllers
         [ResponseType(typeof(VideokartyaModel))]
         public HttpResponseMessage Delete(int id,string name, int vram)
         {
+            var vidId = ctx.Videokartyak.Where(x => x.Nev == name && x.Vram == vram).Select(x=>x.Id).FirstOrDefault();
+            var set = ctx.Setupok.Where(x => x.VidkaId == vidId).ToList();
+
+            foreach (var item in set)
+            {
+                item.VidkaId = null;
+            }
+
+
             var result = ctx.Videokartyak.Where(x => x.Nev == name&& x.Vram==vram).FirstOrDefault();
             if (result!=null)
             {
@@ -120,6 +129,7 @@ namespace webapiproj.Controllers
                 ctx.SaveChanges();
                 return Request.CreateResponse(HttpStatusCode.OK, "Törlés sikeresen véghezment");
             }
+            ctx.SaveChanges();
             return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található");
         }
     }
