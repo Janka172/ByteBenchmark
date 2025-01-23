@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Jan 23. 22:31
--- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.2.12
+-- Létrehozás ideje: 2025. Jan 23. 10:37
+-- Kiszolgáló verziója: 10.4.28-MariaDB
+-- PHP verzió: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,10 +20,12 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `byt_banchmark`
 --
+
 DROP DATABASE IF EXISTS byt_banchmark;
 CREATE DATABASE byt_banchmark CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
 
 USE byt_banchmark;
+
 -- --------------------------------------------------------
 
 --
@@ -239,8 +241,7 @@ INSERT INTO `profil` (`Id`, `Felhasznalonev`, `Jogosultsag`, `Email`, `Tema`, `L
 (3, 'user2', 2, 'user2@example.com', 'light', '', '', ''),
 (4, 'user3', 3, 'user3@example.com', 'dark', '', '', ''),
 (5, 'user4', 3, 'user4@example.com', 'light', '', '', ''),
-(6, 'Postas Feri', 1, 'postas@gmail.com', 'black', '[value-6]', 0x46657269, 0x46657269),
-(7, 'Mate', 0, 'mateszabo9784@gmail.com', 'string', 'string', 0xf0959242684a1bed959c797e85497e6a1bd81cc24267f8f8ab3efac2858870bb0cd40592da86a0fb920db47263e6990864f131f8860fead2a918726f85bf294c66c6941f7a379f887079e4921bf9761ae91100dde5770c5a55ade70e602fe161c7ead67e7f246fdf7896db6ce0123dc62740d0c6ef757a3910c4fc37f956334b, 0xdc0df50ba01983c449b13fa0f31f372097f22b6045acb375e7f1331dfe2ae679082bdd7602fc5525c3016ce58dee3d9707c7d10d1a06c3e5c539d2c6053cb56f);
+(6, 'Postas Feri', 1, 'postas@gmail.com', 'black', '[value-6]', 0x46657269, 0x46657269);
 
 -- --------------------------------------------------------
 
@@ -275,11 +276,11 @@ INSERT INTO `ram` (`Id`, `Nev`, `MemoriaTipus`, `Frekvencia`, `Meret`) VALUES
 
 CREATE TABLE `setup` (
   `Id` int(11) NOT NULL,
-  `VidkaId` int(11) DEFAULT NULL,
-  `ProcId` int(11) DEFAULT NULL,
-  `RamId` int(11) DEFAULT NULL,
-  `OpId` int(11) DEFAULT NULL,
-  `AlaplId` int(11) DEFAULT NULL,
+  `VidkaId` int(11) NOT NULL,
+  `ProcId` int(11) NOT NULL,
+  `RamId` int(11) NOT NULL,
+  `OpId` int(11) NOT NULL,
+  `AlaplId` int(11) NOT NULL,
   `ApplikacioId` int(11) NOT NULL,
   `Gp` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
@@ -289,9 +290,10 @@ CREATE TABLE `setup` (
 --
 
 INSERT INTO `setup` (`Id`, `VidkaId`, `ProcId`, `RamId`, `OpId`, `AlaplId`, `ApplikacioId`, `Gp`) VALUES
+(109, 1, 1, 1, 1, 1, 15, 'minimum'),
+(110, 2, 2, 2, 2, 2, 15, 'maximum'),
 (111, 3, 3, 3, 3, 3, 16, 'minimum'),
-(117, NULL, 1, 1, 1, 1, 15, 'maximum'),
-(118, NULL, 1, 1, 1, 1, 15, 'minimum');
+(112, 1, 3, 3, 4, 2, 17, 'minimum');
 
 -- --------------------------------------------------------
 
@@ -314,6 +316,7 @@ CREATE TABLE `videokartya` (
 --
 
 INSERT INTO `videokartya` (`Id`, `Nev`, `AlaplapiCsatlakozas`, `AjanlottTapegyseg`, `MonitorCsatlakozas`, `ChipGyartoja`, `Vram`) VALUES
+(1, 'NVIDIA GeForce GTX 1050', 'PCIe 3.0', 450, 'HDMI, DisplayPort', 'NVIDIA', 4),
 (2, 'AMD Radeon RX 580', 'PCIe 3.0', 550, 'HDMI, DisplayPort', 'AMD', 8),
 (3, 'Intel UHD Graphics 630', 'Integrated', 300, 'HDMI', 'Intel', 2),
 (4, 'NVIDIA GeForce RTX 2080', 'PCIe 3.0', 700, 'HDMI, DisplayPort', 'NVIDIA', 8),
@@ -460,7 +463,7 @@ ALTER TABLE `processzor`
 -- AUTO_INCREMENT a táblához `profil`
 --
 ALTER TABLE `profil`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT a táblához `ram`
@@ -472,7 +475,7 @@ ALTER TABLE `ram`
 -- AUTO_INCREMENT a táblához `setup`
 --
 ALTER TABLE `setup`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT a táblához `videokartya`
