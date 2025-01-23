@@ -46,7 +46,6 @@ function AppLista() {
         const data = await response.json();
         setSetup(data);
         setBetoltS(false);
-        console.log(data)
     } catch (error){
         console.error(error);
     }
@@ -71,14 +70,15 @@ function AppLista() {
     return Mind.map((x) => x);
   }
 
+  //Szűrés név szerint
   function nevSzures() {
     if(feltetel.keresesiAdatok.nev != ''){
-      console.log(szurtApp)
       var nevreSzurt = szurtApp.filter(x => x.Nev.includes(feltetel.keresesiAdatok.nev));
       setSzurtApp(nevreSzurt);
     }
   }
 
+  //Szűrés kategória szerint
   function kategoriaSzures() {
     if(feltetel.keresesiAdatok.kategoria != '-'){
       var katraSzurt = szurtApp.filter(x => x.KategoriaNev == feltetel.keresesiAdatok.kategoria);
@@ -86,8 +86,8 @@ function AppLista() {
     } 
   }
 
-console.log(feltetel.keresesiAdatok.videokartya)
-const [hasVid, setHasVid] = useState('');
+  //Szűrés videókártya szerint
+  const [hasVid, setHasVid] = useState('');
   async function getHasVidi(neve) {
     try {
       const response = await fetch(`https://localhost:44316/api/Videokartya/0?name=${neve}`);
@@ -98,7 +98,7 @@ const [hasVid, setHasVid] = useState('');
     }
   }
   useEffect(() => {
-    if (hasVid && hasVid !== '') {
+    if (hasVid && hasVid != '') {
       vidiSz(hasVid);
     }
   }, [hasVid]);
@@ -106,35 +106,21 @@ const [hasVid, setHasVid] = useState('');
   function vidkSzures() {
     if (feltetel.keresesiAdatok.videokartya != '-') {
       getHasVidi(feltetel.keresesiAdatok.videokartya);
-
-      //melyikVideokartyaJobb(hasVid, MinSetupKereso(setup, x.Nev).
-      var vidkraSzurt = szurtApp.filter(x => {
-        console.log(MinSetupKereso(setup, x.Nev))
-      }
-    );
     }
   }
   function vidiSz(hasV) {
-    const vidkraSzurt = szurtApp.filter(x => {
-      console.log(hasV)
-      console.log(x)
-      melyikVideokartyaJobb(MinSetupKereso(setup, hasV.Nev), x)
-    }
-      
-    );
+    const vidkraSzurt = szurtApp.filter(x => melyikVideokartyaJobb(hasV, MinSetupKereso(setup, x.Nev)));
     setSzurtApp(vidkraSzurt);
   }
-console.log(szurtApp)
-
   function melyikVideokartyaJobb(alap, hasonlitott) {
-    if (alap.vram <= hasonlitott.VideokartyaVram) {
+    if (alap.vram >= hasonlitott.VideokartyaVram) {
       return true;
-    } else if (alap.vram > hasonlitott.VideokartyaVram) {
+    } else {
       return false;
     }
   }
   
-
+  //Szűrés processzor szerint
   const [hasonlitott, setHasonlitott] = useState('');
   async function getHasProci(neve) {
     try {
@@ -146,30 +132,29 @@ console.log(szurtApp)
     }
   }
   useEffect(() => {
-    if (hasonlitott) {
+    if (hasonlitott && hasonlitott != '') {
       prociSz(hasonlitott);
     }
   }, [hasonlitott]);
+
   function prociSzures() {
     if (feltetel.keresesiAdatok.processzor != '-') {
       getHasProci(feltetel.keresesiAdatok.processzor);
     }
   }
   function prociSz(hason) {
-    const prociraSzurt = szurtApp.filter(x => 
-      melyikProcesszorJobb(hason, x)
-    );
+    const prociraSzurt = szurtApp.filter(x => melyikProcesszorJobb(hason, MinSetupKereso(setup, x.Nev)));
     setSzurtApp(prociraSzurt);
   }
   function melyikProcesszorJobb(alap, hasonlitott) {
     if (alap.ProcesszormagokSzama < hasonlitott.ProcesszorMagokSzama) {
       return false;
-    } else if (alap.ProcesszormagokSzama
-      >= hasonlitott.ProcesszorMagokSzama) {
+    } else if (alap.ProcesszormagokSzama >= hasonlitott.ProcesszorMagokSzama) {
       return true;
     }
   }
 
+  //Szűrés operációsrendszer szerint
   function opSzures() {
     if(feltetel.keresesiAdatok.opRendszer != '-'){
       var opraSzurt = szurtApp.filter(x => MinSetupKereso(setup, x.Nev).OprendszerNev == feltetel.keresesiAdatok.opRendszer);
@@ -177,13 +162,14 @@ console.log(szurtApp)
     }
   }
 
+  //Szűrés ram szerint
   function ramSzures() {
     if(feltetel.keresesiAdatok.ram != ''){
       var ramraSzurt = szurtApp.filter(x => MinSetupKereso(setup, x.Nev).RamMeret <= feltetel.keresesiAdatok.ram);
       setSzurtApp(ramraSzurt);
     }
   }
-
+  //Szűrés tárhely igény szerint
   function tarSzures() {
     if(feltetel.keresesiAdatok.tarhely != ''){
       var tarraSzurt = szurtApp.filter(x => MinSetupKereso(setup, x.Nev).Tarhely <= feltetel.keresesiAdatok.tarhely);
@@ -192,9 +178,7 @@ console.log(szurtApp)
   }
 
   const [szurtAlap, setSzurtAlap] = useState(false);
-
   function szur() {
-    setSzurtApp(mindenApp);
     setSzurtAlap(true);
   }
   useEffect(() => {
