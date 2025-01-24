@@ -76,13 +76,49 @@ namespace webapiproj.Controllers
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
+        [ResponseType(typeof(RamModel))]
+        public HttpResponseMessage Put(int id, string name,[FromBody] RamModel value)
         {
+            try
+            {
+                var result = ctx.Ramok.Where(x => x.Nev == name).FirstOrDefault();
+                if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen Ram");
+                result.Nev = value.Nev;
+                result.MemoriaTipus = value.MemoriaTipus;
+                result.Frekvencia = value.Frekvencia;
+                result.Meret = value.Meret;
+
+                ctx.SaveChanges();
+                return Request.CreateResponse(HttpStatusCode.OK, "Update sikeres");
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Request.CreateResponse(HttpStatusCode.Conflict, "Ezzel a névvel már létezik Ram");
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        public HttpResponseMessage Delete(int id,string name)
         {
+            var ramId = ctx.Videokartyak.Where(x => x.Nev == name).Select(x => x.Id).FirstOrDefault();
+            var set = ctx.Setupok.Where(x => x.RamId == ramId).ToList();
+
+            foreach (var item in set)
+            {
+                item.RamId = null;
+            }
+
+
+            var result = ctx.Ramok.Where(x => x.Nev == name).FirstOrDefault();
+            if (result != null)
+            {
+                ctx.Ramok.Remove(result);
+                ctx.SaveChanges();
+                return Request.CreateResponse(HttpStatusCode.OK, "Törlés sikeresen véghezment");
+            }
+            ctx.SaveChanges();
+            return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található");
         }
     }
 }
