@@ -99,13 +99,8 @@ namespace webapiproj.Controllers
         {
             try
             {
-                var email = ctx.Profilok.Where(x => x.Email == value.Email).FirstOrDefault();
-                var felhasz = ctx.Profilok.Where(x => x.Felhasznalonev == name).FirstOrDefault();
-                if (email != null) return Request.CreateResponse(HttpStatusCode.Conflict, "Ezzel az email-lal már regisztráltak");
-                if (felhasz != null) return Request.CreateResponse(HttpStatusCode.Conflict, "Ezzel az email-lal már regisztráltak");
-
-                var result = ctx.Profilok.Where(x => x.Felhasznalonev == value.Felhasznalonev).FirstOrDefault();
-                if (result != null) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem talalhato ilyen felhasználó");
+                var result = ctx.Profilok.Where(x => x.Felhasznalonev == name).FirstOrDefault();
+                if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem talalhato ilyen felhasználó");
 
                 result.Felhasznalonev = value.Felhasznalonev;
                 result.Email = value.Email;
@@ -116,11 +111,14 @@ namespace webapiproj.Controllers
                 result.LogoEleresiUtja = value.LogoEleresiUtja;
                 ctx.SaveChanges();
 
-                return Request.CreateResponse(HttpStatusCode.OK);
+                return Request.CreateResponse(HttpStatusCode.OK,"Sikeres UPDATE");
             }
             catch (Exception ex)
             {
-                
+                if (ex.Message== "An error occurred while updating the entries. See the inner exception for details.")
+                {
+                    return Request.CreateResponse(HttpStatusCode.Conflict, "Ezzel a felhasználoval vagy emaillal már regisztráltak");
+                }
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
