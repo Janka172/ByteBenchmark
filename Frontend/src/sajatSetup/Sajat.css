@@ -1,7 +1,7 @@
 .kivalasztottak{
     margin: 5vw;
     padding: 2vw;
-    background-color: rgba(46, 41, 41, 0.459);
+    background-color: rgba(126, 117, 117, 0.5);
     border-radius: 3vw 0vw;
 }
 
@@ -30,7 +30,7 @@
 .kivalszto{
     margin: 3vw;
     padding: 2vw;
-    background-color: rgba(46, 41, 41, 0.459);
+    background-color: rgba(126, 117, 117, 0.5);
     border-radius: 0vw 3vw;
 }
 

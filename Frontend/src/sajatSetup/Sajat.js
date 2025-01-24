@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 function Sajat() {
+  var atmenetiKepLink='/kepek/kep.png';
   // Adatbázisból kinyert: nevek
   const [mindenVideokartya, setMindenVideokartya] = useState([]);
   const [betoltV, setBetoltV] = useState(true);
@@ -16,11 +17,11 @@ function Sajat() {
   const [mindenAlaplap, setMindenAlaplap] = useState([]);
   const [betoltA, setBetoltA] = useState(true);
 
-  const [kivVideokartya, setKivalasztottVideokartya] = useState({ id: 0, nev: '' });
-  const [kivProcesszor, setKivalasztottProcesszor] = useState({ id: 0, nev: '' });
-  const [kivOpRendszer, setKivalasztottOpRendszer] = useState({ id: 0, nev: '' });
-  const [kivRam, setKivalasztottRam] = useState({ id: 0, nev: '' });
-  const [kivAlaplap, setKivalasztottAlaplap] = useState({ id: 0, nev: '' });
+  const [kivVideokartya, setKivalasztottVideokartya] = useState('nincs');
+  const [kivProcesszor, setKivalasztottProcesszor] = useState('nincs');
+  const [kivOpRendszer, setKivalasztottOpRendszer] = useState('nincs');
+  const [kivRam, setKivalasztottRam] = useState('nincs');
+  const [kivAlaplap, setKivalasztottAlaplap] = useState('nincs');
   
   const [aktuVideokartya, setAktuVideokartya] = useState(mindenVideokartya[0]);
   const [aktuProcesszor, setAktuProcesszor] = useState(mindenProcesszor[0]);
@@ -93,7 +94,7 @@ function Sajat() {
   }
   useEffect(() => { getMindenAlaplap(); }, [betoltA]);
 
-  // Csak akkor fut le, ha minden adat betöltődött
+  // Minden adat betöltődött
   function mindenBetolotott() {
     const valasztottVideokartya=mindenVideokartya[0];
     setAktuVideokartya(valasztottVideokartya);
@@ -176,21 +177,43 @@ function Sajat() {
       });
   };
 
+  //Futtatható alkalmazások
+  const [mindenApp, setMindenApp] = useState([]);
+  const [betoltApp, setBetoltApp] = useState(true);
+  async function getMindenApp() {
+    try {
+      const response = await fetch('https://localhost:44316/api/Applikacio');
+      const data = await response.json();
+      setMindenApp(data);
+      setBetoltApp(false);
+      console.log(data)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  useEffect(() => {getMindenApp();}, []);
+
+  function MinSetupKereso(setup, Nev){
+    let aktu = setup.filter(s => s.ApplikacioNeve == Nev);
+    if(aktu.length > 1) {
+      return aktu.filter(e => e.Gepigeny == 'minimum')[0];
+    }
+    return aktu[0];
+  }
+
   const [Mind, setMind] = useState([]);
   const [ottVanVagyNem, setOttVanVagyNem] = useState('none');
   function listazas() {
-    if(kivVideokartya.id!='-1' && kivProcesszor.id!='-1' && kivOpRendszer.id!='-1' && kivRam.id!='-1' && kivAlaplap.id!='-1'){
+    if(!betoltApp && (kivVideokartya!='nincs' && kivProcesszor!='nincs' && kivOpRendszer!='nincs' && kivRam!='nincs' && kivAlaplap!='nincs')){
       setOttVanVagyNem('block');
-      var Appok = [{'kepEleres':'/kepek/kep.png', 'nev':'Progi Neve', 'kat':'Kategória Neve', 'id':'0'}];
-      const AppIndex = 20;
+      const AppIndex = mindenApp.length;
       let tempMind = [];
       for (let i = 0; i < AppIndex; i++) {
-        const adat = { id: Appok[0].id };
+        const adat = { nev: mindenApp[i].Nev };
         tempMind.push(
           <div className="korKepKeret" key={i}>
-            <img src={Appok[0].kepEleres} className="korKep" alt="App kép" />
-            <h4 className="appNeve">{Appok[0].nev}</h4>
-            <h5 className='katNeve'>{Appok[0].kat}</h5>
+            <img src={atmenetiKepLink} className="korKep" alt="App kép" />
+            <h4 className="appNeve">{mindenApp[i].Nev}</h4>
             <Link to='/oldalak/AlkalmazasReszletek' state={adat}>
               <button className='reszletGomb'>További részletek</button>
             </Link>
