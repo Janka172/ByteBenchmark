@@ -10,7 +10,6 @@ function AppLista() {
   const [szurtApp, setSzurtApp] = useState([]);
   const [betoltA, setBetoltA] = useState(true);
   const [setup, setSetup] = useState([]);
-  const [aktuSetup, setAktuSetup] = useState('');
   const [betoltS, setBetoltS] = useState(true);
 
   const  feltetel  = useKeresesiAdatok();
@@ -113,11 +112,13 @@ function AppLista() {
     setSzurtApp(vidkraSzurt);
   }
   function melyikVideokartyaJobb(alap, hasonlitott) {
-    if (alap.vram >= hasonlitott.VideokartyaVram) {
-      return true;
-    } else {
-      return false;
-    }
+    if(hasonlitott!=null){
+      if (alap.vram >= hasonlitott.VideokartyaVram) {
+        return true;
+      } else {
+        return false;
+      }
+    } 
   }
   
   //Szűrés processzor szerint
@@ -147,17 +148,24 @@ function AppLista() {
     setSzurtApp(prociraSzurt);
   }
   function melyikProcesszorJobb(alap, hasonlitott) {
-    if (alap.ProcesszormagokSzama < hasonlitott.ProcesszorMagokSzama) {
-      return false;
-    } else if (alap.ProcesszormagokSzama >= hasonlitott.ProcesszorMagokSzama) {
-      return true;
+    if(hasonlitott!=null){
+      if (alap.ProcesszormagokSzama < hasonlitott.ProcesszorMagokSzama) {
+        return false;
+      } else if (alap.ProcesszormagokSzama >= hasonlitott.ProcesszorMagokSzama) {
+        return true;
+      }
     }
   }
 
   //Szűrés operációsrendszer szerint
   function opSzures() {
     if(feltetel.keresesiAdatok.opRendszer != '-'){
-      var opraSzurt = szurtApp.filter(x => MinSetupKereso(setup, x.Nev).OprendszerNev == feltetel.keresesiAdatok.opRendszer);
+      var opraSzurt = szurtApp.filter(x => {
+        if(MinSetupKereso(setup, x.Nev)!=null){
+          return MinSetupKereso(setup, x.Nev).OprendszerNev == feltetel.keresesiAdatok.opRendszer;
+        }
+        return false;
+      });
       setSzurtApp(opraSzurt);
     }
   }
@@ -165,14 +173,24 @@ function AppLista() {
   //Szűrés ram szerint
   function ramSzures() {
     if(feltetel.keresesiAdatok.ram != ''){
-      var ramraSzurt = szurtApp.filter(x => MinSetupKereso(setup, x.Nev).RamMeret <= feltetel.keresesiAdatok.ram);
+      var ramraSzurt = szurtApp.filter(x => {
+        if(MinSetupKereso(setup, x.Nev)!=null){
+          return MinSetupKereso(setup, x.Nev).RamMeret <= feltetel.keresesiAdatok.ram;
+        }
+        return false;
+      });
       setSzurtApp(ramraSzurt);
     }
   }
   //Szűrés tárhely igény szerint
   function tarSzures() {
     if(feltetel.keresesiAdatok.tarhely != ''){
-      var tarraSzurt = szurtApp.filter(x => MinSetupKereso(setup, x.Nev).Tarhely <= feltetel.keresesiAdatok.tarhely);
+      var tarraSzurt = szurtApp.filter(x => {
+        if(MinSetupKereso(setup, x.Nev)!=null){
+         return MinSetupKereso(setup, x.Nev).Tarhely <= feltetel.keresesiAdatok.tarhely;
+        }
+        return false;
+      });
       setSzurtApp(tarraSzurt);
     }
   }
@@ -180,18 +198,23 @@ function AppLista() {
   const [szurtAlap, setSzurtAlap] = useState(false);
   function szur() {
     setSzurtAlap(true);
+    setSzurtApp(mindenApp);
   }
-  useEffect(() => {
+  async function filterAlap() {
     if (szurtAlap) {
-      nevSzures();
-      kategoriaSzures();
-      vidkSzures();
-      prociSzures();
-      opSzures();
-      ramSzures();
-      tarSzures();
+      await nevSzures();
+      await kategoriaSzures();
+      await vidkSzures();
+      await prociSzures();
+      await opSzures();
+      await ramSzures();
+      await tarSzures();
       setSzurtAlap(false);
     }
+  };
+  useEffect(() => {
+    
+    filterAlap();
   }, [szurtApp, szurtAlap]);
 
 return (

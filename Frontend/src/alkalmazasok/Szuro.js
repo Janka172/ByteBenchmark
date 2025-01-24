@@ -138,8 +138,6 @@ function Szuro() {
 
   const { setKeresesiAdatok } = useKeresesiAdatok();
   function keres(){
-    console.log('Keresés fut !');
-
     var adatok = {
       nev: nev,
       kategoria: kategoria,
@@ -149,7 +147,6 @@ function Szuro() {
       ram: ram,
       tarhely: tarhely,
     };
-    
     setKeresesiAdatok(adatok);
   }
 
