@@ -123,15 +123,75 @@ namespace webapiproj.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.Created, result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { error = "Alaplap létrehozása és az alaplap és csatlakozo közti kapcsolat  sikertelen!" });
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
+        [ResponseType(typeof(AlaplapUploadModel))]
+        public HttpResponseMessage Put(int id, string name,[FromBody] AlaplapUploadModel value)
         {
+            List<int> storageport = new List<int>();
+            try
+            {
+                var result = ctx.Alaplapok.Where(x => x.Nev == name).FirstOrDefault();
+                if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen Alaplap");
+                result.Nev = value.Nev;
+                result.CpuFoglalat = value.CpuFoglalat;
+                result.AlaplapFormatum = value.AlaplapFormatum;
+                result.MaxFrekvencia = value.MaxFrekvencia;
+                result.MemoriaTipusa = value.MemoriaTipusa;
+                result.Lapkakeszlet = value.Lapkakeszlet;
+                result.SlotSzam = value.SlotSzam;
+                result.Hangkartya = value.Hangkartya;
+                ctx.SaveChanges();
+
+                int AlaplapId = ctx.Alaplapok.Where(x => x.Nev == value.Nev).Select(x=>x.Id).FirstOrDefault();
+                var Ports = ctx.Alaplap_Csatlakozok.Where(x => x.AlaplapId == AlaplapId).ToList();
+
+                return Request.CreateResponse(HttpStatusCode.OK, AlaplapId);
+                foreach (var item in Ports)
+                {
+                    ctx.Alaplap_Csatlakozok.Remove(item);
+                }
+                ctx.SaveChanges();
+                
+                
+                try
+                {
+                    foreach (var item in value.Csatlakozok)
+                    {
+                        storageport.Add(ctx.Csatlakozok.Where(x => x.Nev == item).Select(x => x.Id).FirstOrDefault());
+                    }
+
+                    var storagemboard = ctx.Alaplapok.Where(x => x.Nev == value.Nev).FirstOrDefault();
+                    foreach (var item in storageport)
+                    {
+                        var resultconnect = ctx.Alaplap_Csatlakozok.Add(new Alaplap_Csatlakozo
+                        {
+                            AlaplapId = storagemboard.Id,
+                            CsatlakozoId = item,
+                        });
+                        ctx.SaveChanges();
+                    }
+                }
+                catch (Exception)
+                {
+
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { error = "Alaplap és csatlakozo közti kapcsolat létrehozása sikertelen!" });
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, "Update sikeres");
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+                //return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+           
+
         }
 
         // DELETE api/<controller>/5
