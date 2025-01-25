@@ -148,47 +148,13 @@ namespace webapiproj.Controllers
                 result.Hangkartya = value.Hangkartya;
                 ctx.SaveChanges();
 
-                int AlaplapId = ctx.Alaplapok.Where(x => x.Nev == value.Nev).Select(x=>x.Id).FirstOrDefault();
-                var Ports = ctx.Alaplap_Csatlakozok.Where(x => x.AlaplapId == AlaplapId).ToList();
-
-                return Request.CreateResponse(HttpStatusCode.OK, AlaplapId);
-                foreach (var item in Ports)
-                {
-                    ctx.Alaplap_Csatlakozok.Remove(item);
-                }
-                ctx.SaveChanges();
                 
-                
-                try
-                {
-                    foreach (var item in value.Csatlakozok)
-                    {
-                        storageport.Add(ctx.Csatlakozok.Where(x => x.Nev == item).Select(x => x.Id).FirstOrDefault());
-                    }
-
-                    var storagemboard = ctx.Alaplapok.Where(x => x.Nev == value.Nev).FirstOrDefault();
-                    foreach (var item in storageport)
-                    {
-                        var resultconnect = ctx.Alaplap_Csatlakozok.Add(new Alaplap_Csatlakozo
-                        {
-                            AlaplapId = storagemboard.Id,
-                            CsatlakozoId = item,
-                        });
-                        ctx.SaveChanges();
-                    }
-                }
-                catch (Exception)
-                {
-
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { error = "Alaplap és csatlakozo közti kapcsolat létrehozása sikertelen!" });
-                }
                 return Request.CreateResponse(HttpStatusCode.OK, "Update sikeres");
 
             }
             catch (Exception ex)
             {
-                throw;
-                //return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
            
 
