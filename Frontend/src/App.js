@@ -12,7 +12,8 @@ import Alkatreszek from './oldalak/Alkatreszek';
 import AlkalmazasReszletek from './oldalak/AlkalmazasReszletek';
 import AlkatreszReszletek from './oldalak/AlkatreszReszletek.js';
 import Sajat from './sajatSetup/Sajat.js';
-
+import UjAlkalmazas from './oldalak/UjAlkalmazas.js';
+import UjAlkatresz from './oldalak/UjAlkatresz.js';
 
 function App() {
 
@@ -33,6 +34,8 @@ function App() {
           <Route path='/oldalak/AlkalmazasReszletek' index element={<AlkalmazasReszletek />} />
           <Route path='/oldalak/AlkatreszReszletek' index element={<AlkatreszReszletek />} />
           <Route path='/oldalak/SajatSetup' index element={<Sajat />} />
+          <Route path='/oldalak/UjAlkalmazas' index element={<UjAlkalmazas />} />
+          <Route path='/oldalak/UjAlkatresz' index element={<UjAlkatresz />} />
 
           </Routes>
         </div>
