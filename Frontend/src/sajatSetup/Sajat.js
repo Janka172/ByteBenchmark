@@ -210,20 +210,28 @@ function Sajat() {
   //Processzorok
   function processzorBetoltes(){
     var elemek = [];
-    elemek.push(
-      mindenProcesszor.map((proc, index) => (
-        <option value={proc.Nev} key={index}>{proc.Nev}</option> 
-    )))
+    if(kivAlaplap!='nincs'){
+      var szurtProci=mindenProcesszor.filter(x => kivAlaplap.CpuFoglalat.includes(x.AlaplapFoglalat))
+      elemek.push(
+        szurtProci.map((proc, index) => (
+          <option value={proc.Nev} key={index}>{proc.Nev}</option> 
+      )))
+    }
     return elemek;
   }
 
   //Ramok
   function ramBetoltes(){
     var elemek = [];
-    elemek.push(
-      mindenRam.map((ram, index) => (
-        <option value={ram.Nev} key={index}>{ram.Nev}</option> 
-      )))
+    if(kivAlaplap!='nincs'){
+      console.log(kivAlaplap)
+      var szurtRam=mindenRam.filter(x => x.MemoriaTipus.includes(kivAlaplap.MemoriaTipusa
+      ))
+      elemek.push(
+        szurtRam.map((ram, index) => (
+          <option value={ram.Nev} key={index}>{ram.Nev}</option> 
+        )))
+    }
     return elemek;
   }
 
@@ -356,15 +364,6 @@ function Sajat() {
         </div>
 
         <div className='kivSor' style={{display: vanAlap}}>
-          <h2 className='soreCime'>Operációsrendszer:</h2>
-          <select className='combo' onChange={valtozoOpRend}>
-            {betoltO ? (<option>Betöltés...</option>) : opRendszerBetoltes()}
-          </select>
-          <button className='sajGomb' onClick={kivalasztOpRend}>Hozzáadás</button>
-          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'o', 'id':aktuOpRendszer}}><button className='sajGomb'>További részletek</button></Link>
-        </div>
-
-        <div className='kivSor' style={{display: vanAlap}}>
           <h2 className='soreCime'>Ram:</h2>
           <select className='combo' onChange={valtozoRam}>
             {betoltR ? (<option>Betöltés...</option>) : ramBetoltes()}
@@ -373,7 +372,15 @@ function Sajat() {
           <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'r', 'id':aktuRam}}><button className='sajGomb'>További részletek</button></Link>
         </div>
 
-        
+        <div className='kivSor' style={{display: vanAlap}}>
+          <h2 className='soreCime'>Operációsrendszer:</h2>
+          <select className='combo' onChange={valtozoOpRend}>
+            {betoltO ? (<option>Betöltés...</option>) : opRendszerBetoltes()}
+          </select>
+          <button className='sajGomb' onClick={kivalasztOpRend}>Hozzáadás</button>
+          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'o', 'id':aktuOpRendszer}}><button className='sajGomb'>További részletek</button></Link>
+        </div>
+
       </div>
 
     </div>
