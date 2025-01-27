@@ -506,8 +506,6 @@ ALTER TABLE `applikacio_profil`
 --
 -- Megkötések a táblához `csatlakozo`
 --
-ALTER TABLE `csatlakozo`
-  ADD CONSTRAINT `csatlakozo_ibfk_1` FOREIGN KEY (`Id`) REFERENCES `alaplap_csatlakozo` (`CsatlakozoId`);
 
 --
 -- Megkötések a táblához `setup`

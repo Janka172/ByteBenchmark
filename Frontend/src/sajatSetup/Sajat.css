@@ -92,6 +92,10 @@
     margin-top: 3vw;
 }
 
+.soreCime{
+    font-size: 1.8vw;
+}
+
 @media (max-width: 767px){
     .kivSor{
         display: grid;

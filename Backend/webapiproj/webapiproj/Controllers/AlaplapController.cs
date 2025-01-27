@@ -21,7 +21,17 @@ namespace webapiproj.Controllers
         public int SlotSzam { get; set; }
         public bool Hangkartya { get; set; }
         public List<string> Csatlakozok { get; set; }
-        //public string CsatlakozoNev { get;set; }
+    }
+    public class AlaplapUpdatedModel
+    {
+        public string Nev { get; set; }
+        public string CpuFoglalat { get; set; }
+        public string AlaplapFormatum { get; set; }
+        public double MaxFrekvencia { get; set; }
+        public string MemoriaTipusa { get; set; }
+        public string Lapkakeszlet { get; set; }
+        public int SlotSzam { get; set; }
+        public bool Hangkartya { get; set; }
     }
 
     public class AlaplapModel
@@ -123,20 +133,62 @@ namespace webapiproj.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.Created, result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { error = "Alaplap létrehozása és az alaplap és csatlakozo közti kapcsolat  sikertelen!" });
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
+        [ResponseType(typeof(AlaplapUploadModel))]
+        public HttpResponseMessage Put(int id, string name,[FromBody] AlaplapUpdatedModel value)
         {
+            List<int> storageport = new List<int>();
+            try
+            {
+                var result = ctx.Alaplapok.Where(x => x.Nev == name).FirstOrDefault();
+                if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen Alaplap");
+                result.Nev = value.Nev;
+                result.CpuFoglalat = value.CpuFoglalat;
+                result.AlaplapFormatum = value.AlaplapFormatum;
+                result.MaxFrekvencia = value.MaxFrekvencia;
+                result.MemoriaTipusa = value.MemoriaTipusa;
+                result.Lapkakeszlet = value.Lapkakeszlet;
+                result.SlotSzam = value.SlotSzam;
+                result.Hangkartya = value.Hangkartya;
+                ctx.SaveChanges();
+
+                
+                return Request.CreateResponse(HttpStatusCode.OK, "Update sikeres");
+
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+           
+
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        [ResponseType(typeof(AlaplapModel))]
+        public HttpResponseMessage Delete(int id, string name)
         {
+            var AlaplapId = ctx.Alaplapok.Where(x => x.Nev == name).Select(x => x.Id).FirstOrDefault();
+            var acsatlakozo = ctx.Alaplap_Csatlakozok.Where(x => x.AlaplapId == AlaplapId);
+            foreach (var item in acsatlakozo)
+            {
+                ctx.Alaplap_Csatlakozok.Remove(item);
+            }
+            var result = ctx.Alaplapok.Where(x => x.Nev == name).FirstOrDefault();
+            if (result != null)
+            {
+                ctx.Alaplapok.Remove(result);
+                ctx.SaveChanges();
+                return Request.CreateResponse(HttpStatusCode.OK, "Törlés sikeresen véghezment");
+            }
+            ctx.SaveChanges();
+            return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található");
         }
     }
 }
