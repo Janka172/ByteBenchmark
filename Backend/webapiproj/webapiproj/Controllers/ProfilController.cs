@@ -88,8 +88,7 @@ namespace webapiproj.Controllers
             }
             catch (Exception ex)
             {
-                throw;
-                //return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
 
@@ -107,6 +106,7 @@ namespace webapiproj.Controllers
                 PasswdManager.CreatePasswordHash(value.Jelszo, out byte[] hash, out byte[] salt);
                 result.Jelszo = salt;
                 result.JelszoUjra = hash;
+                result.Jogosultsag = value.Jogosultsag;
                 result.Tema = value.Tema;
                 result.LogoEleresiUtja = value.LogoEleresiUtja;
                 ctx.SaveChanges();
@@ -145,11 +145,11 @@ namespace webapiproj.Controllers
             var res = ctx.Profilok.Where(x => x.Email == value.Email).FirstOrDefault();
             if (res!=null)
             {
-                var validate = PasswdManager.VerifyPasswordHash(value.Jelszo, res.Jelszo, res.JelszoUjra);
-                if(validate) return Request.CreateResponse(HttpStatusCode.OK);
+                var validate = PasswdManager.VerifyPasswordHash(value.Jelszo, res.JelszoUjra, res.Jelszo);
+                if(validate) return Request.CreateResponse(HttpStatusCode.OK,"sikeres bejelentkezes");
                 else  return Request.CreateResponse(HttpStatusCode.Unauthorized, "Nem megfelelo a jelszo");
             }
-            return Request.CreateResponse(HttpStatusCode.NotFound);
+            return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen felhasználó ilyen jelszóval");
         }
     }
 }
