@@ -115,31 +115,31 @@ function Sajat() {
 
   const valtozoVidk = (e) => {
     const aktuNev = e.target.value;
-    const valasztottVideokartya = mindenVideokartya.find(x => x.Nev === aktuNev);
+    const valasztottVideokartya = mindenVideokartya.find(x => x.Nev == aktuNev);
     setAktuVideokartya(valasztottVideokartya);
   };
 
   const valtozoProc = (e) => {
     const aktuNev = e.target.value;
-    const valasztottProcesszor=mindenProcesszor.find(x => x.Nev === aktuNev);
+    const valasztottProcesszor=mindenProcesszor.find(x => x.Nev == aktuNev);
     setAktuProcesszor(valasztottProcesszor);
   };
 
   const valtozoOpRend = (e) => {
     const aktuNev = e.target.value;
-    const valasztottOpRendszer=mindenOpRendszer.find(x => x.Nev === aktuNev);
+    const valasztottOpRendszer=mindenOpRendszer.find(x => x.Nev == aktuNev);
     setAktuOpRendszer(valasztottOpRendszer);
   };
 
   const valtozoRam = (e) => {
     const aktuNev = e.target.value;
-    const valasztottRam=mindenRam.find(x => x.Nev === aktuNev);
+    const valasztottRam=mindenRam.find(x => x.Nev == aktuNev);
     setAktuRam(valasztottRam);
   };
 
   const valtozoAlaplap = (e) => {
     const aktuNev = e.target.value;
-    const valasztottAlaplap=mindenAlaplap.find(x => x.Nev === aktuNev);
+    const valasztottAlaplap=mindenAlaplap.find(x => x.Nev == aktuNev);
     setAktuAlaplap(valasztottAlaplap);
   };
 
@@ -161,24 +161,94 @@ function Sajat() {
 
   function kivalasztAlaplap(){
     setKivalasztottAlaplap(aktuAlaplap);
+    setVanAlap('grid');
+    szures();
   }
 
   const gorgetoContainer = useRef(null);
-  const gorgetoLeft = () => {
+  function gorgetoLeft() {
       gorgetoContainer.current.scrollBy({
           top: 0,
           left: -300,
       });
   };
-  const gorgetoRight = () => {
+  function gorgetoRight() {
       gorgetoContainer.current.scrollBy({
           top: 0,
           left: 300,
       });
   };
 
+  //Combo elemek megjelnítése
+  const [vanAlap, setVanAlap] = useState('none');
+
+  function szures(){
+
+  }
+  
+  // Operációs rendszerek
+  function opRendszerBetoltes(){
+    var elemek = [];
+    elemek.push(
+      mindenOpRendszer.map((op, index) => (
+        <option value={op.Nev} key={index}>{op.Nev}</option> 
+      ))
+    )
+    return elemek;
+  }
+
+  //Videókártyák
+  function videokartyaBetoltes(){
+    var elemek = [];
+    elemek.push(
+      mindenVideokartya.map((vid, index) => (
+        <option value={vid.Nev} key={index}>{vid.Nev}</option>
+    )))
+    return elemek;
+  }
+
+  //Processzorok
+  function processzorBetoltes(){
+    var elemek = [];
+    if(kivAlaplap!='nincs'){
+      var szurtProci=mindenProcesszor.filter(x => kivAlaplap.CpuFoglalat.includes(x.AlaplapFoglalat))
+      elemek.push(
+        szurtProci.map((proc, index) => (
+          <option value={proc.Nev} key={index}>{proc.Nev}</option> 
+      )))
+    }
+    return elemek;
+  }
+
+  //Ramok
+  function ramBetoltes(){
+    var elemek = [];
+    if(kivAlaplap!='nincs'){
+      console.log(kivAlaplap)
+      var szurtRam=mindenRam.filter(x => x.MemoriaTipus.includes(kivAlaplap.MemoriaTipusa
+      ))
+      elemek.push(
+        szurtRam.map((ram, index) => (
+          <option value={ram.Nev} key={index}>{ram.Nev}</option> 
+        )))
+    }
+    return elemek;
+  }
+
+  //Alaplapok
+  function alaplapBetoltes(){
+    var elemek = [];
+    elemek.push(
+      mindenAlaplap.map((alap, index) => (
+        <option value={alap.Nev} key={index}>{alap.Nev}</option>
+    )))
+    return elemek;
+  }
+
+
   //Futtatható alkalmazások
   const [mindenApp, setMindenApp] = useState([]);
+  const [szurtApp, setSzurtApp] = useState([]);
   const [betoltApp, setBetoltApp] = useState(true);
   async function getMindenApp() {
     try {
@@ -186,13 +256,11 @@ function Sajat() {
       const data = await response.json();
       setMindenApp(data);
       setBetoltApp(false);
-      console.log(data)
     } catch (error) {
       console.error(error);
     }
   }
   useEffect(() => {getMindenApp();}, []);
-
   function MinSetupKereso(setup, Nev){
     let aktu = setup.filter(s => s.ApplikacioNeve == Nev);
     if(aktu.length > 1) {
@@ -230,6 +298,11 @@ function Sajat() {
         <h1>Kiválasztott alkatrészek</h1>
 
         <div className='sor'>
+          <h2 className='soreCime'>Alaplap:</h2>
+          <h2 className='soreCime'>{kivAlaplap.Nev}</h2>
+        </div>
+
+        <div className='sor'>
           <h2 className='soreCime'>Videókártya:</h2>
           <h2 className='soreCime'>{kivVideokartya.Nev}</h2>
         </div>
@@ -249,10 +322,6 @@ function Sajat() {
           <h2 className='soreCime'>{kivRam.Nev}</h2>
         </div>
 
-        <div className='sor'>
-          <h2 className='soreCime'>Alaplap:</h2>
-          <h2 className='soreCime'>{kivAlaplap.Nev}</h2>
-        </div>
         <button className='szur' onClick={listazas}>Futtatható Alkalmazások Megjelenítése</button>
       </div>
 
@@ -268,64 +337,50 @@ function Sajat() {
         <h1>Kiválasztható alkatrészek</h1>
 
         <div className='kivSor'>
+          <h2 className='soreCime'>Alaplap:</h2>
+          <select className='combo' onChange={valtozoAlaplap}>
+            {betoltA ? (<option>Betöltés...</option>) : alaplapBetoltes()}
+          </select>
+          <button className='sajGomb' onClick={kivalasztAlaplap}>Hozzáadás</button>
+          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'a', 'id':aktuAlaplap}}><button className='sajGomb'>További részletek</button></Link>
+        </div>
+
+        <div className='kivSor' style={{display: vanAlap}}>
           <h2 className='soreCime'>Videókártya:</h2>
           <select className='combo' onChange={valtozoVidk}>
-            {betoltV ? (<option>Betöltés...</option>) : (
-              mindenVideokartya.map((vid, index) => (
-              <option value={vid.Nev} key={index}>{vid.Nev}</option> 
-            )))}
+            {betoltV ? (<option>Betöltés...</option>) : videokartyaBetoltes()}
           </select>
           <button className='sajGomb' onClick={kivalasztVidk}>Hozzáadás</button>
           <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'v', 'id':aktuVideokartya}}><button className='sajGomb'>További részletek</button></Link>
         </div>
 
-        <div className='kivSor'>
+        <div className='kivSor' style={{display: vanAlap}}>
           <h2 className='soreCime'>Processzor:</h2>
           <select className='combo' onChange={valtozoProc}>
-            {betoltP ? (<option>Betöltés...</option>) : (
-              mindenProcesszor.map((proc, index) => (
-              <option value={proc.Nev} key={index}>{proc.Nev}</option> 
-            )))}
+            {betoltP ? (<option>Betöltés...</option>) : processzorBetoltes()}
           </select>
           <button className='sajGomb' onClick={kivalasztProc}>Hozzáadás</button>
           <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'p', 'id':aktuProcesszor}}><button className='sajGomb'>További részletek</button></Link>
         </div>
 
-        <div className='kivSor'>
-          <h2 className='soreCime'>Operációsrendszer:</h2>
-          <select className='combo' onChange={valtozoOpRend}>
-            {betoltO ? (<option>Betöltés...</option>) : (
-                mindenOpRendszer.map((op, index) => (
-                <option value={op.Nev} key={index}>{op.Nev}</option> 
-              )))}
-          </select>
-          <button className='sajGomb' onClick={kivalasztOpRend}>Hozzáadás</button>
-          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'o', 'id':aktuOpRendszer}}><button className='sajGomb'>További részletek</button></Link>
-        </div>
-
-        <div className='kivSor'>
+        <div className='kivSor' style={{display: vanAlap}}>
           <h2 className='soreCime'>Ram:</h2>
           <select className='combo' onChange={valtozoRam}>
-            {betoltR ? (<option>Betöltés...</option>) : (
-              mindenRam.map((ram, index) => (
-              <option value={ram.Nev} key={index}>{ram.Nev}</option> 
-            )))}
+            {betoltR ? (<option>Betöltés...</option>) : ramBetoltes()}
           </select>
           <button className='sajGomb' onClick={kivalasztRam}>Hozzáadás</button>
           <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'r', 'id':aktuRam}}><button className='sajGomb'>További részletek</button></Link>
         </div>
 
-        <div className='kivSor'>
-          <h2 className='soreCime'>Alaplap:</h2>
-          <select className='combo' onChange={valtozoAlaplap}>
-            {betoltA ? (<option>Betöltés...</option>) : (
-              mindenAlaplap.map((alap, index) => (
-              <option value={alap.Nev} key={index}>{alap.Nev}</option> 
-            )))}
+        <div className='kivSor' style={{display: vanAlap}}>
+          <h2 className='soreCime'>Operációsrendszer:</h2>
+          <select className='combo' onChange={valtozoOpRend}>
+            {betoltO ? (<option>Betöltés...</option>) : opRendszerBetoltes()}
           </select>
-          <button className='sajGomb' onClick={kivalasztAlaplap}>Hozzáadás</button>
-          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'a', 'id':aktuAlaplap}}><button className='sajGomb'>További részletek</button></Link>
+          <button className='sajGomb' onClick={kivalasztOpRend}>Hozzáadás</button>
+          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'o', 'id':aktuOpRendszer}}><button className='sajGomb'>További részletek</button></Link>
         </div>
+
       </div>
 
     </div>
