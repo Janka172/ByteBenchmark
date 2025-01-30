@@ -91,8 +91,41 @@ namespace webapiproj.Controllers
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        [ResponseType(typeof(AlaplapModel))]
+        public HttpResponseMessage Delete(int id, string AlaplapNeve, List<string>CS)
         {
+            try
+            {
+                var AlaplapId = ctx.Alaplapok.Where(x => x.Nev == AlaplapNeve).Select(x => x.Id).FirstOrDefault();
+                if (AlaplapId == -1) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen alaplap");
+                //var csatlakozok = ctx.Csatlakozok.Where(x=>CS.Contains(x.Nev)).ToList();
+
+                //if(csatlakozok.Count!=CS.Count) return Request.CreateResponse(HttpStatusCode.NotFound, "Néhány megadott csatlakozo nem elérhető ");
+
+                
+                var st = ctx.Alaplap_Csatlakozok.Where(x => x.AlaplapId == AlaplapId).ToList(); //eltároljuk azokat a sorokat az alaplap csatakozobol ahol az alaplapId megegyezi
+
+                
+                if (st != null)
+                {
+                    foreach (var item in st)
+                    {
+                        ctx.Alaplap_Csatlakozok.Remove(item);
+                    }
+                    ctx.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, "Törlés sikeresen véghezment");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+            
         }
     }
 }
