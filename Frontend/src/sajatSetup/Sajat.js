@@ -113,6 +113,7 @@ function Sajat() {
     }
   }, [betoltV, betoltP, betoltO, betoltR, betoltA]);
 
+  //Comboboxok léptetése
   const valtozoVidk = (e) => {
     const aktuNev = e.target.value;
     const valasztottVideokartya = mindenVideokartya.find(x => x.Nev == aktuNev);
@@ -143,12 +144,14 @@ function Sajat() {
     setAktuAlaplap(valasztottAlaplap);
   };
 
+  //Hozzáadás rögzítése
   function kivalasztVidk(){
     setKivalasztottVideokartya(aktuVideokartya);
   };
 
   function kivalasztProc(){
-    setKivalasztottProcesszor(aktuProcesszor);
+    if(mindenProcesszor.filter(x => kivAlaplap.CpuFoglalat.includes(x.AlaplapFoglalat)) == 0) setKivalasztottProcesszor('nincs');
+    else setKivalasztottProcesszor(aktuProcesszor);
   }
 
   function kivalasztOpRend(){
@@ -156,11 +159,18 @@ function Sajat() {
   }
 
   function kivalasztRam(){
-    setKivalasztottRam(aktuRam);
+    if(mindenRam.filter(x => x.MemoriaTipus.includes(kivAlaplap.MemoriaTipusa)).length == 0) setKivalasztottRam('nincs');
+    else setKivalasztottRam(aktuRam);
   }
 
   function kivalasztAlaplap(){
     setKivalasztottAlaplap(aktuAlaplap);
+    if(kivVideokartya!='nincs' || kivProcesszor!='nincs' || kivOpRendszer!='nincs' || kivRam!='nincs'){
+      setKivalasztottOpRendszer('nincs');
+      setKivalasztottProcesszor('nincs');
+      setKivalasztottRam('nincs');
+      setKivalasztottVideokartya('nincs');
+    }
     setVanAlap('grid');
     szures();
   }
@@ -211,7 +221,7 @@ function Sajat() {
   function processzorBetoltes(){
     var elemek = [];
     if(kivAlaplap!='nincs'){
-      var szurtProci=mindenProcesszor.filter(x => kivAlaplap.CpuFoglalat.includes(x.AlaplapFoglalat))
+      var szurtProci=mindenProcesszor.filter(x => kivAlaplap.CpuFoglalat.includes(x.AlaplapFoglalat));
       elemek.push(
         szurtProci.map((proc, index) => (
           <option value={proc.Nev} key={index}>{proc.Nev}</option> 
@@ -224,7 +234,6 @@ function Sajat() {
   function ramBetoltes(){
     var elemek = [];
     if(kivAlaplap!='nincs'){
-      console.log(kivAlaplap)
       var szurtRam=mindenRam.filter(x => x.MemoriaTipus.includes(kivAlaplap.MemoriaTipusa
       ))
       elemek.push(
@@ -360,7 +369,10 @@ function Sajat() {
             {betoltP ? (<option>Betöltés...</option>) : processzorBetoltes()}
           </select>
           <button className='sajGomb' onClick={kivalasztProc}>Hozzáadás</button>
-          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'p', 'id':aktuProcesszor}}><button className='sajGomb'>További részletek</button></Link>
+          {mindenProcesszor.filter(x => kivAlaplap.CpuFoglalat.includes(x.AlaplapFoglalat))!=0
+          ? <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'p', 'id':aktuProcesszor}}><button className='sajGomb'>További részletek</button></Link>
+          : console.log('nincs proci')}
+          
         </div>
 
         <div className='kivSor' style={{display: vanAlap}}>
@@ -369,7 +381,10 @@ function Sajat() {
             {betoltR ? (<option>Betöltés...</option>) : ramBetoltes()}
           </select>
           <button className='sajGomb' onClick={kivalasztRam}>Hozzáadás</button>
-          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'r', 'id':aktuRam}}><button className='sajGomb'>További részletek</button></Link>
+          {mindenRam.filter(x => x.MemoriaTipus.includes(kivAlaplap.MemoriaTipusa)).length!=0 
+          ? <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'r', 'id':aktuRam}}><button className='sajGomb'>További részletek</button></Link>
+          : console.log('nincs ram')}
+          
         </div>
 
         <div className='kivSor' style={{display: vanAlap}}>
