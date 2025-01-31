@@ -98,17 +98,22 @@ namespace webapiproj.Controllers
             {
                 var AlaplapId = ctx.Alaplapok.Where(x => x.Nev == AlaplapNeve).Select(x => x.Id).FirstOrDefault();
                 if (AlaplapId == -1) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen alaplap");
-                //var csatlakozok = ctx.Csatlakozok.Where(x=>CS.Contains(x.Nev)).ToList();
+                var csatlakozok = ctx.Csatlakozok.Where(x=>CS.Contains(x.Nev)).Select(x=>x.Id).ToList();
 
-                //if(csatlakozok.Count!=CS.Count) return Request.CreateResponse(HttpStatusCode.NotFound, "Néhány megadott csatlakozo nem elérhető ");
+                if(csatlakozok.Count!=CS.Count) return Request.CreateResponse(HttpStatusCode.NotFound, "Néhány megadott csatlakozo nem elérhető ");
 
-                
+                List<Alaplap_Csatlakozo>ACS=new List<Alaplap_Csatlakozo>();
+
+                foreach (var item in csatlakozok)
+                {
+                    ACS.Add(ctx.Alaplap_Csatlakozok.Where(x => x.AlaplapId == AlaplapId && x.CsatlakozoId==item).FirstOrDefault());
+                }
                 var st = ctx.Alaplap_Csatlakozok.Where(x => x.AlaplapId == AlaplapId).ToList(); //eltároljuk azokat a sorokat az alaplap csatakozobol ahol az alaplapId megegyezi
 
                 
-                if (st != null)
+                if (ACS.Count != 0)
                 {
-                    foreach (var item in st)
+                    foreach (var item in ACS)
                     {
                         ctx.Alaplap_Csatlakozok.Remove(item);
                     }
