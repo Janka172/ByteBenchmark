@@ -111,16 +111,16 @@ namespace webapiproj.Controllers
             {
                 var result = ctx.Processzorok.Where(x => x.Nev == name).FirstOrDefault();
                 if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen processzor");
-                result.Nev = value.Nev;
-                result.AlaplapFoglalat = value.AlaplapFoglalat;
-                result.SzalakSzama = value.SzalakSzama;
-                result.TamogatottMemoriatipus = value.TamogatottMemoriatipus;
-                result.ProcesszormagokSzama = value.ProcesszormagokSzama;
-                result.ProcesszorFrekvencia = value.ProcesszorFrekvencia;
-                result.BFrekvencia = value.BProcesszorFrekvencia;
-                result.Gyarto = value.Gyarto;
-                result.AjanlottTapegyseg = value.AjanlottTapegyseg;
-                result.IntegraltVideokartya = value.IntegraltVideokartya;
+                if(value.Nev!=null) result.Nev = value.Nev;
+                if (value.AlaplapFoglalat!=null) result.AlaplapFoglalat = value.AlaplapFoglalat;
+                if (value.SzalakSzama!=null) result.SzalakSzama = value.SzalakSzama;
+                if (value.TamogatottMemoriatipus!=null) result.TamogatottMemoriatipus = value.TamogatottMemoriatipus;
+                if (value.ProcesszormagokSzama!=null) result.ProcesszormagokSzama = value.ProcesszormagokSzama;
+                if (value.ProcesszorFrekvencia!=null) result.ProcesszorFrekvencia = value.ProcesszorFrekvencia;
+                if (value.BProcesszorFrekvencia!=null) result.BFrekvencia = value.BProcesszorFrekvencia;
+                if(value.Gyarto!=null) result.Gyarto = value.Gyarto;
+                if (value.AjanlottTapegyseg!=null) result.AjanlottTapegyseg = value.AjanlottTapegyseg;
+                if (value.IntegraltVideokartya!=null) result.IntegraltVideokartya = value.IntegraltVideokartya;
 
                 ctx.SaveChanges();
                 return Request.CreateResponse(HttpStatusCode.OK, "Update sikeres");

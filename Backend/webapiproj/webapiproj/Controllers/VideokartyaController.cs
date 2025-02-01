@@ -86,18 +86,18 @@ namespace webapiproj.Controllers
 
         // PUT api/<controller>/5
         [ResponseType(typeof(VideokartyaModel))]
-        public HttpResponseMessage Put(int id,string name,int vram, [FromBody] VideokartyaModel value)
+        public HttpResponseMessage Patch(int id,string name,int vram, [FromBody] VideokartyaModel value)
         {
             try
             {
                 var result = ctx.Videokartyak.Where(x => x.Nev == name && x.Vram == vram).FirstOrDefault();
                 if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound,"Nem található ilyen videokartya");
-                result.Nev = value.Nev;
-                result.AlaplapiCsatlakozas = value.alaplapiCsatlakozas;
-                result.AjanlottTapegyseg = value.ajanlottTapegyseg;
-                result.MonitorCsatlakozas = value.monitorCsatlakozas;
-                result.ChipGyartoja = value.chipGyartoja;
-                result.Vram = value.vram;
+                if(value.Nev!=null) result.Nev = value.Nev;
+                if (value.alaplapiCsatlakozas != null) result.AlaplapiCsatlakozas = value.alaplapiCsatlakozas;
+                if (value.ajanlottTapegyseg != null) result.AjanlottTapegyseg = value.ajanlottTapegyseg;
+                if(value.monitorCsatlakozas!=null) result.MonitorCsatlakozas = value.monitorCsatlakozas;
+                if(value.chipGyartoja!=null) result.ChipGyartoja = value.chipGyartoja;
+                if(value.vram!=null) result.Vram = value.vram;
 
                 ctx.SaveChanges();
                 return Request.CreateResponse(HttpStatusCode.OK, "Update sikeres");
