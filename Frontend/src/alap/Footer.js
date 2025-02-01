@@ -6,7 +6,7 @@ function Footer(){
     <footer className="footer">
       <div className="footer-links">
         <a href="#">Beállítások</a>
-        <a href="#">Profil</a>
+        <a href="/oldalak/Profil">Profil</a>
       </div>
     </footer>
   );

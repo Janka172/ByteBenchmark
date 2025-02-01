@@ -17,6 +17,9 @@ function Sajat() {
   const [mindenAlaplap, setMindenAlaplap] = useState([]);
   const [betoltA, setBetoltA] = useState(true);
 
+  var [vanProci, setVanProci] = useState('none');
+  var [vanRam, setVanRam] = useState('none');
+
   const [kivVideokartya, setKivalasztottVideokartya] = useState('nincs');
   const [kivProcesszor, setKivalasztottProcesszor] = useState('nincs');
   const [kivOpRendszer, setKivalasztottOpRendszer] = useState('nincs');
@@ -222,6 +225,8 @@ function Sajat() {
     var elemek = [];
     if(kivAlaplap!='nincs'){
       var szurtProci=mindenProcesszor.filter(x => kivAlaplap.CpuFoglalat.includes(x.AlaplapFoglalat));
+      if(szurtProci.length == 0) vanProci='none';
+      else vanProci='flex';
       elemek.push(
         szurtProci.map((proc, index) => (
           <option value={proc.Nev} key={index}>{proc.Nev}</option> 
@@ -234,8 +239,9 @@ function Sajat() {
   function ramBetoltes(){
     var elemek = [];
     if(kivAlaplap!='nincs'){
-      var szurtRam=mindenRam.filter(x => x.MemoriaTipus.includes(kivAlaplap.MemoriaTipusa
-      ))
+      var szurtRam=mindenRam.filter(x => x.MemoriaTipus.includes(kivAlaplap.MemoriaTipusa))
+      if(szurtRam.length == 0) vanRam='none';
+      else vanRam='flex';
       elemek.push(
         szurtRam.map((ram, index) => (
           <option value={ram.Nev} key={index}>{ram.Nev}</option> 
@@ -369,10 +375,7 @@ function Sajat() {
             {betoltP ? (<option>Betöltés...</option>) : processzorBetoltes()}
           </select>
           <button className='sajGomb' onClick={kivalasztProc}>Hozzáadás</button>
-          {mindenProcesszor.filter(x => kivAlaplap.CpuFoglalat.includes(x.AlaplapFoglalat))!=0
-          ? <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'p', 'id':aktuProcesszor}}><button className='sajGomb'>További részletek</button></Link>
-          : console.log('nincs proci')}
-          
+          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'p', 'id':aktuProcesszor}} style={{display: vanProci, textDecoration: 'none'}}><button className='sajGomb'>További részletek</button></Link>
         </div>
 
         <div className='kivSor' style={{display: vanAlap}}>
@@ -381,10 +384,7 @@ function Sajat() {
             {betoltR ? (<option>Betöltés...</option>) : ramBetoltes()}
           </select>
           <button className='sajGomb' onClick={kivalasztRam}>Hozzáadás</button>
-          {mindenRam.filter(x => x.MemoriaTipus.includes(kivAlaplap.MemoriaTipusa)).length!=0 
-          ? <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'r', 'id':aktuRam}}><button className='sajGomb'>További részletek</button></Link>
-          : console.log('nincs ram')}
-          
+          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'r', 'id':aktuRam}} style={{display: vanRam, textDecoration: 'none'}}><button className='sajGomb'>További részletek</button></Link>
         </div>
 
         <div className='kivSor' style={{display: vanAlap}}>
