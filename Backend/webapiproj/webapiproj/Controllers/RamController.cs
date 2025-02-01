@@ -77,16 +77,16 @@ namespace webapiproj.Controllers
 
         // PUT api/<controller>/5
         [ResponseType(typeof(RamModel))]
-        public HttpResponseMessage Put(int id, string name,[FromBody] RamModel value)
+        public HttpResponseMessage Patch(int id, string name,[FromBody] RamModel value)
         {
             try
             {
                 var result = ctx.Ramok.Where(x => x.Nev == name).FirstOrDefault();
                 if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen Ram");
-                result.Nev = value.Nev;
-                result.MemoriaTipus = value.MemoriaTipus;
-                result.Frekvencia = value.Frekvencia;
-                result.Meret = value.Meret;
+                if(value.Nev!=null) result.Nev = value.Nev;
+                if (value.MemoriaTipus!=null) result.MemoriaTipus = value.MemoriaTipus;
+                if (value.Frekvencia!=null) result.Frekvencia = value.Frekvencia;
+                if (value.Meret!=null) result.Meret = value.Meret;
 
                 ctx.SaveChanges();
                 return Request.CreateResponse(HttpStatusCode.OK, "Update sikeres");

@@ -141,24 +141,24 @@ namespace webapiproj.Controllers
 
         // PUT api/<controller>/5
         [ResponseType(typeof(AlaplapUploadModel))]
-        public HttpResponseMessage Put(int id, string name,[FromBody] AlaplapUpdatedModel value)
+        public HttpResponseMessage Patch(int id, string name,[FromBody] AlaplapUpdatedModel value)
         {
             List<int> storageport = new List<int>();
             try
             {
                 var result = ctx.Alaplapok.Where(x => x.Nev == name).FirstOrDefault();
                 if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen Alaplap");
-                result.Nev = value.Nev;
-                result.CpuFoglalat = value.CpuFoglalat;
-                result.AlaplapFormatum = value.AlaplapFormatum;
-                result.MaxFrekvencia = value.MaxFrekvencia;
-                result.MemoriaTipusa = value.MemoriaTipusa;
-                result.Lapkakeszlet = value.Lapkakeszlet;
-                result.SlotSzam = value.SlotSzam;
-                result.Hangkartya = value.Hangkartya;
+                if(value.Nev!=null) result.Nev = value.Nev;
+                if (value.CpuFoglalat!=null) result.CpuFoglalat = value.CpuFoglalat;
+                if (value.AlaplapFormatum!=null) result.AlaplapFormatum = value.AlaplapFormatum;
+                if (value.MaxFrekvencia!=null) result.MaxFrekvencia = value.MaxFrekvencia;
+                if (value.MemoriaTipusa!=null) result.MemoriaTipusa = value.MemoriaTipusa;
+                if (value.Lapkakeszlet!=null) result.Lapkakeszlet = value.Lapkakeszlet;
+                if (value.SlotSzam!=null) result.SlotSzam = value.SlotSzam;
+                if (value.Hangkartya!=null) result.Hangkartya = value.Hangkartya;
+                         
                 ctx.SaveChanges();
 
-                
                 return Request.CreateResponse(HttpStatusCode.OK, "Update sikeres");
 
             }

@@ -78,7 +78,7 @@ namespace webapiproj.Controllers
 
         // PUT api/<controller>/5
         [ResponseType(typeof(OprendszerModel))]
-        public HttpResponseMessage Put(int id, string name, [FromBody] OprendszerModel value)
+        public HttpResponseMessage Patch(int id, string name, [FromBody] OprendszerModel value)
         {
             try
             {

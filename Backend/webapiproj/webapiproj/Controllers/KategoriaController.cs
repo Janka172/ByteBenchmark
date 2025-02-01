@@ -65,7 +65,7 @@ namespace webapiproj.Controllers
 
         // PUT api/<controller>/5
         [ResponseType(typeof(KategoriaModel))]
-        public HttpResponseMessage Put(int id, string name, [FromBody] KategoriaModel value)
+        public HttpResponseMessage Patch(int id, string name, [FromBody] KategoriaModel value)
         {
             try
             {

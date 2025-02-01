@@ -92,45 +92,33 @@ namespace webapiproj.Controllers
 
         // DELETE api/<controller>/5
         [ResponseType(typeof(AlaplapModel))]
-        public HttpResponseMessage Delete(int id, string AlaplapNeve, List<string>CS)
+        public HttpResponseMessage Delete(int id, string AlaplapNeve, string CsatlakozoNev)
         {
             try
             {
+
                 var AlaplapId = ctx.Alaplapok.Where(x => x.Nev == AlaplapNeve).Select(x => x.Id).FirstOrDefault();
-                if (AlaplapId == -1) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen alaplap");
-                var csatlakozok = ctx.Csatlakozok.Where(x=>CS.Contains(x.Nev)).Select(x=>x.Id).ToList();
 
-                if(csatlakozok.Count!=CS.Count) return Request.CreateResponse(HttpStatusCode.NotFound, "Néhány megadott csatlakozo nem elérhető ");
+                if (AlaplapId == 0) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen alaplap");
 
-                List<Alaplap_Csatlakozo>ACS=new List<Alaplap_Csatlakozo>();
+                var csatlakId = ctx.Csatlakozok.Where(x => x.Nev==CsatlakozoNev).Select(x=>x.Id).FirstOrDefault();
 
-                foreach (var item in csatlakozok)
-                {
-                    ACS.Add(ctx.Alaplap_Csatlakozok.Where(x => x.AlaplapId == AlaplapId && x.CsatlakozoId==item).FirstOrDefault());
-                }
-                var st = ctx.Alaplap_Csatlakozok.Where(x => x.AlaplapId == AlaplapId).ToList(); //eltároljuk azokat a sorokat az alaplap csatakozobol ahol az alaplapId megegyezi
+                if(csatlakId==0) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található  csatlakozo");
 
-                
-                if (ACS.Count != 0)
-                {
-                    foreach (var item in ACS)
-                    {
-                        ctx.Alaplap_Csatlakozok.Remove(item);
-                    }
-                    ctx.SaveChanges();
-                    return Request.CreateResponse(HttpStatusCode.OK, "Törlés sikeresen véghezment");
-                }
-                else
-                {
-                    return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található");
-                }
+                var kapcsaolat = ctx.Alaplap_Csatlakozok.Where(x => x.AlaplapId == AlaplapId && x.CsatlakozoId==csatlakId).ToList();
+
+                if (kapcsaolat.Count == 0) return Request.CreateResponse(HttpStatusCode.NotFound, "Megadott csatlakozók egyike sem kapcsolódik az alaplaphoz.");
+
+                ctx.Alaplap_Csatlakozok.RemoveRange(kapcsaolat); //több rekordot tud törölmi
+                ctx.SaveChanges();
+
+                return Request.CreateResponse(HttpStatusCode.OK, "A törlés sikeresen megtörtént");
             }
             catch (Exception ex)
             {
 
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
-            
         }
     }
 }
