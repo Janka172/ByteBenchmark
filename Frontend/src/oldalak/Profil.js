@@ -6,10 +6,9 @@ function Profil() {
 
   return (
     <div>
-        <Regisztr></Regisztr>
+      <Regisztr></Regisztr>
     </div>
   );
 }
 
 export default Profil;
-//

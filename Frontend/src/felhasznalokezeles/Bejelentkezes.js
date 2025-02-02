@@ -26,9 +26,14 @@ function Bejelentkezes() {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem("loggedInUser", JSON.stringify(data));
-        navigate("/");
+
+        // 🔹 Küldjünk egy egyedi eseményt, hogy jelezzük a bejelentkezést
+        window.dispatchEvent(new Event("userLoggedIn"));
+
+        // 🔄 Oldal újratöltés
+        window.location.reload();
       } else {
-        const errorMessage = await response.text(); // A szerver által visszaadott hibaüzenet
+        const errorMessage = await response.text();
         setError(errorMessage);
       }
     } catch (err) {
@@ -40,19 +45,16 @@ function Bejelentkezes() {
   return (
     <div>
       <h2 className="bejCim">Bejelentkezés</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p style={{ color: "black" }}>{error}</p>}
       <form onSubmit={handleLogin}>
-
         <div className="elemSor">
-            <div className="bevitelNeve">E-mail cím:</div>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <div className="bevitelNeve">E-mail cím:</div>
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>       
-
         <div className="elemSor">
-            <div className="bevitelNeve">Jelszó:</div>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <div className="bevitelNeve">Jelszó:</div>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
-
         <button type="submit" className="subGomb">Bejelentkezés</button>
       </form>
     </div>

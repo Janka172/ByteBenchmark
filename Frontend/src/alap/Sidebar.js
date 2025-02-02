@@ -22,7 +22,7 @@ function Sidebar() {
         <Link to="/oldalak/Alkalmazasok" className="navigElem gombi">Alkalmazások</Link>
         <Link to="/oldalak/Alkatreszek" className="navigElem gombi">Alkatrészek</Link>
         <Link to="/oldalak/SajatSetup" className="navigElem gombi">Saját setup</Link>
-        <Link to="/olsalak/UjAlkalmazas" className="navigElem gombi">Új alkalmazás</Link>
+        <Link to="/oldalak/UjAlkalmazas" className="navigElem gombi">Új alkalmazás</Link>
         <Link to="/oldalak/UjAlkatresz" className="navigElem gombi">Új alkatrész</Link>
       </div>
 
