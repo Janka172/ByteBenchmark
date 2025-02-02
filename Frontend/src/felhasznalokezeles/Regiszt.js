@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Felh.css";
-import bcrypt from "bcryptjs";
 
 function Regisztr() {
   const [felhasznaloNev, setFelhasznaloNev] = useState("");
@@ -41,7 +40,6 @@ function Regisztr() {
       return;
     }
 
-    // Új felhasználó objektum
     var ujFelh = {
       'Felhasznalonev': felhasznaloNev,
       'Email': email,
@@ -52,10 +50,6 @@ function Regisztr() {
     };
     rogzites(ujFelh);
 
-    // Automatikus bejelentkezés
-    localStorage.setItem("loggedInUser", JSON.stringify(ujFelh));
-
-    // Átirányítás a dashboardra
     navigate("/");
   };
 
@@ -84,7 +78,7 @@ function Regisztr() {
   return (
     <div className="regForm">
       <div className="regCim">Regisztráció</div>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="error">{error}</p>}
       <form onSubmit={handleRegister}>
         <div className="menuElem">
           <p className="bevitelNeve">Felhasználónév:</p>

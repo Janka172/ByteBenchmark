@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import Regisztr from '../felhasznalokezeles/Regiszt.js';
+import Beallitasok from '../felhasznalokezeles/Beallitasok';
+
 
 
 function Profil() {
 
   return (
     <div>
-      <Regisztr></Regisztr>
+      <Beallitasok></Beallitasok>
     </div>
   );
 }

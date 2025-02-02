@@ -31,12 +31,12 @@ function Footer() {
         {loggedInUser ? 
           <div className="footer-links">
             <Kijelentkezes></Kijelentkezes>
-            <a href="/profil">Profil Beállítások</a>
+            <a href="/oldalak/Profil">Profil Beállítások</a>
           </div>
            : 
           <div className="footer-links">
             <a href="/">Bejelentkezés</a>
-            <a href="/oldalak/Profil">Regisztráció</a>
+            <a href="/oldalak/Reg">Regisztráció</a>
           </div>
         }  
       </div>

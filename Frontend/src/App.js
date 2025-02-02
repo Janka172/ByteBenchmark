@@ -16,15 +16,12 @@ import UjAlkalmazas from './oldalak/UjAlkalmazas.js';
 import UjAlkatresz from './oldalak/UjAlkatresz.js';
 import Profil from './oldalak/Profil.js';
 import Regisztr from "./felhasznalokezeles/Regiszt.js";
-import Bejelentkezes from "./felhasznalokezeles/Bejelentkezes";
-import Dashboard from "./felhasznalokezeles/Dashboard";
+import Reg from './oldalak/Reg.js';
 
 function App() {
   const [profilk, setProfilk] = useState([]);
   const [betoltP, setBetoltP] = useState(true);
-
-  //Újratöltéskor kijelntkezet
-  //localStorage.removeItem("loggedInUser");
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
   async function getProfilok() {
     try {
@@ -42,9 +39,9 @@ function App() {
       mentsProfilokatLocalStorage(profilk);
     }
   }, [betoltP]);
-
   useEffect(() => {
     getProfilok();
+    temaBeallitasa();
   }, []);
 
   function mentsProfilokatLocalStorage(profilok) {
@@ -56,6 +53,16 @@ function App() {
     }
   }
 
+  function temaBeallitasa(){
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    setLoggedInUser(user);
+
+    if(loggedInUser){
+      console.log(loggedInUser)
+    }
+  }
+  
+
   return (
   <main>
     <BrowserRouter>
@@ -65,21 +72,20 @@ function App() {
         <Fekvo></Fekvo> 
     
         <div className='Tartalmak'>
-        <Routes>
+          <Routes>
 
-          <Route path='/' index element={<Kezdolap />} />
-          <Route path='/oldalak/Alkalmazasok' index element={<Alkalmazasok />} />
-          <Route path='/oldalak/Alkatreszek' index element={<Alkatreszek />} />
-          <Route path='/oldalak/AlkalmazasReszletek' index element={<AlkalmazasReszletek />} />
-          <Route path='/oldalak/AlkatreszReszletek' index element={<AlkatreszReszletek />} />
-          <Route path='/oldalak/SajatSetup' index element={<Sajat />} />
-          <Route path='/oldalak/UjAlkalmazas' index element={<UjAlkalmazas />} />
-          <Route path='/oldalak/UjAlkatresz' index element={<UjAlkatresz />} />
-          <Route path='/oldalak/Profil' index element={<Profil />} />
-
-          <Route path="/" element={<Regisztr />} />
-          <Route path="/login" element={<Bejelentkezes />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+            <Route path='/' index element={<Kezdolap />} />
+            <Route path='/oldalak/Alkalmazasok' index element={<Alkalmazasok />} />
+            <Route path='/oldalak/Alkatreszek' index element={<Alkatreszek />} />
+            <Route path='/oldalak/AlkalmazasReszletek' index element={<AlkalmazasReszletek />} />
+            <Route path='/oldalak/AlkatreszReszletek' index element={<AlkatreszReszletek />} />
+            <Route path='/oldalak/SajatSetup' index element={<Sajat />} />
+            <Route path='/oldalak/UjAlkalmazas' index element={<UjAlkalmazas />} />
+            <Route path='/oldalak/UjAlkatresz' index element={<UjAlkatresz />} />
+            <Route path='/oldalak/Profil' index element={<Profil />} />
+            <Route path='/oldalak/Reg' index element={<Reg />} />
+            <Route path="/" element={<Regisztr />} />
+            
           </Routes>
         </div>
         

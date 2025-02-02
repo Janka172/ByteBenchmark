@@ -36,7 +36,7 @@ function Oszlopok() {
       ) : (
         <div className='bejMenu'>
           <Bejelentkezes />
-          <p className='megnincs'>Még mincs profilod ?</p>
+          <p className='megnincs'>Még nincs profilod ?</p>
           <a href="/oldalak/Profil" className='reg'>Regisztrálj !</a>
         </div>
       )}

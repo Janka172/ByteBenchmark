@@ -25,13 +25,14 @@ function Bejelentkezes() {
 
       if (response.ok) {
         const data = await response.json();
+        console.log(email)
         localStorage.setItem("loggedInUser", JSON.stringify(data));
 
         // 🔹 Küldjünk egy egyedi eseményt, hogy jelezzük a bejelentkezést
         window.dispatchEvent(new Event("userLoggedIn"));
 
         // 🔄 Oldal újratöltés
-        window.location.reload();
+        //window.location.reload();
       } else {
         const errorMessage = await response.text();
         setError(errorMessage);
@@ -45,7 +46,7 @@ function Bejelentkezes() {
   return (
     <div>
       <h2 className="bejCim">Bejelentkezés</h2>
-      {error && <p style={{ color: "black" }}>{error}</p>}
+      {error && <p className="error">{error}</p>}
       <form onSubmit={handleLogin}>
         <div className="elemSor">
           <div className="bevitelNeve">E-mail cím:</div>
