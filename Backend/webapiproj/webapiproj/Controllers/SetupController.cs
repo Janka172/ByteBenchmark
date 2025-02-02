@@ -26,6 +26,9 @@ namespace webapiproj.Controllers
         public int Tarhely { get; set; }
         public string RamNeve { get; set; }
         public string AlaplapNeve { get; set; }
+        public string AlaplapCpuFoglalat { get; set; }
+        public double? AlaplapMemoriaMaxFrekvencia { get; set; }
+        public string AlaplapRamTipusa { get; set; }
     }
     public class SetupController : ApiController
     {
@@ -45,10 +48,16 @@ namespace webapiproj.Controllers
                 ProcesszorSzalakSzama = x.Processzor.SzalakSzama,
                 ProcesszorMagokSzama = x.Processzor.ProcesszormagokSzama,
                 ProcesszorFrekvencia = x.Processzor.ProcesszorFrekvencia,
+                RamNeve=x.Ram.Nev,
                 RamMeret = x.Ram.Meret,
                 RamFrekvencia = x.Ram.Frekvencia,
                 OprendszerNev = x.Oprendszer.Nev,
-                Tarhely = x.Applikacio.Tarhely
+                Tarhely = x.Applikacio.Tarhely,
+                AlaplapNeve=x.Alaplap.Nev,
+                AlaplapCpuFoglalat=x.Alaplap.CpuFoglalat,
+                AlaplapMemoriaMaxFrekvencia=x.Alaplap.MaxFrekvencia,
+                AlaplapRamTipusa=x.Alaplap.MemoriaTipusa
+
             }).ToList();
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
@@ -68,12 +77,15 @@ namespace webapiproj.Controllers
                 ProcesszorSzalakSzama = x.Processzor.SzalakSzama,
                 ProcesszorMagokSzama = x.Processzor.ProcesszormagokSzama,
                 ProcesszorFrekvencia = x.Processzor.ProcesszorFrekvencia,
+                RamNeve = x.Ram.Nev,
                 RamMeret = x.Ram.Meret,
                 RamFrekvencia = x.Ram.Frekvencia,
                 OprendszerNev = x.Oprendszer.Nev,
                 Tarhely = x.Applikacio.Tarhely,
-                RamNeve = x.Ram.Nev,
-                AlaplapNeve = x.Alaplap.Nev
+                AlaplapNeve = x.Alaplap.Nev,
+                AlaplapCpuFoglalat = x.Alaplap.CpuFoglalat,
+                AlaplapMemoriaMaxFrekvencia = x.Alaplap.MaxFrekvencia,
+                AlaplapRamTipusa = x.Alaplap.MemoriaTipusa
             }).ToList();
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
