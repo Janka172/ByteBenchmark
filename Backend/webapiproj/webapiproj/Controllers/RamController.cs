@@ -77,11 +77,11 @@ namespace webapiproj.Controllers
 
         // PUT api/<controller>/5
         [ResponseType(typeof(RamModel))]
-        public HttpResponseMessage Patch(int id, string name,[FromBody] RamModel value)
+        public HttpResponseMessage Patch(int id, string name,int frekvencia,int meret,[FromBody] RamModel value)
         {
             try
             {
-                var result = ctx.Ramok.Where(x => x.Nev == name).FirstOrDefault();
+                var result = ctx.Ramok.Where(x => x.Nev == name && x.Frekvencia == frekvencia && x.Meret == meret).FirstOrDefault();
                 if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen Ram");
                 if(value.Nev!=null) result.Nev = value.Nev;
                 if (value.MemoriaTipus!=null) result.MemoriaTipus = value.MemoriaTipus;
@@ -99,9 +99,9 @@ namespace webapiproj.Controllers
         }
 
         // DELETE api/<controller>/5
-        public HttpResponseMessage Delete(int id,string name)
+        public HttpResponseMessage Delete(int id,string name, int frekvencia, int meret)
         {
-            var ramId = ctx.Videokartyak.Where(x => x.Nev == name).Select(x => x.Id).FirstOrDefault();
+            var ramId = ctx.Ramok.Where(x=>x.Nev==name && x.Frekvencia==frekvencia && x.Meret==meret).Select(x => x.Id).FirstOrDefault();
             var set = ctx.Setupok.Where(x => x.RamId == ramId).ToList();
 
             foreach (var item in set)

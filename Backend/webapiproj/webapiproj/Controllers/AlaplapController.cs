@@ -176,6 +176,11 @@ namespace webapiproj.Controllers
         {
             var AlaplapId = ctx.Alaplapok.Where(x => x.Nev == name).Select(x => x.Id).FirstOrDefault();
             var acsatlakozo = ctx.Alaplap_Csatlakozok.Where(x => x.AlaplapId == AlaplapId);
+            var set = ctx.Setupok.Where(x => x.AlaplId == AlaplapId).ToList();
+            foreach (var item in set)
+            {
+                item.VidkaId = null;
+            }
             foreach (var item in acsatlakozo)
             {
                 ctx.Alaplap_Csatlakozok.Remove(item);
