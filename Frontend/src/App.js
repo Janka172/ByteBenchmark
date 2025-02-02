@@ -23,6 +23,9 @@ function App() {
   const [profilk, setProfilk] = useState([]);
   const [betoltP, setBetoltP] = useState(true);
 
+  //Újratöltéskor kijelntkezet
+  //localStorage.removeItem("loggedInUser");
+
   async function getProfilok() {
     try {
       const response = await fetch(`https://localhost:44316/api/Profil`);

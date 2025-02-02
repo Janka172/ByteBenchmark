@@ -34,7 +34,11 @@ function Oszlopok() {
           </p>
         </div>
       ) : (
-        <Bejelentkezes />
+        <div className='bejMenu'>
+          <Bejelentkezes />
+          <p className='megnincs'>Még mincs profilod ?</p>
+          <a href="/oldalak/Profil" className='reg'>Regisztrálj !</a>
+        </div>
       )}
     </div>
       <div className="jobbOszlop">

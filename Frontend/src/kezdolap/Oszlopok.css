@@ -17,6 +17,23 @@
   background-color: rgba(196, 84, 84, 0.8);
 }
 
+.megnincs{
+  font-size: 1.6vw;
+}
+
+.reg{
+  display: grid;
+  font-size: 1.6vw;
+  text-decoration: none;
+  color: rgb(54, 54, 54);
+  justify-content: right;
+  font-weight: bold;
+}
+
+.bejMenu{
+  padding: 2vw;
+}
+
 @media (max-width: 767px) {
   .ketOszlop {
     display: flex;

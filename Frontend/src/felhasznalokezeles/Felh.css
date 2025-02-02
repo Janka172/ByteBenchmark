@@ -63,3 +63,16 @@ select{
 .elemSor{
     margin: 1vw;
 }
+
+.kijGomb{
+    border: none;
+    background-color: rgba(255, 0, 0, 0);
+    font-size: 1em;
+    padding: 0.5em;
+}
+
+.kijGomb:hover{
+    color: #000;
+    background-color: #ddd;
+    border-radius: 0.5em;
+}
