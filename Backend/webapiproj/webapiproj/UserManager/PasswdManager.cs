@@ -28,5 +28,11 @@ namespace webapiproj.UserManager
                 return computedHash.SequenceEqual(storedHash);
             }
         }
+
+        public static bool VerifyEmail(string Chemail,string Remail)
+        {
+            if (Chemail == Remail) return true;
+            else return false;
+        }
     }
 }
