@@ -1,5 +1,5 @@
 .kovetelm{
-    background-color: rgba(51, 37, 37, 0.473);
+    background-color: rgba(167, 143, 143, 0.6); 
     margin: 2vw;
     padding: 3.5vw;
     border-radius: 2vw;
@@ -54,6 +54,11 @@ h1{
 
     .megnev {
       grid-column: 1 / 2;
+      font-size: 3vw;
+    }
+
+    .sorTartalom{
+        font-size: 3vw;
     }
     
     .tovabbi {
