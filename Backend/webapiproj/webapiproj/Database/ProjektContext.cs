@@ -60,6 +60,12 @@ namespace webapiproj
                 .IsUnique()
                 .HasName("Nev_Frekv_Meret");
             base.OnModelCreating(modelBuilder);
+            //OS osszetett mezo
+            modelBuilder.Entity<Operaciosrendszer>()
+                .HasIndex(v => new { v.Nev, v.BuildSzam })
+                .IsUnique()
+                .HasName("Nev_Buildszam");
+            base.OnModelCreating(modelBuilder);
         }
 
     }

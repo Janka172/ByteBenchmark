@@ -71,7 +71,7 @@ namespace webapiproj.Controllers
             {
                 var result = ctx.Kategoriak.Where(x => x.Nev == name).FirstOrDefault();
                 if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen Kategoria");
-
+                if (value.Nev != null) result.Nev = value.Nev;
 
                 ctx.SaveChanges();
                 return Request.CreateResponse(HttpStatusCode.OK, "Update sikeres");

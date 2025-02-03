@@ -13,6 +13,7 @@ namespace webapiproj.Controllers
 {
     public class ProfilResponseModel
     {
+        public int Id { get; set; }
         public string Felhasznalonev { get; set; }
         public string Email { get; set; }
         public int Jogosultsag { get; set; }
@@ -58,6 +59,7 @@ namespace webapiproj.Controllers
 
             result = ctx.Profilok.Select(x => new ProfilResponseModel
             {
+                Id=x.Id,
                 Felhasznalonev = x.Felhasznalonev,
                 Email = x.Email,
                 Jogosultsag = x.Jogosultsag,
@@ -75,6 +77,7 @@ namespace webapiproj.Controllers
 
             result = ctx.Profilok.Where(x => x.Felhasznalonev == name).Select(x => new ProfilResponseModel
             {
+                Id=x.Id,
                 Felhasznalonev = x.Felhasznalonev,
                 Email = x.Email,
                 Jogosultsag = x.Jogosultsag,

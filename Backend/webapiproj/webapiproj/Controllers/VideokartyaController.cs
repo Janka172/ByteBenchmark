@@ -25,7 +25,7 @@ namespace webapiproj.Controllers
         ProjektContext ctx = new ProjektContext();
         // GET api/<controller>
         [ResponseType(typeof(VideokartyaModel))]
-        public HttpResponseMessage Get()
+        public IHttpActionResult Get()
         {
             IEnumerable<VideokartyaModel> result = null;
             result = ctx.Videokartyak.Select(x => new VideokartyaModel
@@ -37,12 +37,13 @@ namespace webapiproj.Controllers
                 chipGyartoja = x.ChipGyartoja,
                 vram = x.Vram
             }).ToList();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+
+            return Ok(result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(VideokartyaModel))]
-        public HttpResponseMessage Get(int id, string name)
+        public IHttpActionResult Get(int id, string name)
         {
             VideokartyaModel result = null;
             result = ctx.Videokartyak.Where(x => x.Nev == name).Select(x => new VideokartyaModel
@@ -54,12 +55,12 @@ namespace webapiproj.Controllers
                 chipGyartoja = x.ChipGyartoja,
                 vram = x.Vram
             }).FirstOrDefault();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok(result);
         }
 
         // POST api/<controller>
         [ResponseType(typeof(VideokartyaModel))]
-        public HttpResponseMessage Post([FromBody] VideokartyaModel value)
+        public IHttpActionResult Post([FromBody] VideokartyaModel value)
         {
             try
             {
@@ -74,24 +75,23 @@ namespace webapiproj.Controllers
                 });
                 ctx.SaveChanges();
 
-
-                return Request.CreateResponse(HttpStatusCode.Created, result);
+                return Created($"api/Videokartya/{result}",result);
             }
             catch (Exception)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { error = "Video kártya feltoltése sikertelen." });
+                return BadRequest("Videokartya feltoltese sikertelen");
             }
 
         }
 
         // PUT api/<controller>/5
         [ResponseType(typeof(VideokartyaModel))]
-        public HttpResponseMessage Patch(int id,string name,int vram, [FromBody] VideokartyaModel value)
+        public IHttpActionResult Patch(int id,string name,int vram, [FromBody] VideokartyaModel value)
         {
             try
             {
                 var result = ctx.Videokartyak.Where(x => x.Nev == name && x.Vram == vram).FirstOrDefault();
-                if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound,"Nem található ilyen videokartya");
+                if (result == null) return NotFound();
                 if(value.Nev!=null) result.Nev = value.Nev;
                 if (value.alaplapiCsatlakozas != null) result.AlaplapiCsatlakozas = value.alaplapiCsatlakozas;
                 if (value.ajanlottTapegyseg != null) result.AjanlottTapegyseg = value.ajanlottTapegyseg;
@@ -100,18 +100,19 @@ namespace webapiproj.Controllers
                 if(value.vram!=null) result.Vram = value.vram;
 
                 ctx.SaveChanges();
-                return Request.CreateResponse(HttpStatusCode.OK, "Update sikeres");
+                return Ok($"update sikeres: {result}");
+                //return Ok(result);
             }
             catch (Exception ex)
             {
-                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Request.CreateResponse(HttpStatusCode.Conflict,"Ezzel a névvel és vram kombinácioval már létezik videokartya");
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Conflict();
+                return InternalServerError();
             }
         }
 
         // DELETE api/<controller>/5
         [ResponseType(typeof(VideokartyaModel))]
-        public HttpResponseMessage Delete(int id,string name, int vram)
+        public IHttpActionResult Delete(int id,string name, int vram)
         {
             var vidId = ctx.Videokartyak.Where(x => x.Nev == name && x.Vram == vram).Select(x=>x.Id).FirstOrDefault();
             var set = ctx.Setupok.Where(x => x.VidkaId == vidId).ToList();
@@ -127,10 +128,11 @@ namespace webapiproj.Controllers
             {
                 ctx.Videokartyak.Remove(result);
                 ctx.SaveChanges();
-                return Request.CreateResponse(HttpStatusCode.OK, "Törlés sikeresen véghezment");
+                return Ok("Törlés sikeresen megtörtént");     
             }
             ctx.SaveChanges();
-            return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található");
+            return NotFound();
+            
         }
     }
 }
