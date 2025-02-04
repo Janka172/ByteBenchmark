@@ -106,7 +106,7 @@ namespace webapiproj.Controllers
             catch (Exception ex)
             {
                 if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Conflict();
-                return InternalServerError();
+                return InternalServerError(ex);
             }
         }
 

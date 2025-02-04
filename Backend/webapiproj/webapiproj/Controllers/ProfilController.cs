@@ -104,7 +104,8 @@ namespace webapiproj.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                throw;
+                //return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
 
