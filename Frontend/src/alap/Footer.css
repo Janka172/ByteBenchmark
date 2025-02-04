@@ -1,0 +1,30 @@
+.footer {
+  position: sticky;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  padding: 0em;
+  background-color: #c45454;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 1000;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1em;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 1em;
+  padding: 0.5em;
+}
+
+.footer a:hover {
+  color: #000;
+  background-color: #ddd;
+  border-radius: 0.5em;
+}

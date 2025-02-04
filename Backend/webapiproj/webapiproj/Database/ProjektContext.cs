@@ -47,6 +47,25 @@ namespace webapiproj
             modelBuilder.Entity<Applikacio_Profil>().HasKey(ap => new { ap.AppId, ap.ProfilId });
             base.OnModelCreating(modelBuilder);
 
+            //Videokartya osszetett mezo
+            modelBuilder.Entity<Videokartya>()
+                .HasIndex(v => new { v.Nev, v.Vram })
+                .IsUnique()
+                .HasName("Nev_Vram");
+            base.OnModelCreating(modelBuilder);
+
+            //Ram osszetett mezo
+            modelBuilder.Entity<Ram>()
+                .HasIndex(v => new { v.Nev, v.Frekvencia,v.Meret })
+                .IsUnique()
+                .HasName("Nev_Frekv_Meret");
+            base.OnModelCreating(modelBuilder);
+            //OS osszetett mezo
+            modelBuilder.Entity<Operaciosrendszer>()
+                .HasIndex(v => new { v.Nev, v.BuildSzam })
+                .IsUnique()
+                .HasName("Nev_Buildszam");
+            base.OnModelCreating(modelBuilder);
         }
 
     }
