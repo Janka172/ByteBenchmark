@@ -94,7 +94,7 @@
     align-items: stretch;
     gap: 1vw;
     padding: 1vw;
-    width: 65%;
+    width: 55%;
     margin: auto;
   }
   
@@ -108,7 +108,7 @@
   }
 
   .szoveg{
-    padding: 5vw;
+    padding: 2vw;
     font-size: xx-large;
   }
 }

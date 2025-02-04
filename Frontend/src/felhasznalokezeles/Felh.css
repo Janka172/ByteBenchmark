@@ -48,7 +48,7 @@ select{
 .subGomb{
     display: flex;
     background-color: rgb(189, 128, 128);
-    font-size: 2vw;
+    font-size: 1.8vw;
     padding: 1vw 5vw;
     width: 100%;
     justify-content: center;
@@ -141,4 +141,35 @@ select{
 
 .altalnosMentes:hover{
     background-color: #e69090;
+}
+
+@media (min-width: 1200px) {
+    .bejCim{
+        font-size: 2vw;
+    }
+
+    .bevitelNeve{
+        font-size: 1.5vw;
+    }
+
+    .subGomb{
+        font-size: 1.5vw;
+    }
+
+    .megnincs{
+        font-size: 1.4vw;
+    }
+
+    .regForm{
+        padding: 2vw;
+        width: 35%;
+    }
+
+    .bevitelNeve{
+        font-size: 1.2vw;
+    }
+
+    .menuElem div{
+        font-size: 1.2vw;
+    }
 }
