@@ -18,6 +18,7 @@ namespace webapiproj.Controllers
         public string TamogatottMemoriatipus { get; set; }
         public int ProcesszormagokSzama { get; set; }
         public double ProcesszorFrekvencia { get; set; }
+        public double BProcesszorFrekvencia{get; set;}
         public string Gyarto { get; set; }
         public int AjanlottTapegyseg { get; set; }
         public bool IntegraltVideokartya { get; set; }
@@ -39,6 +40,7 @@ namespace webapiproj.Controllers
                 TamogatottMemoriatipus = x.TamogatottMemoriatipus,
                 ProcesszormagokSzama = x.ProcesszormagokSzama,
                 ProcesszorFrekvencia = x.ProcesszorFrekvencia,
+                BProcesszorFrekvencia=x.BFrekvencia,
                 Gyarto = x.Gyarto,
                 AjanlottTapegyseg = x.AjanlottTapegyseg,
                 IntegraltVideokartya = x.IntegraltVideokartya
@@ -61,6 +63,7 @@ namespace webapiproj.Controllers
                 TamogatottMemoriatipus = x.TamogatottMemoriatipus,
                 ProcesszormagokSzama = x.ProcesszormagokSzama,
                 ProcesszorFrekvencia = x.ProcesszorFrekvencia,
+                BProcesszorFrekvencia = x.BFrekvencia,
                 Gyarto = x.Gyarto,
                 AjanlottTapegyseg = x.AjanlottTapegyseg,
                 IntegraltVideokartya = x.IntegraltVideokartya
@@ -69,18 +72,88 @@ namespace webapiproj.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        [ResponseType(typeof(ProcesszorModel))]
+        public HttpResponseMessage Post([FromBody] ProcesszorModel value)
         {
+            try
+            {
+                var result = ctx.Processzorok.Add(new Processzor
+                {
+                    Nev = value.Nev,
+                    AlaplapFoglalat= value.AlaplapFoglalat,
+                    SzalakSzama = value.SzalakSzama,
+                    TamogatottMemoriatipus = value.TamogatottMemoriatipus,
+                    ProcesszormagokSzama=value.ProcesszormagokSzama,
+                    ProcesszorFrekvencia=value.ProcesszorFrekvencia,
+                    BFrekvencia=value.BProcesszorFrekvencia,
+                    Gyarto=value.Gyarto,
+                    AjanlottTapegyseg=value.AjanlottTapegyseg,
+                    IntegraltVideokartya=value.IntegraltVideokartya
+
+                });
+                ctx.SaveChanges();
+
+
+                return Request.CreateResponse(HttpStatusCode.Created, result);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { error = " Processzor feltoltése sikertelen." });
+            }
+
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
+        [ResponseType(typeof(ProcesszorModel))]
+        public HttpResponseMessage Put(int id, string name, [FromBody] ProcesszorModel value)
         {
+            try
+            {
+                var result = ctx.Processzorok.Where(x => x.Nev == name).FirstOrDefault();
+                if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen processzor");
+                if(value.Nev!=null) result.Nev = value.Nev;
+                if (value.AlaplapFoglalat!=null) result.AlaplapFoglalat = value.AlaplapFoglalat;
+                if (value.SzalakSzama!=null) result.SzalakSzama = value.SzalakSzama;
+                if (value.TamogatottMemoriatipus!=null) result.TamogatottMemoriatipus = value.TamogatottMemoriatipus;
+                if (value.ProcesszormagokSzama!=null) result.ProcesszormagokSzama = value.ProcesszormagokSzama;
+                if (value.ProcesszorFrekvencia!=null) result.ProcesszorFrekvencia = value.ProcesszorFrekvencia;
+                if (value.BProcesszorFrekvencia!=null) result.BFrekvencia = value.BProcesszorFrekvencia;
+                if(value.Gyarto!=null) result.Gyarto = value.Gyarto;
+                if (value.AjanlottTapegyseg!=null) result.AjanlottTapegyseg = value.AjanlottTapegyseg;
+                if (value.IntegraltVideokartya!=null) result.IntegraltVideokartya = value.IntegraltVideokartya;
+
+                ctx.SaveChanges();
+                return Request.CreateResponse(HttpStatusCode.OK, "Update sikeres");
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Request.CreateResponse(HttpStatusCode.Conflict, "Ezzel a névvel már létezik processzor");
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        [ResponseType(typeof(ProcesszorModel))]
+        public HttpResponseMessage Delete(int id, string name)
         {
+            var ProcId = ctx.Processzorok.Where(x => x.Nev == name).Select(x => x.Id).FirstOrDefault();
+            var set = ctx.Setupok.Where(x => x.ProcId == ProcId).ToList();
+
+            foreach (var item in set)
+            {
+                item.ProcId = null;
+            }
+
+
+            var result = ctx.Processzorok.Where(x => x.Nev == name).FirstOrDefault();
+            if (result != null)
+            {
+                ctx.Processzorok.Remove(result);
+                ctx.SaveChanges();
+                return Request.CreateResponse(HttpStatusCode.OK, "Törlés sikeresen véghezment");
+            }
+            ctx.SaveChanges();
+            return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található");
         }
     }
 }

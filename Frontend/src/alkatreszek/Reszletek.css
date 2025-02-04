@@ -1,0 +1,8 @@
+@media (min-width: 1500px){
+    .teljesReszletMenu{
+        width: 60%;
+    }
+    .elemNeve, .elemErteke {
+        font-size: 1.5vw;
+    }
+}

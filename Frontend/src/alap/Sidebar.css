@@ -1,0 +1,79 @@
+.balAnim {
+    position: relative;
+    animation: animateleft 0.4s;
+}
+
+.gombi:hover {
+    color: #000;
+    background-color: #ccc;
+}
+
+.blockSidebar .navigElem {
+    display: block;
+    padding: 0.8vw 1.6vw;
+    text-align: left;
+    border: none;
+    white-space: normal;
+    float: none;
+    outline: 0;
+    font-size: 2vw;
+    gap: 1vw;
+}
+
+.gombi {
+    border: none;
+    display: inline-block;
+    padding: 0.8vw 1.6vw;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.hambiGombocska {
+    background-color: rgba(255, 0, 0, 0);
+    border: none;
+    padding: 1vw;
+    text-align: center;
+    text-decoration: none;
+    font-size: 2vw;
+    margin: 0.4vw 0.2vw;
+    cursor: pointer;
+    color: red;
+  }
+
+.sidebar {
+    height: 100%;
+    width: 100%;
+    background-color: hsla(0, 69%, 60%, 0.8);
+    position: fixed;
+    z-index: 9999;
+    transition: width 0.4s;
+    top: 0;
+    left: 0;
+    gap: 0.2vw;
+}
+
+.visszaGomb{
+    font-size: 3vw;
+}
+
+@media (max-width: 767px){
+    .hambiGombocska{
+        font-size: 8vw;
+    }
+
+    .blockSidebar .navigElem{
+        font-size: 5vw;
+    }
+}
+
+@media (min-width: 1500px){
+    .blockSidebar .navigElem{
+        font-size: 1.5vw;
+    }
+}

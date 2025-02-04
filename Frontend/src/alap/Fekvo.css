@@ -1,0 +1,40 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  padding: 0.8em;
+  background-color: #c45454;
+  position: sticky;
+  top: 0;
+  width: auto;
+  -ms-zoom-animation: 1000;
+  z-index: 1000;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 0.5em 1em;
+  border-radius: 0.5em; 
+}
+
+.navbar a:hover {
+  background-color: #d1d1d1;
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+    width: auto;
+  }
+
+  .navbar a {
+    font-size: 1em;
+    width: 100%;
+    text-align: center; 
+  }
+}

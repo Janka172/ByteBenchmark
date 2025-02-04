@@ -1,0 +1,152 @@
+.ketOszlop{
+  margin: 1vw;
+}
+
+.row{
+  display: flex;
+  justify-content: center;
+  gap: 1vw;
+  margin: 1vw;
+}
+
+.jobbOszlop{
+  justify-content: center;
+}
+
+.balOszlop{
+  background-color: rgba(196, 84, 84, 0.8);
+}
+
+.megnincs{
+  font-size: 1.6vw;
+}
+
+.reg{
+  display: grid;
+  font-size: 1.6vw;
+  text-decoration: none;
+  color: rgb(54, 54, 54);
+  justify-content: right;
+  font-weight: bold;
+}
+
+.bejMenu{
+  padding: 2vw;
+}
+
+@media (max-width: 767px) {
+  .ketOszlop {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 1vw;
+    padding: 1vw;
+    width: auto;
+    box-sizing: border-box;
+  }
+
+  .balOszlop, .jobbOszlop {
+    flex: 0;
+    padding: 0.5vw;
+    border-radius: 3vw 0vw;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .szoveg{
+    padding: 5vw;
+    font-size: 5vw;
+  }
+}
+
+@media (max-width: 1199px) {
+  .ketOszlop {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 1vw;
+    padding: 5vw;
+  }
+  
+  .balOszlop, .jobbOszlop {
+    flex: 0;
+  }
+  
+  .balOszlop {
+    padding: 1vw;
+    border-radius: 3vw 0vw;
+    margin: 3vw;
+  }
+
+  .szoveg{
+    padding: 5vw;
+    font-size: large;
+  }
+}
+
+@media (min-width: 1200px) {
+  .ketOszlop {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 1vw;
+    padding: 1vw;
+    width: 55%;
+    margin: auto;
+  }
+  
+  .balOszlop, .jobbOszlop {
+    flex: 1; 
+  }
+  
+  .balOszlop {
+    padding: 1vw;
+    border-radius: 3vw 0vw;
+  }
+
+  .szoveg{
+    padding: 2vw;
+    font-size: xx-large;
+  }
+}
+
+@media (min-width: 2000px) {
+  .ketOszlop {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 1vw;
+    padding: 1vw 10vw;
+  }
+  
+  .balOszlop, .jobbOszlop {
+    flex: 1; 
+  }
+  
+  .balOszlop {
+    padding: 1vw;
+    border-radius: 3vw 0vw;
+  }
+
+  .szoveg{
+    padding: 3vw;
+    font-size: xx-large;
+  }
+
+  .korKepKeret{
+    padding: 1.5vw;
+    background-color: rgb(194, 52, 52, 0.4);
+    border: 0.5vw solid rgba(194, 52, 52, 0.4);
+    border-radius: 1vw;
+    width: 11vw;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
