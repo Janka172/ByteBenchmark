@@ -105,7 +105,7 @@ namespace webapiproj.Controllers
             }
             catch (Exception ex)
             {
-                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Conflict();
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict,"üttközés van a videokartyanal");
                 return InternalServerError(ex);
             }
         }
