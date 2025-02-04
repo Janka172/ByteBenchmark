@@ -15,7 +15,7 @@ namespace webapiproj.Models
         public string Kepeleresiutja { get; set; }
 
         //Kategoria kapcsolat
-        public int? KatId { get; set; }
+        public int KatId { get; set; }
         [ForeignKey("KatId")]
         public virtual Kategoria Kategoria { get; set; }
 

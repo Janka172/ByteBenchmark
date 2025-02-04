@@ -1,9 +1,0 @@
-.elem{
-    display: flex;
-}
-.gorgetok{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10vw;
-    width: 50%;
-}

@@ -15,7 +15,7 @@ namespace webapiproj.Models
         [Column("AlaplapId")]
         public int AlaplapId { get; set; }
         [Column("CsatlakozoId")]
-        public int? CsatlakozoId { get; set; }
+        public int CsatlakozoId { get; set; }
         [ForeignKey("CsatlakozoId")]
         public virtual Csatlakozo Csatlakozo { get; set; }
         [ForeignKey("AlaplapId")]

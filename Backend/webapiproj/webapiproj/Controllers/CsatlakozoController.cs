@@ -47,24 +47,8 @@ namespace webapiproj.Controllers
         }
 
         // POST api/<controller>
-        [ResponseType(typeof(CsatlakozoModel))]
-        public HttpResponseMessage Post([FromBody] CsatlakozoModel value)
+        public void Post([FromBody] string value)
         {
-            try
-            {
-                var result = ctx.Csatlakozok.Add(new Csatlakozo
-                {
-                    Nev = value.Nev
-                });
-                ctx.SaveChanges();
-
-
-                return Request.CreateResponse(HttpStatusCode.Created, result);
-            }
-            catch (Exception)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { error = " Processzor feltoltése sikertelen." });
-            }
         }
 
         // PUT api/<controller>/5

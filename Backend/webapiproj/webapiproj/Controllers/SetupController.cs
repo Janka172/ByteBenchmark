@@ -15,20 +15,15 @@ namespace webapiproj.Controllers
         public string ApplikacioNeve { get; set; }
         public string Gepigeny { get; set; }
         public string VidekortyaNev { get; set; }
-        public int? VideokartyaVram { get; set; }
+        public int VideokartyaVram { get; set; }
         public string ProcesszorNev { get; set; }
-        public int? ProcesszorSzalakSzama { get; set; }
+        public int ProcesszorSzalakSzama { get; set; }
         public int ProcesszorMagokSzama { get; set; }
-        public double? ProcesszorFrekvencia { get; set; }
-        public double? RamFrekvencia { get; set; }
-        public int? RamMeret { get; set; }
+        public double ProcesszorFrekvencia { get; set; }
+        public double RamFrekvencia { get; set; }
+        public int RamMeret { get; set; }
         public string OprendszerNev { get; set; }
         public int Tarhely { get; set; }
-        public string RamNeve { get; set; }
-        public string AlaplapNeve { get; set; }
-        public string AlaplapCpuFoglalat { get; set; }
-        public double? AlaplapMemoriaMaxFrekvencia { get; set; }
-        public string AlaplapRamTipusa { get; set; }
     }
     public class SetupController : ApiController
     {
@@ -48,16 +43,10 @@ namespace webapiproj.Controllers
                 ProcesszorSzalakSzama = x.Processzor.SzalakSzama,
                 ProcesszorMagokSzama = x.Processzor.ProcesszormagokSzama,
                 ProcesszorFrekvencia = x.Processzor.ProcesszorFrekvencia,
-                RamNeve=x.Ram.Nev,
                 RamMeret = x.Ram.Meret,
                 RamFrekvencia = x.Ram.Frekvencia,
                 OprendszerNev = x.Oprendszer.Nev,
-                Tarhely = x.Applikacio.Tarhely,
-                AlaplapNeve=x.Alaplap.Nev,
-                AlaplapCpuFoglalat=x.Alaplap.CpuFoglalat,
-                AlaplapMemoriaMaxFrekvencia=x.Alaplap.MaxFrekvencia,
-                AlaplapRamTipusa=x.Alaplap.MemoriaTipusa
-
+                Tarhely = x.Applikacio.Tarhely
             }).ToList();
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
@@ -77,15 +66,10 @@ namespace webapiproj.Controllers
                 ProcesszorSzalakSzama = x.Processzor.SzalakSzama,
                 ProcesszorMagokSzama = x.Processzor.ProcesszormagokSzama,
                 ProcesszorFrekvencia = x.Processzor.ProcesszorFrekvencia,
-                RamNeve = x.Ram.Nev,
                 RamMeret = x.Ram.Meret,
                 RamFrekvencia = x.Ram.Frekvencia,
                 OprendszerNev = x.Oprendszer.Nev,
-                Tarhely = x.Applikacio.Tarhely,
-                AlaplapNeve = x.Alaplap.Nev,
-                AlaplapCpuFoglalat = x.Alaplap.CpuFoglalat,
-                AlaplapMemoriaMaxFrekvencia = x.Alaplap.MaxFrekvencia,
-                AlaplapRamTipusa = x.Alaplap.MemoriaTipusa
+                Tarhely = x.Applikacio.Tarhely
             }).ToList();
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }

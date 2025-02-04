@@ -18,6 +18,5 @@ namespace webapiproj.Models
         public int AjanlottTapegyseg { get; set; }
         public bool IntegraltVideokartya { get; set; }
         public double ProcesszorFrekvencia { get; set; }
-        public double BFrekvencia { get; set; }//boostolt frekvencia
     }
 }
