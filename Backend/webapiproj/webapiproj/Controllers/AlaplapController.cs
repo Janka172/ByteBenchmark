@@ -20,6 +20,7 @@ namespace webapiproj.Controllers
         public string Lapkakeszlet { get; set; }
         public int SlotSzam { get; set; }
         public bool Hangkartya { get; set; }
+        public string VideokartyaCsatlakozo { get; set; }
         public List<string> Csatlakozok { get; set; }
     }
     public class AlaplapUpdatedModel
@@ -32,6 +33,7 @@ namespace webapiproj.Controllers
         public string Lapkakeszlet { get; set; }
         public int SlotSzam { get; set; }
         public bool Hangkartya { get; set; }
+        public string VideokartyaCsatlakozo { get; set; }
     }
 
     public class AlaplapModel
@@ -44,6 +46,7 @@ namespace webapiproj.Controllers
         public string Lapkakeszlet { get; set; }
         public int SlotSzam { get; set; }
         public bool Hangkartya { get; set; }
+        public string VideokartyaCsatlakozo { get; set; }
     }
     public class AlaplapController : ApiController
     {
@@ -63,7 +66,8 @@ namespace webapiproj.Controllers
                 MemoriaTipusa = x.MemoriaTipusa,
                 Lapkakeszlet = x.Lapkakeszlet,
                 SlotSzam = x.SlotSzam,
-                Hangkartya = x.Hangkartya
+                Hangkartya = x.Hangkartya,
+                VideokartyaCsatlakozo=x.VideokartyaCsatlakozo
             }).ToList();
 
             return Request.CreateResponse(HttpStatusCode.OK, result);
@@ -82,7 +86,8 @@ namespace webapiproj.Controllers
                 MemoriaTipusa = x.MemoriaTipusa,
                 Lapkakeszlet = x.Lapkakeszlet,
                 SlotSzam = x.SlotSzam,
-                Hangkartya = x.Hangkartya
+                Hangkartya = x.Hangkartya,
+                VideokartyaCsatlakozo = x.VideokartyaCsatlakozo
             }).FirstOrDefault();
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
@@ -102,7 +107,8 @@ namespace webapiproj.Controllers
                     MemoriaTipusa = value.MemoriaTipusa,
                     Lapkakeszlet = value.Lapkakeszlet,
                     SlotSzam = value.SlotSzam,
-                    Hangkartya = value.Hangkartya
+                    Hangkartya = value.Hangkartya,
+                    VideokartyaCsatlakozo = value.VideokartyaCsatlakozo
                 });
                 ctx.SaveChanges();
 
@@ -156,6 +162,7 @@ namespace webapiproj.Controllers
                 if (value.Lapkakeszlet!=null) result.Lapkakeszlet = value.Lapkakeszlet;
                 if (value.SlotSzam!=null) result.SlotSzam = value.SlotSzam;
                 if (value.Hangkartya!=null) result.Hangkartya = value.Hangkartya;
+                if (value.VideokartyaCsatlakozo != null) result.VideokartyaCsatlakozo = value.VideokartyaCsatlakozo;
                          
                 ctx.SaveChanges();
 

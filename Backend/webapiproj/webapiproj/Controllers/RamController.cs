@@ -22,7 +22,7 @@ namespace webapiproj.Controllers
         ProjektContext ctx = new ProjektContext();
         // GET api/<controller>
         [ResponseType(typeof(RamModel))]
-        public HttpResponseMessage Get()
+        public IHttpActionResult Get()
         {
             IEnumerable<RamModel> result = null;
             result = ctx.Ramok.Select(x => new RamModel
@@ -32,12 +32,12 @@ namespace webapiproj.Controllers
                 Frekvencia = x.Frekvencia,
                 Meret = x.Meret
             }).ToList();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok(result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(RamModel))]
-        public HttpResponseMessage Get(int id, string name)
+        public IHttpActionResult Get(int id, string name)
         {
             RamModel result = null;
             result = ctx.Ramok.Where(x => x.Nev == name).Select(x => new RamModel
@@ -47,12 +47,12 @@ namespace webapiproj.Controllers
                 Frekvencia = x.Frekvencia,
                 Meret = x.Meret
             }).FirstOrDefault();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok(result);
         }
 
         // POST api/<controller>
         [ResponseType(typeof(RamModel))]
-        public HttpResponseMessage Post([FromBody] RamModel value)
+        public IHttpActionResult Post([FromBody] RamModel value)
         {
             try
             {
@@ -65,41 +65,41 @@ namespace webapiproj.Controllers
                 });
                 ctx.SaveChanges();
 
-
-                return Request.CreateResponse(HttpStatusCode.Created, result);
+                return Created($"api/Ram/{result}", result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { error = "RAM feltoltése sikertelen." });
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "már szerepel ez a ram");
+                return InternalServerError(ex);
             }
 
         }
 
         // PUT api/<controller>/5
         [ResponseType(typeof(RamModel))]
-        public HttpResponseMessage Patch(int id, string name,int frekvencia,int meret,[FromBody] RamModel value)
+        public IHttpActionResult Patch(int id, string name,int frekvencia,int meret,[FromBody] RamModel value)
         {
             try
             {
                 var result = ctx.Ramok.Where(x => x.Nev == name && x.Frekvencia == frekvencia && x.Meret == meret).FirstOrDefault();
-                if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen Ram");
+                if (result == null) return NotFound();
                 if(value.Nev!=null) result.Nev = value.Nev;
                 if (value.MemoriaTipus!=null) result.MemoriaTipus = value.MemoriaTipus;
                 if (value.Frekvencia!=null) result.Frekvencia = value.Frekvencia;
                 if (value.Meret!=null) result.Meret = value.Meret;
 
                 ctx.SaveChanges();
-                return Request.CreateResponse(HttpStatusCode.OK, "Update sikeres");
+                return Content(HttpStatusCode.OK, "sikeres update");
             }
             catch (Exception ex)
             {
-                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Request.CreateResponse(HttpStatusCode.Conflict, "Ezzel a névvel már létezik Ram");
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict,"Már létezik ez a ram");
+                return InternalServerError(ex);
             }
         }
 
         // DELETE api/<controller>/5
-        public HttpResponseMessage Delete(int id,string name, int frekvencia, int meret)
+        public IHttpActionResult Delete(int id,string name, int frekvencia, int meret)
         {
             var ramId = ctx.Ramok.Where(x=>x.Nev==name && x.Frekvencia==frekvencia && x.Meret==meret).Select(x => x.Id).FirstOrDefault();
             var set = ctx.Setupok.Where(x => x.RamId == ramId).ToList();
@@ -115,10 +115,10 @@ namespace webapiproj.Controllers
             {
                 ctx.Ramok.Remove(result);
                 ctx.SaveChanges();
-                return Request.CreateResponse(HttpStatusCode.OK, "Törlés sikeresen véghezment");
+                return Ok("Törlés sikeres");
             }
             ctx.SaveChanges();
-            return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található");
+            return NotFound();
         }
     }
 }

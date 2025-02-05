@@ -77,8 +77,9 @@ namespace webapiproj.Controllers
 
                 return Created($"api/Videokartya/{result}",result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "már szerepel ez a Videokartya");
                 return BadRequest("Videokartya feltoltese sikertelen");
             }
 
@@ -100,7 +101,7 @@ namespace webapiproj.Controllers
                 if(value.vram!=null) result.Vram = value.vram;
 
                 ctx.SaveChanges();
-                return Ok($"update sikeres: {result}");
+                return Ok(result);
                 //return Ok(result);
             }
             catch (Exception ex)

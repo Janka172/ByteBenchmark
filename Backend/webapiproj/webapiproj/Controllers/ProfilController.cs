@@ -53,7 +53,7 @@ namespace webapiproj.Controllers
         ProjektContext ctx = new ProjektContext();
         // GET api/<controller>
         [ResponseType(typeof(ProfilResponseModel))]
-        public HttpResponseMessage Get()
+        public IHttpActionResult Get()
         {
             IEnumerable<ProfilResponseModel> result = null;
 
@@ -66,12 +66,12 @@ namespace webapiproj.Controllers
                 Tema = x.Tema,
                 LogoEleresiUtja = x.LogoEleresiUtja
             }).ToList();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok(result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(ProfilResponseModel))]
-        public HttpResponseMessage Get(int id, string name)
+        public IHttpActionResult Get(int id, string name)
         {
             ProfilResponseModel result = null;
 
@@ -84,40 +84,40 @@ namespace webapiproj.Controllers
                 Tema = x.Tema,
                 LogoEleresiUtja = x.LogoEleresiUtja
             }).FirstOrDefault();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok(result);
         }
 
         // POST api/<controller>
         [ResponseType(typeof(ProfilResponseModel))]
-        public HttpResponseMessage Post([FromBody] ProfilPostModel value)
+        public IHttpActionResult Post([FromBody] ProfilPostModel value)
         {
             try
             {
                 var email = ctx.Profilok.Where(x => x.Email == value.Email).FirstOrDefault();
                 var felhasz = ctx.Profilok.Where(x => x.Felhasznalonev == value.Felhasznalonev).FirstOrDefault();
-                if (email != null) return Request.CreateResponse(HttpStatusCode.Conflict, "Ezzel az email-lal már regisztráltak");
-                if (felhasz != null) return Request.CreateResponse(HttpStatusCode.Conflict, "Ezzel az email-lal már regisztráltak");
+                if (email != null) return Content(HttpStatusCode.Conflict, "Ezzel az email-lal már regisztráltak");
+                if (felhasz != null) return Content(HttpStatusCode.Conflict, "Ezzel az email-lal már regisztráltak");
 
                 ctx.Profilok.Add(new Profil(value.Felhasznalonev, value.Email, value.Jelszo, value.Jogosultsag, value.Tema, value.LogoEleresiUtja));
                 ctx.SaveChanges();
-                return Request.CreateResponse(HttpStatusCode.OK, "Regisztráció sikeres");
+                return Ok("Regisztráció Sikeres!");
             }
             catch (Exception ex)
             {
                 throw;
-                //return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                return InternalServerError(ex);
             }
         }
 
         // PUT api/<controller>/5
         [ResponseType(typeof(ProfilResponseModel))]
-        public HttpResponseMessage Patch(int id,string name,[FromBody] ProfilUpdateModel value)
+        public IHttpActionResult Patch(int id,string name,[FromBody] ProfilUpdateModel value)
         {
             try
             {
                 var result = ctx.Profilok.Where(x => x.Felhasznalonev == name).FirstOrDefault();
-                if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem talalhato ilyen felhasználó");
-                if (!PasswdManager.VerifyEmail(value.Email, result.Email)) return Request.CreateResponse(HttpStatusCode.Unauthorized,"semmi");
+                if (result == null) return NotFound();
+                if (!PasswdManager.VerifyEmail(value.Email, result.Email)) return Unauthorized();
 
                 if(value.Felhasznalonev!=null) result.Felhasznalonev = value.Felhasznalonev;
                 if(value.Email!=null) result.Email = value.Email;
@@ -131,21 +131,17 @@ namespace webapiproj.Controllers
                 if(value.Tema!=null) result.Tema = value.Tema;
                 if(value.LogoEleresiUtja!=null) result.LogoEleresiUtja = value.LogoEleresiUtja;
                 ctx.SaveChanges();
-
-                return Request.CreateResponse(HttpStatusCode.OK,"Sikeres UPDATE");
+                return Ok("Sikeres Update");
             }
             catch (Exception ex)
             {
-                if (ex.Message== "An error occurred while updating the entries. See the inner exception for details.")
-                {
-                    return Request.CreateResponse(HttpStatusCode.Conflict, "Ezzel a felhasználoval vagy emaillal már regisztráltak");
-                }
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "Ezzel a felhasználoval vagy emaillal már regisztráltak");
+                return InternalServerError(ex);
             }
         }
 
         // DELETE api/<controller>/5
-        public HttpResponseMessage Delete(int id,string name)
+        public IHttpActionResult Delete(int id,string name)
         {
             var felhasznalo = ctx.Profilok.Where(x=>x.Felhasznalonev==name).FirstOrDefault();
 
@@ -153,37 +149,37 @@ namespace webapiproj.Controllers
             {
                 ctx.Profilok.Remove(felhasznalo);
                 ctx.SaveChanges();
-                return Request.CreateResponse(HttpStatusCode.OK,"Törlés sikeres volt");
+                return Ok("Törlés sikeres volt");
             }
-            return Request.CreateResponse(HttpStatusCode.NotFound, "Törlés sikertelen volt");
+            return NotFound();
         }
 
         [HttpPost]
         [Route("api/Profil/Authenticate")]
         [ResponseType(typeof(ProfilResponseModel))]
-        public HttpResponseMessage Post([FromBody] Authenticate value)
+        public IHttpActionResult Post([FromBody] Authenticate value)
         {
             var res = ctx.Profilok.Where(x => x.Email == value.Email).FirstOrDefault();
             if (res!=null)
             {
                 var validate = PasswdManager.VerifyPasswordHash(value.Jelszo, res.JelszoUjra, res.Jelszo);
-                if(validate) return Request.CreateResponse(HttpStatusCode.OK,"sikeres bejelentkezes");
-                else  return Request.CreateResponse(HttpStatusCode.Unauthorized, "Nem megfelelo a jelszo");
+                if (validate) return Ok("Sikeres bejelentkezés");
+                else return Unauthorized();
             }
-            return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen felhasználó ilyen jelszóval");
+            return NotFound();
         }
 
         
         [HttpPatch]
         [Route("api/Profil/ProfilJelszoUpdateModel")]
         [ResponseType(typeof(ProfilResponseModel))]
-        public HttpResponseMessage PatchJelszo(int id, string email, [FromBody] ProfilJelszoUpdateModel value)
+        public IHttpActionResult PatchJelszo(int id, string email, [FromBody] ProfilJelszoUpdateModel value)
         {
             try
             {
                 var result = ctx.Profilok.Where(x => x.Email == email).FirstOrDefault();
-                if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem talalhato ilyen felhasználó");
-                if (!PasswdManager.VerifyEmail(email, result.Email)) return Request.CreateResponse(HttpStatusCode.Unauthorized, "Nem létzezik ilyen email");
+                if (result == null) return Content(HttpStatusCode.NotFound,"Nem található felhasználó ezzel az emaillal"); ;
+                if (!PasswdManager.VerifyEmail(email, result.Email)) return Unauthorized();
 
                 if (value.UjJelszo != null)
                 {
@@ -193,15 +189,11 @@ namespace webapiproj.Controllers
                 }
                 ctx.SaveChanges();
 
-                return Request.CreateResponse(HttpStatusCode.OK, "Sikeres jelszo modositas");
+                return Ok("Sikeres jelszo modositas");
             }
             catch (Exception ex)
             {
-                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.")
-                {
-                    return Request.CreateResponse(HttpStatusCode.Conflict, "Ezzel a felhasználoval vagy emaillal már regisztráltak");
-                }
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                return InternalServerError(ex);
             }
         }
     }
