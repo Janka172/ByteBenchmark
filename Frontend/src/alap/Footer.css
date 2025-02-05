@@ -6,7 +6,6 @@
   padding: 0em;
   background-color: #c45454;
   display: flex;
-  justify-content: flex-end;
   z-index: 1000;
 }
 
@@ -27,4 +26,24 @@
   color: #000;
   background-color: #ddd;
   border-radius: 0.5em;
+}
+
+.footContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.footProfil {
+  padding-left: 2vw;
+  text-align: left;
+}
+
+.footMenu {
+  text-align: right;
+}
+
+.profilkep{
+  height: 1em;
 }

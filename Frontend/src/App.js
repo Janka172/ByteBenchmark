@@ -67,8 +67,8 @@ function App() {
   <main>
     <BrowserRouter>
         <div id='fent'></div>
-        <Sidebar></Sidebar> 
         <ImageWithText></ImageWithText>
+        <Sidebar></Sidebar> 
         <Fekvo></Fekvo> 
     
         <div className='Tartalmak'>

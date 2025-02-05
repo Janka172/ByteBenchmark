@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Bejelentkezes() {
@@ -25,14 +25,12 @@ function Bejelentkezes() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(email)
         localStorage.setItem("loggedInUser", JSON.stringify(data));
-
-        // 🔹 Küldjünk egy egyedi eseményt, hogy jelezzük a bejelentkezést
         window.dispatchEvent(new Event("userLoggedIn"));
 
-        // 🔄 Oldal újratöltés
-        //window.location.reload();
+        setAutoLogoutTimer();
+
+        window.location.reload();
       } else {
         const errorMessage = await response.text();
         setError(errorMessage);
@@ -43,6 +41,25 @@ function Bejelentkezes() {
     }
   };
 
+  const setAutoLogoutTimer = () => {
+    setTimeout(() => {
+      handleLogout();
+    }, 2700000);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("loggedInUser");
+    window.dispatchEvent(new Event("userLoggedOut"));
+    navigate("/login");
+  };
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (loggedInUser) {
+      setAutoLogoutTimer();
+    }
+  }, []);
+
   return (
     <div>
       <h2 className="bejCim">Bejelentkezés</h2>
@@ -51,7 +68,7 @@ function Bejelentkezes() {
         <div className="elemSor">
           <div className="bevitelNeve">E-mail cím:</div>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </div>       
+        </div>
         <div className="elemSor">
           <div className="bevitelNeve">Jelszó:</div>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />

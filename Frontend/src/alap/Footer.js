@@ -13,11 +13,9 @@ function Footer() {
       setLoggedInUser(user);
     };
 
-    updateUser(); // Azonnali ellenőrzés
-
-    // 🔹 Figyeljük a localStorage változásait és az egyedi eseményt
+    updateUser();
     window.addEventListener("storage", updateUser);
-    window.addEventListener("userLoggedIn", updateUser); // Egyedi bejelentkezési esemény
+    window.addEventListener("userLoggedIn", updateUser);
 
     return () => {
       window.removeEventListener("storage", updateUser);
@@ -27,19 +25,24 @@ function Footer() {
 
   return (
     <footer className="footer">
-      <div className="footer-links">
-        {loggedInUser ? 
-          <div className="footer-links">
-            <Kijelentkezes></Kijelentkezes>
-            <a href="/oldalak/Profil">Profil Beállítások</a>
-          </div>
+      {loggedInUser ? 
+          <div className="footContainer">
+            <div className="footProfil">
+              <img src='/kepek/profil.png' className='profilkep'></img>
+              {}
+            </div>
+            <div className="footMenu">
+              <Kijelentkezes></Kijelentkezes>
+              <a href="/oldalak/Profil">Profil Beállítások</a>
+            </div>
+        </div>
+        
            : 
           <div className="footer-links">
             <a href="/">Bejelentkezés</a>
             <a href="/oldalak/Reg">Regisztráció</a>
           </div>
         }  
-      </div>
     </footer>
   );
 }
