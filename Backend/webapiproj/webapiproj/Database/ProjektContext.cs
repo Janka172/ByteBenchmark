@@ -12,7 +12,7 @@ using System.Data.Entity.ModelConfiguration;
 namespace webapiproj
 {
     
-    public class ProjektContext:DbContext
+    public class ProjektContext:DbContext,IProjektContext
     {
         public DbSet<Alaplap>Alaplapok { get; set; }
         public DbSet<Applikacio>Applikaciok { get; set; }
