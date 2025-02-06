@@ -53,7 +53,7 @@ namespace webapiproj.Controllers
         ProjektContext ctx = new ProjektContext();
         // GET api/<controller>
         [ResponseType(typeof(AlaplapModel))]
-        public HttpResponseMessage Get()
+        public IHttpActionResult Get()
         {
             IEnumerable<AlaplapModel> result = null;
 
@@ -70,11 +70,11 @@ namespace webapiproj.Controllers
                 VideokartyaCsatlakozo=x.VideokartyaCsatlakozo
             }).ToList();
 
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok(result);
         }
         // GET api/<controller>/5
         [ResponseType(typeof(AlaplapModel))]
-        public HttpResponseMessage Get(int id, string name)
+        public IHttpActionResult Get(int id, string name)
         {
             AlaplapModel result = null;
             result = ctx.Alaplapok.Where(x => x.Nev == name).Select(x => new AlaplapModel
@@ -89,11 +89,11 @@ namespace webapiproj.Controllers
                 Hangkartya = x.Hangkartya,
                 VideokartyaCsatlakozo = x.VideokartyaCsatlakozo
             }).FirstOrDefault();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok(result);
         }
         // POST api/<controller>
         [ResponseType(typeof(AlaplapUploadModel))]
-        public HttpResponseMessage Post([FromBody] AlaplapUploadModel value)
+        public IHttpActionResult Post([FromBody] AlaplapUploadModel value)
         {
             List<int> storageport = new List<int>();
             try
@@ -134,26 +134,27 @@ namespace webapiproj.Controllers
                 }
                 catch (Exception)
                 {
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { error = "Alaplap és csatlakozo közti kapcsolat létrehozása sikertelen!" });
+
+                    return Content(HttpStatusCode.BadRequest, new { error = "Alaplap és csatlakozo közti kapcsolat létrehozása sikertelen!" });
                 }
 
-                return Request.CreateResponse(HttpStatusCode.Created, result);
+                return Content(HttpStatusCode.Created, result);
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                return InternalServerError(ex);
             }
         }
 
         // PUT api/<controller>/5
         [ResponseType(typeof(AlaplapUploadModel))]
-        public HttpResponseMessage Patch(int id, string name,[FromBody] AlaplapUpdatedModel value)
+        public IHttpActionResult Patch(int id, string name,[FromBody] AlaplapUpdatedModel value)
         {
             List<int> storageport = new List<int>();
             try
             {
                 var result = ctx.Alaplapok.Where(x => x.Nev == name).FirstOrDefault();
-                if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen Alaplap");
+                if (result == null) return NotFound();
                 if(value.Nev!=null) result.Nev = value.Nev;
                 if (value.CpuFoglalat!=null) result.CpuFoglalat = value.CpuFoglalat;
                 if (value.AlaplapFormatum!=null) result.AlaplapFormatum = value.AlaplapFormatum;
@@ -166,12 +167,12 @@ namespace webapiproj.Controllers
                          
                 ctx.SaveChanges();
 
-                return Request.CreateResponse(HttpStatusCode.OK, "Update sikeres");
+                return Ok("Update sikeres");
 
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                return InternalServerError(ex);
             }
            
 
@@ -179,7 +180,7 @@ namespace webapiproj.Controllers
 
         // DELETE api/<controller>/5
         [ResponseType(typeof(AlaplapModel))]
-        public HttpResponseMessage Delete(int id, string name)
+        public IHttpActionResult Delete(int id, string name)
         {
             var AlaplapId = ctx.Alaplapok.Where(x => x.Nev == name).Select(x => x.Id).FirstOrDefault();
             var acsatlakozo = ctx.Alaplap_Csatlakozok.Where(x => x.AlaplapId == AlaplapId);
@@ -197,10 +198,10 @@ namespace webapiproj.Controllers
             {
                 ctx.Alaplapok.Remove(result);
                 ctx.SaveChanges();
-                return Request.CreateResponse(HttpStatusCode.OK, "Törlés sikeresen véghezment");
+                return Ok("Törlés sikeresen véghezment");
             }
             ctx.SaveChanges();
-            return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található");
+            return NotFound();
         }
     }
 }

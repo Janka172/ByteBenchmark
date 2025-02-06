@@ -35,7 +35,7 @@ namespace webapiproj.Controllers
         ProjektContext ctx = new ProjektContext();
         // GET api/<controller>
         [ResponseType(typeof(SetupModel))]
-        public HttpResponseMessage Get()
+        public IHttpActionResult Get()
         {
             IEnumerable<SetupModel> result = null;
             result = ctx.Setupok.Include(x => x.Alaplap).Include(x => x.Oprendszer).Include(x => x.Processzor).Include(x => x.Ram).Include(x => x.Videokartya).Include(x => x.Applikacio).Select(x => new SetupModel
@@ -59,12 +59,12 @@ namespace webapiproj.Controllers
                 AlaplapRamTipusa=x.Alaplap.MemoriaTipusa
 
             }).ToList();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok(result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(SetupModel))]
-        public HttpResponseMessage Get(int id, string name)
+        public IHttpActionResult Get(int id, string name)
         {
             IEnumerable<SetupModel> result = null;
             result = ctx.Setupok.Include(x => x.Alaplap).Include(x => x.Oprendszer).Include(x => x.Processzor).Include(x => x.Ram).Include(x => x.Videokartya).Include(x => x.Applikacio).Where(x => x.Applikacio.Nev == name).Select(x => new SetupModel
@@ -87,7 +87,7 @@ namespace webapiproj.Controllers
                 AlaplapMemoriaMaxFrekvencia = x.Alaplap.MaxFrekvencia,
                 AlaplapRamTipusa = x.Alaplap.MemoriaTipusa
             }).ToList();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok(result);
         }
 
         // POST api/<controller>

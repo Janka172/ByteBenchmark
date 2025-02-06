@@ -28,7 +28,7 @@ namespace webapiproj.Controllers
         ProjektContext ctx = new ProjektContext();
         // GET api/<controller>
         [ResponseType(typeof(ProcesszorModel))]
-        public HttpResponseMessage Get()
+        public IHttpActionResult Get()
         {
             IEnumerable<ProcesszorModel> result = null;
 
@@ -46,12 +46,12 @@ namespace webapiproj.Controllers
                 IntegraltVideokartya = x.IntegraltVideokartya
             }).ToList();
 
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok(result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(ProcesszorModel))]
-        public HttpResponseMessage Get(int id, string name)
+        public IHttpActionResult Get(int id, string name)
         {
             ProcesszorModel result = null;
 
@@ -68,12 +68,12 @@ namespace webapiproj.Controllers
                 AjanlottTapegyseg = x.AjanlottTapegyseg,
                 IntegraltVideokartya = x.IntegraltVideokartya
             }).FirstOrDefault();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok(result);
         }
 
         // POST api/<controller>
         [ResponseType(typeof(ProcesszorModel))]
-        public HttpResponseMessage Post([FromBody] ProcesszorModel value)
+        public IHttpActionResult Post([FromBody] ProcesszorModel value)
         {
             try
             {
@@ -94,23 +94,23 @@ namespace webapiproj.Controllers
                 ctx.SaveChanges();
 
 
-                return Request.CreateResponse(HttpStatusCode.Created, result);
+                return Content(HttpStatusCode.Created, result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { error = " Processzor feltoltése sikertelen." });
+                return InternalServerError(ex);
             }
 
         }
 
         // PUT api/<controller>/5
         [ResponseType(typeof(ProcesszorModel))]
-        public HttpResponseMessage Put(int id, string name, [FromBody] ProcesszorModel value)
+        public IHttpActionResult Put(int id, string name, [FromBody] ProcesszorModel value)
         {
             try
             {
                 var result = ctx.Processzorok.Where(x => x.Nev == name).FirstOrDefault();
-                if (result == null) return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található ilyen processzor");
+                if (result == null) return NotFound();
                 if(value.Nev!=null) result.Nev = value.Nev;
                 if (value.AlaplapFoglalat!=null) result.AlaplapFoglalat = value.AlaplapFoglalat;
                 if (value.SzalakSzama!=null) result.SzalakSzama = value.SzalakSzama;
@@ -123,18 +123,18 @@ namespace webapiproj.Controllers
                 if (value.IntegraltVideokartya!=null) result.IntegraltVideokartya = value.IntegraltVideokartya;
 
                 ctx.SaveChanges();
-                return Request.CreateResponse(HttpStatusCode.OK, "Update sikeres");
+                return Ok("Sikeres Update");
             }
             catch (Exception ex)
             {
-                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Request.CreateResponse(HttpStatusCode.Conflict, "Ezzel a névvel már létezik processzor");
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "Ezzel a névvel már létezik processzor");
+                return InternalServerError(ex);
             }
         }
 
         // DELETE api/<controller>/5
         [ResponseType(typeof(ProcesszorModel))]
-        public HttpResponseMessage Delete(int id, string name)
+        public IHttpActionResult Delete(int id, string name)
         {
             var ProcId = ctx.Processzorok.Where(x => x.Nev == name).Select(x => x.Id).FirstOrDefault();
             var set = ctx.Setupok.Where(x => x.ProcId == ProcId).ToList();
@@ -150,10 +150,10 @@ namespace webapiproj.Controllers
             {
                 ctx.Processzorok.Remove(result);
                 ctx.SaveChanges();
-                return Request.CreateResponse(HttpStatusCode.OK, "Törlés sikeresen véghezment");
+                return Ok("Törlés sikeresen véghezment");
             }
             ctx.SaveChanges();
-            return Request.CreateResponse(HttpStatusCode.NotFound, "Nem található");
+            return NotFound();
         }
     }
 }
