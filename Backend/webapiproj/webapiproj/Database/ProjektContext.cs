@@ -7,12 +7,14 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Data.Entity.ModelConfiguration;
+using webapiproj.Database;
 
 namespace webapiproj
 {
     
-    public class ProjektContext:DbContext,IProjektContext
+    public class ProjektContext:DbContext, IProjektContext
     {
         public DbSet<Alaplap>Alaplapok { get; set; }
         public DbSet<Applikacio>Applikaciok { get; set; }

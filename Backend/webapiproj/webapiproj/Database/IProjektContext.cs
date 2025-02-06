@@ -14,7 +14,7 @@ namespace webapiproj.Database
         DbSet<Ram> Ramok { get; }
         DbSet<Profil> Profilok { get; }
         DbSet<Processzor> Processzorok { get; }
-        DbSet<Operaciosrendszer> Operaciosrendszerek { get; }
+        DbSet<Operaciosrendszer> Oprendszerek { get; }
         DbSet<Kategoria> Kategoriak { get; }
         DbSet<Csatlakozo> Csatlakozok { get; }
         DbSet<Applikacio_Profil> Applikacio_Profilok { get; }

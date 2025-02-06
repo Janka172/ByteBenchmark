@@ -1,0 +1,2 @@
+C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\UnitTestProject\obj\Debug\UnitTestProject.csproj.AssemblyReference.cache
+C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\UnitTestProject\obj\Debug\UnitTestProject.csproj.CoreCompileInputs.cache
