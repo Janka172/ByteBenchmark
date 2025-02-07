@@ -16,12 +16,12 @@ function AppLista() {
   useEffect(() => {
     setSzurtApp(mindenApp);
     szur();
-  }, [feltetel]);
+  }, [mindenApp, feltetel]);
 
   function MinSetupKereso(setup, Nev){
     let aktu = setup.filter(s => s.ApplikacioNeve == Nev);
     if(aktu.length > 1) {
-      return aktu.filter(e => e.Gepigeny == 'minimum')[0];
+      return aktu.filter(e => e.Gepigeny == 'min')[0];
     }
     return aktu[0];
   }
@@ -49,7 +49,7 @@ function AppLista() {
         console.error(error);
     }
   }
-  useEffect(() => { getSetup(); }, []);
+  useEffect(() => { getSetup(); }, [ mindenApp ]);
 
   var Mind = [];
   function mindenElemBetoltese() {
@@ -72,7 +72,7 @@ function AppLista() {
   //Szűrés név szerint
   function nevSzures() {
     if(feltetel.keresesiAdatok.nev != ''){
-      var nevreSzurt = szurtApp.filter(x => x.Nev.includes(feltetel.keresesiAdatok.nev));
+      var nevreSzurt = szurtApp.filter(x => x.Nev.toLowerCase().includes(feltetel.keresesiAdatok.nev.toLowerCase()));
       setSzurtApp(nevreSzurt);
     }
   }
@@ -98,21 +98,32 @@ function AppLista() {
   }
   useEffect(() => {
     if (hasVid && hasVid != '') {
+      //console.log(hasVid)
       vidiSz(hasVid);
     }
   }, [hasVid]);
   
   function vidkSzures() {
     if (feltetel.keresesiAdatok.videokartya != '-') {
+      //console.log(feltetel.keresesiAdatok.videokartya)
       getHasVidi(feltetel.keresesiAdatok.videokartya);
     }
   }
   function vidiSz(hasV) {
+    console.log(setup)
     const vidkraSzurt = szurtApp.filter(x => melyikVideokartyaJobb(hasV, MinSetupKereso(setup, x.Nev)));
     setSzurtApp(vidkraSzurt);
+    console.log(szurtApp.filter(x => {
+      //melyikVideokartyaJobb(hasV, MinSetupKereso(setup, x.Nev)))
+      console.log(x.Nev)
+    }))
   }
   function melyikVideokartyaJobb(alap, hasonlitott) {
+    //console.log(alap.vram)
+    //console.log(hasonlitott)
+    
     if(hasonlitott!=null){
+      
       if (alap.vram >= hasonlitott.VideokartyaVram) {
         return true;
       } else {
@@ -213,7 +224,6 @@ function AppLista() {
     }
   };
   useEffect(() => {
-    
     filterAlap();
   }, [szurtApp, szurtAlap]);
 

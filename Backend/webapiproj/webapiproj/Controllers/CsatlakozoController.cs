@@ -19,7 +19,7 @@ namespace webapiproj.Controllers
         ProjektContext ctx = new ProjektContext();
         // GET api/<controller>
         [ResponseType(typeof(CsatlakozoModel))]
-        public HttpResponseMessage Get()
+        public IHttpActionResult Get()
         {
             IEnumerable<CsatlakozoModel> result = null;
 
@@ -28,12 +28,12 @@ namespace webapiproj.Controllers
                 Nev = x.Nev
             }).ToList();
 
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok(result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(CsatlakozoModel))]
-        public HttpResponseMessage Get(int id, string name)
+        public IHttpActionResult Get(int id, string name)
         {
             CsatlakozoModel result = null;
             using (var ctx = new ProjektContext())
@@ -43,12 +43,12 @@ namespace webapiproj.Controllers
                     Nev = x.Nev
                 }).FirstOrDefault();
             }
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok(result);
         }
 
         // POST api/<controller>
         [ResponseType(typeof(CsatlakozoModel))]
-        public HttpResponseMessage Post([FromBody] CsatlakozoModel value)
+        public IHttpActionResult Post([FromBody] CsatlakozoModel value)
         {
             try
             {
@@ -59,11 +59,11 @@ namespace webapiproj.Controllers
                 ctx.SaveChanges();
 
 
-                return Request.CreateResponse(HttpStatusCode.Created, result);
+                return Content(HttpStatusCode.Created, result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { error = " Processzor feltoltése sikertelen." });
+                return InternalServerError(ex);
             }
         }
 

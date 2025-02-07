@@ -23,7 +23,7 @@ namespace webapiproj.Controllers
         ProjektContext ctx = new ProjektContext();
         // GET api/<controller>
         [ResponseType(typeof(ApplikacioModel))]
-        public HttpResponseMessage Get()
+        public IHttpActionResult Get()
         {
             IEnumerable<ApplikacioModel> result = null;
             result = ctx.Applikaciok.Include(x => x.Kategoria).Select(x => new ApplikacioModel
@@ -34,12 +34,12 @@ namespace webapiproj.Controllers
                 Tarhely=x.Tarhely
 
             }).ToList();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok(result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(ApplikacioModel))]
-        public HttpResponseMessage Get(int id, string name)
+        public IHttpActionResult Get(int id, string name)
         {
             ApplikacioModel result = null;
             result = ctx.Applikaciok.Include(x => x.Kategoria).Where(x => x.Nev == name).Select(x => new ApplikacioModel
@@ -49,7 +49,7 @@ namespace webapiproj.Controllers
                 KepeleresiUtja = x.Kepeleresiutja,
                 Tarhely = x.Tarhely
             }).FirstOrDefault();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok( result);
         }
 
         // POST api/<controller>

@@ -20,7 +20,7 @@ namespace webapiproj.Controllers
         ProjektContext ctx = new ProjektContext();
         // GET api/<controller>
         [ResponseType(typeof(AlaplapModel))]
-        public HttpResponseMessage Get()
+        public IHttpActionResult Get()
         {
             IEnumerable<ApplikacioProfilModel> result = null;
             result = ctx.Applikacio_Profilok.Include(x => x.Applikacio).Include(x => x.Profil).Select(x => new ApplikacioProfilModel
@@ -28,12 +28,12 @@ namespace webapiproj.Controllers
                 UserName = x.Profil.Felhasznalonev,
                 ApplikacioNeve = x.Applikacio.Nev
             }).ToList();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok(result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(AlaplapModel))]
-        public HttpResponseMessage Get(int id, string name)
+        public IHttpActionResult Get(int id, string name)
         {
             ApplikacioProfilModel result = null;
             result = ctx.Applikacio_Profilok.Include(x => x.Applikacio).Include(x => x.Profil).Where(x => x.Applikacio.Nev == name).Select(x => new ApplikacioProfilModel
@@ -41,7 +41,7 @@ namespace webapiproj.Controllers
                 UserName = x.Profil.Felhasznalonev,
                 ApplikacioNeve = x.Applikacio.Nev
             }).FirstOrDefault();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Ok(result);
         }
 
         // POST api/<controller>

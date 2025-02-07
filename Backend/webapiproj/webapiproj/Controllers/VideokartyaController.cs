@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Data.Entity;
 using webapiproj.Models;
 using System.Web.Http.Description;
+using webapiproj.Database;
 
 namespace webapiproj.Controllers
 {
@@ -22,7 +23,14 @@ namespace webapiproj.Controllers
     }
     public class VideokartyaController : ApiController
     {
-        ProjektContext ctx = new ProjektContext();
+        IProjektContext ctx = new ProjektContext();
+
+        public VideokartyaController() { }
+
+        public VideokartyaController(IProjektContext context)
+        {
+            ctx = context;
+        }
         // GET api/<controller>
         [ResponseType(typeof(VideokartyaModel))]
         public IHttpActionResult Get()
