@@ -96,6 +96,11 @@ input{
   font-size: 2vw;
 }
 
+#nevBemenet{
+    padding: 0 2vw;
+    width: 90%;
+}
+
 select{
   font-size: 2vw;
 }
@@ -158,6 +163,11 @@ h2{
 
 .gorgetoDiv{
     margin-bottom: 5vw;
+}
+
+.nevSzuro{
+    font-size: 1.8vw;
+    margin-left: 0;
 }
 
 @media (max-width: 767px){

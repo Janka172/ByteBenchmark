@@ -308,7 +308,7 @@ function Sajat() {
   }
 
   return (
-    <div className='teljesSajat'>
+    <div className='teljesSajat' id='teljSajat'>
       <div className='kivalasztottak'>
         <h1>Kiválasztott alkatrészek</h1>
 

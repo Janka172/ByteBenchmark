@@ -10,7 +10,7 @@
 
 .blockSidebar .navigElem {
     display: block;
-    padding: 0.8vw 1.6vw;
+    padding: 0.8vw 3vw;
     text-align: left;
     border: none;
     white-space: normal;
@@ -48,7 +48,6 @@
 
 .sidebar {
     height: 100%;
-    width: 100%;
     background-color: hsla(0, 69%, 60%, 0.8);
     position: fixed;
     z-index: 9999;

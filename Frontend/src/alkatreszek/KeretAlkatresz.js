@@ -7,7 +7,7 @@ function KeretAlkatresz() {
   
 
   return (
-    <div className='gorketok'>
+    <div className='gorketok' id='alkok'>
       <Gorgeto tema='Videókártyák'></Gorgeto>
       <Gorgeto tema='Processzorok'></Gorgeto>
       <Gorgeto tema='RAM-ok'></Gorgeto>

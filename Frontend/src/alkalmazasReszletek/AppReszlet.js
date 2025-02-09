@@ -48,11 +48,11 @@ function AppReszlet() {
         if(!(betoltA && betoltK)){
             if(appKovetelmeny[0] == undefined) setTarhelyAdat('- ')
             for(let elem of appKovetelmeny){
-                if(elem.Gepigeny=='minimum') {
+                if(elem.Gepigeny=='min') {
                     setMinimumK(elem);
                     setBetoltM(false);
                 }
-                else if(elem.Gepigeny=='optimum') {
+                else if(elem.Gepigeny=='opt') {
                     setOptimumK(elem);
                     setBetoltO(false);
                 }
@@ -68,11 +68,11 @@ function AppReszlet() {
                     <h1 className='appNev'>{appAdat.Nev}</h1>
                     <div className='elem'>
                         <h2 className='sorCim'>Kategória: </h2>
-                        <h2 className='sorTartalom'>{betoltK ? '-' : appAdat.KategoriaNev}</h2>
+                        <h2 className='sorTartalom'>{betoltA ? '-' : appAdat.KategoriaNev}</h2>
                     </div>
                     <div className='elem'>
                         <h2 className='sorCim'>Szükséges tárhely: </h2>
-                        <h2 className='sorTartalom'>{betoltK ? '-' : tarhelyAdat } GB</h2>
+                        <h2 className='sorTartalom'>{betoltA ? '-' : appAdat.Tarhely } GB</h2>
                     </div>
                 </div>
                 <div className='jobOSzlop'>

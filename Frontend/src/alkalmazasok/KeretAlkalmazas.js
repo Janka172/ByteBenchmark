@@ -8,7 +8,7 @@ import { KeresesiAdatokProvider } from './KeresesiAdatokContext'; // Importálju
 function Keret() {
   return (
     <KeresesiAdatokProvider> {/* A keresési adatok körbevonása a Provider-rel */}
-      <div>
+      <div id='appok'>
         {/* Kis ablak méret */}
         <div className='kisAblak'>
           <Szuro></Szuro>
