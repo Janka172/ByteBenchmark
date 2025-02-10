@@ -1,13 +1,15 @@
+import { useNavigate } from 'react-router-dom';
 import Stilus from './Felh.css';
 
 function Kijelentkezes() {
 
-  const handleLogout = () => {
+  function kilep() {
     localStorage.removeItem("loggedInUser");
     window.location.reload();
+    window.location.href = "/";
   };
 
-  return <button onClick={handleLogout} className='kijGomb'>Kijelentkezés</button>;
+  return <button onClick={kilep} className='kijGomb'>Kijelentkezés</button>;
 }
 
 export default Kijelentkezes;
