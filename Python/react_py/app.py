@@ -3,13 +3,11 @@ import os
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
 
-# Flask alkalmazás létrehozása
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
-
-# 📌 UPLOAD_FOLDER beállítás
-UPLOAD_FOLDER = 'static/uploads'
+# 📌 Új elérési út: public/IMAGE
+UPLOAD_FOLDER = 'my-app/public/IMAGE'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # 📌 Megengedett fájltípusok
@@ -34,19 +32,26 @@ def upload_file():
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(file_path)
 
-        # 📌 Teljes elérési út visszaküldése a React-nek
-        return jsonify({
-            "message": "Fájl sikeresen feltöltve",
-            "status": "success",
-            "file_url": f"http://127.0.0.1:5000/uploads/{filename}"
-        }), 201
+        # Ellenőrzi, hogy létezik-e már a fájl
+        if os.path.exists(file_path):
+            return jsonify({
+                "message": "A fájl már létezik",
+                "status": "success",
+                "file_name": filename  # Csak a fájl nevét küldjük vissza
+            }), 200
+        else:
+            file.save(file_path)
+            return jsonify({
+                "message": "Fájl sikeresen feltöltve",
+                "status": "success",
+                "file_name": filename  # Csak a fájl nevét küldjük vissza
+            }), 201
 
     return jsonify({"message": "Fájltípus nem engedélyezett", "status": "failed"}), 400
 
-# 📌 Feltöltött képek elérhetősége
-@app.route('/uploads/<filename>')
+# 📌 Feltöltött képek elérhetősége (React a /IMAGE/<filename> URL-en éri el)
+@app.route('/IMAGE/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 

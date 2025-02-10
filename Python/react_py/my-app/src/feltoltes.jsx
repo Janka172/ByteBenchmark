@@ -23,12 +23,16 @@ const Valami = () => {
             const response = await fetch("http://127.0.0.1:5000/upload", {
                 method: "POST",
                 body: formData,
+                headers: {
+                    "Accept": "application/json",
+                },
+                mode: "cors",
             });
     
             const data = await response.json();
             if (response.ok) {
-                setFileUrl(data.file_url);
-                console.log("Feltöltött kép elérési útja:", data.file_url);
+                setFileUrl(data.file_name);
+                console.log("Feltöltött kép elérési útja:", data.file_name);
             } else {
                 console.error("Hiba történt:", data.message);
             }
@@ -36,6 +40,8 @@ const Valami = () => {
             console.error("Hálózati hiba:", error);
         }
     };
+
+    const url="/IMAGE/"+fileUrl;
     return (
         <div>
             <input type="file" onChange={handleFileChange} />
@@ -43,7 +49,9 @@ const Valami = () => {
             {fileUrl && (
                 <div>
                     <p>Feltöltött fájl:</p>
-                    <img src={fileUrl} alt="Feltöltött kép" width="300px" />
+                    <img src={url} alt="" />
+                    <p>{fileUrl}</p>
+                    
                 </div>
             )}
         </div>
