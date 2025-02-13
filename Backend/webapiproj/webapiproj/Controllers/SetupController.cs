@@ -30,6 +30,29 @@ namespace webapiproj.Controllers
         public double? AlaplapMemoriaMaxFrekvencia { get; set; }
         public string AlaplapRamTipusa { get; set; }
     }
+
+    public class SetupPostModel
+    {
+        public string ApplikacioNeve { get; set; }
+        public string Gepigeny { get; set; }
+        public string VidekortyaNev { get; set; }
+        public int Vram { get; set; }
+        public string ProcesszorNev { get; set; }
+        public string OprendszerNev { get; set; }
+        public string RamNeve { get; set; }
+        public double RamFrekvencia { get; set; }
+        public string AlaplapNeve { get; set; }
+    }
+    public class SetupPatchModel
+    {
+        public string VidekortyaNev { get; set; }
+        public int Vram { get; set; }
+        public string ProcesszorNev { get; set; }
+        public string OprendszerNev { get; set; }
+        public string RamNeve { get; set; }
+        public double RamFrekvencia { get; set; }
+        public string AlaplapNeve { get; set; }
+    }
     public class SetupController : ApiController
     {
         ProjektContext ctx = new ProjektContext();
@@ -91,18 +114,84 @@ namespace webapiproj.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        public IHttpActionResult Post([FromBody] SetupPostModel value)
         {
+            var ApplikacioId = ctx.Applikaciok.Where(x => x.Nev == value.ApplikacioNeve).Select(x => x.Id).FirstOrDefault();
+            if (ApplikacioId == 0) return Content(HttpStatusCode.NotFound, "Nincs ilyen applikacio");
+            var VideokartyaId = ctx.Videokartyak.Where(x => x.Nev == value.VidekortyaNev && x.Vram==value.Vram).Select(x => x.Id).FirstOrDefault();
+            if (VideokartyaId == 0) return Content(HttpStatusCode.NotFound, "Nincs ilyen Videokartya");
+            var ProcesszorId = ctx.Processzorok.Where(x => x.Nev == value.ProcesszorNev).Select(x => x.Id).FirstOrDefault();
+            if (ProcesszorId == 0) return Content(HttpStatusCode.NotFound, "Nincs ilyen Processzor");
+            var OprendszerId = ctx.Oprendszerek.Where(x => x.Nev == value.OprendszerNev).Select(x => x.Id).FirstOrDefault();
+            if (OprendszerId == 0) return Content(HttpStatusCode.NotFound, "Nincs ilyen Operácios rendszer");
+            var RamoId = ctx.Ramok.Where(x => x.Nev == value.RamNeve && x.Frekvencia==value.RamFrekvencia).Select(x => x.Id).FirstOrDefault();
+            if (RamoId == 0) return Content(HttpStatusCode.NotFound, "Nincs ilyen Ram");
+            var AlaplapId = ctx.Alaplapok.Where(x => x.Nev == value.AlaplapNeve).Select(x => x.Id).FirstOrDefault();
+            if (AlaplapId == 0) return Content(HttpStatusCode.NotFound, "Nincs ilyen Alaplap");
+
+
+            try
+            {
+                var result = ctx.Setupok.Add(new Setup
+                {
+                    ApplikacioId=ApplikacioId,
+                    VidkaId=VideokartyaId,
+                    ProcId=ProcesszorId,
+                    OpId=OprendszerId,
+                    RamId=RamoId,
+                    AlaplId=AlaplapId,
+                    Gp=value.Gepigeny
+                });
+                ctx.SaveChanges();
+
+                return Created($"api/Setup/{result}", result);
+            }
+            catch (Exception ex)
+            {
+
+                return InternalServerError(ex);
+            }
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
+        public IHttpActionResult Patch(int id,string applikacionev,string igeny, [FromBody] SetupPatchModel value)
         {
+            try
+            {
+                var ApplikacioId = ctx.Applikaciok.Where(x => x.Nev == applikacionev).Select(x => x.Id).FirstOrDefault();
+                if (ApplikacioId == 0) return Content(HttpStatusCode.NotFound, "Nincs ilyen applikacio");
+                var result = ctx.Setupok.Where(x => x.ApplikacioId == ApplikacioId && x.Gp == igeny).FirstOrDefault();
+                if (result == null) return NotFound();
+                if (value.AlaplapNeve != null) result.AlaplId = ctx.Alaplapok.Where(x=>x.Nev==value.AlaplapNeve).Select(x=>x.Id).FirstOrDefault();
+                if (value.VidekortyaNev != null) result.VidkaId = ctx.Videokartyak.Where(x => x.Nev == value.VidekortyaNev &&x.Vram==value.Vram).Select(x => x.Id).FirstOrDefault();
+                if (value.OprendszerNev != null) result.OpId = ctx.Oprendszerek.Where(x => x.Nev == value.OprendszerNev).Select(x => x.Id).FirstOrDefault(); 
+                if (value.ProcesszorNev != null) result.ProcId = ctx.Processzorok.Where(x => x.Nev == value.ProcesszorNev).Select(x => x.Id).FirstOrDefault();
+                if (value.RamNeve != null) result.RamId = ctx.Ramok.Where(x => x.Nev == value.RamNeve && x.Frekvencia==value.RamFrekvencia).Select(x => x.Id).FirstOrDefault();
+
+                ctx.SaveChanges();
+                return Ok(result);
+                //return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id,string applikacionev,string igeny)
         {
+            var ApplikacioId = ctx.Applikaciok.Where(x => x.Nev == applikacionev).Select(x => x.Id).FirstOrDefault();
+            if (ApplikacioId == 0) return Content(HttpStatusCode.NotFound, "Nincs ilyen applikacio");
+            var result = ctx.Setupok.Where(x => x.ApplikacioId == ApplikacioId && x.Gp == igeny).FirstOrDefault();
+            if (result != null)
+            {
+                ctx.Setupok.Remove(result);
+                ctx.SaveChanges();
+                return Ok("Törlés sikeresen megtörtént");
+            }
+            ctx.SaveChanges();
+            return NotFound();
         }
     }
 }

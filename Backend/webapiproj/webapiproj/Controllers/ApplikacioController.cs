@@ -53,9 +53,11 @@ namespace webapiproj.Controllers
         }
 
         // POST api/<controller>
+        [ResponseType(typeof(ApplikacioModel))]
         public IHttpActionResult Post([FromBody] ApplikacioModel value)
         {
             var katId = ctx.Kategoriak.Where(x => x.Nev == value.KategoriaNev).Select(x => x.Id).FirstOrDefault();
+            if (katId == 0) return Content(HttpStatusCode.NotFound, "Nem szerepel ez a kategoria");
             try
             {
                 var result = ctx.Applikaciok.Add(new Applikacio
@@ -67,7 +69,8 @@ namespace webapiproj.Controllers
                 });
                 ctx.SaveChanges();
 
-                return Created($"api/Applikacio/{result}", result);
+                return Ok();
+                //return Created($"api/Applikacio/{result}", result);
             }
             catch (Exception ex)
             {
@@ -77,13 +80,46 @@ namespace webapiproj.Controllers
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
+        [ResponseType(typeof(ApplikacioModel))]
+        public IHttpActionResult Patch(int id,string name, [FromBody] ApplikacioModel value)
         {
+            try
+            {
+                var result = ctx.Applikaciok.Where(x => x.Nev == name).FirstOrDefault();
+                var katresult = ctx.Kategoriak.Where(x => x.Nev == value.KategoriaNev).Select(x=>x.Id).FirstOrDefault();
+                if (katresult == null) return Content(HttpStatusCode.NotFound, "Nincs ilyen kategoria");
+                if (result == null) return Content(HttpStatusCode.NotFound, "Nincs ilyen Alkalmazás"); ;
+                if (value.Nev != null) result.Nev = value.Nev;
+                if (value.Tarhely != null) result.Tarhely=value.Tarhely;
+                if (value.KepeleresiUtja != null) result.Kepeleresiutja = value.KepeleresiUtja;
+                if (value.KategoriaNev != null) result.KatId = katresult;
+
+                ctx.SaveChanges();
+                return Ok(result);
+                //return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "üttközés van a videokartyanal");
+                return InternalServerError(ex);
+            }
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        [ResponseType(typeof(ApplikacioModel))]
+        public IHttpActionResult Delete(int id, string name)
         {
+            var applikaciok = ctx.Applikaciok.Where(x => x.Nev == name).FirstOrDefault();
+            if (applikaciok == null) return NotFound();
+            int ApplikacioId = applikaciok.Id;          
+            var set = ctx.Setupok.Where(x => x.ApplikacioId == ApplikacioId).ToList();
+            ctx.Setupok.RemoveRange(set);
+            var prof = ctx.Applikacio_Profilok.Where(x => x.AppId == ApplikacioId).ToList();
+            ctx.Applikacio_Profilok.RemoveRange(prof);
+
+            ctx.Applikaciok.Remove(applikaciok);
+            ctx.SaveChanges();
+            return Ok("Törlés sikeres");
         }
     }
 }

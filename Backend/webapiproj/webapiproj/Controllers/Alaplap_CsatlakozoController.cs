@@ -84,9 +84,9 @@ namespace webapiproj.Controllers
 
         // PUT api/<controller>/5
         [ResponseType(typeof(AlaplapModel))]
-        public void Put(int id,string name, [FromBody] string value)
+        public IHttpActionResult Put(int id,string name, [FromBody] string value)
         {
-            
+            return StatusCode(HttpStatusCode.NotImplemented);
         }
 
         // DELETE api/<controller>/5
