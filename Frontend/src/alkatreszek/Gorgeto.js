@@ -167,9 +167,14 @@ function Gorgeto({ tema }) {
 
   var [reszTartalom, setReszTartalom] = useState({ display: 'none' });
   var [reszletNyitva, setReszletNyitva] = useState(false);
-  function reszletMenu(alkatNeve) {
-    setKivalasztottNev(alkatNeve);
-    setKivNev(sajatAdatok.filter(x => x.Nev == alkatNeve)[0]);
+  function reszletMenu(alkat) {
+    setKivalasztottNev(alkat);
+    console.log(alkat)
+
+    if(temaAdatok[0].rovidit=='v') setKivNev(sajatAdatok.filter(x => (x.Nev == alkat.Nev) && (x.vram == alkat.vram))[0]);
+    else if(temaAdatok[0].rovidit=='r') setKivNev(sajatAdatok.filter(x => (x.Nev == alkat.Nev) && (x.Frekvencia == alkat.Frekvencia))[0]);
+    else setKivNev(sajatAdatok.filter(x => x.Nev == alkat.Nev)[0]);
+
     setReszletNyitva(!reszletNyitva);
     if (!reszletNyitva) {
       setReszTartalom({ display: 'block' });
@@ -211,15 +216,37 @@ function Gorgeto({ tema }) {
     const AppIndex = szurtAlk.length;
   
     for (let i = 0; i < AppIndex; i++) {
-      const alkatNeve = szurtAlk[i].Nev;
+      const alkat = szurtAlk[i];
       const adat = { tipus: temaAdatok[0].rovidit, id: temaAdatok[0].id };
-      Mind.push(
-        <div className="korKepKeret" key={i}>
-          <img src={atmenetiKepUrl} className="korKep" alt="Kép" />
-          <h4 className="alkatNeve">{alkatNeve}</h4>
-          <button className='reszletGomb' onClick={() => reszletMenu(alkatNeve)}>{tartalom}</button>
-        </div>
-      );
+      if(adat.tipus=='v'){
+        Mind.push(
+          <div className="korKepKeret" key={i}>
+            <img src={atmenetiKepUrl} className="korKep" alt="Kép" />
+            <h4 className="alkatNeve">{alkat.Nev}</h4>
+            <h4 className="alkatReszlet">VRAM: {szurtAlk[i].vram} GB</h4>
+            <button className='reszletGomb' onClick={() => reszletMenu(alkat)}>{tartalom}</button>
+          </div>
+        );
+      }
+      else if(adat.tipus=='r'){
+        Mind.push(
+          <div className="korKepKeret" key={i}>
+            <img src={atmenetiKepUrl} className="korKep" alt="Kép" />
+            <h4 className="alkatNeve">{alkat.Nev}</h4>
+            <h4 className="alkatReszlet">Frekvencia: {szurtAlk[i].Frekvencia} Hz</h4>
+            <button className='reszletGomb' onClick={() => reszletMenu(alkat)}>{tartalom}</button>
+          </div>
+        );
+      }
+      else{
+        Mind.push(
+          <div className="korKepKeret" key={i}>
+            <img src={atmenetiKepUrl} className="korKep" alt="Kép" />
+            <h4 className="alkatNeve">{alkat.Nev}</h4>
+            <button className='reszletGomb' onClick={() => reszletMenu(alkat)}>{tartalom}</button>
+          </div>
+        );
+      }
     }
 
     return Mind.map((x) => x);

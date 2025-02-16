@@ -1,14 +1,19 @@
 .kovetelm{
-    background-color: rgba(167, 143, 143, 0.6); 
+    background-color: rgba(167, 143, 143, 0.6);
+    border: 0.2vw rgba(114, 54, 54, 0.8) solid;
     margin: 2vw;
     padding: 3.5vw;
     border-radius: 2vw;
 }
 
+.teljesReszletMenu{
+    border: 0.2vw rgba(114, 54, 54, 0.8) solid;
+}
+
 .sor{
     display: grid;
     grid-template-columns: 1fr 1fr 0.5fr;
-    border-bottom: 1px rgba(184, 70, 70, 0.8) solid;
+    border-bottom: 1px rgba(114, 54, 54, 0.8) solid;
 }
 
 .sorCime{

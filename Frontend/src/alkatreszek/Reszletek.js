@@ -10,7 +10,7 @@ function Reszletek({ adat }) {
 
   function elemekBetoltese() {
     let ujMind = []; 
-
+    console.log(adat)
     for (let sor in adat) {
       var kiirando=sor;
 

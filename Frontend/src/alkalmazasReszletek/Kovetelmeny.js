@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Kovetelmeny(adatok) {
   var adat=adatok.adatok;
   var cimsor='';
-  if(adat.Gepigeny=='minimum') cimsor='Minimális követelmények';
+  if(adat.Gepigeny=='min') cimsor='Minimális követelmények';
   else cimsor='Optimális követelmények';
 
   var [videokartya, setVideokartya] = useState('');
@@ -114,7 +114,7 @@ function Kovetelmeny(adatok) {
 
       <div className='sor'>
         <h2 className='sorfCime'>Videókártya: </h2>
-        <h2 className='megnev'>{adat.VidekortyaNev}</h2>
+        <h2 className='megnev'>{adat.VidekortyaNev} - {adat.VideokartyaVram}GB</h2>
         {videokartya && (
           <Link to="/oldalak/AlkatreszReszletek" state={{ 'tipus': vidk, 'id': videokartya }}>
             <button className='tovabbi'>További részletek</button>

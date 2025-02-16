@@ -29,7 +29,7 @@ function Footer() {
           <div className="footContainer">
             <div className="footProfil">
               <img src='/kepek/profil.png' className='profilkep'></img>
-              {}
+              <p className='felhnev'>{JSON.parse(localStorage.getItem("loggedInUser")).Felhasznalonev}</p>
             </div>
             <div className="footMenu">
               <Kijelentkezes></Kijelentkezes>

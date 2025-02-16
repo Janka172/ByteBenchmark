@@ -53,14 +53,15 @@ function App() {
     }
   }
 
-  function temaBeallitasa(){
+  function temaBeallitasa() {
     const user = JSON.parse(localStorage.getItem("loggedInUser"));
-    setLoggedInUser(user);
-
-    if(loggedInUser){
-      console.log(loggedInUser)
+    
+    if (user) {
+      document.body.style.backgroundColor = user.Tema === 'dark' ? 'rgb(61, 61, 61)' : 'rgb(196, 196, 196)';
+    } else {
+      document.body.style.backgroundColor = 'rgb(61, 61, 61)';
     }
-  }
+}
   
 
   return (

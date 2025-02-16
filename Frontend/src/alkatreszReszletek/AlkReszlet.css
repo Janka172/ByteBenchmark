@@ -1,5 +1,6 @@
 .conti{
     background-color: rgba(167, 143, 143, 0.6); 
+    border: 0.2vw rgba(114, 54, 54, 0.8) solid;
     padding: 3.5vw;
     border-radius: 2vw;
     margin: auto;

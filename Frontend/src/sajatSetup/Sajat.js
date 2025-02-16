@@ -175,7 +175,6 @@ function Sajat() {
       setKivalasztottVideokartya('nincs');
     }
     setVanAlap('grid');
-    szures();
   }
 
   const gorgetoContainer = useRef(null);
@@ -194,10 +193,6 @@ function Sajat() {
 
   //Combo elemek megjelnítése
   const [vanAlap, setVanAlap] = useState('none');
-
-  function szures(){
-
-  }
   
   // Operációs rendszerek
   function opRendszerBetoltes(){
@@ -215,7 +210,7 @@ function Sajat() {
     var elemek = [];
     elemek.push(
       mindenVideokartya.map((vid, index) => (
-        <option value={vid.Nev} key={index}>{vid.Nev}</option>
+        <option value={vid.Nev} key={index}>{vid.Nev} - {vid.vram}GB</option>
     )))
     return elemek;
   }
@@ -244,7 +239,7 @@ function Sajat() {
       else vanRam='flex';
       elemek.push(
         szurtRam.map((ram, index) => (
-          <option value={ram.Nev} key={index}>{ram.Nev}</option> 
+          <option value={ram.Nev} key={index}>{ram.Nev} - {ram.Frekvencia}Hz</option> 
         )))
     }
     return elemek;
@@ -265,45 +260,153 @@ function Sajat() {
   const [mindenApp, setMindenApp] = useState([]);
   const [szurtApp, setSzurtApp] = useState([]);
   const [betoltApp, setBetoltApp] = useState(true);
+  const [setup, setSetup] = useState([]);
+  const [betoltS, setBetoltS] = useState(true);
+
   async function getMindenApp() {
     try {
       const response = await fetch('https://localhost:44316/api/Applikacio');
       const data = await response.json();
       setMindenApp(data);
+      setSzurtApp(data);
       setBetoltApp(false);
     } catch (error) {
       console.error(error);
     }
   }
   useEffect(() => {getMindenApp();}, []);
+
+  async function getSetup() {
+      try{
+          const response = await fetch(`https://localhost:44316/api/Setup`);
+          const data = await response.json();
+          setSetup(data);
+          setBetoltS(false);
+      } catch (error){
+          console.error(error);
+      }
+    }
+    useEffect(() => { getSetup(); }, [ mindenApp ]);
+
   function MinSetupKereso(setup, Nev){
     let aktu = setup.filter(s => s.ApplikacioNeve == Nev);
     if(aktu.length > 1) {
-      return aktu.filter(e => e.Gepigeny == 'minimum')[0];
+      return aktu.filter(e => e.Gepigeny == 'min')[0];
     }
     return aktu[0];
   }
 
+  useEffect(() => {
+    if (kivVideokartya=='nincs' || kivProcesszor=='nincs' || kivOpRendszer=='nincs' || kivRam=='nincs' || kivAlaplap=='nincs'){
+      document.getElementById('futAlkGomb').style.backgroundColor='gray';
+      document.getElementById('futAlkGomb').style.cursor='not-allowed';
+
+      document.getElementById('mentAlkGomb').style.backgroundColor='gray';
+      document.getElementById('mentAlkGomb').style.cursor='not-allowed';
+    }
+    else{
+      document.getElementById('futAlkGomb').style.backgroundColor='';
+      document.getElementById('futAlkGomb').style.cursor='';
+
+      document.getElementById('mentAlkGomb').style.backgroundColor='';
+      document.getElementById('mentAlkGomb').style.cursor='';
+    }
+  }, [kivVideokartya, kivProcesszor, kivOpRendszer, kivRam, kivAlaplap])
+
   const [Mind, setMind] = useState([]);
   const [ottVanVagyNem, setOttVanVagyNem] = useState('none');
+
+  useEffect(() => {
+    listazas();
+  }, [szurtApp]);
+
   function listazas() {
-    if(!betoltApp && (kivVideokartya!='nincs' && kivProcesszor!='nincs' && kivOpRendszer!='nincs' && kivRam!='nincs' && kivAlaplap!='nincs')){
+    if (!betoltApp && kivVideokartya != 'nincs' && kivProcesszor != 'nincs' && kivOpRendszer != 'nincs' && kivRam != 'nincs' && kivAlaplap != 'nincs') {
       setOttVanVagyNem('block');
-      const AppIndex = mindenApp.length;
-      let tempMind = [];
-      for (let i = 0; i < AppIndex; i++) {
-        const adat = { nev: mindenApp[i].Nev };
-        tempMind.push(
-          <div className="korKepKeret" key={i}>
-            <img src={atmenetiKepLink} className="korKep" alt="App kép" />
-            <h4 className="appNeve">{mindenApp[i].Nev}</h4>
-            <Link to='/oldalak/AlkalmazasReszletek' state={adat}>
-              <button className='reszletGomb'>További részletek</button>
-            </Link>
-          </div>
-        );
+      var ujMind=[]
+      
+      if(szurtApp.length!=0){
+        ujMind = szurtApp.map((app, i) => {
+          const adat = { nev: app.Nev };
+          return (
+            <div className="korKepKeret" key={i}>
+              <img src={atmenetiKepLink} className="korKep" alt="App kép" />
+              <h4 className="appNeve">{app.Nev}</h4>
+              <Link to='/oldalak/AlkalmazasReszletek' state={adat}>
+                <button className='reszletGomb'>További részletek</button>
+              </Link>
+            </div>
+          );
+        });
       }
-      setMind(tempMind);
+      else{
+        ujMind = <div className='hianyUzi'>Jelenleg nincsen a feltételeknek megfeleő alkalmazás !</div>
+      }
+
+      setMind(ujMind);
+    } else {
+      setOttVanVagyNem('none');
+    }
+  }
+
+  async function szur() {
+    if (!betoltApp && kivVideokartya !== 'nincs' && kivProcesszor !== 'nincs' && kivOpRendszer !== 'nincs' && kivRam !== 'nincs' && kivAlaplap !== 'nincs') {
+      console.log('Szűrés elkezdődött');
+  
+      let szurtLista = [...mindenApp];
+  
+      // Szűrés operációsrendszer szerint
+      szurtLista = szurtLista.filter(x => {
+        const minSetup = MinSetupKereso(setup, x.Nev);
+        return minSetup && minSetup.OprendszerNev === kivOpRendszer.Nev;
+      });
+  
+      // Szűrés videókártya szerint
+      try {
+        const response = await fetch(`https://localhost:44316/api/Videokartya/0?name=${kivVideokartya.Nev}`);
+        const hasVid = await response.json();
+        szurtLista = szurtLista.filter(x => melyikVideokartyaJobb(hasVid, MinSetupKereso(setup, x.Nev)));
+      } catch (error) {
+        console.error("Videókártya lekérése sikertelen:", error);
+      }
+  
+      // Szűrés processzor szerint
+      try {
+        const response = await fetch(`https://localhost:44316/api/Processzor/0?name=${kivProcesszor.Nev}`);
+        const hasonlitott = await response.json();
+        szurtLista = szurtLista.filter(x => melyikProcesszorJobb(hasonlitott, MinSetupKereso(setup, x.Nev)));
+      } catch (error) {
+        console.error("Processzor lekérése sikertelen:", error);
+      }
+
+      // Szűrés RAM szerint
+      szurtLista = szurtLista.filter(x => {
+        const minSetup = MinSetupKereso(setup, x.Nev);
+        return minSetup && minSetup.RamMeret <= kivRam.Meret;
+      });
+
+      setSzurtApp(szurtLista);
+    } else {
+      setSzurtApp([]);
+    }
+  }
+
+  function melyikVideokartyaJobb(alap, hasonlitott) {
+    if(hasonlitott!=null){
+      if (alap.vram >= hasonlitott.VideokartyaVram) {
+        return true;
+      } else {
+        return false;
+      }
+    } 
+  }
+  function melyikProcesszorJobb(alap, hasonlitott) {
+    if(hasonlitott!=null){
+      if (alap.ProcesszormagokSzama < hasonlitott.ProcesszorMagokSzama) {
+        return false;
+      } else if (alap.ProcesszormagokSzama >= hasonlitott.ProcesszorMagokSzama) {
+        return true;
+      }
     }
   }
 
@@ -312,32 +415,35 @@ function Sajat() {
       <div className='kivalasztottak'>
         <h1>Kiválasztott alkatrészek</h1>
 
-        <div className='sor'>
+        <div className='sajSor'>
           <h2 className='soreCime'>Alaplap:</h2>
           <h2 className='soreCime'>{kivAlaplap.Nev}</h2>
         </div>
 
-        <div className='sor'>
+        <div className='sajSor'>
           <h2 className='soreCime'>Videókártya:</h2>
-          <h2 className='soreCime'>{kivVideokartya.Nev}</h2>
+          <h2 className='soreCime'>{kivVideokartya.Nev} - {kivVideokartya.vram}GB</h2>
         </div>
 
-        <div className='sor'>
+        <div className='sajSor'>
           <h2 className='soreCime'>Processzor:</h2>
           <h2 className='soreCime'>{kivProcesszor.Nev}</h2>
         </div>
 
-        <div className='sor'>
+        <div className='sajSor'>
           <h2 className='soreCime'>Operációsrendszer:</h2>
           <h2 className='soreCime'>{kivOpRendszer.Nev}</h2>
         </div>
 
-        <div className='sor'>
+        <div className='sajSor'>
           <h2 className='soreCime'>Ram:</h2>
-          <h2 className='soreCime'>{kivRam.Nev}</h2>
+          <h2 className='soreCime'>{kivRam.Nev} - {kivRam.Frekvencia}Hz</h2>
         </div>
 
-        <button className='szur' onClick={listazas}>Futtatható Alkalmazások Megjelenítése</button>
+        <div className='sajatGombSor'>
+          <button className='szur' onClick={szur} id='futAlkGomb'>Futtatható Alkalmazások Megjelenítése</button>
+          <button className='szur' id='mentAlkGomb'>Mentés</button>
+        </div>
       </div>
 
       <div className='kompat' style={{ display: ottVanVagyNem }}>

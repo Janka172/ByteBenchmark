@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import Stilus from './Felh.css';
 
 function Kijelentkezes() {
