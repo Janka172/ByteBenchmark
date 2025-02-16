@@ -45,18 +45,24 @@ namespace webapiproj.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        [ResponseType(typeof(ApplikacioProfilModel))]
+        public IHttpActionResult Post([FromBody] ApplikacioProfilModel value)
         {
+            return StatusCode(HttpStatusCode.NotImplemented);
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
+        [ResponseType(typeof(ApplikacioProfilModel))]
+        public IHttpActionResult Patch(int id, [FromBody] string value)
         {
+           return  StatusCode(HttpStatusCode.NotImplemented);
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        [ResponseType(typeof(ApplikacioProfilModel))]
+        public IHttpActionResult Delete(int id)
         {
+            return StatusCode(HttpStatusCode.NotImplemented);
         }
     }
 }

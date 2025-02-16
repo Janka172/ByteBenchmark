@@ -163,7 +163,7 @@ namespace webapiproj.Controllers
             if (res!=null)
             {
                 var validate = PasswdManager.VerifyPasswordHash(value.Jelszo, res.JelszoUjra, res.Jelszo);
-                if (validate) return Ok("Sikeres bejelentkezés");
+                if (validate) return Ok(res);
                 else return Unauthorized();
             }
             return NotFound();

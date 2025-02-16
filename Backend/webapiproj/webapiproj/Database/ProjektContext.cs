@@ -68,6 +68,12 @@ namespace webapiproj
                 .IsUnique()
                 .HasName("Nev_Buildszam");
             base.OnModelCreating(modelBuilder);
+            // setup osszetett mezo
+            modelBuilder.Entity<Setup>()
+                .HasIndex(v => new { v.ApplikacioId, v.Gp })
+                .IsUnique()
+                .HasName("ApplikacioId_Gp");
+            base.OnModelCreating(modelBuilder);
         }
 
     }
