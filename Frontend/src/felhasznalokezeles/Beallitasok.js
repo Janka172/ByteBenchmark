@@ -1,66 +1,81 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Stilus from './Felh.css';
 
 function Beallitasok() {
-    var [altDisp, setAltDisp]=useState('none');
-    var [biztDisp, setBiztDisp]=useState('none');
+  const [altDisp, setAltDisp] = useState('grid');
+  const [biztDisp, setBiztDisp] = useState('none');
+  const [activeMenu, setActiveMenu] = useState('alt');
 
-    document.body.onload=alapMenuKivalasztas();
-    function alapMenuKivalasztas(){
-        document.getElementById('alt').style.backgroundColor = 'rgb(233, 203, 203)';
-        altDisp='grid';
-        biztDisp='none';
-    }
+  useEffect(() => {
+    alapMenuKivalasztas();
+  }, []);
 
-    function altKiv(){
-        document.getElementById('alt').style.backgroundColor = 'rgb(233, 203, 203)';
-        document.getElementById('bizt').style.backgroundColor = '';
-        menuMegjelenites();
-    }
-    function biztKiv(){
-        document.getElementById('bizt').style.backgroundColor = 'rgb(233, 203, 203)';
-        document.getElementById('alt').style.backgroundColor = '';
-        menuMegjelenites();
-    }
-  
-    function menuMegjelenites(){
-        if(document.getElementById('alt').style.backgroundColor == 'rgb(233, 203, 203)'){
-            altDisp='grid';
-            biztDisp='none';
-        }
-        else if(document.getElementById('bizt').style.backgroundColor == 'rgb(233, 203, 203)'){
-            altDisp='none';
-            biztDisp='grid';
-        }
-    }
+  function alapMenuKivalasztas() {
+    setActiveMenu('alt');
+    setAltDisp('grid');
+    setBiztDisp('none');
+  }
+
+  function altKiv() {
+    setActiveMenu('alt');
+    setAltDisp('grid');
+    setBiztDisp('none');
+  }
+
+  function biztKiv() {
+    setActiveMenu('bizt');
+    setAltDisp('none');
+    setBiztDisp('grid');
+  }
 
   return (
     <div className='teljesBeallitas'>
-        <div className='menuOszlop'>
-            <div className='oszlopElem' id='alt' onClick={altKiv}>Általános</div>
-            <div className='oszlopElem' id='bizt' onClick={biztKiv}>Biztonság</div>
+      <div className='menuOszlop'>
+        <div
+          className={`oszlopElem ${activeMenu === 'alt' ? 'active' : ''}`}
+          id='alt'
+          onClick={altKiv}
+          style={{ backgroundColor: activeMenu === 'alt' ? 'rgb(233, 203, 203)' : '' }}
+        >
+          Általános
+        </div>
+        <div
+          className={`oszlopElem ${activeMenu === 'bizt' ? 'active' : ''}`}
+          id='bizt'
+          onClick={biztKiv}
+          style={{ backgroundColor: activeMenu === 'bizt' ? 'rgb(233, 203, 203)' : '' }}
+        >
+          Biztonság
+        </div>
+      </div>
+
+      <div className='beallitasiReszletek'>
+        <div className='altalanos' style={{ display: altDisp }}>
+          <div className='menuEle'>
+            <p className='beallitasNeve'>Téma:</p>
+            <select>
+              <option value='dark'>Sötét</option>
+              <option value='light'>Világos</option>
+            </select>
+          </div>
+
+          <div className='menuEle'>
+            <p className='beallitasNeve'>Felhasználónév:</p>
+            <input type='text'></input>
+          </div>
+
+          <div className='menuEle'>
+            <p className='beallitasNeve'>Kép:</p>
+            <input type='img'></input>
+          </div>
+
+          <button className='altalnosMentes'>Mentés</button>
         </div>
 
-        <div className='beallitasiReszletek'>
-
-            <div className='altalanos' style={{display: altDisp}}>
-                <div className="menuEle">
-                    <p className="beallitasNeve">Téma:</p>
-                    <select>
-                        <option value="dark">Sötét</option>
-                        <option value="light">Világos</option>
-                    </select>
-                </div>
-
-
-                <button className='altalnosMentes'>Mentés</button>
-            </div>
-
-            <div className='biztonsagi' style={{display: biztDisp}}>
-
-            </div>
-
+        <div className='biztonsagi' style={{ display: biztDisp }}>
+          {/* Add your security settings here */}
         </div>
+      </div>
     </div>
   );
 }

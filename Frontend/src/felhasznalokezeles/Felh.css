@@ -116,11 +116,15 @@ select{
     padding: 1vw;
     text-align: right;
 }
-
 .oszlopElem:hover{
     cursor: pointer;
     background-color: #ddd;
-    border-radius: 3vw;
+}
+.oszlopElem:first-child{
+    border-radius: 1.5vw 1.5vw 0 0;
+}
+.oszlopElem:last-child{
+    border-radius: 0 0 1.5vw 1.5vw;
 }
 
 .beallitasNeve{
