@@ -460,8 +460,7 @@ INSERT INTO `videokartya` (`Id`, `Nev`, `AlaplapiCsatlakozas`, `AjanlottTapegyse
 (45, 'Radeon RX 7800 XT', 'PCIe', 700, 'HDMI, DisplayPort', 'AMD', 16),
 (46, 'Radeon RX 7900 GRE', 'PCIe', 800, 'HDMI, DisplayPort, USB-C', 'AMD', 16),
 (47, 'Radeon RX 7900 XT', 'PCIe', 750, 'HDMI, DisplayPort, USB-C', 'AMD', 20),
-(48, 'Radeon RX 7900 XTX', 'PCIe', 800, 'HDMI, DisplayPort, USB-C', 'AMD', 24),
-(49, 'string', 'string', 0, 'string', 'string', 0);
+(48, 'Radeon RX 7900 XTX', 'PCIe', 800, 'HDMI, DisplayPort, USB-C', 'AMD', 24)
 
 --
 -- Indexek a kiírt táblákhoz
