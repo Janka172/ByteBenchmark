@@ -133,7 +133,10 @@ select{
 }
 
 .menuEle{
-    margin: 3vw;
+    margin: 0 3vw;
+}
+.menuEle input{
+    width: 100%;
 }
 
 .altalnosMentes{
@@ -141,8 +144,48 @@ select{
     padding: 0.8vw;
     font-size: 1.5vw;
     background-color: #c46d6d;
+    margin-top: 3vw;
+}
+.altalnosMentes:hover{
+    background-color: #e69090;
 }
 
-.altalnosMentes:hover{
+.kepConti{
+    width: 100%;
+    background-color: gray;
+    text-align: center;
+    border-radius: 0 1vw;
+    border: 0.2vw black solid;
+}
+
+.profilElolnezet{
+    width: 70%;
+    margin: 1vw 2vw;
+}
+
+.jelszoModCim{
+    font-size: 2.5vw;
+    text-align: left;
+    margin: 1vw;
+}
+
+.jelszoMod{
+    margin: 1vw;
+}
+
+.ujJelszo{
+    margin-top: 5vw;
+    border: black solid 0.2vw;
+    padding-bottom: 3%;
+}
+
+.jelszoMentes{
+    width: 100%;
+    padding: 0.8vw;
+    font-size: 1.5vw;
+    background-color: #c46d6d;
+    margin-top: 3vw;
+}
+.jelszoMentes:hover{
     background-color: #e69090;
 }

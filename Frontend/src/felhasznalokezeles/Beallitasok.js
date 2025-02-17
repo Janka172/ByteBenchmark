@@ -28,25 +28,22 @@ function Beallitasok() {
     setBiztDisp('grid');
   }
 
+  const [image, setImage] = useState(null);
+  const [atmKep, setAtmKep] = useState(null);
+
+  const kepValasztas = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+          setImage(file);
+          setAtmKep(URL.createObjectURL(file)); // Előnézet generálása
+      }
+  }
+
   return (
     <div className='teljesBeallitas'>
       <div className='menuOszlop'>
-        <div
-          className={`oszlopElem ${activeMenu === 'alt' ? 'active' : ''}`}
-          id='alt'
-          onClick={altKiv}
-          style={{ backgroundColor: activeMenu === 'alt' ? 'rgb(233, 203, 203)' : '' }}
-        >
-          Általános
-        </div>
-        <div
-          className={`oszlopElem ${activeMenu === 'bizt' ? 'active' : ''}`}
-          id='bizt'
-          onClick={biztKiv}
-          style={{ backgroundColor: activeMenu === 'bizt' ? 'rgb(233, 203, 203)' : '' }}
-        >
-          Biztonság
-        </div>
+        <div className={`oszlopElem ${activeMenu === 'alt' ? 'active' : ''}`} id='alt' onClick={altKiv} style={{ backgroundColor: activeMenu === 'alt' ? 'rgb(233, 203, 203)' : '' }}>Általános</div>
+        <div className={`oszlopElem ${activeMenu === 'bizt' ? 'active' : ''}`} id='bizt' onClick={biztKiv} style={{ backgroundColor: activeMenu === 'bizt' ? 'rgb(233, 203, 203)' : '' }}>Biztonság</div>
       </div>
 
       <div className='beallitasiReszletek'>
@@ -64,16 +61,52 @@ function Beallitasok() {
             <input type='text'></input>
           </div>
 
-          <div className='menuEle'>
-            <p className='beallitasNeve'>Kép:</p>
-            <input type='img'></input>
+          <div className="menuEle">
+            <p className='beallitasNeve'>Profilkép:</p>
+            <input type="file" accept="*" onChange={kepValasztas}/>
+            {atmKep && (
+                <div className="mt-2">
+                    <p className="beallitasNeve">Előnézet:</p>
+                    <div className='kepConti'>
+                      <img src={atmKep} alt="Előnézet" className="profilElolnezet" />
+                    </div>
+                </div>
+            )}
           </div>
 
           <button className='altalnosMentes'>Mentés</button>
         </div>
 
         <div className='biztonsagi' style={{ display: biztDisp }}>
-          {/* Add your security settings here */}
+          <div className='jelszoMod'>
+            <p className='jelszoModCim'>Jelszó Módosítása</p>
+
+            <div className='eredetiJelszo'>
+              <div className='menuEle'>
+                <p className='beallitasNeve'>Eredeti Jelszó:</p>
+                <input type='password'></input>
+              </div>
+
+              <div className='menuEle'>
+                <p className='beallitasNeve'>Eredeti Jelszó Újra:</p>
+                <input type='password'></input>
+              </div>
+            </div>
+
+            <div className='ujJelszo'>
+              <div className='menuEle'>
+                <p className='beallitasNeve'>Módosított Jelszó:</p>
+                <input type='password'></input>
+              </div>
+
+              <div className='menuEle'>
+                <p className='beallitasNeve'>Módosított Jelszó Újra:</p>
+                <input type='password'></input>
+              </div>
+            </div>
+            
+            <button className='jelszoMentes'>Jelszó Frissítése</button>
+          </div>
         </div>
       </div>
     </div>

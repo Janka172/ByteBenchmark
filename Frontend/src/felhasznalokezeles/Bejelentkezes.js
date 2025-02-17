@@ -5,8 +5,8 @@ function Bejelentkezes() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [belepett, setBelepett] = useState("");
   const navigate = useNavigate();
-  let timeout;
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -28,8 +28,7 @@ function Bejelentkezes() {
         const data = await response.json();
         localStorage.setItem("loggedInUser", JSON.stringify(data));
         window.dispatchEvent(new Event("userLoggedIn"));
-
-        setAutoLogoutTimer();
+        setBelepett(data.Felhasznalonev);
         window.location.reload();
       } else {
         const errorMessage = await response.text();
@@ -41,43 +40,20 @@ function Bejelentkezes() {
     }
   };
 
-  function setAutoLogoutTimer() {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      kilep();
-    }, 1800000);
-  }
+  useEffect(() => {
+    if(belepett != ''){
+      setTimeout(() => {
+        kilep();
+      }, 1800000);
+    }
+  }, [belepett])
 
   function kilep() {
     localStorage.removeItem("loggedInUser");
+    setBelepett('');
     window.location.reload();
     navigate("/");
   }
-
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem("loggedInUser");
-    if (loggedInUser) {
-      setAutoLogoutTimer();
-
-      const resetTimer = () => {
-        clearTimeout(timeout);
-        setAutoLogoutTimer();
-      };
-
-      window.addEventListener("mousemove", resetTimer);
-      window.addEventListener("keydown", resetTimer);
-      window.addEventListener("click", resetTimer);
-      window.addEventListener("scroll", resetTimer);
-
-      return () => {
-        window.removeEventListener("mousemove", resetTimer);
-        window.removeEventListener("keydown", resetTimer);
-        window.removeEventListener("click", resetTimer);
-        window.removeEventListener("scroll", resetTimer);
-        clearTimeout(timeout);
-      };
-    }
-  }, []);
 
   return (
     <div>
