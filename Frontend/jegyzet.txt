@@ -7,3 +7,7 @@ nkKép: Képarány: 16:9
 Jövő hétfő:
 Minden ami van
 + dokumentáció a fejlesztői környzethez
+
+?
+    Admin nézet
+    

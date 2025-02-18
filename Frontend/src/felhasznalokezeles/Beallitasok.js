@@ -48,6 +48,8 @@ function Beallitasok() {
 
       <div className='beallitasiReszletek'>
         <div className='altalanos' style={{ display: altDisp }}>
+          <p className='altBeCim'>Általános Beállitások</p>
+
           <div className='menuEle'>
             <p className='beallitasNeve'>Téma:</p>
             <select>
