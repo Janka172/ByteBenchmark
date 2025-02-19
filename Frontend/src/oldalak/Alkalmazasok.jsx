@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import AppStilus from '../App.css';
-import Keret from '../alkalmazasok/KeretAlkalmazas.js';
+import Keret from '../alkalmazasok/KeretAlkalmazas.jsx';
 
 function Alkalmazasok() {
 

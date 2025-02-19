@@ -10,13 +10,13 @@ import Footer from './alap/Footer';
 import ImageWithText from './alap/Borito';
 import Alkatreszek from './oldalak/Alkatreszek';
 import AlkalmazasReszletek from './oldalak/AlkalmazasReszletek';
-import AlkatreszReszletek from './oldalak/AlkatreszReszletek.js';
-import Sajat from './sajatSetup/Sajat.js';
-import UjAlkalmazas from './oldalak/UjAlkalmazas.js';
-import UjAlkatresz from './oldalak/UjAlkatresz.js';
-import Profil from './oldalak/Profil.js';
-import Regisztr from "./felhasznalokezeles/Regiszt.js";
-import Reg from './oldalak/Reg.js';
+import AlkatreszReszletek from './oldalak/AlkatreszReszletek';
+import Sajat from './sajatSetup/Sajat';
+import UjAlkalmazas from './oldalak/UjAlkalmazas';
+import UjAlkatresz from './oldalak/UjAlkatresz';
+import Profil from './oldalak/Profil';
+import Regisztr from "./felhasznalokezeles/Regiszt";
+import Reg from './oldalak/Reg';
 
 function App() {
   const [profilk, setProfilk] = useState([]);

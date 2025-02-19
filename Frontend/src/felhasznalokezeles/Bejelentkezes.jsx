@@ -8,7 +8,7 @@ function Bejelentkezes() {
   const [belepett, setBelepett] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  async function belep(e) {
     e.preventDefault();
 
     try {
@@ -31,8 +31,7 @@ function Bejelentkezes() {
         setBelepett(data.Felhasznalonev);
         window.location.reload();
       } else {
-        const errorMessage = await response.text();
-        setError(errorMessage);
+        setError('Helytelen bejelentkezési adatok !');
       }
     } catch (err) {
       setError("Hálózati hiba történt!");
@@ -58,8 +57,8 @@ function Bejelentkezes() {
   return (
     <div>
       <h2 className="bejCim">Bejelentkezés</h2>
-      {error && <p className="error">{error}</p>}
-      <form onSubmit={handleLogin}>
+      {error && <p className="hibaUzi">{error}</p>}
+      <form onSubmit={belep}>
         <div className="elemSor">
           <div className="bevitelNeve">E-mail cím:</div>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />

@@ -77,16 +77,6 @@ select{
     border-radius: 0.5em;
 }
 
-.error{
-    background-color: rgb(255, 47, 47);
-    width: 50%;
-    font-size: 1.8vw;
-    padding: 2vw;
-    border-radius: 1vw;
-    border: #000 0.5vw solid;
-    text-align: center;
-}
-
 .teljesBeallitas{
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -173,12 +163,6 @@ select{
     margin: 1vw;
 }
 
-.ujJelszo{
-    margin-top: 5vw;
-    border: black solid 0.2vw;
-    padding-bottom: 3%;
-}
-
 .jelszoMentes{
     width: 100%;
     padding: 0.8vw;
@@ -186,8 +170,16 @@ select{
     background-color: #c46d6d;
     margin-top: 3vw;
 }
-.jelszoMentes:hover{
+.jelszoMentes:hover, .jelszoMegsem:hover{
     background-color: #e69090;
+}
+
+.jelszoMegsem{
+    width: 100%;
+    padding: 0.8vw;
+    font-size: 1.5vw;
+    background-color: #c46d6d;
+    margin-top: 0.5vw;
 }
 
 .altBeCim{

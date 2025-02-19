@@ -10,4 +10,5 @@ Minden ami van
 
 ?
     Admin nézet
+    Jelszóerősség
     

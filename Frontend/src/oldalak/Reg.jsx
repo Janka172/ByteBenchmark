@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Regisztr from '../felhasznalokezeles/Regiszt.js';
+import Regisztr from '../felhasznalokezeles/Regiszt';
 
 
 function Reg() {
