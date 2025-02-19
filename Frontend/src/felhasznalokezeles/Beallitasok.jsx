@@ -24,12 +24,14 @@ function Beallitasok() {
     setActiveMenu('alt');
     setAltDisp('grid');
     setBiztDisp('none');
+    document.getElementById('hibaU').style.display='none';
   }
 
   function biztKiv() {
     setActiveMenu('bizt');
     setAltDisp('none');
     setBiztDisp('grid');
+    document.getElementById('hibaU').style.display='none';
   }
 
   const [image, setImage] = useState(null);
