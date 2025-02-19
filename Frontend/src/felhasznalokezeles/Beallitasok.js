@@ -5,6 +5,9 @@ function Beallitasok() {
   const [altDisp, setAltDisp] = useState('grid');
   const [biztDisp, setBiztDisp] = useState('none');
   const [activeMenu, setActiveMenu] = useState('alt');
+  const [ujJelszoMegjelnik, setUjJelszoMegjelnik] = useState('none');
+  const [regiJelszoMegjelnik, setregiJelszoMegjelnik] = useState('grid');
+  const [vanHiba, setVanHiba] = useState('none');
 
   useEffect(() => {
     alapMenuKivalasztas();
@@ -39,6 +42,18 @@ function Beallitasok() {
       }
   }
 
+  function jelszoEllenorzes(){
+    if(document.getElementById('eJel1').value == document.getElementById('eJel2').value){
+      setregiJelszoMegjelnik('none');
+      setUjJelszoMegjelnik('grid');
+      setVanHiba('none')
+    }
+    else{
+      document.getElementById('hibaSzoveg').innerText='A két jelszó nem egyezik !';
+      setVanHiba('grid');
+    }
+  }
+
   return (
     <div className='teljesBeallitas'>
       <div className='menuOszlop'>
@@ -47,6 +62,10 @@ function Beallitasok() {
       </div>
 
       <div className='beallitasiReszletek'>
+        <div className='hibaUzi' style={{display: vanHiba}}>
+          <p id='hibaSzoveg'></p>
+        </div>
+
         <div className='altalanos' style={{ display: altDisp }}>
           <p className='altBeCim'>Általános Beállitások</p>
 
@@ -80,34 +99,35 @@ function Beallitasok() {
         </div>
 
         <div className='biztonsagi' style={{ display: biztDisp }}>
-          <div className='jelszoMod'>
+          <div className='jelszoMod' style={{display: regiJelszoMegjelnik}}>
             <p className='jelszoModCim'>Jelszó Módosítása</p>
 
             <div className='eredetiJelszo'>
               <div className='menuEle'>
                 <p className='beallitasNeve'>Eredeti Jelszó:</p>
-                <input type='password'></input>
+                <input type='password' id='eJel1'></input>
               </div>
 
               <div className='menuEle'>
                 <p className='beallitasNeve'>Eredeti Jelszó Újra:</p>
-                <input type='password'></input>
+                <input type='password' id='eJel2'></input>
               </div>
+              <button className='jelszoMentes' onClick={jelszoEllenorzes}>Jelszavak Ellenőrzése</button>
             </div>
 
-            <div className='ujJelszo'>
+            <div className='ujJelszo' style={{display: ujJelszoMegjelnik}}>
               <div className='menuEle'>
                 <p className='beallitasNeve'>Módosított Jelszó:</p>
-                <input type='password'></input>
+                <input type='password' id='uJel1'></input>
               </div>
 
               <div className='menuEle'>
                 <p className='beallitasNeve'>Módosított Jelszó Újra:</p>
-                <input type='password'></input>
+                <input type='password' id='uJel2'></input>
               </div>
+
+              <button className='jelszoMentes'>Jelszó Frissítése</button>
             </div>
-            
-            <button className='jelszoMentes'>Jelszó Frissítése</button>
           </div>
         </div>
       </div>
