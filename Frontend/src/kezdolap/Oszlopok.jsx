@@ -49,3 +49,4 @@ function Oszlopok() {
 }
 
 export default Oszlopok;
+//<Bejelentkezes />

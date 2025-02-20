@@ -197,3 +197,49 @@ select{
     border-radius: 1vw 1vw 0 0 ;
     font-size: 2vw;
 }
+
+@media (max-width: 767px){
+    .bejMenu{
+        width: auto;
+    }
+
+    .bejCim{
+        font-size: 5vw;
+    }
+
+    .bevitelNeve{
+        font-size: 3vw;
+    }
+
+    .elemSor input{
+        width: 100%;
+        font-size: 3vw;
+    }
+}
+
+@media (min-width: 768px){
+    .bejMenu{
+        padding: 0;
+    }
+
+    .bejCim{
+        font-size: 2vw;
+    }
+
+    .elemSor{
+        width: auto;
+    }
+
+    .bevitelNeve{
+        font-size: 1vw;
+    }
+
+    .elemSor input{
+        width: 100%;
+        font-size: 1vw;
+    }
+
+    .subGomb{
+        font-size: 1.2vw;
+    }
+}

@@ -13,3 +13,4 @@ Minden ami van
         Törlés, rang változtatás
     Jelszóerősség
     
+

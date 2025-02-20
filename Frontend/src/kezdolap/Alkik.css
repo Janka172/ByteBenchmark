@@ -2,8 +2,56 @@
     color: black;
     text-decoration: underline;
     font-size: 2vw;
+    word-break: normal;
 }
 
-.korKep{
-    width: 60vw;
+.kisKep{
+    width: 100%;
+    border-radius: 50vw;
+}
+
+.kezdoKepKeret{
+    padding: 1.5vw;
+    background-color: rgba(206, 86, 86, 0.678);
+    border: 0.5vw solid rgba(194, 52, 52, 0.4);
+    border-radius: 1vw;
+    margin: 0;
+    width: 40%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.kezdoKepKeret:hover{
+    background-color: rgba(196, 75, 75, 0.815);
+    border: 0.5vw solid rgba(173, 105, 105, 0.699);
+}
+
+.row{
+    width: 100%;
+}
+
+@media (min-width: 1500px){
+    .kezd{
+        font-size: 1vw;
+    }
+}
+
+@media (max-width: 767px){
+    .kezdoKepKeret{
+        width: auto;
+    }
+    
+    .kisKep{
+        width: 50%;
+    }
+
+    .row{
+        gap: 5vw;
+    }
+
+    .kezd{
+        font-size: 2.5vw;
+    }
 }

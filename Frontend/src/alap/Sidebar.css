@@ -9,10 +9,10 @@
 }
 
 .blockSidebar .navigElem {
+    border: none;
     display: block;
     padding: 0.8vw 3vw;
     text-align: left;
-    border: none;
     white-space: normal;
     float: none;
     outline: 0;

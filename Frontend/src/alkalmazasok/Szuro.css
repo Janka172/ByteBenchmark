@@ -119,7 +119,7 @@ option:hover{
   .filter{
     position: sticky;
     top: 3em;
-    height: 50vw;
+    height: 5%;
     overflow-y: auto;
   }
   .nagyMeret{

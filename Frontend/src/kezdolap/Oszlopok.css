@@ -1,7 +1,3 @@
-.ketOszlop{
-  margin: 1vw;
-}
-
 .row{
   display: flex;
   justify-content: center;
@@ -15,6 +11,7 @@
 
 .balOszlop{
   background-color: rgba(196, 84, 84, 0.8);
+  border-radius: 2vw 0;
 }
 
 .megnincs{
@@ -34,24 +31,30 @@
   padding: 2vw;
 }
 
+
 @media (max-width: 767px) {
   .ketOszlop {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    gap: 1vw;
-    padding: 1vw;
-    width: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2vw;
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 1rem;
     box-sizing: border-box;
   }
 
-  .balOszlop, .jobbOszlop {
-    flex: 0;
-    padding: 0.5vw;
-    border-radius: 3vw 0vw;
-    width: 100%;
-    box-sizing: border-box;
+  .szoveg {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: justify;
+  }
+
+  .balOszlop{
+    padding: 1vw;
+  }
+
+  .megnincs, .reg{
+    font-size: 1vw;
   }
 
   .szoveg{
@@ -60,83 +63,28 @@
   }
 }
 
-@media (max-width: 1199px) {
-  .ketOszlop {
-    display: grid;
-    grid-template-columns: 5fr 3fr;
-    align-items: stretch;
-    gap: 1vw;
-    padding: 5vw;
-  }
-  
-  .balOszlop {
-    padding: 1vw;
-    border-radius: 3vw 0vw;
-    margin: 3vw;
-    width: 100%;
-  }
-
-  .szoveg{
-    padding: 5vw;
-    font-size: large;
-  }
-}
-
-@media (min-width: 1200px) {
+@media (min-width: 768px) {
   .ketOszlop {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: stretch;
-    gap: 1vw;
-    padding: 1vw;
-    margin: auto;
-  }
-  
-  .balOszlop {
-    padding: 1vw;
-    border-radius: 3vw 0vw;
+    gap: 2vw;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
   }
 
-  .szoveg{
-    padding: 5vw;
-    font-size: xx-large;
+  .szoveg {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: justify;
+  }
+
+  .balOszlop{
+    padding: 1vw;
+  }
+
+  .megnincs, .reg{
+    font-size: 1vw;
   }
 }
 
-@media (min-width: 2000px) {
-  .ketOszlop {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: stretch;
-    gap: 1vw;
-    padding: 1vw 10vw;
-  }
-  
-  .balOszlop, .jobbOszlop {
-    flex: 1; 
-  }
-  
-  .balOszlop {
-    padding: 1vw;
-    border-radius: 3vw 0vw;
-  }
-
-  .szoveg{
-    padding: 3vw;
-    font-size: xx-large;
-  }
-
-  .korKepKeret{
-    padding: 1.5vw;
-    background-color: rgb(194, 52, 52, 0.4);
-    border: 0.5vw solid rgba(194, 52, 52, 0.4);
-    border-radius: 1vw;
-    width: 11vw;
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-}

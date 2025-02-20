@@ -39,7 +39,6 @@
     font-size: 3vw;
     background-color: rgba(194, 52, 52, 0.99);
     border-radius: 100%;
-    border: none;
     cursor: pointer;
     padding: 0.5vw;
     z-index: 1;
@@ -68,7 +67,6 @@
     font-size: 1.5vw;
     border-radius: 0% 30%;
     background-color: rgba(194, 52, 52, 0.8);
-    border: none;
     color: black;
 }
 
@@ -129,9 +127,7 @@ option:hover{
     font-size: 2vw;
     width: 100%;
     border-radius: 1vw 0vw;
-    color: black;
-    border: none;
-}
+    color: black;}
 
 h2{
     font-size: 2vw;
