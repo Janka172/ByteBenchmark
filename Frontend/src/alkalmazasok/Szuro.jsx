@@ -154,7 +154,7 @@ function Szuro() {
     <div className='filter' style={{ backgroundColor: hatter }}>
       <div>
         <div className='nagyMeret'>
-          <h1>Szűrő beállítások</h1>
+          <h1 className='szuroCimsor'>Szűrő beállítások</h1>
         </div>
         <div className='kisMeret'>
           <button className='bezaros' onClick={menuMegnyitas}>Szűrő beállítások</button>

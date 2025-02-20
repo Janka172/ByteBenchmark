@@ -19,3 +19,16 @@ body{
 h2{
   font-weight:normal;
 }
+
+@media (min-width: 767px){
+  .Tartalmak{
+    width: 70%;
+    margin: auto;
+  }
+
+  .Tartalmak div, .Tartalmak button, .Tartalmak input{
+    transition: background-color 1s;
+    transition: border-color 1s;
+  }
+
+}

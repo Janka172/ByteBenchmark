@@ -62,22 +62,18 @@
 
 @media (max-width: 1199px) {
   .ketOszlop {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 5fr 3fr;
     align-items: stretch;
     gap: 1vw;
     padding: 5vw;
-  }
-  
-  .balOszlop, .jobbOszlop {
-    flex: 0;
   }
   
   .balOszlop {
     padding: 1vw;
     border-radius: 3vw 0vw;
     margin: 3vw;
+    width: 100%;
   }
 
   .szoveg{
@@ -88,18 +84,12 @@
 
 @media (min-width: 1200px) {
   .ketOszlop {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: stretch;
     gap: 1vw;
     padding: 1vw;
-    width: 65%;
     margin: auto;
-  }
-  
-  .balOszlop, .jobbOszlop {
-    flex: 1; 
   }
   
   .balOszlop {

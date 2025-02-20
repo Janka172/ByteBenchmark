@@ -1,6 +1,6 @@
 .kartyak {
   display: flex;
-  margin: 1vw;
+  margin-top: 1vw;
   gap: 1em;
   flex-flow: row;
   justify-content: center;
@@ -8,12 +8,13 @@
   box-sizing: border-box;
 }
 
-.korKepKeret{
+.kartyaKeret{
   padding: 1.5vw;
-  background-color: rgb(194, 52, 52, 0.4);
+  background-color: rgba(206, 86, 86, 0.678);
   border: 0.5vw solid rgba(194, 52, 52, 0.4);
   border-radius: 1vw;
   margin: 0;
+  width: 10vw;
   
   display: flex;
   flex-direction: column;
@@ -21,16 +22,16 @@
   justify-content: center;
 }
 
-.korKepKeret:hover{
-  background-color: rgba(204, 82, 82, 0.705);
-  transition: background-color 1s;
+.kartyaKeret:hover{
+  background-color: rgba(179, 50, 50, 0.808);
+  border-color: rgb(168, 109, 109);
   transform: translateY(-0.5vw);
 }
 
-.korKep{
+.kartyaLogo{
   border-radius: 200vw;
   border: black 1vw solid;
-  width: 70%;
+  width: 50%;
 }
 
 .appNeve{
@@ -55,7 +56,6 @@ button:hover{
   font-size: 1.5vw;
   border-radius: 0% 30%;
   background-color: rgba(194, 52, 52, 0.8);
-  border: none;
   color: black;
 }
 .reszletGomb:hover{
@@ -78,6 +78,10 @@ button:hover{
 
   .reszletGomb{
     font-size: 3vw;
+  }
+
+  .kartyaKeret{
+    width: 20vw;
   }
 }
 
