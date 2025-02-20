@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Keret from '../alkatreszek/KeretAlkatresz.js'
+import Keret from '../alkatreszek/KeretAlkatresz'
 
 function Alkatreszek() {
 

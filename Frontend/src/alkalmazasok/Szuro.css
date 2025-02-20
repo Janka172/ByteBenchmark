@@ -120,7 +120,9 @@ option:hover{
   }
   .filter{
     position: sticky;
-    top: 5em;
+    top: 2.6em;
+    height: 10%;
+    overflow-y: auto;
   }
   .nagyMeret{
     display: flex;

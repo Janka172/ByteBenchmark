@@ -57,8 +57,8 @@ function AppLista() {
     for (let i = 0; i < AppIndex; i++) {
       const adat = { nev: szurtApp[i].Nev };
       Mind.push(
-        <div className="korKepKeret alKorKepKeret" key={i}>
-          <img src={atmenetiKepLink} className="korKep" />
+        <div className="kartyaKeret" key={i}>
+          <img src={atmenetiKepLink} className="kartyaLogo" />
           <h4 className="appNeve">{szurtApp[i].Nev}</h4>
           <Link to="/oldalak/AlkalmazasReszletek" state={adat}>
             <button className="reszletGomb">További részletek</button>
@@ -118,9 +118,6 @@ function AppLista() {
     }))
   }
   function melyikVideokartyaJobb(alap, hasonlitott) {
-    //console.log(alap.vram)
-    //console.log(hasonlitott)
-    
     if(hasonlitott!=null){
       
       if (alap.vram >= hasonlitott.VideokartyaVram) {

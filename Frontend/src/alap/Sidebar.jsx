@@ -18,7 +18,7 @@ function Sidebar() {
 
     if (azon) {
       try {
-        document.getElementById(azon).style.backgroundColor = 'white';
+        document.getElementById(azon).style.backgroundColor = 'rgb(194, 40, 40)';
       } catch {
         console.error();
       }

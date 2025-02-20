@@ -8,13 +8,13 @@
   border: none;
   border-radius: 15vw;
   cursor: pointer;
-  font-size: 2vw;
+  font-size: 1vw;
   padding: 1vw;
 }
 
 @media (max-width: 767px){
   .fel{
-    bottom: 8vw;
+    bottom: 13vw;
     font-size: 5vw;
   }
 }
