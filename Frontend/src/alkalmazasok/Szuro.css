@@ -121,6 +121,7 @@ option:hover{
   .filter{
     position: sticky;
     top: 5em;
+    
   }
   .nagyMeret{
     display: flex;

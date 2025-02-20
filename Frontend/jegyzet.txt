@@ -10,5 +10,6 @@ Minden ami van
 
 ?
     Admin nézet
+        Törlés, rang változtatás
     Jelszóerősség
     
