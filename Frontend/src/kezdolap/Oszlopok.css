@@ -61,6 +61,10 @@
     padding: 5vw;
     font-size: 5vw;
   }
+
+  .megnincs, .reg{
+    font-size: 2.5vw;
+  }
 }
 
 @media (min-width: 768px) {
@@ -88,3 +92,9 @@
   }
 }
 
+@media (min-width: 1500px){
+  .szoveg {
+    font-size: 1vw;
+    margin: 1vw;
+  }
+}

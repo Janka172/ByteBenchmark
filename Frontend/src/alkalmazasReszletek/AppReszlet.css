@@ -54,7 +54,6 @@
     width: 100%;
     border-radius: 30% 0%;
     background-color: rgba(184, 70, 70, 0.8);
-    border: none;
     color: black;
     margin-bottom: 2vw;
 }
@@ -74,22 +73,32 @@
 
 @media (min-width: 1500px){
     .appNev{
-        font-size: 2.5vw;
+        font-size: 1.8vw;
     }
+    
     .sorCim{
-        font-size: 1.9vw;
+        font-size: 1.3vw;
     }
+    
     h2{
         font-size: 1vw;
     }
+    
     .kovetelm h1{
-        font-size: 2.5vw;
+        font-size: 1.5vw;
     }
+    
     .sorfCime{
         font-size: 1.9vw;
     }
+    
     .keret{
         width: 70%;
         margin: auto;
     }
+
+    .nagyKep{
+        border-radius: 0 2vw;
+    }
+
 }

@@ -23,12 +23,12 @@
 }
 
 .korKep {
-    width: 8vw;
-    height: 8vw;
+    width: 70%;
     border-radius: 50%;
 }
 
 .alkatNeve {
+    word-break: normal;
     margin-top: 0.1vw;
     font-size: 2vw;
 }
@@ -84,7 +84,6 @@
 
 .szuroMenu p{
     margin: 0;
-    margin-top: 1vw;
     font-size: 2vw;
 }
 
@@ -166,9 +165,23 @@ h2{
     margin-left: 0;
 }
 
+.reszletGomb{
+    padding: 1vw 2vw;
+    margin-right: 1%;
+    margin-left: auto;
+    margin-top: 1vw;
+    margin-bottom: 0.3vw;
+    font-size: 1.5vw;
+    border-radius: 0% 30%;
+    background-color: rgba(194, 52, 52, 0.8);
+    color: black;
+}
+.reszletGomb:hover{
+  background-color: rgba(216, 108, 108, 0.8);
+}
+
 @media (max-width: 767px){
     .korKep {
-      width: 18vw;
       height: auto;
     }
 
@@ -201,6 +214,10 @@ h2{
         font-size: 4vw;
     }
 
+    .alkatReszlet{
+        font-size: 2vw;
+    }
+
     .szuroMenu select, .szuroMenu input{
        font-size: 3vw;
     }
@@ -208,10 +225,42 @@ h2{
     .szuroMenu input{
         width: 95%;
     }
+
+    .reszletGomb{
+        font-size: 2vw;
+    }
+
+    .reszletGomb{
+        word-break: normal;
+    }
 }
 
 @media (min-width: 1500px){
     .container{
         width: 60%;
+    }
+
+    .alkatNeve{
+        font-size: 1.2vw;
+    }
+
+    .alkatReszlet{
+        font-size: 0.8vw;
+    }
+
+    .cim{
+        font-size: 2vw;
+    }
+
+    .szuroGomb{
+        font-size: 1vw;
+    }
+
+    .nevSzuro, #nevBemenet, .kereses{
+        font-size: 1.3vw;
+    }
+
+    .jobbraNyil, .balraNyil{
+        font-size: 1.5vw;
     }
 }

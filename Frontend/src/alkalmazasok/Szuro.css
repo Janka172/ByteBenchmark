@@ -44,7 +44,7 @@ option:hover{
 }
 
 .gombocska {
-  margin-top: 2vw;
+  margin-top: 1vw;
   padding: 1vw 2vw;
   font-size: 1.8vw;
   font-weight: bold;
@@ -55,7 +55,6 @@ option:hover{
   transition: background-color 0.5s;
   width: 100%;
 }
-
 .gombocska:hover {
   background-color: rgba(184, 89, 89, 0.8);
 }
@@ -97,7 +96,7 @@ option:hover{
     margin: 5vw;
     padding: 1vw;
   }
-  .mezo p, .mezo input, .mezo select{
+  .mezo p, .mezo input, .mezo select, .mezo option{
     font-size: 4vw;
     color: black;
   }
@@ -119,7 +118,7 @@ option:hover{
   .filter{
     position: sticky;
     top: 3em;
-    height: 5%;
+    height: 50vh;
     overflow-y: auto;
   }
   .nagyMeret{
@@ -136,5 +135,12 @@ option:hover{
   }
   .gombocska{
     font-size: 1vw;
+  }
+  .mezo, .mezo select, .mezo input, .mezo option{
+    font-size: 1vw;
+  }
+  .gombocska{
+    font-size: 1vw;
+    padding: 0.3vw;
   }
 }

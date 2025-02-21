@@ -47,7 +47,7 @@ button:hover{
   cursor: pointer;
 }
 
-.reszletGomb{
+.reszletG{
   padding: 1vw 2vw;
   margin-right: 1%;
   margin-left: auto;
@@ -58,7 +58,7 @@ button:hover{
   background-color: rgba(194, 52, 52, 0.8);
   color: black;
 }
-.reszletGomb:hover{
+.reszletG:hover{
   background-color: rgba(216, 108, 108, 0.8);
 }
 
@@ -76,7 +76,7 @@ button:hover{
     font-size: 4vw;
   }
 
-  .reszletGomb{
+  .reszletG{
     font-size: 3vw;
   }
 
@@ -93,21 +93,17 @@ button:hover{
 
 @media (min-width: 1500px){
   .korKep{
-    width: 60%;
+    width: 50%;
   }
   
   .appNeve{
-    font-size: 2vw;
+    font-size: 1vw;
     font-weight: bold;
   }
   
-  .katNeve{
-    font-size: 1vw;
-  }  
-  
-  .reszletGomb{
+  .reszletG{
+    font-size: 0.8vw;
     padding: 1vw;
     margin:0vw;
-    
   }
 }

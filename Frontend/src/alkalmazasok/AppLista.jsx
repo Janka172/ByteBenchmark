@@ -61,7 +61,7 @@ function AppLista() {
           <img src={atmenetiKepLink} className="kartyaLogo" />
           <h4 className="appNeve">{szurtApp[i].Nev}</h4>
           <Link to="/oldalak/AlkalmazasReszletek" state={adat}>
-            <button className="reszletGomb">További részletek</button>
+            <button className="reszletG">További részletek</button>
           </Link>
         </div>
       );

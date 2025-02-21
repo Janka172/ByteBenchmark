@@ -330,7 +330,7 @@ function Sajat() {
           const adat = { nev: app.Nev };
           return (
             <div className="korKepKeret" key={i}>
-              <img src={atmenetiKepLink} className="korKep" alt="App kép" />
+              <img src={atmenetiKepLink} className="korKepS" alt="App kép" />
               <h4 className="appNeve">{app.Nev}</h4>
               <Link to='/oldalak/AlkalmazasReszletek' state={adat}>
                 <button className='reszletGomb'>További részletek</button>
