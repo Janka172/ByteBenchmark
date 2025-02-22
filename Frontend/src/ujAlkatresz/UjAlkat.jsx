@@ -51,10 +51,10 @@ function UjAlkat() {
     return (
         <div>
              <nav className='navbars'> {/*Navigációs menü*/}
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Alaplap")}}>Alaplap</a>
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Videókártya")}}>Videókártya</a>
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Memória")}}>Memória</a>
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Processzor")}}>Processzor</a>
+                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Alaplap"); setActionButtons("Post")}}>Alaplap</a>
+                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Videókártya"); setActionButtons("Post")}}>Videókártya</a>
+                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Memória"); setActionButtons("Post")}}>Memória</a>
+                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Processzor"); setActionButtons("Post")}}>Processzor</a>
              </nav>
 
 
@@ -123,7 +123,7 @@ function UjAlkat() {
                     Vram:<br/> <input type='number'/><br/>
                     </form>
                  </div>
-                 <div className='kozos'>gggsydzhstrh</div>
+                 <div className='kozos' >gggsydzhstrh</div>
                  <div className='kozos'>
                     <div>
                         <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
