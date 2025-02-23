@@ -243,7 +243,19 @@ select{
         font-size: 1vw;
     }
 
-    .subGomb{
+    .subGomb, .altalnosMentes, .jelszoMentes{
+        font-size: 1.2vw;
+    }
+
+    .oszlopElem{
+        font-size: 1.2vw;
+    }
+
+    .altBeCim, .jelszoModCim{
+        font-size: 2vw;
+    }
+
+    .beallitasNeve, .menuEle select, .menuEle input{
         font-size: 1.2vw;
     }
 }

@@ -5,7 +5,7 @@ import VisszaStilus from './Vissza.css';
 function Vissza() {
 
   return (
-    <Link to='/oldalak/Alkatreszek'><button className='osszeshez'> &#8592; Vissza az Összesítőbe</button></Link>
+    <Link to='/oldalak/Alkatreszek'><button className='osszeshez'> &#8592; Az Összes Alkatrészhez</button></Link>
   );
 }
 
