@@ -19,6 +19,7 @@ namespace webapiproj.Models
         public int SlotSzam { get; set; }
         public bool Hangkartya { get; set; }
         public string VideokartyaCsatlakozo { get; set; }
+        public string KepNev { get; set; }
 
     }
 }

@@ -19,5 +19,6 @@ namespace webapiproj.Models
         public bool IntegraltVideokartya { get; set; }
         public double ProcesszorFrekvencia { get; set; }
         public double BFrekvencia { get; set; }//boostolt frekvencia
+        public string KepNev { get; set; }
     }
 }

@@ -16,5 +16,6 @@ namespace webapiproj.Models
         public string MonitorCsatlakozas { get; set; }
         public int Vram { get; set; }
         public string ChipGyartoja { get; set; }
+        public string KepNev { get; set; }
     }
 }

@@ -16,6 +16,7 @@ namespace webapiproj.Controllers
         public string MemoriaTipus { get; set; }
         public double Frekvencia { get; set; }
         public int Meret { get; set; }
+        public string Kepnev;
     }
     public class RamController : ApiController
     {
@@ -30,7 +31,8 @@ namespace webapiproj.Controllers
                 Nev = x.Nev,
                 MemoriaTipus = x.MemoriaTipus,
                 Frekvencia = x.Frekvencia,
-                Meret = x.Meret
+                Meret = x.Meret,
+                Kepnev=x.KepNev
             }).ToList();
             return Ok(result);
         }
@@ -45,7 +47,8 @@ namespace webapiproj.Controllers
                 Nev = x.Nev,
                 MemoriaTipus = x.MemoriaTipus,
                 Frekvencia = x.Frekvencia,
-                Meret = x.Meret
+                Meret = x.Meret,
+                Kepnev = x.KepNev
             }).FirstOrDefault();
             return Ok(result);
         }
@@ -61,7 +64,8 @@ namespace webapiproj.Controllers
                     Nev = value.Nev,
                     MemoriaTipus=value.MemoriaTipus,
                     Frekvencia=value.Frekvencia,
-                    Meret=value.Meret
+                    Meret=value.Meret,
+                    KepNev=value.Kepnev
                 });
                 ctx.SaveChanges();
 
@@ -87,6 +91,7 @@ namespace webapiproj.Controllers
                 if (value.MemoriaTipus!=null) result.MemoriaTipus = value.MemoriaTipus;
                 if (value.Frekvencia!=null) result.Frekvencia = value.Frekvencia;
                 if (value.Meret!=null) result.Meret = value.Meret;
+                if (value.Kepnev != null) result.KepNev = value.Kepnev;
 
                 ctx.SaveChanges();
                 return Content(HttpStatusCode.OK, "sikeres update");

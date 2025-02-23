@@ -13,5 +13,6 @@ namespace webapiproj.Models
         public string MemoriaTipus { get; set; }
         public double Frekvencia { get; set; }
         public int Meret { get; set; }
+        public string KepNev { get; set; }
     }
 }

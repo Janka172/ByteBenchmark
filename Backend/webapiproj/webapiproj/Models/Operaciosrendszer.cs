@@ -11,5 +11,6 @@ namespace webapiproj.Models
         public string Nev { get; set; }
         public string BuildSzam { get; set; }
         public string Verzio { get; set; }
+        public string KepNev { get; set; }
     }
 }

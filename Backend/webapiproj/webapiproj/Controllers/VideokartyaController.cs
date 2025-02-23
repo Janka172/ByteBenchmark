@@ -20,6 +20,7 @@ namespace webapiproj.Controllers
         public string monitorCsatlakozas { get; set; }
         public string chipGyartoja { get; set; }
         public int vram { get; set; }
+        public string kepnev { get; set; }
     }
     public class VideokartyaController : ApiController
     {
@@ -43,7 +44,8 @@ namespace webapiproj.Controllers
                 ajanlottTapegyseg = x.AjanlottTapegyseg,
                 monitorCsatlakozas = x.MonitorCsatlakozas,
                 chipGyartoja = x.ChipGyartoja,
-                vram = x.Vram
+                vram = x.Vram,
+                kepnev=x.KepNev
             }).ToList();
 
             return Ok(result);
@@ -61,7 +63,8 @@ namespace webapiproj.Controllers
                 ajanlottTapegyseg = x.AjanlottTapegyseg,
                 monitorCsatlakozas = x.MonitorCsatlakozas,
                 chipGyartoja = x.ChipGyartoja,
-                vram = x.Vram
+                vram = x.Vram,
+                kepnev=x.KepNev
             }).FirstOrDefault();
             return Ok(result);
         }
@@ -79,7 +82,8 @@ namespace webapiproj.Controllers
                     AjanlottTapegyseg = value.ajanlottTapegyseg,
                     MonitorCsatlakozas = value.monitorCsatlakozas,
                     ChipGyartoja = value.chipGyartoja,
-                    Vram = value.vram
+                    Vram = value.vram,
+                    KepNev=value.kepnev
                 });
                 ctx.SaveChanges();
 
@@ -107,6 +111,7 @@ namespace webapiproj.Controllers
                 if(value.monitorCsatlakozas!=null) result.MonitorCsatlakozas = value.monitorCsatlakozas;
                 if(value.chipGyartoja!=null) result.ChipGyartoja = value.chipGyartoja;
                 if(value.vram!=null) result.Vram = value.vram;
+                if (value.kepnev != null) result.KepNev = value.kepnev;
 
                 ctx.SaveChanges();
                 return Ok(result);

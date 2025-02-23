@@ -15,6 +15,7 @@ namespace webapiproj.Controllers
         public string Nev { get; set; }
         public string BuildSzam { get; set; }
         public string Verzio { get; set; }
+        public string KepNev { get; set; }
     }
     public class OprendszerController : ApiController
     {
@@ -29,7 +30,8 @@ namespace webapiproj.Controllers
             {
                 Nev = x.Nev,
                 BuildSzam = x.BuildSzam,
-                Verzio = x.Verzio
+                Verzio = x.Verzio,
+                KepNev=x.KepNev
             }).ToList();
 
             return Ok(result);
@@ -45,7 +47,8 @@ namespace webapiproj.Controllers
             {
                 Nev = x.Nev,
                 BuildSzam = x.BuildSzam,
-                Verzio = x.Verzio
+                Verzio = x.Verzio,
+                KepNev=x.KepNev
             }).FirstOrDefault();
 
             return Ok(result);
@@ -62,7 +65,7 @@ namespace webapiproj.Controllers
                     Nev = value.Nev,
                     BuildSzam=value.BuildSzam,
                     Verzio=value.Verzio,
-
+                    KepNev=value.KepNev
                 });
                 ctx.SaveChanges();
 
@@ -86,6 +89,7 @@ namespace webapiproj.Controllers
                 if (value.Nev != null) result.Nev = value.Nev;
                 if (value.BuildSzam != null) result.BuildSzam = value.BuildSzam;
                 if (value.Verzio != null) result.Verzio = value.Verzio;
+                if (value.KepNev != null) result.KepNev = value.KepNev;
 
                 ctx.SaveChanges();
                 return Ok("Update sikeres");

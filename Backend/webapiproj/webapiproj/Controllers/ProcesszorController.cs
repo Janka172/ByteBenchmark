@@ -22,6 +22,7 @@ namespace webapiproj.Controllers
         public string Gyarto { get; set; }
         public int AjanlottTapegyseg { get; set; }
         public bool IntegraltVideokartya { get; set; }
+        public string Kepnev { get; set; }
     }
     public class ProcesszorController : ApiController
     {
@@ -43,7 +44,9 @@ namespace webapiproj.Controllers
                 BProcesszorFrekvencia=x.BFrekvencia,
                 Gyarto = x.Gyarto,
                 AjanlottTapegyseg = x.AjanlottTapegyseg,
-                IntegraltVideokartya = x.IntegraltVideokartya
+                IntegraltVideokartya = x.IntegraltVideokartya,
+                Kepnev=x.KepNev
+                
             }).ToList();
 
             return Ok(result);
@@ -66,7 +69,8 @@ namespace webapiproj.Controllers
                 BProcesszorFrekvencia = x.BFrekvencia,
                 Gyarto = x.Gyarto,
                 AjanlottTapegyseg = x.AjanlottTapegyseg,
-                IntegraltVideokartya = x.IntegraltVideokartya
+                IntegraltVideokartya = x.IntegraltVideokartya,
+                Kepnev = x.KepNev
             }).FirstOrDefault();
             return Ok(result);
         }
@@ -88,7 +92,8 @@ namespace webapiproj.Controllers
                     BFrekvencia=value.BProcesszorFrekvencia,
                     Gyarto=value.Gyarto,
                     AjanlottTapegyseg=value.AjanlottTapegyseg,
-                    IntegraltVideokartya=value.IntegraltVideokartya
+                    IntegraltVideokartya=value.IntegraltVideokartya,
+                    KepNev=value.Kepnev
 
                 });
                 ctx.SaveChanges();
@@ -121,6 +126,7 @@ namespace webapiproj.Controllers
                 if(value.Gyarto!=null) result.Gyarto = value.Gyarto;
                 if (value.AjanlottTapegyseg!=null) result.AjanlottTapegyseg = value.AjanlottTapegyseg;
                 if (value.IntegraltVideokartya!=null) result.IntegraltVideokartya = value.IntegraltVideokartya;
+                if (value.Kepnev != null) result.KepNev = value.Kepnev;
 
                 ctx.SaveChanges();
                 return Ok("Sikeres Update");
