@@ -9,7 +9,8 @@ function UjAlkat() {
     const [selectedFile, setSelectedFile] = useState(null);
     const [fileUrl, setFileUrl] = useState("");
 
-    const handleUpload = async () => {
+    const handleUploadAndPost = async (event) => {
+      event.preventDefault();
         if (!selectedFile) {
             alert("Válassz egy fájlt!");
             return;
@@ -30,6 +31,7 @@ function UjAlkat() {
     
             const data = await response.json();
             if (response.ok) {
+                RequestVideoK(data.file_name);
                 setFileUrl(data.file_name);
                 console.log("Feltöltött kép elérési útja:", data.file_name);
             } else {
@@ -44,10 +46,6 @@ function UjAlkat() {
     function NeFrissuljon(event)
     {
         event.preventDefault()
-    }
-    function postol(event){
-        event.preventDefault()
-        RequestVideoK(fileUrl)
     }
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
@@ -65,7 +63,7 @@ function UjAlkat() {
 
              {actionHardver==="Videókártya" && actionButtons==="Post" ? <div className='body'>
                  <div  >
-                    <form method="post" onSubmit={(e) => postol(e)}>
+                    <form>
                     Név:<br/><input type='text' id='1'/><br/>                 {/*név mező*/}
                     Alaplapi csatlakozás:<br/><input type='text' id='2'/><br/>{/*alaplapi csatlakozás mező*/}
                     Ajánlott tápegység:<br/><input type='number' id='3'/><br/>{/*Ajánlott tápegység mező*/}
@@ -73,7 +71,7 @@ function UjAlkat() {
                     Vram:<br/> <input type='number' id='5'/><br/>             {/*Vram mező*/}
                     Chip  gyártója:<br/><input type='text' id='6'/><br/>      {/*név mező*/}
                     <input type="file" onChange={handleFileChange} />
-                    <button type='submit' onClick={handleUpload}>Küld</button>
+                    <button type='button' onClick={handleUploadAndPost}>Küld</button>
                     </form>
                  </div>
                  <div  >

@@ -6,6 +6,8 @@ export function RequestVideoK(fileUrl){
     var mCsatlakozasElem = document.getElementById('4');
     var cGyartoElem = document.getElementById('6');
     var vramElem = document.getElementById('5');
+    var kepneve=String(fileUrl);
+    console.log(kepneve)
 
     // Ellenőrizzük, hogy az input mezők valóban léteznek-e
     if (!nevElem || !aCsatlakozasElem || !atapegysegElem || !mCsatlakozasElem || !cGyartoElem || !vramElem) {
@@ -32,6 +34,7 @@ export function RequestVideoK(fileUrl){
             monitorCsatlakozas: mCsatlakozas,
             chipGyartoja: cGyarto,
             vram: parseInt(vram),
+            kepnev: kepneve,
         }),
     }).then(response => response.json())
     .then(data => console.log("Siker:", data))
