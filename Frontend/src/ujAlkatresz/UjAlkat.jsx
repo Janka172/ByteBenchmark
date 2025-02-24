@@ -28,10 +28,10 @@ function UjAlkat() {
                 },
                 mode: "cors",
             });
-    
+            
             const data = await response.json();
             if (response.ok) {
-                RequestVideoK(data.file_name);
+                RequestVideoK(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                 setFileUrl(data.file_name);
                 console.log("Feltöltött kép elérési útja:", data.file_name);
             } else {
@@ -64,12 +64,12 @@ function UjAlkat() {
              {actionHardver==="Videókártya" && actionButtons==="Post" ? <div className='body'>
                  <div  >
                     <form>
-                    Név:<br/><input type='text' id='1'/><br/>                 {/*név mező*/}
-                    Alaplapi csatlakozás:<br/><input type='text' id='2'/><br/>{/*alaplapi csatlakozás mező*/}
-                    Ajánlott tápegység:<br/><input type='number' id='3'/><br/>{/*Ajánlott tápegység mező*/}
-                    Monitor csatlakozás:<br/><input type='text' id='4'/><br/> {/*Monitor csatlakozás mező*/}
-                    Vram:<br/> <input type='number' id='5'/><br/>             {/*Vram mező*/}
-                    Chip  gyártója:<br/><input type='text' id='6'/><br/>      {/*név mező*/}
+                    Név:<br/><input type='text' id='VideoPost1'/><br/>                 {/*név mező*/}
+                    Alaplapi csatlakozás:<br/><input type='text' id='VideoPost2'/><br/>{/*alaplapi csatlakozás mező*/}
+                    Ajánlott tápegység:<br/><input type='number' id='VideoPost3'/><br/>{/*Ajánlott tápegység mező*/}
+                    Monitor csatlakozás:<br/><input type='text' id='VideoPost4'/><br/> {/*Monitor csatlakozás mező*/}
+                    Vram:<br/> <input type='number' id='VideoPost5'/><br/>             {/*Vram mező*/}
+                    Chip  gyártója:<br/><input type='text' id='VideoPost6'/><br/>      {/*név mező*/}
                     <input type="file" onChange={handleFileChange} />
                     <button type='button' onClick={handleUploadAndPost}>Küld</button>
                     </form>
@@ -140,13 +140,13 @@ function UjAlkat() {
             {actionHardver==="Alaplap" && actionButtons==="Post" ? <div className='body'>
                  <div  >
                     <form>
-                        Név:<br/><input type="text"/><br/>
-                        Processzor foglalat:<br/><input type="text"/><br/>
-                        Alaplap formátum:<br/><input type="text"/><br/>
-                        Maximum frekvencia:<br/><input type="number"/><br/>
-                        Memória típus:<br/><input type="text"/><br/>
-                        Lapkakészlet:<br/><input type="text"/><br/>
-                        Slot szám:<br/><input type="number"/><br/>
+                        Név:<br/><input type="text" id='AlaplapPost1'/><br/>
+                        Processzor foglalat:<br/><input type="text" id='AlaplapPost2'/><br/>
+                        Alaplap formátum:<br/><input type="text" id='AlaplapPost3'/><br/>
+                        Maximum frekvencia:<br/><input type="number" id='AlaplapPost4'/><br/>
+                        Memória típus:<br/><input type="text" id='AlaplapPost5'/><br/>
+                        Lapkakészlet:<br/><input type="text" id='AlaplapPost6'/><br/>
+                        Slot szám:<br/><input type="number" id='AlaplapPost7'/><br/>
                         Hangkártya:<br/>
                         <input type="radio" id="hgk_true" name="hgk_true" value="True"></input>
                         <label htmlFor="hgk_true">Tartalmaz hangkártyát.</label><br/>
@@ -235,10 +235,10 @@ function UjAlkat() {
             {actionHardver==="Memória" && actionButtons==="Post" ? <div className='body'>
                  <div  >
                     <form>
-                        Név:<br/><input type="text"/><br/>
-                        Memória típus:<br/><input type="text"/><br/>
-                        Frekvencia:<br/><input type="number"/>MHz<br/>
-                        Méret:<br/><input type="nmuber"/>
+                        Név:<br/><input type="text" id='MemoriaPost1'/><br/>
+                        Memória típus:<br/><input type="text" id='MemoriaPost2'/><br/>
+                        Frekvencia:<br/><input type="number" id='MemoriaPost3'/>MHz<br/>
+                        Méret:<br/><input type="nmuber" id='MemoriaPost4'/>
                         <input type="file" onChange={handleFileChange} />
                     </form>
                  </div>
@@ -304,14 +304,14 @@ function UjAlkat() {
             {actionHardver==="Processzor" && actionButtons==="Post" ? <div className='body'>
                  <div  >
                      <from>
-                        Név:<br/><input type="text"/><br/>
-                        Frekvencia:<br/><input type="text"/><br/>
-                        Alaplap foglalat:<br/><input type="text"/><br/>
-                        Szálak száma:<br/><input type="number"/><br/>
-                        Támogatott memória típus:<br/><input type="text"/><br/>
-                        Processzormegok száma:<br/><input type="number"/><br/>           
-                        Gyártó:<br/><input type="text"/><br/>
-                        Ajánlott tápegység:<br/><input type="number"/>W<br/>            
+                        Név:<br/><input type="text" id='ProcPost1'/><br/>
+                        Frekvencia:<br/><input type="text"id='ProcPost2'/><br/>
+                        Alaplap foglalat:<br/><input type="text"id='ProcPost3'/><br/>
+                        Szálak száma:<br/><input type="number"id='ProcPost4'/><br/>
+                        Támogatott memória típus:<br/><input type="text"id='ProcPost5'/><br/>
+                        Processzormegok száma:<br/><input type="number"id='ProcPost6'/><br/>           
+                        Gyártó:<br/><input type="text"id='ProcPost7'/><br/>
+                        Ajánlott tápegység:<br/><input type="number"id='ProcPost8'/>W<br/>            
                         Integrált videókártya:<br/>                                                        {/*Rádiógombos megoldással*/}
                         <input type="radio" id="ivk_true" name="ivk_true" value="True"></input>
                         <label htmlFor="ivk_true">Tartalmaz integrált videókártyát.</label><br/>           {/*<--A rádiógomb felirata*/}
