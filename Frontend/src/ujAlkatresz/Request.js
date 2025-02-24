@@ -1,5 +1,5 @@
 
-export function RequestVideoK(fileUrl){
+export function RequestVideokP(fileUrl){
     var nevElem = document.getElementById('VideoPost1').value;
     var aCsatlakozasElem = document.getElementById('VideoPost2').value;
     var atapegysegElem = document.getElementById('VideoPost3').value;
@@ -33,6 +33,7 @@ export function RequestVideoK(fileUrl){
                 {
                     alert("HTTP hiba")
                 }
+                else( alert("Sikeres feltöltés"))
             })
             .catch(error => console.error("Hiba történt:", error));
         }
@@ -41,4 +42,16 @@ export function RequestVideoK(fileUrl){
             alert("kuka")
         }
 
+}
+
+export function RequestAlaplapP(fileUrl){
+
+}
+
+export function RequestMemoriaP(fileUrl){
+    
+}
+
+export function RequestProcesszorP(fileUrl){
+    
 }

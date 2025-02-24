@@ -1,6 +1,6 @@
 import {useState } from 'react';
 import './UjAlkat.css';
-import {RequestVideoK} from './Request';
+import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP} from './Request';
 
 
 function UjAlkat() {
@@ -31,7 +31,11 @@ function UjAlkat() {
             
             const data = await response.json();
             if (response.ok) {
-                RequestVideoK(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+               if(actionHardver==="Videókártya")RequestVideokP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+               if(actionHardver==="Alaplap")RequestAlaplapP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+               if(actionHardver==="Memória")RequestMemoriaP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+               if(actionHardver==="Processzor")RequestProcesszorP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+                
                 setFileUrl(data.file_name);
                 console.log("Feltöltött kép elérési útja:", data.file_name);
             } else {
