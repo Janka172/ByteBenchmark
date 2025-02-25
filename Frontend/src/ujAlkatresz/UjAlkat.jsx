@@ -37,7 +37,6 @@ function UjAlkat() {
                if(actionHardver==="Processzor")RequestProcesszorP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                 
                 setFileUrl(data.file_name);
-                console.log("Feltöltött kép elérési útja:", data.file_name);
             } else {
                 console.error("Hiba történt:", data.message);
             }
