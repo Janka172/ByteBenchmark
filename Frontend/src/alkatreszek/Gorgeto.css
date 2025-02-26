@@ -175,6 +175,8 @@ h2{
     border-radius: 0% 30%;
     background-color: rgba(194, 52, 52, 0.8);
     color: black;
+    word-break: normal;
+
 }
 .reszletGomb:hover{
   background-color: rgba(216, 108, 108, 0.8);
@@ -216,6 +218,7 @@ h2{
 
     .alkatReszlet{
         font-size: 2vw;
+        word-break: normal;
     }
 
     .szuroMenu select, .szuroMenu input{
@@ -246,6 +249,7 @@ h2{
 
     .alkatReszlet{
         font-size: 0.8vw;
+        word-break: normal;
     }
 
     .cim{

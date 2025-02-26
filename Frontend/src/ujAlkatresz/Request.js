@@ -1,4 +1,4 @@
-
+/*
 export function RequestVideokP(fileUrl){
     var nevElem = document.getElementById('VideoPost1').value;
     var aCsatlakozasElem = document.getElementById('VideoPost2').value;
@@ -223,3 +223,4 @@ export function RequestProcesszorP(fileUrl){
 
     
 }
+*/

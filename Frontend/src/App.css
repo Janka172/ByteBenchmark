@@ -38,6 +38,12 @@ h2{
   background: #e93030; 
 }
 
+input {
+  padding: 0.5rem; 
+  box-sizing: border-box;
+}
+
+
 @media (min-width: 767px){
   .Tartalmak{
     width: 70%;

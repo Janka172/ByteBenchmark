@@ -57,6 +57,7 @@ button:hover{
   border-radius: 0% 30%;
   background-color: rgba(194, 52, 52, 0.8);
   color: black;
+  word-break: normal;
 }
 .reszletG:hover{
   background-color: rgba(216, 108, 108, 0.8);
