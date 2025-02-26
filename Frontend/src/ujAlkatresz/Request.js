@@ -1,11 +1,12 @@
-/*
+
 export function RequestVideokP(fileUrl){
     var nevElem = document.getElementById('VideoPost1').value;
     var aCsatlakozasElem = document.getElementById('VideoPost2').value;
     var atapegysegElem = document.getElementById('VideoPost3').value;
     var mCsatlakozasElem = document.getElementById('VideoPost4').value;
-    var cGyartoElem = document.getElementById('VideoPost6').value;
     var vramElem = document.getElementById('VideoPost5').value;
+    var cGyartoElem = document.getElementById('VideoPost6').value;
+
     var kepneve=String(fileUrl);
     console.log(kepneve)
 
@@ -75,13 +76,16 @@ export function RequestAlaplapP(fileUrl){
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    aNev: nevElem,
-                    processzorFoglalat: aCsatlakozasElem,
-                    alaplapFormatum: parseInt(atapegysegElem),
-                    maxFrekvencia: mCsatlakozasElem,
-                    memoriaTipus: cGyartoElem,
-                    lapkaKeszlet: parseInt(vramElem),
-                    slotSzam:parseInt(slotSzamElem),
+                    Nev: nevElem,
+                    CpuFoglalat: aCsatlakozasElem,
+                    AlaplapFormatum: parseInt(atapegysegElem),
+                    MaxFrekvencia: mCsatlakozasElem,
+                    MemoriaTipusa: cGyartoElem,
+                    Lapkakeszlet: parseInt(vramElem),
+                    SlotSzam:parseInt(slotSzamElem),
+                    Hangkartya: true,
+                    VideokartyaCsatlakozo: string,
+                    Csatlakozok: ["string"],
                     kepnev: kepneve,
                 }),
             })
@@ -129,10 +133,10 @@ export function RequestMemoriaP(fileUrl){
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    mNev: mNevElem,
-                    memoriaTipus:memoriaTipusElem,
-                    frekvencia: parseInt(frekvenciaElem),
-                    meret:parseInt(meretElem),
+                    Nev: mNevElem,
+                    MemoriaTipus:memoriaTipusElem,
+                    Frekvencia: parseInt(frekvenciaElem),
+                    Meret:parseInt(meretElem),
                     kepnev: kepneve,
                 }),
             })
@@ -165,19 +169,20 @@ export function RequestMemoriaP(fileUrl){
 
 export function RequestProcesszorP(fileUrl){
     var pNevElem = document.getElementById('ProcPost1').value;
-    var frekvenciaElem = document.getElementById('ProcPost2').value;
-    var alaplapFoglalatElem = document.getElementById('ProcPost3').value;
-    var szalakSzamaElem = document.getElementById('ProcPost4').value;
-    var tamogatottMemoriaTipusElem = document.getElementById('ProcPost5').value;
-    var processzormagokSzamaElem = document.getElementById('ProcPost6').value;
-    var gyartoElem = document.getElementById('ProcPost7').value;
-    var ajanlottTapegysegElem = document.getElementById('ProcPost8').value;
+    var frekvenciaElem = document.getElementById('ProcPost2').value; 
+    var bFrekvenciaElem = document.getElementById('ProcPost3').value;
+    var alaplapFoglalatElem = document.getElementById('ProcPost4').value;
+    var szalakSzamaElem = document.getElementById('ProcPost5').value;
+    var tamogatottMemoriaTipusElem = document.getElementById('ProcPost6').value;
+    var processzormagokSzamaElem = document.getElementById('ProcPost7').value;
+    var gyartoElem = document.getElementById('ProcPost8').value;
+    var ajanlottTapegysegElem = document.getElementById('ProcPost9').value;
     // var integraltVideokartyaElem = document.getElementById('AlaplapPost9').value;             ez hogy lesz megoldva????
     var kepneve=String(fileUrl);
     console.log(kepneve)
 
     
-    if (pNevElem!=null || frekvenciaElem!=null || alaplapFoglalatElem!=null || szalakSzamaElem!=null || tamogatottMemoriaTipusElem!=null || processzormagokSzamaElem!=null || gyartoElem!=null || ajanlottTapegysegElem!=null) 
+    if (pNevElem!=null || frekvenciaElem!=null || bFrekvenciaElem!=null || alaplapFoglalatElem!=null || szalakSzamaElem!=null || tamogatottMemoriaTipusElem!=null || processzormagokSzamaElem!=null || gyartoElem!=null || ajanlottTapegysegElem!=null) 
         {
             fetch ("https://localhost:44316/api/Processzor", {
                 method: "POST",
@@ -185,14 +190,15 @@ export function RequestProcesszorP(fileUrl){
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    pNev: pNevElem,
-                    frekvencia: parseInt(frekvenciaElem),
-                    alaplapFogalalat: alaplapFoglalatElem,
-                    szalakSzama: parseInt(szalakSzamaElem),
-                    tamogatottMemoriaTipus: tamogatottMemoriaTipusElem,
-                    processzormagokSzama: parseInt(processzormagokSzamaElem),
-                    gyarto:gyartoElem,
-                    ajanlottTapegyseg:parseInt(ajanlottTapegysegElem),
+                    Nev: pNevElem,
+                    AlaplapFogalalat: alaplapFoglalatElem,
+                    SzalakSzama: parseInt(szalakSzamaElem),
+                    TamogatottMemoriatipus: tamogatottMemoriaTipusElem,
+                    ProcesszormagokSzama: parseInt(processzormagokSzamaElem),
+                    ProcesszorFrekvencia: parseInt(frekvenciaElem),
+                    BProcesszorFrekvencia: parseInt(bFrekvenciaElem),     
+                    Gyarto:gyartoElem,
+                    AjanlottTapegyseg:parseInt(ajanlottTapegysegElem),
                     kepnev: kepneve,
                 }),
             })
@@ -223,4 +229,3 @@ export function RequestProcesszorP(fileUrl){
 
     
 }
-*/

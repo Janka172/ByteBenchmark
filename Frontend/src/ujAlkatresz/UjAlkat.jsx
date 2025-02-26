@@ -146,10 +146,11 @@ function UjAlkat() {
                         Név:<br/><input type="text" id='AlaplapPost1'/><br/>
                         Processzor foglalat:<br/><input type="text" id='AlaplapPost2'/><br/>
                         Alaplap formátum:<br/><input type="text" id='AlaplapPost3'/><br/>
-                        Maximum frekvencia:<br/><input type="number" id='AlaplapPost4'/><br/>
-                        Memória típus:<br/><input type="text" id='AlaplapPost5'/><br/>
-                        Lapkakészlet:<br/><input type="text" id='AlaplapPost6'/><br/>
-                        Slot szám:<br/><input type="number" id='AlaplapPost7'/><br/>
+                        Alap frekvencia:<br/><input type="number" id='AlaplapPost4'/><br/>
+                        Maximum frekvencia:<br/><input type="number" id='AlaplapPost5'/><br/>
+                        Memória típus:<br/><input type="text" id='AlaplapPost6'/><br/>
+                        Lapkakészlet:<br/><input type="text" id='AlaplapPost7'/><br/>
+                        Slot szám:<br/><input type="number" id='AlaplapPost8'/><br/>
                         Hangkártya:<br/>
                         <input type="radio" id="hgk_true" name="hgk_true" value="True"></input>
                         <label htmlFor="hgk_true">Tartalmaz hangkártyát.</label><br/>
