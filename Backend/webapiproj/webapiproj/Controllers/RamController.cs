@@ -39,10 +39,10 @@ namespace webapiproj.Controllers
 
         // GET api/<controller>/5
         [ResponseType(typeof(RamModel))]
-        public IHttpActionResult Get(int id, string name)
+        public IHttpActionResult Get(int id, string name, int frekvencia, int meret)
         {
             RamModel result = null;
-            result = ctx.Ramok.Where(x => x.Nev == name).Select(x => new RamModel
+            result = ctx.Ramok.Where(x => x.Nev == name && x.Frekvencia==frekvencia&& x.Meret==meret).Select(x => new RamModel
             {
                 Nev = x.Nev,
                 MemoriaTipus = x.MemoriaTipus,
