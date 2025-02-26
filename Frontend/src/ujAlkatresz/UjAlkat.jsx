@@ -312,7 +312,7 @@ function UjAlkat() {
                         Alaplap foglalat:<br/><input type="text"id='ProcPost3'/><br/>
                         Szálak száma:<br/><input type="number"id='ProcPost4'/><br/>
                         Támogatott memória típus:<br/><input type="text"id='ProcPost5'/><br/>
-                        Processzormegok száma:<br/><input type="number"id='ProcPost6'/><br/>           
+                        Processzormagok száma:<br/><input type="number"id='ProcPost6'/><br/>           
                         Gyártó:<br/><input type="text"id='ProcPost7'/><br/>
                         Ajánlott tápegység:<br/><input type="number"id='ProcPost8'/>W<br/>            
                         Integrált videókártya:<br/>                                                        {/*Rádiógombos megoldással*/}
