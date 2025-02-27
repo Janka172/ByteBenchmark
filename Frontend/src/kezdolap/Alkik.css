@@ -16,7 +16,9 @@
     border-radius: 1vw;
     margin: 0;
     width: 90%;
-    height: max-content;
+    height: 90%;
+    text-align: center;
+    padding-top: 1vw;
     
     display: flex;
     flex-direction: column;
