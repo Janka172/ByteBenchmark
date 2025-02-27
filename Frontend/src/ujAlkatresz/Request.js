@@ -68,8 +68,9 @@ export function RequestAlaplapP(fileUrl){
     var memoriaTipusElem = document.getElementById('AlaplapPost5').value;
     var lapkaKeszletElem = document.getElementById('AlaplapPost6').value;
     var slotSzamElem = document.getElementById('AlaplapPost7').value;
-    // var hangKartyatElem = document.getElementById('AlaplapPost7').value;             ez hogy lesz megoldva????
+    const Hangkartya=document.querySelector('input[name="hgk_true"]:checked').value;
     var kepneve=String(fileUrl);
+    console.log(Hangkartya);
     console.log(kepneve)
 
     
@@ -88,10 +89,10 @@ export function RequestAlaplapP(fileUrl){
                     MemoriaTipusa: memoriaTipusElem,
                     Lapkakeszlet: lapkaKeszletElem,
                     SlotSzam:parseInt(slotSzamElem),
-                    Hangkartya: true,
+                    Hangkartya: Hangkartya,
                     VideokartyaCsatlakozo: "string",
-                    Csatlakozok: ["string"],
-                    kepnev: kepneve,
+                    Csatlakozok: ["sata","usb"],
+                    KepNev: kepneve,
                 }),
             })
             .then((response) => {
@@ -142,7 +143,7 @@ export function RequestMemoriaP(fileUrl){
                     MemoriaTipus:memoriaTipusElem,
                     Frekvencia: parseInt(frekvenciaElem),
                     Meret:parseInt(meretElem),
-                    kepnev: kepneve,
+                    Kepnev: kepneve,
                 }),
             })
             .then((response) => {
@@ -182,9 +183,10 @@ export function RequestProcesszorP(fileUrl){
     var processzormagokSzamaElem = document.getElementById('ProcPost7').value;
     var gyartoElem = document.getElementById('ProcPost8').value;
     var ajanlottTapegysegElem = document.getElementById('ProcPost9').value;
-    // var integraltVideokartyaElem = document.getElementById('AlaplapPost9').value;             ez hogy lesz megoldva????
+    const integraltVideokartya = document.querySelector('input[name="ivk_true"]:checked').value;
     var kepneve=String(fileUrl);
     console.log(kepneve)
+
 
     
     if (pNevElem!=null || frekvenciaElem!=null || bFrekvenciaElem!=null || alaplapFoglalatElem!=null || szalakSzamaElem!=null || tamogatottMemoriaTipusElem!=null || processzormagokSzamaElem!=null || gyartoElem!=null || ajanlottTapegysegElem!=null) 
@@ -196,15 +198,16 @@ export function RequestProcesszorP(fileUrl){
                 },
                 body: JSON.stringify({
                     Nev: pNevElem,
-                    AlaplapFogalalat: alaplapFoglalatElem,
+                    AlaplapFoglalat: alaplapFoglalatElem,
                     SzalakSzama: parseInt(szalakSzamaElem),
                     TamogatottMemoriatipus: tamogatottMemoriaTipusElem,
                     ProcesszormagokSzama: parseInt(processzormagokSzamaElem),
-                    ProcesszorFrekvencia: parseInt(frekvenciaElem),
-                    BProcesszorFrekvencia: parseInt(bFrekvenciaElem),     
+                    ProcesszorFrekvencia: parseFloat(frekvenciaElem),
+                    BProcesszorFrekvencia: parseFloat(bFrekvenciaElem),     
                     Gyarto:gyartoElem,
                     AjanlottTapegyseg:parseInt(ajanlottTapegysegElem),
-                    kepnev: kepneve,
+                    IntegraltVideokartya: integraltVideokartya,
+                    Kepnev: kepneve,
                 }),
             })
             .then((response) => {

@@ -1,13 +1,60 @@
-import {useState } from 'react';
+import {useState, useEffect } from 'react';
 import './UjAlkat.css';
 import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP} from './Request';
-
-
+{/*Összes adat tárolására*/}
+const mindenAdat={ 
+   videokartyak : [],
+   processzorok : [],
+   alaplapok : [],
+   memoriak : [],
+   alaplapCsatlakozok : [] 
+}
 function UjAlkat() {
-    const [actionHardver, setActionHardver] =useState("Videókártya")
+    const [actionHardver, setActionHardver] =useState("Alaplap")
     const [actionButtons, setActionButtons] =useState("Post") 
+
+   const [actionIvkRadiobt, setActionIvkRadiobt] = useState("Jeloltradiogomb");
+   const [actionHgkRadiobf, setActionHgkRadiobf] = useState("Nemjeloltradiogomb");
+
     const [selectedFile, setSelectedFile] = useState(null);
     const [fileUrl, setFileUrl] = useState("");
+
+
+   useEffect(()=>{
+      {/* A backendben lévő elérési útvonalak*/}
+      const backEleresiUtvonal={
+         'videokartyak': "https://localhost:44316/api/Videokartya",
+        'processzorok': "https://localhost:44316/api/Processzor",
+        'memoriak': "https://localhost:44316/api/Ram",
+        'alaplapok': "https://localhost:44316/api/Alaplap",
+        'alaplapCsatlakozok': "https://localhost:44316/api/Csatlakozo"
+      }
+      {/*A fetchAdat beolvassa az adatbázisból az adatokat backenden keresztül.*/}
+      const fetchAdat= async ()=>{
+         try
+         {
+            for(var item in backEleresiUtvonal)
+            {
+               const response= await fetch(backEleresiUtvonal[item]);
+               if (response.ok)
+               {
+                  const adat=response.json();
+                  mindenAdat[item]=adat;
+               }
+               else
+               {
+                  throw new Error(`Hiba a ${item} lekérésekor: ${response.status}`);
+                  
+               }           
+            }
+            
+         } catch (error)
+         {
+            console.error("Hiba történt! Hiba: ", error)
+         }
+      }
+      fetchAdat(); 
+   },[])
 
     const handleUploadAndPost = async (event) => {
       event.preventDefault();
@@ -146,18 +193,18 @@ function UjAlkat() {
                         Név:<br/><input type="text" id='AlaplapPost1'/><br/>
                         Processzor foglalat:<br/><input type="text" id='AlaplapPost2'/><br/>
                         Alaplap formátum:<br/><input type="text" id='AlaplapPost3'/><br/>
-                        Alap frekvencia:<br/><input type="number" id='AlaplapPost4'/><br/>
-                        Maximum frekvencia:<br/><input type="number" id='AlaplapPost5'/><br/>
-                        Memória típus:<br/><input type="text" id='AlaplapPost6'/><br/>
-                        Lapkakészlet:<br/><input type="text" id='AlaplapPost7'/><br/>
-                        Slot szám:<br/><input type="number" id='AlaplapPost8'/><br/>
+                        Maximum frekvencia:<br/><input type="number" id='AlaplapPost4'/><br/>
+                        Memória típus:<br/><input type="text" id='AlaplapPost5'/><br/>
+                        Lapkakészlet:<br/><input type="text" id='AlaplapPost6'/><br/>
+                        Slot szám:<br/><input type="number" id='AlaplapPost7'/><br/>
                         Hangkártya:<br/>
-                        <input type="radio" id="hgk_true" name="hgk_true" value="True"></input>
+                        <input type="radio" id="AlaplapPost8" name="hgk_true" value="True"></input>
                         <label htmlFor="hgk_true">Tartalmaz hangkártyát.</label><br/>
             
-                        <input type="radio" id="hgk_false" name="hgk_true" value="False"></input>
+                        <input type="radio" id="AlaplapPost9" name="hgk_true" value="False"></input>
                         <label htmlFor="hgk_false">Nem tartalmaz hangkártyát.</label>
                         <input type="file" onChange={handleFileChange} />
+                        <button type='button' onClick={handleUploadAndPost}>Küld</button>
                     </form>
                  </div>
                  <div  >
@@ -244,6 +291,7 @@ function UjAlkat() {
                         Frekvencia:<br/><input type="number" id='MemoriaPost3'/>MHz<br/>
                         Méret:<br/><input type="nmuber" id='MemoriaPost4'/>
                         <input type="file" onChange={handleFileChange} />
+                        <button type='button' onClick={handleUploadAndPost}>Küld</button>
                     </form>
                  </div>
                  <div  >
@@ -306,23 +354,29 @@ function UjAlkat() {
             </div> : <div></div>}
             {/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
             {actionHardver==="Processzor" && actionButtons==="Post" ? <div className='body'>
-                 <div  >
-                     <from>
+                 <div>
+                     <form>
                         Név:<br/><input type="text" id='ProcPost1'/><br/>
-                        Frekvencia:<br/><input type="text"id='ProcPost2'/><br/>
-                        Alaplap foglalat:<br/><input type="text"id='ProcPost3'/><br/>
-                        Szálak száma:<br/><input type="number"id='ProcPost4'/><br/>
-                        Támogatott memória típus:<br/><input type="text"id='ProcPost5'/><br/>
-                        Processzormagok száma:<br/><input type="number"id='ProcPost6'/><br/>           
-                        Gyártó:<br/><input type="text"id='ProcPost7'/><br/>
-                        Ajánlott tápegység:<br/><input type="number"id='ProcPost8'/>W<br/>            
-                        Integrált videókártya:<br/>                                                        {/*Rádiógombos megoldással*/}
-                        <input type="radio" id="ivk_true" name="ivk_true" value="True"></input>
-                        <label htmlFor="ivk_true">Tartalmaz integrált videókártyát.</label><br/>           {/*<--A rádiógomb felirata*/}
-            
-                        <input type="radio" id="ivk_false" name="ivk_true" value="False"></input>
-                        <label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label>            {/*<--A rádiógomb felirata*/}
-                    </from>
+                        Alap frekvencia:<br/><input type="number"id='ProcPost2'/><br/>
+                        Maximum frekvencia:<br/><input type="number"id='ProcPost3'/><br/> 
+                        Alaplap foglalat:<br/><input type="text"id='ProcPost4'/><br/>
+                        Szálak száma:<br/><input type="number"id='ProcPost5'/><br/>
+                        Támogatott memória típus:<br/><input type="text"id='ProcPost6'/><br/>
+                        Processzormagok száma:<br/><input type="number"id='ProcPost7'/><br/>           
+                        Gyártó:<br/><input type="text"id='ProcPost8'/><br/>
+                        Ajánlott tápegység:<br/><input type="number"id='ProcPost9'/>W<br/>            
+                        Integrált videókártya:<br/>
+
+
+                        <input type="radio" id="ProcPost10" name="ivk_true" value="True" checked={actionIvkRadiobt==='Jeloltradiogomb'}onChange={()=>setActionIvkRadiobt('Jeloltradiogomb')}></input>
+                        <label htmlFor="ProcPost11">Tartalmaz integrált videókártyát.</label><br/>
+
+                        <input type="radio" id="ivk_false" name="ivk_true" value="False" checked={actionIvkRadiobt==='Jeloltradiogombocska'} onChange={()=>setActionIvkRadiobt('Jeloltradiogombocska')}></input>
+                        <label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label>
+                        
+                        <input type="file" onChange={handleFileChange} />
+                        <button type='button' onClick={handleUploadAndPost}>Küld</button>
+                    </form>
                  </div>
                  <div  >
                     <p>Kép neve: {fileUrl}</p>
@@ -339,7 +393,7 @@ function UjAlkat() {
 
             {actionHardver==="Processzor" && actionButtons==="Patch" ? <div className='body'>
                  <div>
-                    <from>
+                    <form>
                             Név:<br/><input type="text"/><br/>
                             Frekvencia:<br/><input type="text"/><br/>
                             Alaplap foglalat:<br/><input type="text"/><br/>
@@ -354,7 +408,7 @@ function UjAlkat() {
                 
                             <input type="radio" id="ivk_false" name="ivk_true" value="False"></input>
                             <label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label>            {/*<--A rádiógomb felirata*/}
-                        </from>
+                        </form>
                  </div>
 
                  <div  >
