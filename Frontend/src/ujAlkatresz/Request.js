@@ -1,4 +1,3 @@
-
 export function RequestVideokP(fileUrl){
     var nevElem = document.getElementById('VideoPost1').value;
     var aCsatlakozasElem = document.getElementById('VideoPost2').value;
@@ -8,7 +7,13 @@ export function RequestVideokP(fileUrl){
     var cGyartoElem = document.getElementById('VideoPost6').value;
 
     var kepneve=String(fileUrl);
-    console.log(kepneve)
+    console.log(kepneve);
+    console.log(nevElem);
+    console.log(aCsatlakozasElem);
+    console.log(atapegysegElem);
+    console.log(mCsatlakozasElem);
+    console.log(vramElem);
+    console.log(cGyartoElem);
 
     
     if (nevElem!=null || aCsatlakozasElem!=null || atapegysegElem!=null || mCsatlakozasElem!=null || cGyartoElem!=null || vramElem!=null) 
@@ -76,15 +81,15 @@ export function RequestAlaplapP(fileUrl){
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    Nev: nevElem,
-                    CpuFoglalat: aCsatlakozasElem,
-                    AlaplapFormatum: parseInt(atapegysegElem),
-                    MaxFrekvencia: mCsatlakozasElem,
-                    MemoriaTipusa: cGyartoElem,
-                    Lapkakeszlet: parseInt(vramElem),
+                    Nev: aNevElem,
+                    CpuFoglalat: processzorFoglalatElem,
+                    AlaplapFormatum: alaplapFormatumElem,
+                    MaxFrekvencia: parseInt(maxFrekvenciaElem),
+                    MemoriaTipusa: memoriaTipusElem,
+                    Lapkakeszlet: lapkaKeszletElem,
                     SlotSzam:parseInt(slotSzamElem),
                     Hangkartya: true,
-                    VideokartyaCsatlakozo: string,
+                    VideokartyaCsatlakozo: "string",
                     Csatlakozok: ["string"],
                     kepnev: kepneve,
                 }),
@@ -225,7 +230,5 @@ export function RequestProcesszorP(fileUrl){
         else
         {
             alert("kuka")
-        }
-
-    
+        }  
 }
