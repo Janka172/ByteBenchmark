@@ -272,7 +272,7 @@ function Gorgeto({ tema }) {
         <div className='szuroMenu' style={menuElrejtese}>
           <div>
             <h2 className='nevSzuro'>Név:</h2>
-            <input type='text' id="nevBemenet" value={keresettNev} onChange={(e) => { setKeresettNev(e.target.value); }}></input>
+            <input type='text' id="nevBemenet" value={keresettNev} onChange={(e) => { setKeresettNev(e.target.value); }} className='gInput'></input>
           </div>
           <button className='kereses' onClick={megsem}>Mégsem</button>
         </div>

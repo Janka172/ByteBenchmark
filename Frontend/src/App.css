@@ -39,10 +39,13 @@ h2{
 }
 
 input {
-  padding: 0.5rem; 
+  padding: 1vw; 
   box-sizing: border-box;
 }
 
+.gombDiv{
+  margin-top: 2vw;
+}
 
 @media (min-width: 767px){
   .Tartalmak{

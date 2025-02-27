@@ -86,11 +86,6 @@ function Regisztr() {
         </div>
 
         <div className="menuElem">
-          <p className="bevitelNeve">Jogosultság:</p>
-          <input type="text" value={jogosultsag} onChange={(e) => setJogosultsag(e.target.value)} required />
-        </div>
-
-        <div className="menuElem">
           <p className="bevitelNeve">E-mail cím:</p>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
