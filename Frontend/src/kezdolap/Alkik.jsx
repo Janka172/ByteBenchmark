@@ -44,14 +44,12 @@ function Alkik(){
         if(!betoltA) appokMegjelenitese();
     }, [randomIndexek]);
 
-    var [elsoSor, setElsoSor] = useState([]);
-    var [masodikSor, setMasodikSor] = useState([]);
+    var [alkCont, setAlkCont] = useState([]);
 
     function appokMegjelenitese() {
-        const ujElsoSor = [];
-        const ujMasodikSor = [];
-        for (let i = 0; i < 2 && i < randomIndexek.length; i++) {
-            ujElsoSor.push(
+        const ujAlkCont = [];
+        for (let i = 0; i < 4 && i < randomIndexek.length; i++) {
+            ujAlkCont.push(
                 <Link key={i} to='/oldalak/AlkalmazasReszletek' state={{'nev' : mindenApp[randomIndexek[i]].Nev}}>
                     <div className="kezdoKepKeret">
                         <img src={atmenetiKepLink} className="kisKep" alt="App" />
@@ -61,31 +59,14 @@ function Alkik(){
             );
         }
 
-        for (let i = 2; i < randomIndexek.length; i++) {
-            ujMasodikSor.push(
-                <Link key={i} to='/oldalak/AlkalmazasReszletek' state={{'nev' : mindenApp[randomIndexek[i]].Nev}}>
-                    <div className="kezdoKepKeret">
-                        <img src={atmenetiKepLink} className="kisKep" alt="App" />
-                        <h4 className="kezd">{mindenApp[randomIndexek[i]].Nev}</h4>
-                    </div>
-                </Link>
-            );
-        }
-
-        setElsoSor(ujElsoSor);
-        setMasodikSor(ujMasodikSor);
+        setAlkCont(ujAlkCont);
         setBetoltAlk(false);
     }
 
 
     return (
-        <div>
-            <div className="row">
-                {betoltAlk ? console.log('Betöltés folyamatban !') : elsoSor.map(x => x)}
-            </div>
-            <div className="row">
-                {betoltAlk ? console.log('Betöltés folyamatban !') : masodikSor.map(x => x)}
-            </div>
+        <div className='alkContainer'>
+            {betoltAlk ? console.log('Betöltés folyamatban !') : alkCont.map(x => x)}
         </div>
       );
 }
