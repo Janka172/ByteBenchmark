@@ -10,7 +10,7 @@
 
 .menuElem{
     display: grid;
-    grid-template-columns: 0.5fr 1fr;
+    grid-template-columns: 1fr 2fr;
     margin: 1.5vw;
 }
 
@@ -32,6 +32,8 @@ select{
 
 .bevitelNeve{
     font-size: 2vw;
+    width: 100%;
+    word-break: normal;
 }
 
 .submitGomb{
@@ -218,6 +220,12 @@ select{
     .kijGomb{
         font-size: 3vw;
     }
+
+    .menuElem{
+        display: grid;
+        grid-template-columns: 1fr;
+        margin: 1.5vw;
+    }
 }
 
 @media (min-width: 768px){
@@ -244,6 +252,10 @@ select{
 
     .subGomb, .altalnosMentes, .jelszoMentes{
         font-size: 1.2vw;
+    }
+
+    .submitGomb{
+        font-size: 2vw;
     }
 
     .oszlopElem{
