@@ -39,7 +39,8 @@ h2{
 }
 
 input {
-  padding: 1vw; 
+  padding-left: 1vw;
+  padding-right: 1vw;
   box-sizing: border-box;
 }
 

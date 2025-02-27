@@ -14,14 +14,13 @@
     background-color: rgba(255, 255, 255, 0.1);
     font-size: 1.5vw;
     width: 100%;
-    margin: 1vw;
+    margin-top: 1vw;
 }
 
 .kivSor{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border-bottom: 1px rgba(184, 70, 70, 0.8) solid;
-}
+    border-bottom: 1px rgba(184, 70, 70, 0.8) solid;}
 
 .sajGomb{
     padding: 1vw 2vw;
@@ -105,6 +104,7 @@
 .soreCime{
     font-size: 1.8vw;
     word-break: normal;
+    margin-left: 1vw;
 }
 
 .sajatGombSor{

@@ -4,53 +4,71 @@ import "./Felh.css";
 
 function Regisztr() {
   const [felhasznaloNev, setFelhasznaloNev] = useState("");
-  const [jogosultsag, setJogosultsag] = useState("");
   const [email, setEmail] = useState("");
   const [tema, setTema] = useState("dark");
   const [jelszo, setJelszo] = useState("");
   const [jelszoUjra, setJelszoUjra] = useState("");
   const [error, setError] = useState("");
+  const [hibaUzenet, setHibaUzenet] = useState("");
+  const [vanHiba, setVanHiba] = useState(false);
   const navigate = useNavigate();
 
   function handleRegister(e) {
     e.preventDefault();
+    let atmHibaUzenet=[];
+    setVanHiba(false);
+    setHibaUzenet([]);
 
     // Felhasználók lekérése a localStorage-ból
     const felhasznalok = JSON.parse(localStorage.getItem("users")) || [];
 
     // Hiba: felhasználónév
-    var foglaltNev = felhasznalok.find(user => user.felhasznaloNev == felhasznaloNev);
+    var foglaltNev = felhasznalok.map(felh => {
+      if(felh == felhasznaloNev) return true;
+      return false;
+    });
+console.log(foglaltNev)
     if (foglaltNev) {
-      setError("Ez az név cím már foglalt!");
-      return;
+      console.log('ee')
+      setVanHiba(true);
+      atmHibaUzenet.push(
+        <p className="hibaSor">Ez az felhasználónév már foglalt !</p>
+      );
     }
 
-    // Hiba: jog
-
     // Hiba: e-mail
-    var foglaltEmail = felhasznalok.find(user => user.email == email);
+    var foglaltEmail = felhasznalok.map(user => user.email == email);
     if (foglaltEmail) {
-      setError("Ez az email cím már foglalt!");
-      return;
+      setVanHiba(true);
+      atmHibaUzenet.push(
+        <p className="hibaSor">Ez az e-mail cím már foglalt !</p>
+      );
     }
 
     // Hiba: jelszó
     if (jelszo !== jelszoUjra) {
-      setError("A két jelszó nem egyezik meg!");
-      return;
+      setVanHiba(true);
+      atmHibaUzenet.push(
+        <p className="hibaSor">A két jelszó nem egyezik meg !</p>
+      );
     }
 
+    if(vanHiba){
+      setHibaUzenet(atmHibaUzenet);
+      return;
+    }
+/*
     var ujFelh = {
       'Felhasznalonev': felhasznaloNev,
       'Email': email,
-      'Jogosultsag': jogosultsag,
+      'Jogosultsag': 0,
       'Tema': tema,
       'Jelszo': jelszo,
       'LogoEleresiUtja': 'kep.jpg'
     };
     rogzites(ujFelh);
-
-    navigate("/");
+*/
+    //navigate("/");
   };
 
   async function rogzites(uj) {
@@ -79,6 +97,11 @@ function Regisztr() {
     <div className="regForm">
       <div className="regCim">Regisztráció</div>
       {error && <p className="error">{error}</p>}
+
+      <div className="regHiba">
+        {vanHiba ? hibaUzenet : console.log()}
+      </div>
+
       <form onSubmit={handleRegister}>
         <div className="menuElem">
           <p className="bevitelNeve">Felhasználónév:</p>
