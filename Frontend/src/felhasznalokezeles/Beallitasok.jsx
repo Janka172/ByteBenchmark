@@ -45,27 +45,55 @@ function Beallitasok() {
     }
   }
 
-  async function altalanosModositasa(name, email, tema, logoEleresiUtja) {
+  async function altalanosModositasa(name, logoEleresiUtja) {
     let id= JSON.parse(localStorage.getItem("loggedInUser")).Id;
     let nev= JSON.parse(localStorage.getItem("loggedInUser")).Felhasznalonev;
-    const response = await fetch(`https://localhost:44316/api/Profil/${id}?name=${nev}`, {
+
+    let tema = null;
+    if (document.getElementById('comoSzin') && document.getElementById('comoSzin').value != JSON.parse(localStorage.getItem('loggedInUser')).Tema) {
+        tema = document.getElementById('comoSzin').value;
+    }
+
+    let felhNev = null;
+    if (document.getElementById('felhNInp') && document.getElementById('felhNInp').value != ('' || JSON.parse(localStorage.getItem('loggedInUser')).Felhasznalonev)) {
+        felhNev = document.getElementById('felhNInp').value;
+    }
+
+    let email = null;
+    if (document.getElementById('emailNInp') && document.getElementById('emailNInp').value != ('' || JSON.parse(localStorage.getItem('loggedInUser')).Email)) {
+        email = document.getElementById('emailNInp').value;
+    }
+
+
+    console.log(document.getElementById('emailInp').value)
+    console.log(JSON.parse(localStorage.getItem('loggedInUser')).Email)
+
+    const response = await fetch(`https://localhost:44316/api/Profil/1?name=${nev}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        Felhasznalonev: document.getElementById('felhNInp')==''? null : document.getElementById('felhNInp').value,
-        Email: email,
-        Jogosultsag: null,
-        Tema: tema,
-        LogoEleresiUtja: logoEleresiUtja
+        'Felhasznalonev': felhNev,
+        'Email': email,
+        'Jogosultsag': null,
+        'Tema': tema,
+        'LogoEleresiUtja': null
       })
     });
-    console.log(id)
-    console.log(nev)
+    
+    if (response.ok) {
+      let loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+      if (felhNev != null) loggedInUser.Felhasznalonev = felhNev;
+      if (email != null) loggedInUser.Email = email;
+      if (tema != null) loggedInUser.Tema = tema;
+      if (logoEleresiUtja != null) loggedInUser.LogoEleresiUtja = logoEleresiUtja;
 
+      localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+    }
+
+    window.location.reload();
   }
-
 
   return (
     <div className='teljesBeallitas'>
@@ -83,16 +111,21 @@ function Beallitasok() {
           <p className='altBeCim'>Általános Beállitások</p>
 
           <div className='menuEle'>
-            <p className='beallitasNeve'>Téma:</p>
-            <select>
-              <option value='dark'>Sötét</option>
-              <option value='light'>Világos</option>
-            </select>
+            <p className='beallitasNeve'>Felhasználónév:</p>
+            <input type='text' id='felhNInp'></input>
           </div>
 
           <div className='menuEle'>
-            <p className='beallitasNeve'>Felhasználónév:</p>
-            <input type='text' id='felhNInp'></input>
+            <p className='beallitasNeve'>E-mail cím:</p>
+            <input type='text' id='emailInp'></input>
+          </div>
+
+          <div className='menuEle'>
+            <p className='beallitasNeve'>Téma:</p>
+            <select id='comoSzin'>
+              <option value='dark'>Sötét</option>
+              <option value='light'>Világos</option>
+            </select>
           </div>
 
           <div className="menuEle">
