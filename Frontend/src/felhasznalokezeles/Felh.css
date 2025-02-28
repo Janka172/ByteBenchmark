@@ -199,6 +199,30 @@ select{
     font-size: 2vw;
 }
 
+.jelszoMenu{
+    display: flex;
+}
+
+.jelszoInfoGomb{
+    border:#000 solid 1px;
+    width: fit-content;
+    padding: 0.5vw 1vw;
+    border-radius: 100%;
+    background-color: #ff8e8e;
+    margin: 0;
+    margin-left: auto;
+}
+.jelszoInfoGomb:hover{
+    background-color:#c55151;
+    cursor: pointer;
+}
+
+.jelszoInfoSzoveg{
+    padding: 1vw;
+    border: black solid 1px;
+    background-color: #b86868;
+}
+
 @media (max-width: 767px){
     .bejMenu{
         width: auto;
@@ -208,7 +232,7 @@ select{
         font-size: 5vw;
     }
 
-    .bevitelNeve{
+    .bevitelNeve, .jelszoInfoSzoveg, .jelszoInfoGomb{
         font-size: 3vw;
     }
 
@@ -241,7 +265,7 @@ select{
         width: auto;
     }
 
-    .bevitelNeve{
+    .bevitelNeve, .jelszoInfoSzoveg{
         font-size: 1vw;
     }
 
@@ -250,7 +274,7 @@ select{
         font-size: 1vw;
     }
 
-    .subGomb, .altalnosMentes, .jelszoMentes{
+    .subGomb, .altalnosMentes, .jelszoMentes, .jelszoInfoGomb{
         font-size: 1.2vw;
     }
 

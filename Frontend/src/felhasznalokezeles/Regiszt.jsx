@@ -11,9 +11,10 @@ function Regisztr() {
   const [error, setError] = useState("");
   const [hibaUzenet, setHibaUzenet] = useState("");
   const [vanHiba, setVanHiba] = useState(false);
+  const [jelszoInfoNyitva, setJelszoInfoNyitva] = useState("none");
   const navigate = useNavigate();
 
-  function handleRegister(e) {
+  function regisztralas(e) {
     e.preventDefault();
     let atmHibaUzenet=[];
     setVanHiba(false);
@@ -23,25 +24,28 @@ function Regisztr() {
     const felhasznalok = JSON.parse(localStorage.getItem("users")) || [];
 
     // Hiba: felhasználónév
-    var foglaltNev = felhasznalok.map(felh => {
-      if(felh == felhasznaloNev) return true;
-      return false;
+    let foglaltNev = false;
+    felhasznalok.map(felh => {
+      if(felh.Felhasznalonev == felhasznaloNev) foglaltNev=true;
+      else foglaltNev=false;
     });
-console.log(foglaltNev)
     if (foglaltNev) {
-      console.log('ee')
       setVanHiba(true);
       atmHibaUzenet.push(
-        <p className="hibaSor">Ez az felhasználónév már foglalt !</p>
+        <p className="hibaSor" key='fh'>Ez az felhasználónév már foglalt !</p>
       );
     }
 
     // Hiba: e-mail
-    var foglaltEmail = felhasznalok.map(user => user.email == email);
+    var foglaltEmail = false;
+    felhasznalok.map(felh => {
+      if(felh.Email == email) foglaltEmail=true;
+      else foglaltEmail=false;
+    });
     if (foglaltEmail) {
       setVanHiba(true);
       atmHibaUzenet.push(
-        <p className="hibaSor">Ez az e-mail cím már foglalt !</p>
+        <p className="hibaSor" key='eh'>Ez az e-mail cím már foglalt !</p>
       );
     }
 
@@ -49,7 +53,7 @@ console.log(foglaltNev)
     if (jelszo !== jelszoUjra) {
       setVanHiba(true);
       atmHibaUzenet.push(
-        <p className="hibaSor">A két jelszó nem egyezik meg !</p>
+        <p className="hibaSor" key='jh'>A két jelszó nem egyezik meg !</p>
       );
     }
 
@@ -70,6 +74,11 @@ console.log(foglaltNev)
 */
     //navigate("/");
   };
+
+  function jelszoInfoMegnyitasa(){
+    if(jelszoInfoNyitva == 'none') setJelszoInfoNyitva('grid');
+    else setJelszoInfoNyitva('none');
+  }
 
   async function rogzites(uj) {
     try {
@@ -102,7 +111,7 @@ console.log(foglaltNev)
         {vanHiba ? hibaUzenet : console.log()}
       </div>
 
-      <form onSubmit={handleRegister}>
+      <form onSubmit={regisztralas}>
         <div className="menuElem">
           <p className="bevitelNeve">Felhasználónév:</p>
           <input type="text" value={felhasznaloNev} onChange={(e) => setFelhasznaloNev(e.target.value)} required />
@@ -121,8 +130,23 @@ console.log(foglaltNev)
           </select>
         </div>
         
+        
+
         <div className="menuElem jelszoegy">
-          <p className="bevitelNeve">Jelszó:</p>
+          <div className="jelszoMenu">
+            <p className="bevitelNeve">Jelszó:</p>
+            <div className="jelszoInfoGomb" onClick={jelszoInfoMegnyitasa}>I</div>
+          </div>
+
+          <div className="jelszoInfoSzoveg" style={{display: jelszoInfoNyitva}}>
+            A regisztrációhoz erős jelszóra van szükség.<br/>
+            - Legalább 8 karakeres hosszúság,<br/>
+            - Legalább 1 nagy betűt-<br/>
+            - Legalább egy speciális karaktert-<br/>
+            - Legalább egy számot<br/>
+            tartalmaznia kell !<br/>
+          </div>
+
           <input type="password" value={jelszo} onChange={(e) => setJelszo(e.target.value)} required />
         </div>
         <div className="menuElem jelszoketto">
