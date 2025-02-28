@@ -39,7 +39,7 @@ function UjAlkat() {
                const response= await fetch(backEleresiUtvonal[item]);
                if (response.ok)
                {
-                  const adat=response.json();
+                  const adat=await response.json();
                   mindenAdat[item]=adat;
                }
                else
