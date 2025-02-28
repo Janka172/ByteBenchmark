@@ -11,9 +11,10 @@ const mindenAdat={
 }
 function UjAlkat() {
     const [actionHardver, setActionHardver] =useState("Alaplap")
-    const [actionButtons, setActionButtons] =useState("Post") 
+    const [actionButtons, setActionButtons] =useState("Post")
 
-   const [actionIvkRadiobt, setActionIvkRadiobt] = useState("Jeloltradiogomb");
+   {/*Arra kell hogy egy gomb alapértelmezetten ki legyen választva az oldal betöltésekor */}
+   const [actionIvkRadiobt, setActionIvkRadiobt] = useState("Jeloltradiogomb"); //processzor rádiógombjainál van
    const [actionHgkRadiobf, setActionHgkRadiobf] = useState("Nemjeloltradiogomb");
 
     const [selectedFile, setSelectedFile] = useState(null);
@@ -112,19 +113,20 @@ function UjAlkat() {
 
 
              {actionHardver==="Videókártya" && actionButtons==="Post" ? <div className='body'>
-                 <div  >
+                 <div>
                     <form>
-                    Név:<br/><input type='text' id='VideoPost1'/><br/>                 {/*név mező*/}
-                    Alaplapi csatlakozás:<br/><input type='text' id='VideoPost2'/><br/>{/*alaplapi csatlakozás mező*/}
-                    Ajánlott tápegység:<br/><input type='number' id='VideoPost3'/><br/>{/*Ajánlott tápegység mező*/}
-                    Monitor csatlakozás:<br/><input type='text' id='VideoPost4'/><br/> {/*Monitor csatlakozás mező*/}
-                    Vram:<br/> <input type='number' id='VideoPost5'/><br/>             {/*Vram mező*/}
-                    Chip  gyártója:<br/><input type='text' id='VideoPost6'/><br/>      {/*név mező*/}
-                    <input type="file" onChange={handleFileChange} />
-                    <button type='button' onClick={handleUploadAndPost}>Küld</button>
+                    Név:<br/><input type='text' id='VideoPost1'/><br/>                 
+                    Alaplapi csatlakozás:<br/><input type='text' id='VideoPost2'/><br/>
+                    Ajánlott tápegység:<br/><input type='number' id='VideoPost3'/><br/>
+                    Monitor csatlakozás:<br/><input type='text' id='VideoPost4'/><br/> 
+                    Vram:<br/> <input type='number' id='VideoPost5'/><br/>             
+                    Chip  gyártója:<br/><input type='text' id='VideoPost6'/><br/>
+     
+                    <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/} 
+                    <button type='button' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
                  </div>
-                 <div  >
+                 <div>
                     <p>Kép neve: {fileUrl}</p>
                     <p>Url: {url}</p>
                     </div>
@@ -138,15 +140,17 @@ function UjAlkat() {
             </div> : <div></div>}
 
             {actionHardver==="Videókártya" && actionButtons==="Patch" ? <div className='body'>
-                 <div  >
+                 <div>
                     <form>
                     Név:<br/><input type='text'/><br/>                 
                     Alaplapi csatlakozás:<br/><input type='text'/><br/>
                     Ajánlott tápegység:<br/><input type='number'/><br/>
                     Monitor csatlakozás:<br/><input type='text'/><br/> 
                     Vram:<br/> <input type='number'/><br/>             
-                    Chip  gyártója:<br/><input type='text'/><br/>      
-                    <input type="file" onChange={handleFileChange} />
+                    Chip  gyártója:<br/><input type='text'/><br/>
+
+                    <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/}
+                    <button type='button' onClick={''}>Módosítások mentése</button>
                     </form>
                  </div>
 
@@ -161,7 +165,7 @@ function UjAlkat() {
                  </div>
 
 
-                 <div  >
+                 <div>
                     <div>
                         <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
                         <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
@@ -171,14 +175,15 @@ function UjAlkat() {
             </div> : <div></div>}
 
             {actionHardver==="Videókártya" && actionButtons==="Delete" ? <div className='body'>
-                 <div  >
+                 <div>
                     <form>
                     Név:<br/><input type='text'/><br/>                 
                     Vram:<br/> <input type='number'/><br/>
+                    <button type='button' onClick={''}>Alkatrész eltávolítása</button>
                     </form>
                  </div>
-                 <div   >gggsydzhstrh</div>
-                 <div  >
+                 <div>gggsydzhstrh</div>
+                 <div>
                     <div>
                         <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
                         <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
@@ -188,7 +193,7 @@ function UjAlkat() {
             </div> : <div></div>}
             {/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
             {actionHardver==="Alaplap" && actionButtons==="Post" ? <div className='body'>
-                 <div  >
+                 <div>
                     <form>
                         Név:<br/><input type="text" id='AlaplapPost1'/><br/>
                         Processzor foglalat:<br/><input type="text" id='AlaplapPost2'/><br/>
@@ -197,21 +202,23 @@ function UjAlkat() {
                         Memória típus:<br/><input type="text" id='AlaplapPost5'/><br/>
                         Lapkakészlet:<br/><input type="text" id='AlaplapPost6'/><br/>
                         Slot szám:<br/><input type="number" id='AlaplapPost7'/><br/>
+
                         Hangkártya:<br/>
-                        <input type="radio" id="AlaplapPost8" name="hgk_true" value="True"></input>
+                        <input type="radio" id="AlaplapPost8" name="hgk_true" value="True" checked={actionHgkRadiobf==='Nemjeloltradiogomba'}onChange={()=>setActionHgkRadiobf('Nemjeloltradiogomba')}></input>
                         <label htmlFor="hgk_true">Tartalmaz hangkártyát.</label><br/>
             
-                        <input type="radio" id="AlaplapPost9" name="hgk_true" value="False"></input>
+                        <input type="radio" id="AlaplapPost9" name="hgk_true" value="False" checked={actionHgkRadiobf==='Nemjeloltradiogombak'}onChange={()=>setActionHgkRadiobf('Nemjeloltradiogombak')}></input>
                         <label htmlFor="hgk_false">Nem tartalmaz hangkártyát.</label>
-                        <input type="file" onChange={handleFileChange} />
-                        <button type='button' onClick={handleUploadAndPost}>Küld</button>
+
+                        <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/}
+                        <button type='button' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
                  </div>
-                 <div  >
+                 <div>
                     <p>Kép neve: {fileUrl}</p>
                     <p>Url: {url}</p>
                     </div>
-                 <div  >
+                 <div>
                     <div>
                         <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
                         <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
@@ -221,7 +228,7 @@ function UjAlkat() {
             </div> : <div></div>}
 
             {actionHardver==="Alaplap" && actionButtons==="Patch" ? <div className='body'>
-                 <div  >
+                 <div>
                     <form>
                         Név:<br/><input type="text"/><br/>
                         Processzor foglalat:<br/><input type="text"/><br/>
@@ -230,17 +237,20 @@ function UjAlkat() {
                         Memória típus:<br/><input type="text"/><br/>
                         Lapkakészlet:<br/><input type="text"/><br/>
                         Slot szám:<br/><input type="number"/><br/>
+
                         Hangkártya:<br/>
                         <input type="radio" id="hgk_true" name="hgk_true" value="True"></input>
                         <label htmlFor="hgk_true">Tartalmaz hangkártyát.</label><br/>
             
                         <input type="radio" id="hgk_false" name="hgk_true" value="False"></input>
-                        <label htmlFor="hgk_false">Nem tartalmaz hangkártyát.</label>      
-                        <input type="file" onChange={handleFileChange} />
+                        <label htmlFor="hgk_false">Nem tartalmaz hangkártyát.</label> 
+
+                        <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/}
+                        <button type='button' onClick={''}>Módosítások mentése</button>
                     </form>
                  </div>
 
-                 <div  >
+                 <div>
                     <p>Név:{}</p>
                     <p>Processzor foglalat:{}</p>
                     <p>Alaplap formátum:{}</p>
@@ -249,6 +259,7 @@ function UjAlkat() {
                     <p>Lapkakészlet:{}</p>
                     <p>Slot szám:{}</p>
                     <p>Hangkártya:{}</p>
+
                     <p><input type="radio" id="hgk_true" name="hgk_true" value="True"></input></p>
                     <p><label htmlFor="hgk_true">Tartalmaz hangkártyát.</label><br/></p>
             
@@ -268,13 +279,14 @@ function UjAlkat() {
             </div> : <div></div>}
 
             {actionHardver==="Alaplap" && actionButtons==="Delete" ? <div className='body'>
-                 <div  >
+                 <div>
                     <form>
                     Név:<br/><input type='text'/><br/>
+                    <button type='button' onClick={''}>Alkatrész eltávolítása</button>
                     </form>
                  </div>
-                 <div   >gggsydzhstrh</div>
-                 <div  >
+                 <div >gggsydzhstrh</div>
+                 <div>
                     <div>
                         <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
                         <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
@@ -284,21 +296,21 @@ function UjAlkat() {
             </div> : <div></div>}
             {/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
             {actionHardver==="Memória" && actionButtons==="Post" ? <div className='body'>
-                 <div  >
+                 <div>
                     <form>
                         Név:<br/><input type="text" id='MemoriaPost1'/><br/>
                         Memória típus:<br/><input type="text" id='MemoriaPost2'/><br/>
                         Frekvencia:<br/><input type="number" id='MemoriaPost3'/>MHz<br/>
                         Méret:<br/><input type="nmuber" id='MemoriaPost4'/>
-                        <input type="file" onChange={handleFileChange} />
-                        <button type='button' onClick={handleUploadAndPost}>Küld</button>
+                        <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/} 
+                        <button type='button' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
                  </div>
-                 <div  >
+                 <div>
                     <p>Kép neve: {fileUrl}</p>
                     <p>Url: {url}</p>
                     </div>
-                 <div  >
+                 <div>
                     <div>
                         <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
                         <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
@@ -308,26 +320,24 @@ function UjAlkat() {
             </div> : <div></div>}
 
             {actionHardver==="Memória" && actionButtons==="Patch" ? <div className='body'>
-                 <div  >
+                 <div>
                     <form>
                         Név:<br/><input type="text"/><br/>
                         Memória típus:<br/><input type="text"/><br/>
                         Frekvencia:<br/><input type="number"/>MHz<br/>
                         Méret:<br/><input type="nmuber"/>      
-                        <input type="file" onChange={handleFileChange} />
+                        <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/}
+                        <button type='button' onClick={''}>Módosítások mentése</button>
                     </form>
                  </div>
-
-                 <div  >
+                 <div>
                     <p>Név:{}</p>
                     <p>Memória típus:{}</p>
                     <p>Frekvencia:{}</p>
                     <p>Méret:{}</p>       
                     {/* <image src=""></image>*/}
                  </div>
-
-
-                 <div  >
+                 <div>
                     <div>
                         <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
                         <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
@@ -341,10 +351,11 @@ function UjAlkat() {
                     <form>
                     Név:<br/><input type='text'/><br/>                 
                     Frekvencia:<br/> <input type='number'/><br/>
+                    <button type='button' onClick={''}>Alkatrész eltávolítása</button>
                     </form>
                  </div>
-                 <div   >gggsydzhstrh</div>
-                 <div  >
+                 <div>gggsydzhstrh</div>
+                 <div>
                     <div>
                         <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
                         <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
@@ -364,18 +375,17 @@ function UjAlkat() {
                         Támogatott memória típus:<br/><input type="text"id='ProcPost6'/><br/>
                         Processzormagok száma:<br/><input type="number"id='ProcPost7'/><br/>           
                         Gyártó:<br/><input type="text"id='ProcPost8'/><br/>
-                        Ajánlott tápegység:<br/><input type="number"id='ProcPost9'/>W<br/>            
+                        Ajánlott tápegység:<br/><input type="number"id='ProcPost9'/>W<br/> 
+
                         Integrált videókártya:<br/>
-
-
                         <input type="radio" id="ProcPost10" name="ivk_true" value="True" checked={actionIvkRadiobt==='Jeloltradiogomb'}onChange={()=>setActionIvkRadiobt('Jeloltradiogomb')}></input>
                         <label htmlFor="ProcPost11">Tartalmaz integrált videókártyát.</label><br/>
 
-                        <input type="radio" id="ivk_false" name="ivk_true" value="False" checked={actionIvkRadiobt==='Jeloltradiogombocska'} onChange={()=>setActionIvkRadiobt('Jeloltradiogombocska')}></input>
+                        <input type="radio" id="ProcPost11" name="ivk_true" value="False" checked={actionIvkRadiobt==='Jeloltradiogombocska'} onChange={()=>setActionIvkRadiobt('Jeloltradiogombocska')}></input>
                         <label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label>
                         
-                        <input type="file" onChange={handleFileChange} />
-                        <button type='button' onClick={handleUploadAndPost}>Küld</button>
+                        <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/} 
+                        <button type='button' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
                  </div>
                  <div  >
@@ -402,13 +412,16 @@ function UjAlkat() {
                             Processzormegok száma:<br/><input type="number"/><br/>           
                             Gyártó:<br/><input type="text"/><br/>
                             Ajánlott tápegység:<br/><input type="number"/>W<br/>            
-                            Integrált videókártya:<br/>                                                        {/*Rádiógombos megoldással*/}
+                            Integrált videókártya:<br/>
                             <input type="radio" id="ivk_true" name="ivk_true" value="True"></input>
-                            <label htmlFor="ivk_true">Tartalmaz integrált videókártyát.</label><br/>           {/*<--A rádiógomb felirata*/}
+                            <label htmlFor="ivk_true">Tartalmaz integrált videókártyát.</label><br/>
                 
                             <input type="radio" id="ivk_false" name="ivk_true" value="False"></input>
-                            <label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label>            {/*<--A rádiógomb felirata*/}
-                        </form>
+                            <label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label>
+                            
+                            <input type="file" onChange={handleFileChange} />                   {/*Képfeltöltés*/}
+                              <button type='button' onClick={''}>Módosítások mentése</button> 
+                     </form>
                  </div>
 
                  <div  >
@@ -441,7 +454,8 @@ function UjAlkat() {
             {actionHardver==="Processzor" && actionButtons==="Delete" ? <div className='body'>
                  <div  >
                     <form>
-                    Név:<br/><input type='text'/><br/>                 
+                    Név:<br/><input type='text'/><br/>
+                    <button type='button' onClick={''}>Alkatrész eltávolítása</button>                
                     </form>
                  </div>
                  <div   >gggsydzhstrh</div>
