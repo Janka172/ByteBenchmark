@@ -204,10 +204,10 @@ function UjAlkat() {
                         Slot szám:<br/><input type="number" id='AlaplapPost7'/><br/>
 
                         Hangkártya:<br/>
-                        <input type="radio" id="AlaplapPost8" name="hgk_true" value="True" checked={actionHgkRadiobf==='Nemjeloltradiogomba'}onChange={()=>setActionHgkRadiobf('Nemjeloltradiogomba')}></input>
+                        <input type="radio" id="AlaplapPost8" name="hgk_true" value="True" checked={actionHgkRadiobf==='Nemjeloltradiogomb'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogomb')}></input>
                         <label htmlFor="hgk_true">Tartalmaz hangkártyát.</label><br/>
             
-                        <input type="radio" id="AlaplapPost9" name="hgk_true" value="False" checked={actionHgkRadiobf==='Nemjeloltradiogombak'}onChange={()=>setActionHgkRadiobf('Nemjeloltradiogombak')}></input>
+                        <input type="radio" id="AlaplapPost9" name="hgk_true" value="False" checked={actionHgkRadiobf==='Nemjeloltradiogombak'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogombak')}></input>
                         <label htmlFor="hgk_false">Nem tartalmaz hangkártyát.</label>
 
                         <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/}
