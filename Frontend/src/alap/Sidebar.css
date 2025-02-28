@@ -36,6 +36,7 @@
 
 .hambiGombocska {
     background-color: #c45454;
+    padding: 1vw 1.5vw;
     border: none;
     border-radius: 100%;
     border: 1px black solid;
@@ -71,7 +72,6 @@
 @media (max-width: 767px){
     .hambiGombocska{
         font-size: 8vw;
-        padding: 1 1.5vw;
     }
 
     .blockSidebar .navigElem{
@@ -85,7 +85,6 @@
     }
 
     .hambiGombocska{
-        font-size: 1vw;
-        padding: 0 1.5vw;
+        font-size: 2vw;
     }
 }

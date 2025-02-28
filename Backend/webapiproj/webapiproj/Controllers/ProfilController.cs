@@ -117,7 +117,7 @@ namespace webapiproj.Controllers
             {
                 var result = ctx.Profilok.Where(x => x.Felhasznalonev == name).FirstOrDefault();
                 if (result == null) return NotFound();
-                if (!PasswdManager.VerifyEmail(value.Email, result.Email)) return Unauthorized();
+                //if (!PasswdManager.VerifyEmail(value.Email, result.Email)) return Unauthorized();
 
                 if(value.Felhasznalonev!=null) result.Felhasznalonev = value.Felhasznalonev;
                 if(value.Email!=null) result.Email = value.Email;

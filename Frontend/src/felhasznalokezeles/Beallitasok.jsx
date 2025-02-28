@@ -45,39 +45,26 @@ function Beallitasok() {
     }
   }
 
-  async function altalanosModositasa(id, name, email, ujJelszo, jogosultsag, tema, logoEleresiUtja) {
-    const response = await fetch(`https://localhost:44316/api/Profil/ProfilJelszoUpdateModel?id=${id}&name=${name}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            Felhasznalonev: name,
-            Email: email,
-            UjJelszo: ujJelszo,
-            Jogosultsag: jogosultsag,
-            Tema: tema,
-            LogoEleresiUtja: logoEleresiUtja
-        })
+  async function altalanosModositasa(name, email, tema, logoEleresiUtja) {
+    let id= JSON.parse(localStorage.getItem("loggedInUser")).Id;
+    let nev= JSON.parse(localStorage.getItem("loggedInUser")).Felhasznalonev;
+    const response = await fetch(`https://localhost:44316/api/Profil/${id}?name=${nev}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        Felhasznalonev: document.getElementById('felhNInp')==''? null : document.getElementById('felhNInp').value,
+        Email: email,
+        Jogosultsag: null,
+        Tema: tema,
+        LogoEleresiUtja: logoEleresiUtja
+      })
     });
+    console.log(id)
+    console.log(nev)
 
-    if (!response.ok) {
-        if (response.status === 401) {
-            console.log("Hibás a jelszó vagy e-mail cím!");
-        } else if (response.status === 404) {
-            console.log("A felhasználó nem található!");
-        } else if (response.status === 409) {
-            console.log("Ezzel a felhasználóval vagy email címmel már regisztráltak!");
-        } else {
-            console.log("Szerver hiba. Kérlek próbáld meg később!");
-        }
-        throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
-    } else {
-        const responseData = await response.json();
-        console.log("Sikeresen frissítve!");
-        console.log(responseData);  // Optional: log the successful response
-    }
-}
+  }
 
 
   return (
@@ -105,7 +92,7 @@ function Beallitasok() {
 
           <div className='menuEle'>
             <p className='beallitasNeve'>Felhasználónév:</p>
-            <input type='text'></input>
+            <input type='text' id='felhNInp'></input>
           </div>
 
           <div className="menuEle">
