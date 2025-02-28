@@ -86,7 +86,7 @@ h1{
 @media (min-width: 1500px){
     .tovabbi{
         word-break: normal;
-        font-size: 0.5vw;
+        font-size: 0.8vw;
     }
 
     .sorfCime, .megnev{

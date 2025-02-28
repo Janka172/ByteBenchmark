@@ -38,12 +38,47 @@ function Beallitasok() {
   const [atmKep, setAtmKep] = useState(null);
 
   const kepValasztas = (e) => {
-      const file = e.target.files[0];
-      if (file) {
-          setImage(file);
-          setAtmKep(URL.createObjectURL(file)); // Előnézet generálása
-      }
+    const file = e.target.files[0];
+    if (file) {
+        setImage(file);
+        setAtmKep(URL.createObjectURL(file)); // Előnézet generálása
+    }
   }
+
+  async function altalanosModositasa(id, name, email, ujJelszo, jogosultsag, tema, logoEleresiUtja) {
+    const response = await fetch(`https://localhost:44316/api/Profil/ProfilJelszoUpdateModel?id=${id}&name=${name}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            Felhasznalonev: name,
+            Email: email,
+            UjJelszo: ujJelszo,
+            Jogosultsag: jogosultsag,
+            Tema: tema,
+            LogoEleresiUtja: logoEleresiUtja
+        })
+    });
+
+    if (!response.ok) {
+        if (response.status === 401) {
+            console.log("Hibás a jelszó vagy e-mail cím!");
+        } else if (response.status === 404) {
+            console.log("A felhasználó nem található!");
+        } else if (response.status === 409) {
+            console.log("Ezzel a felhasználóval vagy email címmel már regisztráltak!");
+        } else {
+            console.log("Szerver hiba. Kérlek próbáld meg később!");
+        }
+        throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
+    } else {
+        const responseData = await response.json();
+        console.log("Sikeresen frissítve!");
+        console.log(responseData);  // Optional: log the successful response
+    }
+}
+
 
   return (
     <div className='teljesBeallitas'>
@@ -86,7 +121,7 @@ function Beallitasok() {
             )}
           </div>
 
-          <button className='altalnosMentes'>Mentés</button>
+          <button className='altalnosMentes' onClick={altalanosModositasa}>Mentés</button>
         </div>
 
         <div className='biztonsagi' style={{ display: biztDisp }}>

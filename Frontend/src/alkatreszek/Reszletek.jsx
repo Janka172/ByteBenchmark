@@ -43,17 +43,20 @@ function Reszletek({ adat }) {
       else if(sor == 'Lapkakeszlet') kiirando = 'Lapkakészlet';
       else if(sor == 'SlotSzam') kiirando = 'Slot Szám';
       else if(sor == 'Hangkartya') kiirando = 'Hangkártya';
+      else if(sor == 'VideokartyaCsatlakozo') kiirando = 'Videókártya Csatlakozó';
 
-      ujMind.push(
-        <div className="sor" key={sor}>
-          <h2 className="elemNev">{kiirando + ':'}</h2>
-          <h2 className="elemErtek">{adat[sor]}</h2>
-        </div>
-      );
+      if(! (sor == 'KepNev')){
+        ujMind.push(
+          <div className="sor" key={sor}>
+            <h2 className="elemNev">{kiirando + ':'}</h2>
+            <h2 className="elemErtek">{adat[sor]}</h2>
+          </div>
+        );
+      }
     }
     
-    setMind(ujMind); // Beállítjuk a Mind állapotot a frissített tömbre
-    setBetoltve(true); // Beállítjuk, hogy betöltve van
+    setMind(ujMind);
+    setBetoltve(true);
   }
 
   return (

@@ -10,45 +10,48 @@ function JelszoModosito() {
   function jelszoFrissites(){
     let jelszo1 = document.getElementById('uJel1').value;
     let jelszo2 = document.getElementById('uJel2').value;
+    const minta = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~`\-=\|])(?=.*\d)(?=.*[a-zA-Z]).{8,}$/; 
     if(jelszo1=='' || jelszo2==''){
-        hibaKiiratas('Töltse ki mindkét mezőt !');
+      hibaKiiratas('Töltse ki mindkét mezőt !');
     }
     else if(jelszo1 != jelszo2) {
-        hibaKiiratas('A két jelszó nem egyezik !');
+      hibaKiiratas('A két jelszó nem egyezik !');
+    } 
+    else if (!minta.test(jelszo1)) {
+      hibaKiiratas('A jelszó nem elég erős !')
     }
-    else {
-        frissitFetch(JSON.parse(localStorage.getItem('loggedInUser')).Id,JSON.parse(localStorage.getItem('loggedInUser')).Email, jelszo1);
+    else{
+      frissitFetch(JSON.parse(localStorage.getItem('loggedInUser')).Id,JSON.parse(localStorage.getItem('loggedInUser')).Email, jelszo1);
     }
   }
 
     async function frissitFetch(id, email, ujJelszo) {
-        const response = await fetch(`https://localhost:44316/api/Profil/ProfilJelszoUpdateModel?id=${id}&email=${email}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ UjJelszo: ujJelszo })
-        });
+      const response = await fetch(`https://localhost:44316/api/Profil/ProfilJelszoUpdateModel?id=${id}&email=${email}`, {
+          method: "PATCH",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ UjJelszo: ujJelszo })
+      });
 
-        if(!response.ok){
-            //401
-            if(response.status === 401){
-                hibaKiiratas("Hibás a jelszó !")
-            }
-            else if(response.status === 404){
-                hibaKiiratas("Az e-mail cím nem található !")
-            }
-            else{
-                hibaKiiratas("Szerver hiba. Kérlek próbáld meg később!")
-                throw new Error(`HTTP hiba! Státuszkód: ${response.status}`)
-            }
-            throw new Error(`HTTP hiba! Státuszkód: ${response.status}`)
-        }
-        else{
-            hibaKiiratas("A jelszó módosítása sikeres volt !");
-            document.getElementById('uJel1').value='';
-            document.getElementById('uJel2').value='';
-        }
+      if(!response.ok){
+          if(response.status === 401){
+              hibaKiiratas("Hibás a jelszó !")
+          }
+          else if(response.status === 404){
+              hibaKiiratas("Az e-mail cím nem található !")
+          }
+          else{
+              hibaKiiratas("Szerver hiba. Kérlek próbáld meg később!")
+              throw new Error(`HTTP hiba! Státuszkód: ${response.status}`)
+          }
+          throw new Error(`HTTP hiba! Státuszkód: ${response.status}`)
+      }
+      else{
+          hibaKiiratas("A jelszó módosítása sikeres volt !");
+          document.getElementById('uJel1').value='';
+          document.getElementById('uJel2').value='';
+      }
     }
 
   return (

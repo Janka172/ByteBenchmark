@@ -59,15 +59,17 @@ function AlkatreszReszletek() {
       const kiirando = kulcsModosito[sor] || sor;
 
       let ertek = info['id'][sor];
-      if (ertek === false) ertek = 'Nincs';
-      else if (ertek === true) ertek = 'Van';
+      if (ertek == false) ertek = 'Nincs';
+      else if (ertek == true) ertek = 'Van';
 
-      ujMind.push(
-        <div className="sor" key={sor}>
-          <h2 className="elemNev">{kiirando + ':'}</h2>
-          <h2 className="elemErtek">{ertek}</h2>
-        </div>
-      );
+      if(! (sor == 'Kepnev')){
+        ujMind.push(
+          <div className="sor" key={sor}>
+            <h2 className="elemNev">{kiirando + ':'}</h2>
+            <h2 className="elemErtek">{ertek}</h2>
+          </div>
+        );
+      }
     }
 
     setMind(ujMind);
