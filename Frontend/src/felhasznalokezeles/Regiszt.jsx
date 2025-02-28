@@ -30,7 +30,6 @@ function Regisztr() {
       else foglaltNev=false;
     });
     if (foglaltNev) {
-      setVanHiba(true);
       atmHibaUzenet.push(
         <p className="hibaSor" key='fh'>Ez az felhasználónév már foglalt !</p>
       );
@@ -43,25 +42,32 @@ function Regisztr() {
       else foglaltEmail=false;
     });
     if (foglaltEmail) {
-      setVanHiba(true);
       atmHibaUzenet.push(
         <p className="hibaSor" key='eh'>Ez az e-mail cím már foglalt !</p>
       );
     }
 
-    // Hiba: jelszó
-    if (jelszo !== jelszoUjra) {
-      setVanHiba(true);
+    // Hiba: jelszó: nem egyezik
+    if (jelszo != jelszoUjra) {
       atmHibaUzenet.push(
         <p className="hibaSor" key='jh'>A két jelszó nem egyezik meg !</p>
       );
     }
+    // Hiba: jelszó: erősség
+    const minta = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~`\-=\|])(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;  
+    if (!minta.test(jelszo)) {
+      atmHibaUzenet.push(
+        <p className="hibaSor" key='jh'>A jelszó nem elég erős !</p>
+      );
+      setJelszoInfoNyitva('grid');
+    }
 
-    if(vanHiba){
+    if (atmHibaUzenet.length > 0) {
+      setVanHiba(true);
       setHibaUzenet(atmHibaUzenet);
       return;
     }
-/*
+
     var ujFelh = {
       'Felhasznalonev': felhasznaloNev,
       'Email': email,
@@ -71,8 +77,8 @@ function Regisztr() {
       'LogoEleresiUtja': 'kep.jpg'
     };
     rogzites(ujFelh);
-*/
-    //navigate("/");
+
+    navigate("/");
   };
 
   function jelszoInfoMegnyitasa(){
@@ -107,7 +113,7 @@ function Regisztr() {
       <div className="regCim">Regisztráció</div>
       {error && <p className="error">{error}</p>}
 
-      <div className="regHiba">
+      <div className="regHiba" style={{display: vanHiba ? 'grid' : 'none'}}>
         {vanHiba ? hibaUzenet : console.log()}
       </div>
 
@@ -130,8 +136,6 @@ function Regisztr() {
           </select>
         </div>
         
-        
-
         <div className="menuElem jelszoegy">
           <div className="jelszoMenu">
             <p className="bevitelNeve">Jelszó:</p>

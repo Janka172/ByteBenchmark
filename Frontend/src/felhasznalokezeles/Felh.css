@@ -203,22 +203,33 @@ select{
     display: flex;
 }
 
-.jelszoInfoGomb{
-    border:#000 solid 1px;
-    width: fit-content;
-    padding: 0.5vw 1vw;
-    border-radius: 100%;
+.jelszoInfoGomb {
+    border: #000 solid 1px;
+    width: 3vw;
+    height: 3vw; 
+    padding: 0;
+    border-radius: 50%;
     background-color: #ff8e8e;
     margin: 0;
     margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .jelszoInfoGomb:hover{
     background-color:#c55151;
     cursor: pointer;
 }
 
-.jelszoInfoSzoveg{
+.jelszoInfoSzoveg, .hibaUzi{
     padding: 1vw;
+    border: black solid 1px;
+    background-color: #b86868;
+}
+
+.regHiba{
+    padding-left: 1.5vw;
     border: black solid 1px;
     background-color: #b86868;
 }
@@ -232,7 +243,7 @@ select{
         font-size: 5vw;
     }
 
-    .bevitelNeve, .jelszoInfoSzoveg, .jelszoInfoGomb{
+    .bevitelNeve, .jelszoInfoSzoveg, .jelszoInfoGomb, .regHiba{
         font-size: 3vw;
     }
 
@@ -265,17 +276,13 @@ select{
         width: auto;
     }
 
-    .bevitelNeve, .jelszoInfoSzoveg{
-        font-size: 1vw;
-    }
-
     .elemSor input{
         width: 100%;
         font-size: 1vw;
     }
 
-    .subGomb, .altalnosMentes, .jelszoMentes, .jelszoInfoGomb{
-        font-size: 1.2vw;
+    .subGomb, .altalnosMentes, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input{
+        font-size: 1.35vw;
     }
 
     .submitGomb{
@@ -288,9 +295,5 @@ select{
 
     .altBeCim, .jelszoModCim{
         font-size: 2vw;
-    }
-
-    .beallitasNeve, .menuEle select, .menuEle input{
-        font-size: 1.2vw;
     }
 }
