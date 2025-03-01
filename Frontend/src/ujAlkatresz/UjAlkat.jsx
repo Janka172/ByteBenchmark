@@ -1,4 +1,4 @@
-import {useState, useEffect } from 'react';
+import {useState, useEffect, use } from 'react';
 import './UjAlkat.css';
 import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP} from './Request';
 {/*Összes adat tárolására*/}
@@ -10,15 +10,53 @@ const mindenAdat={
    alaplapCsatlakozok : [] 
 }
 function UjAlkat() {
-    const [actionHardver, setActionHardver] =useState("Alaplap")
+   {/*Minden adathoz használva van! */}
+   const [actionMindenhezKellAdat, setActionMindenhezKellAdat] = useState(null);
+
+
+    const [actionHardver, setActionHardver] =useState("Videókártya")
     const [actionButtons, setActionButtons] =useState("Post")
 
-   {/*Arra kell hogy egy gomb alapértelmezetten ki legyen választva az oldal betöltésekor */}
+   {/*Arra kell hogy egy rádiógomb alapértelmezetten ki legyen választva az oldal betöltésekor */}
    const [actionIvkRadiobt, setActionIvkRadiobt] = useState("Jeloltradiogomb"); //processzor rádiógombjainál van
-   const [actionHgkRadiobf, setActionHgkRadiobf] = useState("Nemjeloltradiogomb");
+   const [actionHgkRadiobf, setActionHgkRadiobf] = useState("Nemjeloltradiogomb"); //alaplap rádiógombjainál van
 
     const [selectedFile, setSelectedFile] = useState(null);
     const [fileUrl, setFileUrl] = useState("");
+
+    {/*Videókártya PATCH/PUT részéhez szükséges useState-ek */}
+      const [actionKivalasztottNev, setActionKivalasztottNev] = useState("");
+      const [actionSzurtVram, setActionSzurtVram] = useState([]);
+      useEffect(()=>{
+         if (actionKivalasztottNev)
+         {
+            const vramok=mindenAdat['videokartyak'].filter((i)=>i.Nev===actionKivalasztottNev).map((i)=>i.vram);
+            setActionSzurtVram(vramok);
+         }
+      },[actionKivalasztottNev]);
+   {/*............................................................................................................................. */}
+      const datak=null;
+   async function adatLekeres(event, vram, nev)
+      {
+         event.preventDefault();
+         var lekertadatok=await fetch(`https://localhost:44316/api/Videokartya/0?name=${encodeURIComponent(nev)}&vram=${vram}`);
+         if (!lekertadatok.ok)
+         {    
+            if (lekertadatok.status===400) {
+               console.error("Nem található ilyen elem az adatbázisban!");
+               
+            }
+         }
+         else
+         {
+            datak= await lekertadatok.json();
+            console.log(datak);
+         }       
+      }
+
+
+   {/*............................................................................................................................. */}
+
 
 
    useEffect(()=>{
@@ -39,7 +77,7 @@ function UjAlkat() {
                const response= await fetch(backEleresiUtvonal[item]);
                if (response.ok)
                {
-                  const adat=await response.json();
+                  const adat= await response.json();
                   mindenAdat[item]=adat;
                }
                else
@@ -79,11 +117,18 @@ function UjAlkat() {
             
             const data = await response.json();
             if (response.ok) {
-               if(actionHardver==="Videókártya")RequestVideokP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-               if(actionHardver==="Alaplap")RequestAlaplapP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-               if(actionHardver==="Memória")RequestMemoriaP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-               if(actionHardver==="Processzor")RequestProcesszorP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-                
+               {/*POST része */}
+               if(actionHardver==="Videókártya" && actionButtons==="Post")RequestVideokP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+               if(actionHardver==="Alaplap" && actionButtons==="Post")RequestAlaplapP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+               if(actionHardver==="Memória" && actionButtons==="Post")RequestMemoriaP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+               if(actionHardver==="Processzor" && actionButtons==="Post")RequestProcesszorP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+               
+               
+               {/*PATCH/PUT része */}
+               if(actionHardver==="Videókártya" && actionButtons==="Patch")RequestVideokP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+               if(actionHardver==="Alaplap" && actionButtons==="Patch")RequestAlaplapP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+               if(actionHardver==="Memória" && actionButtons==="Patch")RequestMemoriaP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+               if(actionHardver==="Processzor" && actionButtons==="Patch")RequestProcesszorP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                 setFileUrl(data.file_name);
             } else {
                 console.error("Hiba történt:", data.message);
@@ -105,8 +150,8 @@ function UjAlkat() {
     return (
         <div>
              <nav className='navbars'> {/*Navigációs menü*/}
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Alaplap"); setActionButtons("Post")}}>Alaplap</a>
                 <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Videókártya"); setActionButtons("Post")}}>Videókártya</a>
+                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Alaplap"); setActionButtons("Post")}}>Alaplap</a>
                 <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Memória"); setActionButtons("Post")}}>Memória</a>
                 <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Processzor"); setActionButtons("Post")}}>Processzor</a>
              </nav>
@@ -142,25 +187,37 @@ function UjAlkat() {
             {actionHardver==="Videókártya" && actionButtons==="Patch" ? <div className='body'>
                  <div>
                     <form>
-                    Név:<br/><input type='text'/><br/>                 
+                     Név:<br/>
+                        <select onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
+                           <option selected>Válassz egyet</option>
+                           {[...new Set(mindenAdat['videokartyak'].map(i=>i.Nev))].map((nev)=>(
+                              <option key={nev} value={nev}>{nev}</option>
+                           ))}
+                        </select><br/>
+                     Vram:<br/>
+                        <select>
+                           <option selected>Válassz egyet</option>
+                           {actionSzurtVram.map((vram)=>(<option value={vram} key={vram}>{vram}</option>))}
+                        </select><br/>
+                        <button type='button' onClick={(e)=>adatLekeres(e.target.value, actionKivalasztottNev)}>Adatok lekérése</button><br/>
+
                     Alaplapi csatlakozás:<br/><input type='text'/><br/>
                     Ajánlott tápegység:<br/><input type='number'/><br/>
                     Monitor csatlakozás:<br/><input type='text'/><br/> 
-                    Vram:<br/> <input type='number'/><br/>             
                     Chip  gyártója:<br/><input type='text'/><br/>
 
-                    <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/}
+                    <input type="file" onChange={handleFileChange} />              {/*Képfeltöltés*/}
                     <button type='button' onClick={''}>Módosítások mentése</button>
                     </form>
                  </div>
 
-                 <div  >
-                    <p>Név: {}</p>
-                    <p>Alaplapi csatlakozás: {}</p>
-                    <p>Ajánlott tápegység: {}</p>                 
-                    <p>Monitor csatlakozás: {}</p> 
-                    <p>Vram: {}</p> 
-                    <p>Chip  gyártója: {}</p>       
+                 <div>
+                    <p>Név: {datak?.Nev}</p>
+                    <p>Alaplapi csatlakozás: {datak?.alaplapCsatlakozas}</p>
+                    <p>Ajánlott tápegység: {datak?.ajanlottTapegyseg}</p>                 
+                    <p>Monitor csatlakozás: {datak?.monitorCsatlakozas}</p> 
+                    <p>Vram: {datak?.vram}</p> 
+                    <p>Chip  gyártója: {datak?.chipGyartoja}</p>       
                     {/* <image src=""></image>*/}
                  </div>
 
@@ -202,12 +259,19 @@ function UjAlkat() {
                         Memória típus:<br/><input type="text" id='AlaplapPost5'/><br/>
                         Lapkakészlet:<br/><input type="text" id='AlaplapPost6'/><br/>
                         Slot szám:<br/><input type="number" id='AlaplapPost7'/><br/>
-
+                        Csatlakozók:<br/>
+                        {/*Ez egy listbox az alaplap csatlakozóinak neveivel */}
+                        <select id='AlaplapPost8' multiple>
+                        {[...new Set(mindenAdat['alaplapCsatlakozok'].map(i=>i.Nev))].map((nev)=>(
+                           <option value={nev} key={nev}>{nev}</option>
+                        ))}
+                        </select><br/>
+                        
                         Hangkártya:<br/>
-                        <input type="radio" id="AlaplapPost8" name="hgk_true" value="True" checked={actionHgkRadiobf==='Nemjeloltradiogomb'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogomb')}></input>
+                        <input type="radio" id="AlaplapPost9" name="hgk_true" value="True" checked={actionHgkRadiobf==='Nemjeloltradiogomb'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogomb')}></input>
                         <label htmlFor="hgk_true">Tartalmaz hangkártyát.</label><br/>
             
-                        <input type="radio" id="AlaplapPost9" name="hgk_true" value="False" checked={actionHgkRadiobf==='Nemjeloltradiogombak'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogombak')}></input>
+                        <input type="radio" id="AlaplapPost10" name="hgk_true" value="False" checked={actionHgkRadiobf==='Nemjeloltradiogombak'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogombak')}></input>
                         <label htmlFor="hgk_false">Nem tartalmaz hangkártyát.</label>
 
                         <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/}
@@ -473,26 +537,3 @@ function UjAlkat() {
   }
   
   export default UjAlkat;
-{/*
-             <div className='body'>
-                 <div  >
-                    <form>
-                    Név:<br/><input type='text'/><br/>
-                    Alaplapi csatlakozás:<br/><input type='text'/><br/>
-                    Ajánlott tápegység:<br/><input type='number'/><br/>
-                    Monitor csatlakozás:<br/><input type='text'/><br/>
-                    Vram:<br/> <input type='number'/><br/>              
-                    Chip  gyártója:<br/><input type='text'/><br/>      
-                    <input type="file" onChange={handleFileChange} />
-                    </form>
-                 </div>
-                 <div  >gggsydzhstrh</div>
-                 <div  >
-                    <div>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                    </div>
-                 </div>
-            </div>
-            */}

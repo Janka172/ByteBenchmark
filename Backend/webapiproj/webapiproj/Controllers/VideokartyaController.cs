@@ -53,10 +53,10 @@ namespace webapiproj.Controllers
 
         // GET api/<controller>/5
         [ResponseType(typeof(VideokartyaModel))]
-        public IHttpActionResult Get(int id, string name)
+        public IHttpActionResult Get(int id, string name, int vram )
         {
             VideokartyaModel result = null;
-            result = ctx.Videokartyak.Where(x => x.Nev == name).Select(x => new VideokartyaModel
+            result = ctx.Videokartyak.Where(x => x.Nev == name && x.Vram==vram).Select(x => new VideokartyaModel
             {
                 Nev = x.Nev,
                 alaplapiCsatlakozas = x.AlaplapiCsatlakozas,

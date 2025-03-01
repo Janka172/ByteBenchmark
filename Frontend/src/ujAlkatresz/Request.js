@@ -68,10 +68,12 @@ export function RequestAlaplapP(fileUrl){
     var memoriaTipusElem = document.getElementById('AlaplapPost5').value;
     var lapkaKeszletElem = document.getElementById('AlaplapPost6').value;
     var slotSzamElem = document.getElementById('AlaplapPost7').value;
+    var selectCsatlakozokElem = document.getElementById('AlaplapPost8');
+    var selectKivalaszottCsat=Array.from(selectCsatlakozokElem.selectedOptions).map(option => option.value);
     const Hangkartya=document.querySelector('input[name="hgk_true"]:checked').value;
     var kepneve=String(fileUrl);
-    console.log(Hangkartya);
-    console.log(kepneve)
+    console.log(kepneve);
+    console.log(selectKivalaszottCsat);
 
     
     if (aNevElem!=null || processzorFoglalatElem!=null || alaplapFormatumElem!=null || maxFrekvenciaElem!=null || memoriaTipusElem!=null || lapkaKeszletElem!=null || slotSzamElem!=null) 
@@ -91,7 +93,7 @@ export function RequestAlaplapP(fileUrl){
                     SlotSzam:parseInt(slotSzamElem),
                     Hangkartya: Hangkartya,
                     VideokartyaCsatlakozo: "string",
-                    Csatlakozok: ["sata","usb"],
+                    Csatlakozok: selectKivalaszottCsat,
                     KepNev: kepneve,
                 }),
             })
