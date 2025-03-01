@@ -8,7 +8,6 @@ import VisszaOsszesitobe from './VisszaOsszesitobe';
 function AppReszlet() {
     const location = useLocation();
     const appNev = location.state.nev;
-    var atmenetiKepLink = '/kepek/nkSSO.png';
 
     var [appAdat, setAppAdat] = useState('');
     const [betoltA, setBetoltA] = useState(true);
@@ -19,6 +18,7 @@ function AppReszlet() {
     var [minimumK, setMinimumK] = useState('');
     var [optimumK, setOptimumK] = useState('');
     var [tarhelyAdat, setTarhelyAdat] = useState('');
+    var [kepUrl, setKepUrl] = useState('');
 
     async function getAppAdat() {
       try {
@@ -26,7 +26,8 @@ function AppReszlet() {
         const data = await response.json();
         setAppAdat(data);
         setBetoltA(false);
-      } catch (error) {
+        setKepUrl(data.KepeleresiUtja ? `/IMAGE/nagy.${data.KepeleresiUtja}` : '/IMAGE/nagy.hiany.jpg');
+    } catch (error) {
         console.error(error);
       }
     }
@@ -76,7 +77,7 @@ function AppReszlet() {
                     </div>
                 </div>
                 <div className='jobOSzlop'>
-                    <img src={atmenetiKepLink} className='nagyKep'></img>
+                    <img src={kepUrl} className='nagyKep'></img>
                 </div>
             </div>
             

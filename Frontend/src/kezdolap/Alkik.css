@@ -8,6 +8,7 @@
 .kisKep{
     width: 50%;
     border-radius: 50vw;
+    border: black 1px solid;
 }
 
 .kezdoKepKeret{

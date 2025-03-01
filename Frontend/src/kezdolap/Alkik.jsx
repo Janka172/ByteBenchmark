@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import AlkikStilus from './Alkik.css';
 
 function Alkik(){
-    var atmenetiKepLink = '/kepek/kep.png';
-
     const [mindenApp, setMindenApp] = useState([]);
     const [betoltA, setBetoltA] = useState(true);
     const [randomIndexek, setRandomIndexek] = useState([]);
@@ -49,10 +47,11 @@ function Alkik(){
     function appokMegjelenitese() {
         const ujAlkCont = [];
         for (let i = 0; i < 4 && i < randomIndexek.length; i++) {
+            let kepUrl = `/IMAGE/logo.${mindenApp[randomIndexek[i]].KepeleresiUtja}`;
             ujAlkCont.push(
                 <Link key={i} to='/oldalak/AlkalmazasReszletek' state={{'nev' : mindenApp[randomIndexek[i]].Nev}}>
                     <div className="kezdoKepKeret">
-                        <img src={atmenetiKepLink} className="kisKep" alt="App" />
+                        <img src={kepUrl} className="kisKep" alt="App" />
                         <h4 className="kezd">{ mindenApp[randomIndexek[i]].Nev}</h4>
                     </div>
                 </Link>

@@ -52,19 +52,19 @@ input {
   .Tartalmak{
     width: 70%;
     margin: auto;
+    margin-bottom: 10vw;
   }
 
   .Tartalmak div, .Tartalmak button, .Tartalmak input{
     transition: background-color 1s;
     transition: border-color 1s;
   }
-  
-
 }
 
 @media (min-width: 1500px){
   .Tartalmak{
     width: 60%;
     margin: auto;
+    margin-bottom: 10vw;
   }
 }

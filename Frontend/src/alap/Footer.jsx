@@ -6,7 +6,8 @@ import Kijelentkezes from '../felhasznalokezeles/Kijelentkezes';
 
 function Footer() {
   const [loggedInUser, setLoggedInUser] = useState(null);
-
+  const [profilUrl, setProfilUrl] = useState('');
+console.log(profilUrl)
   useEffect(() => {
     const updateUser = () => {
       const user = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -23,25 +24,28 @@ function Footer() {
     };
   }, []);
 
+  useEffect(()=>{
+    if(loggedInUser) setProfilUrl(`/IMAGE/${JSON.parse(localStorage.getItem("loggedInUser")).LogoEleresiUtja}`);
+  },[loggedInUser])
+
   return (
     <footer className="footer">
       {loggedInUser ? 
-          <div className="footContainer">
-            <div className="footProfil">
-            <img src='../my-app/public/IMAGE/EzKbEnVagyok.jpg' className='profilkep' />
-            <p className='felhnev'>{JSON.parse(localStorage.getItem("loggedInUser")).Felhasznalonev}</p>
-            </div>
-            <div className="footMenu">
-              <Kijelentkezes></Kijelentkezes>
-              <a href="/oldalak/Profil">Profil Beállítások</a>
-            </div>
-        </div>
-        
-           : 
-          <div className="footer-links">
-            <a href="/">Bejelentkezés</a>
-            <a href="/oldalak/Reg">Regisztráció</a>
+        <div className="footContainer">
+          <div className="footProfil">
+          <img src={profilUrl} className='profilkep' />
+          <p className='felhnev'>{JSON.parse(localStorage.getItem("loggedInUser")).Felhasznalonev}</p>
           </div>
+          <div className="footMenu">
+            <Kijelentkezes></Kijelentkezes>
+            <a href="/oldalak/Profil">Profil Beállítások</a>
+          </div>
+        </div>
+        : 
+        <div className="footer-links">
+          <a href="/">Bejelentkezés</a>
+          <a href="/oldalak/Reg">Regisztráció</a>
+        </div>
         }  
     </footer>
   );

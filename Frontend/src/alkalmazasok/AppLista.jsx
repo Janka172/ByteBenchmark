@@ -53,12 +53,14 @@ function AppLista() {
 
   var Mind = [];
   function mindenElemBetoltese() {
-    var AppIndex = szurtApp.length;
+    let AppIndex = szurtApp.length;
     for (let i = 0; i < AppIndex; i++) {
+      let kepUrl = `/IMAGE/logo.${szurtApp[i].KepeleresiUtja}`;
+      if(szurtApp[i].KepeleresiUtja == '') kepUrl = `/IMAGE/logo.hiany.jpg`;
       const adat = { nev: szurtApp[i].Nev };
       Mind.push(
         <div className="kartyaKeret" key={i}>
-          <img src={atmenetiKepLink} className="kartyaLogo" />
+          <img src={kepUrl} className="kartyaLogo" />
           <h4 className="appNeve">{szurtApp[i].Nev}</h4>
           <Link to="/oldalak/AlkalmazasReszletek" state={adat}>
             <button className="reszletG">További részletek</button>
@@ -225,11 +227,9 @@ function AppLista() {
 
 return (
     <div className="kartyak">
-      {betoltA ? console.log('Betöltés folyamatban !') : mindenElemBetoltese()}    
+      {betoltA ? console.log() : mindenElemBetoltese()}    
     </div>
   );
 }
 
 export default AppLista;
-
-//<h5 className="katNeve">{szurtApp[i].KategoriaNev}</h5>
