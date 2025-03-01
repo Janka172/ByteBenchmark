@@ -9,6 +9,9 @@ function Beallitasok() {
   const [ujJelszoMegjelnik, setUjJelszoMegjelnik] = useState('none');
   const [regiJelszoMegjelnik, setregiJelszoMegjelnik] = useState('grid');
   const [vanHiba, setVanHiba] = useState('none');
+  const [selectedFile, setSelectedFile] = useState(null); // fájl tárolása
+  const [atmKep, setAtmKep] = useState(null); // előnézet
+  const [fileUrl, setFileUrl] = useState(""); // feltöltött kép URL-je
 
   useEffect(() => {
     alapMenuKivalasztas();
@@ -34,40 +37,60 @@ function Beallitasok() {
     document.getElementById('hibaU').style.display='none';
   }
 
-  const [image, setImage] = useState(null);
-  const [atmKep, setAtmKep] = useState(null);
-
+  // Kép kiválasztása
   const kepValasztas = (e) => {
     const file = e.target.files[0];
     if (file) {
-        setImage(file);
-        setAtmKep(URL.createObjectURL(file)); // Előnézet generálása
+        setSelectedFile(file); // fájl tárolása
+        setAtmKep(URL.createObjectURL(file)); // előnézet generálása
     }
   }
 
-  async function altalanosModositasa(name, logoEleresiUtja) {
-    let id= JSON.parse(localStorage.getItem("loggedInUser")).Id;
+  const altalanosModositasa = async () => {
     let nev= JSON.parse(localStorage.getItem("loggedInUser")).Felhasznalonev;
 
     let tema = null;
     if (document.getElementById('comoSzin') && document.getElementById('comoSzin').value != JSON.parse(localStorage.getItem('loggedInUser')).Tema) {
-        tema = document.getElementById('comoSzin').value;
+      tema = document.getElementById('comoSzin').value;
     }
 
     let felhNev = null;
-    if (document.getElementById('felhNInp') && document.getElementById('felhNInp').value != ('' || JSON.parse(localStorage.getItem('loggedInUser')).Felhasznalonev)) {
-        felhNev = document.getElementById('felhNInp').value;
+    if (document.getElementById('felhNInp') && document.getElementById('felhNInp').value != '') {
+      felhNev = document.getElementById('felhNInp').value;
     }
 
     let email = null;
     if (document.getElementById('emailNInp') && document.getElementById('emailNInp').value != ('' || JSON.parse(localStorage.getItem('loggedInUser')).Email)) {
-        email = document.getElementById('emailNInp').value;
+      email = document.getElementById('emailNInp').value;
     }
 
-
-    console.log(document.getElementById('emailInp').value)
-    console.log(JSON.parse(localStorage.getItem('loggedInUser')).Email)
-
+    // Kép feltöltése, ha van
+    let logoEleresiUtja = null;
+    if (selectedFile) {
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+      try {
+        const response = await fetch("http://127.0.0.1:5000/upload", {
+          method: "POST",
+          body: formData,
+          headers: {
+            "Accept": "application/json",
+          },
+          mode: "cors",
+        });
+        const data = await response.json();
+        if (response.ok) {
+          logoEleresiUtja = data.file_name;
+          setFileUrl(data.file_name);
+        } else {
+          console.error("Hiba történt:", data.message);
+        }
+      } catch (error) {
+        console.error("Hálózati hiba:", error);
+      }
+    }
+    
+    // Profiladatok frissítése
     const response = await fetch(`https://localhost:44316/api/Profil/1?name=${nev}`, {
       method: "PATCH",
       headers: {
@@ -78,7 +101,7 @@ function Beallitasok() {
         'Email': email,
         'Jogosultsag': null,
         'Tema': tema,
-        'LogoEleresiUtja': null
+        'LogoEleresiUtja': logoEleresiUtja
       })
     });
     
@@ -135,10 +158,10 @@ function Beallitasok() {
                 <div className="mt-2">
                     <p className="beallitasNeve">Előnézet:</p>
                     <div className='kepConti'>
-                      <img src={atmKep} alt="Előnézet" className="profilElolnezet" />
+                      <img src={atmKep} alt="Profilkép előnézete" className="profilElolnezet" />
                     </div>
                 </div>
-            )}
+            )} 
           </div>
 
           <button className='altalnosMentes' onClick={altalanosModositasa}>Mentés</button>
