@@ -10,12 +10,12 @@ const mindenAdat={
    alaplapCsatlakozok : [] 
 }
 function UjAlkat() {
-    const [actionHardver, setActionHardver] =useState("Alaplap")
+    const [actionHardver, setActionHardver] =useState("Videókártya")
     const [actionButtons, setActionButtons] =useState("Post")
 
    {/*Arra kell hogy egy gomb alapértelmezetten ki legyen választva az oldal betöltésekor */}
    const [actionIvkRadiobt, setActionIvkRadiobt] = useState("Jeloltradiogomb"); //processzor rádiógombjainál van
-   const [actionHgkRadiobf, setActionHgkRadiobf] = useState("Nemjeloltradiogomb");
+   const [actionHgkRadiobf, setActionHgkRadiobf] = useState("Nemjeloltradiogomb"); //alaplap rádiógombjainál van
 
     const [selectedFile, setSelectedFile] = useState(null);
     const [fileUrl, setFileUrl] = useState("");
@@ -39,7 +39,7 @@ function UjAlkat() {
                const response= await fetch(backEleresiUtvonal[item]);
                if (response.ok)
                {
-                  const adat=await response.json();
+                  const adat= await response.json();
                   mindenAdat[item]=adat;
                }
                else
@@ -105,8 +105,8 @@ function UjAlkat() {
     return (
         <div>
              <nav className='navbars'> {/*Navigációs menü*/}
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Alaplap"); setActionButtons("Post")}}>Alaplap</a>
                 <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Videókártya"); setActionButtons("Post")}}>Videókártya</a>
+                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Alaplap"); setActionButtons("Post")}}>Alaplap</a>
                 <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Memória"); setActionButtons("Post")}}>Memória</a>
                 <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Processzor"); setActionButtons("Post")}}>Processzor</a>
              </nav>
@@ -202,12 +202,19 @@ function UjAlkat() {
                         Memória típus:<br/><input type="text" id='AlaplapPost5'/><br/>
                         Lapkakészlet:<br/><input type="text" id='AlaplapPost6'/><br/>
                         Slot szám:<br/><input type="number" id='AlaplapPost7'/><br/>
-
+                        Csatlakozók:<br/>
+                        {/*Ez egy listbox az alaplap csatlakozóinak neveivel */}
+                        <select id='AlaplapPost8' multiple>
+                        {[...new Set(mindenAdat['alaplapCsatlakozok'].map(i=>i.Nev))].map((nev)=>(
+                           <option value={nev} key={nev}>{nev}</option>
+                        ))}
+                        </select><br/>
+                        
                         Hangkártya:<br/>
-                        <input type="radio" id="AlaplapPost8" name="hgk_true" value="True" checked={actionHgkRadiobf==='Nemjeloltradiogomb'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogomb')}></input>
+                        <input type="radio" id="AlaplapPost9" name="hgk_true" value="True" checked={actionHgkRadiobf==='Nemjeloltradiogomb'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogomb')}></input>
                         <label htmlFor="hgk_true">Tartalmaz hangkártyát.</label><br/>
             
-                        <input type="radio" id="AlaplapPost9" name="hgk_true" value="False" checked={actionHgkRadiobf==='Nemjeloltradiogombak'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogombak')}></input>
+                        <input type="radio" id="AlaplapPost10" name="hgk_true" value="False" checked={actionHgkRadiobf==='Nemjeloltradiogombak'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogombak')}></input>
                         <label htmlFor="hgk_false">Nem tartalmaz hangkártyát.</label>
 
                         <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/}
@@ -473,26 +480,3 @@ function UjAlkat() {
   }
   
   export default UjAlkat;
-{/*
-             <div className='body'>
-                 <div  >
-                    <form>
-                    Név:<br/><input type='text'/><br/>
-                    Alaplapi csatlakozás:<br/><input type='text'/><br/>
-                    Ajánlott tápegység:<br/><input type='number'/><br/>
-                    Monitor csatlakozás:<br/><input type='text'/><br/>
-                    Vram:<br/> <input type='number'/><br/>              
-                    Chip  gyártója:<br/><input type='text'/><br/>      
-                    <input type="file" onChange={handleFileChange} />
-                    </form>
-                 </div>
-                 <div  >gggsydzhstrh</div>
-                 <div  >
-                    <div>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                    </div>
-                 </div>
-            </div>
-            */}
