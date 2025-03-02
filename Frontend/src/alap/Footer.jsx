@@ -7,7 +7,6 @@ import Kijelentkezes from '../felhasznalokezeles/Kijelentkezes';
 function Footer() {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [profilUrl, setProfilUrl] = useState('');
-console.log(profilUrl)
   useEffect(() => {
     const updateUser = () => {
       const user = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -25,7 +24,11 @@ console.log(profilUrl)
   }, []);
 
   useEffect(()=>{
-    if(loggedInUser) setProfilUrl(`/IMAGE/${JSON.parse(localStorage.getItem("loggedInUser")).LogoEleresiUtja}`);
+    if(loggedInUser) 
+    {
+      if((localStorage.getItem("loggedInUser")).LogoEleresiUtja == '') setProfilUrl(`/IMAGE/logo.hiany.jpg`);
+      else setProfilUrl(`/IMAGE/${JSON.parse(localStorage.getItem("loggedInUser")).LogoEleresiUtja}`);
+    }
   },[loggedInUser])
 
   return (

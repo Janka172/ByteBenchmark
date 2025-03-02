@@ -61,7 +61,7 @@ function App() {
     } else {
       document.body.style.backgroundColor = 'rgb(61, 61, 61)';
     }
-}
+  }
   
 
   return (

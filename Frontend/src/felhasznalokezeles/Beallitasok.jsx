@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import Stilus from './Felh.css';
 import JelszoModosito from './JelszoModosito';
+import AdminMenu from './AdminMenu';
 
 function Beallitasok() {
   const [altDisp, setAltDisp] = useState('grid');
   const [biztDisp, setBiztDisp] = useState('none');
+  const [adminDisp, setAdminDisp] = useState('none');
   const [activeMenu, setActiveMenu] = useState('alt');
-  const [ujJelszoMegjelnik, setUjJelszoMegjelnik] = useState('none');
-  const [regiJelszoMegjelnik, setregiJelszoMegjelnik] = useState('grid');
   const [vanHiba, setVanHiba] = useState('none');
-  const [selectedFile, setSelectedFile] = useState(null); // fájl tárolása
-  const [atmKep, setAtmKep] = useState(null); // előnézet
-  const [fileUrl, setFileUrl] = useState(""); // feltöltött kép URL-je
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [atmKep, setAtmKep] = useState(null);
+  const [fileUrl, setFileUrl] = useState("");
 
   useEffect(() => {
     alapMenuKivalasztas();
@@ -20,21 +20,31 @@ function Beallitasok() {
   function alapMenuKivalasztas() {
     setActiveMenu('alt');
     setAltDisp('grid');
+    setAdminDisp('none');
     setBiztDisp('none');
   }
 
   function altKiv() {
     setActiveMenu('alt');
     setAltDisp('grid');
+    setAdminDisp('none');
     setBiztDisp('none');
     document.getElementById('hibaU').style.display='none';
   }
-
   function biztKiv() {
     setActiveMenu('bizt');
     setAltDisp('none');
+    setAdminDisp('none');
     setBiztDisp('grid');
     document.getElementById('hibaU').style.display='none';
+  }
+  function adminKiv(){
+    setActiveMenu('admin');
+    setAltDisp('none');
+    setBiztDisp('none');
+    setAdminDisp('grid');
+    document.getElementById('hibaU').style.display='none';
+
   }
 
   // Kép kiválasztása
@@ -117,12 +127,15 @@ function Beallitasok() {
 
     window.location.reload();
   }
-
+  
   return (
     <div className='teljesBeallitas'>
       <div className='menuOszlop'>
         <div className={`oszlopElem ${activeMenu === 'alt' ? 'active' : ''}`} id='alt' onClick={altKiv} style={{ backgroundColor: activeMenu === 'alt' ? 'rgb(233, 203, 203)' : '' }}>Általános</div>
         <div className={`oszlopElem ${activeMenu === 'bizt' ? 'active' : ''}`} id='bizt' onClick={biztKiv} style={{ backgroundColor: activeMenu === 'bizt' ? 'rgb(233, 203, 203)' : '' }}>Biztonság</div>
+        <div className={`oszlopElem ${activeMenu === 'admin' ? 'active' : ''}`} id='admin' onClick={adminKiv} style={{ backgroundColor: activeMenu === 'admin' ? 'rgb(233, 203, 203)' : '',
+          display: JSON.parse(localStorage.getItem("loggedInUser")).Jogosultsag == 1 ? 'grid' : 'none'
+         }}>Admin Menü</div>
       </div>
 
       <div className='beallitasiReszletek'>
@@ -155,12 +168,12 @@ function Beallitasok() {
             <p className='beallitasNeve'>Profilkép:</p>
             <input type="file" accept="*" onChange={kepValasztas}/>
             {atmKep && (
-                <div className="mt-2">
-                    <p className="beallitasNeve">Előnézet:</p>
-                    <div className='kepConti'>
-                      <img src={atmKep} alt="Profilkép előnézete" className="profilElolnezet" />
-                    </div>
+              <div className="mt-2">
+                <p className="beallitasNeve">Előnézet:</p>
+                <div className='kepConti'>
+                  <img src={atmKep} alt="Profilkép előnézete" className="profilElolnezet" />
                 </div>
+              </div>
             )} 
           </div>
 
@@ -169,6 +182,10 @@ function Beallitasok() {
 
         <div className='biztonsagi' style={{ display: biztDisp }}>
           <JelszoModosito></JelszoModosito>
+        </div>
+
+        <div className='admin' style={{display: adminDisp}}>
+          <AdminMenu></AdminMenu>
         </div>
       </div>
     </div>

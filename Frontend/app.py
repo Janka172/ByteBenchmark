@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 # 📌 Új elérési út: public/IMAGE
-UPLOAD_FOLDER = 'my-app/public/IMAGE'
+UPLOAD_FOLDER = 'public/IMAGE'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # 📌 Megengedett fájltípusok

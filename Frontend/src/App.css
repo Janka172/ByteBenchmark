@@ -55,9 +55,8 @@ input {
     margin-bottom: 10vw;
   }
 
-  .Tartalmak div, .Tartalmak button, .Tartalmak input{
-    transition: background-color 1s;
-    transition: border-color 1s;
+  .Tartalmak *{
+    transition: background-color 1s, border-color 1s;
   }
 }
 

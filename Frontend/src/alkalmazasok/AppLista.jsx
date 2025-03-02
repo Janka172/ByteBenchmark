@@ -114,10 +114,6 @@ function AppLista() {
   function vidiSz(hasV) {
     const vidkraSzurt = szurtApp.filter(x => melyikVideokartyaJobb(hasV, MinSetupKereso(setup, x.Nev)));
     setSzurtApp(vidkraSzurt);
-    console.log(szurtApp.filter(x => {
-      //melyikVideokartyaJobb(hasV, MinSetupKereso(setup, x.Nev)))
-      console.log(x.Nev)
-    }))
   }
   function melyikVideokartyaJobb(alap, hasonlitott) {
     if(hasonlitott!=null){
