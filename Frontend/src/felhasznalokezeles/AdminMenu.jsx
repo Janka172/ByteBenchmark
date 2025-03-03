@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import ProfilTorles from './ProfilTorlese';
 import Stilus from './Felh.css';
 
 function AdminMenu() {
@@ -84,8 +85,7 @@ function AdminMenu() {
     let Mind=[];
 
     let url = (`/IMAGE/${kivalasztott.LogoEleresiUtja}`);
-    if((localStorage.getItem("loggedInUser")).LogoEleresiUtja == '') url =(`/IMAGE/logo.hiany.jpg`);
-
+    if(kivalasztott.LogoEleresiUtja == '') url =(`/IMAGE/profil.hiany.jpg`);
 
     Mind.push (
       <div className='reszletKeret' key='egyetlenKeret'>
@@ -212,6 +212,7 @@ function AdminMenu() {
         {elemek.map(x => x)} 
       </div>
       <div className='profReszletek' style={{ display: reszletDisp }}>{reszletek.map(x => x)}</div>
+      <ProfilTorles></ProfilTorles>
     </div>
   );
 }

@@ -74,7 +74,7 @@ function Regisztr() {
       'Jogosultsag': 0,
       'Tema': tema,
       'Jelszo': jelszo,
-      'LogoEleresiUtja': 'kep.jpg'
+      'LogoEleresiUtja': 'profil.hiany.jpg'
     };
     rogzites(ujFelh);
 

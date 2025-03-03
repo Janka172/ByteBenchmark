@@ -48,7 +48,18 @@ input {
   margin-top: 2vw;
 }
 
-@media (min-width: 767px){
+.Tartalmak *{
+  transition: background-color 1s, border-color 1s;
+}
+
+@media (max-width: 767px){
+  .Tartalmak{
+    margin: auto;
+    margin-bottom: 20vw;
+  }
+}
+
+@media (min-width: 768px){
   .Tartalmak{
     width: 70%;
     margin: auto;

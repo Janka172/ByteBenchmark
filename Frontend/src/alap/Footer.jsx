@@ -26,7 +26,8 @@ function Footer() {
   useEffect(()=>{
     if(loggedInUser) 
     {
-      if((localStorage.getItem("loggedInUser")).LogoEleresiUtja == '') setProfilUrl(`/IMAGE/logo.hiany.jpg`);
+      console.log(JSON.parse(localStorage.getItem("loggedInUser")).LogoEleresiUtja)
+      if(JSON.parse(localStorage.getItem("loggedInUser")).LogoEleresiUtja == '') setProfilUrl(`/IMAGE/profil.hiany.jpg`);
       else setProfilUrl(`/IMAGE/${JSON.parse(localStorage.getItem("loggedInUser")).LogoEleresiUtja}`);
     }
   },[loggedInUser])

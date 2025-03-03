@@ -340,6 +340,44 @@ select{
     margin: 1.5vw;
 }
 
+.profTorlese{
+    margin: 5vw;
+    padding: 2vw;
+    text-align: center;
+    border: #000 solid 1px;
+}
+
+.torlesGomb{
+    border: #000 solid 1px;
+    width: 100%;
+    background-color: #be2e2e;
+}
+.torlesGomb:hover{
+    background-color: #e42727;
+    cursor: pointer;
+}
+
+.biztosan{
+    margin: 2vw;
+    padding: 2vw;
+    border: white 1px solid;
+    background-color: #bb2d2d;
+}
+
+.biztGomOK{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1vw;
+}
+
+.biztGomOK *{
+    border-radius: 100%;
+}
+
+.biztGomOK *:hover{
+    background-color: #d16969;
+}
+
 @media (max-width: 767px){
     .bejMenu{
         width: auto;
@@ -349,7 +387,7 @@ select{
         font-size: 5vw;
     }
 
-    .bevitelNeve, .jelszoInfoSzoveg, .jelszoInfoGomb, .kijGomb, .regHiba, .profilSor div, .keresesSor *, .oszlopElem, .cimsorFelhnev, .baNeve, .modSor *{
+    .bevitelNeve, .biztSzoveg, .jelszoInfoSzoveg, .jelszoInfoGomb, .kijGomb, .regHiba, .profilSor div, .keresesSor *, .oszlopElem, .cimsorFelhnev, .baNeve, .modSor *{
         font-size: 3vw;
     }
 
@@ -381,7 +419,7 @@ select{
         font-size: 3.5vw;
     }
 
-    .szuroCim, .visszaGomb{
+    .szuroCim, .visszaGomb, .torlCim, .torlesGomb, .biztGomOK *{
         font-size: 4vw;
     }
 
@@ -401,7 +439,7 @@ select{
         font-size: 1vw;
     }
 
-    .subGomb, .altalnosMentes, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve{
+    .subGomb, .biztSzoveg, .altalnosMentes, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve{
         font-size: 1.35vw;
     }
 
@@ -413,7 +451,7 @@ select{
         font-size: 1.2vw;
     }
 
-    .altBeCim, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb{
+    .altBeCim, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb{
         font-size: 2vw;
     }
 }
