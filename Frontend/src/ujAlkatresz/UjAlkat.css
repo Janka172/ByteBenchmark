@@ -60,10 +60,14 @@
   }
   .positions
   {
-    justify-content: center;
+    float: right;
   }
   p
   {
     height: 1vw;
     width: 200px;
+  }
+  .combi
+  {
+    width:auto;
   }
