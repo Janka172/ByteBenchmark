@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Stilus from './Felh.css';
 import JelszoModosito from './JelszoModosito';
 import AdminMenu from './AdminMenu';
+import ProfilTorles from './ProfilTorlese';
 
 function Beallitasok() {
   const [altDisp, setAltDisp] = useState('grid');
@@ -182,6 +183,7 @@ function Beallitasok() {
 
         <div className='biztonsagi' style={{ display: biztDisp }}>
           <JelszoModosito></JelszoModosito>
+          <ProfilTorles kidobando={JSON.parse(localStorage.getItem('loggedInUser')).Id} kileptet='true'></ProfilTorles>
         </div>
 
         <div className='admin' style={{display: adminDisp}}>
