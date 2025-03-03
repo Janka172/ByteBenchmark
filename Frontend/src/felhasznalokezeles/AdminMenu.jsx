@@ -6,6 +6,7 @@ function AdminMenu() {
   const [elemek, setElemek] = useState([]);
   const [reszletek, setReszletek] = useState([]);
   const [profilUrl, setProfilUrl] = useState('');
+  const [kivalasz, setKivalaszt] = useState(-1);
 
   const [tablDisp, setTablDisp] = useState('grid');
   const [szuroDisp, setSzuroDisp] = useState('none');
@@ -81,6 +82,7 @@ function AdminMenu() {
   function reszletekBetoltese(kivId){
     setTablDisp('none');
     setReszletDisp('grid');
+    setKivalaszt(kivId);
     let kivalasztott = JSON.parse(localStorage.getItem('users')).find(x => x.Id==kivId);
     let Mind=[];
 
@@ -169,7 +171,6 @@ function AdminMenu() {
     }
   }
   
-
   async function getProfilok() {
     try {
       const response = await fetch(`https://localhost:44316/api/Profil`);
@@ -212,7 +213,7 @@ function AdminMenu() {
         {elemek.map(x => x)} 
       </div>
       <div className='profReszletek' style={{ display: reszletDisp }}>{reszletek.map(x => x)}</div>
-      <ProfilTorles></ProfilTorles>
+      <div style={{ display: reszletDisp }}>{kivalasz!=-1 ? <ProfilTorles kidobando={kivalasz} kileptet='false'></ProfilTorles> : console.log()}</div>
     </div>
   );
 }

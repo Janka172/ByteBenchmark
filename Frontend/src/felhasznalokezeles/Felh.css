@@ -370,12 +370,9 @@ select{
     gap: 1vw;
 }
 
-.biztGomOK *{
-    border-radius: 100%;
-}
-
 .biztGomOK *:hover{
     background-color: #d16969;
+    cursor: pointer;
 }
 
 @media (max-width: 767px){
@@ -419,7 +416,7 @@ select{
         font-size: 3.5vw;
     }
 
-    .szuroCim, .visszaGomb, .torlCim, .torlesGomb, .biztGomOK *{
+    .szuroCim, .altalnosMentes, .visszaGomb, .torlCim, .torlesGomb, .biztGomOK *{
         font-size: 4vw;
     }
 
@@ -439,7 +436,7 @@ select{
         font-size: 1vw;
     }
 
-    .subGomb, .biztSzoveg, .altalnosMentes, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve{
+    .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve{
         font-size: 1.35vw;
     }
 
@@ -451,7 +448,7 @@ select{
         font-size: 1.2vw;
     }
 
-    .altBeCim, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb{
+    .altBeCim, .altalnosMentes, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb{
         font-size: 2vw;
     }
 }
