@@ -69,5 +69,6 @@
   }
   .combi
   {
-    width:auto;
+    font-size: medium;
+    border-radius: 20px;
   }

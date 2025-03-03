@@ -237,3 +237,50 @@ export function RequestProcesszorP(fileUrl){
             alert("kuka")
         }  
 }
+//------------PATCH/PUT----------------------------------------------
+export function RequestVideokPatch(fileName, videokName, vram,)
+{
+    var aCsatlakozasElem = document.getElementById('VideokPatch1').value;
+    var atapegysegElem = document.getElementById('VideokPatch2').value;
+    var mCsatlakozasElem = document.getElementById('VideokPatch3').value;  
+    var cGyartoElem = document.getElementById('VideokPatch4').value;
+    var kepneve=String(fileName);
+
+    const neLegyenWhiteSpace=/[a-zA-z0-9]/;
+
+    if(atapegysegElem=="" || neLegyenWhiteSpace.test(atapegysegElem))atapegysegElem=null;
+    if(mCsatlakozasElem=="" || neLegyenWhiteSpace.test(mCsatlakozasElem))mCsatlakozasElem=null;
+    if(cGyartoElem=="" || neLegyenWhiteSpace.test(cGyartoElem))cGyartoElem=null;
+
+
+        fetch (`https://localhost:44316/api/Videokartya/0?name=${videokName}&vram=${vram}`, {
+            method: "PATCH",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                alaplapiCsatlakozas: aCsatlakozasElem,
+                ajanlottTapegyseg: parseInt(atapegysegElem),
+                monitorCsatlakozas: mCsatlakozasElem,
+                chipGyartoja: cGyartoElem,
+                kepnev: kepneve,
+            }),
+        })
+        .then((response) => {
+            console.log(response.status)
+            if (!response.ok) {
+                //409
+                if(response.status === 409){
+                    alert("Ez a videokártya már szerepel ezzel a vram konfigurácioval.")
+                }
+                else{
+                    throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
+                }
+            }
+            else alert("Sikeres feltöltés!");
+                
+            return response.json()
+        })
+        .catch((error) => {
+            console.error("Hiba történt:", error)
+            alert("Server hiba. Kérlek próbált meg később!");
+        });
+}

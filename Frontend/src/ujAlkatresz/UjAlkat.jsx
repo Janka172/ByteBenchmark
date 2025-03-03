@@ -1,6 +1,6 @@
 import {useState, useEffect, use } from 'react';
 import './UjAlkat.css';
-import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP} from './Request';
+import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP, RequestVideokPatch} from './Request';
 {/*Összes adat tárolására*/}
 const mindenAdat={ 
    videokartyak : [],
@@ -35,11 +35,8 @@ function UjAlkat() {
             setActionSzurtVram(vramok);
          }
       },[actionKivalasztottNev]);
-{/*............................................................................................................................. */}
-      {/*Alaplap PATCH/PUT részéhez szükséges useState-ek */}
-      const [actionKivalasztottAlaplapNev, setActionKivalasztottAlaplapNev] = useState("");
 
-   {/*............................................................................................................................. */}
+      {/*............................................................................................................................. */}
    var datak=null;
    async function adatLekeres(event, vram, nev)
       {
@@ -61,9 +58,14 @@ function UjAlkat() {
             console.log(datak);
          }       
       }
+{/*............................................................................................................................. */}
+      {/*Alaplap PATCH/PUT részéhez szükséges useState-ek */}
+      const [actionKivalasztottAlaplapNev, setActionKivalasztottAlaplapNev] = useState("");
+
+   
    {/*............................................................................................................................. */}
    var datak=null;
-   async function adatLekeres(event, nev)
+   async function adatAlaplapLekeres(event, nev)
       {
          event.preventDefault();
          console.log(nev)
@@ -147,7 +149,7 @@ function UjAlkat() {
                
                
                {/*PATCH/PUT része */}
-               if(actionHardver==="Videókártya" && actionButtons==="Patch")RequestVideokP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+               if(actionHardver==="Videókártya" && actionButtons==="Patch")RequestVideokPatch(data.file_name, actionKivalasztottNev, actionSelectedVram); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                if(actionHardver==="Alaplap" && actionButtons==="Patch")RequestAlaplapP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                if(actionHardver==="Memória" && actionButtons==="Patch")RequestMemoriaP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                if(actionHardver==="Processzor" && actionButtons==="Patch")RequestProcesszorP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
@@ -212,24 +214,24 @@ function UjAlkat() {
                      Név:<br/>
                         <select className="combi"onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
                            <option>Válassz egyet</option>
-                           {[...new Set(mindenAdat['videokartyak'].map(i=>i.Nev))].map((nev)=>(
-                              <option key={nev} value={nev}>{nev}</option>
-                           ))}
+                           {[...new Set(mindenAdat['videokartyak'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev}>{nev}</option>))}
                         </select><br/>
+
                      Vram:<br/>
                         <select onChange={(e)=>setActionSelectedVram(e.target.value)} >
                            <option>Válassz egyet</option>
                            {actionSzurtVram.map((vram)=>(<option value={vram} key={vram}>{vram}</option>))}
                         </select><br/>
+
                         <button className='buttons' type='button' onClick={(e)=>adatLekeres(e, actionSelectedVram, actionKivalasztottNev)}>Adatok lekérése</button><br/>
 
-                    Alaplapi csatlakozás:<br/><input type='text'/><br/>
-                    Ajánlott tápegység:<br/><input type='number'/><br/>
-                    Monitor csatlakozás:<br/><input type='text'/><br/> 
-                    Chip  gyártója:<br/><input type='text'/><br/>
+                    Alaplapi csatlakozás:<br/><input type='text' id='VideokPatch1'/><br/>
+                    Ajánlott tápegység:<br/><input type='number' id='VideokPatch2'/><br/>
+                    Monitor csatlakozás:<br/><input type='text' id='VideokPatch3'/><br/> 
+                    Chip  gyártója:<br/><input type='text' id='VideokPatch4'/><br/>
 
                     <input type="file" onChange={handleFileChange} />              {/*Képfeltöltés*/}
-                    <button className='buttons' type='button' onClick={''}>Módosítások mentése</button>
+                    <button className='buttons' type='button' onClick={(e)=>handleUploadAndPost(e)}>Módosítások mentése</button>
                     </form>
                  </div>
 
@@ -317,14 +319,14 @@ function UjAlkat() {
                  <div>
                     <form>
                         Név:<br/>
-                        <select className="combi"onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
+                        <select className="combi" onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
                            <option>Válassz egyet</option>
                            {[...new Set(mindenAdat['alaplapok'].map(i=>i.Nev))].map((nev)=>(
                               <option key={nev} value={nev}>{nev}</option>
                            ))}
                         </select><br/>
 
-                           <button className='buttons' type='button' onClick={(e)=>adatLekeres(e, actionKivalasztottAlaplapNev)}>Adatok lekérése</button><br/>
+                           <button className='buttons' type='button' onClick={(e)=>adatAlaplapLekeres(e, actionKivalasztottAlaplapNev)}>Adatok lekérése</button><br/>
                         
                         Processzor foglalat:<br/><input type="text"/><br/>
                         Alaplap formátum:<br/><input type="text"/><br/>
@@ -353,13 +355,7 @@ function UjAlkat() {
                     <p>Memória típus:{actionMindenhezKellAdat?.MemoriaTipusa}</p>
                     <p>Lapkakészlet:{actionMindenhezKellAdat?.Lapkakeszlet}</p>
                     <p>Slot szám:{actionMindenhezKellAdat?.SlotSzam}</p>
-                    <p>Hangkártya:{actionMindenhezKellAdat?.Hangkartya}</p>
-
-                    <p><input type="radio" id="hgk_true" name="hgk_true" value="True"></input></p>
-                    <p><label htmlFor="hgk_true">Tartalmaz hangkártyát.</label><br/></p>
-            
-                    <p><input type="radio" id="hgk_false" name="hgk_true" value="False"></input></p>
-                    <p><label htmlFor="hgk_false">Nem tartalmaz hangkártyát.</label></p>       
+                    <p>Hangkártya:{actionMindenhezKellAdat?.Hangkartya}</p>      
                     {/* <image src=""></image>*/}
                  </div>
 
