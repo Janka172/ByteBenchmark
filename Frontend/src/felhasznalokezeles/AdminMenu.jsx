@@ -192,7 +192,7 @@ function AdminMenu() {
   return (
     <div className='telsesAM'>
       <div className='profTablazat' style={{ display: tablDisp }}>
-        <div className='szuro'>
+        <div className='szuroS'>
           <p className='szuroCim' onClick={szuroMegnyitas}>Szűrő</p>
           <div className='szuroSorok' style={{ display: szuroDisp }}>
             <div className='keresesSor'>

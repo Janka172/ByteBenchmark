@@ -12,10 +12,14 @@ function Beallitasok() {
   const [vanHiba, setVanHiba] = useState('none');
   const [selectedFile, setSelectedFile] = useState(null);
   const [atmKep, setAtmKep] = useState(null);
+  const [profilUrl, setProfilUrl] = useState('');
   const [fileUrl, setFileUrl] = useState("");
 
   useEffect(() => {
     alapMenuKivalasztas();
+
+    if(JSON.parse(localStorage.getItem("loggedInUser")).LogoEleresiUtja == '') setProfilUrl(`/IMAGE/profil.hiany.jpg`);
+    else setProfilUrl(`/IMAGE/${JSON.parse(localStorage.getItem("loggedInUser")).LogoEleresiUtja}`);
   }, []);
 
   function alapMenuKivalasztas() {
@@ -142,11 +146,14 @@ function Beallitasok() {
       <div className='beallitasiReszletek'>
         <div className='hibaUzi' id='hibaU' style={{display: vanHiba}}>
           <p id='hibaSzoveg'></p>
-        </div>
+        </div>   
 
         <div className='altalanos' style={{ display: altDisp }}>
-          <p className='altBeCim'>Általános Beállitások</p>
-
+          <div className='profilEsCim'>
+            <p className='altBeCim'>Általános Beállitások</p>
+            <img src={profilUrl} className='profilkepBeall' />
+          </div>
+          
           <div className='menuEle'>
             <p className='beallitasNeve'>Felhasználónév:</p>
             <input type='text' id='felhNInp'></input>

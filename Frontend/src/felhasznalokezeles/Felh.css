@@ -258,7 +258,7 @@ select{
     background-color: #b86868;
 }
 
-.szuro{
+.szuroS{
     border: #000 solid 1px;
 }
 
@@ -373,6 +373,17 @@ select{
 .biztGomOK *:hover{
     background-color: #d16969;
     cursor: pointer;
+}
+
+.profilkepBeall{
+    width: 75%;
+    margin: auto;
+    border: #000 1px solid;
+}
+
+.profilEsCim{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 @media (max-width: 767px){

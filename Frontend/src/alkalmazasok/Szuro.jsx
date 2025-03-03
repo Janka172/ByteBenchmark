@@ -180,11 +180,16 @@ function Szuro() {
       <div className='mezo' style={{ display: displ }}>
         <p>Videókártya:</p>
         <select id='videokartyaCombo' value={videokartya} onChange={(e) => setVideokartya(e.target.value)}>
-         <option value='-' key='-1'>-</option>
-          {betoltV ? (<option>Betöltés...</option>) : (
+          <option value='-' key='-1'>-</option>
+          {betoltV ? (
+            <option>Betöltés...</option>
+          ) : (
             mindenVideokartya.map((vid, index) => (
-              <option value={vid.Nev} key={index}>{vid.Nev}</option> 
-            )))}
+              <option value={`${vid.Nev} - ${vid.vram} GB`} key={index}>
+                {vid.Nev} - {vid.vram} GB
+              </option> 
+            ))
+          )}
         </select>
       </div>
 

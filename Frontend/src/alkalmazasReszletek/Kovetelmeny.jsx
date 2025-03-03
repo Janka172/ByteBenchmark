@@ -28,9 +28,10 @@ function Kovetelmeny(adatok) {
 
   async function getVideokartya() {
       try {
-        const response = await fetch(`https://localhost:44316/api/Videokartya/0?name=${adat.VidekortyaNev}`);
+        const response = await fetch(`https://localhost:44316/api/Videokartya/0?name=${adat.VidekortyaNev}&vram=${adat.VideokartyaVram}`);
         const data = await response.json();
         setVideokartya(data);
+        console.log(data)
         setBetoltveV(false);
       } catch (error) {
         console.error(error);
@@ -51,38 +52,38 @@ function Kovetelmeny(adatok) {
   useEffect(() => { getProcesszor(); }, [adat]);
 
   async function getRam() {
-      try {
-        const response = await fetch(`https://localhost:44316/api/Ram/0?name=${adat.RamNeve}`);
-        const data = await response.json();
-        setRam(data);
-        setBetoltveR(false);
-      } catch (error) {
-        console.error(error);
-      }
+    try {
+      const response = await fetch(`https://localhost:44316/api/Ram/0?name=${adat.RamNeve}&frekvencia=${adat.RamFrekvencia}&meret=${adat.RamMeret}`);
+      const data = await response.json();
+      setRam(data);
+      setBetoltveR(false);
+    } catch (error) {
+      console.error(error);
+    }
   }
   useEffect(() => { getRam(); }, [adat]);
 
   async function getOpRendszer() {
-      try {
-        const response = await fetch(`https://localhost:44316/api/Oprendszer/0?name=${adat.OprendszerNev}`);
-        const data = await response.json();
-        setOprendszer(data);
-        setBetoltveO(false);
-      } catch (error) {
-        console.error(error);
-      }
+    try {
+      const response = await fetch(`https://localhost:44316/api/Oprendszer/0?name=${adat.OprendszerNev}`);
+      const data = await response.json();
+      setOprendszer(data);
+      setBetoltveO(false);
+    } catch (error) {
+      console.error(error);
+    }
   }
   useEffect(() => { getOpRendszer(); }, [adat]);
 
   async function getAlaplap() {
-      try {
-        const response = await fetch(`https://localhost:44316/api/Alaplap/0?name=${adat.AlaplapNeve}`);
-        const data = await response.json();
-        setAlaplap(data);
-        setBetoltveA(false);
-      } catch (error) {
-        console.error(error);
-      }
+    try {
+      const response = await fetch(`https://localhost:44316/api/Alaplap/0?name=${adat.AlaplapNeve}`);
+      const data = await response.json();
+      setAlaplap(data);
+      setBetoltveA(false);
+    } catch (error) {
+      console.error(error);
+    }
   }
   useEffect(() => { getAlaplap(); }, [adat]);
 

@@ -89,9 +89,9 @@ function AppLista() {
 
   //Szűrés videókártya szerint
   const [hasVid, setHasVid] = useState('');
-  async function getHasVidi(neve) {
+  async function getHasVidi(feltetel) {
     try {
-      const response = await fetch(`https://localhost:44316/api/Videokartya/0?name=${neve}`);
+      const response = await fetch(`https://localhost:44316/api/Videokartya/0?name=${feltetel.split('-')[0]}&vram=${feltetel.split('-')[1].split(' ')[1]}`);
       const data = await response.json();
       setHasVid(data);
     } catch (error) {
@@ -100,24 +100,22 @@ function AppLista() {
   }
   useEffect(() => {
     if (hasVid && hasVid != '') {
-      //console.log(hasVid)
       vidiSz(hasVid);
     }
   }, [hasVid]);
   
   function vidkSzures() {
     if (feltetel.keresesiAdatok.videokartya != '-') {
-      //console.log(feltetel.keresesiAdatok.videokartya)
       getHasVidi(feltetel.keresesiAdatok.videokartya);
     }
   }
+
   function vidiSz(hasV) {
     const vidkraSzurt = szurtApp.filter(x => melyikVideokartyaJobb(hasV, MinSetupKereso(setup, x.Nev)));
     setSzurtApp(vidkraSzurt);
   }
   function melyikVideokartyaJobb(alap, hasonlitott) {
     if(hasonlitott!=null){
-      
       if (alap.vram >= hasonlitott.VideokartyaVram) {
         return true;
       } else {

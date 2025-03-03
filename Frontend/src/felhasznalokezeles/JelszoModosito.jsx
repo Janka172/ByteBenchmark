@@ -2,6 +2,13 @@ import { useState, useEffect } from 'react';
 import Stilus from './Felh.css';
 
 function JelszoModosito() {
+  const [profilUrl, setProfilUrl] = useState('');
+
+  useEffect(() => {
+    if(JSON.parse(localStorage.getItem("loggedInUser")).LogoEleresiUtja == '') setProfilUrl(`/IMAGE/profil.hiany.jpg`);
+    else setProfilUrl(`/IMAGE/${JSON.parse(localStorage.getItem("loggedInUser")).LogoEleresiUtja}`);
+  },[]);
+
   function hibaKiiratas(uzenet){
     document.getElementById('hibaSzoveg').innerText=uzenet;
     document.getElementById('hibaU').style.display='grid';
@@ -56,7 +63,10 @@ function JelszoModosito() {
 
   return (
     <div className='jelszoMod'>
-        <p className='jelszoModCim'>Jelszó Módosítása</p>
+        <div className='profilEsCim'>
+          <p className='jelszoModCim'>Jelszó Módosítása</p>
+          <img src={profilUrl} className='profilkepBeall' />
+        </div>
         <div className='ujJelszo'>
           <div className='menuEle'>
             <p className='beallitasNeve'>Módosított Jelszó:</p>
