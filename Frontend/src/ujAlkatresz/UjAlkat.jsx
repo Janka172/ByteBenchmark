@@ -80,11 +80,7 @@ function UjAlkat() {
                   const adat= await response.json();
                   mindenAdat[item]=adat;
                }
-               else
-               {
-                  throw new Error(`Hiba a ${item} lekérésekor: ${response.status}`);
-                  
-               }           
+               else{throw new Error(`Hiba a ${item} lekérésekor: ${response.status}`);}           
             }
             
          } catch (error)
@@ -168,7 +164,7 @@ function UjAlkat() {
                     Chip  gyártója:<br/><input type='text' id='VideoPost6'/><br/>
      
                     <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/} 
-                    <button type='button' onClick={handleUploadAndPost}>Adatok feltöltése</button>
+                    <button type='button' className='buttons' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
                  </div>
                  <div>
@@ -177,9 +173,9 @@ function UjAlkat() {
                     </div>
                  <div  >
                     <div>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
@@ -199,7 +195,7 @@ function UjAlkat() {
                            <option selected>Válassz egyet</option>
                            {actionSzurtVram.map((vram)=>(<option value={vram} key={vram}>{vram}</option>))}
                         </select><br/>
-                        <button type='button' onClick={(e)=>adatLekeres(e.target.value, actionKivalasztottNev)}>Adatok lekérése</button><br/>
+                        <button className='buttons' type='button' onClick={(e)=>adatLekeres(e.target.value, actionKivalasztottNev)}>Adatok lekérése</button><br/>
 
                     Alaplapi csatlakozás:<br/><input type='text'/><br/>
                     Ajánlott tápegység:<br/><input type='number'/><br/>
@@ -207,7 +203,7 @@ function UjAlkat() {
                     Chip  gyártója:<br/><input type='text'/><br/>
 
                     <input type="file" onChange={handleFileChange} />              {/*Képfeltöltés*/}
-                    <button type='button' onClick={''}>Módosítások mentése</button>
+                    <button className='buttons' type='button' onClick={''}>Módosítások mentése</button>
                     </form>
                  </div>
 
@@ -224,9 +220,9 @@ function UjAlkat() {
 
                  <div>
                     <div>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
@@ -236,15 +232,15 @@ function UjAlkat() {
                     <form>
                     Név:<br/><input type='text'/><br/>                 
                     Vram:<br/> <input type='number'/><br/>
-                    <button type='button' onClick={''}>Alkatrész eltávolítása</button>
+                    <button className='buttons' type='button' onClick={''}>Alkatrész eltávolítása</button>
                     </form>
                  </div>
                  <div>gggsydzhstrh</div>
                  <div>
                     <div>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
@@ -275,7 +271,7 @@ function UjAlkat() {
                         <label htmlFor="hgk_false">Nem tartalmaz hangkártyát.</label>
 
                         <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/}
-                        <button type='button' onClick={handleUploadAndPost}>Adatok feltöltése</button>
+                        <button className='buttons' type='button' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
                  </div>
                  <div>
@@ -284,9 +280,9 @@ function UjAlkat() {
                     </div>
                  <div>
                     <div>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
@@ -310,7 +306,7 @@ function UjAlkat() {
                         <label htmlFor="hgk_false">Nem tartalmaz hangkártyát.</label> 
 
                         <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/}
-                        <button type='button' onClick={''}>Módosítások mentése</button>
+                        <button className='buttons' type='button' onClick={''}>Módosítások mentése</button>
                     </form>
                  </div>
 
@@ -335,9 +331,9 @@ function UjAlkat() {
 
                  <div  >
                     <div>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
@@ -346,15 +342,15 @@ function UjAlkat() {
                  <div>
                     <form>
                     Név:<br/><input type='text'/><br/>
-                    <button type='button' onClick={''}>Alkatrész eltávolítása</button>
+                    <button className='buttons' type='button' onClick={''}>Alkatrész eltávolítása</button>
                     </form>
                  </div>
                  <div >gggsydzhstrh</div>
                  <div>
                     <div>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
@@ -367,7 +363,7 @@ function UjAlkat() {
                         Frekvencia:<br/><input type="number" id='MemoriaPost3'/>MHz<br/>
                         Méret:<br/><input type="nmuber" id='MemoriaPost4'/>
                         <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/} 
-                        <button type='button' onClick={handleUploadAndPost}>Adatok feltöltése</button>
+                        <button className='buttons' type='button' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
                  </div>
                  <div>
@@ -376,9 +372,9 @@ function UjAlkat() {
                     </div>
                  <div>
                     <div>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
@@ -391,7 +387,7 @@ function UjAlkat() {
                         Frekvencia:<br/><input type="number"/>MHz<br/>
                         Méret:<br/><input type="nmuber"/>      
                         <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/}
-                        <button type='button' onClick={''}>Módosítások mentése</button>
+                        <button className='buttons' type='button' onClick={''}>Módosítások mentése</button>
                     </form>
                  </div>
                  <div>
@@ -403,9 +399,9 @@ function UjAlkat() {
                  </div>
                  <div>
                     <div>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
@@ -415,15 +411,15 @@ function UjAlkat() {
                     <form>
                     Név:<br/><input type='text'/><br/>                 
                     Frekvencia:<br/> <input type='number'/><br/>
-                    <button type='button' onClick={''}>Alkatrész eltávolítása</button>
+                    <button className='buttons' type='button' onClick={''}>Alkatrész eltávolítása</button>
                     </form>
                  </div>
                  <div>gggsydzhstrh</div>
                  <div>
                     <div>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
@@ -449,7 +445,7 @@ function UjAlkat() {
                         <label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label>
                         
                         <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/} 
-                        <button type='button' onClick={handleUploadAndPost}>Adatok feltöltése</button>
+                        <button className='buttons' type='button' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
                  </div>
                  <div  >
@@ -458,9 +454,9 @@ function UjAlkat() {
                     </div>
                  <div  >
                     <div>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
@@ -484,7 +480,7 @@ function UjAlkat() {
                             <label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label>
                             
                             <input type="file" onChange={handleFileChange} />                   {/*Képfeltöltés*/}
-                              <button type='button' onClick={''}>Módosítások mentése</button> 
+                              <button className='buttons' type='button' onClick={''}>Módosítások mentése</button> 
                      </form>
                  </div>
 
@@ -504,13 +500,11 @@ function UjAlkat() {
                 <p><input type="radio" id="ivk_false" name="ivk_true" value="False"></input></p>
                  <p><label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label></p>
                  </div>
-
-
-                 <div  >
+                 <div >
                     <div>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
@@ -519,15 +513,15 @@ function UjAlkat() {
                  <div  >
                     <form>
                     Név:<br/><input type='text'/><br/>
-                    <button type='button' onClick={''}>Alkatrész eltávolítása</button>                
+                    <button className='buttons' type='button' onClick={''}>Alkatrész eltávolítása</button>                
                     </form>
                  </div>
                  <div   >gggsydzhstrh</div>
                  <div  >
                     <div>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                        <button onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
