@@ -12,6 +12,7 @@ function Reszletek({ adat }) {
     let ujMind = []; 
     for (let sor in adat) {
       var kiirando=sor;
+      let mertekegyseg='';
 
       if(adat[sor] == false) adat[sor]='Nincs';
       else if(adat[sor] == true) adat[sor]='Van';
@@ -21,7 +22,7 @@ function Reszletek({ adat }) {
       else if(sor == 'ajanlottTapegyseg') kiirando = 'Ajánlott Tápegység';
       else if(sor == 'monitorCsatlakozas') kiirando = 'Monitor Csatlakozás';
       else if(sor == 'chipGyartoja') kiirando = 'Chip Gyártója';
-      else if(sor == 'vram') kiirando = 'VRAM';
+      else if(sor == 'vram') kiirando = 'VRAM'; //mertekegyseg ='GB';
       else if(sor == 'AlaplapFoglalat') kiirando = 'Alaplap Foglalat';
       else if(sor == 'SzalakSzama') kiirando = 'Szálak Száma';
       else if(sor == 'TamogatottMemoriatipus') kiirando = 'Támogatott Memóriatípus';
@@ -48,7 +49,7 @@ function Reszletek({ adat }) {
         ujMind.push(
           <div className="sor" key={sor}>
             <h2 className="elemNev">{kiirando + ':'}</h2>
-            <h2 className="elemErtek">{adat[sor]}</h2>
+            <h2 className="elemErtek">{adat[sor]} {mertekegyseg}</h2>
           </div>
         );
       }

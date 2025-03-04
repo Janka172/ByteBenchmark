@@ -2,6 +2,7 @@ body{
   margin: 0;
   background-color: rgb(61, 61, 61);
   overflow-x: hidden;
+  color: black;
 
   word-wrap: break-word;
   overflow-wrap: break-word;
