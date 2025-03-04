@@ -107,10 +107,10 @@ namespace webapiproj.Controllers
                 if (result == null) return NotFound();
                 if(value.Nev!=null) result.Nev = value.Nev;
                 if (value.alaplapiCsatlakozas != null) result.AlaplapiCsatlakozas = value.alaplapiCsatlakozas;
-                if (value.ajanlottTapegyseg != null) result.AjanlottTapegyseg = value.ajanlottTapegyseg;
+                if (value.ajanlottTapegyseg != 0) result.AjanlottTapegyseg = value.ajanlottTapegyseg;
                 if(value.monitorCsatlakozas!=null) result.MonitorCsatlakozas = value.monitorCsatlakozas;
                 if(value.chipGyartoja!=null) result.ChipGyartoja = value.chipGyartoja;
-                if(value.vram!=null) result.Vram = value.vram;
+                if(value.vram!=0) result.Vram = value.vram;
                 if (value.kepnev != null) result.KepNev = value.kepnev;
 
                 ctx.SaveChanges();

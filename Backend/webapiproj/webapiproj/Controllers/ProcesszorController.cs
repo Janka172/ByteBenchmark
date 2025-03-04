@@ -118,13 +118,13 @@ namespace webapiproj.Controllers
                 if (result == null) return NotFound();
                 if(value.Nev!=null) result.Nev = value.Nev;
                 if (value.AlaplapFoglalat!=null) result.AlaplapFoglalat = value.AlaplapFoglalat;
-                if (value.SzalakSzama!=null) result.SzalakSzama = value.SzalakSzama;
+                if (value.SzalakSzama!=0) result.SzalakSzama = value.SzalakSzama;
                 if (value.TamogatottMemoriatipus!=null) result.TamogatottMemoriatipus = value.TamogatottMemoriatipus;
-                if (value.ProcesszormagokSzama!=null) result.ProcesszormagokSzama = value.ProcesszormagokSzama;
-                if (value.ProcesszorFrekvencia!=null) result.ProcesszorFrekvencia = value.ProcesszorFrekvencia;
-                if (value.BProcesszorFrekvencia!=null) result.BFrekvencia = value.BProcesszorFrekvencia;
+                if (value.ProcesszormagokSzama!=0) result.ProcesszormagokSzama = value.ProcesszormagokSzama;
+                if (value.ProcesszorFrekvencia!=0) result.ProcesszorFrekvencia = value.ProcesszorFrekvencia;
+                if (value.BProcesszorFrekvencia!=0) result.BFrekvencia = value.BProcesszorFrekvencia;
                 if(value.Gyarto!=null) result.Gyarto = value.Gyarto;
-                if (value.AjanlottTapegyseg!=null) result.AjanlottTapegyseg = value.AjanlottTapegyseg;
+                if (value.AjanlottTapegyseg!=0) result.AjanlottTapegyseg = value.AjanlottTapegyseg;
                 if (value.IntegraltVideokartya!=null) result.IntegraltVideokartya = value.IntegraltVideokartya;
                 if (value.Kepnev != null) result.KepNev = value.Kepnev;
 

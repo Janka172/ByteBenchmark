@@ -89,8 +89,8 @@ namespace webapiproj.Controllers
                 if (result == null) return NotFound();
                 if(value.Nev!=null) result.Nev = value.Nev;
                 if (value.MemoriaTipus!=null) result.MemoriaTipus = value.MemoriaTipus;
-                if (value.Frekvencia!=null) result.Frekvencia = value.Frekvencia;
-                if (value.Meret!=null) result.Meret = value.Meret;
+                if (value.Frekvencia!=0) result.Frekvencia = value.Frekvencia;
+                if (value.Meret!=0) result.Meret = value.Meret;
                 if (value.Kepnev != null) result.KepNev = value.Kepnev;
 
                 ctx.SaveChanges();
