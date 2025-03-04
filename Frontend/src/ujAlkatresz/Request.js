@@ -244,6 +244,7 @@ export function RequestVideokPatch(fileName, videokName, vram,)
     var atapegysegElem = document.getElementById('VideokPatch2').value;
     var mCsatlakozasElem = document.getElementById('VideokPatch3').value;  
     var cGyartoElem = document.getElementById('VideokPatch4').value;
+    var aHangkartya=document.querySelector('input[name="AlaplapPatch7"]:checked').value;
     var kepneve=String(fileName);
 
     const neLegyenWhiteSpace=/[a-zA-z0-9]/;
@@ -261,6 +262,59 @@ export function RequestVideokPatch(fileName, videokName, vram,)
                 ajanlottTapegyseg: parseInt(atapegysegElem),
                 monitorCsatlakozas: mCsatlakozasElem,
                 chipGyartoja: cGyartoElem,
+                Hangkartya : aHangkartya,
+                kepnev: kepneve,
+            }),
+        })
+        .then((response) => {
+            console.log(response.status)
+            if (!response.ok) {
+                //409
+                if(response.status === 409){
+                    alert("Ez a videokártya már szerepel ezzel a vram konfigurácioval.")
+                }
+                else{
+                    throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
+                }
+            }
+            else alert("Sikeres feltöltés!");
+                
+            return response.json()
+        })
+        .catch((error) => {
+            console.error("Hiba történt:", error)
+            alert("Server hiba. Kérlek próbált meg később!");
+        });
+}
+export function RequestAlaplapPatch(fileName, alaplapnev)
+{
+    var processzorFoglalat = document.getElementById('AlaplapPatch1').value;
+    var alaplapFormatum = document.getElementById('AlaplapPatch2').value;
+    var maxFrekvencia = document.getElementById('AlaplapPatch3').value;  
+    var memoriaTipus = document.getElementById('AlaplapPatch4').value;
+    var lapkakeszlet=document.getElementById('AlaplapPatch5').value;
+    var slotSzam=document.getElementById('AlaplapPatch6').value;
+    var kepneve=String(fileName);
+
+    const neLegyenWhiteSpace=/[a-zA-z0-9]/;
+    if(processzorFoglalat=="" || neLegyenWhiteSpace.test(processzorFoglalat))processzorFoglalat=null;
+    if(alaplapFormatum=="" || neLegyenWhiteSpace.test(alaplapFormatum))alaplapFormatum=null;
+    if(maxFrekvencia=="")maxFrekvencia=null;
+    if(memoriaTipus=="" || neLegyenWhiteSpace.test(memoriaTipus))memoriaTipus=null;
+    if(lapkakeszlet=="" || neLegyenWhiteSpace.test(lapkakeszlet))lapkakeszlet=null;
+    if(slotSzam=="")slotSzam=null;
+
+// Itt kell még vmit csinálni?
+        fetch (`https://localhost:44316/api/Alaplap/0?name=${alaplapnev}`, {
+            method: "PATCH",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                CpuFoglalat: processzorFoglalat,
+                AlaplapFormatum: alaplapFormatum,
+                MaxFrekvencia: parseInt(maxFrekvencia),
+                MemoriaTipusa: memoriaTipus,
+                Lapkakeszlet: lapkakeszlet,
+                SlotSzam: slotSzam,
                 kepnev: kepneve,
             }),
         })

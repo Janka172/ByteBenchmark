@@ -1,6 +1,6 @@
 import {useState, useEffect, use } from 'react';
 import './UjAlkat.css';
-import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP, RequestVideokPatch} from './Request';
+import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP, RequestVideokPatch, RequestAlaplapPatch} from './Request';
 {/*Összes adat tárolására*/}
 const mindenAdat={ 
    videokartyak : [],
@@ -61,8 +61,6 @@ function UjAlkat() {
 {/*............................................................................................................................. */}
       {/*Alaplap PATCH/PUT részéhez szükséges useState-ek */}
       const [actionKivalasztottAlaplapNev, setActionKivalasztottAlaplapNev] = useState("");
-
-   
    {/*............................................................................................................................. */}
    var datak=null;
    async function adatAlaplapLekeres(event, nev)
@@ -150,7 +148,7 @@ function UjAlkat() {
                
                {/*PATCH/PUT része */}
                if(actionHardver==="Videókártya" && actionButtons==="Patch")RequestVideokPatch(data.file_name, actionKivalasztottNev, actionSelectedVram); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-               if(actionHardver==="Alaplap" && actionButtons==="Patch")RequestAlaplapP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+               if(actionHardver==="Alaplap" && actionButtons==="Patch")RequestAlaplapPatch(data.file_name, actionKivalasztottAlaplapNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                if(actionHardver==="Memória" && actionButtons==="Patch")RequestMemoriaP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                if(actionHardver==="Processzor" && actionButtons==="Patch")RequestProcesszorP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                 setFileUrl(data.file_name);
@@ -328,22 +326,22 @@ function UjAlkat() {
 
                            <button className='buttons' type='button' onClick={(e)=>adatAlaplapLekeres(e, actionKivalasztottAlaplapNev)}>Adatok lekérése</button><br/>
                         
-                        Processzor foglalat:<br/><input type="text"/><br/>
-                        Alaplap formátum:<br/><input type="text"/><br/>
-                        Maximum frekvencia:<br/><input type="number"/><br/>
-                        Memória típus:<br/><input type="text"/><br/>
-                        Lapkakészlet:<br/><input type="text"/><br/>
-                        Slot szám:<br/><input type="number"/><br/>
+                        Processzor foglalat:<br/><input type="text" id="AlaplapPatch1"/><br/>
+                        Alaplap formátum:<br/><input type="text" id="AlaplapPatch2"/><br/>
+                        Maximum frekvencia:<br/><input type="number" id="AlaplapPatch3"/><br/>
+                        Memória típus:<br/><input type="text" id="AlaplapPatch4"/><br/>
+                        Lapkakészlet:<br/><input type="text" id="AlaplapPatch5"/><br/>
+                        Slot szám:<br/><input type="number" id="AlaplapPatch6"/><br/>
 
                         Hangkártya:<br/>
-                        <input type="radio" id="hgk_true" name="hgk_true" value="True"/>
+                        <input type="radio" id="AlaplapPatch7" name="hgk_true" value="True"/>
                         <label htmlFor="hgk_true">Tartalmaz hangkártyát.</label><br/>
             
-                        <input type="radio" id="hgk_false" name="hgk_true" value="False"/>
+                        <input type="radio" id="AlaplapPatch8" name="hgk_true" value="False"/>
                         <label htmlFor="hgk_false">Nem tartalmaz hangkártyát.</label> 
 
                         <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/}
-                        <button className='buttons' type='button' onClick={''}>Módosítások mentése</button>
+                        <button className='buttons' type='button' onClick={(e)=>handleUploadAndPost(e)}>Módosítások mentése</button>
                     </form>
                  </div>
 
