@@ -34,7 +34,7 @@ namespace webapiproj.Controllers
         public string MemoriaTipusa { get; set; }
         public string Lapkakeszlet { get; set; }
         public int SlotSzam { get; set; }
-        public bool? Hangkartya { get; set; }
+        public bool Hangkartya { get; set; }
         public string VideokartyaCsatlakozo { get; set; }
         public string Kepnev { get; set; }
     }
@@ -169,7 +169,7 @@ namespace webapiproj.Controllers
                 if (value.MemoriaTipusa!=null) result.MemoriaTipusa = value.MemoriaTipusa;
                 if (value.Lapkakeszlet!=null) result.Lapkakeszlet = value.Lapkakeszlet;
                 if (value.SlotSzam!=0) result.SlotSzam = value.SlotSzam;
-                if (value.Hangkartya!=null) result.Hangkartya = value?.Hangkartya ?? result.Hangkartya; //result.Hangkartya = value.Hangkartya;
+                if (value.Hangkartya!=null) result.Hangkartya = value.Hangkartya;
                 if (value.VideokartyaCsatlakozo != null) result.VideokartyaCsatlakozo = value.VideokartyaCsatlakozo;
                 if (value.Kepnev != null) result.KepNev = value.Kepnev;
                          
