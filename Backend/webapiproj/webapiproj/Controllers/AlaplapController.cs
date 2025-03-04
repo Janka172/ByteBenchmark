@@ -34,7 +34,7 @@ namespace webapiproj.Controllers
         public string MemoriaTipusa { get; set; }
         public string Lapkakeszlet { get; set; }
         public int SlotSzam { get; set; }
-        public bool Hangkartya { get; set; }
+        public bool? Hangkartya { get; set; }
         public string VideokartyaCsatlakozo { get; set; }
         public string Kepnev { get; set; }
     }
@@ -165,11 +165,11 @@ namespace webapiproj.Controllers
                 if(value.Nev!=null) result.Nev = value.Nev;
                 if (value.CpuFoglalat!=null) result.CpuFoglalat = value.CpuFoglalat;
                 if (value.AlaplapFormatum!=null) result.AlaplapFormatum = value.AlaplapFormatum;
-                if (value.MaxFrekvencia!=null) result.MaxFrekvencia = value.MaxFrekvencia;
+                if (value.MaxFrekvencia!=0) result.MaxFrekvencia = value.MaxFrekvencia;
                 if (value.MemoriaTipusa!=null) result.MemoriaTipusa = value.MemoriaTipusa;
                 if (value.Lapkakeszlet!=null) result.Lapkakeszlet = value.Lapkakeszlet;
-                if (value.SlotSzam!=null) result.SlotSzam = value.SlotSzam;
-                if (value.Hangkartya!=null) result.Hangkartya = value.Hangkartya;
+                if (value.SlotSzam!=0) result.SlotSzam = value.SlotSzam;
+                if (value.Hangkartya!=null) result.Hangkartya = value?.Hangkartya ?? result.Hangkartya; //result.Hangkartya = value.Hangkartya;
                 if (value.VideokartyaCsatlakozo != null) result.VideokartyaCsatlakozo = value.VideokartyaCsatlakozo;
                 if (value.Kepnev != null) result.KepNev = value.Kepnev;
                          
