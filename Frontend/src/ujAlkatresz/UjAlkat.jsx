@@ -119,46 +119,75 @@ function UjAlkat() {
 
     const handleUploadAndPost = async (event) => {
       event.preventDefault();
-        if (!selectedFile) {
-            alert("Válassz egy fájlt!");
-            return;
-        }
-    
-        const formData = new FormData();
-        formData.append("file", selectedFile);
-    
-        try {
-            const response = await fetch("http://127.0.0.1:5000/upload", {
-                method: "POST",
-                body: formData,
-                headers: {
-                    "Accept": "application/json",
-                },
-                mode: "cors",
-            });
-            
-            const data = await response.json();
-            if (response.ok) {
-               {/*POST része */}
-               if(actionHardver==="Videókártya" && actionButtons==="Post")RequestVideokP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-               if(actionHardver==="Alaplap" && actionButtons==="Post")RequestAlaplapP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-               if(actionHardver==="Memória" && actionButtons==="Post")RequestMemoriaP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-               if(actionHardver==="Processzor" && actionButtons==="Post")RequestProcesszorP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-               
-               
-               {/*PATCH/PUT része */}
-               if(actionHardver==="Videókártya" && actionButtons==="Patch")RequestVideokPatch(data.file_name, actionKivalasztottNev, actionSelectedVram); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-               if(actionHardver==="Alaplap" && actionButtons==="Patch")RequestAlaplapPatch(data.file_name, actionKivalasztottAlaplapNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-               if(actionHardver==="Memória" && actionButtons==="Patch")RequestMemoriaP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-               if(actionHardver==="Processzor" && actionButtons==="Patch")RequestProcesszorP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-                setFileUrl(data.file_name);
-            } else {
-                console.error("Hiba történt:", data.message);
+
+         if (!selectedFile) {
+            //------------------------Post---------------------
+            if(actionHardver==="Videókártya" && actionButtons==="Post"){
+               RequestVideokP("GPUALTALANOS.png"); 
             }
-        } catch (error) {
-            console.error("Hálózati hiba:", error);
-        }
-    };
+            else if(actionHardver==="Alaplap" && actionButtons==="Post"){
+               RequestAlaplapP(fileUrl);
+            }
+            else if(actionHardver==="Memória" && actionButtons==="Post"){
+               RequestMemoriaP(fileUrl);
+            }
+            else if(actionHardver==="Processzor" && actionButtons==="Post"){
+               RequestProcesszorP(fileUrl);
+            }
+            //----------------------Patch/Put---------------------
+            if(actionHardver==="Videókártya" && actionButtons==="Patch"){
+               RequestVideokPatch("",actionKivalasztottNev, actionSelectedVram); 
+            }
+            else if(actionHardver==="Alaplap" && actionButtons==="Patch"){
+               RequestAlaplapPatch("",actionKivalasztottAlaplapNev);
+            }
+            //else if(actionHardver==="Memória" && actionButtons==="Patch"){
+               //RequestMemoriaP(fileUrl);
+            //}
+            //else if(actionHardver==="Processzor" && actionButtons==="Patch"){
+               //RequestProcesszorP(fileUrl);
+            //}
+            
+         }
+         else if(selectedFile){
+            const formData = new FormData();
+            formData.append("file", selectedFile);
+    
+            try {
+                  const response = await fetch("http://127.0.0.1:5000/upload", {
+                     method: "POST",
+                     body: formData,
+                     headers: {
+                        "Accept": "application/json",
+                     },
+                     mode: "cors",
+                  });
+            
+                  const data = await response.json();
+                  if (response.ok) {
+                     {/*POST része */}
+                     if(actionHardver==="Videókártya" && actionButtons==="Post")RequestVideokP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+                     if(actionHardver==="Alaplap" && actionButtons==="Post")RequestAlaplapP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+                     if(actionHardver==="Memória" && actionButtons==="Post")RequestMemoriaP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+                     if(actionHardver==="Processzor" && actionButtons==="Post")RequestProcesszorP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+               
+               
+                     {/*PATCH/PUT része */}
+                     if(actionHardver==="Videókártya" && actionButtons==="Patch")RequestVideokPatch(data.file_name, actionKivalasztottNev, actionSelectedVram); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+                     if(actionHardver==="Alaplap" && actionButtons==="Patch")RequestAlaplapPatch(data.file_name, actionKivalasztottAlaplapNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+                     if(actionHardver==="Memória" && actionButtons==="Patch")RequestMemoriaP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+                     if(actionHardver==="Processzor" && actionButtons==="Patch")RequestProcesszorP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+                     setFileUrl(data.file_name);
+                  } else {
+                     console.error("Hiba történt:", data.message);
+                  }
+            } catch (error) {
+                  console.error("Hálózati hiba:", error);
+            }
+         };
+      }
+    
+        
     const url="/IMAGE/"+fileUrl;
 
     function NeFrissuljon(event)

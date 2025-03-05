@@ -244,7 +244,7 @@ export function RequestVideokPatch(fileName, videokName, vram,)
     var atapegysegElem = document.getElementById('VideokPatch2').value;
     var mCsatlakozasElem = document.getElementById('VideokPatch3').value;  
     var cGyartoElem = document.getElementById('VideokPatch4').value;
-    var aHangkartya=document.querySelector('input[name="AlaplapPatch7"]:checked').value;
+    //var aHangkartya=document.querySelector('input[name="AlaplapPatch7"]:checked').value;
     var kepneve=String(fileName);
 
     const neLegyenWhiteSpace=/[a-zA-z0-9]/;
@@ -252,6 +252,7 @@ export function RequestVideokPatch(fileName, videokName, vram,)
     if(atapegysegElem=="" || neLegyenWhiteSpace.test(atapegysegElem))atapegysegElem=null;
     if(mCsatlakozasElem=="" || neLegyenWhiteSpace.test(mCsatlakozasElem))mCsatlakozasElem=null;
     if(cGyartoElem=="" || neLegyenWhiteSpace.test(cGyartoElem))cGyartoElem=null;
+    if(kepneve=="")kepneve=null;
 
 
         fetch (`https://localhost:44316/api/Videokartya/0?name=${videokName}&vram=${vram}`, {
@@ -262,7 +263,7 @@ export function RequestVideokPatch(fileName, videokName, vram,)
                 ajanlottTapegyseg: parseInt(atapegysegElem),
                 monitorCsatlakozas: mCsatlakozasElem,
                 chipGyartoja: cGyartoElem,
-                Hangkartya : aHangkartya,
+                //Hangkartya : aHangkartya,
                 kepnev: kepneve,
             }),
         })
@@ -303,6 +304,7 @@ export function RequestAlaplapPatch(fileName, alaplapnev)
     if(memoriaTipus=="" || neLegyenWhiteSpace.test(memoriaTipus))memoriaTipus=null;
     if(lapkakeszlet=="" || neLegyenWhiteSpace.test(lapkakeszlet))lapkakeszlet=null;
     if(slotSzam=="")slotSzam=null;
+    if(kepneve=="")kepneve=null;
 
 // Itt kell még vmit csinálni?
         fetch (`https://localhost:44316/api/Alaplap/0?name=${alaplapnev}`, {
