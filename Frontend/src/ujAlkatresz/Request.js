@@ -15,8 +15,8 @@ export function RequestVideokP(fileUrl){
     console.log(vramElem);
     console.log(cGyartoElem);
 
-    
-    if (nevElem!=null || aCsatlakozasElem!=null || atapegysegElem!=null || mCsatlakozasElem!=null || cGyartoElem!=null || vramElem!=null) 
+    const neLegyenWhiteSpace=/[a-zA-Z]/;
+    if (nevElem!=null || neLegyenWhiteSpace.test(nevElem) || aCsatlakozasElem!=null || neLegyenWhiteSpace.test(aCsatlakozasElem) || atapegysegElem!=null || mCsatlakozasElem!=null || neLegyenWhiteSpace.test(mCsatlakozasElem) || cGyartoElem!=null || neLegyenWhiteSpace.test(cGyartoElem) || vramElem!=null)    
         {
             fetch ("https://localhost:44316/api/Videokartya", {
                 method: "POST",
@@ -75,8 +75,8 @@ export function RequestAlaplapP(fileUrl){
     console.log(kepneve);
     console.log(selectKivalaszottCsat);
 
-    
-    if (aNevElem!=null || processzorFoglalatElem!=null || alaplapFormatumElem!=null || maxFrekvenciaElem!=null || memoriaTipusElem!=null || lapkaKeszletElem!=null || slotSzamElem!=null) 
+    const neLegyenWhiteSpace=/[a-zA-Z]/;
+    if (aNevElem!=null || neLegyenWhiteSpace.test(aNevElem)|| processzorFoglalatElem!=null || neLegyenWhiteSpace.test(processzorFoglalatElem)|| alaplapFormatumElem!=null || neLegyenWhiteSpace.test(alaplapFormatumElem)|| maxFrekvenciaElem!=null || memoriaTipusElem!=null || neLegyenWhiteSpace.test(memoriaTipusElem)|| lapkaKeszletElem!=null || neLegyenWhiteSpace.test(lapkaKeszletElem) || slotSzamElem!=null) 
         {
             fetch ("https://localhost:44316/api/Alaplap", {
                 method: "POST",
@@ -132,8 +132,8 @@ export function RequestMemoriaP(fileUrl){
     var kepneve=String(fileUrl);
     console.log(kepneve)
 
-    
-    if (mNevElem!=null || memoriaTipusElem!=null || frekvenciaElem!=null || meretElem!=null) 
+    const neLegyenWhiteSpace=/[a-zA-Z]/;
+    if (mNevElem!=null || neLegyenWhiteSpace.test(mNevElem) || memoriaTipusElem!=null || neLegyenWhiteSpace.test(memoriaTipusElem)|| frekvenciaElem!=null || meretElem!=null) 
         {
             fetch ("https://localhost:44316/api/Ram", {
                 method: "POST",
@@ -189,9 +189,9 @@ export function RequestProcesszorP(fileUrl){
     var kepneve=String(fileUrl);
     console.log(kepneve)
 
-
+    const neLegyenWhiteSpace=/[a-zA-Z]/;
     
-    if (pNevElem!=null || frekvenciaElem!=null || bFrekvenciaElem!=null || alaplapFoglalatElem!=null || szalakSzamaElem!=null || tamogatottMemoriaTipusElem!=null || processzormagokSzamaElem!=null || gyartoElem!=null || ajanlottTapegysegElem!=null) 
+    if (pNevElem!=null || neLegyenWhiteSpace.test(pNevElem)||frekvenciaElem!=null || bFrekvenciaElem!=null || alaplapFoglalatElem!=null || neLegyenWhiteSpace.test(alaplapFoglalatElem) || szalakSzamaElem!=null || tamogatottMemoriaTipusElem!=null|| neLegyenWhiteSpace.test(tamogatottMemoriaTipusElem) || processzormagokSzamaElem!=null || gyartoElem!=null|| neLegyenWhiteSpace.test(gyartoElem) || ajanlottTapegysegElem!=null) 
         {
             fetch ("https://localhost:44316/api/Processzor", {
                 method: "POST",
@@ -237,7 +237,7 @@ export function RequestProcesszorP(fileUrl){
             alert("kuka")
         }  
 }
-//------------PATCH/PUT----------------------------------------------
+//------------PATCH----------------------------------------------
 export function RequestVideokPatch(fileName, videokName, vram,)
 {
     var aCsatlakozasElem = document.getElementById('VideokPatch1').value;
@@ -246,11 +246,11 @@ export function RequestVideokPatch(fileName, videokName, vram,)
     var cGyartoElem = document.getElementById('VideokPatch4').value;
     var kepneve=String(fileName);
 
-    const neLegyenWhiteSpace=/[a-zA-z0-9]/;
-
-    if(atapegysegElem=="" || neLegyenWhiteSpace.test(atapegysegElem))atapegysegElem=null;
-    if(mCsatlakozasElem=="" || neLegyenWhiteSpace.test(mCsatlakozasElem))mCsatlakozasElem=null;
-    if(cGyartoElem=="" || neLegyenWhiteSpace.test(cGyartoElem))cGyartoElem=null;
+    const neLegyenWhiteSpace=/[a-zA-Z]/;
+    if(aCsatlakozasElem=="" || !neLegyenWhiteSpace.test(aCsatlakozasElem))aCsatlakozasElem=null;
+    if(atapegysegElem=="" || !neLegyenWhiteSpace.test(atapegysegElem))atapegysegElem=null;
+    if(mCsatlakozasElem=="" || !neLegyenWhiteSpace.test(mCsatlakozasElem))mCsatlakozasElem=null;
+    if(cGyartoElem=="" || !neLegyenWhiteSpace.test(cGyartoElem))cGyartoElem=null;
     if(kepneve=="")kepneve=null;
 
 
@@ -296,12 +296,12 @@ export function RequestAlaplapPatch(fileName, alaplapnev)
     var aHangkartya=document.querySelector('input[name="hgk_true"]:checked').value;
     var kepneve=String(fileName);
 
-    const neLegyenWhiteSpace=/[a-zA-z0-9]/;
-    if(processzorFoglalat=="" || neLegyenWhiteSpace.test(processzorFoglalat))processzorFoglalat=null;
-    if(alaplapFormatum=="" || neLegyenWhiteSpace.test(alaplapFormatum))alaplapFormatum=null;
+    const neLegyenWhiteSpace=/[a-zA-Z]/;
+    if(processzorFoglalat=="" || !neLegyenWhiteSpace.test(processzorFoglalat))processzorFoglalat=null;
+    if(alaplapFormatum=="" || !neLegyenWhiteSpace.test(alaplapFormatum))alaplapFormatum=null;
     if(maxFrekvencia=="")maxFrekvencia=null;
-    if(memoriaTipus=="" || neLegyenWhiteSpace.test(memoriaTipus))memoriaTipus=null;
-    if(lapkakeszlet=="" || neLegyenWhiteSpace.test(lapkakeszlet))lapkakeszlet=null;
+    if(memoriaTipus=="" || !neLegyenWhiteSpace.test(memoriaTipus))memoriaTipus=null;
+    if(lapkakeszlet=="" || !neLegyenWhiteSpace.test(lapkakeszlet))lapkakeszlet=null;
     if(slotSzam=="")slotSzam=null;
     if(kepneve=="")kepneve=null;
 
@@ -339,7 +339,7 @@ export function RequestAlaplapPatch(fileName, alaplapnev)
             alert("Server hiba. Kérlek próbált meg később!");
         });
 }
-export function RequestMemoriaPatch(fileName, memoriaNev)
+export function RequestProcesszorPatch(fileName, procNev)
 {
     var frekvencia = document.getElementById('ProcPatch1').value; 
     var bFrekvencia = document.getElementById('ProcPatch2').value;
@@ -351,29 +351,32 @@ export function RequestMemoriaPatch(fileName, memoriaNev)
     var ajanlottTapegyseg = document.getElementById('ProcPatch8').value;
     const integraltVideokartya = document.querySelector('input[name="ivk_true"]:checked').value;
     var kepneve=String(fileName);
+    console.log(procNev);
 
-    const neLegyenWhiteSpace=/[a-zA-z0-9]/;
+    const neLegyenWhiteSpace=/[a-zA-z]/;
     if(frekvencia=="")frekvencia=null;
     if(bFrekvencia=="")bFrekvencia=null;
-    if(alaplapFoglalat=="" || neLegyenWhiteSpace.test(alaplapFoglalat))alaplapFoglalat=null;
+    if(alaplapFoglalat=="" || !neLegyenWhiteSpace.test(alaplapFoglalat))alaplapFoglalat=null;
     if(szalakSzama=="")szalakSzama=null;
-    if(tamogatottMemoriaTipus=="" || neLegyenWhiteSpace.test(tamogatottMemoriaTipus))tamogatottMemoriaTipus=null;
+    if(tamogatottMemoriaTipus=="" || !neLegyenWhiteSpace.test(tamogatottMemoriaTipus))tamogatottMemoriaTipus=null;
     if(processzormagokSzama=="")processzormagokSzama=null;
-    if(gyarto=="" || neLegyenWhiteSpace.test(gyarto))gyarto=null;
-    if(ajanlottTapegyseg=="")ajanlottTapegysegnull;
+    if(gyarto=="" || !neLegyenWhiteSpace.test(gyarto))gyarto=null;
+    if(ajanlottTapegyseg=="")ajanlottTapegyseg=null;
     if(kepneve=="")kepneve=null;
 
-        fetch (`https://localhost:44316/api/Alaplap/0?name=${alaplapnev}`, {
+        fetch (`https://localhost:44316/api/Processzor/0?name=${procNev}`, {
             method: "PATCH",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
                 AlaplapFoglalat: alaplapFoglalat,
                 SzalakSzama: parseInt(szalakSzama),
                 TamogatottMemoriatipus: tamogatottMemoriaTipus,
+                ProcesszormagokSzama: parseInt(processzormagokSzama),
                 ProcesszorFrekvencia: parseInt(frekvencia),
                 BProcesszorFrekvencia: parseInt(bFrekvencia),
                 Gyarto: gyarto,
                 AjanlottTapegyseg : parseInt(ajanlottTapegyseg),
+                IntegraltVideokartya: integraltVideokartya,
                 kepnev: kepneve,
             }),
         })
@@ -382,7 +385,7 @@ export function RequestMemoriaPatch(fileName, memoriaNev)
             if (!response.ok) {
                 //409
                 if(response.status === 409){
-                    alert("Ez a videokártya már szerepel ezzel a vram konfigurácioval.")
+                    alert("Ez a processzor már szerepel ezzel a névvel.")
                 }
                 else{
                     throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);

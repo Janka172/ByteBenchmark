@@ -1,6 +1,6 @@
 import {useState, useEffect, use } from 'react';
 import './UjAlkat.css';
-import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP, RequestVideokPatch, RequestAlaplapPatch} from './Request';
+import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP, RequestVideokPatch, RequestAlaplapPatch, RequestProcesszorPatch} from './Request';
 {/*Összes adat tárolására*/}
 const mindenAdat={ 
    videokartyak : [],
@@ -86,7 +86,7 @@ function UjAlkat() {
       const [actionKivalasztottProcesszorNev, setActionKivalasztottProcesszorNev] = useState("");
       
       var datak=null;
-   async function adatAlaplapLekeres(event, nev)
+   async function adatProcesszorLekeres(event, nev)
       {
          event.preventDefault();
          console.log(nev)
@@ -163,9 +163,9 @@ function UjAlkat() {
             //else if(actionHardver==="Memória" && actionButtons==="Patch"){
                //RequestMemoriaP(fileUrl);
             //}
-            //else if(actionHardver==="Processzor" && actionButtons==="Patch"){
-               //RequestProcesszorP(fileUrl);
-            //}
+            else if(actionHardver==="Processzor" && actionButtons==="Patch"){
+               RequestProcesszorPatch("", actionKivalasztottProcesszorNev);
+            }
             
          }
          else if(selectedFile){
@@ -195,7 +195,7 @@ function UjAlkat() {
                      if(actionHardver==="Videókártya" && actionButtons==="Patch")RequestVideokPatch(data.file_name, actionKivalasztottNev, actionSelectedVram); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                      if(actionHardver==="Alaplap" && actionButtons==="Patch")RequestAlaplapPatch(data.file_name, actionKivalasztottAlaplapNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                      if(actionHardver==="Memória" && actionButtons==="Patch")RequestMemoriaP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-                     if(actionHardver==="Processzor" && actionButtons==="Patch")RequestProcesszorP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+                     if(actionHardver==="Processzor" && actionButtons==="Patch")RequestProcesszorPatch(data.file_name, actionKivalasztottProcesszorNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                      setFileUrl(data.file_name);
                   } else {
                      console.error("Hiba történt:", data.message);
@@ -382,10 +382,10 @@ function UjAlkat() {
                         Slot szám:<br/><input type="number" id="AlaplapPatch6"/><br/>
 
                         Hangkártya:<br/>
-                        <input type="radio" id="AlaplapPatch7" name="hgk_true" value="True"/>
+                        <input type="radio" id="AlaplapPatch7" name="hgk_true" value="True" checked={actionHgkRadiobf==='Nemjeloltradiogomb'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogomb')}/>
                         <label htmlFor="hgk_true">Tartalmaz hangkártyát.</label><br/>
             
-                        <input type="radio" id="AlaplapPatch8" name="hgk_true" value="False"/>
+                        <input type="radio" id="AlaplapPatch8" name="hgk_true" value="False" checked={actionHgkRadiobf==='Nemjeloltradiogombak'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogombak')}/>
                         <label htmlFor="hgk_false">Nem tartalmaz hangkártyát.</label> 
 
                         <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/}
@@ -553,10 +553,10 @@ function UjAlkat() {
                            ))}
                         </select><br/>
 
-                           <button className='buttons' type='button' onClick={(e)=>adatAlaplapLekeres(e, actionKivalasztottProcesszorNev)}>Adatok lekérése</button><br/>
+                           <button className='buttons' type='button' onClick={(e)=>adatProcesszorLekeres(e, actionKivalasztottProcesszorNev)}>Adatok lekérése</button><br/>
 
-                            Frekvencia:<br/><input type="text" id='ProcPatch1'/><br/>
-                            Maximum frekvencia:<br/><input type="text" id='ProcPatch2'/><br/>
+                            Frekvencia:<br/><input type="number" id='ProcPatch1'/><br/>
+                            Maximum frekvencia:<br/><input type="number" id='ProcPatch2'/><br/>
                             Alaplap foglalat:<br/><input type="text" id='ProcPatch3'/><br/>
                             Szálak száma:<br/><input type="number" id='ProcPatch4'/><br/>
                             Támogatott memória típus:<br/><input type="text" id='ProcPatch5'/><br/>
@@ -565,32 +565,28 @@ function UjAlkat() {
                             Ajánlott tápegység:<br/><input type="number" id='ProcPatch8'/>W<br/>
 
                             Integrált videókártya:<br/>
-                            <input type="radio" id="ProcPatch9" name="ivk_true" value="True"></input>
+                            <input type="radio" id="ProcPatch9" name="ivk_true" value="True" checked={actionHgkRadiobf==='Nemjeloltradiogomb'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogomb')}></input>
                             <label htmlFor="ivk_true">Tartalmaz integrált videókártyát.</label><br/>
                 
-                            <input type="radio" id="ProcPatch10" name="ivk_true" value="False"></input>
+                            <input type="radio" id="ProcPatch10" name="ivk_true" value="False" checked={actionHgkRadiobf==='Nemjeloltradiogombak'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogombak')}></input>
                             <label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label>
                             
                             <input type="file" onChange={handleFileChange} />                   {/*Képfeltöltés*/}
-                              <button className='buttons' type='button' onClick={''}>Módosítások mentése</button> 
+                              <button className='buttons' type='button' onClick={(e)=>handleUploadAndPost(e)}>Módosítások mentése</button> 
                      </form>
                  </div>
 
                  <div  >
-                 <p>Név:</p><br></br>
-                 <p>Frekvencia:</p><br></br>
-                 <p>Alaplap foglalat:</p><br></br>
-                 <p>Szálak száma:</p><br></br>
-                 <p>Támogatott memória típus:</p><br></br>
-                 <p>Processzormegok száma:</p><br></br>          
-                 <p>Gyártó:</p><br></br>
-                 <p>Ajánlott tápegység:</p><br></br>            
-                 <p>Integrált videókártya:</p><br></br>
-                 <p><input type="radio" id="ivk_true" name="ivk_true" value="True"></input></p>
-                 <p><label htmlFor="ivk_true">Tartalmaz integrált videókártyát.</label><br/></p>
-                
-                <p><input type="radio" id="ivk_false" name="ivk_true" value="False"></input></p>
-                 <p><label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label></p>
+                 <p>Név:{actionMindenhezKellAdat?.Nev}</p><br></br>
+                 <p>Frekvencia:{actionMindenhezKellAdat?.ProcesszorFrekvencia}</p><br></br>
+                 <p>Maximum frekvencia:{actionMindenhezKellAdat?.BProcesszorFrekvencia}</p><br></br>
+                 <p>Alaplap foglalat:{actionMindenhezKellAdat?.AlaplapFoglalat}</p><br></br>
+                 <p>Szálak száma:{actionMindenhezKellAdat?.SzalakSzama}</p><br></br>
+                 <p>Támogatott memória típus:{actionMindenhezKellAdat?.TamogatottMemoriatipus}</p><br></br>
+                 <p>Processzormegok száma:{actionMindenhezKellAdat?.ProcesszormagokSzama}</p><br></br>          
+                 <p>Gyártó:{actionMindenhezKellAdat?.Gyarto}</p><br></br>
+                 <p>Ajánlott tápegység:{actionMindenhezKellAdat?.AjanlottTapegyseg}</p><br></br>            
+                 <p>Integrált videókártya:{actionMindenhezKellAdat?.IntegraltVideokartya}</p><br></br>
                  </div>
                  <div >
                     <div>
