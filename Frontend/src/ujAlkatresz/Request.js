@@ -244,7 +244,6 @@ export function RequestVideokPatch(fileName, videokName, vram,)
     var atapegysegElem = document.getElementById('VideokPatch2').value;
     var mCsatlakozasElem = document.getElementById('VideokPatch3').value;  
     var cGyartoElem = document.getElementById('VideokPatch4').value;
-    //var aHangkartya=document.querySelector('input[name="AlaplapPatch7"]:checked').value;
     var kepneve=String(fileName);
 
     const neLegyenWhiteSpace=/[a-zA-z0-9]/;
@@ -263,7 +262,6 @@ export function RequestVideokPatch(fileName, videokName, vram,)
                 ajanlottTapegyseg: parseInt(atapegysegElem),
                 monitorCsatlakozas: mCsatlakozasElem,
                 chipGyartoja: cGyartoElem,
-                //Hangkartya : aHangkartya,
                 kepnev: kepneve,
             }),
         })
@@ -295,6 +293,7 @@ export function RequestAlaplapPatch(fileName, alaplapnev)
     var memoriaTipus = document.getElementById('AlaplapPatch4').value;
     var lapkakeszlet=document.getElementById('AlaplapPatch5').value;
     var slotSzam=document.getElementById('AlaplapPatch6').value;
+    var aHangkartya=document.querySelector('input[name="hgk_true"]:checked').value;
     var kepneve=String(fileName);
 
     const neLegyenWhiteSpace=/[a-zA-z0-9]/;
@@ -306,7 +305,6 @@ export function RequestAlaplapPatch(fileName, alaplapnev)
     if(slotSzam=="")slotSzam=null;
     if(kepneve=="")kepneve=null;
 
-// Itt kell még vmit csinálni?
         fetch (`https://localhost:44316/api/Alaplap/0?name=${alaplapnev}`, {
             method: "PATCH",
             headers: {"Content-Type": "application/json"},
@@ -317,6 +315,65 @@ export function RequestAlaplapPatch(fileName, alaplapnev)
                 MemoriaTipusa: memoriaTipus,
                 Lapkakeszlet: lapkakeszlet,
                 SlotSzam: slotSzam,
+                Hangkartya : aHangkartya,
+                kepnev: kepneve,
+            }),
+        })
+        .then((response) => {
+            console.log(response.status)
+            if (!response.ok) {
+                //409
+                if(response.status === 409){
+                    alert("Ez a videokártya már szerepel ezzel a vram konfigurácioval.")
+                }
+                else{
+                    throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
+                }
+            }
+            else alert("Sikeres feltöltés!");
+                
+            return response.json()
+        })
+        .catch((error) => {
+            console.error("Hiba történt:", error)
+            alert("Server hiba. Kérlek próbált meg később!");
+        });
+}
+export function RequestMemoriaPatch(fileName, memoriaNev)
+{
+    var frekvencia = document.getElementById('ProcPatch1').value; 
+    var bFrekvencia = document.getElementById('ProcPatch2').value;
+    var alaplapFoglalat = document.getElementById('ProcPatch3').value;
+    var szalakSzama = document.getElementById('ProcPatch4').value;
+    var tamogatottMemoriaTipus = document.getElementById('ProcPatch5').value;
+    var processzormagokSzama = document.getElementById('ProcPatch6').value;
+    var gyarto = document.getElementById('ProcPatch7').value;
+    var ajanlottTapegyseg = document.getElementById('ProcPatch8').value;
+    const integraltVideokartya = document.querySelector('input[name="ivk_true"]:checked').value;
+    var kepneve=String(fileName);
+
+    const neLegyenWhiteSpace=/[a-zA-z0-9]/;
+    if(frekvencia=="")frekvencia=null;
+    if(bFrekvencia=="")bFrekvencia=null;
+    if(alaplapFoglalat=="" || neLegyenWhiteSpace.test(alaplapFoglalat))alaplapFoglalat=null;
+    if(szalakSzama=="")szalakSzama=null;
+    if(tamogatottMemoriaTipus=="" || neLegyenWhiteSpace.test(tamogatottMemoriaTipus))tamogatottMemoriaTipus=null;
+    if(processzormagokSzama=="")processzormagokSzama=null;
+    if(gyarto=="" || neLegyenWhiteSpace.test(gyarto))gyarto=null;
+    if(ajanlottTapegyseg=="")ajanlottTapegysegnull;
+    if(kepneve=="")kepneve=null;
+
+        fetch (`https://localhost:44316/api/Alaplap/0?name=${alaplapnev}`, {
+            method: "PATCH",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                AlaplapFoglalat: alaplapFoglalat,
+                SzalakSzama: parseInt(szalakSzama),
+                TamogatottMemoriatipus: tamogatottMemoriaTipus,
+                ProcesszorFrekvencia: parseInt(frekvencia),
+                BProcesszorFrekvencia: parseInt(bFrekvencia),
+                Gyarto: gyarto,
+                AjanlottTapegyseg : parseInt(ajanlottTapegyseg),
                 kepnev: kepneve,
             }),
         })

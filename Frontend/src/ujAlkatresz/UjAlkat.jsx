@@ -24,7 +24,7 @@ function UjAlkat() {
     const [selectedFile, setSelectedFile] = useState(null);
     const [fileUrl, setFileUrl] = useState("");
 
-    {/*Videókártya PATCH/PUT részéhez szükséges useState-ek */}
+    {/*Videókártya PATCH/PUT részéhez szükséges dolgok */}
       const [actionKivalasztottNev, setActionKivalasztottNev] = useState("");
       const [actionSzurtVram, setActionSzurtVram] = useState([]);
       const [actionSelectedVram, setActionSelectedVram]=useState("");
@@ -36,7 +36,6 @@ function UjAlkat() {
          }
       },[actionKivalasztottNev]);
 
-      {/*............................................................................................................................. */}
    var datak=null;
    async function adatLekeres(event, vram, nev)
       {
@@ -59,9 +58,9 @@ function UjAlkat() {
          }       
       }
 {/*............................................................................................................................. */}
-      {/*Alaplap PATCH/PUT részéhez szükséges useState-ek */}
-      const [actionKivalasztottAlaplapNev, setActionKivalasztottAlaplapNev] = useState("");
-   {/*............................................................................................................................. */}
+   {/*Alaplap PATCH/PUT részéhez szükséges dolgok */}
+   const [actionKivalasztottAlaplapNev, setActionKivalasztottAlaplapNev] = useState("");
+
    var datak=null;
    async function adatAlaplapLekeres(event, nev)
       {
@@ -83,8 +82,28 @@ function UjAlkat() {
          }       
       }
    {/*............................................................................................................................. */}
+      {/*Processzor PATCH részéhez szükséges dolgok*/}
+      const [actionKivalasztottProcesszorNev, setActionKivalasztottProcesszorNev] = useState("");
+      
+      var datak=null;
+   async function adatAlaplapLekeres(event, nev)
+      {
+         event.preventDefault();
+         console.log(nev)
+         var lekertadatok=await fetch(`https://localhost:44316/api/Processzor/0?name=${nev}`);
+         if (!lekertadatok.ok)
+         {    
+            if (lekertadatok.status===400) {console.error("Nem található ilyen elem az adatbázisban!"); }
+         }
+         else
+         {
+            datak= await lekertadatok.json();
+            setActionMindenhezKellAdat(datak);
+            console.log(datak);
+         }       
+      }
 
-
+   {/*............................................................................................................................. */}
    useEffect(()=>{
       {/* A backendben lévő elérési útvonalak*/}
       const backEleresiUtvonal={
@@ -526,19 +545,30 @@ function UjAlkat() {
             {actionHardver==="Processzor" && actionButtons==="Patch" ? <div className='body'>
                  <div>
                     <form>
-                            Név:<br/><input type="text"/><br/>
-                            Frekvencia:<br/><input type="text"/><br/>
-                            Alaplap foglalat:<br/><input type="text"/><br/>
-                            Szálak száma:<br/><input type="number"/><br/>
-                            Támogatott memória típus:<br/><input type="text"/><br/>
-                            Processzormegok száma:<br/><input type="number"/><br/>           
-                            Gyártó:<br/><input type="text"/><br/>
-                            Ajánlott tápegység:<br/><input type="number"/>W<br/>            
+                            Név:<br/>
+                            <select className="combi" onChange={(an)=>setActionKivalasztottProcesszorNev(an.target.value)} value={actionKivalasztottProcesszorNev}>
+                           <option>Válassz egyet</option>
+                           {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>(
+                              <option key={nev} value={nev}>{nev}</option>
+                           ))}
+                        </select><br/>
+
+                           <button className='buttons' type='button' onClick={(e)=>adatAlaplapLekeres(e, actionKivalasztottProcesszorNev)}>Adatok lekérése</button><br/>
+
+                            Frekvencia:<br/><input type="text" id='ProcPatch1'/><br/>
+                            Maximum frekvencia:<br/><input type="text" id='ProcPatch2'/><br/>
+                            Alaplap foglalat:<br/><input type="text" id='ProcPatch3'/><br/>
+                            Szálak száma:<br/><input type="number" id='ProcPatch4'/><br/>
+                            Támogatott memória típus:<br/><input type="text" id='ProcPatch5'/><br/>
+                            Processzormegok száma:<br/><input type="number" id='ProcPatch6'/><br/>           
+                            Gyártó:<br/><input type="text" id='ProcPatch7'/><br/>
+                            Ajánlott tápegység:<br/><input type="number" id='ProcPatch8'/>W<br/>
+
                             Integrált videókártya:<br/>
-                            <input type="radio" id="ivk_true" name="ivk_true" value="True"></input>
+                            <input type="radio" id="ProcPatch9" name="ivk_true" value="True"></input>
                             <label htmlFor="ivk_true">Tartalmaz integrált videókártyát.</label><br/>
                 
-                            <input type="radio" id="ivk_false" name="ivk_true" value="False"></input>
+                            <input type="radio" id="ProcPatch10" name="ivk_true" value="False"></input>
                             <label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label>
                             
                             <input type="file" onChange={handleFileChange} />                   {/*Képfeltöltés*/}
