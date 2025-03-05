@@ -49,6 +49,7 @@ namespace webapiproj.Controllers
                 KepeleresiUtja = x.Kepeleresiutja,
                 Tarhely = x.Tarhely
             }).FirstOrDefault();
+            if (result == null) return NotFound();
             return Ok( result);
         }
 

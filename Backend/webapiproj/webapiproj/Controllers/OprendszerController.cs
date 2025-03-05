@@ -50,7 +50,7 @@ namespace webapiproj.Controllers
                 Verzio = x.Verzio,
                 KepNev=x.KepNev
             }).FirstOrDefault();
-
+            if (result == null) return NotFound();
             return Ok(result);
         }
 
@@ -73,6 +73,7 @@ namespace webapiproj.Controllers
             }
             catch (Exception ex)
             {
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "Ezzel a névvel és buildszámmal már létezik Operácios rendszer.");
                 return InternalServerError(ex);
             }
 
@@ -96,7 +97,7 @@ namespace webapiproj.Controllers
             }
             catch (Exception ex)
             {
-                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "Ezzel a névvel már létezik Operácios rendszer.");
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "Ezzel a névvel és buildszámmal már létezik Operácios rendszer.");
                 return InternalServerError(ex);
             }
         }

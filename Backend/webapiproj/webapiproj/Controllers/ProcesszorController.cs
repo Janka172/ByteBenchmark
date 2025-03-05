@@ -72,6 +72,7 @@ namespace webapiproj.Controllers
                 IntegraltVideokartya = x.IntegraltVideokartya,
                 Kepnev = x.KepNev
             }).FirstOrDefault();
+            if (result == null) return NotFound();
             return Ok(result);
         }
 
@@ -103,6 +104,7 @@ namespace webapiproj.Controllers
             }
             catch (Exception ex)
             {
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "Ezzel a névvel már létezik processzor");
                 return InternalServerError(ex);
             }
 
@@ -110,7 +112,7 @@ namespace webapiproj.Controllers
 
         // PUT api/<controller>/5
         [ResponseType(typeof(ProcesszorModel))]
-        public IHttpActionResult Put(int id, string name, [FromBody] ProcesszorModel value)
+        public IHttpActionResult Patch(int id, string name, [FromBody] ProcesszorModel value)
         {
             try
             {

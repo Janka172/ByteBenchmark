@@ -50,6 +50,7 @@ namespace webapiproj.Controllers
                 Meret = x.Meret,
                 Kepnev = x.KepNev
             }).FirstOrDefault();
+            if (result == null) return NotFound();
             return Ok(result);
         }
 
@@ -116,6 +117,7 @@ namespace webapiproj.Controllers
 
 
             var result = ctx.Ramok.Where(x => x.Nev == name).FirstOrDefault();
+            if (result == null) 
             if (result != null)
             {
                 ctx.Ramok.Remove(result);

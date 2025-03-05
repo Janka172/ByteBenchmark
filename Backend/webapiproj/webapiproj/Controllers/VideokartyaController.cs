@@ -66,6 +66,7 @@ namespace webapiproj.Controllers
                 vram = x.Vram,
                 kepnev=x.KepNev
             }).FirstOrDefault();
+            if (result == null) return NotFound();
             return Ok(result);
         }
 

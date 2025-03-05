@@ -46,6 +46,7 @@ namespace webapiproj.Controllers
                 AlaplapNev = x.Alaplap.Nev,
                 CsatlakozoNev = x.Csatlakozo.Nev
             }).ToList();
+            if (result == null) return NotFound();
             return Ok(result);
         }
 

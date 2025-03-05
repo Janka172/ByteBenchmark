@@ -38,6 +38,7 @@ namespace webapiproj.Controllers
             {
                 Nev = x.Nev
             }).FirstOrDefault();
+            if (result == null) return NotFound();
             return Ok(result);
         }
 
@@ -57,6 +58,7 @@ namespace webapiproj.Controllers
             }
             catch (Exception ex)
             {
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "Ezzel a névvel már létezik Kategoria rendszer.");
                 return InternalServerError(ex);
             }
 
