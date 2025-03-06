@@ -14,7 +14,7 @@ namespace webapiproj.Controllers
     {
         public string Nev { get; set; }
         public string MemoriaTipus { get; set; }
-        public double Frekvencia { get; set; }
+        public int Frekvencia { get; set; }
         public int Meret { get; set; }
         public string Kepnev;
     }

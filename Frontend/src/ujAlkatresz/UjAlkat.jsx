@@ -536,7 +536,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         </select><br/>
 
 
-                        <button className='buttons' type='button' onClick={(e)=>adatRamLekeres(e,actionKivalaszottRamNev,actionSzurtRamMeret,actionSelectedRamFrekvencia)}>Adatok lekérése</button><br/>
+                        <button className='buttons' type='button' onClick={(e)=>adatRamLekeres(e,actionKivalaszottRamNev,actionSelectedRamMeret,actionSelectedRamFrekvencia)}>Adatok lekérése</button><br/>
                         Memória típus:<br/><input type="text"/><br/>
                        
                              
