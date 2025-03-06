@@ -113,23 +113,29 @@ function UjAlkat() {
    const [actionSzurtRamFrekvencia, setActionSzurtRamFrekvencia]=useState([]);
    const [actionSelectedRamFrekvencia, setActionSelectedRamFrekvencia]=useState("");
 
-   console.log(actionSzurtRamFrekvencia, actionSzurtRamMeret);
-
-   useEffect(()=>{
-      if (actionKivalaszottRamNev && actionSelectedRamFrekvencia)
-      {
-         const ramMeret=mindenAdat['memoriak'].filter((i)=>i.Nev===actionKivalaszottRamNev && i.Frekvencia===actionSelectedRamFrekvencia).map((i)=>i.Meret);
-         setActionSzurtRamMeret(ramMeret);
-      }
-   },[actionKivalaszottRamNev, actionSelectedRamFrekvencia]);
-
    useEffect(()=>{
       if (actionKivalaszottRamNev)
       {
-         const ramFrekvencia=mindenAdat['memoriak'].filter((i)=>i.Nev===actionKivalaszottRamNev).map((i)=>i.Frekvencia);
+         const ramFrekvencia=[...new Set(mindenAdat['memoriak'].filter((i)=>i.Nev===actionKivalaszottRamNev).map((i)=>i.Frekvencia))];
          setActionSzurtRamFrekvencia(ramFrekvencia);
       }
    },[actionKivalaszottRamNev]);
+
+   useEffect(()=>{
+      if (actionSelectedRamFrekvencia)
+      {
+         console.log(actionKivalaszottRamNev);
+         console.log(actionSelectedRamFrekvencia);
+         const ramMeret=mindenAdat["memoriak"].filter((x)=>x.Nev===actionKivalaszottRamNev && x.Frekvencia==actionSelectedRamFrekvencia).map((y)=>y.Meret)
+         console.log(ramMeret)
+         setActionSzurtRamMeret(ramMeret);
+         
+      }
+   },[actionKivalaszottRamNev, actionSelectedRamFrekvencia]);
+
+
+
+   
 
 var datak=null;
 async function adatRamLekeres(event, nev, meret, frekvencia)
@@ -530,7 +536,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         </select><br/>
 
 
-                        <button className='buttons' type='button' onClick={(e)=>adatRamLekeres(e, actionSelectedRamFrekvencia, actionKivalaszottRamNev, actionSzurtRamMeret)}>Adatok lekérése</button><br/>
+                        <button className='buttons' type='button' onClick={(e)=>adatRamLekeres(e,actionKivalaszottRamNev,actionSzurtRamMeret,actionSelectedRamFrekvencia)}>Adatok lekérése</button><br/>
                         Memória típus:<br/><input type="text"/><br/>
                        
                              
