@@ -279,7 +279,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
 
              {actionHardver==="Videókártya" && actionButtons==="Post" ? <div className='body'>
-                 <div>
+                 <div className='inputok'>
                     <form>
                     Név:<br/><input type='text' id='VideoPost1'/><br/>                 
                     Alaplapi csatlakozás:<br/><input type='text' id='VideoPost2'/><br/>
@@ -299,14 +299,14 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  <div  >
                     <div>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
 
             {actionHardver==="Videókártya" && actionButtons==="Patch" ? <div className='body'>
-                 <div>
+                 <div className='inputok'>
                     <form>
                      Név:<br/>
                         <select className="combi"onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
@@ -345,7 +345,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
                  <div>
                     <div>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
@@ -353,7 +353,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             </div> : <div></div>}
 
             {actionHardver==="Videókártya" && actionButtons==="Delete" ? <div className='body'>
-                 <div>
+                 <div className='inputok'>
                     <form>
                     Név:<br/><input type='text'/><br/>                 
                     Vram:<br/> <input type='number'/><br/>
@@ -365,13 +365,13 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                     <div>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
             {/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
             {actionHardver==="Alaplap" && actionButtons==="Post" ? <div className='body'>
-                 <div>
+                 <div className='inputok'>
                     <form>
                         Név:<br/><input type="text" id='AlaplapPost1'/><br/>
                         Processzor foglalat:<br/><input type="text" id='AlaplapPost2'/><br/>
@@ -406,14 +406,14 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  <div>
                     <div>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
 
             {actionHardver==="Alaplap" && actionButtons==="Patch" ? <div className='body'>
-                 <div>
+                 <div className='inputok'>
                     <form>
                         Név:<br/>
                         <select className="combi" onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
@@ -459,7 +459,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
                  <div  >
                     <div>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
@@ -467,7 +467,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             </div> : <div></div>}
 
             {actionHardver==="Alaplap" && actionButtons==="Delete" ? <div className='body'>
-                 <div>
+                 <div className='inputok'>
                     <form>
                     Név:<br/><input type='text'/><br/>
                     <button className='buttons' type='button' onClick={''}>Alkatrész eltávolítása</button>
@@ -478,13 +478,13 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                     <div>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
             {/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
             {actionHardver==="Memória" && actionButtons==="Post" ? <div className='body'>
-                 <div>
+                 <div className='inputok'>
                     <form>
                         Név:<br/><input type="text" id='MemoriaPost1'/><br/>
                         Memória típus:<br/><input type="text" id='MemoriaPost2'/><br/>
@@ -501,14 +501,14 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  <div>
                     <div>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
 
             {actionHardver==="Memória" && actionButtons==="Patch" ? <div className='body'>
-                 <div>
+                 <div className='inputok'>
                     <form>
                         Név:<br/>
                         <select className="combi" onChange={(v)=>setActionKivalasztottRamNev(v.target.value)} value={actionKivalaszottRamNev}>
@@ -547,7 +547,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
                  <div>
                     <div>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
@@ -555,7 +555,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             </div> : <div></div>}
 
             {actionHardver==="Memória" && actionButtons==="Delete" ? <div className='body'>
-                 <div  >
+                 <div className='inputok'>
                     <form>
                     Név:<br/><input type='text'/><br/>                 
                     Frekvencia:<br/> <input type='number'/><br/>
@@ -567,13 +567,13 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                     <div>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
             {/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
             {actionHardver==="Processzor" && actionButtons==="Post" ? <div className='body'>
-                 <div>
+                 <div className='inputok'>
                      <form>
                         Név:<br/><input type="text" id='ProcPost1'/><br/>
                         Alap frekvencia:<br/><input type="number"id='ProcPost2'/><br/>
@@ -603,14 +603,14 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  <div  >
                     <div>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
                  </div>
             </div> : <div></div>}
 
             {actionHardver==="Processzor" && actionButtons==="Patch" ? <div className='body'>
-                 <div>
+                 <div className='inputok'>
                     <form>
                             Név:<br/>
                             <select className="combi" onChange={(an)=>setActionKivalasztottProcesszorNev(an.target.value)} value={actionKivalasztottProcesszorNev}>
@@ -657,7 +657,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
                  <div >
                     <div>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                     </div>
@@ -665,7 +665,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             </div> : <div></div>}
 
             {actionHardver==="Processzor" && actionButtons==="Delete" ? <div className='body'>
-                 <div  >
+                 <div className='inputok'>
                     <form>
                     Név:<br/><input type='text'/><br/>
                     <button className='buttons' type='button' onClick={''}>Alkatrész eltávolítása</button>                
@@ -676,7 +676,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                     <div>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+
+                        
                     </div>
                  </div>
             </div> : <div></div>}

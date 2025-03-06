@@ -67,3 +67,18 @@
     font-size: medium;
     border-radius: 20px;
   }
+
+  button:disabled
+  {
+    background-color: rgb(58, 55, 55);
+  
+  }
+  p
+  {
+    text-align: left;
+  }
+
+  .inputok > from
+  {
+    width: 10px;
+  }
