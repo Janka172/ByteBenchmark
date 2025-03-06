@@ -113,22 +113,32 @@ function UjAlkat() {
    const [actionSzurtRamFrekvencia, setActionSzurtRamFrekvencia]=useState([]);
    const [actionSelectedRamFrekvencia, setActionSelectedRamFrekvencia]=useState("");
 
-   
+   console.log(actionSzurtRamFrekvencia, actionSzurtRamMeret);
+
+   useEffect(()=>{
+      if (actionKivalaszottRamNev && actionSelectedRamFrekvencia)
+      {
+         const ramMeret=mindenAdat['memoriak'].filter((i)=>i.Nev===actionKivalaszottRamNev && i.Frekvencia===actionSelectedRamFrekvencia).map((i)=>i.Meret);
+         setActionSzurtRamMeret(ramMeret);
+      }
+   },[actionKivalaszottRamNev, actionSelectedRamFrekvencia]);
+
    useEffect(()=>{
       if (actionKivalaszottRamNev)
       {
-         const ramMeret=mindenAdat['memoriak'].filter((i)=>i.Nev===actionKivalaszottRamNev).map((i)=>i.Meret);
-         setActionSzurtRamMeret(ramMeret);
+         const ramFrekvencia=mindenAdat['memoriak'].filter((i)=>i.Nev===actionKivalaszottRamNev).map((i)=>i.Frekvencia);
+         setActionSzurtRamFrekvencia(ramFrekvencia);
       }
    },[actionKivalaszottRamNev]);
 
 var datak=null;
-async function adatLekeres(event, vram, nev)
+async function adatRamLekeres(event, nev, meret, frekvencia)
    {
       event.preventDefault();
-      console.log(vram)
-      console.log(nev)
-      var lekertadatok=await fetch(`https://localhost:44316/api/Videokartya/0?name=${nev}&vram=${vram}`);
+      console.log(nev);
+      console.log(meret);
+      console.log(frekvencia);
+      var lekertadatok=await fetch(`https://localhost:44316/api/Ram/0?name=${nev}&meret=${meret}&frekvencia=${frekvencia}`);
       if (!lekertadatok.ok)
       {    
          if (lekertadatok.status===400) {
@@ -201,9 +211,9 @@ async function adatLekeres(event, vram, nev)
             else if(actionHardver==="Alaplap" && actionButtons==="Patch"){
                RequestAlaplapPatch("",actionKivalasztottAlaplapNev);
             }
-            //else if(actionHardver==="Memória" && actionButtons==="Patch"){
-               //RequestMemoriaP(fileUrl);
-            //}
+            else if(actionHardver==="Memória" && actionButtons==="Patch"){
+               RequestMemoriaP("", actionKivalaszottRamNev, actionSelectedRamFrekvencia, actionSelectedRamMeret);
+            }
             else if(actionHardver==="Processzor" && actionButtons==="Patch"){
                RequestProcesszorPatch("", actionKivalasztottProcesszorNev);
             }
@@ -501,15 +511,26 @@ async function adatLekeres(event, vram, nev)
                  <div>
                     <form>
                         Név:<br/>
-                        <select className="combi"onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
+                        <select className="combi" onChange={(v)=>setActionKivalasztottRamNev(v.target.value)} value={actionKivalaszottRamNev}>
                            <option>Válassz egyet</option>
-                           {[...new Set(mindenAdat['videokartyak'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev}>{nev}</option>))}
+                           {[...new Set(mindenAdat['memoriak'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev}>{nev}</option>))}
                         </select><br/>
 
-                        //Frekvencia:<br/><input type="number"/>MHz<br/>
-                        //Méret:<br/><input type="nmuber"/>
+                        Frekvencia:<br/>
+                        <select className="combi" onChange={(e)=>setActionSelectedRamFrekvencia(e.target.value)} >
+                           <option>Válassz egyet</option>
+                           {actionSzurtRamFrekvencia.map((Frekvencia)=>(<option value={Frekvencia} key={Frekvencia}>{Frekvencia}</option>))}
+                        </select><br/>
 
 
+                        Méret:<br/>
+                        <select className="combi" onChange={(e)=>setActionSelectedRamMeret(e.target.value)} >
+                           <option>Válassz egyet</option>
+                           {actionSzurtRamMeret.map((Meret)=>(<option value={Meret} key={Meret}>{Meret}</option>))}
+                        </select><br/>
+
+
+                        <button className='buttons' type='button' onClick={(e)=>adatRamLekeres(e, actionSelectedRamFrekvencia, actionKivalaszottRamNev, actionSzurtRamMeret)}>Adatok lekérése</button><br/>
                         Memória típus:<br/><input type="text"/><br/>
                        
                              
@@ -518,10 +539,10 @@ async function adatLekeres(event, vram, nev)
                     </form>
                  </div>
                  <div>
-                    <p>Név:{}</p>
-                    <p>Memória típus:{}</p>
-                    <p>Frekvencia:{}</p>
-                    <p>Méret:{}</p>       
+                    <p>Név:{actionMindenhezKellAdat?.Nev}</p>
+                    <p>Memória típus:{actionMindenhezKellAdat?.MemoriaTipus}</p>
+                    <p>Frekvencia:{actionMindenhezKellAdat?.Frekvencia}</p>
+                    <p>Méret:{actionMindenhezKellAdat?.Meret}</p>       
                     {/* <image src=""></image>*/}
                  </div>
                  <div>
