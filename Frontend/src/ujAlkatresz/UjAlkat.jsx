@@ -104,6 +104,47 @@ function UjAlkat() {
       }
 
    {/*............................................................................................................................. */}
+   {/*Memória PATCH részéhez szükséges dolgok */}
+   const [actionKivalaszottRamNev, setActionKivalasztottRamNev]=useState("");
+
+   const [actionSzurtRamMeret, setActionSzurtRamMeret]=useState([]);
+   const [actionSelectedRamMeret, setActionSelectedRamMeret]=useState("");
+
+   const [actionSzurtRamFrekvencia, setActionSzurtRamFrekvencia]=useState([]);
+   const [actionSelectedRamFrekvencia, setActionSelectedRamFrekvencia]=useState("");
+
+   
+   useEffect(()=>{
+      if (actionKivalaszottRamNev)
+      {
+         const ramMeret=mindenAdat['memoriak'].filter((i)=>i.Nev===actionKivalaszottRamNev).map((i)=>i.Meret);
+         setActionSzurtRamMeret(ramMeret);
+      }
+   },[actionKivalaszottRamNev]);
+
+var datak=null;
+async function adatLekeres(event, vram, nev)
+   {
+      event.preventDefault();
+      console.log(vram)
+      console.log(nev)
+      var lekertadatok=await fetch(`https://localhost:44316/api/Videokartya/0?name=${nev}&vram=${vram}`);
+      if (!lekertadatok.ok)
+      {    
+         if (lekertadatok.status===400) {
+            console.error("Nem található ilyen elem az adatbázisban!");
+            
+         }
+      }
+      else
+      {
+         datak= await lekertadatok.json();
+         setActionMindenhezKellAdat(datak);
+         console.log(datak);
+      }       
+   }
+
+   {/*............................................................................................................................. */}
    useEffect(()=>{
       {/* A backendben lévő elérési útvonalak*/}
       const backEleresiUtvonal={
@@ -438,7 +479,7 @@ function UjAlkat() {
                         Név:<br/><input type="text" id='MemoriaPost1'/><br/>
                         Memória típus:<br/><input type="text" id='MemoriaPost2'/><br/>
                         Frekvencia:<br/><input type="number" id='MemoriaPost3'/>MHz<br/>
-                        Méret:<br/><input type="nmuber" id='MemoriaPost4'/>
+                        Méret:<br/><input type="number" id='MemoriaPost4'/>GB
                         <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/} 
                         <button className='buttons' type='button' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
@@ -460,13 +501,18 @@ function UjAlkat() {
                  <div>
                     <form>
                         Név:<br/>
-                        
+                        <select className="combi"onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
+                           <option>Válassz egyet</option>
+                           {[...new Set(mindenAdat['videokartyak'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev}>{nev}</option>))}
+                        </select><br/>
 
+                        //Frekvencia:<br/><input type="number"/>MHz<br/>
+                        //Méret:<br/><input type="nmuber"/>
 
 
                         Memória típus:<br/><input type="text"/><br/>
-                        //Frekvencia:<br/><input type="number"/>MHz<br/>
-                        //Méret:<br/><input type="nmuber"/>      
+                       
+                             
                         <input type="file" onChange={handleFileChange} />                     {/*Képfeltöltés*/}
                         <button className='buttons' type='button' onClick={''}>Módosítások mentése</button>
                     </form>
