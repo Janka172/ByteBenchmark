@@ -77,8 +77,37 @@
   {
     text-align: left;
   }
-
-  .inputok > from
+  input[type="text"]
   {
-    width: 10px;
+    width: 300px;
   }
+  input[type="number"]
+  {
+    width: 300px;
+  }
+  .inputok
+  {
+    display: flex;
+    flex-direction: row;
+    width: min-content;
+    border: white 8px double;
+  }
+  #AlaplapPost8
+  {
+    width: 300px;
+    text-align: center;
+  }
+  option:hover
+  {
+    background-color: rgba(221, 114, 114, 0.8);
+  }
+#contents
+{
+  width: 300px;
+  border: white 8px double;
+}
+#buttons_content
+{
+  width: 300px;
+  border: white 8px double;
+}
