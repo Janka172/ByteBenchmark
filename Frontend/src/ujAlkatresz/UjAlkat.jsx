@@ -296,10 +296,11 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                     Vram:<br/> <input type='number' id='VideoPost5'/><br/>             
                     Chip  gyártója:<br/><input type='text' id='VideoPost6'/><br/>
      
-                      <div className="file-upload">
-                       <label htmlFor="fileInput" className="custom-file-upload">📁 Fájl kiválasztása</label>
-                        <span className="file-name" hiddenonChange={handleFileChange}>{fileName}</span>
-                     </div>{/*Képfeltöltés*/}
+                    <div className="imageupload">
+                        <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/><br/>
+                        <label htmlFor="imginput" className="imgbutton">📁 Fájl kiválasztása</label>
+                        <span className="filename">{fileName}</span>
+                     </div>
 
                      <button type='button' className='buttons' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
