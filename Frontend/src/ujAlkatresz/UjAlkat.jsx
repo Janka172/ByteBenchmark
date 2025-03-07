@@ -289,32 +289,27 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
              {actionHardver==="Videókártya" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
                     <form>
-                    Név:<br/><input type='text' id='VideoPost1'/><br/>                 
-                    Alaplapi csatlakozás:<br/><input type='text' id='VideoPost2'/><br/>
-                    Ajánlott tápegység:<br/><input type='number' id='VideoPost3'/><br/>
-                    Monitor csatlakozás:<br/><input type='text' id='VideoPost4'/><br/> 
-                    Vram:<br/> <input type='number' id='VideoPost5'/><br/>             
-                    Chip  gyártója:<br/><input type='text' id='VideoPost6'/><br/>
+                     Név:<br/><input type='text' id='VideoPost1'/><br/>                 
+                     Alaplapi csatlakozás:<br/><input type='text' id='VideoPost2'/><br/>
+                     Ajánlott tápegység:<br/><input type='number' id='VideoPost3'/><br/>
+                     Monitor csatlakozás:<br/><input type='text' id='VideoPost4'/><br/> 
+                     Vram:<br/> <input type='number' id='VideoPost5'/><br/>             
+                     Chip  gyártója:<br/><input type='text' id='VideoPost6'/><br/>
      
-                    <div className="imageupload">
+                     <div className="imageupload">
                         <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/><br/>
                         <label htmlFor="imginput" className="imgbutton">📁 Fájl kiválasztása</label>
                         <span className="filename">{fileName}</span>
                      </div>
-
-                     <button type='button' className='buttons' onClick={handleUploadAndPost}>Adatok feltöltése</button>
+                     <button type='button' className='buttons' id='adatkezelogomb' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
                  </div>
-                 <div id='contents'>
-                    <p>Kép neve: {fileUrl}</p>
-                    <p>Url: {url}</p>
-                    </div>
 
-                    <div id='buttons_content'>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                    </div>
+                  <div id='buttons_content'>
+                       <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                     <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button>
+                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                  </div>
 
             </div> : <div></div>}
 
@@ -340,12 +335,17 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                     Monitor csatlakozás:<br/><input type='text' id='VideokPatch3'/><br/> 
                     Chip  gyártója:<br/><input type='text' id='VideokPatch4'/><br/>
 
-                     <input type="file" id='image_upload_button' onChange={handleFileChange} />              {/*Képfeltöltés*/}
+                    <div className="imageupload">
+                        <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/><br/>
+                        <label htmlFor="imginput" className="imgbutton">📁 Fájl kiválasztása</label>
+                        <span className="filename">{fileName}</span>
+                     </div>
+
                     <button className='buttons' type='button' onClick={(e)=>handleUploadAndPost(e)}>Módosítások mentése</button>
                     </form>
                  </div>
 
-                 <div id='buttons_content'>
+                 <div id='contents'>
                     <p>Név: {actionMindenhezKellAdat?.Nev}</p>
                     <p>Alaplapi csatlakozás: {actionMindenhezKellAdat?.alaplapCsatlakozas}</p>
                     <p>Ajánlott tápegység: {actionMindenhezKellAdat?.ajanlottTapegyseg}</p>                 
@@ -357,7 +357,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
 
 
-                    <div id='contents'>
+                    <div id='buttons_content'>
                         <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
                         <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
@@ -395,9 +395,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         Csatlakozók:<br/>
                         {/*Ez egy listbox az alaplap csatlakozóinak neveivel */}
                         <select id='AlaplapPost8' multiple>
-                        {[...new Set(mindenAdat['alaplapCsatlakozok'].map(i=>i.Nev))].map((nev)=>(
-                           <option value={nev} key={nev}>{nev}</option>
-                        ))}
+                           {[...new Set(mindenAdat['alaplapCsatlakozok'].map(i=>i.Nev))].map((nev)=>(<option value={nev} key={nev}>{nev}</option>))}
                         </select><br/>
                         
                         Hangkártya:<br/>
@@ -407,14 +405,14 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <input type="radio" id="AlaplapPost10" name="hgk_true" value="False" checked={actionHgkRadiobf==='Nemjeloltradiogombak'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogombak')}></input>
                         <label htmlFor="hgk_false">Nem tartalmaz hangkártyát.</label>
 
-                         <input type="file" id='image_upload_button' onChange={handleFileChange} />                     {/*Képfeltöltés*/}
+                         <div className="imageupload">
+                           <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/><br/>
+                           <label htmlFor="imginput" className="imgbutton">📁 Fájl kiválasztása</label>
+                           <span className="filename">{fileName}</span>
+                        </div>
                         <button className='buttons' type='button' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
                  </div>
-                 <div id='contents'>
-                    <p>Kép neve: {fileUrl}</p>
-                    <p>Url: {url}</p>
-                  </div>
 
                   <div id='buttons_content'>
                      <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
@@ -450,7 +448,12 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <input type="radio" id="AlaplapPatch8" name="hgk_true" value="False" checked={actionHgkRadiobf==='Nemjeloltradiogombak'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogombak')}/>
                         <label htmlFor="hgk_false">Nem tartalmaz hangkártyát.</label> 
 
-                         <input type="file" id='image_upload_button' onChange={handleFileChange} />                     {/*Képfeltöltés*/}
+                        
+                        <div className="imageupload">
+                           <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/><br/>
+                           <label htmlFor="imginput" className="imgbutton">📁 Fájl kiválasztása</label>
+                           <span className="filename">{fileName}</span>
+                        </div>
                         <button className='buttons' type='button' onClick={(e)=>handleUploadAndPost(e)}>Módosítások mentése</button>
                     </form>
                  </div>
@@ -496,21 +499,21 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         Memória típus:<br/><input type="text" id='MemoriaPost2'/><br/>
                         Frekvencia:<br/><input type="number" id='MemoriaPost3'/>MHz<br/>
                         Méret:<br/><input type="number" id='MemoriaPost4'/>GB
-                         <input type="file" id='image_upload_button' onChange={handleFileChange} />                     {/*Képfeltöltés*/} 
+                         
+                        <div className="imageupload">
+                           <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/><br/>
+                           <label htmlFor="imginput" className="imgbutton">📁 Fájl kiválasztása</label>
+                           <span className="filename">{fileName}</span>
+                        </div>
                         <button className='buttons' type='button' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
                  </div>
 
-                 <div id='contents'>
-                    <p>Kép neve: {fileUrl}</p>
-                    <p>Url: {url}</p>
-                    </div>
-
-                    <div id='buttons_content'>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                    </div>
+                  <div id='buttons_content'>
+                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                     <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                  </div>
             </div> : <div></div>}
 
             {actionHardver==="Memória" && actionButtons==="Patch" ? <div className='body'>
@@ -538,7 +541,14 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
                         <button className='buttons' type='button' onClick={(e)=>adatRamLekeres(e,actionKivalaszottRamNev,actionSelectedRamMeret,actionSelectedRamFrekvencia)}>Adatok lekérése</button><br/>
                         Memória típus:<br/><input type="text"/><br/>    
-                         <input type="file" id='image_upload_button' onChange={handleFileChange} />                     {/*Képfeltöltés*/}
+                         
+                      
+                        <div className="imageupload">
+                           <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/><br/>
+                           <label htmlFor="imginput" className="imgbutton">📁 Fájl kiválasztása</label>
+                           <span className="filename">{fileName}</span>
+                        </div>
+
                         <button className='buttons' type='button' onClick={''}>Módosítások mentése</button>
                     </form>
                  </div>
@@ -597,21 +607,21 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <input type="radio" id="ProcPost11" name="ivk_true" value="False" checked={actionIvkRadiobt==='Jeloltradiogombocska'} onChange={()=>setActionIvkRadiobt('Jeloltradiogombocska')}></input>
                         <label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label>
                         
-                         <input type="file" id='image_upload_button' onChange={handleFileChange} />                     {/*Képfeltöltés*/} 
+                        <div className="imageupload">
+                           <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/><br/>
+                           <label htmlFor="imginput" className="imgbutton">📁 Fájl kiválasztása</label>
+                           <span className="filename">{fileName}</span>
+                        </div>
+
                         <button className='buttons' type='button' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
                  </div>
 
-                 <div id='contents'>
-                    <p>Kép neve: {fileUrl}</p>
-                    <p>Url: {url}</p>
-                    </div>
-
-                    <div id='buttons_content'>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
-                    </div>
+                  <div id='buttons_content'>
+                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
+                     <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
+                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                  </div>
             </div> : <div></div>}
 
             {actionHardver==="Processzor" && actionButtons==="Patch" ? <div className='body'>
@@ -643,7 +653,11 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                            <input type="radio" id="ProcPatch10" name="ivk_true" value="False" checked={actionHgkRadiobf==='Nemjeloltradiogombak'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogombak')}></input>
                            <label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label>
                             
-                            <input type="file" id='image_upload_button' onChange={handleFileChange} />                   {/*Képfeltöltés*/}
+                           <div className="imageupload">
+                              <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/><br/>
+                              <label htmlFor="imginput" className="imgbutton">📁 Fájl kiválasztása</label>
+                              <span className="filename">{fileName}</span>
+                           </div>
                            <button className='buttons' type='button' onClick={(e)=>handleUploadAndPost(e)}>Módosítások mentése</button> 
                      </form>
                  </div>
