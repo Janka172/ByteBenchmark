@@ -27,11 +27,11 @@ def upload_file():
     if 'file' not in request.files:
         return jsonify({"message": "Nincs fájl a kérésben", "status": "failed"}), 400
 
-    file = request.files['file']
+    file = request.files['file'] #request file tartalmazza az összes feltöltött file-t / 'file' meg kell egyezni az input mezoben lévovel
 
     if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        filename = secure_filename(file.filename) #flask végett van rá szükség, eltávolitja a veszélyes karaktereket
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename) # hova kell menteni
 
         # Ellenőrzi, hogy létezik-e már a fájl
         if os.path.exists(file_path):
@@ -51,10 +51,10 @@ def upload_file():
     return jsonify({"message": "Fájltípus nem engedélyezett", "status": "failed"}), 400
 
 # 📌 Feltöltött képek elérhetősége (React a /IMAGE/<filename> URL-en éri el)
-@app.route('/IMAGE/<filename>')
+@app.route('/IMAGE/<filename>')  #get tipusu fetch
 def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename) #
 
 # 📌 Futtatás
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == '__main__':   #minden fájlnak van name értéke, és ha nem importáljuk máshonnan akkor az a main lesz.
+    app.run(debug=True)     #fejlesztői mod be
