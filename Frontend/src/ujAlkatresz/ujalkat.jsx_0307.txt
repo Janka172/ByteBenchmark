@@ -266,14 +266,8 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
     {
         event.preventDefault()
     }
-    const [fileName, setFileName] = useState("Nincs fájl kiválasztva");
-
     const handleFileChange = (event) => {
-      if (event.target.files.length > 0) {
-         setFileName(event.target.files[0].name);
-       } else {
-         setFileName("Nincs fájl kiválasztva");
-       }
+        setSelectedFile(event.target.files[0]);
     };
 
     return (
@@ -296,11 +290,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                     Vram:<br/> <input type='number' id='VideoPost5'/><br/>             
                     Chip  gyártója:<br/><input type='text' id='VideoPost6'/><br/>
      
-                      <div className="file-upload">
-                       <label htmlFor="fileInput" className="custom-file-upload">📁 Fájl kiválasztása</label>
-                        <span className="file-name" hiddenonChange={handleFileChange}>{fileName}</span>
-                     </div>{/*Képfeltöltés*/}
-
+                    <input type="file" id='image_upload_button' onChange={handleFileChange} />                     {/*Képfeltöltés*/} 
                      <button type='button' className='buttons' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
                  </div>
