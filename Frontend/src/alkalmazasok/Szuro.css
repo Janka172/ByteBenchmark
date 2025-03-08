@@ -4,6 +4,7 @@
   padding: 1vw;
   margin: 1vw;
   font-size: 1.6vw;
+  width: 100%;
 }
 
 .mezo p, .mezo input{
@@ -46,7 +47,7 @@ option:hover{
 .gombocska {
   margin-top: 1vw;
   padding: 1vw 2vw;
-  font-size: 1.8vw;
+  font-size: 1.5vw;
   font-weight: bold;
   color: rgb(48, 43, 43);
   background-color: rgba(233, 105, 105, 0.8);
@@ -87,6 +88,37 @@ option:hover{
   flex-direction: column;
 }
 
+.szurMenuGomb{
+  margin: 1vw;
+  padding: 1vw;
+  text-align: center;
+  border: 0.2vw black solid;
+  background-color: rgba(194, 52, 52, 0.8);
+}
+.szurMenuGomb:hover, .setTablaSzur:hover{
+  background-color: #ffa1a1;
+  cursor: pointer;
+}
+
+.setTablaSor{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.mentTablazat{
+  width: 100%;
+}
+
+.setTablaCella, .setTablaSzur{
+  border: 1px black solid;
+  padding: 1vw;
+  font-size: 1.6vw;
+}
+
+.setTablaSzur{
+  background-color: rgba(197, 71, 71, 0.8);
+}
+
 @media (max-width: 767px){
   .szuroCimsor {
     font-size: 6vw;
@@ -100,7 +132,7 @@ option:hover{
     font-size: 4vw;
     color: black;
   }
-  .gombocska{
+  .gombocska, .szurMenuGomb, .setTablaCella, .setTablaSzur{
     font-size: 3vw;
   }
   .nagyMeret{
@@ -133,14 +165,14 @@ option:hover{
   .nagyMeret h1 {
     font-size: 2vw;
   }
-  .gombocska{
-    font-size: 1vw;
-  }
-  .mezo, .mezo select, .mezo input, .mezo option{
+  .mezo, .mezo select, .mezo input, .mezo option, .setTablaCella, .setTablaSzur{
     font-size: 1vw;
   }
   .gombocska{
     font-size: 1vw;
     padding: 0.3vw;
+  }
+  .szurMenuGomb{
+    font-size: 1.3vw;
   }
 }

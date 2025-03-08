@@ -41,81 +41,81 @@ function Gorgeto({ tema }) {
 
   // A videókártya adatok lekérése
   async function getMindenVideokartya() {
-      try {
-        const response = await fetch("https://localhost:44316/api/Videokartya");
-        const data = await response.json();
-        MindenAdat['Videókártyák'].length = 0;
-        data.forEach(x => {
-          MindenAdat['Videókártyák'].push(x);
-        });
-        setBetoltV(false);
-      } catch (error) {
-        console.error(error);
-      }
+    try {
+      const response = await fetch("https://localhost:44316/api/Videokartya");
+      const data = await response.json();
+      MindenAdat['Videókártyák'].length = 0;
+      data.forEach(x => {
+        MindenAdat['Videókártyák'].push(x);
+      });
+      setBetoltV(false);
+    } catch (error) {
+      console.error(error);
+    }
   }
   useEffect(() => { getMindenVideokartya(); }, [betoltV]);
 
   // A processzor adatok lekérése
   async function getMindenProcesszor() {
-      try {
-        const response = await fetch("https://localhost:44316/api/Processzor");
-        const data = await response.json();
-        MindenAdat['Processzorok'].length = 0;
-        data.forEach(x => {
-          MindenAdat['Processzorok'].push(x);
-        });
-        setBetoltP(false);
-      } catch (error) {
-        console.error(error);
-      }
+    try {
+      const response = await fetch("https://localhost:44316/api/Processzor");
+      const data = await response.json();
+      MindenAdat['Processzorok'].length = 0;
+      data.forEach(x => {
+        MindenAdat['Processzorok'].push(x);
+      });
+      setBetoltP(false);
+    } catch (error) {
+      console.error(error);
+    }
   }
   useEffect(() => { getMindenProcesszor(); }, [betoltP]);
 
   // A Op rendszer adatok lekérése
   async function getMindenOpRendszer() {
-      try {
-        const response = await fetch("https://localhost:44316/api/Oprendszer");
-        const data = await response.json();
-        MindenAdat['Operációsrendszerek'].length = 0;
-        data.forEach(x => {
-          MindenAdat['Operációsrendszerek'].push(x);
-        });
-        setBetoltO(false);
-      } catch (error) {
-        console.error(error);
-      }
+    try {
+      const response = await fetch("https://localhost:44316/api/Oprendszer");
+      const data = await response.json();
+      MindenAdat['Operációsrendszerek'].length = 0;
+      data.forEach(x => {
+        MindenAdat['Operációsrendszerek'].push(x);
+      });
+      setBetoltO(false);
+    } catch (error) {
+      console.error(error);
+    }
   }
   useEffect(() => { getMindenOpRendszer(); }, [betoltO]);
 
   // A ram adatok lekérése
   async function getMindenRam() {
-      try {
-        const response = await fetch("https://localhost:44316/api/Ram");
-        const data = await response.json();
-        MindenAdat['RAM-ok'].length = 0;
-        data.forEach(x => {
-          MindenAdat['RAM-ok'].push(x);
-        });
-        setBetoltR(false);
-      } catch (error) {
-        console.error(error);
-      }
+    try {
+      const response = await fetch("https://localhost:44316/api/Ram");
+      const data = await response.json();
+      MindenAdat['RAM-ok'].length = 0;
+      data.forEach(x => {
+        MindenAdat['RAM-ok'].push(x);
+      });
+      setBetoltR(false);
+    } catch (error) {
+      console.error(error);
+    }
   }
   useEffect(() => { getMindenRam(); }, [betoltR]);
 
   // A alaplap adatok lekérése
   async function getMindenAlaplap() {
-      try {
-        const response = await fetch("https://localhost:44316/api/Alaplap");
-        const data = await response.json();
-        MindenAdat['Alaplapok'].length = 0;
-        data.forEach(x => {
-          MindenAdat['Alaplapok'].push(x);
-        });
-        setBetoltA(false);
-      } catch (error) {
-        console.error(error);
-      }
+    try {
+      const response = await fetch("https://localhost:44316/api/Alaplap");
+      const data = await response.json();
+      MindenAdat['Alaplapok'].length = 0;
+      data.forEach(x => {
+        MindenAdat['Alaplapok'].push(x);
+      });
+      setBetoltA(false);
+    } catch (error) {
+      console.error(error);
+    }
   }
   useEffect(() => { getMindenAlaplap(); }, [betoltA]);
 
@@ -139,16 +139,16 @@ function Gorgeto({ tema }) {
 
   const gorgetoContainer = useRef(null);
   const gorgetoLeft = () => {
-        gorgetoContainer.current.scrollBy({
-            top: 0,
-            left: -300,
-        });
+    gorgetoContainer.current.scrollBy({
+        top: 0,
+        left: -300,
+    });
   };
   const gorgetoRight = () => {
-        gorgetoContainer.current.scrollBy({
-            top: 0,
-            left: 300,
-        });
+    gorgetoContainer.current.scrollBy({
+        top: 0,
+        left: 300,
+    });
   };
 
   function menuMegnyitas() {
@@ -169,7 +169,6 @@ function Gorgeto({ tema }) {
   var [reszletNyitva, setReszletNyitva] = useState(false);
   function reszletMenu(alkat) {
     setKivalasztottNev(alkat);
-    console.log(alkat)
 
     if(temaAdatok[0].rovidit=='v') setKivNev(sajatAdatok.filter(x => (x.Nev == alkat.Nev) && (x.vram == alkat.vram))[0]);
     else if(temaAdatok[0].rovidit=='r') setKivNev(sajatAdatok.filter(x => (x.Nev == alkat.Nev) && (x.Frekvencia == alkat.Frekvencia))[0]);

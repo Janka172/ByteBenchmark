@@ -80,16 +80,6 @@
   {
     text-align: left;
   }
-  input[type="text"]
-  {
-    width: 450px;
-    font-size: large;
-  }
-  input[type="number"]
-  {
-    width: 450px;
-    font-size: large;
-  }
 
   /*Azon mezőket összefoglaló div amely tartalmazza az input mezőket*/
   .inputok

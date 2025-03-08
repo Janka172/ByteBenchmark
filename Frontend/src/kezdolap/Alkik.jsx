@@ -12,9 +12,9 @@ function Alkik(){
         try {
             const response = await fetch('https://localhost:44316/api/Applikacio');
             const data = await response.json();
-            setMindenApp(data);
+            setMindenApp(data.filter(x=>x.Nev!='sajat'));
             setBetoltA(false);
-            const szamok = indexekEloallitasa(data.length, 4);
+            const szamok = indexekEloallitasa(data.length-1, 4);
             setRandomIndexek(szamok);
         } catch (error) {
             console.error(error);

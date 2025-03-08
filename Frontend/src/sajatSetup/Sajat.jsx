@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 
 function Sajat() {
-  var atmenetiKepLink='/kepek/kep.png';
   // Adatbázisból kinyert: nevek
   const [mindenVideokartya, setMindenVideokartya] = useState([]);
   const [betoltV, setBetoltV] = useState(true);
@@ -19,6 +18,7 @@ function Sajat() {
 
   var [vanProci, setVanProci] = useState('none');
   var [vanRam, setVanRam] = useState('none');
+  var [nevDisp, setNevDisp] = useState('none');
 
   const [kivVideokartya, setKivalasztottVideokartya] = useState('nincs');
   const [kivProcesszor, setKivalasztottProcesszor] = useState('nincs');
@@ -267,8 +267,8 @@ function Sajat() {
     try {
       const response = await fetch('https://localhost:44316/api/Applikacio');
       const data = await response.json();
-      setMindenApp(data);
-      setSzurtApp(data);
+      setMindenApp(data.filter(x=>x.Nev!='sajat'));
+      setSzurtApp(data.filter(x=>x.Nev!='sajat'));
       setBetoltApp(false);
     } catch (error) {
       console.error(error);
@@ -277,16 +277,16 @@ function Sajat() {
   useEffect(() => {getMindenApp();}, []);
 
   async function getSetup() {
-      try{
-          const response = await fetch(`https://localhost:44316/api/Setup`);
-          const data = await response.json();
-          setSetup(data);
-          setBetoltS(false);
-      } catch (error){
-          console.error(error);
-      }
+    try{
+        const response = await fetch(`https://localhost:44316/api/Setup`);
+        const data = await response.json();
+        setSetup(data);
+        setBetoltS(false);
+    } catch (error){
+        console.error(error);
     }
-    useEffect(() => { getSetup(); }, [ mindenApp ]);
+  }
+  useEffect(() => { getSetup(); }, [ mindenApp ]);
 
   function MinSetupKereso(setup, Nev){
     let aktu = setup.filter(s => s.ApplikacioNeve == Nev);
@@ -324,13 +324,14 @@ function Sajat() {
     if (!betoltApp && kivVideokartya != 'nincs' && kivProcesszor != 'nincs' && kivOpRendszer != 'nincs' && kivRam != 'nincs' && kivAlaplap != 'nincs') {
       setOttVanVagyNem('block');
       var ujMind=[]
-      
       if(szurtApp.length!=0){
         ujMind = szurtApp.map((app, i) => {
+          let kepUrl = `/IMAGE/logo.${app.KepeleresiUtja}`;
+          if(app.KepeleresiUtja == '') kepUrl = `/IMAGE/logo.hiany.jpg`;
           const adat = { nev: app.Nev };
           return (
             <div className="korKepKeret" key={i}>
-              <img src={atmenetiKepLink} className="korKepS" alt="App kép" />
+              <img src={kepUrl} className="korKepS" alt="App kép" />
               <h4 className="appNeve">{app.Nev}</h4>
               <Link to='/oldalak/AlkalmazasReszletek' state={adat}>
                 <button className='reszletGomb'>További részletek</button>
@@ -363,13 +364,13 @@ function Sajat() {
   
       // Szűrés videókártya szerint
       try {
-        const response = await fetch(`https://localhost:44316/api/Videokartya/0?name=${kivVideokartya.Nev}`);
+        const response = await fetch(`https://localhost:44316/api/Videokartya/0?name=${kivVideokartya.Nev}&vram=${kivVideokartya.vram}`);
         const hasVid = await response.json();
         szurtLista = szurtLista.filter(x => melyikVideokartyaJobb(hasVid, MinSetupKereso(setup, x.Nev)));
       } catch (error) {
         console.error("Videókártya lekérése sikertelen:", error);
       }
-  
+
       // Szűrés processzor szerint
       try {
         const response = await fetch(`https://localhost:44316/api/Processzor/0?name=${kivProcesszor.Nev}`);
@@ -410,6 +411,59 @@ function Sajat() {
     }
   }
 
+  //Saját setup rögzítése
+  function rogzites(){
+    if (!betoltApp && kivVideokartya != 'nincs' && kivProcesszor != 'nincs' && kivOpRendszer != 'nincs' && kivRam != 'nincs' && kivAlaplap != 'nincs'){
+      if(nevDisp == 'none') setNevDisp('grid');
+      else setNevDisp('none');
+    }
+  }
+  useEffect(() => {
+    if (kivVideokartya != 'nincs' || kivProcesszor != 'nincs' || kivOpRendszer != 'nincs' || kivRam != 'nincs' || kivAlaplap != 'nincs'){
+      setNevDisp('none');
+    }
+  }, [kivAlaplap])
+
+  function rogOk(){
+    if(document.getElementById('setNev').value != ''){
+      setupPost(document.getElementById('setNev').value);
+    }
+  }
+
+  async function setupPost(nev){
+    let gp = `${JSON.parse(localStorage.getItem('loggedInUser')).Id}.${nev}`
+    try {
+      const response = await fetch('https://localhost:44316/api/Setup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ApplikacioNeve: 'sajat',
+          VidekortyaNev: kivVideokartya.Nev,
+          Vram: kivVideokartya.vram,
+          ProcesszorNev: kivProcesszor.Nev,
+          OprendszerNev: kivOpRendszer.Nev,
+          RamNeve: kivRam.Nev,
+          RamFrekvencia: kivRam.Frekvencia,
+          AlaplapNeve: kivAlaplap.Nev,
+          Gepigeny: gp
+        }),
+      });
+  
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(errorMessage);
+      }
+  
+      const data = await response.json();
+      console.log('Success:', data);
+      return data;
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
   return (
     <div className='teljesSajat' id='teljSajat'>
       <div className='kivalasztottak'>
@@ -442,7 +496,13 @@ function Sajat() {
 
         <div className='sajatGombSor'>
           <button className='szur' onClick={szur} id='futAlkGomb'>Futtatható Alkalmazások Megjelenítése</button>
-          <button className='szur' id='mentAlkGomb'>Mentés</button>
+          <button className='szur' onClick={rogzites} id='mentAlkGomb'>Mentés</button>
+        </div>
+
+        <div className='sajatSetupElnevezes' style={{display: nevDisp}}>
+          <p className='setSzoveg'>Adjon nevet a setupjának !</p>
+          <input type='text' id='setNev'></input>
+          <button className='okGomb' onClick={rogOk} id='mentAlkGomb'>Ok</button>
         </div>
       </div>
 

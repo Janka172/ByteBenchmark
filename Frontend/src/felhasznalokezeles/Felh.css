@@ -57,7 +57,7 @@ select{
 }
 
 .submitGomb:hover{
-    background-color: rgb(219, 86, 86);
+    background-color: #ffa1a1;
     transition: background-color 1s;
 }
 
@@ -74,7 +74,7 @@ select{
 
 .kijGomb:hover{
     color: #000;
-    background-color: #ddd;
+    background-color: #ffa1a1;
     border-radius: 0.5em;
 }
 
@@ -109,7 +109,7 @@ select{
 }
 .oszlopElem:hover{
     cursor: pointer;
-    background-color: #ddd;
+    background-color: #ffa1a1;
 }
 .oszlopElem:first-child{
     border-radius: 1.5vw 1.5vw 0 0;
@@ -138,7 +138,7 @@ select{
     margin-top: 3vw;
 }
 .altalnosMentes:hover{
-    background-color: #e69090;
+    background-color: #ffa1a1;
 }
 
 .kepConti{
@@ -157,7 +157,7 @@ select{
 .jelszoModCim{
     font-size: 2.5vw;
     text-align: left;
-    margin: 1vw;
+    margin: auto;
 }
 
 .jelszoMod{
@@ -172,7 +172,7 @@ select{
     margin-top: 3vw;
 }
 .jelszoMentes:hover, .jelszoMegsem:hover{
-    background-color: #e69090;
+    background-color: #ffa1a1;
 }
 
 .jelszoMegsem{
@@ -186,7 +186,7 @@ select{
 .altBeCim{
     font-size: 2.5vw;
     text-align: left;
-    margin: 2vw;
+    margin: auto;
 }
 
 .hibaUzi{
@@ -217,7 +217,7 @@ select{
 }
 
 .jelszoInfoGomb:hover{
-    background-color:#c55151;
+    background-color:#ffa1a1;
     cursor: pointer;
 }
 
@@ -255,7 +255,7 @@ select{
 }
 .profilModGomb:hover{
     cursor: pointer;
-    background-color: #b86868;
+    background-color: #ffa1a1;
 }
 
 .szuroS{
@@ -270,7 +270,7 @@ select{
     padding-right: 1vw;
 }
 .szuroCim:hover{
-    background-color: #b86868;
+    background-color: #ffa1a1;
     cursor: pointer;
 }
 
@@ -294,7 +294,7 @@ select{
     margin: 0.5vw;
 }
 .keresesGomb:hover{
-    background-color: #b86868;
+    background-color: #ffa1a1;
     cursor: pointer;
 }
 
@@ -321,7 +321,7 @@ select{
     padding-right: 1vw;
 }
 .visszaGomb:hover{
-    background-color: #b86868;
+    background-color: #ffa1a1;
     cursor: pointer;
 }
 
@@ -353,7 +353,7 @@ select{
     background-color: #be2e2e;
 }
 .torlesGomb:hover{
-    background-color: #e42727;
+    background-color: #ffa1a1;
     cursor: pointer;
 }
 
@@ -371,7 +371,7 @@ select{
 }
 
 .biztGomOK *:hover{
-    background-color: #d16969;
+    background-color: #ffa1a1;
     cursor: pointer;
 }
 

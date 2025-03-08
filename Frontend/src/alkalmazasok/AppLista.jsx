@@ -30,8 +30,8 @@ function AppLista() {
     try {
       const response = await fetch('https://localhost:44316/api/Applikacio');
       const data = await response.json();
-      setMindenApp(data);
-      setSzurtApp(data);
+      setMindenApp(data.filter(x=>x.Nev!='sajat'));
+      setSzurtApp(data.filter(x=>x.Nev!='sajat'));
       setBetoltA(false);
     } catch (error) {
       console.error(error);
@@ -163,6 +163,8 @@ function AppLista() {
   //Szűrés operációsrendszer szerint
   function opSzures() {
     if(feltetel.keresesiAdatok.opRendszer != '-'){
+      //console.log(feltetel.keresesiAdatok)
+
       var opraSzurt = szurtApp.filter(x => {
         if(MinSetupKereso(setup, x.Nev)!=null){
           return MinSetupKereso(setup, x.Nev).OprendszerNev == feltetel.keresesiAdatok.opRendszer;

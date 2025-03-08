@@ -45,7 +45,7 @@ function Reszletek({ adat }) {
       else if(sor == 'Hangkartya') kiirando = 'Hangkártya';
       else if(sor == 'VideokartyaCsatlakozo') kiirando = 'Videókártya Csatlakozó';
 
-      if(! (sor == 'KepNev')){
+      if(! ((sor == 'KepNev') || (sor == 'Kepnev') || (sor == 'kepnev'))){
         ujMind.push(
           <div className="sor" key={sor}>
             <h2 className="elemNev">{kiirando + ':'}</h2>

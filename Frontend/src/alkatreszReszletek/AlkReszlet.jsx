@@ -46,7 +46,8 @@ function AlkatreszReszletek() {
     'MemoriaTipusa': 'Memória Típusa',
     'Lapkakeszlet': 'Lapkakészlet',
     'SlotSzam': 'Slot Szám',
-    'Hangkartya': 'Hangkártya'
+    'Hangkartya': 'Hangkártya',
+    'VideokartyaCsatlakozo': 'Videókártya Csatlakozó'
   };
 
   useEffect(() => {
@@ -62,7 +63,7 @@ function AlkatreszReszletek() {
       if (ertek == false) ertek = 'Nincs';
       else if (ertek == true) ertek = 'Van';
 
-      if(! (sor == 'Kepnev')){
+      if(! ((sor == 'Kepnev') || sor == 'KepNev')){
         ujMind.push(
           <div className="sor" key={sor}>
             <h2 className="elemNev">{kiirando + ':'}</h2>

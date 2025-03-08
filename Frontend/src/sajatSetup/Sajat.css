@@ -127,6 +127,38 @@
     width: 100%;
 }
 
+.sajatSetupElnevezes{
+    background-color: rgb(124, 67, 67);
+    border: 1px black solid;
+    padding: 1vw;
+    margin: 1vw;
+    text-align: center;
+}
+
+.setSzoveg{
+    font-size: 2vw;
+    margin: 1vw;
+    text-align: center;
+}
+
+.okGomb{
+    font-size: 1.5vw;
+    width: 100%;
+    padding: 0.5vw;
+    margin-top: 2vw;
+    background-color: rgba(224, 75, 75, 0.8);
+    color: black;
+}
+.okGomb:hover{
+    background-color: #ffa1a1;
+}
+
+.korKepS{
+    width: 75%;
+    border-radius: 100%;
+    border: 1px black solid;
+}
+
 @media (max-width: 767px){
     .kivSor{
         display: grid;
@@ -143,7 +175,7 @@
         font-size: 3vw;
     }
 
-    .soreCime{
+    .soreCime, .setSzoveg{
         font-size: 4.5vw;
     }
 
@@ -166,7 +198,7 @@
         font-size: 1.5vw;
     }
     
-    .soreCime, .combo, .combo option, .sajGomb{
+    .soreCime, .combo, .combo option, .sajGomb, .setSzoveg{
         word-break: normal;
         font-size: 1vw;
     }
