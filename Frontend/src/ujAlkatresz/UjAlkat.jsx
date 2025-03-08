@@ -1,6 +1,6 @@
 import {useState, useEffect, use } from 'react';
 import './UjAlkat.css';
-import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP, RequestVideokPatch, RequestAlaplapPatch, RequestProcesszorPatch} from './Request';
+import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP, RequestVideokPatch, RequestAlaplapPatch, RequestProcesszorPatch, RequestRamPatch, RequestVideokDelete, RequestAlaplapDelete, RequestProcesszorDelete, RequestRamDelete} from './Request';
 {/*Összes adat tárolására*/}
 const mindenAdat={ 
    videokartyak : [],
@@ -157,6 +157,17 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
    }
 
    {/*............................................................................................................................. */}
+    async function handleDelete(event)
+   {
+    event.preventDefault();
+    if(actionHardver==="Videókártya" && actionButtons==="Delete")RequestVideokDelete(actionKivalasztottNev, actionSelectedVram); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+    if(actionHardver==="Alaplap" && actionButtons==="Delete")RequestAlaplapDelete(actionKivalasztottAlaplapNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+    if(actionHardver==="Memória" && actionButtons==="Delete")RequestRamDelete(actionKivalaszottRamNev, actionSelectedRamFrekvencia); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+    if(actionHardver==="Processzor" && actionButtons==="Delete")RequestProcesszorDelete(actionKivalasztottProcesszorNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+
+
+   }
+   {/*............................................................................................................................. */}
    useEffect(()=>{
       {/* A backendben lévő elérési útvonalak*/}
       const backEleresiUtvonal={
@@ -214,7 +225,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                RequestAlaplapPatch("",actionKivalasztottAlaplapNev);
             }
             else if(actionHardver==="Memória" && actionButtons==="Patch"){
-               RequestMemoriaP("", actionKivalaszottRamNev, actionSelectedRamFrekvencia, actionSelectedRamMeret);
+               RequestRamPatch("", actionKivalaszottRamNev, actionSelectedRamFrekvencia, actionSelectedRamMeret);
             }
             else if(actionHardver==="Processzor" && actionButtons==="Patch"){
                RequestProcesszorPatch("", actionKivalasztottProcesszorNev);
@@ -247,7 +258,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                      {/*PATCH/PUT része */}
                      if(actionHardver==="Videókártya" && actionButtons==="Patch")RequestVideokPatch(data.file_name, actionKivalasztottNev, actionSelectedVram); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                      if(actionHardver==="Alaplap" && actionButtons==="Patch")RequestAlaplapPatch(data.file_name, actionKivalasztottAlaplapNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-                     if(actionHardver==="Memória" && actionButtons==="Patch")RequestMemoriaP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+                     if(actionHardver==="Memória" && actionButtons==="Patch")RequestMemoriaP(data.file_name, actionKivalaszottRamNev, actionSelectedRamFrekvencia, actionSelectedRamMeret); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                      if(actionHardver==="Processzor" && actionButtons==="Patch")RequestProcesszorPatch(data.file_name, actionKivalasztottProcesszorNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                      setFileUrl(data.file_name);
                   } else {
@@ -367,9 +378,21 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             {actionHardver==="Videókártya" && actionButtons==="Delete" ? <div className='body'>
                  <div className='inputok'>
                     <form>
-                    Név:<br/><input type='text'/><br/>                 
-                    Vram:<br/> <input type='number'/><br/>
-                    <button className='buttons' type='button' onClick={''}>Alkatrész eltávolítása</button>
+                    Név:<br/>
+                        <select className="combi"onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
+                           <option>Válassz egyet</option>
+                           {[...new Set(mindenAdat['videokartyak'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev}>{nev}</option>))}
+                        </select><br/>
+
+                     Vram:<br/>
+                        <select onChange={(e)=>setActionSelectedVram(e.target.value)} >
+                           <option>Válassz egyet</option>
+                           {actionSzurtVram.map((vram)=>(<option value={vram} key={vram}>{vram}</option>))}
+                        </select><br/>
+
+                        <button className='buttons' type='button' onClick={(e)=>adatLekeres(e, actionSelectedVram, actionKivalasztottNev)}>Adatok lekérése</button><br/>
+
+                    <button className='buttons' type='button' onClick={(e)=>handleDelete(e)}>Alkatrész eltávolítása</button>
                     </form>
                  </div>
                  <div id='contents'>gggsydzhstrh</div>
@@ -480,8 +503,10 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             {actionHardver==="Alaplap" && actionButtons==="Delete" ? <div className='body'>
                  <div className='inputok'>
                     <form>
-                    Név:<br/><input type='text'/><br/>
-                    <button className='buttons' type='button' onClick={''}>Alkatrész eltávolítása</button>
+                    Név:<br/><input type='text'/><br/>ű
+
+
+                    <button className='buttons' type='button' onClick={(e)=>handleDelete(e)}>Alkatrész eltávolítása</button>
                     </form>
                  </div>
                  <div id='contents'>gggsydzhstrh</div>
@@ -540,7 +565,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
 
                         <button className='buttons' type='button' onClick={(e)=>adatRamLekeres(e,actionKivalaszottRamNev,actionSelectedRamMeret,actionSelectedRamFrekvencia)}>Adatok lekérése</button><br/>
-                        Memória típus:<br/><input type="text"/><br/>    
+                        Memória típus:<br/><input type="text" id='RamPatch1'/><br/>    
                          
                       
                         <div className="imageupload">
@@ -549,7 +574,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                            <span className="filename">{fileName}</span>
                         </div>
 
-                        <button className='buttons' type='button' onClick={''}>Módosítások mentése</button>
+                        <button className='buttons' type='button' onClick={(e)=>handleUploadAndPost(e)}>Módosítások mentése</button>
                     </form>
                  </div>
 
@@ -574,7 +599,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                     <form>
                     Név:<br/><input type='text'/><br/>                 
                     Frekvencia:<br/> <input type='number'/><br/>
-                    <button className='buttons' type='button' onClick={''}>Alkatrész eltávolítása</button>
+                    <button className='buttons' type='button' onClick={(e)=>handleDelete(e)}>Alkatrész eltávolítása</button>
                     </form>
                  </div>
                  <div id='contents'>gggsydzhstrh</div>
@@ -687,7 +712,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  <div className='inputok'>
                     <form>
                      Név:<br/><input type='text'/><br/>
-                     <button className='buttons' type='button' onClick={''}>Alkatrész eltávolítása</button>                
+                     <button className='buttons' type='button' onClick={(e)=>handleDelete(e)}>Alkatrész eltávolítása</button>                
                     </form>
                  </div>
 

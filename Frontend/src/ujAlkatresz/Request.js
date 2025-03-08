@@ -400,3 +400,130 @@ export function RequestProcesszorPatch(fileName, procNev)
             alert("Server hiba. Kérlek próbált meg később!");
         });
 }
+export function RequestRamPatch(fileName, ramNev, ramFrekvencia, ramMeret)
+{
+    var memoriaTipus = document.getElementById('RamPatch1').value;
+    var kepneve=String(fileName);
+
+    const neLegyenWhiteSpace=/[a-zA-Z]/;
+
+    if(memoriaTipus=="" && !neLegyenWhiteSpace.test(memoriaTipus))memoriaTipus=null;
+    if(kepneve=="")kepneve=null;
+
+        fetch (`https://localhost:44316/api/Ram/0?name=${ramNev}&frekvencia=${ramFrekvencia}&meret=${ramMeret}`, {
+            method: "PATCH",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                MemoriaTipus: memoriaTipus,
+                Kepnev: kepneve,
+            }),
+        })
+        .then((response) => {
+            console.log(response.status)
+            if (!response.ok) {
+                //409
+                if(response.status === 409){
+                    alert("Ez a memória már szerepel ezzel a konfigurácioval.")
+                }
+                else{
+                    throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
+                }
+            }
+            else alert("Sikeres feltöltés!");
+                
+            return response.json()
+        })
+        .catch((error) => {
+            console.error("Hiba történt:", error)
+            alert("Server hiba. Kérlek próbált meg később!");
+        });
+}
+//------------DELETE----------------------------------------------
+export function RequestVideokDelete(videokName, vram)
+{
+    fetch (`https://localhost:44316/api/Videokartya/0?name=${videokName}&vram=${vram}`, {
+        method: "DELETE",
+    })
+    .then((response) => {
+        console.log(response.status)
+        if (!response.ok) {
+            if(response.status === 404){
+                alert("Ez a videokártya nem található.")
+            }
+            throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
+        }
+        else alert("Sikeres törlés!");
+            
+        return response.json()
+    })
+    .catch((error) => {
+        console.error("Hiba történt:", error)
+        alert("Server hiba. Kérlek próbált meg később!");
+    });
+}
+export function RequestAlaplapDelete(alaplapnev)
+{
+    fetch (`https://localhost:44316/api/Alaplap/0?name=${alaplapnev}`, {
+        method: "DELETE",
+    })
+    .then((response) => {
+        console.log(response.status)
+        if (!response.ok) {
+            if(response.status === 404){
+                alert("Ez az alaplap nem található.")
+            }
+            throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
+        }
+        else alert("Sikeres törlés!");
+            
+        return response.json()
+    })
+    .catch((error) => {
+        console.error("Hiba történt:", error)
+        alert("Server hiba. Kérlek próbált meg később!");
+    });
+}
+export function RequestProcesszorDelete(procNev)
+{
+    fetch (`https://localhost:44316/api/Processzor/0?name=${procNev}`, {
+        method: "DELETE",
+    })
+    .then((response) => {
+        console.log(response.status)
+        if (!response.ok) {
+            if(response.status === 404){
+                alert("Ez a processzor nem található.")
+            }
+            throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
+        }
+        else alert("Sikeres törlés!");
+            
+        return response.json()
+    })
+    .catch((error) => {
+        console.error("Hiba történt:", error)
+        alert("Server hiba. Kérlek próbált meg később!");
+    });
+}
+export function RequestRamDelete(ramNev, ramFrekvencia, ramMeret)
+{
+    fetch (`https://localhost:44316/api/Ram/0?name=${ramNev}&frekvencia=${ramFrekvencia}&meret=${ramMeret}`, {
+        method: "DELETE",
+    })
+    .then((response) => {
+        console.log(response.status)
+        if (!response.ok) {
+            if(response.status === 404){
+                alert("Ez a memória nem található.")
+            }
+            throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
+        }
+        else alert("Sikeres törlés!");
+            
+        return response.json()
+    })
+    .catch((error) => {
+        console.error("Hiba történt:", error)
+        alert("Server hiba. Kérlek próbált meg később!");
+    });
+}
