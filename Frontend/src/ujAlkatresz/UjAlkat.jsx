@@ -286,18 +286,6 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
          setFileName("Nincs fájl kiválasztva");
        }
     };
-    {/*----------------------Egyéb, az oldalhoz tartozó függvények-------------------- */}
-    function NeLegyenNagyobb(number) {
-      let value = parseFloat(number.value); // Számmá alakítás
-      let min = parseFloat(number.min); // Számmá alakítás
-      let max = parseFloat(number.max); // Számmá alakítás
-  
-      if (value > max || value < min) {
-          alert("A megadott érték nem lehet nagyobb vagy kisebb, mint a maximum és a minimum érték!");
-          number.value = ""; // Üresre állítjuk
-      }
-  }
-  
 
     return (
         <div>
@@ -312,12 +300,12 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
              {actionHardver==="Videókártya" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
                     <form>
-                     Név:<br/><input type='text' id='VideoPost1'/><br/>                 
-                     Alaplapi csatlakozás:<br/><input type='text' id='VideoPost2'/><br/>
-                     Ajánlott tápegység:<br/><input type='number' id='VideoPost3'min={50} max={1800} onKeyUp={(e)=>NeLegyenNagyobb(e.target.value)}/><br/>W
-                     Monitor csatlakozás:<br/><input type='text' id='VideoPost4'/><br/> 
-                     Vram:<br/> <input type='number' id='VideoPost5' min={1} max={48} onKeyUp={(e)=>NeLegyenNagyobb(e.target.value)}/><br/>GB          
-                     Chip  gyártója:<br/><input type='text' id='VideoPost6'/><br/>
+                     Név:<br/><input type='text' className='beviteli_mezok' id='VideoPost1'/><br/>                 
+                     Alaplapi csatlakozás:<br/><input type='text' className='beviteli_mezok' id='VideoPost2'/><br/>
+                     Ajánlott tápegység:<br/><input type='number' className='beviteli_mezok' id='VideoPost3'min={50} max={1800}/>W<br/>
+                     Monitor csatlakozás:<br/><input type='text' className='beviteli_mezok' id='VideoPost4'/><br/> 
+                     Vram:<br/> <input type='number' className='beviteli_mezok' id='VideoPost5' min={1} max={48}/>GB<br/>         
+                     Chip  gyártója:<br/><input type='text' className='beviteli_mezok' id='VideoPost6'/><br/>
      
                      <div className="imageupload">
                         <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/><br/>
@@ -329,9 +317,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                   <div id='buttons_content'>
-                       <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                     <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button>
-                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button><br/>
+                     <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button><br/>
+                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/>
                   </div>
 
             </div> : <div></div>}
