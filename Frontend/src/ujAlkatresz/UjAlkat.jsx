@@ -300,12 +300,12 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
              {actionHardver==="Videókártya" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
                     <form>
-                     Név:<br/><input type='text' className='beviteli_mezok' id='VideoPost1'/><br/>                 
-                     Alaplapi csatlakozás:<br/><input type='text' className='beviteli_mezok' id='VideoPost2'/><br/>
-                     Ajánlott tápegység:<br/><input type='number' className='beviteli_mezok' id='VideoPost3'min={50} max={1800}/>W<br/>
-                     Monitor csatlakozás:<br/><input type='text' className='beviteli_mezok' id='VideoPost4'/><br/> 
-                     Vram:<br/> <input type='number' className='beviteli_mezok' id='VideoPost5' min={1} max={48}/>GB<br/>         
-                     Chip  gyártója:<br/><input type='text' className='beviteli_mezok' id='VideoPost6'/><br/>
+                     <p>Név:</p><input type='text' className='beviteli_mezok' id='VideoPost1'/><br/>                 
+                     <p>Alaplapi csatlakozás:</p><input type='text' className='beviteli_mezok' id='VideoPost2'/><br/>
+                     <p>Ajánlott tápegység:</p><input type='number' className='beviteli_mezok' id='VideoPost3'min={50} max={1800}/><br/>
+                     <p>Monitor csatlakozás:</p><input type='text' className='beviteli_mezok' id='VideoPost4'/><br/> 
+                     <p>Vram:</p><input type='number' className='beviteli_mezok' id='VideoPost5' min={1} max={48}/><br/>         
+                     <p>Chip  gyártója:</p><input type='text' className='beviteli_mezok' id='VideoPost6'/><br/>
      
                      <div className="imageupload">
                         <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/><br/>

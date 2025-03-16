@@ -57,9 +57,7 @@
     font-size: 1vw;
     border-radius: 0% 30%;
     background-color: rgba(194, 52, 52, 0.8);
-    color: black;
-    word-break: normal;
-    
+    color: black;   
   }
   .positions
   {
@@ -76,17 +74,12 @@
   {
     background-color: rgb(58, 55, 55);
   }
-  p
-  {
-    text-align: left;
-  }
 
   /*Azon mezőket összefoglaló div amely tartalmazza az input mezőket*/
   .inputok
   {
     display: flex;
     flex-direction: row;
-    width: 500px;
   }
   /*Alaplapnál a csatlakozó kiválasztó select*/
   #AlaplapPost8
@@ -104,14 +97,9 @@
   {
     display: flex;
     flex-direction: column;
-    width: 500px;
-  }
-  .buttons
-  {
-    width: min-content;
+    margin-left: 18vw;
     float: right;
   }
-  
   
 
 #adatkezelogomb
@@ -138,8 +126,9 @@
 .imgbutton
   {
     padding: 0.5vw 1vw;
+    padding-left: none;
     margin-right: 1%;
-    margin-left: 0.5vw;
+    margin-left: none;
     margin-top: 1vw;
     margin-bottom: 0.3vw;
     font-size: 1vw;
@@ -164,6 +153,25 @@
 /*Beviteli mezők formázása*/
 .beviteli_mezok
 {
-  width: 350px;
+  width: 300px;
   font-size: large;
+  margin-left:3.5vw;
+  height: 1.8vw;
+}
+form
+{
+  display: flex;
+  flex-direction: column;
+  width: 28vw;
+}
+p
+{
+  text-align: left;
+  font-size: 1.5vw;
+  margin-left: 3.5vw;
+  margin-top: 0vw;
+  margin-bottom: 0vw;
+  margin-right: 0vw;
+
+  padding:null;
 }
