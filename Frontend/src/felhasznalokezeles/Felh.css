@@ -427,7 +427,7 @@ select{
         font-size: 3.5vw;
     }
 
-    .szuroCim, .altalnosMentes, .visszaGomb, .torlCim, .torlesGomb, .biztGomOK *{
+    .szuroCim, .altalnosMentes, .visszaGomb, .torlCim, .torlesGomb, .biztGomOK *, .jelszoModCim{
         font-size: 4vw;
     }
 

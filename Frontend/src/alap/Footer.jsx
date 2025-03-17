@@ -41,7 +41,7 @@ function Footer() {
           </div>
           <div className="footMenu">
             <Kijelentkezes></Kijelentkezes>
-            <a href="/oldalak/Profil">Profil Beállítások</a>
+            <a href="/oldalak/Profil">Beállítások</a>
           </div>
         </div>
         : 

@@ -547,8 +547,8 @@ function Sajat() {
           <p className='setSzoveg'>Adjon nevet a setupjának !</p>
           <input type='text' id='setNev'></input>
           <div className='okGombok'>
-            <button className='okGomb' onClick={rogOk} id='mentAlkGomb'>Ok</button>
-            <button className='okGomb' onClick={alaphelyzetbe}>Mégsem</button>
+            <button className='sajGomb' onClick={rogOk} id='mentAlkGomb'>Mentés</button>
+            <button className='sajGomb' onClick={alaphelyzetbe}>Mégsem</button>
           </div>
         </div>
       </div>

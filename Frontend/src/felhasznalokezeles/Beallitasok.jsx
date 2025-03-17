@@ -3,11 +3,13 @@ import Stilus from './Felh.css';
 import JelszoModosito from './JelszoModosito';
 import AdminMenu from './AdminMenu';
 import ProfilTorles from './ProfilTorlese';
+import SetupBeallitasok from '../sajatSetup/SetupBeallitasok';
 
 function Beallitasok() {
   const [altDisp, setAltDisp] = useState('grid');
   const [biztDisp, setBiztDisp] = useState('none');
   const [adminDisp, setAdminDisp] = useState('none');
+  const [setupDisp, setSetupDisp] = useState('none');
   const [activeMenu, setActiveMenu] = useState('alt');
   const [vanHiba, setVanHiba] = useState('none');
   const [selectedFile, setSelectedFile] = useState(null);
@@ -26,6 +28,7 @@ function Beallitasok() {
     setActiveMenu('alt');
     setAltDisp('grid');
     setAdminDisp('none');
+    setSetupDisp('none');
     setBiztDisp('none');
   }
 
@@ -33,6 +36,7 @@ function Beallitasok() {
     setActiveMenu('alt');
     setAltDisp('grid');
     setAdminDisp('none');
+    setSetupDisp('none');
     setBiztDisp('none');
     document.getElementById('hibaU').style.display='none';
   }
@@ -40,6 +44,7 @@ function Beallitasok() {
     setActiveMenu('bizt');
     setAltDisp('none');
     setAdminDisp('none');
+    setSetupDisp('none');
     setBiztDisp('grid');
     document.getElementById('hibaU').style.display='none';
   }
@@ -47,17 +52,26 @@ function Beallitasok() {
     setActiveMenu('admin');
     setAltDisp('none');
     setBiztDisp('none');
+    setSetupDisp('none');
     setAdminDisp('grid');
     document.getElementById('hibaU').style.display='none';
 
+  }
+  function setKiv(){
+    setActiveMenu('setup');
+    setAltDisp('none');
+    setAdminDisp('none');
+    setBiztDisp('none');
+    setSetupDisp('grid');
+    document.getElementById('hibaU').style.display='none';
   }
 
   // Kép kiválasztása
   const kepValasztas = (e) => {
     const file = e.target.files[0];
     if (file) {
-        setSelectedFile(file); // fájl tárolása
-        setAtmKep(URL.createObjectURL(file)); // előnézet generálása
+        setSelectedFile(file);
+        setAtmKep(URL.createObjectURL(file));
     }
   }
 
@@ -136,8 +150,11 @@ function Beallitasok() {
   return (
     <div className='teljesBeallitas'>
       <div className='menuOszlop'>
-        <div className={`oszlopElem ${activeMenu === 'alt' ? 'active' : ''}`} id='alt' onClick={altKiv} style={{ backgroundColor: activeMenu === 'alt' ? 'rgb(233, 203, 203)' : '' }}>Általános</div>
-        <div className={`oszlopElem ${activeMenu === 'bizt' ? 'active' : ''}`} id='bizt' onClick={biztKiv} style={{ backgroundColor: activeMenu === 'bizt' ? 'rgb(233, 203, 203)' : '' }}>Biztonság</div>
+        <div className={`oszlopElem ${activeMenu === 'alt' ? 'active' : ''}`} id='alt' onClick={altKiv} style={{ backgroundColor: activeMenu === 'alt' ? 'rgb(233, 203, 203)' : '' }}>Általános Profil Beállitások</div>
+        <div className={`oszlopElem ${activeMenu === 'bizt' ? 'active' : ''}`} id='bizt' onClick={biztKiv} style={{ backgroundColor: activeMenu === 'bizt' ? 'rgb(233, 203, 203)' : '' }}>Biztonsági Profil Beállitások</div>
+        <div className={`oszlopElem ${activeMenu === 'setup' ? 'active' : ''}`} id='setup' onClick={setKiv} style={{ backgroundColor: activeMenu === 'setup' ? 'rgb(233, 203, 203)' : '',
+          display: JSON.parse(localStorage.getItem("loggedInUser")).Jogosultsag == 1 ? 'grid' : 'none'
+         }}>Saját Setup Beállítások</div>
         <div className={`oszlopElem ${activeMenu === 'admin' ? 'active' : ''}`} id='admin' onClick={adminKiv} style={{ backgroundColor: activeMenu === 'admin' ? 'rgb(233, 203, 203)' : '',
           display: JSON.parse(localStorage.getItem("loggedInUser")).Jogosultsag == 1 ? 'grid' : 'none'
          }}>Admin Menü</div>
@@ -150,7 +167,7 @@ function Beallitasok() {
 
         <div className='altalanos' style={{ display: altDisp }}>
           <div className='profilEsCim'>
-            <p className='altBeCim'>Általános Beállitások</p>
+            <p className='altBeCim'>Általános Profil Beállitások</p>
             <img src={profilUrl} className='profilkepBeall' />
           </div>
           
@@ -193,7 +210,11 @@ function Beallitasok() {
           <ProfilTorles kidobando={JSON.parse(localStorage.getItem('loggedInUser')).Id} kileptet='true'></ProfilTorles>
         </div>
 
-        <div className='admin' style={{display: adminDisp}}>
+        <div className='setup' style={{ display: setupDisp }}>
+          <SetupBeallitasok></SetupBeallitasok>
+        </div>
+
+        <div className='admin' style={{ display: adminDisp }}>
           <AdminMenu></AdminMenu>
         </div>
       </div>

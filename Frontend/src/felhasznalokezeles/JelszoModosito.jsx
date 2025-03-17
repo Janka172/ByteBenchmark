@@ -3,7 +3,6 @@ import Stilus from './Felh.css';
 
 function JelszoModosito() {
   const [profilUrl, setProfilUrl] = useState('');
-
   useEffect(() => {
     if(JSON.parse(localStorage.getItem("loggedInUser")).LogoEleresiUtja == '') setProfilUrl(`/IMAGE/profil.hiany.jpg`);
     else setProfilUrl(`/IMAGE/${JSON.parse(localStorage.getItem("loggedInUser")).LogoEleresiUtja}`);

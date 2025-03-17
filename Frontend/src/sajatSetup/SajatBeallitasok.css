@@ -1,0 +1,71 @@
+.setupTR{
+    display: grid;
+    grid-template-columns: 1fr 0.7fr 0.7fr;
+}
+
+.setupTD{
+    border: 1px black solid;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 1vw;
+}
+
+.setupTablazat{
+    margin: 1vw;
+}
+
+.gombTD{
+    background-color: rgb(165, 54, 54);
+    border: #000 1px solid;
+    text-align: center;
+}
+.gombTD:hover{
+    cursor: pointer;
+    background-color: #ffa1a1;
+}
+
+.setVissza, .tovabiReszletekGomb{
+    background-color: #a83232;
+    border: #000 solid 1px;
+    text-align: center;
+    padding: 0.5vw;
+    margin: 1vw;
+}
+.setVissza:hover{
+    cursor: pointer;
+    background-color: #ffa1a1;
+}
+
+.reszletSor{
+    border-bottom: #000 1px solid;
+    margin: 2vw;
+    padding: 1vw;
+}
+
+.reszletSor:first-child{
+    border-top: #000 1px solid;
+}
+
+.reszletSor div:nth-child(2){
+    display: grid;
+    justify-content: right;
+}
+
+.tovabiReszletekGomb{
+    text-decoration: none;
+    color: #000;
+    width: 100%;
+}
+
+@media (max-width: 767px){
+    .setupTR, .setVissza, .reszletSor{
+        font-size: 3vw;
+    }
+}
+
+@media (min-width: 768px){
+    .setupTR, .setVissza, .reszletSor{
+        font-size: 1.5vw;
+    }
+}

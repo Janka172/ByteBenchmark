@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import AlkReszletStilus from './AlkReszlet.css';
 import { useLocation } from 'react-router-dom';
 import Gorgeto from '../alkatreszek/Gorgeto';
-import Vissza from './Vissza';
 
 function AlkatreszReszletek() {
   
@@ -84,7 +83,6 @@ function AlkatreszReszletek() {
         {betoltve ? Mind : <p>Betöltés folyamatban!</p>}
       </div>
       {Gorgi}
-      <Vissza />
     </div>
   );
 }
