@@ -105,7 +105,7 @@ function Szuro() {
     } else {
       setMegnyitva(true);
       setDispl('block');
-      setHatter('rgba(201, 95, 95, 0.8)');
+      setHatter('rgba(201, 95, 95, 0)');
     }
   }, [kicsie]);
 
@@ -144,6 +144,7 @@ function Szuro() {
     if(kicsie) menuMegnyitas();
     setFeltDisp('none');
     setGombDisp('grid');
+    setHatter('rgba(201, 95, 95, 0)');
   }
 
   const { setKeresesiAdatok } = useKeresesiAdatok();
@@ -161,6 +162,7 @@ function Szuro() {
   }
 
   function feltetelMegadas(){
+    setHatter('rgba(201, 95, 95, 0.8)');
     setFeltDisp('grid');
     setGombDisp('none');
   }
@@ -168,7 +170,7 @@ function Szuro() {
   async function mentettek(){
     setMentDisp('grid');
     setGombDisp('none');
-    if(kicsie) setHatter('rgba(201, 95, 95, 0.8)');
+    setHatter('rgba(201, 95, 95, 0.8)');
 
     getSetup();
   }

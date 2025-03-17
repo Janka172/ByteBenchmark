@@ -179,16 +179,16 @@ function Sajat() {
 
   const gorgetoContainer = useRef(null);
   function gorgetoLeft() {
-      gorgetoContainer.current.scrollBy({
-          top: 0,
-          left: -300,
-      });
+    gorgetoContainer.current.scrollBy({
+        top: 0,
+        left: -300,
+    });
   };
   function gorgetoRight() {
-      gorgetoContainer.current.scrollBy({
-          top: 0,
-          left: 300,
-      });
+    gorgetoContainer.current.scrollBy({
+        top: 0,
+        left: 300,
+    });
   };
 
   //Combo elemek megjelnítése
@@ -412,6 +412,10 @@ function Sajat() {
   }
 
   //Saját setup rögzítése
+  const [sajatSetup, setSajatSetup] = useState([]);
+  const [betoltSS, setBetoltSS] = useState(true);
+  const [nevHiba, setNevHiba] = useState('none');
+
   function rogzites(){
     if (!betoltApp && kivVideokartya != 'nincs' && kivProcesszor != 'nincs' && kivOpRendszer != 'nincs' && kivRam != 'nincs' && kivAlaplap != 'nincs'){
       if(nevDisp == 'none') setNevDisp('grid');
@@ -424,10 +428,36 @@ function Sajat() {
     }
   }, [kivAlaplap])
 
-  function rogOk(){
+  async function rogOk(){
     if(document.getElementById('setNev').value != ''){
-      setupPost(document.getElementById('setNev').value);
+      let sajatAdatok = await getSajatSetup();
+      let foglalte = await mentesiNevEllenorzes(document.getElementById('setNev').value, sajatAdatok);
+      if(!foglalte) setupPost(document.getElementById('setNev').value);
+      else {
+        document.getElementById('elnevezesiHiba').innerText='Ez a Setup név már foglalt !';
+        setNevHiba('flex');
+      }
     }
+  }
+
+  async function getSajatSetup() {
+    try{
+      const response = await fetch(`https://localhost:44316/api/Setup`);
+      const data = await response.json();
+      await setSajatSetup(data.filter(x => x.Gepigeny.split('.')[0]==JSON.parse(localStorage.getItem('loggedInUser')).Id));
+      setBetoltSS(false);
+      return data.filter(x => x.Gepigeny.split('.')[0]==JSON.parse(localStorage.getItem('loggedInUser')).Id);
+    } catch (error){
+      console.error(error);
+    }
+  }
+
+  function mentesiNevEllenorzes(nev, sajatAdatok){
+    let foglalt = false;
+    for(let elem of sajatAdatok){
+      if(elem.Gepigeny.split('.')[1]==nev) foglalt = true;
+    }
+    return foglalt;
   }
 
   async function setupPost(nev){
@@ -457,11 +487,24 @@ function Sajat() {
       }
   
       const data = await response.json();
-      console.log('Success:', data);
-      return data;
+      alaphelyzetbe();
     } catch (error) {
       console.error('Error:', error);
     }
+  }
+
+  function alaphelyzetbe(){
+    setNevDisp('none');
+    setOttVanVagyNem('none');
+    setKivalasztottOpRendszer('nincs');
+    setKivalasztottProcesszor('nincs');
+    setKivalasztottRam('nincs');
+    setKivalasztottVideokartya('nincs');
+    setVanAlap('none');
+    setOttVanVagyNem('none')
+    setNevHiba('none');
+    document.getElementById('setNev').value='';
+    setAktuAlaplap(mindenAlaplap[0]);
   }
 
   return (
@@ -500,9 +543,13 @@ function Sajat() {
         </div>
 
         <div className='sajatSetupElnevezes' style={{display: nevDisp}}>
+          <div id='elnevezesiHiba' style={{display: nevHiba}}></div>
           <p className='setSzoveg'>Adjon nevet a setupjának !</p>
           <input type='text' id='setNev'></input>
-          <button className='okGomb' onClick={rogOk} id='mentAlkGomb'>Ok</button>
+          <div className='okGombok'>
+            <button className='okGomb' onClick={rogOk} id='mentAlkGomb'>Ok</button>
+            <button className='okGomb' onClick={alaphelyzetbe}>Mégsem</button>
+          </div>
         </div>
       </div>
 
