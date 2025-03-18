@@ -116,19 +116,18 @@ function SetupBeallitasok() {
     async function modositasMegjelenitese(setupNeve){
         setTablazatDisp('none');
         setModDisp('grid');
-
+console.log(setupNeve)
         let kivalasztottSetup = sajatSetup.find(x => setupNeve==x.Gepigeny.split('.')[1]);
-        let alaplapok = await getMindenAlaplap(kivalasztottSetup.AlaplapNeve);
-        
+        let alaplapok = await getMindenAlaplap();
         let ujModSzoveg = [];
         ujModSzoveg.push(
             <div className='modSor' key={`AmodSor-${setupNeve}`}>
                 <div key={`AmodSorCim-${setupNeve}`}>Alaplap</div>
-                <select id='alaplapCombo' className='combo' key={`AmodCombo-${setupNeve}`}
-                    value={alaplapok.find(x => x.Nev === '-') ? '-' : undefined}>
-                    {alaplapok.map(x => (
-                        <option value={x.Nev} key={x.Nev}>{x.Nev}</option>
-                    ))}
+                <select id='alaplapCombo' className='combo' onChange={valtozoAlaplap} key={`AmodCombo-${setupNeve}`}>
+                    <option value='-' key='-'>-</option>
+                    { alaplapok.map(x => {
+                        if(x.Nev!=kivalasztottSetup.AlaplapNeve) return <option value={x.Nev} key={x.Nev}>{x.Nev}</option>
+                    })}
                 </select>
             </div>
         )
@@ -136,21 +135,18 @@ function SetupBeallitasok() {
 
         viszonyitottAlkatreszekMegjelenitese(kivalasztottSetup);
     }
-    /*
-    <div className='modSor' key={AmodSor-${setupNeve}}>
-                    <div key={AmodSorCim-${setupNeve}}>Alaplap</div>
-                    <select id='alaplapCombo' className='combo' key={AmodCombo-${setupNeve}}>{alaplapok.map(x => (
-                        <option value={x.Nev} key={x.Nev}>{x.Nev}</option>
-                    ))}</select>
-                </div>
-                */
-
+ 
     async function viszonyitottAlkatreszekMegjelenitese(kivalasztottSetup){
         console.log(kivalasztottSetup)
-        
+        let procik = await getMindenProcesszor();
     }
 
     //Comboboxok léptetése
+    //const [aktuVideokartya, setAktuVideokartya] = useState(mindenVideokartya[0]);
+    //const [aktuProcesszor, setAktuProcesszor] = useState(mindenProcesszor[0]);
+    //const [aktuOpRendszer, setAktuOpRendszer] = useState(mindenOpRendszer[0]);
+    //const [aktuRam, setAktuRam] = useState(mindenRam[0]);
+    const [aktuAlaplap, setAktuAlaplap] = useState();
     /*
     const valtozoVidk = (e) => {
         const aktuNev = e.target.value;
@@ -175,13 +171,15 @@ function SetupBeallitasok() {
         const valasztottRam=mindenRam.find(x => x.Nev == aktuNev);
         setAktuRam(valasztottRam);
     };
-
-    const valtozoAlaplap = (e) => {
+*/
+    async function valtozoAlaplap(e){
         const aktuNev = e.target.value;
-        const valasztottAlaplap=mindenAlaplap.find(x => x.Nev == aktuNev);
+        let adatok = await getMindenAlaplap();
+        let valasztottAlaplap = adatok.find(x => x.Nev == aktuNev);
+        if(!valasztottAlaplap) valasztottAlaplap='-';
         setAktuAlaplap(valasztottAlaplap);
     };
-*/
+
     
     //Kiválasztott adatok lekérése
     async function getAlaplap(kivAlaplapNeve) {
@@ -235,16 +233,23 @@ function SetupBeallitasok() {
     }
 
     //Minden adat lekérése
-    async function getMindenAlaplap(kivAlaplapNeve) {
+    async function getMindenAlaplap() {
         try {
             const response = await fetch(`https://localhost:44316/api/Alaplap`);
             const data = await response.json();
-            data.find(x => {
-                if(x.Nev==kivAlaplapNeve) return x;
-            }).Nev='-';
             return data;
         } catch (error) {
             console.error(error);
+        }
+    }
+
+    async function getMindenProcesszor(kivProci) {
+        try {
+          const response = await fetch(`https://localhost:44316/api/Processzor`);
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.error(error);
         }
     }
 
