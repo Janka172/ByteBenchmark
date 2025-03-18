@@ -196,6 +196,7 @@ select{
     border: black solid 1px;
     border-radius: 1vw 1vw 0 0 ;
     font-size: 2vw;
+    margin: 0;
 }
 
 .jelszoMenu{
