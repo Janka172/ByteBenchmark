@@ -41,6 +41,7 @@ function SetupBeallitasok() {
     function alaphelyzetbe(){
         setTablazatDisp('grid');
         setReszletDisp('none');
+        setModDisp('none');
     }
 
     function tablazatBetoltese(){
@@ -119,23 +120,69 @@ function SetupBeallitasok() {
         let kivalasztottSetup = sajatSetup.find(x => setupNeve==x.Gepigeny.split('.')[1]);
         let alaplapok = await getMindenAlaplap(kivalasztottSetup.AlaplapNeve);
         
-        console.log(alaplapok)
-
         let ujModSzoveg = [];
         ujModSzoveg.push(
-            <div className='modRacs'>
-                <div className='modRacs'>
-                    <div>Alaplap</div>
-                    <select >{alaplapok.map(x => (
+            <div className='modSor' key={`AmodSor-${setupNeve}`}>
+                <div key={`AmodSorCim-${setupNeve}`}>Alaplap</div>
+                <select id='alaplapCombo' className='combo' key={`AmodCombo-${setupNeve}`}
+                    value={alaplapok.find(x => x.Nev === '-') ? '-' : undefined}>
+                    {alaplapok.map(x => (
                         <option value={x.Nev} key={x.Nev}>{x.Nev}</option>
-                    ))}</select>
-                </div>
-
+                    ))}
+                </select>
             </div>
         )
         setModSzoveg(ujModSzoveg);
+
+        viszonyitottAlkatreszekMegjelenitese(kivalasztottSetup);
+    }
+    /*
+    <div className='modSor' key={AmodSor-${setupNeve}}>
+                    <div key={AmodSorCim-${setupNeve}}>Alaplap</div>
+                    <select id='alaplapCombo' className='combo' key={AmodCombo-${setupNeve}}>{alaplapok.map(x => (
+                        <option value={x.Nev} key={x.Nev}>{x.Nev}</option>
+                    ))}</select>
+                </div>
+                */
+
+    async function viszonyitottAlkatreszekMegjelenitese(kivalasztottSetup){
+        console.log(kivalasztottSetup)
+        
     }
 
+    //Comboboxok léptetése
+    /*
+    const valtozoVidk = (e) => {
+        const aktuNev = e.target.value;
+        const valasztottVideokartya = mindenVideokartya.find(x => x.Nev == aktuNev);
+        setAktuVideokartya(valasztottVideokartya);
+    };
+
+    const valtozoProc = (e) => {
+        const aktuNev = e.target.value;
+        const valasztottProcesszor=mindenProcesszor.find(x => x.Nev == aktuNev);
+        setAktuProcesszor(valasztottProcesszor);
+    };
+
+    const valtozoOpRend = (e) => {
+        const aktuNev = e.target.value;
+        const valasztottOpRendszer=mindenOpRendszer.find(x => x.Nev == aktuNev);
+        setAktuOpRendszer(valasztottOpRendszer);
+    };
+
+    const valtozoRam = (e) => {
+        const aktuNev = e.target.value;
+        const valasztottRam=mindenRam.find(x => x.Nev == aktuNev);
+        setAktuRam(valasztottRam);
+    };
+
+    const valtozoAlaplap = (e) => {
+        const aktuNev = e.target.value;
+        const valasztottAlaplap=mindenAlaplap.find(x => x.Nev == aktuNev);
+        setAktuAlaplap(valasztottAlaplap);
+    };
+*/
+    
     //Kiválasztott adatok lekérése
     async function getAlaplap(kivAlaplapNeve) {
         try {
@@ -216,7 +263,8 @@ function SetupBeallitasok() {
         </div>
         <div className='setupModositas' style={{display: modDisp}}>
             <div className='setVissza' onClick={alaphelyzetbe}>Vissza</div>
-            {ModSzoveg}
+            <div className='modRacs'>{ModSzoveg}</div>
+            <div className='setVissza'>Mentés</div>
         </div>
     </div>
   );
