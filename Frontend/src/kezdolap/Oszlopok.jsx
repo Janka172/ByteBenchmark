@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import OszlopokStilus from './Oszlopok.css';
-import AppStilus from '../App.css';
 import Alkik from './Alkik';
 import Bejelentkezes from '../felhasznalokezeles/Bejelentkezes';
 

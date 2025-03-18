@@ -8,6 +8,7 @@ function SetupBeallitasok() {
     const [Mind, setMind] = useState([]);
     const [ReszletSzoveg, setReszletSzoveg] = useState([]);
     const [ModSzoveg, setModSzoveg] = useState([]);
+    const [Viszonyitottak, setViszonyitottak] = useState([]);
 
     const [tablazatDisp, setTablazatDisp] = useState('grid');
     const [reszletDisp, setReszletDisp] = useState('none');
@@ -113,18 +114,27 @@ function SetupBeallitasok() {
         setReszletSzoveg(ujReszletSzoveg);
     }
 
+    //Setup módosítása
+    const [aktuSetup, setAktuSetup] = useState();
+    const [aktuVideokartya, setAktuVideokartya] = useState();
+    const [aktuProcesszor, setAktuProcesszor] = useState();
+    const [aktuOpRendszer, setAktuOpRendszer] = useState();
+    const [aktuRam, setAktuRam] = useState();
+    const [aktuAlaplap, setAktuAlaplap] = useState();
+    
     async function modositasMegjelenitese(setupNeve){
         setTablazatDisp('none');
         setModDisp('grid');
-console.log(setupNeve)
         let kivalasztottSetup = sajatSetup.find(x => setupNeve==x.Gepigeny.split('.')[1]);
+        await setAktuSetup(kivalasztottSetup);
         let alaplapok = await getMindenAlaplap();
+        let kivAlaplap = await getAlaplap(kivalasztottSetup.AlaplapNeve);
         let ujModSzoveg = [];
         ujModSzoveg.push(
             <div className='modSor' key={`AmodSor-${setupNeve}`}>
-                <div key={`AmodSorCim-${setupNeve}`}>Alaplap</div>
+                <div key={`AmodSorCim-${setupNeve}`}>Alaplap:</div>
                 <select id='alaplapCombo' className='combo' onChange={valtozoAlaplap} key={`AmodCombo-${setupNeve}`}>
-                    <option value='-' key='-'>-</option>
+                    <option value='-' key='A-'>-</option>
                     { alaplapok.map(x => {
                         if(x.Nev!=kivalasztottSetup.AlaplapNeve) return <option value={x.Nev} key={x.Nev}>{x.Nev}</option>
                     })}
@@ -133,54 +143,134 @@ console.log(setupNeve)
         )
         setModSzoveg(ujModSzoveg);
 
-        viszonyitottAlkatreszekMegjelenitese(kivalasztottSetup);
-    }
- 
-    async function viszonyitottAlkatreszekMegjelenitese(kivalasztottSetup){
-        console.log(kivalasztottSetup)
-        let procik = await getMindenProcesszor();
+        viszonyitottAlkatreszekMegjelenitese(kivalasztottSetup, kivAlaplap);
     }
 
     //Comboboxok léptetése
-    //const [aktuVideokartya, setAktuVideokartya] = useState(mindenVideokartya[0]);
-    //const [aktuProcesszor, setAktuProcesszor] = useState(mindenProcesszor[0]);
-    //const [aktuOpRendszer, setAktuOpRendszer] = useState(mindenOpRendszer[0]);
-    //const [aktuRam, setAktuRam] = useState(mindenRam[0]);
-    const [aktuAlaplap, setAktuAlaplap] = useState();
-    /*
-    const valtozoVidk = (e) => {
-        const aktuNev = e.target.value;
-        const valasztottVideokartya = mindenVideokartya.find(x => x.Nev == aktuNev);
-        setAktuVideokartya(valasztottVideokartya);
-    };
-
-    const valtozoProc = (e) => {
-        const aktuNev = e.target.value;
-        const valasztottProcesszor=mindenProcesszor.find(x => x.Nev == aktuNev);
-        setAktuProcesszor(valasztottProcesszor);
-    };
-
-    const valtozoOpRend = (e) => {
-        const aktuNev = e.target.value;
-        const valasztottOpRendszer=mindenOpRendszer.find(x => x.Nev == aktuNev);
-        setAktuOpRendszer(valasztottOpRendszer);
-    };
-
-    const valtozoRam = (e) => {
-        const aktuNev = e.target.value;
-        const valasztottRam=mindenRam.find(x => x.Nev == aktuNev);
-        setAktuRam(valasztottRam);
-    };
-*/
-    async function valtozoAlaplap(e){
+    async function valtozoAlaplap(e) {
         const aktuNev = e.target.value;
         let adatok = await getMindenAlaplap();
-        let valasztottAlaplap = adatok.find(x => x.Nev == aktuNev);
-        if(!valasztottAlaplap) valasztottAlaplap='-';
-        setAktuAlaplap(valasztottAlaplap);
-    };
-
     
+        if (aktuNev != '-') {
+            let valasztottAlaplap = adatok.find(x => x.Nev == aktuNev);
+            if (!valasztottAlaplap) valasztottAlaplap = '-';
+            setAktuAlaplap(valasztottAlaplap);
+        }
+    }
+
+    async function valtozoProc(e) {
+        const aktuNev = e.target.value;
+        let adatok = await getMindenProcesszor();
+
+        if (aktuNev != '-') {
+            const valasztottProcesszor=adatok.find(x => x.Nev == aktuNev);
+            if(!valasztottProcesszor) valasztottProcesszor = '-';
+            setAktuProcesszor(valasztottProcesszor);
+        }
+        
+    }
+
+    async function valtozoVidk (e) {
+        const aktuNev = e.target.value;
+        let adatok = await getMindenVideokartya();
+
+        if (aktuNev != '-') {
+            const valasztottVideokartya = adatok.find(x => x.Nev == aktuNev);
+            if(!valasztottVideokartya) valasztottVideokartya = '-';
+            setAktuVideokartya(valasztottVideokartya);
+        }
+    }
+
+    async function valtozoRam (e) {
+        const aktuNev = e.target.value;
+        let adatok = await getMindenRam();
+
+        if (aktuNev != '-') {
+            const valasztottRam = adatok.find(x => x.Nev == aktuNev);
+            if(!valasztottRam) valasztottRam = '-';
+            setAktuRam(valasztottRam);
+        }
+    }
+
+    async function valtozoOpRend (e) {
+        const aktuNev = e.target.value;
+        let adatok = await getMindenOpRendszer();
+
+        if (aktuNev != '-') {
+            const valasztottOpRendszer = adatok.find(x => x.Nev == aktuNev);
+            if(!valasztottOpRendszer) valasztottOpRendszer = '-';
+            setAktuOpRendszer(valasztottOpRendszer);
+        }
+    };
+ 
+    async function viszonyitottAlkatreszekMegjelenitese(kivalasztottSetup, kivAlaplap){
+        let setupNeve = kivalasztottSetup.Gepigeny.split('.')[1];
+        let ujViszonyitottak = [];
+
+        let procik = await getMindenProcesszor();
+        let szurtProci = await procik.filter(x => kivAlaplap.CpuFoglalat.includes(x.AlaplapFoglalat));
+        ujViszonyitottak.push(
+            <div className='modSor' key={`PmodSor-${setupNeve}`}>
+                <div key={`PmodSorCim-${setupNeve}`}>Processzor:</div>
+                <select id='prociCombo' className='combo' onChange={valtozoProc} key={`PmodCombo-${setupNeve}`}>
+                    <option value='-' key='P-'>-</option>
+                    { szurtProci.map(x => {
+                        if(x.Nev!=kivalasztottSetup.ProcesszorNev) return <option value={x.Nev} key={x.Nev}>{x.Nev}</option>
+                    })}
+                </select>
+            </div>
+        )
+
+        let vidiKartyak = await getMindenVideokartya();
+        ujViszonyitottak.push(
+            <div className='modSor' key={`VmodSor-${setupNeve}`}>
+                <div key={`VmodSorCim-${setupNeve}`}>Videókártya:</div>
+                <select id='vidkCombo' className='combo' onChange={valtozoVidk} key={`VmodCombo-${setupNeve}`}>
+                    <option value='-' key='V-'>-</option>
+                    { vidiKartyak.map((x, index) => {
+                        if(x.Nev!=kivalasztottSetup.VidekortyaNev) return <option value={x.Nev} key={`${x.Nev}-${index}`}>{x.Nev} - {x.vram}GB</option>
+                    })}
+                </select>
+            </div>
+        )
+
+        let ramok = await getMindenRam();
+        let szurtRam = ramok.filter(x => x.MemoriaTipus.includes(kivAlaplap.MemoriaTipusa))
+        ujViszonyitottak.push(
+            <div className='modSor' key={`RmodSor-${setupNeve}`}>
+                <div key={`RmodSorCim-${setupNeve}`}>Ram:</div>
+                <select id='ramCombo' className='combo' onChange={valtozoRam} key={`RmodCombo-${setupNeve}`}>
+                    <option value='-' key='R-'>-</option>
+                    { szurtRam.map((x, index) => {
+                        if(x.Nev!=kivalasztottSetup.RamNeve) return <option value={x.Nev} key={`${x.Nev}-${index}`}>{x.Nev} - {x.Frekvencia}Hz - {x.Meret}GB</option>
+                    })}
+                </select>
+            </div>
+        )
+
+        let oprk = await getMindenOpRendszer();
+        ujViszonyitottak.push(
+            <div className='modSor' key={`OmodSor-${setupNeve}`}>
+                <div key={`OmodSorCim-${setupNeve}`}>Operációsrendszer:</div>
+                <select id='oprCombo' className='combo' onChange={valtozoOpRend} key={`OmodCombo-${setupNeve}`}>
+                    <option value='-' key='O-'>-</option>
+                    { oprk.map(x => {
+                        if(x.Nev!=kivalasztottSetup.OprendszerNev) return <option value={x.Nev} key={x.Nev}>{x.Nev}</option>
+                    })}
+                </select>
+            </div>
+        )
+
+        setViszonyitottak(ujViszonyitottak);
+    }
+    useEffect(() => {
+        if(aktuAlaplap) viszonyitottAlkatreszekMegjelenitese(aktuSetup, aktuAlaplap)
+    }, [aktuAlaplap])
+
+    async function modositottAdatokRogzitese() {
+
+    }
+
     //Kiválasztott adatok lekérése
     async function getAlaplap(kivAlaplapNeve) {
         try {
@@ -243,13 +333,43 @@ console.log(setupNeve)
         }
     }
 
-    async function getMindenProcesszor(kivProci) {
+    async function getMindenProcesszor() {
         try {
           const response = await fetch(`https://localhost:44316/api/Processzor`);
           const data = await response.json();
           return data;
         } catch (error) {
           console.error(error);
+        }
+    }
+
+    async function getMindenVideokartya() {
+        try {
+          const response = await fetch(`https://localhost:44316/api/Videokartya`);
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.error(error);
+        }
+    }
+
+    async function getMindenRam() {
+        try {
+            const response = await fetch(`https://localhost:44316/api/Ram`);
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    async function getMindenOpRendszer() {
+        try {
+            const response = await fetch(`https://localhost:44316/api/Oprendszer`);
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error(error);
         }
     }
 
@@ -268,8 +388,11 @@ console.log(setupNeve)
         </div>
         <div className='setupModositas' style={{display: modDisp}}>
             <div className='setVissza' onClick={alaphelyzetbe}>Vissza</div>
-            <div className='modRacs'>{ModSzoveg}</div>
-            <div className='setVissza'>Mentés</div>
+            <div className='modRacs'>
+                {ModSzoveg}
+                {Viszonyitottak}
+            </div>
+            <div className='setVissza' onClick={modositottAdatokRogzitese}>Mentés</div>
         </div>
     </div>
   );

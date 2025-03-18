@@ -3,7 +3,7 @@ import KeretAlkalmazasStilus from './KeretAlkalmazas.css';
 import Szuro from './Szuro';
 import AppLista from './AppLista';
 import LapTetejere from './LapTetejere';
-import { KeresesiAdatokProvider } from './KeresesiAdatokContext'; // Importáljuk a Provider-t
+import { KeresesiAdatokProvider } from './KeresesiAdatokContext';
 
 function Keret() {
   return (

@@ -239,7 +239,7 @@ function Sajat() {
       else vanRam='flex';
       elemek.push(
         szurtRam.map((ram, index) => (
-          <option value={ram.Nev} key={index}>{ram.Nev} - {ram.Frekvencia}Hz</option> 
+          <option value={ram.Nev} key={index}>{ram.Nev} - {ram.Frekvencia}Hz - {ram.Meret}GB</option> 
         )))
     }
     return elemek;
