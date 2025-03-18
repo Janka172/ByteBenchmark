@@ -165,7 +165,6 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
     if(actionHardver==="Memória" && actionButtons==="Delete")RequestRamDelete(actionKivalaszottRamNev, actionSelectedRamFrekvencia); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
     if(actionHardver==="Processzor" && actionButtons==="Delete")RequestProcesszorDelete(actionKivalasztottProcesszorNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
 
-
    }
    {/*............................................................................................................................. */}
    useEffect(()=>{
@@ -268,6 +267,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                   console.error("Hálózati hiba:", error);
             }
          };
+         
       }
     
         
@@ -358,7 +358,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
                  <div id='contents'>
                     <p>Név: {actionMindenhezKellAdat?.Nev}</p>
-                    <p>Alaplapi csatlakozás: {actionMindenhezKellAdat?.alaplapCsatlakozas}</p>
+                    <p>Alaplapi csatlakozás: {actionMindenhezKellAdat?.alaplapiCsatlakozas}</p>
                     <p>Ajánlott tápegység: {actionMindenhezKellAdat?.ajanlottTapegyseg}</p>                 
                     <p>Monitor csatlakozás: {actionMindenhezKellAdat?.monitorCsatlakozas}</p> 
                     <p>Vram: {actionMindenhezKellAdat?.vram}</p> 
@@ -398,7 +398,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
                  <div id='contents'>
                     <p>Név: {actionMindenhezKellAdat?.Nev}</p>
-                    <p>Alaplapi csatlakozás: {actionMindenhezKellAdat?.alaplapCsatlakozas}</p>
+                    <p>Alaplapi csatlakozás: {actionMindenhezKellAdat?.alaplapiCsatlakozas}</p>
                     <p>Ajánlott tápegység: {actionMindenhezKellAdat?.ajanlottTapegyseg}</p>                 
                     <p>Monitor csatlakozás: {actionMindenhezKellAdat?.monitorCsatlakozas}</p> 
                     <p>Vram: {actionMindenhezKellAdat?.vram}</p> 
