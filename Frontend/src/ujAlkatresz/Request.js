@@ -248,7 +248,7 @@ export function RequestVideokPatch(fileName, videokName, vram,)
 
     const neLegyenWhiteSpace=/[a-zA-Z]/;
     if(aCsatlakozasElem=="" || !neLegyenWhiteSpace.test(aCsatlakozasElem))aCsatlakozasElem=null;
-    if(atapegysegElem=="" || !neLegyenWhiteSpace.test(atapegysegElem))atapegysegElem=null;
+    if(atapegysegElem==0)atapegysegElem=null;
     if(mCsatlakozasElem=="" || !neLegyenWhiteSpace.test(mCsatlakozasElem))mCsatlakozasElem=null;
     if(cGyartoElem=="" || !neLegyenWhiteSpace.test(cGyartoElem))cGyartoElem=null;
     if(kepneve=="")kepneve=null;
@@ -299,10 +299,10 @@ export function RequestAlaplapPatch(fileName, alaplapnev)
     const neLegyenWhiteSpace=/[a-zA-Z]/;
     if(processzorFoglalat=="" || !neLegyenWhiteSpace.test(processzorFoglalat))processzorFoglalat=null;
     if(alaplapFormatum=="" || !neLegyenWhiteSpace.test(alaplapFormatum))alaplapFormatum=null;
-    if(maxFrekvencia=="")maxFrekvencia=null;
+    if(maxFrekvencia==0)maxFrekvencia=null;
     if(memoriaTipus=="" || !neLegyenWhiteSpace.test(memoriaTipus))memoriaTipus=null;
     if(lapkakeszlet=="" || !neLegyenWhiteSpace.test(lapkakeszlet))lapkakeszlet=null;
-    if(slotSzam=="")slotSzam=null;
+    if(slotSzam==0)slotSzam=null;
     if(kepneve=="")kepneve=null;
 
         fetch (`https://localhost:44316/api/Alaplap/0?name=${alaplapnev}`, {
@@ -354,14 +354,14 @@ export function RequestProcesszorPatch(fileName, procNev)
     console.log(procNev);
 
     const neLegyenWhiteSpace=/[a-zA-z]/;
-    if(frekvencia=="")frekvencia=null;
-    if(bFrekvencia=="")bFrekvencia=null;
+    if(frekvencia==0)frekvencia=null;
+    if(bFrekvencia==0)bFrekvencia=null;
     if(alaplapFoglalat=="" || !neLegyenWhiteSpace.test(alaplapFoglalat))alaplapFoglalat=null;
-    if(szalakSzama=="")szalakSzama=null;
+    if(szalakSzama==0)szalakSzama=null;
     if(tamogatottMemoriaTipus=="" || !neLegyenWhiteSpace.test(tamogatottMemoriaTipus))tamogatottMemoriaTipus=null;
-    if(processzormagokSzama=="")processzormagokSzama=null;
+    if(processzormagokSzama==0)processzormagokSzama=null;
     if(gyarto=="" || !neLegyenWhiteSpace.test(gyarto))gyarto=null;
-    if(ajanlottTapegyseg=="")ajanlottTapegyseg=null;
+    if(ajanlottTapegyseg==0)ajanlottTapegyseg=null;
     if(kepneve=="")kepneve=null;
 
         fetch (`https://localhost:44316/api/Processzor/0?name=${procNev}`, {
