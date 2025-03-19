@@ -93,8 +93,8 @@ button:hover{
 }
 
 @media (min-width: 1500px){
-  .korKep{
-    width: 50%;
+  .kartyaLogo{
+    width: 60%;
   }
   
   .appNeve{
@@ -104,6 +104,19 @@ button:hover{
   
   .reszletG{
     font-size: 0.8vw;
+    padding: 1vw;
+    margin:0vw;
+  }
+}
+
+@media (min-width: 2500px){
+  .appNeve{
+    font-size: 0.8vw;
+    font-weight: bold;
+  }
+  
+  .reszletG{
+    font-size: 0.5vw;
     padding: 1vw;
     margin:0vw;
   }

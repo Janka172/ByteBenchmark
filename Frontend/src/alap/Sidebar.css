@@ -88,3 +88,13 @@
         font-size: 2vw;
     }
 }
+
+@media (min-width: 2500px){
+    .blockSidebar .navigElem{
+        font-size: 0.8vw;
+    }
+
+    .hambiGombocska{
+        font-size: 0.8vw;
+    }
+}

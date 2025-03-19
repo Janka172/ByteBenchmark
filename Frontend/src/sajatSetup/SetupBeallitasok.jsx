@@ -14,6 +14,13 @@ function SetupBeallitasok() {
     const [reszletDisp, setReszletDisp] = useState('none');
     const [modDisp, setModDisp] = useState('none');
 
+    const [aktuSetup, setAktuSetup] = useState();
+    const [aktuVideokartya, setAktuVideokartya] = useState();
+    const [aktuProcesszor, setAktuProcesszor] = useState();
+    const [aktuOpRendszer, setAktuOpRendszer] = useState();
+    const [aktuRam, setAktuRam] = useState();
+    const [aktuAlaplap, setAktuAlaplap] = useState();
+
     const [profilUrl, setProfilUrl] = useState('');
     useEffect(() => {
         if(JSON.parse(localStorage.getItem("loggedInUser")).LogoEleresiUtja == '') setProfilUrl(`/IMAGE/profil.hiany.jpg`);
@@ -126,12 +133,6 @@ function SetupBeallitasok() {
     }
 
     //Setup módosítása
-    const [aktuSetup, setAktuSetup] = useState();
-    const [aktuVideokartya, setAktuVideokartya] = useState();
-    const [aktuProcesszor, setAktuProcesszor] = useState();
-    const [aktuOpRendszer, setAktuOpRendszer] = useState();
-    const [aktuRam, setAktuRam] = useState();
-    const [aktuAlaplap, setAktuAlaplap] = useState();
     
     async function modositasMegjelenitese(setupNeve){
         setTablazatDisp('none');
@@ -153,7 +154,6 @@ function SetupBeallitasok() {
             </div>
         )
         setModSzoveg(ujModSzoveg);
-        console.log(aktuSetup)
 
         await viszonyitottAlkatreszekMegjelenitese(kivalasztottSetup, kivAlaplap);
     }
@@ -168,9 +168,22 @@ function SetupBeallitasok() {
             setAktuAlaplap(valasztottAlaplap);
         }
         else {
-            modositasMegjelenitese(aktuSetup.Gepigeny.split('.')[1]);
-            let valasztottAlaplap = adatok.find(x => x.Nev == aktuSetup.AlaplapNeve);
-            setAktuAlaplap(valasztottAlaplap);
+            let comoAdatok = document.getElementById("alaplapCombo");
+            let options = comoAdatok.options;
+            let ertekek = [];
+            let kivSetAlap = null;
+
+            for (let i = 0; i < options.length; i++) {
+                if(options[i].value != '-') ertekek.push(options[i].value);
+            }            
+
+            for(let elem of adatok){
+                if(!ertekek.includes(adatok.Nev)) kivSetAlap = elem;
+            }
+            await setAktuAlaplap(kivSetAlap);
+
+            document.getElementById('setMentes').style.backgroundColor='';
+            document.getElementById('setMentes').style.cursor='';
         }
     }
 
@@ -221,6 +234,7 @@ function SetupBeallitasok() {
  
     async function viszonyitottAlkatreszekMegjelenitese(kivalasztottSetup, kivAlaplap){
         let setupNeve = kivalasztottSetup.Gepigeny.split('.')[1];
+        await setAktuSetup(kivalasztottSetup);
         let ujViszonyitottak = [];
 
         let procik = await getMindenProcesszor();
@@ -280,16 +294,16 @@ function SetupBeallitasok() {
         setViszonyitottak(ujViszonyitottak);
     }
     useEffect(() => {
-        if(aktuAlaplap) {
+        if (aktuAlaplap && aktuAlaplap.Nev != aktuSetup.AlaplapNeve) {
             viszonyitottAlkatreszekMegjelenitese(aktuSetup, aktuAlaplap);
-            document.getElementById('setMentes').style.backgroundColor='gray';
-            document.getElementById('setMentes').style.cursor='not-allowed';
+            document.getElementById('setMentes').style.backgroundColor = 'gray';
+            document.getElementById('setMentes').style.cursor = 'not-allowed';
         }
-        if(aktuAlaplap && aktuAlaplap.Nev == aktuSetup.AlaplapNeve){
-            document.getElementById('setMentes').style.backgroundColor='';
-            document.getElementById('setMentes').style.cursor='';
+        if (modDisp!='none' && document.getElementById('alaplapCombo').value == '-') {
+            document.getElementById('setMentes').style.backgroundColor = '';
+            document.getElementById('setMentes').style.cursor = '';
         }
-    }, [aktuAlaplap])
+    }, [aktuAlaplap]);
     
     useEffect(() => {
         try{
@@ -348,6 +362,9 @@ function SetupBeallitasok() {
                 "AlaplapNeve": alaplatAdat
             })
         });
+        
+        alaphelyzetbe();
+        window.location.reload();
     }
 
     //Kiválasztott adatok lekérése

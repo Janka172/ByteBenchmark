@@ -176,3 +176,19 @@ option:hover{
     font-size: 1.3vw;
   }
 }
+
+@media (min-width: 2500px){
+  .nagyMeret h1 {
+    font-size: 1.1vw;
+  }
+  .mezo, .mezo select, .mezo input, .mezo option, .mezo p, .setTablaCella, .setTablaSzur{
+    font-size: 0.8vw;
+  }
+  .gombocska{
+    font-size: 0.8vw;
+    padding: 0.3vw;
+  }
+  .szurMenuGomb{
+    font-size: 0.8vw;
+  }
+}

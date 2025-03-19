@@ -93,3 +93,15 @@ h1{
         font-size: 1vw;
     }
 }
+
+@media (min-width: 2500px){
+    .tovabbi{
+        word-break: normal;
+        font-size: 0.5vw;
+    }
+
+    .sorfCime, .megnev{
+        font-size: 0.8vw;
+    }
+
+}

@@ -330,6 +330,7 @@ select{
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 1vw;
+    align-items: center;
 }
 
 .modSor *{
@@ -431,7 +432,6 @@ select{
     .szuroCim, .altalnosMentes, .visszaGomb, .torlCim, .torlesGomb, .biztGomOK *, .jelszoModCim{
         font-size: 4vw;
     }
-
 }
 
 @media (min-width: 768px){
@@ -462,5 +462,32 @@ select{
 
     .altBeCim, .altalnosMentes, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb{
         font-size: 2vw;
+    }
+}
+
+@media (min-width: 2000px){
+    .elemSor input{
+        width: 100%;
+        font-size: 0.8vw;
+    }
+
+    .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve, .profilSor div{
+        font-size: 0.75vw;
+    }
+
+    .submitGomb{
+        font-size: 0.8vw;
+    }
+
+    .oszlopElem{
+        font-size: 0.75vw;
+    }
+
+    .altBeCim, .altalnosMentes, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb, .szuroCim, .profCimsor div{
+        font-size: 1vw;
+    }
+
+    .profilkepBeall, .profilkepAM{
+        width: 50%;
     }
 }

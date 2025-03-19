@@ -70,8 +70,8 @@ function Beallitasok() {
   const kepValasztas = (e) => {
     const file = e.target.files[0];
     if (file) {
-        setSelectedFile(file);
-        setAtmKep(URL.createObjectURL(file));
+      setSelectedFile(file);
+      setAtmKep(URL.createObjectURL(file));
     }
   }
 

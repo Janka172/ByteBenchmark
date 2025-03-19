@@ -101,3 +101,17 @@
         border-radius: 0 2vw;
     }
 }
+
+@media (min-width: 2500px){
+    .appNev{
+        font-size: 1.5vw;
+    }
+    
+    .sorCim, .sorTartalom{
+        font-size: 1vw;
+    }
+    
+    .kovetelm h1{
+        font-size: 0.9vw;
+    }
+}
