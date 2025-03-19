@@ -40,18 +40,20 @@ function SetupBeallitasok() {
     }, [sajatSetup]);
 
     function alaphelyzetbe(){
-        setTablazatDisp('grid');
-        setReszletDisp('none');
-        setModDisp('none');
-
-        document.getElementById('alaplapCombo').value = '-';
-        document.getElementById('prociCombo').value = '-';
-        document.getElementById('vidkCombo').value = '-';
-        document.getElementById('ramCombo').value = '-';
-        document.getElementById('oprCombo').value = '-';
+        if(modDisp != 'none'){
+            document.getElementById('alaplapCombo').value = '-';
+            document.getElementById('prociCombo').value = '-';
+            document.getElementById('vidkCombo').value = '-';
+            document.getElementById('ramCombo').value = '-';
+            document.getElementById('oprCombo').value = '-';
+        }
 
         document.getElementById('setMentes').style.backgroundColor='';
         document.getElementById('setMentes').style.cursor='';
+
+        setTablazatDisp('grid');
+        setReszletDisp('none');
+        setModDisp('none');
     }
 
     function tablazatBetoltese(){
@@ -120,7 +122,7 @@ function SetupBeallitasok() {
         );
         
 
-        setReszletSzoveg(ujReszletSzoveg);
+        await setReszletSzoveg(ujReszletSzoveg);
     }
 
     //Setup módosítása
@@ -134,7 +136,7 @@ function SetupBeallitasok() {
     async function modositasMegjelenitese(setupNeve){
         setTablazatDisp('none');
         setModDisp('grid');
-        let kivalasztottSetup = sajatSetup.find(x => setupNeve==x.Gepigeny.split('.')[1]);
+        let kivalasztottSetup = await sajatSetup.find(x => setupNeve==x.Gepigeny.split('.')[1]);
         await setAktuSetup(kivalasztottSetup);
         let alaplapok = await getMindenAlaplap();
         let kivAlaplap = await getAlaplap(kivalasztottSetup.AlaplapNeve);
@@ -151,8 +153,9 @@ function SetupBeallitasok() {
             </div>
         )
         setModSzoveg(ujModSzoveg);
+        console.log(aktuSetup)
 
-        viszonyitottAlkatreszekMegjelenitese(kivalasztottSetup, kivAlaplap);
+        await viszonyitottAlkatreszekMegjelenitese(kivalasztottSetup, kivAlaplap);
     }
 
     async function valtozoAlaplap(e) {
@@ -164,6 +167,11 @@ function SetupBeallitasok() {
             if (!valasztottAlaplap) valasztottAlaplap = '-';
             setAktuAlaplap(valasztottAlaplap);
         }
+        else {
+            modositasMegjelenitese(aktuSetup.Gepigeny.split('.')[1]);
+            let valasztottAlaplap = adatok.find(x => x.Nev == aktuSetup.AlaplapNeve);
+            setAktuAlaplap(valasztottAlaplap);
+        }
     }
 
     async function valtozoProc(e) {
@@ -171,7 +179,7 @@ function SetupBeallitasok() {
         let adatok = await getMindenProcesszor();
 
         if (aktuNev != '-') {
-            const valasztottProcesszor=adatok.find(x => x.Nev == aktuNev);
+            let valasztottProcesszor=adatok.find(x => x.Nev == aktuNev);
             if(!valasztottProcesszor) valasztottProcesszor = '-';
             setAktuProcesszor(valasztottProcesszor);
         }
@@ -183,7 +191,7 @@ function SetupBeallitasok() {
         let adatok = await getMindenVideokartya();
 
         if (aktuNev != '-') {
-            const valasztottVideokartya = adatok.find(x => x.Nev == aktuNev);
+            let valasztottVideokartya = adatok.find(x => x.Nev == aktuNev);
             if(!valasztottVideokartya) valasztottVideokartya = '-';
             setAktuVideokartya(valasztottVideokartya);
         }
@@ -194,7 +202,7 @@ function SetupBeallitasok() {
         let adatok = await getMindenRam();
 
         if (aktuNev != '-') {
-            const valasztottRam = adatok.find(x => x.Nev == aktuNev);
+            let valasztottRam = adatok.find(x => x.Nev == aktuNev);
             if(!valasztottRam) valasztottRam = '-';
             setAktuRam(valasztottRam);
         }
@@ -205,7 +213,7 @@ function SetupBeallitasok() {
         let adatok = await getMindenOpRendszer();
 
         if (aktuNev != '-') {
-            const valasztottOpRendszer = adatok.find(x => x.Nev == aktuNev);
+            let valasztottOpRendszer = adatok.find(x => x.Nev == aktuNev);
             if(!valasztottOpRendszer) valasztottOpRendszer = '-';
             setAktuOpRendszer(valasztottOpRendszer);
         }
@@ -277,13 +285,20 @@ function SetupBeallitasok() {
             document.getElementById('setMentes').style.backgroundColor='gray';
             document.getElementById('setMentes').style.cursor='not-allowed';
         }
-    }, [aktuAlaplap])
-    
-    useEffect(() => {
-        if(aktuProcesszor!='-' && aktuVideokartya!='-' && aktuRam!='-' && aktuOpRendszer!='-'){
+        if(aktuAlaplap && aktuAlaplap.Nev == aktuSetup.AlaplapNeve){
             document.getElementById('setMentes').style.backgroundColor='';
             document.getElementById('setMentes').style.cursor='';
         }
+    }, [aktuAlaplap])
+    
+    useEffect(() => {
+        try{
+            if(document.getElementById('alaplapCombo').value != '-' && document.getElementById('prociCombo').value != '-' && document.getElementById('vidkCombo').value != '-' && document.getElementById('ramCombo').value != '-' && document.getElementById('oprCombo').value != '-'){
+                document.getElementById('setMentes').style.backgroundColor='';
+                document.getElementById('setMentes').style.cursor='';
+            }
+        }
+        catch{}
     }, [ aktuProcesszor, aktuVideokartya, aktuRam, aktuOpRendszer ]);
 
     async function modositottAdatokRogzitese(setupAzon) {
