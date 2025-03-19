@@ -43,6 +43,15 @@ function SetupBeallitasok() {
         setTablazatDisp('grid');
         setReszletDisp('none');
         setModDisp('none');
+
+        document.getElementById('alaplapCombo').value = '-';
+        document.getElementById('prociCombo').value = '-';
+        document.getElementById('vidkCombo').value = '-';
+        document.getElementById('ramCombo').value = '-';
+        document.getElementById('oprCombo').value = '-';
+
+        document.getElementById('setMentes').style.backgroundColor='';
+        document.getElementById('setMentes').style.cursor='';
     }
 
     function tablazatBetoltese(){
@@ -146,9 +155,8 @@ function SetupBeallitasok() {
         viszonyitottAlkatreszekMegjelenitese(kivalasztottSetup, kivAlaplap);
     }
 
-    //Comboboxok léptetése
     async function valtozoAlaplap(e) {
-        const aktuNev = e.target.value;
+        let aktuNev = e.target.value;
         let adatok = await getMindenAlaplap();
     
         if (aktuNev != '-') {
@@ -159,7 +167,7 @@ function SetupBeallitasok() {
     }
 
     async function valtozoProc(e) {
-        const aktuNev = e.target.value;
+        let aktuNev = e.target.value;
         let adatok = await getMindenProcesszor();
 
         if (aktuNev != '-') {
@@ -171,7 +179,7 @@ function SetupBeallitasok() {
     }
 
     async function valtozoVidk (e) {
-        const aktuNev = e.target.value;
+        let aktuNev = e.target.value;
         let adatok = await getMindenVideokartya();
 
         if (aktuNev != '-') {
@@ -182,7 +190,7 @@ function SetupBeallitasok() {
     }
 
     async function valtozoRam (e) {
-        const aktuNev = e.target.value;
+        let aktuNev = e.target.value;
         let adatok = await getMindenRam();
 
         if (aktuNev != '-') {
@@ -193,7 +201,7 @@ function SetupBeallitasok() {
     }
 
     async function valtozoOpRend (e) {
-        const aktuNev = e.target.value;
+        let aktuNev = e.target.value;
         let adatok = await getMindenOpRendszer();
 
         if (aktuNev != '-') {
@@ -201,7 +209,7 @@ function SetupBeallitasok() {
             if(!valasztottOpRendszer) valasztottOpRendszer = '-';
             setAktuOpRendszer(valasztottOpRendszer);
         }
-    };
+    }
  
     async function viszonyitottAlkatreszekMegjelenitese(kivalasztottSetup, kivAlaplap){
         let setupNeve = kivalasztottSetup.Gepigeny.split('.')[1];
@@ -228,7 +236,7 @@ function SetupBeallitasok() {
                 <select id='vidkCombo' className='combo' onChange={valtozoVidk} key={`VmodCombo-${setupNeve}`}>
                     <option value='-' key='V-'>-</option>
                     { vidiKartyak.map((x, index) => {
-                        if(x.Nev!=kivalasztottSetup.VidekortyaNev) return <option value={x.Nev} key={`${x.Nev}-${index}`}>{x.Nev} - {x.vram}GB</option>
+                        if(x.Nev!=kivalasztottSetup.VidekortyaNev) return <option value={`${x.Nev}-${x.vram}`} key={`${x.Nev}-${index}`}>{x.Nev} - {x.vram}GB</option>
                     })}
                 </select>
             </div>
@@ -242,7 +250,7 @@ function SetupBeallitasok() {
                 <select id='ramCombo' className='combo' onChange={valtozoRam} key={`RmodCombo-${setupNeve}`}>
                     <option value='-' key='R-'>-</option>
                     { szurtRam.map((x, index) => {
-                        if(x.Nev!=kivalasztottSetup.RamNeve) return <option value={x.Nev} key={`${x.Nev}-${index}`}>{x.Nev} - {x.Frekvencia}Hz - {x.Meret}GB</option>
+                        if(x.Nev!=kivalasztottSetup.RamNeve) return <option value={`${x.Nev}-${x.Frekvencia}`} key={`${x.Nev}-${index}`}>{x.Nev} - {x.Frekvencia}Hz - {x.Meret}GB</option>
                     })}
                 </select>
             </div>
@@ -264,11 +272,67 @@ function SetupBeallitasok() {
         setViszonyitottak(ujViszonyitottak);
     }
     useEffect(() => {
-        if(aktuAlaplap) viszonyitottAlkatreszekMegjelenitese(aktuSetup, aktuAlaplap)
+        if(aktuAlaplap) {
+            viszonyitottAlkatreszekMegjelenitese(aktuSetup, aktuAlaplap);
+            document.getElementById('setMentes').style.backgroundColor='gray';
+            document.getElementById('setMentes').style.cursor='not-allowed';
+        }
     }, [aktuAlaplap])
+    
+    useEffect(() => {
+        if(aktuProcesszor!='-' && aktuVideokartya!='-' && aktuRam!='-' && aktuOpRendszer!='-'){
+            document.getElementById('setMentes').style.backgroundColor='';
+            document.getElementById('setMentes').style.cursor='';
+        }
+    }, [ aktuProcesszor, aktuVideokartya, aktuRam, aktuOpRendszer ]);
 
-    async function modositottAdatokRogzitese() {
+    async function modositottAdatokRogzitese(setupAzon) {
+        //Alaplap adat
+        let alaplatAdat = document.getElementById('alaplapCombo').value;
+        if(alaplatAdat == '-') alaplatAdat = null;
 
+        //Processzor adat
+        let prociAdat = document.getElementById('prociCombo').value;
+        if(prociAdat == '-') prociAdat = null;
+
+        //Videókártya adat
+        let vidkAdat = document.getElementById('vidkCombo').value;
+        let vidkNev = null;
+        let vidkVram = null;
+        if(vidkAdat != '-'){
+            vidkNev = vidkAdat.split('-')[0];
+            vidkVram = vidkAdat.split('-')[1];
+        }
+
+        //Ram adat
+        let ramAdat = document.getElementById('ramCombo').value;
+        let ramNev = null;
+        let ramFrekvi =  null;
+        if(ramAdat != '-'){
+            ramNev = ramAdat.split('-')[0];
+            ramFrekvi = ramAdat.split('-')[1];
+        }
+
+        //Operációs rendesz adat
+        let oprAdat = document.getElementById('oprCombo').value;
+        if(oprAdat == '-') oprAdat = null;
+
+        const response = await fetch(`https://localhost:44316/api/Setup/0?applikacionev=sajat&igeny=${setupAzon}
+        `, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "VidekortyaNev": vidkNev,
+                "Vram": vidkVram,
+                "ProcesszorNev": prociAdat,
+                "OprendszerNev": oprAdat,
+                "RamNeve": ramNev,
+                "RamFrekvencia": ramFrekvi,
+                "AlaplapNeve": alaplatAdat
+            })
+        });
     }
 
     //Kiválasztott adatok lekérése
@@ -392,7 +456,7 @@ function SetupBeallitasok() {
                 {ModSzoveg}
                 {Viszonyitottak}
             </div>
-            <div className='setVissza' onClick={modositottAdatokRogzitese}>Mentés</div>
+            <div className='setVissza' id='setMentes' onClick={() => modositottAdatokRogzitese(aktuSetup.Gepigeny)}>Mentés</div>
         </div>
     </div>
   );
