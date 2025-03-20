@@ -88,7 +88,7 @@ namespace webapiproj.Controllers
                 });
                 ctx.SaveChanges();
 
-                return Created($"api/Videokartya/{result}",result);
+                return Content(HttpStatusCode.Created,"");
             }
             catch (Exception ex)
             {
