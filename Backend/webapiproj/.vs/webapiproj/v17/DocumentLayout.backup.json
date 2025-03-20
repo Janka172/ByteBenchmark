@@ -1,9 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\hj_info2005a2\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\",
+  "WorkspaceRootPath": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|c:\\users\\hj_info2005a2\\documents\\github\\teljesprojekt\\backend\\webapiproj\\webapiproj\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|c:\\users\\szm_info2005a1\\documents\\github\\teljesprojekt\\backend\\webapiproj\\unittestproject\\testcontroller\\testvideokartyacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|solutionrelative:unittestproject\\testcontroller\\testvideokartyacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|c:\\users\\szm_info2005a1\\documents\\github\\teljesprojekt\\backend\\webapiproj\\webapiproj\\controllers\\videokartyacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|solutionrelative:webapiproj\\controllers\\videokartyacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|c:\\users\\szm_info2005a1\\documents\\github\\teljesprojekt\\backend\\webapiproj\\unittestproject\\testdatabase\\testprojektcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|solutionrelative:unittestproject\\testdatabase\\testprojektcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|c:\\users\\szm_info2005a1\\documents\\github\\teljesprojekt\\backend\\webapiproj\\webapiproj\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|solutionrelative:webapiproj\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
@@ -14,15 +26,54 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VideokartyaController.cs",
+              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\VideokartyaController.cs",
+              "RelativeDocumentMoniker": "webapiproj\\Controllers\\VideokartyaController.cs",
+              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\VideokartyaController.cs",
+              "RelativeToolTip": "webapiproj\\Controllers\\VideokartyaController.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAGMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T10:08:01.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "TestVideokartyaController.cs",
+              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestController\\TestVideokartyaController.cs",
+              "RelativeDocumentMoniker": "UnitTestProject\\TestController\\TestVideokartyaController.cs",
+              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestController\\TestVideokartyaController.cs",
+              "RelativeToolTip": "UnitTestProject\\TestController\\TestVideokartyaController.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAADwv2oAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T10:07:16.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TestProjektContext.cs",
+              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestDatabase\\TestProjektContext.cs",
+              "RelativeDocumentMoniker": "UnitTestProject\\TestDatabase\\TestProjektContext.cs",
+              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestDatabase\\TestProjektContext.cs",
+              "RelativeToolTip": "UnitTestProject\\TestDatabase\\TestProjektContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T10:07:13.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Web.config",
-              "DocumentMoniker": "C:\\Users\\hj_info2005a2\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Web.config",
+              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Web.config",
               "RelativeDocumentMoniker": "webapiproj\\Web.config",
-              "ToolTip": "C:\\Users\\hj_info2005a2\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Web.config",
+              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Web.config",
               "RelativeToolTip": "webapiproj\\Web.config",
               "ViewState": "AgIAADgAAAAAAAAAAAAAAD8AAABvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
