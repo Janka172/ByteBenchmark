@@ -197,7 +197,7 @@ function Gorgeto({ tema }) {
   var [keresettNev, setKeresettNev] = useState('');
   function nevSzures() {
     setSzurtAlk([]);
-    if (keresettNev !== '') {
+    if (keresettNev != '') {
       const nevreSzurt = sajatAdatok.filter(x => x.Nev.toLocaleLowerCase().includes(keresettNev.toLocaleLowerCase()));
       setSzurtAlk(nevreSzurt);
     } else {

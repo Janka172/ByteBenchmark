@@ -43,7 +43,7 @@
     box-sizing: border-box;
   }
 
-  .szoveg {
+  .szoveg p {
     font-size: 1.1rem;
     line-height: 1.5;
     text-align: justify;
@@ -77,7 +77,7 @@
     box-sizing: border-box;
   }
 
-  .szoveg {
+  .szoveg p {
     font-size: 1.1rem;
     line-height: 1.5;
     text-align: justify;
@@ -93,8 +93,15 @@
 }
 
 @media (min-width: 1500px){
-  .szoveg {
+  .szoveg p {
     font-size: 1vw;
+    margin: 1vw;
+  }
+}
+
+@media (min-width: 2500px){
+  .szoveg p {
+    font-size: 0.8vw;
     margin: 1vw;
   }
 }

@@ -70,6 +70,12 @@
     }
 }
 
+@media (min-width: 1500px){
+    .setupTR, .setVissza, .reszletSor{
+        font-size: 1vw;
+    }
+}
+
 @media (min-width: 2500px){
     .setupTR, .setVissza, .reszletSor, .modRacs div, .combo{
         font-size: 0.8vw;

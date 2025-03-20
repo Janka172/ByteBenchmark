@@ -208,9 +208,9 @@ function Sajat() {
   //Videókártyák
   function videokartyaBetoltes(){
     var elemek = [];
-    //let szurtVidk = mindenVideokartya.filter(x => kivAlaplap.VideokartyaCsatlakozo == x.alaplapiCsatlakozas)
+    let szurtVidk = mindenVideokartya.filter(x => kivAlaplap.VideokartyaCsatlakozo == x.alaplapiCsatlakozas)
     elemek.push(
-      mindenVideokartya.map((vid, index) => (
+      szurtVidk.map((vid, index) => (
         <option value={vid.Nev} key={index}>{vid.Nev} - {vid.vram}GB</option>
     )))
     return elemek;
@@ -360,7 +360,7 @@ function Sajat() {
       // Szűrés operációsrendszer szerint
       szurtLista = szurtLista.filter(x => {
         const minSetup = MinSetupKereso(setup, x.Nev);
-        return minSetup && minSetup.OprendszerNev === kivOpRendszer.Nev;
+        return minSetup && minSetup.OprendszerNev == kivOpRendszer.Nev;
       });
   
       // Szűrés videókártya szerint

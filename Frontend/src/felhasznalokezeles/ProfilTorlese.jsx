@@ -37,7 +37,7 @@ function Kijelentkezes(adat) {
       });
 
       if (response.ok) {
-        const torolt = JSON.parse(localStorage.getItem('users')).filter(user => user.Felhasznalonev !== nev);
+        const torolt = JSON.parse(localStorage.getItem('users')).filter(user => user.Felhasznalonev != nev);
         localStorage.setItem('users', JSON.stringify(torolt));
         if(adat.kileptet=='true') kilep();
         else window.location.reload();

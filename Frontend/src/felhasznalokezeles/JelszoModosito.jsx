@@ -41,10 +41,10 @@ function JelszoModosito() {
       });
 
       if(!response.ok){
-          if(response.status === 401){
+          if(response.status == 401){
               hibaKiiratas("Hibás a jelszó !")
           }
-          else if(response.status === 404){
+          else if(response.status == 404){
               hibaKiiratas("Az e-mail cím nem található !")
           }
           else{

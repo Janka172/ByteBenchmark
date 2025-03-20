@@ -10,11 +10,11 @@ function AlkatreszReszletek() {
 
   var [Gorgi, setGorgi] = useState('');
   useEffect(() => {
-    if (info['tipus'] === 'v') setGorgi(<Gorgeto tema='Videókártyák'></Gorgeto>);
-    else if (info['tipus'] === 'p') setGorgi(<Gorgeto tema='Processzorok'></Gorgeto>);
-    else if (info['tipus'] === 'r') setGorgi(<Gorgeto tema='RAM-ok'></Gorgeto>);
-    else if (info['tipus'] === 'o') setGorgi(<Gorgeto tema='Operációsrendszerek'></Gorgeto>);
-    else if (info['tipus'] === 'a') setGorgi(<Gorgeto tema='Alaplapok'></Gorgeto>);
+    if (info['tipus'] == 'v') setGorgi(<Gorgeto tema='Videókártyák'></Gorgeto>);
+    else if (info['tipus'] == 'p') setGorgi(<Gorgeto tema='Processzorok'></Gorgeto>);
+    else if (info['tipus'] == 'r') setGorgi(<Gorgeto tema='RAM-ok'></Gorgeto>);
+    else if (info['tipus'] == 'o') setGorgi(<Gorgeto tema='Operációsrendszerek'></Gorgeto>);
+    else if (info['tipus'] == 'a') setGorgi(<Gorgeto tema='Alaplapok'></Gorgeto>);
   }, [info]);
 
   const [Mind, setMind] = useState([]); 

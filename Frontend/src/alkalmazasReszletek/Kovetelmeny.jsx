@@ -27,29 +27,28 @@ function Kovetelmeny(adatok) {
   var alap='a';
 
   async function getVideokartya() {
-      try {
-        const response = await fetch(`https://localhost:44316/api/Videokartya/0?name=${adat.VidekortyaNev}&vram=${adat.VideokartyaVram}`);
-        const data = await response.json();
-        setVideokartya(data);
-        console.log(data)
-        setBetoltveV(false);
-      } catch (error) {
-        console.error(error);
-      }
+    try {
+      const response = await fetch(`https://localhost:44316/api/Videokartya/0?name=${adat.VidekortyaNev}&vram=${adat.VideokartyaVram}`);
+      const data = await response.json();
+      setVideokartya(data);
+      setBetoltveV(false);
+    } catch (error) {
+      console.error(error);
+    }
   }
-  useEffect(() => { getVideokartya(); }, [adat]);
+  useEffect(() => { if(adat != '-') getVideokartya(); }, [adat]);
 
   async function getProcesszor() {
-      try {
-        const response = await fetch(`https://localhost:44316/api/Processzor/0?name=${adat.ProcesszorNev}`);
-        const data = await response.json();
-        setProcesszor(data);
-        setBetoltveP(false);
-      } catch (error) {
-        console.error(error);
-      }
+    try {
+      const response = await fetch(`https://localhost:44316/api/Processzor/0?name=${adat.ProcesszorNev}`);
+      const data = await response.json();
+      setProcesszor(data);
+      setBetoltveP(false);
+    } catch (error) {
+      console.error(error);
+    }
   }
-  useEffect(() => { getProcesszor(); }, [adat]);
+  useEffect(() => { if(adat != '-') getProcesszor(); }, [adat]);
 
   async function getRam() {
     try {
@@ -61,7 +60,7 @@ function Kovetelmeny(adatok) {
       console.error(error);
     }
   }
-  useEffect(() => { getRam(); }, [adat]);
+  useEffect(() => { if(adat != '-') getRam(); }, [adat]);
 
   async function getOpRendszer() {
     try {
@@ -73,7 +72,7 @@ function Kovetelmeny(adatok) {
       console.error(error);
     }
   }
-  useEffect(() => { getOpRendszer(); }, [adat]);
+  useEffect(() => { if(adat != '-') getOpRendszer(); }, [adat]);
 
   async function getAlaplap() {
     try {
@@ -85,7 +84,7 @@ function Kovetelmeny(adatok) {
       console.error(error);
     }
   }
-  useEffect(() => { getAlaplap(); }, [adat]);
+  useEffect(() => { if(adat != '-') getAlaplap(); }, [adat]);
 
   var [megjelenes, setMegjelenes] = useState('none'); 
   function gombMegjelito(){

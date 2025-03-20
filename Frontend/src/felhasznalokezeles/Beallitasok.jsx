@@ -150,12 +150,12 @@ function Beallitasok() {
   return (
     <div className='teljesBeallitas'>
       <div className='menuOszlop'>
-        <div className={`oszlopElem ${activeMenu === 'alt' ? 'active' : ''}`} id='alt' onClick={altKiv} style={{ backgroundColor: activeMenu === 'alt' ? 'rgb(233, 203, 203)' : '' }}>Általános Profil Beállitások</div>
-        <div className={`oszlopElem ${activeMenu === 'bizt' ? 'active' : ''}`} id='bizt' onClick={biztKiv} style={{ backgroundColor: activeMenu === 'bizt' ? 'rgb(233, 203, 203)' : '' }}>Biztonsági Profil Beállitások</div>
-        <div className={`oszlopElem ${activeMenu === 'setup' ? 'active' : ''}`} id='setup' onClick={setKiv} style={{ backgroundColor: activeMenu === 'setup' ? 'rgb(233, 203, 203)' : '',
+        <div className={`oszlopElem ${activeMenu == 'alt' ? 'active' : ''}`} id='alt' onClick={altKiv} style={{ backgroundColor: activeMenu == 'alt' ? 'rgb(233, 203, 203)' : '' }}>Általános Profil Beállitások</div>
+        <div className={`oszlopElem ${activeMenu == 'bizt' ? 'active' : ''}`} id='bizt' onClick={biztKiv} style={{ backgroundColor: activeMenu == 'bizt' ? 'rgb(233, 203, 203)' : '' }}>Biztonsági Profil Beállitások</div>
+        <div className={`oszlopElem ${activeMenu == 'setup' ? 'active' : ''}`} id='setup' onClick={setKiv} style={{ backgroundColor: activeMenu == 'setup' ? 'rgb(233, 203, 203)' : '',
           display: JSON.parse(localStorage.getItem("loggedInUser")).Jogosultsag == 1 ? 'grid' : 'none'
          }}>Saját Setup Beállítások</div>
-        <div className={`oszlopElem ${activeMenu === 'admin' ? 'active' : ''}`} id='admin' onClick={adminKiv} style={{ backgroundColor: activeMenu === 'admin' ? 'rgb(233, 203, 203)' : '',
+        <div className={`oszlopElem ${activeMenu == 'admin' ? 'active' : ''}`} id='admin' onClick={adminKiv} style={{ backgroundColor: activeMenu == 'admin' ? 'rgb(233, 203, 203)' : '',
           display: JSON.parse(localStorage.getItem("loggedInUser")).Jogosultsag == 1 ? 'grid' : 'none'
          }}>Admin Menü</div>
       </div>

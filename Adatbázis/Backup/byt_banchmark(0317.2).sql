@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Már 17. 12:30
+-- Létrehozás ideje: 2025. Már 20. 16:52
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -20,12 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `byt_banchmark`
 --
-
-DROP DATABASE IF EXISTS byt_banchmark;
-CREATE DATABASE byt_banchmark
-CHARACTER SET utf8
-COLLATE utf8_hungarian_ci;
-USE byt_banchmark;
 
 -- --------------------------------------------------------
 

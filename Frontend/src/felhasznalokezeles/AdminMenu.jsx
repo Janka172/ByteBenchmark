@@ -25,12 +25,12 @@ function AdminMenu() {
     );
 
     for (let elem of adatok) {
-      if (elem.Felhasznalonev !== JSON.parse(localStorage.getItem('loggedInUser')).Felhasznalonev) {
+      if (elem.Felhasznalonev != JSON.parse(localStorage.getItem('loggedInUser')).Felhasznalonev) {
         Mind.push(
           <div className='profilSor' key={elem.Id}>
             <div className='profilNev' id={'F.' + elem.Id}>{elem.Felhasznalonev}</div>
             <div className='prfilJog' id={'J.' + elem.Id}>
-              {elem.Jogosultsag === 0 ? 'Felhasználó' : 'Admin'}
+              {elem.Jogosultsag == 0 ? 'Felhasználó' : 'Admin'}
             </div>
             <div className='profilModGomb' id={'I.' + elem.Id} onClick={() => reszletekBetoltese(elem.Id)}>Módosítás</div>
           </div>
@@ -42,7 +42,7 @@ function AdminMenu() {
   useEffect(() => { profilokBetoltese(); }, [ tablDisp ]);
 
   function szuroMegnyitas() {
-    if (szuroDisp === 'none') {
+    if (szuroDisp == 'none') {
       setSzuroDisp('grid');
       document.getElementById('nevKereses').value='';
       document.getElementById('jogCombo').value='skip';
@@ -150,12 +150,12 @@ function AdminMenu() {
   
     if (response.ok) {
       const updatedUsers = JSON.parse(localStorage.getItem('users')).map(user => {
-        if (user.Felhasznalonev === nev) {
+        if (user.Felhasznalonev == nev) {
           return {
             ...user,
             Felhasznalonev: felhNev || user.Felhasznalonev,
             Email: email || user.Email,
-            Jogosultsag: jog !== null ? jog : user.Jogosultsag
+            Jogosultsag: jog != null ? jog : user.Jogosultsag
           };
         }
         return user;

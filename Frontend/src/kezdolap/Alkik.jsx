@@ -50,8 +50,8 @@ function Alkik(){
             let kepUrl = `/IMAGE/logo.${mindenApp[randomIndexek[i]].KepeleresiUtja}`;
             ujAlkCont.push(
                 <Link key={i} to='/oldalak/AlkalmazasReszletek' state={{'nev' : mindenApp[randomIndexek[i]].Nev}}>
-                    <div className="kezdoKepKeret">
-                        <img src={kepUrl} className="kisKep" alt="App" />
+                    <div className={`kezdoIkon${i} kezdoKepKeret`}>
+                        <img src={kepUrl} className='kisKep' alt="App" />
                         <h4 className="kezd">{ mindenApp[randomIndexek[i]].Nev}</h4>
                     </div>
                 </Link>
