@@ -1132,7 +1132,6 @@ C:\Users\hj_info2005a2\Documents\GitHub\TeljesProjekt\Backend\webapiproj\webapip
 C:\Users\hj_info2005a2\Documents\GitHub\TeljesProjekt\Backend\webapiproj\webapiproj\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\hj_info2005a2\Documents\GitHub\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.csproj.AssemblyReference.cache
 C:\Users\hj_info2005a2\Documents\GitHub\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.csproj.CoreCompileInputs.cache
-C:\Users\hj_info2005a2\Documents\GitHub\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.csproj.CopyComplete
 C:\Users\hj_info2005a2\Documents\GitHub\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.dll
 C:\Users\hj_info2005a2\Documents\GitHub\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.pdb
 C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.csproj.AssemblyReference.cache
@@ -1884,3 +1883,4 @@ E:\TeljesProjekt\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapipro
 E:\TeljesProjekt\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.csproj.CopyComplete
 E:\TeljesProjekt\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.dll
 E:\TeljesProjekt\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.pdb
+C:\Users\hj_info2005a2\Documents\GitHub\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.csproj.Up2Date

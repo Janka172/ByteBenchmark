@@ -252,12 +252,13 @@ function SetupBeallitasok() {
         )
 
         let vidiKartyak = await getMindenVideokartya();
+        let szurtVidiKartyak = await vidiKartyak.filter(x => kivAlaplap.VideokartyaCsatlakozo == x.alaplapiCsatlakozas)
         ujViszonyitottak.push(
             <div className='modSor' key={`VmodSor-${setupNeve}`}>
                 <div key={`VmodSorCim-${setupNeve}`}>Videókártya:</div>
                 <select id='vidkCombo' className='combo' onChange={valtozoVidk} key={`VmodCombo-${setupNeve}`}>
                     <option value='-' key='V-'>-</option>
-                    { vidiKartyak.map((x, index) => {
+                    { szurtVidiKartyak.map((x, index) => {
                         if(x.Nev!=kivalasztottSetup.VidekortyaNev) return <option value={`${x.Nev}-${x.vram}`} key={`${x.Nev}-${index}`}>{x.Nev} - {x.vram}GB</option>
                     })}
                 </select>

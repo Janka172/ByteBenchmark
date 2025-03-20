@@ -208,6 +208,7 @@ function Sajat() {
   //Videókártyák
   function videokartyaBetoltes(){
     var elemek = [];
+    //let szurtVidk = mindenVideokartya.filter(x => kivAlaplap.VideokartyaCsatlakozo == x.alaplapiCsatlakozas)
     elemek.push(
       mindenVideokartya.map((vid, index) => (
         <option value={vid.Nev} key={index}>{vid.Nev} - {vid.vram}GB</option>

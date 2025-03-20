@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\hj_info2005a2\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|c:\\users\\hj_info2005a2\\documents\\github\\teljesprojekt\\backend\\webapiproj\\webapiproj\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|solutionrelative:webapiproj\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\hj_info2005a2\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Web.config",
+              "RelativeDocumentMoniker": "webapiproj\\Web.config",
+              "ToolTip": "C:\\Users\\hj_info2005a2\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Web.config",
+              "RelativeToolTip": "webapiproj\\Web.config",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAAD8AAABvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-03-20T06:30:44.582Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

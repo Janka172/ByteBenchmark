@@ -162,7 +162,7 @@ function Szuro() {
   }
 
   function feltetelMegadas(){
-    setHatter('rgba(201, 95, 95, 0.8)');
+    if(!kicsie) setHatter('rgba(201, 95, 95, 0.8)');
     setFeltDisp('grid');
     setGombDisp('none');
   }
