@@ -1883,4 +1883,4 @@ E:\TeljesProjekt\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapipro
 E:\TeljesProjekt\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.csproj.CopyComplete
 E:\TeljesProjekt\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.dll
 E:\TeljesProjekt\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.pdb
-C:\Users\hj_info2005a2\Documents\GitHub\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.csproj.Up2Date
+C:\Users\hj_info2005a2\Documents\GitHub\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.csproj.CopyComplete
