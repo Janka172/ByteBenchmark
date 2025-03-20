@@ -30,11 +30,35 @@ namespace UnitTestProject.TestController
             var ctx = new TestProjektContext();
             FillTestDatabase(ctx);
             var controller = new VideokartyaController(ctx);
-            var result = controller.Get() as OkNegotiatedContentResult<List<VideokartyaModel>>;
+            var result = controller.Get() as OkNegotiatedContentResult<IEnumerable<VideokartyaModel>>;
             Assert.IsNotNull(result);
-            Assert.AreEqual(3, result.Content.Count);
+            Assert.AreEqual(3, result.Content.ToList().Count);
        }
-   }
+
+        [TestMethod]
+        public void Get_EgyVideokartya()
+        {
+
+
+            //var ctx = new TestProjektContext();
+            //FillTestDatabase(ctx);
+
+            //var controller = new VideokartyaController(ctx);
+            //var result = controller.Get(0,"Demo1",5);
+
+            //Assert.IsNotNull(result);
+            //Assert.AreEqual(1, result);
+
+            var ctx = new TestProjektContext();
+            FillTestDatabase(ctx);
+            var controller = new VideokartyaController(ctx);
+            var result = controller.Get() as OkNegotiatedContentResult<VideokartyaModel>;
+            Assert.IsNotNull(result);
+            Assert.AreEqual("Demo1", result.Content.Nev );
+            Assert.AreEqual(5, result.Content.vram );
+        }
+
+    }
        //public void Get_ShouldReturnAllCategories()
        //{
        //    var context = new TestProjektContext();
