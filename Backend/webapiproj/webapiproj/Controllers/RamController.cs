@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Data.Entity;
 using webapiproj.Models;
 using System.Web.Http.Description;
+using webapiproj.Database;
 
 namespace webapiproj.Controllers
 {
@@ -20,7 +21,14 @@ namespace webapiproj.Controllers
     }
     public class RamController : ApiController
     {
-        ProjektContext ctx = new ProjektContext();
+        IProjektContext ctx = new ProjektContext();
+
+        public RamController() { }
+
+        public RamController(IProjektContext context)
+        {
+            ctx = context;
+        }
         // GET api/<controller>
         [ResponseType(typeof(RamModel))]
         public IHttpActionResult Get()
@@ -116,8 +124,7 @@ namespace webapiproj.Controllers
             }
 
 
-            var result = ctx.Ramok.Where(x => x.Nev == name).FirstOrDefault();
-            if (result == null) 
+            var result = ctx.Ramok.Where(x => x.Nev == name && x.Frekvencia == frekvencia && x.Meret == meret).FirstOrDefault();
             if (result != null)
             {
                 ctx.Ramok.Remove(result);
