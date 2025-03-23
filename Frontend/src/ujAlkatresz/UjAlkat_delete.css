@@ -1,0 +1,39 @@
+.combi_delete
+{
+    font-size: large;
+    border-radius: 20px;
+    height: 2vw;
+    width: 300px;
+    text-align: center;
+    text-align-last: center; 
+    display: block;
+}
+#titles_delete
+{
+    text-align: left;
+    font-size: 1.5vw;
+    margin-top: 0vw;
+    margin-bottom: 0vw;
+    margin-right: 0vw;  
+    padding:0vw;
+    font-size: 1vw;
+}
+#delete_adatlekerogomb
+{
+    display: flex;
+    flex-direction: column;
+    width: 12vw;
+
+    margin-bottom: 1.5vw;
+    margin-left: 25px
+
+}
+#adatok_delete
+{
+  border-bottom: 10px solid transparent;
+  padding: 15px;
+  border-image: url(border.png) 30 round;
+  font-size: large;
+  width: 18vw;
+  margin-left: 5vw;
+}

@@ -1,0 +1,106 @@
+#adatlekerogomb
+{
+    width: 60%;
+    margin-bottom: 1.5vw;
+    margin-left: 0px;
+}
+#legordulos_option
+{
+    margin-top: 10px;
+  font-size: large;
+  font-weight: bold;
+}
+.patchbeviteli_mezok
+{
+    width: 300px;
+    font-size: large;
+    height: 1.8vw;
+}
+.combi_patch
+  {
+    font-size: large;
+    border-radius: 20px;
+    height: 2vw;
+    width: 50%;
+    text-align: center;
+    text-align-last: center; 
+    display: block;
+
+  }
+#patch_titles
+{
+    text-align: left;
+    font-size: 1.5vw;
+    margin-top: 0vw;
+    margin-bottom: 0vw;
+    margin-right: 0vw;  
+    padding:0vw;
+    font-size: 1vw;
+}
+#patch_datkezelogomb
+{
+    width: 65%;
+    margin-left:0px;
+}
+#patch_img
+{
+  width: 150px;
+  font-size: large;
+  height: 1.8vw;
+  padding-right: 1vw;
+  padding-top: 1vw;
+  margin-bottom: 1.5vw;
+  border: 1px solid black;
+}
+#patch_img_link
+{
+  width: 280px;
+  font-size: large;
+  height: 1.8vw;
+  padding-right: 0vw;
+  margin-left: 0px;
+  margin-top: 1.5vw;
+}
+#patch_form
+{
+  display: flex;
+  flex-direction: column;
+  width: 22vw;
+}  
+span
+{
+  border: 1px solid black;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#adatok_patch
+{
+  border-bottom: 10px solid transparent;
+  padding: 15px;
+  border-image: url(border.png) 30 round;
+  font-size: large;
+  width: 18vw;
+}
+#buttons_content_patch
+{
+  display: flex;
+  flex-direction: column;
+  float: right;
+  margin-left: 2vw;
+  align-items: flex-end;
+}
+#contents_patch
+{
+  display: flex;
+  flex-direction: column;
+  float: left;
+  align-items: flex-start;
+}
+#radiobtn_patch
+{
+margin-bottom: 5px;
+}
+
