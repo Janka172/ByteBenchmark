@@ -28,7 +28,7 @@ function AppLista() {
 
   async function getMindenApp() {
     try {
-      const response = await fetch('https://localhost:44316/api/Applikacio');
+      const response = await fetch('https://6/api/Applikacio');
       const data = await response.json();
       setMindenApp(data.filter(x=>x.Nev!='sajat'));
       setSzurtApp(data.filter(x=>x.Nev!='sajat'));
