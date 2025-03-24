@@ -381,8 +381,8 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  <div className='inputok'>
                     <form> 
                     <p id='titles_delete'>Név:</p>
-                        <select className="combi_delete" onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
-                           <option id="legordulos_option">Válassz egyet</option>
+                        <select  onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
+                           <option >Válassz egyet</option>
                            {[...new Set(mindenAdat['videokartyak'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulos_option">{nev}</option>))}
                         </select><br/>
 
@@ -519,29 +519,28 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             {actionHardver==="Alaplap" && actionButtons==="Delete" ? <div className='body'>
                  <div className='inputok'>
                     <form>
-                    Név:
-                    <select className="combi" onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
-                           <option>Válassz egyet</option>
+                    <p id="titles_delete">Név:</p>
+                    <select className="combi_delete" onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
+                           <option id="legordulos_option">Válassz egyet</option>
                            {[...new Set(mindenAdat['alaplapok'].map(i=>i.Nev))].map((nev)=>(
-                           <option key={nev} value={nev}>{nev}</option>
+                           <option key={nev} value={nev} id="legordulos_option">{nev}</option>
                            ))}
-                        </select><br/>
-                        <button className='buttons' type='button' onClick={(e)=>adatAlaplapLekeres(e, actionKivalasztottAlaplapNev)}>Adatok lekérése</button><br/>
+                        </select>
+                        <button className='buttons' id='delete_adatlekerogomb' type='button' onClick={(e)=>adatAlaplapLekeres(e, actionKivalasztottAlaplapNev)}>Adatok lekérése</button><br/>
 
                     <button className='buttons' type='button' onClick={(e)=>handleDelete(e)}>Alkatrész eltávolítása</button>
                     </form>
                  </div>
 
                   <div id='contents'>
-                     <p>Név:{actionMindenhezKellAdat?.Nev}</p>
-                     <p>Processzor foglalat:{actionMindenhezKellAdat?.CpuFoglalat}</p>
-                     <p>Alaplap formátum:{actionMindenhezKellAdat?.AlaplapFormatum}</p>
-                     <p>Maximum frekvencia:{actionMindenhezKellAdat?.MaxFrekvencia}</p>
-                     <p>Memória típus:{actionMindenhezKellAdat?.MemoriaTipusa}</p>
-                     <p>Lapkakészlet:{actionMindenhezKellAdat?.Lapkakeszlet}</p>
-                     <p>Slot szám:{actionMindenhezKellAdat?.SlotSzam}</p>
-                     <p>Hangkártya:{actionMindenhezKellAdat?.Hangkartya}</p>      
-                    {/* <image src=""></image>*/}
+                     <div id="adatok_delete">Név:{actionMindenhezKellAdat?.Nev}</div>
+                     <div id="adatok_delete">Processzor foglalat:{actionMindenhezKellAdat?.CpuFoglalat}</div>
+                     <div id="adatok_delete">Alaplap formátum:{actionMindenhezKellAdat?.AlaplapFormatum}</div>
+                     <div id="adatok_delete">Maximum frekvencia:{actionMindenhezKellAdat?.MaxFrekvencia}</div>
+                     <div id="adatok_delete">Memória típus:{actionMindenhezKellAdat?.MemoriaTipusa}</div>
+                     <div id="adatok_delete">Lapkakészlet:{actionMindenhezKellAdat?.Lapkakeszlet}</div>
+                     <div id="adatok_delete">Slot szám:{actionMindenhezKellAdat?.SlotSzam}</div>
+                     <div id="adatok_delete">Hangkártya:{actionMindenhezKellAdat?.Hangkartya}</div>      
                   </div>
                  <div id='buttons_content'>
                      <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
@@ -552,25 +551,24 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             {/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
             {actionHardver==="Memória" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
-                    <form>
-                        Név:<br/><input type="text" id='MemoriaPost1'/><br/>
-                        Memória típus:<br/><input type="text" id='MemoriaPost2'/><br/>
-                        Frekvencia:<br/><input type="number" id='MemoriaPost3'/>MHz<br/>
-                        Méret:<br/><input type="number" id='MemoriaPost4'/>GB
+                    <form id='post_form'>
+                        <p id='post_titles'>Név:</p><input type="text" id='MemoriaPost1' className='beviteli_mezok'/>
+                        <p id='post_titles'>Memória típus:</p><input type="text" id='MemoriaPost2' className='beviteli_mezok'/>
+                        <p id='post_titles'>Frekvencia:</p><input type="number" id='MemoriaPost3' className='beviteli_mezok'/>
+                        <p id='post_titles'>Méret:</p><input type="number" id='MemoriaPost4' className='beviteli_mezok'/>
                          
-                        <div className="imageupload">
-                           <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/><br/>
-                           <label htmlFor="imginput" className="imgbutton">📁 Fájl kiválasztása</label>
-                           <span className="filename">{fileName}</span>
-                        </div>
-                        <button className='buttons' type='button' onClick={handleUploadAndPost}>Adatok feltöltése</button>
+                        <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
+                        <span className="filename" id='post_img_link'>{fileName}</span>
+                        <label htmlFor="imginput" className="imgbutton" id='post_img'>📁 Fájl kiválasztása</label>
+
+                        <button className='buttons' type='button'id='post_adatkezelogomb' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
                  </div>
 
-                  <div id='buttons_content'>
-                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                     <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                 <div id='buttons_content_post'>
+                     <button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button><br/>
+                     <button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button><br/>
+                     <button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/>
                   </div>
             </div> : <div></div>}
 
