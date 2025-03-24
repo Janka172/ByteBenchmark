@@ -37,5 +37,88 @@ namespace UnitTestProject.TestController
             Assert.IsNotNull(result);
             Assert.AreEqual(3, result.Content.ToList().Count);
         }
+        [TestMethod]
+        public async Task Get_EgyRam()
+        {
+            var ctx = new TestProjektContext();
+            FillTestDatabase(ctx);
+            var controller = new RamController(ctx)
+            {
+                Request = new HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
+
+            var result = await controller.Get(1,"Demo1",1500,8).ExecuteAsync(new System.Threading.CancellationToken());
+            Assert.IsTrue(result.TryGetContentValue(out RamModel contentresult));
+            Assert.IsNotNull(result);
+            Assert.AreEqual("Demo1", contentresult.Nev);
+            Assert.AreEqual(1500, contentresult.Frekvencia);
+            Assert.AreEqual(8, contentresult.Meret);
+        }
+        [TestMethod]
+        public async Task Post_EgyRam()
+        {
+
+            var ctx = new TestProjektContext();
+            var controller = new RamController(ctx)
+            {
+                Request = new HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
+
+            var model = new RamModel
+            {
+                Nev = "Demo4",
+                MemoriaTipus = "ddr4",
+                Frekvencia = 1500,
+                Meret = 8,
+                Kepnev = "avvava"
+            };
+            var result = await controller.Post(model).ExecuteAsync(new System.Threading.CancellationToken());
+            Assert.IsNotNull(result);
+            Assert.AreEqual(HttpStatusCode.Created, result.StatusCode);
+        }
+        [TestMethod]
+        public async Task Patch_EgyRam()
+        {
+
+            var ctx = new TestProjektContext();
+            FillTestDatabase(ctx);
+            var controller = new RamController(ctx)
+            {
+                Request = new HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
+
+            var model = new RamModel
+            {
+                Nev = "Demo4",
+                MemoriaTipus = "ddr4",
+                Frekvencia = 1500,
+                Meret = 8,
+                Kepnev = "avvava"
+            };
+            
+            var result = await controller.Patch(1, "Demo1", 1500,8, model).ExecuteAsync(new System.Threading.CancellationToken());
+            Assert.IsNotNull(result);
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
+        }
+        [TestMethod]
+        public async Task Delete_EgyRam()
+        {
+
+            var ctx = new TestProjektContext();
+            FillTestDatabase(ctx);
+            var controller = new RamController(ctx)
+            {
+                Request = new HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
+
+
+            var result = await controller.Delete(1, "Demo2", 1400,4).ExecuteAsync(new System.Threading.CancellationToken());
+            Assert.IsNotNull(result);
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
+        }
     }
 }
