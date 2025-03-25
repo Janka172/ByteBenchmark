@@ -135,7 +135,7 @@ select{
     padding: 0.8vw;
     font-size: 1.5vw;
     background-color: #c46d6d;
-    margin-top: 3vw;
+    margin-top: 1vw;
 }
 .altalnosMentes:hover{
     background-color: #ffa1a1;
@@ -339,7 +339,10 @@ select{
 }
 
 .modCont{
-    margin: 1.5vw;
+    padding: 1.5vw;
+    border: solid;
+    border-color: #000;
+    border-width: 0px 1px 2px 1px;
 }
 
 .profTorlese{
@@ -388,15 +391,26 @@ select{
     grid-template-columns: 1fr 1fr;
 }
 
-.legnyitosMenu{
+.lenyitosMenu{
     text-align: center;
     padding: 1vw;
-    border-radius: 1vw 0;
+    border-radius: 1vw 1vw 0 0;
+    border: #000 1px solid;
+    margin-top: 1vw;
+    background-color: rgba(0, 0, 0, 0.1);
 }
-.legnyitosMenu:hover{
+.lenyitosMenu:hover{
     background-color: #ffa1a1;
     cursor: pointer;
 }
+
+#hibaUz{
+    background-color: rgba(202, 119, 119, 0.6);
+    padding: 1vw;
+    border-radius: 1vw 0;
+    border: #000 1px solid;
+}
+
 
 @media (max-width: 767px){
     .bejMenu{
@@ -407,7 +421,7 @@ select{
         font-size: 5vw;
     }
 
-    .bevitelNeve, .biztSzoveg, .jelszoInfoSzoveg, .jelszoInfoGomb, .kijGomb, .regHiba, .profilSor div, .keresesSor *, .oszlopElem, .cimsorFelhnev, .baNeve, .modSor *{
+    .bevitelNeve, .biztSzoveg, .jelszoInfoSzoveg, .jelszoInfoGomb, .kijGomb, .regHiba, .profilSor div, .keresesSor *, .oszlopElem, .cimsorFelhnev, .baNeve, .modSor *, #hibaUz{
         font-size: 3vw;
     }
 
@@ -439,7 +453,7 @@ select{
         font-size: 3.5vw;
     }
 
-    .szuroCim, .legnyitosMenu, .altalnosMentes, .visszaGomb, .torlCim, .torlesGomb, .biztGomOK *, .jelszoModCim, .altBeCim{
+    .szuroCim, .lenyitosMenu, .altalnosMentes, .visszaGomb, .torlCim, .torlesGomb, .biztGomOK *, .jelszoModCim, .altBeCim{
         font-size: 4vw;
     }
 }
@@ -458,7 +472,7 @@ select{
         font-size: 1vw;
     }
 
-    .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve{
+    .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve, #hibaUz{
         font-size: 1.35vw;
     }
 
@@ -470,7 +484,7 @@ select{
         font-size: 1.2vw;
     }
 
-    .altBeCim, .legnyitosMenu, .altalnosMentes, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb{
+    .altBeCim, .lenyitosMenu, .altalnosMentes, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb{
         font-size: 2vw;
     }
 }
@@ -481,7 +495,7 @@ select{
         font-size: 0.8vw;
     }
 
-    .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve, .profilSor div{
+    .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve, .profilSor div, #hibaUz{
         font-size: 0.75vw;
     }
 
@@ -493,7 +507,7 @@ select{
         font-size: 0.75vw;
     }
 
-    .altBeCim, .legnyitosMenu, .altalnosMentes, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb, .szuroCim, .profCimsor div{
+    .altBeCim, .lenyitosMenu, .altalnosMentes, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb, .szuroCim, .profCimsor div{
         font-size: 1vw;
     }
 

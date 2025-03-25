@@ -31,34 +31,33 @@ function JelszoModosito() {
     }
   }
 
-    async function frissitFetch(id, email, ujJelszo) {
-      const response = await fetch(`https://localhost:44316/api/Profil/ProfilJelszoUpdateModel?id=${id}&email=${email}`, {
-          method: "PATCH",
-          headers: {
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ UjJelszo: ujJelszo })
-      });
-
-      if(!response.ok){
-          if(response.status == 401){
-              hibaKiiratas("Hibás a jelszó !")
-          }
-          else if(response.status == 404){
-              hibaKiiratas("Az e-mail cím nem található !")
-          }
-          else{
-              hibaKiiratas("Szerver hiba. Kérlek próbáld meg később!")
-              throw new Error(`HTTP hiba! Státuszkód: ${response.status}`)
-          }
-          throw new Error(`HTTP hiba! Státuszkód: ${response.status}`)
+  async function frissitFetch(id, email, ujJelszo) {
+    const response = await fetch(`https://localhost:44316/api/Profil/ProfilJelszoUpdateModel?id=${id}&email=${email}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ UjJelszo: ujJelszo })
+    });
+    if(!response.ok){
+      if(response.status == 401){
+        hibaKiiratas("Hibás a jelszó !")
+      }
+      else if(response.status == 404){
+        hibaKiiratas("Az e-mail cím nem található !")
       }
       else{
-          hibaKiiratas("A jelszó módosítása sikeres volt !");
-          document.getElementById('uJel1').value='';
-          document.getElementById('uJel2').value='';
+        hibaKiiratas("Szerver hiba. Kérlek próbáld meg később!")
+        throw new Error(`HTTP hiba! Státuszkód: ${response.status}`)
       }
+      throw new Error(`HTTP hiba! Státuszkód: ${response.status}`)
     }
+    else{
+      hibaKiiratas("A jelszó módosítása sikeres volt !");
+      document.getElementById('uJel1').value='';
+      document.getElementById('uJel2').value='';
+    }
+  }
 
   return (
     <div className='jelszoMod'>
