@@ -3,9 +3,7 @@ import { useKeresesiAdatok } from './KeresesiAdatokContext';
 import { Link } from 'react-router-dom';
 import AppListaStilus from './AppLista.css';
 
-function AppLista() {
-  var atmenetiKepLink = '/kepek/kep.png';
-  
+function AppLista() {  
   const [mindenApp, setMindenApp] = useState([]);
   const [szurtApp, setSzurtApp] = useState([]);
   const [betoltA, setBetoltA] = useState(true);

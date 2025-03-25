@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Data.Entity;
 using webapiproj.Models;
 using System.Web.Http.Description;
+using webapiproj.Database;
 
 namespace webapiproj.Controllers
 {
@@ -26,8 +27,14 @@ namespace webapiproj.Controllers
     }
     public class ProcesszorController : ApiController
     {
-        ProjektContext ctx = new ProjektContext();
-        // GET api/<controller>
+        IProjektContext ctx = new ProjektContext();
+
+        public ProcesszorController() { }
+
+        public ProcesszorController(IProjektContext context)
+        {
+            ctx = context;
+        }
         [ResponseType(typeof(ProcesszorModel))]
         public IHttpActionResult Get()
         {

@@ -32,7 +32,7 @@
     padding: 0.5vw;
     margin: 1vw;
 }
-.setVissza:hover{
+.setVissza:hover, .tovabiReszletekGomb:hover{
     cursor: pointer;
     background-color: #ffa1a1;
 }

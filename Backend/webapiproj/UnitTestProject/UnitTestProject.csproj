@@ -89,6 +89,8 @@
     <Compile Include="TestController\TestVideokartyaController.cs" />
     <Compile Include="TestController\TestSetupController.cs" />
     <Compile Include="TestController\TestRamController.cs" />
+    <Compile Include="TestController\TestProfilController.cs" />
+    <Compile Include="TestController\TestProcesszorController.cs" />
     <Compile Include="TestDbSet.cs" />
     <Compile Include="TestDatabase\TestProjektContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
