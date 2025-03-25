@@ -3,9 +3,7 @@ import { useKeresesiAdatok } from './KeresesiAdatokContext';
 import { Link } from 'react-router-dom';
 import AppListaStilus from './AppLista.css';
 
-function AppLista() {
-  var atmenetiKepLink = '/kepek/kep.png';
-  
+function AppLista() {  
   const [mindenApp, setMindenApp] = useState([]);
   const [szurtApp, setSzurtApp] = useState([]);
   const [betoltA, setBetoltA] = useState(true);
@@ -28,7 +26,7 @@ function AppLista() {
 
   async function getMindenApp() {
     try {
-      const response = await fetch('https://6/api/Applikacio');
+      const response = await fetch('https://localhost:44316/api/Applikacio');
       const data = await response.json();
       setMindenApp(data.filter(x=>x.Nev!='sajat'));
       setSzurtApp(data.filter(x=>x.Nev!='sajat'));

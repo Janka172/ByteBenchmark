@@ -51,7 +51,8 @@
     z-index: 1001;
 }
 .hambiGombocska:hover{
-    background-color: #ca4141;
+    background-color: #ffa1a1;
+    color: #000;
 }
 
 .sidebar {
