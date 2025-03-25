@@ -72,13 +72,14 @@
 
 @media (max-width: 767px){
     .hambiGombocska{
-        font-size: 8vw;
+        font-size: 7vw;
     }
 
     .blockSidebar .navigElem{
-        font-size: 5vw;
+        font-size: 4vw;
     }
 }
+
 
 @media (min-width: 1500px){
     .blockSidebar .navigElem{

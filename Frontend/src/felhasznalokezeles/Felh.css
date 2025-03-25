@@ -388,6 +388,16 @@ select{
     grid-template-columns: 1fr 1fr;
 }
 
+.legnyitosMenu{
+    text-align: center;
+    padding: 1vw;
+    border-radius: 1vw 0;
+}
+.legnyitosMenu:hover{
+    background-color: #ffa1a1;
+    cursor: pointer;
+}
+
 @media (max-width: 767px){
     .bejMenu{
         width: auto;
@@ -429,7 +439,7 @@ select{
         font-size: 3.5vw;
     }
 
-    .szuroCim, .altalnosMentes, .visszaGomb, .torlCim, .torlesGomb, .biztGomOK *, .jelszoModCim, .altBeCim{
+    .szuroCim, .legnyitosMenu, .altalnosMentes, .visszaGomb, .torlCim, .torlesGomb, .biztGomOK *, .jelszoModCim, .altBeCim{
         font-size: 4vw;
     }
 }
@@ -460,7 +470,7 @@ select{
         font-size: 1.2vw;
     }
 
-    .altBeCim, .altalnosMentes, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb{
+    .altBeCim, .legnyitosMenu, .altalnosMentes, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb{
         font-size: 2vw;
     }
 }
@@ -483,7 +493,7 @@ select{
         font-size: 0.75vw;
     }
 
-    .altBeCim, .altalnosMentes, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb, .szuroCim, .profCimsor div{
+    .altBeCim, .legnyitosMenu, .altalnosMentes, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb, .szuroCim, .profCimsor div{
         font-size: 1vw;
     }
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ProfilTorles from './ProfilTorlese';
 import Stilus from './Felh.css';
+import JelszoModosito from './JelszoModosito';
 
 function AdminMenu() {
   const [elemek, setElemek] = useState([]);
@@ -11,6 +12,8 @@ function AdminMenu() {
   const [tablDisp, setTablDisp] = useState('grid');
   const [szuroDisp, setSzuroDisp] = useState('none');
   const [reszletDisp, setReszletDisp] = useState('none');
+
+  const [altNyitva, setAltNyivta] = useState('none');
 
   async function profilokBetoltese(szurtAdat = null) {
     let Mind = [];
@@ -79,6 +82,13 @@ function AdminMenu() {
     profilokBetoltese();
   }
 
+  function alatlanosLenyitas(){
+    if(altNyitva == 'none') setAltNyivta('grid');
+    else setAltNyivta('none');
+
+    console.log(altNyitva)
+  }
+
   function reszletekBetoltese(kivId){
     setTablDisp('none');
     setReszletDisp('grid');
@@ -96,7 +106,9 @@ function AdminMenu() {
           <div className='cimsorFelhnev'>{kivalasztott.Felhasznalonev}</div>
           <img src={url} className='profilkepAM' />
         </div>
-        <div className='modCont'>
+        
+        <div id='alatBeLe' className='legnyitosMenu' onClick={alatlanosLenyitas}>Általános beállítások</div>
+        <div className='modCont' style={{ display: altNyitva }}>
           <div className='modSor'>
             <div className='baNeve'>Jogosultság:</div>
             <select id='jogC'>
@@ -118,6 +130,22 @@ function AdminMenu() {
 
           <button className='altalnosMentes' onClick={() => modositas(kivalasztott.Felhasznalonev)}>Mentés</button>
         </div>
+
+        <div id='jelszoBeLe' className='legnyitosMenu'>Jelszó beállítások</div>
+        <div className='modCont'>
+          <div className='modSor'>
+              <p className='beallitasNeve'>Módosított Jelszó:</p>
+              <input type='password' id='uJel1'></input>
+            </div>
+            <div className='modSor'>
+              <p className='beallitasNeve'>Módosított Jelszó Újra:</p>
+              <input type='password' id='uJel2'></input>
+            </div>
+            <button className='altalnosMentes' onClick={jelszoFrissites}>Jelszó Frissítése</button>
+        </div>
+
+        <div id='torlesBeLe' className='legnyitosMenu'>Felhasználói fiók törlése</div>
+
       </div>
     )
 
@@ -189,6 +217,11 @@ function AdminMenu() {
   }
   useEffect(() => { getProfilok() }, [reszletDisp]);
 
+  function jelszoFrissites(){
+
+  }
+
+
   return (
     <div className='telsesAM'>
       <div className='profTablazat' style={{ display: tablDisp }}>
@@ -212,7 +245,10 @@ function AdminMenu() {
         </div>
         {elemek.map(x => x)} 
       </div>
-      <div className='profReszletek' style={{ display: reszletDisp }}>{reszletek.map(x => x)}</div>
+      <div className='profReszletek' style={{ display: reszletDisp }}>
+        {reszletek.map(x => x)}
+      </div>
+      
       <div style={{ display: reszletDisp }}>{kivalasz!=-1 ? <ProfilTorles kidobando={kivalasz} kileptet='false'></ProfilTorles> : console.log()}</div>
     </div>
   );
