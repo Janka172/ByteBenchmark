@@ -32,7 +32,7 @@
     padding: 0.5vw;
     margin: 1vw;
 }
-.setVissza:hover, .tovabiReszletekGomb:hover{
+.setVissza:hover, .tovabiReszletekGomb:hover, .keresoGomb:hover{
     cursor: pointer;
     background-color: #ffa1a1;
 }
@@ -58,26 +58,41 @@
     width: 100%;
 }
 
+.seetupTH{
+    display: grid;
+    grid-template-columns: 3fr 1.5fr;
+    padding: 1vw;
+    gap: 1vw;
+}
+
+.keresoGomb{
+    background-color: #a83232;
+    border: #000 solid 1px;
+    text-align: center;
+    padding: 0.5vw;
+    padding: 1vw;
+}
+
 @media (max-width: 767px){
-    .setupTR, .setVissza, .reszletSor{
+    .setupTR, .setVissza, .reszletSor, .seetupTH, .seetupTH input{
         font-size: 3vw;
     }
 }
 
 @media (min-width: 768px){
-    .setupTR, .setVissza, .reszletSor{
+    .setupTR, .setVissza, .reszletSor, .seetupTH, .seetupTH input{
         font-size: 1.5vw;
     }
 }
 
 @media (min-width: 1500px){
-    .setupTR, .setVissza, .reszletSor{
+    .setupTR, .setVissza, .reszletSor, .seetupTH, .seetupTH input{
         font-size: 1vw;
     }
 }
 
 @media (min-width: 2500px){
-    .setupTR, .setVissza, .reszletSor, .modRacs div, .combo{
+    .setupTR, .setVissza, .reszletSor, .modRacs div, .combo, .seetupTH, .seetupTH input{
         font-size: 0.8vw;
     }
 }

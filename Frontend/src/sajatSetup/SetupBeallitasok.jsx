@@ -42,6 +42,56 @@ function SetupBeallitasok() {
     }
     useEffect(() => { getSajatSetup() }, []);
 
+    async function getMindenAlaplap() {
+        try {
+            const response = await fetch(`https://localhost:44316/api/Alaplap`);
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    
+    async function getMindenProcesszor() {
+        try {
+          const response = await fetch(`https://localhost:44316/api/Processzor`);
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.error(error);
+        }
+    }
+    
+    async function getMindenVideokartya() {
+        try {
+          const response = await fetch(`https://localhost:44316/api/Videokartya`);
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.error(error);
+        }
+    }
+    
+    async function getMindenRam() {
+        try {
+            const response = await fetch(`https://localhost:44316/api/Ram`);
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    
+    async function getMindenOpRendszer() {
+        try {
+            const response = await fetch(`https://localhost:44316/api/Oprendszer`);
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     useEffect(() => {
         if(!betoltSS) tablazatBetoltese();
     }, [sajatSetup]);
@@ -65,7 +115,6 @@ function SetupBeallitasok() {
 
     function tablazatBetoltese(){
         let ujMind=[];
-
         for(let elem of sajatSetup){
             ujMind.push(
                 <div className='setupTR' key={elem.Gepigeny}>
@@ -76,6 +125,10 @@ function SetupBeallitasok() {
             )
         }
         setMind(ujMind);
+    }
+//itt
+    function kereses(){
+        
     }
 
     async function reszletekMegjelenitese(setupNeve){
@@ -132,8 +185,7 @@ function SetupBeallitasok() {
         await setReszletSzoveg(ujReszletSzoveg);
     }
 
-    //Setup módosítása
-    
+    //Setup módosítása   
     async function modositasMegjelenitese(setupNeve){
         setTablazatDisp('none');
         setModDisp('grid');
@@ -419,57 +471,6 @@ function SetupBeallitasok() {
         }
     }
 
-    //Minden adat lekérése
-    async function getMindenAlaplap() {
-        try {
-            const response = await fetch(`https://localhost:44316/api/Alaplap`);
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    async function getMindenProcesszor() {
-        try {
-          const response = await fetch(`https://localhost:44316/api/Processzor`);
-          const data = await response.json();
-          return data;
-        } catch (error) {
-          console.error(error);
-        }
-    }
-
-    async function getMindenVideokartya() {
-        try {
-          const response = await fetch(`https://localhost:44316/api/Videokartya`);
-          const data = await response.json();
-          return data;
-        } catch (error) {
-          console.error(error);
-        }
-    }
-
-    async function getMindenRam() {
-        try {
-            const response = await fetch(`https://localhost:44316/api/Ram`);
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    async function getMindenOpRendszer() {
-        try {
-            const response = await fetch(`https://localhost:44316/api/Oprendszer`);
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
   return (
     <div>
         <div className='profilEsCim'>
@@ -477,6 +478,10 @@ function SetupBeallitasok() {
           <img src={profilUrl} className='profilkepBeall' />
         </div>
         <div className='setupTablazat' style={{ display: tablazatDisp }}>
+            <div className='seetupTH' key='kereso'>
+                <input type='text'></input>
+                <div className='keresoGomb' onClick={kereses}>Keresés</div>
+            </div>
             {Mind}
         </div>
         <div className='setupReszletek' style={{ display: reszletDisp }}>

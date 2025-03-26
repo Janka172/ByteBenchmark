@@ -39,12 +39,12 @@ function AppLista() {
 
   async function getSetup() {
     try{
-        const response = await fetch(`https://localhost:44316/api/Setup`);
-        const data = await response.json();
-        setSetup(data);
-        setBetoltS(false);
+      const response = await fetch(`https://localhost:44316/api/Setup`);
+      const data = await response.json();
+      setSetup(data);
+      setBetoltS(false);
     } catch (error){
-        console.error(error);
+      console.error(error);
     }
   }
   useEffect(() => { getSetup(); }, [ mindenApp ]);

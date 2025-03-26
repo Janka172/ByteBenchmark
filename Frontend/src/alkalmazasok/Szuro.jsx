@@ -52,7 +52,7 @@ function Szuro() {
   }
   useEffect(() => { getMindenProcesszor(); }, []);
 
-  // A Op rendsze4r adatok lekérése
+  // A Op rendszer adatok lekérése
   async function getMindenOpRendszer() {
     try {
       const response = await fetch("https://localhost:44316/api/Oprendszer");
