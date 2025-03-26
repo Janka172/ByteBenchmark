@@ -18,6 +18,7 @@ import Profil from './oldalak/Profil';
 import Regisztr from "./felhasznalokezeles/Regiszt";
 import Reg from './oldalak/Reg';
 import Rolunk from './oldalak/Rolunk';
+import Kontakt from './oldalak/Kontakt';
 
 function App() {
   const [profilk, setProfilk] = useState([]);
@@ -86,6 +87,7 @@ function App() {
             <Route path='/oldalak/Profil' index element={<Profil />} />
             <Route path='/oldalak/Reg' index element={<Reg />} />
             <Route path="/oldalak/Rolunk" element={<Rolunk />} />
+            <Route path="/oldalak/Kontakt" element={<Kontakt />} />
             
           </Routes>
         </div>

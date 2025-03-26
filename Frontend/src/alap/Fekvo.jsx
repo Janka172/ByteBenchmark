@@ -8,7 +8,7 @@ function Fekvo() {
     <nav className="navbar">
         <Link to="/">Kezdőlap</Link>
         <Link to="/oldalak/Rolunk">Rólunk</Link>
-        <Link>Kontakt</Link>
+        <Link to="/oldalak/Kontakt">Kontakt</Link>
     </nav>
     
   );

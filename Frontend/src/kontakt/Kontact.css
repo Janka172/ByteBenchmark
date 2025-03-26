@@ -1,0 +1,123 @@
+.miProfil{
+    width: 75%;
+    border: black solid 1px;
+}
+
+.instaLogo{
+    width: 2vw;
+}
+
+.miKeret{
+    display: grid;
+    justify-items: center;
+    gap: 1vw;
+    background-color: #c45454;
+    padding: 3vw 1vw;
+}
+.miKeret:nth-child(1){
+    border-radius: 3vw 0;
+}
+.miKeret:nth-child(2){
+    border-radius: 0 0 3vw 3vw;
+}
+.miKeret:nth-child(3){
+    border-radius: 0 3vw;
+}
+
+.miCont{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1vw;
+}
+
+.instaSor{
+    display: flex;
+    flex-direction: row;
+}
+
+.instaSor a{
+    text-align: center;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+}
+.instaSor a:hover{
+    color: rgb(75, 42, 42);
+}
+
+.kontaktFocim {
+    font-size: 7vw;
+    padding: 2vw;
+}
+
+@media (max-width: 767px){
+    .kontaktFocim {
+        font-size: 7vw;
+    }
+
+    .miNev {
+        font-size: 6vw;
+    }
+
+    .instaSor {
+        font-size: 4vw;
+    }
+
+    .miCont{
+        grid-template-columns: 1fr;
+    }
+
+    .instaLogo{
+        width: 5vw;
+    }
+
+    .miKeret{
+        margin: 2.5vw 5vw;
+    }
+
+    .miProfil{
+        width: 35%;
+    }
+}
+
+@media (min-width: 768px){
+    .kontaktFocim {
+        font-size: 4vw;
+    }
+
+    .miNev {
+        font-size: 3vw;
+    }
+
+    .instaSor {
+        font-size: 2vw;
+    }
+}
+
+@media (min-width: 1500px){
+    .kontaktFocim {
+        font-size: 3vw;
+    }
+
+    .miNev {
+        font-size: 2vw;
+    }
+
+    .instaSor {
+        font-size: 1.5vw;
+    }
+}
+
+@media (min-width: 2500px){
+    .kontaktFocim {
+        font-size: 2vw;
+    }
+
+    .miNev {
+        font-size: 1vw;
+    }
+
+    .instaSor {
+        font-size: 0.8vw;
+    }
+}
