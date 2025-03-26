@@ -84,41 +84,41 @@ namespace UnitTestProject.TestController
             Assert.AreEqual(HttpStatusCode.Created, result.StatusCode);
         }
         [TestMethod]
-        public async Task Patch_EgyOprendszer()
+        public async Task Patch_EgyAlaplap()
         {
 
             var ctx = new TestProjektContext();
             FillTestDatabase(ctx);
-            var controller = new OprendszerController(ctx)
+            var controller = new AlaplapController(ctx)
             {
                 Request = new HttpRequestMessage(),
                 Configuration = new HttpConfiguration()
             };
 
-            var model = new OprendszerModel
+            var model = new AlaplapModel
             {
-
+                Hangkartya=true,
                 KepNev = "Beni"
 
             };
-            var result = await controller.Patch(1, "Demo1", "erasafsafsafsa", model).ExecuteAsync(new System.Threading.CancellationToken());
+            var result = await controller.Patch(1, "Demo1", model).ExecuteAsync(new System.Threading.CancellationToken());
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
         [TestMethod]
-        public async Task Delete_EgyOprendszer()
+        public async Task Delete_EgyAlaplap()
         {
 
             var ctx = new TestProjektContext();
             FillTestDatabase(ctx);
-            var controller = new OprendszerController(ctx)
+            var controller = new AlaplapController(ctx)
             {
                 Request = new HttpRequestMessage(),
                 Configuration = new HttpConfiguration()
             };
 
 
-            var result = await controller.Delete(1, "Demo1", "erasafsafsafsa").ExecuteAsync(new System.Threading.CancellationToken());
+            var result = await controller.Delete(1, "Demo1").ExecuteAsync(new System.Threading.CancellationToken());
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }

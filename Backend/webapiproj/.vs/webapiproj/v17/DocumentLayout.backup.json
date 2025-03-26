@@ -3,16 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|c:\\users\\szm_info2005a1\\documents\\github\\teljesprojekt\\backend\\webapiproj\\unittestproject\\testcontroller\\testoprendszercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|c:\\users\\szm_info2005a1\\documents\\github\\teljesprojekt\\backend\\webapiproj\\unittestproject\\testcontroller\\testprofilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|solutionrelative:unittestproject\\testcontroller\\testprofilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|c:\\users\\szm_info2005a1\\documents\\github\\teljesprojekt\\backend\\webapiproj\\webapiproj\\controllers\\applikaciocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|solutionrelative:webapiproj\\controllers\\applikaciocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|c:\\users\\szm_info2005a1\\documents\\github\\teljesprojekt\\backend\\webapiproj\\webapiproj\\controllers\\profilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|solutionrelative:webapiproj\\controllers\\profilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|c:\\users\\szm_info2005a1\\documents\\github\\teljesprojekt\\backend\\webapiproj\\webapiproj\\models\\profil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|solutionrelative:webapiproj\\models\\profil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|c:\\users\\szm_info2005a1\\documents\\github\\teljesprojekt\\backend\\webapiproj\\unittestproject\\testcontroller\\testalaplapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|solutionrelative:unittestproject\\testcontroller\\testalaplapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\controllers\\alaplapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|solutionrelative:webapiproj\\controllers\\alaplapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\unittestproject\\testcontroller\\testprocesszorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|solutionrelative:unittestproject\\testcontroller\\testprocesszorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\unittestproject\\testcontroller\\testoprendszercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|solutionrelative:unittestproject\\testcontroller\\testoprendszercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|c:\\users\\szm_info2005a1\\documents\\github\\teljesprojekt\\backend\\webapiproj\\webapiproj\\controllers\\oprendszercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\controllers\\oprendszercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|solutionrelative:webapiproj\\controllers\\oprendszercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|c:\\users\\szm_info2005a1\\documents\\github\\teljesprojekt\\backend\\webapiproj\\unittestproject\\testcontroller\\testprocesszorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|solutionrelative:unittestproject\\testcontroller\\testprocesszorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\controllers\\processzorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,50 +62,113 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "OprendszerController.cs",
-              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\OprendszerController.cs",
-              "RelativeDocumentMoniker": "webapiproj\\Controllers\\OprendszerController.cs",
-              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\OprendszerController.cs",
-              "RelativeToolTip": "webapiproj\\Controllers\\OprendszerController.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAAFsAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T06:42:35.003Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TestOprendszerController.cs",
-              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestController\\TestOprendszerController.cs",
-              "RelativeDocumentMoniker": "UnitTestProject\\TestController\\TestOprendszerController.cs",
-              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestController\\TestOprendszerController.cs",
-              "RelativeToolTip": "UnitTestProject\\TestController\\TestOprendszerController.cs",
-              "ViewState": "AgIAAF8AAAAAAAAAAADwv3AAAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T06:40:51.622Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ProcesszorController.cs",
-              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\ProcesszorController.cs",
-              "RelativeDocumentMoniker": "webapiproj\\Controllers\\ProcesszorController.cs",
-              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\ProcesszorController.cs",
-              "RelativeToolTip": "webapiproj\\Controllers\\ProcesszorController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAACQAAAAJAAAAAAAAAA==",
+              "Title": "Profil.cs",
+              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Models\\Profil.cs",
+              "RelativeDocumentMoniker": "webapiproj\\Models\\Profil.cs",
+              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Models\\Profil.cs",
+              "RelativeToolTip": "webapiproj\\Models\\Profil.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T08:54:52.703Z",
+              "WhenOpened": "2025-03-26T09:48:28.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApplikacioController.cs",
+              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\ApplikacioController.cs",
+              "RelativeDocumentMoniker": "webapiproj\\Controllers\\ApplikacioController.cs",
+              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\ApplikacioController.cs",
+              "RelativeToolTip": "webapiproj\\Controllers\\ApplikacioController.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAADgv1oAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T09:29:19.099Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "ProfilController.cs",
+              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\ProfilController.cs",
+              "RelativeDocumentMoniker": "webapiproj\\Controllers\\ProfilController.cs",
+              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\ProfilController.cs",
+              "RelativeToolTip": "webapiproj\\Controllers\\ProfilController.cs",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAAAKYAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T09:17:49.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TestProfilController.cs",
+              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestController\\TestProfilController.cs",
+              "RelativeDocumentMoniker": "UnitTestProject\\TestController\\TestProfilController.cs",
+              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestController\\TestProfilController.cs",
+              "RelativeToolTip": "UnitTestProject\\TestController\\TestProfilController.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAADwv4cAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T09:15:45.638Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AlaplapController.cs",
+              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\AlaplapController.cs",
+              "RelativeDocumentMoniker": "webapiproj\\Controllers\\AlaplapController.cs",
+              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\AlaplapController.cs",
+              "RelativeToolTip": "webapiproj\\Controllers\\AlaplapController.cs",
+              "ViewState": "AgIAAJQAAAAAAAAAAADgv6gAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T06:54:25.713Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TestAlaplapController.cs",
+              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestController\\TestAlaplapController.cs",
+              "RelativeDocumentMoniker": "UnitTestProject\\TestController\\TestAlaplapController.cs",
+              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestController\\TestAlaplapController.cs",
+              "RelativeToolTip": "UnitTestProject\\TestController\\TestAlaplapController.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAADgv3sAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T06:55:04.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "OprendszerController.cs",
+              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\OprendszerController.cs",
+              "RelativeDocumentMoniker": "webapiproj\\Controllers\\OprendszerController.cs",
+              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\OprendszerController.cs",
+              "RelativeToolTip": "webapiproj\\Controllers\\OprendszerController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T06:42:35.003Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TestOprendszerController.cs",
+              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestController\\TestOprendszerController.cs",
+              "RelativeDocumentMoniker": "UnitTestProject\\TestController\\TestOprendszerController.cs",
+              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestController\\TestOprendszerController.cs",
+              "RelativeToolTip": "UnitTestProject\\TestController\\TestOprendszerController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T06:40:51.622Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "TestProcesszorController.cs",
               "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestController\\TestProcesszorController.cs",
               "RelativeDocumentMoniker": "UnitTestProject\\TestController\\TestProcesszorController.cs",
@@ -89,12 +176,23 @@
               "RelativeToolTip": "UnitTestProject\\TestController\\TestProcesszorController.cs",
               "ViewState": "AgIAAGMAAAAAAAAAAADwv3oAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T08:39:57.143Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-24T08:39:57.143Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
+              "Title": "ProcesszorController.cs",
+              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\ProcesszorController.cs",
+              "RelativeDocumentMoniker": "webapiproj\\Controllers\\ProcesszorController.cs",
+              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\ProcesszorController.cs",
+              "RelativeToolTip": "webapiproj\\Controllers\\ProcesszorController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T08:54:52.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "TestRamController.cs",
               "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestController\\TestRamController.cs",
               "RelativeDocumentMoniker": "UnitTestProject\\TestController\\TestRamController.cs",
@@ -106,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "TestVideokartyaController.cs",
               "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestController\\TestVideokartyaController.cs",
               "RelativeDocumentMoniker": "UnitTestProject\\TestController\\TestVideokartyaController.cs",
@@ -114,12 +212,11 @@
               "RelativeToolTip": "UnitTestProject\\TestController\\TestVideokartyaController.cs",
               "ViewState": "AgIAAGIAAAAAAAAAAADwv3kAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T10:07:16.243Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T10:07:16.243Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 12,
               "Title": "TestProjektContext.cs",
               "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestDatabase\\TestProjektContext.cs",
               "RelativeDocumentMoniker": "UnitTestProject\\TestDatabase\\TestProjektContext.cs",

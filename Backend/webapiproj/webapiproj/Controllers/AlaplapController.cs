@@ -26,19 +26,6 @@ namespace webapiproj.Controllers
         public string Kepnev { get; set; }
         
     }
-    public class AlaplapUpdatedModel
-    {
-        public string Nev { get; set; }
-        public string CpuFoglalat { get; set; }
-        public string AlaplapFormatum { get; set; }
-        public double MaxFrekvencia { get; set; }
-        public string MemoriaTipusa { get; set; }
-        public string Lapkakeszlet { get; set; }
-        public int SlotSzam { get; set; }
-        public bool Hangkartya { get; set; }
-        public string VideokartyaCsatlakozo { get; set; }
-        public string Kepnev { get; set; }
-    }
 
     public class AlaplapModel
     {
@@ -165,7 +152,7 @@ namespace webapiproj.Controllers
 
         // PUT api/<controller>/5
         [ResponseType(typeof(AlaplapUploadModel))]
-        public IHttpActionResult Patch(int id, string name,[FromBody] AlaplapUpdatedModel value)
+        public IHttpActionResult Patch(int id, string name,[FromBody] AlaplapModel value)
         {
             List<int> storageport = new List<int>();
             try
@@ -181,7 +168,7 @@ namespace webapiproj.Controllers
                 if (value.SlotSzam!=0) result.SlotSzam = value.SlotSzam;
                 if (value.Hangkartya!=null) result.Hangkartya = value.Hangkartya;
                 if (value.VideokartyaCsatlakozo != null) result.VideokartyaCsatlakozo = value.VideokartyaCsatlakozo;
-                if (value.Kepnev != null) result.KepNev = value.Kepnev;
+                if (value.KepNev != null) result.KepNev = value.KepNev;
                          
                 ctx.SaveChanges();
 

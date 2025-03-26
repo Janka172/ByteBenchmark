@@ -8,6 +8,7 @@ using System.Data.Entity;
 using webapiproj.Models;
 using System.Web.Http.Description;
 using webapiproj.UserManager;
+using webapiproj.Database;
 
 namespace webapiproj.Controllers
 {
@@ -50,7 +51,14 @@ namespace webapiproj.Controllers
     }
     public class ProfilController : ApiController
     {
-        ProjektContext ctx = new ProjektContext();
+        IProjektContext ctx = new ProjektContext();
+
+        public ProfilController() { }
+
+        public ProfilController(IProjektContext context)
+        {
+            ctx = context;
+        }
         // GET api/<controller>
         [ResponseType(typeof(ProfilResponseModel))]
         public IHttpActionResult Get()
@@ -100,11 +108,10 @@ namespace webapiproj.Controllers
 
                 ctx.Profilok.Add(new Profil(value.Felhasznalonev, value.Email, value.Jelszo, value.Jogosultsag, value.Tema, value.LogoEleresiUtja));
                 ctx.SaveChanges();
-                return Ok("Regisztráció Sikeres!");
+                return Content(HttpStatusCode.Created,"Regisztráció Sikeres!");
             }
             catch (Exception ex)
             {
-                throw;
                 return InternalServerError(ex);
             }
         }
