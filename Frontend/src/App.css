@@ -56,7 +56,11 @@ input {
 @media (max-width: 767px){
   .Tartalmak{
     margin: auto;
-    margin-bottom: 20vw;
+    margin-bottom: 0;
+  }
+
+  .marginBottom{
+    margin-bottom: 10vw;
   }
 }
 
@@ -64,11 +68,15 @@ input {
   .Tartalmak{
     width: 70%;
     margin: auto;
-    margin-bottom: 10vw;
+    margin-bottom: 0;
   }
 
   .Tartalmak *{
     transition: background-color 1s, border-color 1s;
+  }
+
+  .marginBottom{
+    margin-bottom: 6vw;
   }
 }
 
@@ -76,6 +84,10 @@ input {
   .Tartalmak{
     width: 60%;
     margin: auto;
-    margin-bottom: 10vw;
+    margin-bottom: 0;
+  }
+
+  .marginBottom{
+    margin-bottom: 3vw;
   }
 }

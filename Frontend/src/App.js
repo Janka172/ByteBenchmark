@@ -82,8 +82,6 @@ function App() {
             <Route path='/oldalak/AlkalmazasReszletek' index element={<AlkalmazasReszletek />} />
             <Route path='/oldalak/AlkatreszReszletek' index element={<AlkatreszReszletek />} />
             <Route path='/oldalak/SajatSetup' index element={<Sajat />} />
-            <Route path='/oldalak/UjAlkalmazas' index element={<UjAlkalmazas />} />
-            <Route path='/oldalak/UjAlkatresz' index element={<UjAlkatresz />} />
             <Route path='/oldalak/Profil' index element={<Profil />} />
             <Route path='/oldalak/Reg' index element={<Reg />} />
             <Route path="/oldalak/Rolunk" element={<Rolunk />} />
@@ -91,6 +89,13 @@ function App() {
             
           </Routes>
         </div>
+
+        <Routes>
+          <Route path='/oldalak/UjAlkalmazas' index element={<UjAlkalmazas />} />
+          <Route path='/oldalak/UjAlkatresz' index element={<UjAlkatresz />} />
+        </Routes>
+
+        <div className='marginBottom'></div>
         
          
         <Footer></Footer>

@@ -1,16 +1,5 @@
-!!!
-    Saját: Futtatható
-
-
-nkKép: Képarány: 16:9
-
-Jövő hétfő:
-Minden ami van
-+ dokumentáció a fejlesztői környzethez
-
-?
-    Admin nézet
-        Törlés, rang változtatás
-    Jelszóerősség
-    
-
+Hambi bezárás
+Menü legyen széles
+Fekő kiválasztás
+Szerepkör váltás
+Csak admin tudjon csak újakat létrehozni
