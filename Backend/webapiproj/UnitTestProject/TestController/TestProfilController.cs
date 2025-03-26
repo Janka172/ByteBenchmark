@@ -19,12 +19,12 @@ namespace UnitTestProject.TestController
     {
         public void FillTestDatabase(TestProjektContext ctx)
         {
-            PasswdManager.CreatePasswordHash("ada", out byte[] jelszo1, out byte[] jelszoUjra1);
-            PasswdManager.CreatePasswordHash("aaafda", out byte[] jelszo2, out byte[] jelszoUjra2);
+            PasswdManager.CreatePasswordHash("ada", out byte[] jelszoUjra1, out byte[]jelszo1 );
+            PasswdManager.CreatePasswordHash("aaafda", out byte[] jelszoUjra2, out byte[]jelszo2 );
             ctx.Profilok.Add(
-                new Profil { Id = 1, Felhasznalonev="Demo1", Email="affaf@gag.com",Jogosultsag=1,Jelszo=jelszo1,JelszoUjra=jelszoUjra1, Tema="afssafasf",LogoEleresiUtja="dasdasdsad"});
+                new Profil { Id = 1, Felhasznalonev="Demo1", Email="affaf@gag.com",Jogosultsag=1,Jelszo=jelszo1,JelszoUjra=jelszoUjra1,Tema="afssafasf",LogoEleresiUtja="dasdasdsad"});
             ctx.Profilok.Add(
-              new Profil { Id = 2, Felhasznalonev = "Demo2", Email = "afafaf@gmail.com",Jogosultsag = 2, Jelszo = jelszo2, JelszoUjra = jelszoUjra2, Tema = "arsad", LogoEleresiUtja = "qqeqrsd" });
+              new Profil { Id = 2, Felhasznalonev = "Demo2", Email = "afafaf@gmail.com",Jogosultsag = 2,Jelszo = jelszo2, JelszoUjra = jelszoUjra2, Tema = "arsad", LogoEleresiUtja = "qqeqrsd" });
             ctx.Profilok.Add(
               new Profil { Id = 3, Felhasznalonev = "Demo3", Email = "afafaff@gasd.hu", Jogosultsag = 1, Jelszo = jelszo2, JelszoUjra = jelszoUjra2, Tema = "afssafqqasf", LogoEleresiUtja = "qqq" });
             ctx.SaveChanges();
@@ -131,22 +131,36 @@ namespace UnitTestProject.TestController
                 Request = new HttpRequestMessage(),
                 Configuration = new HttpConfiguration()  
             };
+            
             var model = new Authenticate
             {
                 Email = "affaf@gag.com",
                 Jelszo = "ada"
             };
-            //var model1 = new Authenticate
-            //{
-            //    Email = "afafaf@gmail.com",
-            //    Jelszo = "aaafda"
-            //};
+
             var result = await controller.Post(model).ExecuteAsync(new System.Threading.CancellationToken());
-            //var result1 = await controller.Post(model1).ExecuteAsync(new System.Threading.CancellationToken());
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
-            //Assert.IsNotNull(result1);
-            //Assert.AreEqual(HttpStatusCode.OK, result1.StatusCode);
+        }
+        public async Task ProfilEmailvalid()
+        {
+            var ctx = new TestProjektContext();
+            FillTestDatabase(ctx);
+            var controller = new ProfilController(ctx)
+            {
+                Request = new HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
+
+            var model = new ProfilJelszoUpdateModel
+            {
+                
+                UjJelszo = "ada"
+            };
+
+            var result = await controller.PatchJelszo(1, "affaf@gag.com", model).ExecuteAsync(new System.Threading.CancellationToken());
+            Assert.IsNotNull(result);
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
     }
 }
