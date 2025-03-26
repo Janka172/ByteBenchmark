@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Data.Entity;
 using webapiproj.Models;
 using System.Web.Http.Description;
+using webapiproj.Database;
 
 namespace webapiproj.Controllers
 {
@@ -19,7 +20,14 @@ namespace webapiproj.Controllers
     }
     public class OprendszerController : ApiController
     {
-        ProjektContext ctx = new ProjektContext();
+        IProjektContext ctx = new ProjektContext();
+
+        public OprendszerController() { }
+
+        public OprendszerController(IProjektContext context)
+        {
+            ctx = context;
+        }
         // GET api/<controller>
         [ResponseType(typeof(OprendszerModel))]
         public IHttpActionResult Get()

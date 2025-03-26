@@ -91,6 +91,8 @@
     <Compile Include="TestController\TestRamController.cs" />
     <Compile Include="TestController\TestProfilController.cs" />
     <Compile Include="TestController\TestProcesszorController.cs" />
+    <Compile Include="TestController\TestOprendszerController.cs" />
+    <Compile Include="TestController\TestAlaplapController.cs" />
     <Compile Include="TestDbSet.cs" />
     <Compile Include="TestDatabase\TestProjektContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
