@@ -93,7 +93,7 @@ function SetupBeallitasok() {
     }
 
     useEffect(() => {
-        if(!betoltSS) tablazatBetoltese();
+        if(!betoltSS) tablazatBetoltese(sajatSetup);
     }, [sajatSetup]);
 
     function alaphelyzetbe(){
@@ -113,9 +113,9 @@ function SetupBeallitasok() {
         setModDisp('none');
     }
 
-    function tablazatBetoltese(){
+    function tablazatBetoltese(megjelitendo){
         let ujMind=[];
-        for(let elem of sajatSetup){
+        for(let elem of megjelitendo){
             ujMind.push(
                 <div className='setupTR' key={elem.Gepigeny}>
                     <div className='setupTD'>{elem.Gepigeny.split('.')[1]}</div>
@@ -128,7 +128,23 @@ function SetupBeallitasok() {
     }
 //itt
     function kereses(){
-        
+        let keresett = document.getElementById('keresesiAdat').value;
+        if(keresett != ''){
+            let ujMind=[];
+            for(let elem of sajatSetup){
+                if(elem.Gepigeny.split('.')[1].includes(keresett)){
+                    ujMind.push(
+                        <div className='setupTR' key={elem.Gepigeny}>
+                            <div className='setupTD'>{elem.Gepigeny.split('.')[1]}</div>
+                            <div className='setupTD gombTD' onClick={() => reszletekMegjelenitese(elem.Gepigeny.split('.')[1])}>Részletek Megjelenítése</div>
+                            <div className='setupTD gombTD' onClick={() => modositasMegjelenitese(elem.Gepigeny.split('.')[1])}>Módosítás</div>
+                        </div>
+                    )
+                }
+            }
+            setMind(ujMind);
+        }
+        else tablazatBetoltese(sajatSetup);
     }
 
     async function reszletekMegjelenitese(setupNeve){
@@ -479,7 +495,7 @@ function SetupBeallitasok() {
         </div>
         <div className='setupTablazat' style={{ display: tablazatDisp }}>
             <div className='seetupTH' key='kereso'>
-                <input type='text'></input>
+                <input type='text' id='keresesiAdat'></input>
                 <div className='keresoGomb' onClick={kereses}>Keresés</div>
             </div>
             {Mind}

@@ -17,6 +17,7 @@ import UjAlkatresz from './oldalak/UjAlkatresz';
 import Profil from './oldalak/Profil';
 import Regisztr from "./felhasznalokezeles/Regiszt";
 import Reg from './oldalak/Reg';
+import Rolunk from './oldalak/Rolunk';
 
 function App() {
   const [profilk, setProfilk] = useState([]);
@@ -55,7 +56,6 @@ function App() {
 
   function temaBeallitasa() {
     const user = JSON.parse(localStorage.getItem("loggedInUser"));
-    
     if (user) {
       document.body.style.backgroundColor = user.Tema === 'dark' ? 'rgb(61, 61, 61)' : 'rgb(196, 196, 196)';
     } else {
@@ -85,7 +85,7 @@ function App() {
             <Route path='/oldalak/UjAlkatresz' index element={<UjAlkatresz />} />
             <Route path='/oldalak/Profil' index element={<Profil />} />
             <Route path='/oldalak/Reg' index element={<Reg />} />
-            <Route path="/" element={<Regisztr />} />
+            <Route path="/oldalak/Rolunk" element={<Rolunk />} />
             
           </Routes>
         </div>

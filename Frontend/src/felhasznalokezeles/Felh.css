@@ -224,6 +224,7 @@ select{
 
 .jelszoInfoSzoveg{
     padding: 1vw;
+    border: #000 solid 1px;
     background-color: #b86868;
 }
 
@@ -421,7 +422,7 @@ select{
         font-size: 5vw;
     }
 
-    .bevitelNeve, .biztSzoveg, .jelszoInfoSzoveg, .jelszoInfoGomb, .kijGomb, .regHiba, .profilSor div, .keresesSor *, .oszlopElem, .cimsorFelhnev, .baNeve, .modSor *, #hibaUz{
+    .bevitelNeve, .biztSzoveg, .jelszoInfoSzoveg, .jelszoInfoGomb, .kijGomb, .regHiba, .profilSor div, .keresesSor *, .oszlopElem, .cimsorFelhnev, .baNeve, .modSor *, #hibaUz, .menuElem input{
         font-size: 3vw;
     }
 
@@ -472,7 +473,7 @@ select{
         font-size: 1vw;
     }
 
-    .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve, #hibaUz{
+    .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve, #hibaUz, .menuElem input{
         font-size: 1.35vw;
     }
 
@@ -495,7 +496,7 @@ select{
         font-size: 0.8vw;
     }
 
-    .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve, .profilSor div, #hibaUz{
+    .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve, .profilSor div, #hibaUz, .menuElem input{
         font-size: 0.75vw;
     }
 
