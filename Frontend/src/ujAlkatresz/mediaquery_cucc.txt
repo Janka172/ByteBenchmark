@@ -1,0 +1,58 @@
+@media (max-width: 767px){
+  #kartyak{
+    margin-bottom: 8vw;
+  }
+
+  .appNeve{
+    font-size: 5vw;
+    font-weight: bold;
+  }
+  
+  .katNeve{
+    font-size: 4vw;
+  }
+
+  .reszletG{
+    font-size: 3vw;
+  }
+
+  .kartyaKeret{
+    width: 20vw;
+  }
+}
+
+@media (min-width: 768px){
+  .alKorKepKeret{
+    width: 15vw;
+  }
+}
+
+@media (min-width: 1500px){
+  .kartyaLogo{
+    width: 60%;
+  }
+  
+  .appNeve{
+    font-size: 1vw;
+    font-weight: bold;
+  }
+  
+  .reszletG{
+    font-size: 0.8vw;
+    padding: 1vw;
+    margin:0vw;
+  }
+}
+
+@media (min-width: 2500px){
+  .appNeve{
+    font-size: 0.8vw;
+    font-weight: bold;
+  }
+  
+  .reszletG{
+    font-size: 0.5vw;
+    padding: 1vw;
+    margin:0vw;
+  }
+}
