@@ -1,3 +1,80 @@
 .rolunkFocim {
-    
+    margin-top: 1.5vw;
+    text-shadow: 2px 2px 5px rgba(100, 100, 100, 0.5);
+}
+
+.rolunkAlcim {
+    background-color: #c45454;
+    padding: 1vw;
+    border: 1px black solid;
+    border-radius: 1vw 1vw 0 0;
+    margin-top: 1.5vw;
+}
+.rolunkAlcim:hover {
+    background-color: #ffa1a1;
+    cursor: pointer;
+}
+
+.rolunkSzoveg {
+    border: 1px black solid;
+    border-radius: 0 0 1vw 1vw;
+    padding: 1vw 3vw;
+    text-align: justify;
+    background-color: rgba(197, 129, 129, 0.4);
+}
+
+@media (max-width: 767px){
+    .rolunkFocim {
+        font-size: 5vw;
+    }
+
+    .rolunkAlcim {
+        font-size: 4vw;
+    }
+
+    .rolunkSzoveg {
+        font-size: 3vw;
+    }
+}
+
+@media (min-width: 768px){
+    .rolunkFocim {
+        font-size: 4vw;
+    }
+
+    .rolunkAlcim {
+        font-size: 3vw;
+    }
+
+    .rolunkSzoveg {
+        font-size: 2vw;
+    }
+}
+
+@media (min-width: 1500px){
+    .rolunkFocim {
+        font-size: 3vw;
+    }
+
+    .rolunkAlcim {
+        font-size: 2vw;
+    }
+
+    .rolunkSzoveg {
+        font-size: 1.6vw;
+    }
+}
+
+@media (min-width: 2500px){
+    .rolunkFocim {
+        font-size: 2vw;
+    }
+
+    .rolunkAlcim {
+        font-size: 1vw;
+    }
+
+    .rolunkSzoveg {
+        font-size: 0.8vw;
+    }
 }
