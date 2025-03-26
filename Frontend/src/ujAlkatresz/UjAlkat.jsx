@@ -460,7 +460,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
             {actionHardver==="Alaplap" && actionButtons==="Patch" ? <div className='body'>
                  <div className='inputok'>
-                    <form>
+                    <form id='patch_form'>
                         <p id='patch_titles'>Név:</p>
                         <select className="combi_patch" onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
                            <option id="legordulos_option">Válassz egyet</option>
@@ -479,34 +479,32 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <p id='patch_titles'>Slot szám:</p><input type="number" id="AlaplapPatch6" className='patchbeviteli_mezok'/><br/>
 
                         <p id='patch_titles'>Hangkártya:</p>
-                        <div id="radiobtn_patch">
-                           <input type="radio" id="AlaplapPatch7" name="hgk_true" value="True" checked={actionHgkRadiobf==='Nemjeloltradiogomb'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogomb')}/>
-                           <label htmlFor="hgk_true">Tartalmaz hangkártyát.</label><br/>
-                        </div>
-                        
-                        <div id="radiobtn_patch">
-                           <input type="radio" id="AlaplapPatch8" name="hgk_true" value="False" checked={actionHgkRadiobf==='Nemjeloltradiogombak'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogombak')}/>
-                           <label htmlFor="hgk_false">Nem tartalmaz hangkártyát.</label>
-                        </div>
-                         
-                        <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
-                        <span className="filename" id='patch_img_link'>{fileName}</span>
-                        <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
+                           <div id="radiobtn_patch">
+                           <input type="radio" id="AlaplapPatch7" name="ivk_true" value="True" checked={actionHgkRadiobf==='Nemjeloltradiogomb'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogomb')}></input>
+                           <label htmlFor="ivk_true">Tartalmaz hangkártyát.</label><br/>
+                           </div>
+                           <div id="radiobtn_patch">
+                           <input type="radio" iid="AlaplapPatch8" name="ivk_true" value="False" checked={actionHgkRadiobf==='Nemjeloltradiogombak'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogombak')}></input>
+                           <label htmlFor="ivk_false">Nem tartalmaz hangkártyát.</label>
+                            </div>
+
+                            <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
+                           <span className="filename" id='patch_img_link'>{fileName}</span>
+                           <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
 
                         <button className='buttons' id='patch_datkezelogomb' type='button' onClick={(e)=>handleUploadAndPost(e)}>Módosítások mentése</button>
                     </form>
                  </div>
 
-                 <div id='contents'>
-                    <p>Név:{actionMindenhezKellAdat?.Nev}</p>
-                    <p>Processzor foglalat:{actionMindenhezKellAdat?.CpuFoglalat}</p>
-                    <p>Alaplap formátum:{actionMindenhezKellAdat?.AlaplapFormatum}</p>
-                    <p>Maximum frekvencia:{actionMindenhezKellAdat?.MaxFrekvencia}</p>
-                    <p>Memória típus:{actionMindenhezKellAdat?.MemoriaTipusa}</p>
-                    <p>Lapkakészlet:{actionMindenhezKellAdat?.Lapkakeszlet}</p>
-                    <p>Slot szám:{actionMindenhezKellAdat?.SlotSzam}</p>
-                    <p>Hangkártya:{actionMindenhezKellAdat?.Hangkartya}</p>      
-                    {/* <image src=""></image>*/}
+                 <div id='contents_patch'>
+                    <div id='adatok_patch'>Név:{actionMindenhezKellAdat?.Nev}</div>
+                    <div id='adatok_patch'>Processzor foglalat:{actionMindenhezKellAdat?.CpuFoglalat}</div>
+                    <div id='adatok_patch'>Alaplap formátum:{actionMindenhezKellAdat?.AlaplapFormatum}</div>
+                    <div id='adatok_patch'>Maximum frekvencia:{actionMindenhezKellAdat?.MaxFrekvencia}</div>
+                    <div id='adatok_patch'>Memória típus:{actionMindenhezKellAdat?.MemoriaTipusa}</div>
+                    <div id='adatok_patch'>Lapkakészlet:{actionMindenhezKellAdat?.Lapkakeszlet}</div>
+                    <div id='adatok_patch'>Slot szám:{actionMindenhezKellAdat?.SlotSzam}</div>
+                    <div id='adatok_patch'>Hangkártya:{actionMindenhezKellAdat?.Hangkartya}</div>      
                  </div>
 
                     <div id='buttons_content'>
