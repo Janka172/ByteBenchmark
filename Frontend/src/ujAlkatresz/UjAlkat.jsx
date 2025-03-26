@@ -381,7 +381,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  <div className='inputok'>
                     <form> 
                     <p id='titles_delete'>Név:</p>
-                        <select  onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
+                        <select  className="combi_delete" onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
                            <option >Válassz egyet</option>
                            {[...new Set(mindenAdat['videokartyak'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulos_option">{nev}</option>))}
                         </select><br/>
@@ -713,7 +713,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                               {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>( <option key={nev} value={nev}  id="legordulos_option">{nev}</option>))}
                            </select>
 
-                           <button className='buttons' id='patch_datkezelogomb' type='button' onClick={(e)=>adatProcesszorLekeres(e, actionKivalasztottProcesszorNev)}>Adatok lekérése</button>
+                           <button className='buttons' id='adatlekerogomb'  type='button' onClick={(e)=>adatProcesszorLekeres(e, actionKivalasztottProcesszorNev)}>Adatok lekérése</button>
 
                            <p id='patch_titles'>Frekvencia:</p><input type="number" id='ProcPatch1' className='patchbeviteli_mezok'/>
                            <p id='patch_titles'>Maximum frekvencia:</p><input type="number" id='ProcPatch2' className='patchbeviteli_mezok'/>
@@ -738,21 +738,21 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                            <span className="filename" id='patch_img_link'>{fileName}</span>
                            <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
 
-                           <button className='buttons' type='button' onClick={(e)=>handleUploadAndPost(e)}>Módosítások mentése</button> 
+                           <button className='buttons'  id='patch_datkezelogomb' type='button' onClick={(e)=>handleUploadAndPost(e)}>Módosítások mentése</button> 
                      </form>
                  </div>
 
-                 <div id='contents'>
-                 <p>Név:{actionMindenhezKellAdat?.Nev}</p><br></br>
-                 <p>Frekvencia:{actionMindenhezKellAdat?.ProcesszorFrekvencia}</p><br></br>
-                 <p>Maximum frekvencia:{actionMindenhezKellAdat?.BProcesszorFrekvencia}</p><br></br>
-                 <p>Alaplap foglalat:{actionMindenhezKellAdat?.AlaplapFoglalat}</p><br></br>
-                 <p>Szálak száma:{actionMindenhezKellAdat?.SzalakSzama}</p><br></br>
-                 <p>Támogatott memória típus:{actionMindenhezKellAdat?.TamogatottMemoriatipus}</p><br></br>
-                 <p>Processzormegok száma:{actionMindenhezKellAdat?.ProcesszormagokSzama}</p><br></br>          
-                 <p>Gyártó:{actionMindenhezKellAdat?.Gyarto}</p><br></br>
-                 <p>Ajánlott tápegység:{actionMindenhezKellAdat?.AjanlottTapegyseg}</p><br></br>            
-                 <p>Integrált videókártya:{actionMindenhezKellAdat?.IntegraltVideokartya}</p><br></br>
+                 <div id='contents_patch'>
+                 <div id='adatok_patch'>Név:{actionMindenhezKellAdat?.Nev}</div>
+                 <div id='adatok_patch'>Gyártó:{actionMindenhezKellAdat?.Gyarto}</div>
+                 <div id='adatok_patch'>Frekvencia:{actionMindenhezKellAdat?.ProcesszorFrekvencia}</div>
+                 <div id='adatok_patch'>Szálak száma:{actionMindenhezKellAdat?.SzalakSzama}</div>
+                 <div id='adatok_patch'>Alaplap foglalat:{actionMindenhezKellAdat?.AlaplapFoglalat}</div>
+                 <div id='adatok_patch'>Ajánlott tápegység:{actionMindenhezKellAdat?.AjanlottTapegyseg}</div>
+                 <div id='adatok_patch'>Integrált videókártya:{actionMindenhezKellAdat?.IntegraltVideokartya}</div>
+                 <div id='adatok_patch'>Maximum frekvencia:{actionMindenhezKellAdat?.BProcesszorFrekvencia}</div> 
+                 <div id='adatok_patch'>Processzormegok száma:{actionMindenhezKellAdat?.ProcesszormagokSzama}</div> 
+                 <div id='adatok_patch'>Támogatott memória típus:{actionMindenhezKellAdat?.TamogatottMemoriatipus}</div>
                  </div>
 
                     <div id='buttons_content'>
@@ -766,31 +766,31 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             {actionHardver==="Processzor" && actionButtons==="Delete" ? <div className='body'>
                  <div className='inputok'>
                     <form>
-                    Név:<br/>
-                            <select className="combi" onChange={(an)=>setActionKivalasztottProcesszorNev(an.target.value)} value={actionKivalasztottProcesszorNev}>
-                              <option>Válassz egyet</option>
+                    <p id='titles_delete'>Név:</p>
+                            <select className="combi_delete" onChange={(an)=>setActionKivalasztottProcesszorNev(an.target.value)} value={actionKivalasztottProcesszorNev}>
+                              <option id="legordulos_option" >Válassz egyet</option>
                               {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>(
-                                 <option key={nev} value={nev}>{nev}</option>
+                                 <option key={nev} value={nev} id="legordulos_option">{nev}</option>
                               ))}
                            </select><br/>
 
-                           <button className='buttons' type='button' onClick={(e)=>adatProcesszorLekeres(e, actionKivalasztottProcesszorNev)}>Adatok lekérése</button><br/>
+                           <button className='buttons' id='delete_adatlekerogomb' type='button' onClick={(e)=>adatProcesszorLekeres(e, actionKivalasztottProcesszorNev)}>Adatok lekérése</button><br/>
 
                      <button className='buttons' type='button' onClick={(e)=>handleDelete(e)}>Alkatrész eltávolítása</button>                
                     </form>
                  </div>
 
                  <div id='contents'>
-                 <p>Név:{actionMindenhezKellAdat?.Nev}</p><br></br>
-                 <p>Frekvencia:{actionMindenhezKellAdat?.ProcesszorFrekvencia}</p><br></br>
-                 <p>Maximum frekvencia:{actionMindenhezKellAdat?.BProcesszorFrekvencia}</p><br></br>
-                 <p>Alaplap foglalat:{actionMindenhezKellAdat?.AlaplapFoglalat}</p><br></br>
-                 <p>Szálak száma:{actionMindenhezKellAdat?.SzalakSzama}</p><br></br>
-                 <p>Támogatott memória típus:{actionMindenhezKellAdat?.TamogatottMemoriatipus}</p><br></br>
-                 <p>Processzormegok száma:{actionMindenhezKellAdat?.ProcesszormagokSzama}</p><br></br>          
-                 <p>Gyártó:{actionMindenhezKellAdat?.Gyarto}</p><br></br>
-                 <p>Ajánlott tápegység:{actionMindenhezKellAdat?.AjanlottTapegyseg}</p><br></br>            
-                 <p>Integrált videókártya:{actionMindenhezKellAdat?.IntegraltVideokartya}</p><br></br>
+                 <div id='adatok_delete'>Név:{actionMindenhezKellAdat?.Nev}</div>
+                 <div id='adatok_delete'>Frekvencia:{actionMindenhezKellAdat?.ProcesszorFrekvencia}</div>
+                 <div id='adatok_delete'>Maximum frekvencia:{actionMindenhezKellAdat?.BProcesszorFrekvencia}</div>
+                 <div id='adatok_delete'>Alaplap foglalat:{actionMindenhezKellAdat?.AlaplapFoglalat}</div>
+                 <div id='adatok_delete'>Szálak száma:{actionMindenhezKellAdat?.SzalakSzama}</div>
+                 <div id='adatok_delete'>Támogatott memória típus:{actionMindenhezKellAdat?.TamogatottMemoriatipus}</div>
+                 <div id='adatok_delete'>Processzormegok száma:{actionMindenhezKellAdat?.ProcesszormagokSzama}</div>
+                 <div id='adatok_delete'>Gyártó:{actionMindenhezKellAdat?.Gyarto}</div>
+                 <div id='adatok_delete'>Ajánlott tápegység:{actionMindenhezKellAdat?.AjanlottTapegyseg}</div>
+                 <div id='adatok_delete'>Integrált videókártya:{actionMindenhezKellAdat?.IntegraltVideokartya}</div>
                  </div>
 
                   <div id='contents'>
