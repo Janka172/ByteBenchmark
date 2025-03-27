@@ -3,9 +3,12 @@ import { useState } from 'react';
 function UjAlk() {
 
     return (
-        <div>
-            
-        </div>  
+        <div id='torzs'>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+         </div>  
     );
   }
   
