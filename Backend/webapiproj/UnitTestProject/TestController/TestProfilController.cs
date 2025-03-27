@@ -142,6 +142,7 @@ namespace UnitTestProject.TestController
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
+        [TestMethod]
         public async Task ProfilEmailvalid()
         {
             var ctx = new TestProjektContext();
