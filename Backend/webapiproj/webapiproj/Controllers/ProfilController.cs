@@ -134,7 +134,7 @@ namespace webapiproj.Controllers
                 //    result.Jelszo = salt;
                 //    result.JelszoUjra = hash;
                 //}
-                if(value.Jogosultsag!=0) result.Jogosultsag = value.Jogosultsag;
+                if(value.Jogosultsag!=null) result.Jogosultsag = value.Jogosultsag;
                 if(value.Tema!=null) result.Tema = value.Tema;
                 if(value.LogoEleresiUtja!=null) result.LogoEleresiUtja = value.LogoEleresiUtja;
                 ctx.SaveChanges();

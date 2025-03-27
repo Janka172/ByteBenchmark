@@ -77,7 +77,7 @@ function AdminMenu() {
     setTablDisp('grid');
     setReszletDisp('none');
 
-    document.getElementById('felInp').value = '';
+    document.getElementById('felnInp').value = '';
     document.getElementById('emailIn').value = '';
     document.getElementById('jogCombo').value = 'skip';
 
@@ -90,8 +90,6 @@ function AdminMenu() {
       setAltNyitva('none');
       beallitasMenuApaphelyzetbe();
     }
-
-    console.log(altNyitva)
   }
   
   function jelszomLenyitas(){
@@ -115,7 +113,7 @@ function AdminMenu() {
     setJelszoNyitva('none');
     setTorlesNyitva('none');
     document.getElementById('jogC').value='-';
-    document.getElementById('felInp').value='';
+    document.getElementById('felnInp').value='';
     document.getElementById('emailIn').value='';
     document.getElementById('mJel1').value='';
     document.getElementById('mJel1').value='';
@@ -149,12 +147,11 @@ function AdminMenu() {
     let felhNev = null;
     let email = null;
     let jog = null;
-
-    if(document.getElementById('felInp').value != '') felhNev = document.getElementById('felInp').value;
+    
+    if(document.getElementById('felnInp').value != '') felhNev = document.getElementById('felnInp').value;
     if(document.getElementById('emailIn').value != '') email = document.getElementById('emailIn').value;
     if(document.getElementById('jogC').value != 'skip') jog = document.getElementById('jogC').value;
   
-    console.log(document.getElementById('emailIn').value)
     // Profiladatok frissítése
     const response = await fetch(`https://localhost:44316/api/Profil/1?name=${nev}`, {
       method: "PATCH",
@@ -291,7 +288,8 @@ function AdminMenu() {
       <div className='profReszletek' style={{ display: reszletDisp }}>
         <div className='reszletKeret' key='egyetlenKeret'>
           <div className='visszaGomb' onClick={visszaTablahoz}>Vissza</div>
-          {fejlec=='' ? console.log() : fejlec.map(x=>x)}
+          {fejlec == '' ? console.log() : fejlec.map((x, index) => <div key={index}>{x}</div>)}
+
 
           <div className='lenyitosMenu' onClick={alatlanosLenyitas}>Általános beállítások</div>
           <div className='modCont' style={{ display: altNyitva }}>
@@ -306,7 +304,7 @@ function AdminMenu() {
 
             <div className='modSor'>
               <div className='baNeve'>Felhasználónév:</div>
-              <input type='text' id='felInp'></input>
+              <input type='text' id='felnInp'></input>
             </div>
 
             <div className='modSor'>

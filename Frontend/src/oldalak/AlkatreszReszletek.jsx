@@ -5,7 +5,9 @@ import AlkReszlet from '../alkatreszReszletek/AlkReszlet';
 function AlkatreszReszletek() {
 
   return (
-    <AlkReszlet></AlkReszlet>
+    <div className='Tartalmak'>
+      <AlkReszlet></AlkReszlet>
+    </div>
   );
 }
 

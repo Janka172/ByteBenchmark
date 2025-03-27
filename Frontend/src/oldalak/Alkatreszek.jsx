@@ -4,7 +4,9 @@ import Keret from '../alkatreszek/KeretAlkatresz'
 function Alkatreszek() {
 
   return (
-    <Keret></Keret>
+    <div className='Tartalmak'>
+      <Keret></Keret>
+    </div>
   );
 }
 

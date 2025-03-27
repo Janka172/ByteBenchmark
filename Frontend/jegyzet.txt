@@ -1,5 +1,2 @@
 Hambi bezárás
-Menü legyen széles
 Fekő kiválasztás
-Szerepkör váltás
-Csak admin tudjon csak újakat létrehozni

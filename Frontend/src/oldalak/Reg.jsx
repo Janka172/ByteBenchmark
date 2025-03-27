@@ -5,7 +5,7 @@ import Regisztr from '../felhasznalokezeles/Regiszt';
 function Reg() {
 
   return (
-    <div>
+    <div className='Tartalmak'>
       <Regisztr></Regisztr>
     </div>
   );

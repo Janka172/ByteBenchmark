@@ -5,7 +5,9 @@ import Keret from '../alkalmazasok/KeretAlkalmazas.jsx';
 function Alkalmazasok() {
 
   return (
-    <Keret></Keret> 
+    <div className='Tartalmak'>
+     <Keret></Keret> 
+    </div>
   );
 }
 

@@ -5,7 +5,9 @@ import AppReszlet from '../alkalmazasReszletek/AppReszlet';
 function AlkalmazasReszletek() {
 
   return (
-    <AppReszlet></AppReszlet>
+    <div className='Tartalmak'>
+      <AppReszlet></AppReszlet>
+    </div> 
   );
 }
 

@@ -73,7 +73,7 @@ function App() {
         <Sidebar></Sidebar> 
         <Fekvo></Fekvo> 
     
-        <div className='Tartalmak'>
+        <div>
           <Routes>
 
             <Route path='/' index element={<Kezdolap />} />
@@ -86,14 +86,11 @@ function App() {
             <Route path='/oldalak/Reg' index element={<Reg />} />
             <Route path="/oldalak/Rolunk" element={<Rolunk />} />
             <Route path="/oldalak/Kontakt" element={<Kontakt />} />
+            <Route path='/oldalak/UjAlkalmazas' index element={<UjAlkalmazas />} />
+            <Route path='/oldalak/UjAlkatresz' index element={<UjAlkatresz />} />
             
           </Routes>
         </div>
-
-        <Routes>
-          <Route path='/oldalak/UjAlkalmazas' index element={<UjAlkalmazas />} />
-          <Route path='/oldalak/UjAlkatresz' index element={<UjAlkatresz />} />
-        </Routes>
 
         <div className='marginBottom'></div>
         

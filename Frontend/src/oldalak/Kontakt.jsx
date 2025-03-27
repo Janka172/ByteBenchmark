@@ -4,7 +4,7 @@ import KontaktComp from '../kontakt/KontaktComp';
 function Kontakt() {
 
   return (
-    <div>
+    <div className='Tartalmak'>
       <KontaktComp></KontaktComp>
     </div>
   );

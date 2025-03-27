@@ -6,7 +6,9 @@ import Sajat from '../sajatSetup/Sajat';
 function SajatSetup() {
 
   return (
-    <Sajat></Sajat>
+    <div className='Tartalmak'>
+      <Sajat></Sajat>
+    </div>
   );
 }
 

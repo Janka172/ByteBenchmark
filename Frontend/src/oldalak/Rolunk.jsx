@@ -5,7 +5,7 @@ import RolunkComp from '../rolunk/RolunkComp';
 function Rolunk() {
 
   return (
-    <div>
+    <div className='Tartalmak'>
       <RolunkComp></RolunkComp>
     </div>
   );

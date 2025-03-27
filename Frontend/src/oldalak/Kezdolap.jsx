@@ -6,7 +6,9 @@ import Oszlopok from '../kezdolap/Oszlopok.jsx';
 function App() {
 
   return (
-    <Oszlopok></Oszlopok>
+    <div className='Tartalmak'>
+      <Oszlopok></Oszlopok>
+    </div>
   );
 }
 

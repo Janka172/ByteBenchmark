@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\hj_info2005a2\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|C:\\Users\\hj_info2005a2\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\controllers\\profilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|solutionrelative:webapiproj\\controllers\\profilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|c:\\users\\hj_info2005a2\\documents\\github\\teljesprojekt\\backend\\webapiproj\\webapiproj\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|solutionrelative:webapiproj\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|c:\\users\\hj_info2005a2\\documents\\github\\teljesprojekt\\backend\\webapiproj\\unittestproject\\testcontroller\\testprofilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|C:\\Users\\hj_info2005a2\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\unittestproject\\testcontroller\\testprofilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|solutionrelative:unittestproject\\testcontroller\\testprofilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|C:\\Users\\hj_info2005a2\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\controllers\\profilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62E9D0D7-3BDB-4694-A948-19965B21A18E}|webapiproj\\webapiproj.csproj|solutionrelative:webapiproj\\controllers\\profilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8214D4EC-AF86-4A9D-9B1E-189E3B5EB8AB}|UnitTestProject\\UnitTestProject.csproj|C:\\Users\\hj_info2005a2\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\unittestproject\\testcontroller\\testramcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -70,24 +70,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 17,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Web.config",
               "DocumentMoniker": "C:\\Users\\hj_info2005a2\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Web.config",
               "RelativeDocumentMoniker": "webapiproj\\Web.config",
               "ToolTip": "C:\\Users\\hj_info2005a2\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Web.config",
               "RelativeToolTip": "webapiproj\\Web.config",
-              "ViewState": "AgIAACYAAAAAAAAAAAAAAD0AAAATAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAAD8AAABvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2025-03-26T12:13:57.596Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "TestProfilController.cs",
               "DocumentMoniker": "C:\\Users\\hj_info2005a2\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestController\\TestProfilController.cs",
               "RelativeDocumentMoniker": "UnitTestProject\\TestController\\TestProfilController.cs",
@@ -95,8 +95,7 @@
               "RelativeToolTip": "UnitTestProject\\TestController\\TestProfilController.cs",
               "ViewState": "AgIAAJEAAAAAAAAAAAAAAKYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T09:15:45.638Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T09:15:45.638Z"
             },
             {
               "$type": "Document",
@@ -112,15 +111,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "ProfilController.cs",
               "DocumentMoniker": "C:\\Users\\hj_info2005a2\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\ProfilController.cs",
               "RelativeDocumentMoniker": "webapiproj\\Controllers\\ProfilController.cs",
               "ToolTip": "C:\\Users\\hj_info2005a2\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\ProfilController.cs",
               "RelativeToolTip": "webapiproj\\Controllers\\ProfilController.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAApwCoAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAG8AAAAAAAAAAAApwIgAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T09:17:49.441Z"
+              "WhenOpened": "2025-03-26T09:17:49.441Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",

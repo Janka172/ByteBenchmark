@@ -4,7 +4,7 @@ import Beallitasok from '../felhasznalokezeles/Beallitasok';
 function Profil() {
 
   return (
-    <div>
+    <div className='Tartalmak'>
       <Beallitasok></Beallitasok>
     </div>
   );
