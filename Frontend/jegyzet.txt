@@ -1,3 +1,5 @@
-
+Kijelentekeztt:
+    ne tudjon menteni
+    ne tudjon a nem létező mentett feltételek alapján szűrni, mert meg fog halni az oldal.
 
 nkKép: Képarány: 16:9

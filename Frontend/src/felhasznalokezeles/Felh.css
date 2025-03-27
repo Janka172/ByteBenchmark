@@ -48,12 +48,15 @@ select{
 
 .subGomb{
     display: flex;
-    background-color: rgb(189, 128, 128);
+    background-color: rgb(226, 85, 85);
     font-size: 2vw;
     padding: 1vw 5vw;
     width: 100%;
     justify-content: center;
     border-radius: 3vw 0vw;
+}
+.subGomb:hover{
+    background-color: #ffa1a1;
 }
 
 .submitGomb:hover{

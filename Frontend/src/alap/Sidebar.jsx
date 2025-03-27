@@ -42,8 +42,14 @@ function Sidebar() {
 
   function belepettE(){
     if( JSON.parse(localStorage.getItem("loggedInUser"))) {
-      document.getElementById('L4').style.display='grid';
-      document.getElementById('L5').style.display='grid';
+      if(JSON.parse(localStorage.getItem("loggedInUser")).Jogosultsag == 0) {
+        document.getElementById('L4').style.display='none';
+        document.getElementById('L5').style.display='none';
+      }
+      else {
+        document.getElementById('L4').style.display='grid';
+        document.getElementById('L5').style.display='grid';
+      }
     }
     else {
       document.getElementById('L4').style.display='none';
