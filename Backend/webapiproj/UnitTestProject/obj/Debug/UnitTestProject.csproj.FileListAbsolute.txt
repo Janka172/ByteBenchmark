@@ -46,7 +46,6 @@ C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\UnitTe
 C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\UnitTestProject\bin\Debug\System.Web.Http.WebHost.xml
 C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\UnitTestProject\obj\Debug\UnitTestProject.dll
 C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\UnitTestProject\obj\Debug\UnitTestProject.pdb
-C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\UnitTestProject\obj\Debug\UnitTest.294DD5B1.Up2Date
 E:\TeljesProjekt\TeljesProjekt\Backend\webapiproj\UnitTestProject\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 E:\TeljesProjekt\TeljesProjekt\Backend\webapiproj\UnitTestProject\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 E:\TeljesProjekt\TeljesProjekt\Backend\webapiproj\UnitTestProject\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
@@ -96,3 +95,4 @@ E:\TeljesProjekt\TeljesProjekt\Backend\webapiproj\UnitTestProject\obj\Debug\Unit
 E:\TeljesProjekt\TeljesProjekt\Backend\webapiproj\UnitTestProject\obj\Debug\UnitTestProject.csproj.CopyComplete
 E:\TeljesProjekt\TeljesProjekt\Backend\webapiproj\UnitTestProject\obj\Debug\UnitTestProject.dll
 E:\TeljesProjekt\TeljesProjekt\Backend\webapiproj\UnitTestProject\obj\Debug\UnitTestProject.pdb
+C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\UnitTestProject\obj\Debug\UnitTestProject.csproj.CopyComplete
