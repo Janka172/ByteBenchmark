@@ -9,6 +9,7 @@ using System.Web.Http.Results;
 using webapiproj.Controllers;
 using webapiproj.Models;
 using webapiproj.UserManager;
+using System.Threading.Tasks;
 
 namespace UnitTestProject.TestController
 {
@@ -18,7 +19,7 @@ namespace UnitTestProject.TestController
         public void FillTestDatabase(TestProjektContext ctx)
         {
             // Adding sample Videokartya
-            ctx.Videokartyak.Add(new Videokartya
+           var v= ctx.Videokartyak.Add(new Videokartya
             {
                 Id = 1,
                 Nev = "NVIDIA GTX 1080",
@@ -31,7 +32,7 @@ namespace UnitTestProject.TestController
             });
 
             // Adding sample Processzor
-            ctx.Processzorok.Add(new Processzor
+            var p=ctx.Processzorok.Add(new Processzor
             {
                 Id = 1,
                 Nev = "Intel i7-9700K",
@@ -48,7 +49,7 @@ namespace UnitTestProject.TestController
             });
 
             // Adding sample Ram
-            ctx.Ramok.Add(new Ram
+            var r=ctx.Ramok.Add(new Ram
             {
                 Id = 1,
                 Nev = "Corsair Vengeance",
@@ -59,7 +60,7 @@ namespace UnitTestProject.TestController
             });
 
             // Adding sample Alaplap
-            ctx.Alaplapok.Add(new Alaplap
+            var a=ctx.Alaplapok.Add(new Alaplap
             {
                 Id = 1,
                 Nev = "ASUS ROG Strix",
@@ -75,18 +76,27 @@ namespace UnitTestProject.TestController
             });
 
             // Adding sample Oprendszer
-            ctx.Oprendszerek.Add(new Operaciosrendszer
+            var o=ctx.Oprendszerek.Add(new Operaciosrendszer
             {
                 Id = 1,
-                Nev = "Windows 10"
+                Nev = "Windows 10",
+                BuildSzam="safaf",
+                Verzio= "safsaf",
+                KepNev ="sfafasf"
             });
-
+            var k=ctx.Kategoriak.Add(new Kategoria
+            {
+                Id = 1,
+                Nev = "RPG"
+            });
             // Adding sample Applikacio
-            ctx.Applikaciok.Add(new Applikacio
+            var ap=ctx.Applikaciok.Add(new Applikacio
             {
                 Id = 1,
                 Nev = "Cyberpunk 2077",
-                Tarhely = 70
+                Tarhely=55,
+                Kepeleresiutja= "safsaf",
+                KatId = k.Id,
             });
 
             // Adding sample Setup entity linking all components
@@ -94,12 +104,12 @@ namespace UnitTestProject.TestController
             {
                 Id = 1,
                 Gp = "High",
-                VidkaId = 1,
-                ProcId = 1,
-                RamId = 1,
-                AlaplId = 1,
-                OpId = 1,
-                ApplikacioId = 1
+                VidkaId = v.Id,
+                ProcId = p.Id,
+                RamId = r.Id,
+                AlaplId = a.Id,
+                OpId = o.Id,
+                ApplikacioId = ap.Id
             });
 
             ctx.SaveChanges();
@@ -119,6 +129,32 @@ namespace UnitTestProject.TestController
             Assert.IsNotNull(result, "The result should not be null.");
             var setupList = result.Content.ToList();
             Assert.AreEqual(1, setupList.Count, "The number of setups returned should be 1.");
+        }
+        public async Task Post_EgySetup()
+        {
+
+            var ctx = new TestProjektContext();
+            var controller = new SetupController(ctx)
+            {
+                Request = new HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
+
+            var model = new SetupPostModel
+            {
+                ApplikacioNeve="",
+                Gepigeny="",
+                VidekortyaNev="",
+                Vram=,
+                ProcesszorNev="",
+                OprendszerNev="",
+                RamNeve="",
+                RamFrekvencia=,
+                AlaplapNeve="",
+    };
+            var result = await controller.Post(model).ExecuteAsync(new System.Threading.CancellationToken());
+            Assert.IsNotNull(result);
+            Assert.AreEqual(HttpStatusCode.Created, result.StatusCode);
         }
     }
 }
