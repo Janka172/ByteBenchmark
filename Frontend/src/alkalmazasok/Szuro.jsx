@@ -10,7 +10,6 @@ function Szuro() {
   const [betoltV, setBetoltV] = useState(true);
   const [mindenProcesszor, setMindenProcesszor] = useState([]);
   const [betoltP, setBetoltP] = useState(true);
-  const [mindenOpRendszer, setMindenOpRendszer] = useState([]);
   const [betoltO, setBetoltO] = useState(true);
 
   // A kategoria adatok lekérése
@@ -52,25 +51,10 @@ function Szuro() {
   }
   useEffect(() => { getMindenProcesszor(); }, []);
 
-  // A Op rendszer adatok lekérése
-  async function getMindenOpRendszer() {
-    try {
-      const response = await fetch("https://localhost:44316/api/Oprendszer");
-      const data = await response.json();
-      setMindenOpRendszer(data);
-      setBetoltO(false);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  useEffect(() => { getMindenOpRendszer(); }, []);
-  
-
   const [nev, setNev] = useState('');
   const [kategoria, setKategoria] = useState('-');
   const [videokartya, setVideokartya] = useState('-');
   const [processzor, setProcesszor] = useState('-');
-  const [opRendszer, setOpRendszer] = useState('-');
   const [ram, setRam] = useState('');
   const [tarhely, setTarhely] = useState('');
 
@@ -126,7 +110,6 @@ function Szuro() {
     setKategoria('-');
     setVideokartya('-');
     setProcesszor('-');
-    setOpRendszer('-');
     setRam('');
     setTarhely('');
 
@@ -135,7 +118,6 @@ function Szuro() {
       kategoria: '-',
       videokartya: '-',
       processzor: '-',
-      opRendszer: '-',
       ram: '',
       tarhely: '',
     };
@@ -154,7 +136,6 @@ function Szuro() {
       kategoria: kategoria,
       videokartya: videokartya,
       processzor: processzor,
-      opRendszer: opRendszer,
       ram: ram,
       tarhely: tarhely,
     };
@@ -218,7 +199,6 @@ function Szuro() {
       kategoria: '-',
       videokartya: `${set.VidekortyaNev} - ${set.VideokartyaVram}`,
       processzor: set.ProcesszorNev,
-      opRendszer: set.OprendszerNev,
       ram: set.RamMeret,
       tarhely: ''
     };
@@ -281,17 +261,6 @@ function Szuro() {
             {betoltP ? (<option>Betöltés...</option>) : (
               mindenProcesszor.map((proc, index) => (
                 <option value={proc.Nev} key={index}>{proc.Nev}</option> 
-              )))}
-          </select>
-        </div>
-
-        <div className='mezo' style={{ display: displ }}>
-          <p>Operációs rendszer:</p>
-          <select id='opRendszerCombo' value={opRendszer} onChange={(e) => setOpRendszer(e.target.value)}>
-            <option value='-' key='-1'>-</option>
-            {betoltO ? (<option>Betöltés...</option>) : (
-              mindenOpRendszer.map((op, index) => (
-                <option value={op.Nev} key={index}>{op.Nev}</option> 
               )))}
           </select>
         </div>

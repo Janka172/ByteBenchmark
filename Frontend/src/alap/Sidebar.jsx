@@ -3,11 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 import SidebarStilus from './Sidebar.css';
 
 function Sidebar() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const location = useLocation(); // Aktuális útvonal figyelése
+  const [sidebarNyitva, setsidebarNyitva] = useState(false);
+  const location = useLocation();
 
-  const open = () => setSidebarOpen(true);
-  const close = () => setSidebarOpen(false);
+  const open = () => setsidebarNyitva(true);
+  const close = () => setsidebarNyitva(false);
   const kicsie = window.innerWidth <= 767;
 
   function kivalaszt(azon) {
@@ -23,6 +23,8 @@ function Sidebar() {
         console.error();
       }
     }
+
+    close();
   }
 
   useEffect(() => {
@@ -39,7 +41,6 @@ function Sidebar() {
   }, [location.pathname]);
 
   function belepettE(){
-    //style={{ display: JSON.parse(localStorage.getItem("loggedInUser")).Jogosultsag == 1 ? 'grid' : 'none' }}
     if( JSON.parse(localStorage.getItem("loggedInUser"))) {
       document.getElementById('L4').style.display='grid';
       document.getElementById('L5').style.display='grid';
@@ -56,7 +57,7 @@ function Sidebar() {
     <div>
       <div 
         className="sidebar blockSidebar balAnim" 
-        style={{ width: sidebarOpen ? (kicsie ? '40%' : 'auto') : '0', display: sidebarOpen ? 'block' : 'none' }} id="mySidebar">
+        style={{ width: sidebarNyitva ? (kicsie ? '40%' : 'auto') : '0', display: sidebarNyitva ? 'block' : 'none' }} id="mySidebar">
         <button className="navigElem gombi visszaGomb" onClick={close}>Vissza &times;</button>
         <Link to="/oldalak/Alkalmazasok" className="navigElem gombi" id='L1'>Alkalmazások</Link>
         <Link to="/oldalak/Alkatreszek" className="navigElem gombi" id='L2'>Alkatrészek</Link>
@@ -64,8 +65,8 @@ function Sidebar() {
         <Link to="/oldalak/UjAlkalmazas" className="navigElem gombi" id='L4' >Új alkalmazás</Link>
         <Link to="/oldalak/UjAlkatresz" className="navigElem gombi" id='L5' >Új alkatrész</Link>
       </div>
-      <div id="hambiGomb" style={{ marginLeft: sidebarOpen ? '25%' : '0' }}>
-        <button className="hambiGombocska" onClick={open} id="openNav" style={{ display: sidebarOpen ? 'none' : 'inline-block' }}>&#9776;</button>
+      <div id="hambiGomb" style={{ marginLeft: sidebarNyitva ? '25%' : '0' }}>
+        <button className="hambiGombocska" onClick={open} id="openNav" style={{ display: sidebarNyitva ? 'none' : 'inline-block' }}>&#9776;</button>
       </div>
     </div>
   );

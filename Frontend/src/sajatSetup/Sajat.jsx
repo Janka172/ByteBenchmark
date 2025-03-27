@@ -357,12 +357,6 @@ function Sajat() {
   
       let szurtLista = [...mindenApp];
   
-      // Szűrés operációsrendszer szerint
-      szurtLista = szurtLista.filter(x => {
-        const minSetup = MinSetupKereso(setup, x.Nev);
-        return minSetup && minSetup.OprendszerNev == kivOpRendszer.Nev;
-      });
-  
       // Szűrés videókártya szerint
       try {
         const response = await fetch(`https://localhost:44316/api/Videokartya/0?name=${kivVideokartya.Nev}&vram=${kivVideokartya.vram}`);

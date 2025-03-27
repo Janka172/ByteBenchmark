@@ -158,21 +158,6 @@ function AppLista() {
     }
   }
 
-  //Szűrés operációsrendszer szerint
-  function opSzures() {
-    if(feltetel.keresesiAdatok.opRendszer != '-'){
-      //console.log(feltetel.keresesiAdatok)
-
-      var opraSzurt = szurtApp.filter(x => {
-        if(MinSetupKereso(setup, x.Nev)!=null){
-          return MinSetupKereso(setup, x.Nev).OprendszerNev == feltetel.keresesiAdatok.opRendszer;
-        }
-        return false;
-      });
-      setSzurtApp(opraSzurt);
-    }
-  }
-
   //Szűrés ram szerint
   function ramSzures() {
     if(feltetel.keresesiAdatok.ram != ''){
@@ -209,7 +194,6 @@ function AppLista() {
       await kategoriaSzures();
       await vidkSzures();
       await prociSzures();
-      await opSzures();
       await ramSzures();
       await tarSzures();
       setSzurtAlap(false);

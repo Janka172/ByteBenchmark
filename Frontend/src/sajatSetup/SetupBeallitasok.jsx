@@ -126,7 +126,7 @@ function SetupBeallitasok() {
         }
         setMind(ujMind);
     }
-//itt
+    
     function kereses(){
         let keresett = document.getElementById('keresesiAdat').value;
         if(keresett != ''){
