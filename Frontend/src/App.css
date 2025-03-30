@@ -92,3 +92,9 @@ input {
     margin-bottom: 3vw;
   }
 }
+
+@media (min-width: 2500px){
+  input, select{
+    border-radius: 0 0.5vw;
+}
+}
