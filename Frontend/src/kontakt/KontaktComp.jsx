@@ -14,13 +14,13 @@ function KontaktComp() {
         },
         {
             Nev: 'Szabó Máté',
-            KepEleres: 'profil.hiany.jpg',
+            KepEleres: 'MateProfil.jpg',
             Insta: '',
             InstaLink: ''
         },
         {
             Nev: 'Salamon Szindi',
-            KepEleres: 'profil.hiany.jpg',
+            KepEleres: 'SzindiProfil.jpg',
             Insta: '',
             InstaLink: ''
         }

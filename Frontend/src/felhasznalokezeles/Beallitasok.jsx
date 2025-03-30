@@ -90,7 +90,7 @@ function Beallitasok() {
       width: 300,
       height: 300,
     });
-    return croppedCanvas.toDataURL(); // Returns the cropped image as a data URL
+    return croppedCanvas.toDataURL();
   };
 
   const altalanosModositasa = async () => {
@@ -222,15 +222,15 @@ function Beallitasok() {
                   background={false}
                   responsive={true}
                   autoCropArea={1}
-                  checkOrientation={false} // Disable EXIF-based orientation correction
+                  checkOrientation={false}
                 />
               </div>
             )}
           </div>
 
           <button className='altalnosMentes' onClick={() => {
-            const croppedImage = getCroppedImage(); // Get the cropped image
-            altalanosModositasa(croppedImage); // Save with the cropped image
+            const croppedImage = getCroppedImage();
+            altalanosModositasa(croppedImage);
           }}>Mentés</button>
         </div>
 

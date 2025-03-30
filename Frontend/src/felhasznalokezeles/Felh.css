@@ -283,7 +283,7 @@ select{
 .keresesSor{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin: 1vw;
+    margin: 0.1vw 1vw;
 }
 
 .keresesSor *{
@@ -512,7 +512,7 @@ select{
         font-size: 0.75vw;
     }
 
-    .altBeCim, .lenyitosMenu, .altalnosMentes, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb, .szuroCim, .profCimsor div, .regCim{
+    .altBeCim, .lenyitosMenu, .altalnosMentes, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb, .szuroCim, .profCimsor div, .regCim, .keresesSor p, .keresesSor input, .keresesSor select, .keresesSor option, .modSor option{
         font-size: 1vw;
     }
 

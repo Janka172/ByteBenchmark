@@ -62,7 +62,10 @@ function AlkatreszReszletek() {
       if (ertek == false) ertek = 'Nincs';
       else if (ertek == true) ertek = 'Van';
 
-      if(! ((sor == 'Kepnev') || sor == 'KepNev')){
+      if(kiirando == 'Méret') ertek = ertek + ' GB';
+      if(kiirando == 'Frekvencia') ertek = ertek + ' Hz';
+
+      if(! ((sor == 'Kepnev') || sor == 'KepNev' || sor == 'kepnev')){
         ujMind.push(
           <div className="sor" key={sor}>
             <h2 className="elemNev">{kiirando + ':'}</h2>

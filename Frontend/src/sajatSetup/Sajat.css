@@ -208,7 +208,7 @@
         font-size: 1.5vw;
     }
     
-    .soreCime, .combo, .combo option, .sajGomb, .setSzoveg, #elnevezesiHiba{
+    .soreCime, .combo, .combo option, .sajGomb, .setSzoveg, #elnevezesiHiba, #setNev{
         word-break: normal;
         font-size: 1vw;
     }
@@ -231,5 +231,11 @@
         width: 90%;
         padding: 0.5vw;
     }
+}
 
+@media (min-width: 2500px){
+    .teljesSajat{
+        width: 50%;
+        margin: auto;
+    }
 }
