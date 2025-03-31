@@ -146,7 +146,7 @@ function Beallitasok() {
       body: JSON.stringify({
         Felhasznalonev: felhNev,
         Email: email,
-        Jogosultsag: null,
+        Jogosultsag: -1,
         Tema: tema,
         LogoEleresiUtja: logoEleresiUtja,
       }),
@@ -229,8 +229,13 @@ function Beallitasok() {
           </div>
 
           <button className='altalnosMentes' onClick={() => {
-            const croppedImage = getCroppedImage();
-            altalanosModositasa(croppedImage);
+            if(atmKep){
+              const croppedImage = getCroppedImage();
+              altalanosModositasa(croppedImage);
+            }
+            else{
+              altalanosModositasa();
+            }
           }}>Mentés</button>
         </div>
 
