@@ -25,7 +25,7 @@ namespace UnitTestProject.TestController
             ctx.Videokartyak.Add(
               new Videokartya { Id = 3, Nev = "Demo3", AlaplapiCsatlakozas = "Pci3", AjanlottTapegyseg = 550, MonitorCsatlakozas = "Valami,Valami2", ChipGyartoja = "NVIIDA", Vram = 5 ,KepNev = "semmi" });
             ctx.SaveChanges();
-        }
+       }
        [TestMethod]
        public void Get_OsszVideokartya()
        {
