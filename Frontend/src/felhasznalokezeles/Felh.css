@@ -16,7 +16,7 @@
 
 .regCim{
     font-size: 4vw;
-    text-align: right;
+    text-align: center;
     font-weight: bold;
 }
 
@@ -34,6 +34,7 @@ select{
     font-size: 2vw;
     width: 100%;
     word-break: normal;
+    margin: 0;
 }
 
 .submitGomb{
@@ -43,7 +44,7 @@ select{
     padding: 1vw 5vw;
     width: 100%;
     justify-content: center;
-    border-radius: 3vw 0vw;
+    border-radius: 0vw 2vw;
 }
 
 .subGomb{
@@ -131,6 +132,7 @@ select{
 }
 .menuEle input{
     width: 100%;
+    border-radius: 0 1vw;
 }
 
 .altalnosMentes{
@@ -282,7 +284,7 @@ select{
 .keresesSor{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin: 1vw;
+    margin: 0.1vw 1vw;
 }
 
 .keresesSor *{
@@ -415,6 +417,10 @@ select{
     border: #000 1px solid;
 }
 
+.vagosKeret{
+    width: 50%;
+}
+
 
 @media (max-width: 767px){
     .bejMenu{
@@ -499,7 +505,7 @@ select{
         font-size: 0.8vw;
     }
 
-    .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve, .profilSor div, #hibaUz, .menuElem input{
+    .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve, .profilSor div, #hibaUz, .menuElem input, .bevitelNeve, .menuElem select, option{
         font-size: 0.75vw;
     }
 
@@ -511,11 +517,26 @@ select{
         font-size: 0.75vw;
     }
 
-    .altBeCim, .lenyitosMenu, .altalnosMentes, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb, .szuroCim, .profCimsor div{
+    .altBeCim, .lenyitosMenu, .altalnosMentes, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb, .szuroCim, .profCimsor div, .regCim, .keresesSor p, .keresesSor input, .keresesSor select, .keresesSor option, .modSor option{
         font-size: 1vw;
     }
 
     .profilkepBeall, .profilkepAM{
         width: 50%;
+    }
+
+    .regForm{
+        padding: 1vw;
+        border-radius: 0 2vw;
+    }
+
+    input, select, .menuEle input{
+        width: 100%;
+        border-radius: 0 0.5vw;
+    }
+
+    .jelszoInfoGomb{
+        height: 2vw;
+        width: 2vw;
     }
 }

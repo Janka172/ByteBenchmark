@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Data.Entity;
 using webapiproj.Models;
 using System.Web.Http.Description;
+using webapiproj.Database;
 
 namespace webapiproj.Controllers
 {
@@ -16,7 +17,14 @@ namespace webapiproj.Controllers
     }
     public class CsatlakozoController : ApiController
     {
-        ProjektContext ctx = new ProjektContext();
+        IProjektContext ctx = new ProjektContext();
+
+        public CsatlakozoController() { }
+
+        public CsatlakozoController(IProjektContext context)
+        {
+            ctx = context;
+        }
         // GET api/<controller>
         [ResponseType(typeof(CsatlakozoModel))]
         public IHttpActionResult Get()
@@ -36,13 +44,11 @@ namespace webapiproj.Controllers
         public IHttpActionResult Get(int id, string name)
         {
             CsatlakozoModel result = null;
-            using (var ctx = new ProjektContext())
+
+            result = ctx.Csatlakozok.Where(x => x.Nev == name).Select(x => new CsatlakozoModel
             {
-                result = ctx.Csatlakozok.Where(x => x.Nev == name).Select(x => new CsatlakozoModel
-                {
-                    Nev = x.Nev
-                }).FirstOrDefault();
-            }
+                Nev = x.Nev
+            }).FirstOrDefault();
             if (result == null) return NotFound();
             return Ok(result);
         }

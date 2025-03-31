@@ -39,8 +39,8 @@
 
 .reszletSor{
     border-bottom: #000 1px solid;
-    margin: 2vw;
-    padding: 1vw;
+    margin: 0 2vw ;
+    padding: 0 1vw;
 }
 
 .reszletSor:first-child{

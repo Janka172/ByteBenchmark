@@ -18,7 +18,7 @@ namespace UnitTestProject.TestController
     {
         public void FillTestDatabase(TestProjektContext ctx)
         {
-            // Adding sample Videokartya
+
            var v= ctx.Videokartyak.Add(new Videokartya
             {
                 Id = 1,
@@ -31,7 +31,6 @@ namespace UnitTestProject.TestController
                 KepNev = "fsafsaf"
             });
 
-            // Adding sample Processzor
             var p=ctx.Processzorok.Add(new Processzor
             {
                 Id = 1,
@@ -48,7 +47,7 @@ namespace UnitTestProject.TestController
                 KepNev = "safsafsaf"
             });
 
-            // Adding sample Ram
+
             var r=ctx.Ramok.Add(new Ram
             {
                 Id = 1,
@@ -59,7 +58,7 @@ namespace UnitTestProject.TestController
                 KepNev = "5fsafsaf"
             });
 
-            // Adding sample Alaplap
+
             var a=ctx.Alaplapok.Add(new Alaplap
             {
                 Id = 1,
@@ -75,7 +74,6 @@ namespace UnitTestProject.TestController
                 KepNev = "fasfsaf"
             });
 
-            // Adding sample Oprendszer
             var o=ctx.Oprendszerek.Add(new Operaciosrendszer
             {
                 Id = 1,
@@ -89,7 +87,7 @@ namespace UnitTestProject.TestController
                 Id = 1,
                 Nev = "RPG"
             });
-            // Adding sample Applikacio
+
             var ap=ctx.Applikaciok.Add(new Applikacio
             {
                 Id = 1,
@@ -97,19 +95,27 @@ namespace UnitTestProject.TestController
                 Tarhely=55,
                 Kepeleresiutja= "safsaf",
                 KatId = k.Id,
+                Kategoria=k,
             });
 
-            // Adding sample Setup entity linking all components
+
             ctx.Setupok.Add(new Setup
             {
                 Id = 1,
                 Gp = "High",
                 VidkaId = v.Id,
+                Videokartya = v,
                 ProcId = p.Id,
+                Processzor=p,
                 RamId = r.Id,
+                Ram =r,
                 AlaplId = a.Id,
+                Alaplap =a,
                 OpId = o.Id,
-                ApplikacioId = ap.Id
+                Oprendszer=o,
+                ApplikacioId = ap.Id,
+                Applikacio=ap
+                
             });
 
             ctx.SaveChanges();
@@ -117,23 +123,26 @@ namespace UnitTestProject.TestController
         [TestMethod]
         public void Get_OsszSetup()
         {
-            // Arrange
+            
             var ctx = new TestProjektContext();
             FillTestDatabase(ctx);
             var controller = new SetupController(ctx);
 
-            // Act
+            
             var result = controller.Get() as OkNegotiatedContentResult<IEnumerable<SetupModel>>;
 
-            // Assert
-            Assert.IsNotNull(result, "The result should not be null.");
+            
+            Assert.IsNotNull(result);
             var setupList = result.Content.ToList();
-            Assert.AreEqual(1, setupList.Count, "The number of setups returned should be 1.");
+            Assert.AreEqual(1, setupList.Count);
         }
+
+        [TestMethod]
         public async Task Post_EgySetup()
         {
 
             var ctx = new TestProjektContext();
+            FillTestDatabase(ctx);
             var controller = new SetupController(ctx)
             {
                 Request = new HttpRequestMessage(),
@@ -142,19 +151,59 @@ namespace UnitTestProject.TestController
 
             var model = new SetupPostModel
             {
-                ApplikacioNeve="",
-                Gepigeny="",
-                VidekortyaNev="",
-                Vram=,
-                ProcesszorNev="",
-                OprendszerNev="",
-                RamNeve="",
-                RamFrekvencia=,
-                AlaplapNeve="",
-    };
+                ApplikacioNeve= "Cyberpunk 2077",
+                Gepigeny="mmin",
+                VidekortyaNev= "NVIDIA GTX 1080",
+                Vram=8,
+                ProcesszorNev= "Intel i7-9700K",
+                OprendszerNev= "Windows 10",
+                RamNeve= "Corsair Vengeance",
+                RamFrekvencia= 3200,
+                AlaplapNeve= "ASUS ROG Strix",
+            };
             var result = await controller.Post(model).ExecuteAsync(new System.Threading.CancellationToken());
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.Created, result.StatusCode);
         }
+        [TestMethod]
+        public async Task Patch_EgyVideokartya()
+        {
+
+            var ctx = new TestProjektContext();
+            FillTestDatabase(ctx);
+            var controller = new SetupController(ctx)
+            {
+                Request = new HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
+
+            var model = new SetupPatchModel
+            {
+
+                AlaplapNeve = "ASUS ROG Strix",
+
+            };
+            var result = await controller.Patch(1, "Cyberpunk 2077", "High", model).ExecuteAsync(new System.Threading.CancellationToken());
+            Assert.IsNotNull(result);
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
+        }
+        [TestMethod]
+        public async Task Delete_EgySetup()
+        {
+
+            var ctx = new TestProjektContext();
+            FillTestDatabase(ctx);
+            var controller = new SetupController(ctx)
+            {
+                Request = new HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
+
+
+            var result = await controller.Delete(1, "Cyberpunk 2077", "High").ExecuteAsync(new System.Threading.CancellationToken());
+            Assert.IsNotNull(result);
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
+        }
+
     }
 }

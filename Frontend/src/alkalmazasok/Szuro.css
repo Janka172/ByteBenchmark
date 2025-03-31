@@ -92,8 +92,8 @@ option:hover{
   margin: 1vw;
   padding: 1vw;
   text-align: center;
-  border: 0.2vw black solid;
-  background-color: rgba(194, 52, 52, 0.8);
+  border: 0.2vw rgba(124, 39, 39, 0.5) solid;
+  background-color: rgba(206, 86, 86, 0.678);
 }
 .szurMenuGomb:hover, .setTablaSzur:hover{
   background-color: #ffa1a1;

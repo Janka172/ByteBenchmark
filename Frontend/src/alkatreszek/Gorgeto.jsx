@@ -11,7 +11,6 @@ function Gorgeto({ tema }) {
   const [menuElrejtese, setMenuElrejtese] = useState({ display: 'none' });
   var [tartalom, setTartalom] = useState('További részletek');
 
-  var atmenetiKepUrl='/kepek/kep.png';
   // Különböző témák megkölönböztetési adatai
   const AlkatTulajdonsagok = {
     'Videókártyák': [ { rovidit: 'v' } ],
@@ -217,10 +216,18 @@ function Gorgeto({ tema }) {
     for (let i = 0; i < AppIndex; i++) {
       const alkat = szurtAlk[i];
       const adat = { tipus: temaAdatok[0].rovidit, id: temaAdatok[0].id };
+      let kepEleres = '';
+      if(adat.tipus == 'a') kepEleres = `/IMAGE/${szurtAlk[i].KepNev}`;
+      if(adat.tipus == 'v') kepEleres = `/IMAGE/${szurtAlk[i].kepnev}`;
+      if(adat.tipus == 'p') kepEleres = `/IMAGE/${szurtAlk[i].Kepnev}`;
+      if(adat.tipus == 'r') kepEleres = `/IMAGE/${szurtAlk[i].Kepnev}`;
+      if(adat.tipus == 'o') kepEleres = `/IMAGE/${szurtAlk[i].KepNev}`;
+
+      console.log(szurtAlk[i].KepNev)
       if(adat.tipus=='v'){
         Mind.push(
           <div className="korKepKeret" key={i}>
-            <img src={atmenetiKepUrl} className="korKep" alt="Kép" />
+            <img src={kepEleres} className="korKep" alt="Kép" />
             <h4 className="alkatNeve">{alkat.Nev}</h4>
             <h4 className="alkatReszlet">VRAM: {szurtAlk[i].vram} GB</h4>
             <button className='reszletGomb' onClick={() => reszletMenu(alkat)}>{tartalom}</button>
@@ -230,7 +237,7 @@ function Gorgeto({ tema }) {
       else if(adat.tipus=='r'){
         Mind.push(
           <div className="korKepKeret" key={i}>
-            <img src={atmenetiKepUrl} className="korKep" alt="Kép" />
+            <img src={kepEleres} className="korKep" alt="Kép" />
             <h4 className="alkatNeve">{alkat.Nev}</h4>
             <h4 className="alkatReszlet">Frekvencia: {szurtAlk[i].Frekvencia} Hz</h4>
             <button className='reszletGomb' onClick={() => reszletMenu(alkat)}>{tartalom}</button>
@@ -240,7 +247,7 @@ function Gorgeto({ tema }) {
       else{
         Mind.push(
           <div className="korKepKeret" key={i}>
-            <img src={atmenetiKepUrl} className="korKep" alt="Kép" />
+            <img src={kepEleres} className="korKep" alt="Kép" />
             <h4 className="alkatNeve">{alkat.Nev}</h4>
             <button className='reszletGomb' onClick={() => reszletMenu(alkat)}>{tartalom}</button>
           </div>
