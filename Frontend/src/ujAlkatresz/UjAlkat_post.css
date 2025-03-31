@@ -1,21 +1,11 @@
 /*Az egész oldal szelektora*/
-#container
-{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
+
 .body
 {
   display: flex;
   flex-direction: row;
-  margin-top: 0;;
+  justify-content: center;
+
 }
 /*Navigációs sáv szelektorai*/
 .navbars {
@@ -70,11 +60,15 @@
     font-size: 1vw;
     border-radius: 0% 30%;
     background-color: rgba(194, 52, 52, 0.8);
-    color: black;   
+    color: black;
+ 
   }
   .positions
   {
     float: right;
+    display: flex;
+    flex-direction: column;
+    position: fixed;  
   }
   /*Legördülő lista szelektora*/
   
