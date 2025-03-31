@@ -223,7 +223,6 @@ function Gorgeto({ tema }) {
       if(adat.tipus == 'r') kepEleres = `/IMAGE/${szurtAlk[i].Kepnev}`;
       if(adat.tipus == 'o') kepEleres = `/IMAGE/${szurtAlk[i].KepNev}`;
 
-      console.log(szurtAlk[i].KepNev)
       if(adat.tipus=='v'){
         Mind.push(
           <div className="korKepKeret" key={i}>

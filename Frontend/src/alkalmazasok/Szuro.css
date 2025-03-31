@@ -92,12 +92,18 @@ option:hover{
   margin: 1vw;
   padding: 1vw;
   text-align: center;
-  border: 0.2vw black solid;
-  background-color: rgba(194, 52, 52, 0.8);
+  border: 0.2vw rgba(68, 57, 57, 0.6) solid;
+  background-color: rgba(206, 86, 86, 0.678);
 }
 .szurMenuGomb:hover, .setTablaSzur:hover{
   background-color: #ffa1a1;
   cursor: pointer;
+}
+.szurMenuGomb:first-child{
+  border-radius: 1vw 1vw 0 0;
+}
+.szurMenuGomb:last-child{
+  border-radius: 0 0 1vw 1vw;
 }
 
 .setTablaSor{

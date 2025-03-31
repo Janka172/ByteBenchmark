@@ -93,7 +93,7 @@ function Beallitasok() {
     return croppedCanvas.toDataURL();
   };
 
-  const altalanosModositasa = async () => {
+  async function altalanosModositasa() {
     let nev = JSON.parse(localStorage.getItem("loggedInUser")).Felhasznalonev;
 
     let tema = null;
@@ -229,8 +229,13 @@ function Beallitasok() {
           </div>
 
           <button className='altalnosMentes' onClick={() => {
-            const croppedImage = getCroppedImage();
-            altalanosModositasa(croppedImage);
+            if(atmKep){
+              const croppedImage = getCroppedImage();
+              altalanosModositasa(croppedImage);
+            }
+            else{
+              altalanosModositasa();
+            }
           }}>Mentés</button>
         </div>
 

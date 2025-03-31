@@ -203,13 +203,13 @@ function Szuro() {
       tarhely: ''
     };
     setKeresesiAdatok(adatok);
-  }
-
+  }//
+console.log()
   return (
     <div className='filter' style={{ backgroundColor: hatter }}>
       <div style={{display: gombDisp}}>
         <div className='szurMenuGomb' onClick={feltetelMegadas}>Szűrési feltételek megadása</div>
-        <div className='szurMenuGomb' onClick={mentettek}>Szűrés mentett setupok szerint</div>
+        <div className='szurMenuGomb' onClick={mentettek} style={{display: JSON.parse(localStorage.getItem('loggedInUser')) ? 'grid' : 'none'}}>Szűrés mentett setupok szerint</div>
       </div>
       
       <div className='feltetlesMenu' style={{display: feltDisp}}>
