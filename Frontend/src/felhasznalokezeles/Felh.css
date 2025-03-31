@@ -34,6 +34,7 @@ select{
     font-size: 2vw;
     width: 100%;
     word-break: normal;
+    margin: 0;
 }
 
 .submitGomb{
@@ -414,6 +415,10 @@ select{
     padding: 1vw;
     border-radius: 1vw 0;
     border: #000 1px solid;
+}
+
+.vagosKeret{
+    width: 50%;
 }
 
 

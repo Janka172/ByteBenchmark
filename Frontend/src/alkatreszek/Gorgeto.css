@@ -25,6 +25,7 @@
 .korKep {
     width: 70%;
     border-radius: 50%;
+    border: 1px black solid;
 }
 
 .alkatNeve {

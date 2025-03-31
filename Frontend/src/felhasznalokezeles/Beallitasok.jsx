@@ -111,7 +111,7 @@ function Beallitasok() {
       email = document.getElementById('emailNInp').value;
     }
 
-    // Kép feltöltése, ha van
+    // Kép feltöltése, ha van 
     let logoEleresiUtja = null;
     if (selectedFile) {
       const formData = new FormData();
