@@ -296,9 +296,8 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                 <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Alaplap"); setActionButtons("Post")}}>Alaplap</a>
                 <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Memória"); setActionButtons("Post")}}>Memória</a>
                 <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Processzor"); setActionButtons("Post")}}>Processzor</a>
-             </nav>
-
-
+             </nav> 
+         <div id='container'>
              {actionHardver==="Videókártya" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
                     <form id='post_form'>
@@ -797,8 +796,8 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                      <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                  </div>
             </div> : <div></div>}
-            {/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-        </div>  
+            </div>
+         </div>
     );
   }
   
