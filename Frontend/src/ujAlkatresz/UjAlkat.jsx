@@ -164,7 +164,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
     event.preventDefault();
     if(actionHardver==="Videókártya" && actionButtons==="Delete")RequestVideokDelete(actionKivalasztottNev, actionSelectedVram); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
     if(actionHardver==="Alaplap" && actionButtons==="Delete")RequestAlaplapDelete(actionKivalasztottAlaplapNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-    if(actionHardver==="Memória" && actionButtons==="Delete")RequestRamDelete(actionKivalaszottRamNev, actionSelectedRamFrekvencia); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+    if(actionHardver==="Memória" && actionButtons==="Delete")RequestRamDelete(actionKivalaszottRamNev, actionSelectedRamFrekvencia,actionSelectedRamMeret); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
     if(actionHardver==="Processzor" && actionButtons==="Delete")RequestProcesszorDelete(actionKivalasztottProcesszorNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
 
    }
@@ -771,7 +771,10 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
                            <button className='buttons' id='delete_adatlekerogomb' type='button' onClick={(e)=>adatProcesszorLekeres(e, actionKivalasztottProcesszorNev)}>Adatok lekérése</button><br/>
 
-                     <button className='buttons' type='button' onClick={(e)=>handleDelete(e)}>Alkatrész eltávolítása</button>                
+                     <button className='buttons' type='button' onClick={(e)=>{
+                           handleDelete(e);
+                           
+                     }}>Alkatrész eltávolítása</button>                
                     </form>
                  </div>
 
