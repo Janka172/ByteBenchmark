@@ -534,7 +534,7 @@ function Sajat() {
 
         <div className='sajatGombSor'>
           <button className='szur' onClick={szur} id='futAlkGomb'>Futtatható Alkalmazások Megjelenítése</button>
-          <button className='szur' onClick={rogzites} id='mentAlkGomb'>Mentés</button>
+          <button className='szur' onClick={rogzites} id='mentAlkGomb' style={{display: JSON.parse(localStorage.getItem('loggedInUser')) ? 'grid' : 'none'}}>Mentés</button>
         </div>
 
         <div className='sajatSetupElnevezes' style={{display: nevDisp}}>

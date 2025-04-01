@@ -56,11 +56,18 @@ function AlkatreszReszletek() {
   function elemekBetoltese() {
     let ujMind = []; 
     for (let sor in info['id']) {
+      let mertekegyseg = '';
       const kiirando = kulcsModosito[sor] || sor;
 
       let ertek = info['id'][sor];
       if (ertek == false) ertek = 'Nincs';
       else if (ertek == true) ertek = 'Van';
+
+      if(kiirando == 'Maximális Frekvencia') mertekegyseg = 'Hz';
+      if(kiirando == 'VRAM') mertekegyseg = 'GB';
+      if(kiirando == 'Processzor Frekvencia') mertekegyseg = 'Hz';
+      if(kiirando == 'B Processzor Frekvencia') mertekegyseg = 'Hz';
+
 
       if(kiirando == 'Méret') ertek = ertek + ' GB';
       if(kiirando == 'Frekvencia') ertek = ertek + ' Hz';
@@ -69,7 +76,7 @@ function AlkatreszReszletek() {
         ujMind.push(
           <div className="sor" key={sor}>
             <h2 className="elemNev">{kiirando + ':'}</h2>
-            <h2 className="elemErtek">{ertek}</h2>
+            <h2 className="elemErtek">{ertek} {mertekegyseg}</h2>
           </div>
         );
       }
