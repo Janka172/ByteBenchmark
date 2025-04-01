@@ -1,8 +1,11 @@
 /*Az egész oldal szelektora*/
+
 .body
 {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+
 }
 /*Navigációs sáv szelektorai*/
 .navbars {
@@ -57,11 +60,15 @@
     font-size: 1vw;
     border-radius: 0% 30%;
     background-color: rgba(194, 52, 52, 0.8);
-    color: black;   
+    color: black;
+ 
   }
   .positions
   {
     float: right;
+    display: flex;
+    flex-direction: column;
+    position: fixed;  
   }
   /*Legördülő lista szelektora*/
   

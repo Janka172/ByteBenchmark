@@ -85,15 +85,61 @@ function Beallitasok() {
 
   // Kép vágása
   const getCroppedImage = () => {
-    const cropper = cropperRef.current.cropper;
-    const croppedCanvas = cropper.getCroppedCanvas({
-      width: 300,
-      height: 300,
-    });
-    return croppedCanvas.toDataURL();
+    if(atmKep){
+      const cropper = cropperRef.current.cropper;
+      return cropper.getCroppedCanvas({
+        width: 300,
+        height: 300,
+      }).toDataURL();
+    }
+    return null;
+  };
+
+  // Kép feltöltése
+  const uploadCroppedImage = async (croppedImage) => {
+    if(atmKep){
+      const blob = await fetch(croppedImage).then(res => res.blob());
+
+      const fileExtension = selectedFile.name.split('.').pop();
+      const fileNameWithoutExt = selectedFile.name.replace(/\.[^/.]+$/, "");
+  
+      const now = new Date();
+      const timestamp = `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}_${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}${now.getSeconds().toString().padStart(2, '0')}`;
+  
+      const newFileName = `${fileNameWithoutExt}_${timestamp}.${fileExtension}`;
+  
+      const formData = new FormData();
+      formData.append("file", blob, newFileName);
+  
+      try {
+        const response = await fetch("http://127.0.0.1:5000/upload", {
+          method: "POST",
+          body: formData,
+          headers: {
+            "Accept": "application/json",
+          },
+          mode: "cors",
+        });
+  
+        const data = await response.json();
+        if (response.ok) {
+          setProfilUrl(`/IMAGE/${data.file_name}`);
+          return data.file_name;
+        } else {
+          console.error("Hiba történt:", data.message);
+          return null;
+        }
+      } catch (error) {
+        console.error("Hálózati hiba:", error);
+        return null;
+      }
+    }
   };
 
   async function altalanosModositasa() {
+    let croppedImage = getCroppedImage();
+    let logoEleresiUtja = await uploadCroppedImage(croppedImage);
+
     let nev = JSON.parse(localStorage.getItem("loggedInUser")).Felhasznalonev;
 
     let tema = null;
@@ -111,32 +157,6 @@ function Beallitasok() {
       email = document.getElementById('emailNInp').value;
     }
 
-    // Kép feltöltése, ha van
-    let logoEleresiUtja = null;
-    if (selectedFile) {
-      const formData = new FormData();
-      formData.append("file", selectedFile);
-      try {
-        const response = await fetch("http://127.0.0.1:5000/upload", {
-          method: "POST",
-          body: formData,
-          headers: {
-            "Accept": "application/json",
-          },
-          mode: "cors",
-        });
-        const data = await response.json();
-        if (response.ok) {
-          logoEleresiUtja = data.file_name;
-          setFileUrl(data.file_name);
-        } else {
-          console.error("Hiba történt:", data.message);
-        }
-      } catch (error) {
-        console.error("Hálózati hiba:", error);
-      }
-    }
-
     // Profiladatok frissítése
     const response = await fetch(`https://localhost:44316/api/Profil/1?name=${nev}`, {
       method: "PATCH",
@@ -146,9 +166,9 @@ function Beallitasok() {
       body: JSON.stringify({
         Felhasznalonev: felhNev,
         Email: email,
-        Jogosultsag: null,
+        Jogosultsag: -1,
         Tema: tema,
-        LogoEleresiUtja: logoEleresiUtja,
+        LogoEleresiUtja: logoEleresiUtja || null,
       }),
     });
 
@@ -229,6 +249,7 @@ function Beallitasok() {
           </div>
 
           <button className='altalnosMentes' onClick={() => {
+            
             if(atmKep){
               const croppedImage = getCroppedImage();
               altalanosModositasa(croppedImage);

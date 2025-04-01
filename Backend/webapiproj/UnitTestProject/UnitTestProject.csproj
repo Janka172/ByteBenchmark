@@ -93,6 +93,9 @@
     <Compile Include="TestController\TestProcesszorController.cs" />
     <Compile Include="TestController\TestOprendszerController.cs" />
     <Compile Include="TestController\TestAlaplapController.cs" />
+    <Compile Include="TestController\TestKategoriaController.cs" />
+    <Compile Include="TestController\TestCsatlakozoController.cs" />
+    <Compile Include="TestController\TestApplikacioController.cs" />
     <Compile Include="TestDbSet.cs" />
     <Compile Include="TestDatabase\TestProjektContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

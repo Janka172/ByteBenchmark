@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Data.Entity;
 using webapiproj.Models;
 using System.Web.Http.Description;
+using webapiproj.Database;
 
 namespace webapiproj.Controllers
 {
@@ -20,7 +21,14 @@ namespace webapiproj.Controllers
     }
     public class ApplikacioController : ApiController
     {
-        ProjektContext ctx = new ProjektContext();
+        IProjektContext ctx = new ProjektContext();
+
+        public ApplikacioController() { }
+
+        public ApplikacioController(IProjektContext context)
+        {
+            ctx = context;
+        }
         // GET api/<controller>
         [ResponseType(typeof(ApplikacioModel))]
         public IHttpActionResult Get()
@@ -88,10 +96,10 @@ namespace webapiproj.Controllers
             {
                 var result = ctx.Applikaciok.Where(x => x.Nev == name).FirstOrDefault();
                 var katresult = ctx.Kategoriak.Where(x => x.Nev == value.KategoriaNev).Select(x=>x.Id).FirstOrDefault();
-                if (katresult == null) return Content(HttpStatusCode.NotFound, "Nincs ilyen kategoria");
+                if (katresult == 0) return Content(HttpStatusCode.NotFound, "Nincs ilyen kategoria");
                 if (result == null) return Content(HttpStatusCode.NotFound, "Nincs ilyen Alkalmazás"); ;
                 if (value.Nev != null) result.Nev = value.Nev;
-                if (value.Tarhely != null) result.Tarhely=value.Tarhely;
+                if (value.Tarhely != 0) result.Tarhely=value.Tarhely;
                 if (value.KepeleresiUtja != null) result.Kepeleresiutja = value.KepeleresiUtja;
                 if (value.KategoriaNev != null) result.KatId = katresult;
 

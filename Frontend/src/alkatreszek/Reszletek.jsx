@@ -22,28 +22,44 @@ function Reszletek({ adat }) {
       else if(sor == 'ajanlottTapegyseg') kiirando = 'Ajánlott Tápegység';
       else if(sor == 'monitorCsatlakozas') kiirando = 'Monitor Csatlakozás';
       else if(sor == 'chipGyartoja') kiirando = 'Chip Gyártója';
-      else if(sor == 'vram') kiirando = 'VRAM'; //mertekegyseg ='GB';
+      else if(sor == 'vram') {
+        kiirando = 'VRAM';
+        mertekegyseg ='GB';
+      }
       else if(sor == 'AlaplapFoglalat') kiirando = 'Alaplap Foglalat';
       else if(sor == 'SzalakSzama') kiirando = 'Szálak Száma';
       else if(sor == 'TamogatottMemoriatipus') kiirando = 'Támogatott Memóriatípus';
       else if(sor == 'ProcesszormagokSzama') kiirando = 'Processzormagok Száma';
-      else if(sor == 'ProcesszorFrekvencia') kiirando = 'Processzor Frekvencia';
-      else if(sor == 'BProcesszorFrekvencia') kiirando = 'B Processzor Frekvencia';
+      else if(sor == 'ProcesszorFrekvencia') {
+        kiirando = 'Processzor Frekvencia';
+        mertekegyseg = 'Hz';
+      }
+      else if(sor == 'BProcesszorFrekvencia') {
+        kiirando = 'B Processzor Frekvencia';
+        mertekegyseg = 'Hz';
+      }
       else if(sor == 'Gyarto') kiirando = 'Gyártó';
       else if(sor == 'AjanlottTapegyseg') kiirando = 'Ajánlott Tápegyseg';
       else if(sor == 'IntegraltVideokartya') kiirando = 'IntegráltVideokártya';
       else if(sor == 'MemoriaTipus') kiirando = 'Memoria Tipus';
-      else if(sor == 'Meret') kiirando = 'Méret';
+      else if(sor == 'Meret') {
+        kiirando = 'Méret';
+        mertekegyseg = 'GB';
+      }
       else if(sor == 'BuildSzam') kiirando = 'Build Szám';
       else if(sor == 'Verzio') kiirando = 'Verzió';
       else if(sor == 'CpuFoglalat') kiirando = 'Cpu Foglalat';
       else if(sor == 'AlaplapFormatum') kiirando = 'Alaplap Formátum';
-      else if(sor == 'MaxFrekvencia') kiirando = 'Maximális Frekvencia';
+      else if(sor == 'MaxFrekvencia') {
+        kiirando = 'Maximális Frekvencia';
+        mertekegyseg = 'Hz';
+      }
       else if(sor == 'MemoriaTipusa') kiirando = 'Memoria Típusa';
       else if(sor == 'Lapkakeszlet') kiirando = 'Lapkakészlet';
       else if(sor == 'SlotSzam') kiirando = 'Slot Szám';
       else if(sor == 'Hangkartya') kiirando = 'Hangkártya';
       else if(sor == 'VideokartyaCsatlakozo') kiirando = 'Videókártya Csatlakozó';
+      else if(sor == 'Frekvencia') mertekegyseg = 'Hz';
 
       if(! ((sor == 'KepNev') || (sor == 'Kepnev') || (sor == 'kepnev'))){
         ujMind.push(

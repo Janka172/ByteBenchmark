@@ -164,7 +164,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
     event.preventDefault();
     if(actionHardver==="Videókártya" && actionButtons==="Delete")RequestVideokDelete(actionKivalasztottNev, actionSelectedVram); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
     if(actionHardver==="Alaplap" && actionButtons==="Delete")RequestAlaplapDelete(actionKivalasztottAlaplapNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-    if(actionHardver==="Memória" && actionButtons==="Delete")RequestRamDelete(actionKivalaszottRamNev, actionSelectedRamFrekvencia); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
+    if(actionHardver==="Memória" && actionButtons==="Delete")RequestRamDelete(actionKivalaszottRamNev, actionSelectedRamFrekvencia,actionSelectedRamMeret); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
     if(actionHardver==="Processzor" && actionButtons==="Delete")RequestProcesszorDelete(actionKivalasztottProcesszorNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
 
    }
@@ -296,9 +296,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                 <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Alaplap"); setActionButtons("Post")}}>Alaplap</a>
                 <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Memória"); setActionButtons("Post")}}>Memória</a>
                 <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Processzor"); setActionButtons("Post")}}>Processzor</a>
-             </nav>
-
-
+             </nav> 
              {actionHardver==="Videókártya" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
                     <form id='post_form'>
@@ -651,7 +649,6 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                     <div id='adatok_delete'>Memória típus:{actionMindenhezKellAdat?.MemoriaTipus}</div>
                     <div id='adatok_delete'>Frekvencia:{actionMindenhezKellAdat?.Frekvencia}</div>
                     <div id='adatok_delete'>Méret:{actionMindenhezKellAdat?.Meret}</div>       
-                    {/* <image src=""></image>*/}
                  </div>
 
                     <div id='buttons_content'>
@@ -774,7 +771,10 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
                            <button className='buttons' id='delete_adatlekerogomb' type='button' onClick={(e)=>adatProcesszorLekeres(e, actionKivalasztottProcesszorNev)}>Adatok lekérése</button><br/>
 
-                     <button className='buttons' type='button' onClick={(e)=>handleDelete(e)}>Alkatrész eltávolítása</button>                
+                     <button className='buttons' type='button' onClick={(e)=>{
+                           handleDelete(e);
+                           
+                     }}>Alkatrész eltávolítása</button>                
                     </form>
                  </div>
 
@@ -797,8 +797,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                      <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
                  </div>
             </div> : <div></div>}
-            {/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-        </div>  
+            </div>
     );
   }
   
