@@ -19,7 +19,8 @@
     overflow-x: hidden;
     scroll-behavior: smooth;
     gap: 1vw;
-    height: 31vw;
+    height: auto;
+    text-align: center;
 }
 
 .korKep {

@@ -70,15 +70,6 @@
     right: -1.5vw;
 }
 
-.alkatrKeret {
-    display: flex;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    gap: 1vw;
-    height: auto;
-    text-align: center;
-}
-
 .korKepKeret{
     padding: 1.5vw;
     background-color: rgba(190, 90, 90, 0.8);

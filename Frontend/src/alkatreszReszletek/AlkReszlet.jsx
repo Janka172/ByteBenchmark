@@ -3,8 +3,7 @@ import AlkReszletStilus from './AlkReszlet.css';
 import { useLocation } from 'react-router-dom';
 import Gorgeto from '../alkatreszek/Gorgeto';
 
-function AlkatreszReszletek() {
-  
+function AlkatreszReszletek() {  
   const location = useLocation();
   const info = location.state;
 

@@ -5,6 +5,18 @@ import { useLocation } from 'react-router-dom';
 
 function Fekvo() {
   const location = useLocation();
+  
+  useEffect(() => {
+    const utazasok = {
+      "/": "F1",
+      "/oldalak/Rolunk": "F2",
+      "/oldalak/Kontakt": "F3"
+    };
+
+    const kivId = utazasok[location.pathname] || null;
+    kivalaszt(kivId);
+  }, [location.pathname]);
+
   function kivalaszt(azon) {
     const fekvoElems = document.getElementsByClassName('fekvoElem');
     for (let i = 0; i < fekvoElems.length; i++) {
@@ -19,16 +31,6 @@ function Fekvo() {
       }
     }
   }
-  useEffect(() => {
-    const utazasok = {
-      "/": "F1",
-      "/oldalak/Rolunk": "F2",
-      "/oldalak/Kontakt": "F3"
-    };
-
-    const kivId = utazasok[location.pathname] || null;
-    kivalaszt(kivId);
-  }, [location.pathname]);
 
   return (
     <nav className="navbar">

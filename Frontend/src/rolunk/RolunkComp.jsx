@@ -17,7 +17,7 @@ function RolunkComp() {
   }
 
   return (
-    <div>
+    <div className='rolunkConti'>
         <div className='rolunkFocim'>Mi is a ByteBenchmark ?</div>
 
         <div className='rolunkAlcim' onClick={miertLenyitas}>Miért készült el ez az oldal ?</div>

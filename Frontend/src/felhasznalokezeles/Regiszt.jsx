@@ -27,8 +27,8 @@ function Regisztr() {
     let foglaltNev = false;
     felhasznalok.map(felh => {
       if(felh.Felhasznalonev == felhasznaloNev) foglaltNev=true;
-      else foglaltNev=false;
     });
+    console.log(foglaltNev)
     if (foglaltNev) {
       atmHibaUzenet.push(
         <p className="hibaSor" key='fh'>Ez az felhasználónév már foglalt !</p>
@@ -53,6 +53,7 @@ function Regisztr() {
         <p className="hibaSor" key='jh'>A két jelszó nem egyezik meg !</p>
       );
     }
+    
     // Hiba: jelszó: erősség
     const minta = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~`\-=\|])(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;  
     if (!minta.test(jelszo)) {

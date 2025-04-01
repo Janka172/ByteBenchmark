@@ -190,7 +190,7 @@ function SetupBeallitasok() {
                 <div className='reszletSor' key={`oS-${kivalasztottSetup.OprendszerNev}`}>
                     <div key={`oC-${kivalasztottSetup.OprendszerNev}`}>Operációsrendszer:</div>
                     <div key={`oSz-${kivalasztottSetup.OprendszerNev}`}>{kivalasztottSetup.OprendszerNev}</div>
-                    <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'r', 'id': await getOpRendszer(kivalasztottSetup.OprendszerNev)}}>
+                    <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'o', 'id': await getOpRendszer(kivalasztottSetup.OprendszerNev)}}>
                         <button className='tovabiReszletekGomb'>További részletek</button>
                     </Link>
                 </div>

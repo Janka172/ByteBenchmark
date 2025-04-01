@@ -7,21 +7,13 @@ import Kijelentkezes from '../felhasznalokezeles/Kijelentkezes';
 function Footer() {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [profilUrl, setProfilUrl] = useState('');
-  useEffect(() => {
-    const updateUser = () => {
-      const user = JSON.parse(localStorage.getItem("loggedInUser"));
-      setLoggedInUser(user);
-    };
 
-    updateUser();
-    window.addEventListener("storage", updateUser);
-    window.addEventListener("userLoggedIn", updateUser);
+  function updateUser() {
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    setLoggedInUser(user);
+  };
 
-    return () => {
-      window.removeEventListener("storage", updateUser);
-      window.removeEventListener("userLoggedIn", updateUser);
-    };
-  }, []);
+  useEffect(() => updateUser(), []);
 
   useEffect(()=>{
     if(loggedInUser) 

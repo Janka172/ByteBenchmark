@@ -49,7 +49,7 @@ function App() {
   function mentsProfilokatLocalStorage(profilok) {
     try {
       localStorage.setItem("users", JSON.stringify(profilok));
-      console.log("Profilok sikeresen mentve a localStorage-be.");
+      console.log();
     } catch (error) {
       console.error("Hiba történt a mentés során:", error);
     }
@@ -73,7 +73,7 @@ function App() {
         <Sidebar></Sidebar> 
         <Fekvo></Fekvo> 
     
-        <div>
+        <>
           <Routes>
 
             <Route path='/' index element={<Kezdolap />} />
@@ -90,7 +90,7 @@ function App() {
             <Route path='/oldalak/UjAlkatresz' index element={<UjAlkatresz />} />
             
           </Routes>
-        </div>
+        </>
 
         <div className='marginBottom'></div>
         

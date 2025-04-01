@@ -49,6 +49,11 @@
     .rolunkSzoveg {
         font-size: 2vw;
     }
+
+    .rolunkConti{
+        width: 75%;
+        margin: auto;
+    }
 }
 
 @media (min-width: 1500px){

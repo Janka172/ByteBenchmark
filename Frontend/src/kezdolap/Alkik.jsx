@@ -65,7 +65,7 @@ function Alkik(){
 
     return (
         <div className='alkContainer'>
-            {betoltAlk ? console.log('Betöltés folyamatban !') : alkCont.map(x => x)}
+            {betoltAlk ? console.log() : alkCont.map(x => x)}
         </div>
       );
 }
