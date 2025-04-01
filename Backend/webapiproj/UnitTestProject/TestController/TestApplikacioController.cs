@@ -138,6 +138,16 @@ namespace UnitTestProject.TestController
             ctx.SaveChanges();
         }
         [TestMethod]
+        public void Get_OsszApplikacio()
+        {
+            var ctx = new TestProjektContext();
+            FillTestDatabase(ctx);
+            var controller = new ApplikacioController(ctx);
+            var result = controller.Get() as OkNegotiatedContentResult<IEnumerable<ApplikacioModel>>;
+            Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.Content.ToList().Count);
+        }
+        [TestMethod]
         public async Task Get_EgyApplikacio()
         {
             var ctx = new TestProjektContext();

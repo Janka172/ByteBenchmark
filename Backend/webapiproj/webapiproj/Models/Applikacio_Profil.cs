@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,5 +19,6 @@ namespace webapiproj.Models
         public virtual Applikacio Applikacio { get; set; }
         [ForeignKey("ProfilId")]
         public virtual Profil Profil { get; set; }
+        public HttpRequestMessage Request { get; set; }
     }
 }

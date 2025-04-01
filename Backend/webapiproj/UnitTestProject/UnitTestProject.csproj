@@ -96,6 +96,8 @@
     <Compile Include="TestController\TestKategoriaController.cs" />
     <Compile Include="TestController\TestCsatlakozoController.cs" />
     <Compile Include="TestController\TestApplikacioController.cs" />
+    <Compile Include="TestController\TestApplikacio_ProfilController.cs" />
+    <Compile Include="TestController\TestAlaplap_CsatlakozoController.cs" />
     <Compile Include="TestDbSet.cs" />
     <Compile Include="TestDatabase\TestProjektContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

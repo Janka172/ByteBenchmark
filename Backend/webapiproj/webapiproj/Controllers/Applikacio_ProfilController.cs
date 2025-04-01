@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Data.Entity;
 using webapiproj.Models;
 using System.Web.Http.Description;
+using webapiproj.Database;
 
 namespace webapiproj.Controllers
 {
@@ -17,7 +18,14 @@ namespace webapiproj.Controllers
     }
     public class Applikacio_ProfilController : ApiController
     {
-        ProjektContext ctx = new ProjektContext();
+        IProjektContext ctx = new ProjektContext();
+
+        public Applikacio_ProfilController() { }
+
+        public Applikacio_ProfilController(IProjektContext context)
+        {
+            ctx = context;
+        }
         // GET api/<controller>
         [ResponseType(typeof(AlaplapModel))]
         public IHttpActionResult Get()
