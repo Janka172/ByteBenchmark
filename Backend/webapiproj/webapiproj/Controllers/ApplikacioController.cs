@@ -78,7 +78,7 @@ namespace webapiproj.Controllers
                 });
                 ctx.SaveChanges();
 
-                return Ok();
+                return Content(HttpStatusCode.Created,"");
                 //return Created($"api/Applikacio/{result}", result);
             }
             catch (Exception ex)
@@ -96,7 +96,7 @@ namespace webapiproj.Controllers
             {
                 var result = ctx.Applikaciok.Where(x => x.Nev == name).FirstOrDefault();
                 var katresult = ctx.Kategoriak.Where(x => x.Nev == value.KategoriaNev).Select(x=>x.Id).FirstOrDefault();
-                if (katresult == 0) return Content(HttpStatusCode.NotFound, "Nincs ilyen kategoria");
+                if (katresult != 0) result.KatId = katresult;
                 if (result == null) return Content(HttpStatusCode.NotFound, "Nincs ilyen Alkalmazás"); ;
                 if (value.Nev != null) result.Nev = value.Nev;
                 if (value.Tarhely != 0) result.Tarhely=value.Tarhely;

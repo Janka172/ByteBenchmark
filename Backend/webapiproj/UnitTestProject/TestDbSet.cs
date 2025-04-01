@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Schema;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
@@ -30,6 +31,13 @@ namespace UnitTestProject
         {
             _data.Remove(item);
             return item;
+        }
+
+        public override IEnumerable<T> RemoveRange(IEnumerable<T> items)
+        {
+            foreach(var item in items)
+                _data.Remove(item);
+            return items;
         }
 
         public override T Attach(T item)

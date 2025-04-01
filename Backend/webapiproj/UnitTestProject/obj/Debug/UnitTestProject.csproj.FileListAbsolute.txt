@@ -95,4 +95,4 @@ C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\UnitTe
 C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\UnitTestProject\obj\Debug\UnitTestProject.csproj.CoreCompileInputs.cache
 C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\UnitTestProject\obj\Debug\UnitTestProject.dll
 C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\UnitTestProject\obj\Debug\UnitTestProject.pdb
-C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\UnitTestProject\obj\Debug\UnitTestProject.csproj.CopyComplete
+C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\UnitTestProject\obj\Debug\UnitTest.294DD5B1.Up2Date
