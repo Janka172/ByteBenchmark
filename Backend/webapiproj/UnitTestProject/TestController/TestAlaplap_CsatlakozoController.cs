@@ -59,8 +59,38 @@ namespace UnitTestProject.TestController
             Assert.AreEqual(1, result.Content.ToList().Count);
         }
         [TestMethod]
-        public async Task Get_EgyAlaplap_Csatlakozo()
+        public void Get_EgyAlaplap_Csatlakozo()
         {
+            var ctx = new TestProjektContext();
+            FillTestDatabase(ctx);
+            var controller = new Alaplap_CsatlakozokController(ctx);
+            var result = controller.Get(1, "Demo1") as OkNegotiatedContentResult<IEnumerable<AlaplapCsatlakozModel>>;
+            Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.Content.ToList().Count);
+        }
+        [TestMethod]
+        public async Task Post_EgyAlaplap_Csatlakozo()
+        {
+
+            var ctx = new TestProjektContext();
+            var controller = new Alaplap_CsatlakozokController(ctx)
+            {
+                Request = new HttpRequestMessage(),
+                Configuration = new HttpConfiguration()
+            };
+            var model = new AlaplapCsatlakozPOSTModel()
+            {
+                AlaplapNev = "Demo1",
+                Csatlakozok = new List<string>() { "USB" }
+            };
+            var result = await controller.Post(model).ExecuteAsync(new System.Threading.CancellationToken());
+            Assert.IsNotNull(result);
+            Assert.AreEqual(HttpStatusCode.Created, result.StatusCode);
+        }
+        [TestMethod]
+        public async Task Delete_EgyAlaplap_Csatlakozo()
+        {
+
             var ctx = new TestProjektContext();
             FillTestDatabase(ctx);
             var controller = new Alaplap_CsatlakozokController(ctx)
@@ -68,11 +98,11 @@ namespace UnitTestProject.TestController
                 Request = new HttpRequestMessage(),
                 Configuration = new HttpConfiguration()
             };
-            var result = await controller.Get(1, "Demo1").ExecuteAsync(new System.Threading.CancellationToken());
-            Assert.IsTrue(result.TryGetContentValue(out AlaplapCsatlakozModel contentresult));
+
+
+            var result = await controller.Delete(1, "Demo1","USB").ExecuteAsync(new System.Threading.CancellationToken());
             Assert.IsNotNull(result);
-            Assert.AreEqual("Demo1", contentresult.AlaplapNev);
-            Assert.AreEqual("USB", contentresult.CsatlakozoNev);
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
     }
 }

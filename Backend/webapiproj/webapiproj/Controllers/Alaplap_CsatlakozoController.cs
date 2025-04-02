@@ -83,7 +83,7 @@ namespace webapiproj.Controllers
                 }
 
                 ctx.SaveChanges();
-                return Ok("Sikeres feltoltes");
+                return Content(HttpStatusCode.Created,"");
             }
             catch (Exception ex)
             {

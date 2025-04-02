@@ -136,6 +136,21 @@ namespace UnitTestProject.TestController
             var setupList = result.Content.ToList();
             Assert.AreEqual(1, setupList.Count);
         }
+        public void Get_EgySetup()
+        {
+
+            var ctx = new TestProjektContext();
+            FillTestDatabase(ctx);
+            var controller = new SetupController(ctx);
+
+
+            var result = controller.Get(1, "Cyberpunk 2077") as OkNegotiatedContentResult<IEnumerable<SetupModel>>;
+
+
+            Assert.IsNotNull(result);
+            var setupList = result.Content.ToList();
+            Assert.AreEqual(1, setupList.Count);
+        }
 
         [TestMethod]
         public async Task Post_EgySetup()
