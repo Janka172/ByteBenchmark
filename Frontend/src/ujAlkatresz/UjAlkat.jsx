@@ -317,9 +317,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                   <div id='buttons_content_post'>
-                     <button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button><br/>
-                     <button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button><br/>
-                     <button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/>
+                     <div><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                     <div><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
+                     <div><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/></div>
                   </div>
 
             </div> : <div></div>}
@@ -369,9 +369,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                  <div id='buttons_content_patch'>
-                     <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                     <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button></div>
+                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                  </div>
             </div> : <div></div>}
 
@@ -407,9 +407,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
 
                   <div id='buttons_content'>
-                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                     <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button></div>
+                     <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                   </div>
 
             </div> : <div></div>}
@@ -450,9 +450,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                  <div id='buttons_content_post'>
-                     <button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button><br/>
-                     <button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button><br/>
-                     <button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/>
+                     <div><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                     <div><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
+                     <div><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                   </div>
             </div> : <div></div>}
 
@@ -506,9 +506,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                     <div id='buttons_content'>
-                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                        <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                        <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button></div>
+                        <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                     </div>
             </div> : <div></div>}
 
@@ -539,9 +539,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                      <div id="adatok_delete">Hangkártya:{actionMindenhezKellAdat?.Hangkartya}</div>      
                   </div>
                  <div id='buttons_content'>
-                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                     <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button></div>
+                     <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                   </div>
             </div> : <div></div>}
             {/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
@@ -562,9 +562,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                  <div id='buttons_content_post'>
-                     <button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button><br/>
-                     <button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button><br/>
-                     <button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/>
+                     <div><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                     <div><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
+                     <div><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                   </div>
             </div> : <div></div>}
 
@@ -609,9 +609,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                   <div id='buttons_content'>
-                     <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                     <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button></div>
+                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                   </div>
                 </div> : <div></div>}
 
@@ -652,9 +652,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                     <div id='buttons_content'>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                        <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                        <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button></div>
+                        <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                     </div>
 
             </div> : <div></div>}
@@ -693,9 +693,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                  <div id='buttons_content_post'>
-                     <button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button><br/>
-                     <button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button><br/>
-                     <button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/>
+                     <div><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                     <div><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
+                     <div><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                   </div>
             </div> : <div></div>}
 
@@ -751,9 +751,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                     <div id='buttons_content'>
-                        <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                        <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                        <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                        <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button></div>
+                        <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                     </div>
 
             </div> : <div></div>}
@@ -792,9 +792,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                   <div id='contents'>
-                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button>
-                     <button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button>
-                     <button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button>
+                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button></div>
+                     <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                  </div>
             </div> : <div></div>}
             </div>

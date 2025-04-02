@@ -66,12 +66,9 @@
   .positions
   {
     float: right;
-    display: flex;
-    flex-direction: column;
-    position: fixed;  
+
   }
-  /*Legördülő lista szelektora*/
-  
+  /*Legördülő lista szelektora*/  
 /*Gomb inaktív állapotának szelektora*/
   button:disabled
   {
@@ -222,29 +219,42 @@ label
 input[type="radio"] {
   accent-color: rgba(194, 52, 52, 0.8);
 }
-@media (max-width: 767px){
-  .inputok
-  {
-    display: flex;
-    flex-direction: column;
-  }
-  #post_form
-  {
-    display: flex;
-    flex-direction: column;
-    width: 28vw;
-  }
-  #post_titles
-  {
-    text-align: left;
-    font-size: 1vw;
-    margin-left: 0vw;
-    margin-top: 0vw;
-    margin-bottom: 0vw;
-    margin-right: 0vw;  
-    padding:0vw;
-  }
+@media (max-width: 767px) {
+  
+    .body {
+      flex-direction: column;
+    }
+    
+    
+    .inputok {
+      flex-direction: column;
+      align-items: center;
+      margin-right: 0;
+      width: 100%;
+    }
+    
+    .beviteli_mezok
+    {
+      width: 100%;
+      font-size: 20px;
+      padding: 10px;
+    }
+    #post_titles
+    {
+      font-size: 20px;
+    }
+    #buttons_content_post
+    {
+      width: 100%;
+      margin-top: 10px;
+    }
+    .select_buttons
+    {
+      width: 100%;
+      font-size: 18px;
+    }
 }
+
 
 @media (min-width: 768px)
 {
