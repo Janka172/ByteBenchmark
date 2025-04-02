@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Data.Entity.ModelConfiguration;
 using webapiproj.Database;
+using System.Net.Http;
 
 namespace webapiproj
 {
@@ -37,6 +38,9 @@ namespace webapiproj
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Ignore<HttpRequestMessage>();
+
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Schema;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,7 +35,7 @@ namespace UnitTestProject
 
         public override IEnumerable<T> RemoveRange(IEnumerable<T> items)
         {
-            foreach(var item in items)
+            foreach (var item in items)
                 _data.Remove(item);
             return items;
         }
