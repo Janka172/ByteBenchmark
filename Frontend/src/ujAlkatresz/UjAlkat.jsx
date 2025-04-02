@@ -284,6 +284,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
     const handleFileChange = (event) => {
       if (event.target.files.length > 0) {
          setFileName(event.target.files[0].name);
+         setSelectedFile(event.target.files[0])
        } else {
          setFileName("Nincs fájl kiválasztva");
        }
