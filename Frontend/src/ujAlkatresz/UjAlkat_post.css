@@ -221,22 +221,23 @@ input[type="radio"] {
 }
 @media (max-width: 767px) {
   
-    .body {
+    .body
+    {
       flex-direction: column;
     }
-    
-    
-    .inputok {
+    .inputok
+    {
       flex-direction: column;
       align-items: center;
       margin-right: 0;
+      margin-left: 0;
       width: 100%;
     }
     
     .beviteli_mezok
     {
       width: 100%;
-      font-size: 20px;
+      font-size: 2vw;
       padding: 10px;
     }
     #post_titles
@@ -245,15 +246,44 @@ input[type="radio"] {
     }
     #buttons_content_post
     {
-      width: 100%;
-      margin-top: 10px;
+      flex-direction: row;
+    }
+    #post_img
+    {
+      width: 90%;
+      font-size: medium;
+      height: 3vw;
+      padding-right: 1vw;
+      padding-top: 1vw;
+      margin-left: 18%;
+      border:black 1px solid;
+    }
+    .delete
+    {
+      margin-top: 50px;
     }
     .select_buttons
     {
-      width: 100%;
-      font-size: 18px;
+      width: 90%;
+      height: 60px;
+      text-align: center;
+      font-size: medium;
     }
-}
+    #post_img_link
+    {
+      width: 100%;
+      font-size: medium;
+      margin-left:3.7vw;
+      height: 2vw;
+      padding-right: 0vw;
+    }
+    #post_adatkezelogomb
+    {
+      width: 100%;
+     margin-left: 18%;
+     font-size: medium;
+    }
+  }
 
 
 @media (min-width: 768px)

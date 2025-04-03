@@ -4,10 +4,18 @@ function UjAlk() {
 
     return (
         <div id='torzs'>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+            <div>
+                
+            </div>
          </div>  
     );
   }

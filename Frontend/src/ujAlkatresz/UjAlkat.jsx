@@ -318,9 +318,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                   <div id='buttons_content_post'>
-                     <div><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
-                     <div><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/></div>
+                     <div className='patchgomb'><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                     <div className='postgomb'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
+                     <div className='deletegomb'><button className='select_buttons buttons delete' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/></div>
                   </div>
 
             </div> : <div></div>}
