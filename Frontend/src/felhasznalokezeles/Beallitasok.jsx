@@ -99,17 +99,9 @@ function Beallitasok() {
   const uploadCroppedImage = async (croppedImage) => {
     if(atmKep){
       const blob = await fetch(croppedImage).then(res => res.blob());
-
-      const fileExtension = selectedFile.name.split('.').pop();
-      const fileNameWithoutExt = selectedFile.name.replace(/\.[^/.]+$/, "");
-  
-      const now = new Date();
-      const timestamp = `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}_${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}${now.getSeconds().toString().padStart(2, '0')}`;
-  
-      const newFileName = `${fileNameWithoutExt}_${timestamp}.${fileExtension}`;
-  
+    
       const formData = new FormData();
-      formData.append("file", blob, newFileName);
+      formData.append("file", blob, selectedFile);
   
       try {
         const response = await fetch("http://127.0.0.1:5000/upload", {
