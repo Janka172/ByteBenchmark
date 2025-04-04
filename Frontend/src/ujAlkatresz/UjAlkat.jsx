@@ -301,12 +301,12 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
              {actionHardver==="Videókártya" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
                     <form id='post_form'>
-                     <p id='post_titles'>Név:</p><input type='text' className='beviteli_mezok' id='VideoPost1'/><br/>                 
-                     <p id='post_titles'>Alaplapi csatlakozás:</p><input type='text' className='beviteli_mezok' id='VideoPost2'/><br/>
-                     <p id='post_titles'>Ajánlott tápegység:</p><input type='number' className='beviteli_mezok' id='VideoPost3'min={50} max={1800}/><br/>
-                     <p id='post_titles'>Monitor csatlakozás:</p><input type='text' className='beviteli_mezok' id='VideoPost4'/><br/> 
-                     <p id='post_titles'>Vram:</p><input type='number' className='beviteli_mezok' id='VideoPost5' min={1} max={48}/><br/>         
-                     <p id='post_titles'>Chip  gyártója:</p><input type='text' className='beviteli_mezok' id='VideoPost6'/><br/>
+                     <p className='post_titles'>Név:</p><input type='text' className='beviteli_mezok' id='VideoPost1'/><br/>                 
+                     <p className='post_titles'>Alaplapi csatlakozás:</p><input type='text' className='beviteli_mezok' id='VideoPost2'/><br/>
+                     <p className='post_titles'>Ajánlott tápegység:</p><input type='number' className='beviteli_mezok' id='VideoPost3'min={50} max={1800}/><br/>
+                     <p className='post_titles'>Monitor csatlakozás:</p><input type='text' className='beviteli_mezok' id='VideoPost4'/><br/> 
+                     <p className='post_titles'>Vram:</p><input type='number' className='beviteli_mezok' id='VideoPost5' min={1} max={48}/><br/>         
+                     <p className='post_titles'>Chip  gyártója:</p><input type='text' className='beviteli_mezok' id='VideoPost6'/><br/>
      
 
                         <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/><br/>
@@ -318,9 +318,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                   <div id='buttons_content_post'>
-                     <div className='patchgomb'><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div className='postgomb'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
-                     <div className='deletegomb'><button className='select_buttons buttons delete' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/></div>
+                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                   </div>
 
             </div> : <div></div>}
@@ -328,7 +328,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             {actionHardver==="Videókártya" && actionButtons==="Patch" ? <div className='body'>
                  <div className='inputok'>
                     <form id='patch_form'>
-                     <p id='patch_titles'>Név:</p>
+                     <p className='patch_titles'>Név:</p>
                      <div className='combobox'>
                         <select className="combi_patch" onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
                            <option id="legordulos_option">Válassz egyet</option>
@@ -336,7 +336,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         </select>
                      </div>
                      
-                     <p id='patch_titles'>Vram:</p>
+                     <p className='patch_titles'>Vram:</p>
                      <div className='combobox'>
                         <select className="combi_patch" onChange={(e)=>setActionSelectedVram(e.target.value)} >
                            <option id="legordulos_option" >Válassz egyet</option>
@@ -345,10 +345,10 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                      </div>
                         <button className='buttons' id='adatlekerogomb' type='button' onClick={(e)=>adatLekeres(e, actionSelectedVram, actionKivalasztottNev)}>Adatok lekérése</button>
 
-                    <p id='patch_titles'>Alaplapi csatlakozás:</p><input type='text' id='VideokPatch1' className='patchbeviteli_mezok'/>
-                    <p id='patch_titles'>Ajánlott tápegység:</p><input type='number' id='VideokPatch2' className='patchbeviteli_mezok'/>
-                    <p id='patch_titles'>Monitor csatlakozás:</p><input type='text' id='VideokPatch3' className='patchbeviteli_mezok'/>
-                    <p id='patch_titles'>Chip  gyártója:</p><input type='text' id='VideokPatch4' className='patchbeviteli_mezok'/>
+                    <p className='patch_titles'>Alaplapi csatlakozás:</p><input type='text' id='VideokPatch1' className='patchbeviteli_mezok'/>
+                    <p className='patch_titles'>Ajánlott tápegység:</p><input type='number' id='VideokPatch2' className='patchbeviteli_mezok'/>
+                    <p className='patch_titles'>Monitor csatlakozás:</p><input type='text' id='VideokPatch3' className='patchbeviteli_mezok'/>
+                    <p className='patch_titles'>Chip  gyártója:</p><input type='text' id='VideokPatch4' className='patchbeviteli_mezok'/>
 
                     <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                      <span className="filename" id='patch_img_link'>{fileName}</span>
@@ -360,26 +360,26 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                  <div id='contents_patch'>
-                     <div id='adatok_patch'>Név: {actionMindenhezKellAdat?.Nev}</div>
-                     <div id='adatok_patch'>Vram: {actionMindenhezKellAdat?.vram}</div>
-                     <div id='adatok_patch'>Chip gyártója: {actionMindenhezKellAdat?.chipGyartoja}</div>
-                     <div id='adatok_patch'>Ajánlott tápegység: {actionMindenhezKellAdat?.ajanlottTapegyseg}</div>
-                     <div id='adatok_patch'>Alaplapi csatlakozás: {actionMindenhezKellAdat?.alaplapiCsatlakozas}</div>
-                     <div id='adatok_patch'>Monitor csatlakozás: {actionMindenhezKellAdat?.monitorCsatlakozas}</div>
+                     <div className='adatok_patch'>Név: {actionMindenhezKellAdat?.Nev}</div>
+                     <div className='adatok_patch'>Vram: {actionMindenhezKellAdat?.vram}</div>
+                     <div className='adatok_patch'>Chip gyártója: {actionMindenhezKellAdat?.chipGyartoja}</div>
+                     <div className='adatok_patch'>Ajánlott tápegység: {actionMindenhezKellAdat?.ajanlottTapegyseg}</div>
+                     <div className='adatok_patch'>Alaplapi csatlakozás: {actionMindenhezKellAdat?.alaplapiCsatlakozas}</div>
+                     <div className='adatok_patch'>Monitor csatlakozás: {actionMindenhezKellAdat?.monitorCsatlakozas}</div>
 
                  </div>
 
                  <div id='buttons_content_patch'>
-                     <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button></div>
-                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/></div>
                  </div>
             </div> : <div></div>}
 
             {actionHardver==="Videókártya" && actionButtons==="Delete" ? <div className='body'>
                  <div className='inputok'>
                     <form> 
-                    <p id='titles_delete'>Név:</p>
+                    <p className='titles_delete'>Név:</p>
                         <select  className="combi_delete" onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
                            <option >Válassz egyet</option>
                            {[...new Set(mindenAdat['videokartyak'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulos_option">{nev}</option>))}
@@ -409,7 +409,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
                   <div id='buttons_content'>
                      <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
                      <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                   </div>
 
@@ -418,20 +418,20 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             {actionHardver==="Alaplap" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
                     <form id='post_form'>
-                        <p id='post_titles'>Név:</p><input type="text" id='AlaplapPost1' className='beviteli_mezok'/><br/>
-                        <p id='post_titles'>Processzor foglalat:</p><input type="text" id='AlaplapPost2' className='beviteli_mezok'/><br/>
-                        <p id='post_titles'>Alaplap formátum:</p><input type="text" id='AlaplapPost3' className='beviteli_mezok'/><br/>
-                        <p id='post_titles'>Maximum frekvencia:</p><input type="number" id='AlaplapPost4' className='beviteli_mezok'/><br/>
-                        <p id='post_titles'>Memória típus:</p><input type="text" id='AlaplapPost5' className='beviteli_mezok'/><br/>
-                        <p id='post_titles'>Lapkakészlet:</p><input type="text" id='AlaplapPost6' className='beviteli_mezok'/><br/>
-                        <p id='post_titles'>Slot szám:</p><input type="number" id='AlaplapPost7' className='beviteli_mezok'/><br/>
-                        <p id='post_titles'>Csatlakozók:</p>
+                        <p className='post_titles'>Név:</p><input type="text" id='AlaplapPost1' className='beviteli_mezok'/><br/>
+                        <p className='post_titles'>Processzor foglalat:</p><input type="text" id='AlaplapPost2' className='beviteli_mezok'/><br/>
+                        <p className='post_titles'>Alaplap formátum:</p><input type="text" id='AlaplapPost3' className='beviteli_mezok'/><br/>
+                        <p className='post_titles'>Maximum frekvencia:</p><input type="number" id='AlaplapPost4' className='beviteli_mezok'/><br/>
+                        <p className='post_titles'>Memória típus:</p><input type="text" id='AlaplapPost5' className='beviteli_mezok'/><br/>
+                        <p className='post_titles'>Lapkakészlet:</p><input type="text" id='AlaplapPost6' className='beviteli_mezok'/><br/>
+                        <p className='post_titles'>Slot szám:</p><input type="number" id='AlaplapPost7' className='beviteli_mezok'/><br/>
+                        <p className='post_titles'>Csatlakozók:</p>
                         {/*Ez egy listbox az alaplap csatlakozóinak neveivel */}
                         <select id='AlaplapPost8' multiple>
                            {[...new Set(mindenAdat['alaplapCsatlakozok'].map(i=>i.Nev))].map((nev)=>(<option value={nev} key={nev} id='csatik'>{nev}</option>))}
                         </select><br/>
                         
-                        <p id='post_titles'>Hangkártya:</p>
+                        <p className='post_titles'>Hangkártya:</p>
                         <div id="radiobtn">
                         <input type="radio" id="AlaplapPost9" className='radiobtn_post' name="hgk_true" value="True" checked={actionHgkRadiobf === 'Nemjeloltradiogomb'} onChange={() => setActionHgkRadiobf('Nemjeloltradiogomb')}/>
                         <label htmlFor="AlaplapPost9">Tartalmaz hangkártyát.</label>
@@ -451,16 +451,16 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                  <div id='buttons_content_post'>
-                     <div><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
-                     <div><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                   </div>
             </div> : <div></div>}
 
             {actionHardver==="Alaplap" && actionButtons==="Patch" ? <div className='body'>
                  <div className='inputok'>
                     <form id='patch_form'>
-                        <p id='patch_titles'>Név:</p>
+                        <p className='patch_titles'>Név:</p>
                         <select className="combi_patch" onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
                            <option id="legordulos_option">Válassz egyet</option>
                            {[...new Set(mindenAdat['alaplapok'].map(i=>i.Nev))].map((nev)=>(
@@ -470,14 +470,14 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
                         <button className='buttons' id='adatlekerogomb' type='button' onClick={(e)=>adatAlaplapLekeres(e, actionKivalasztottAlaplapNev)}>Adatok lekérése</button><br/>
                         
-                        <p id='patch_titles'>Processzor foglalat:</p><input type="text" id="AlaplapPatch1" className='patchbeviteli_mezok'/><br/>
-                        <p id='patch_titles'>Alaplap formátum:</p><input type="text" id="AlaplapPatch2" className='patchbeviteli_mezok'/><br/>
-                        <p id='patch_titles'>Maximum frekvencia:</p><input type="number" id="AlaplapPatch3" className='patchbeviteli_mezok'/><br/>
-                        <p id='patch_titles'>Memória típus:</p><input type="text" id="AlaplapPatch4" className='patchbeviteli_mezok'/><br/>
-                        <p id='patch_titles'>Lapkakészlet:</p><input type="text" id="AlaplapPatch5" className='patchbeviteli_mezok'/><br/>
-                        <p id='patch_titles'>Slot szám:</p><input type="number" id="AlaplapPatch6" className='patchbeviteli_mezok'/><br/>
+                        <p className='patch_titles'>Processzor foglalat:</p><input type="text" id="AlaplapPatch1" className='patchbeviteli_mezok'/><br/>
+                        <p className='patch_titles'>Alaplap formátum:</p><input type="text" id="AlaplapPatch2" className='patchbeviteli_mezok'/><br/>
+                        <p className='patch_titles'>Maximum frekvencia:</p><input type="number" id="AlaplapPatch3" className='patchbeviteli_mezok'/><br/>
+                        <p className='patch_titles'>Memória típus:</p><input type="text" id="AlaplapPatch4" className='patchbeviteli_mezok'/><br/>
+                        <p className='patch_titles'>Lapkakészlet:</p><input type="text" id="AlaplapPatch5" className='patchbeviteli_mezok'/><br/>
+                        <p className='patch_titles'>Slot szám:</p><input type="number" id="AlaplapPatch6" className='patchbeviteli_mezok'/><br/>
 
-                        <p id='patch_titles'>Hangkártya:</p>
+                        <p className='patch_titles'>Hangkártya:</p>
                            <div id="radiobtn_patch">
                            <input type="radio" id="AlaplapPatch7" name="ivk_true" value="True" checked={actionHgkRadiobf==='Nemjeloltradiogomb'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogomb')}></input>
                            <label htmlFor="ivk_true">Tartalmaz hangkártyát.</label><br/>
@@ -496,20 +496,20 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                  <div id='contents_patch'>
-                    <div id='adatok_patch'>Név:{actionMindenhezKellAdat?.Nev}</div>
-                    <div id='adatok_patch'>Processzor foglalat:{actionMindenhezKellAdat?.CpuFoglalat}</div>
-                    <div id='adatok_patch'>Alaplap formátum:{actionMindenhezKellAdat?.AlaplapFormatum}</div>
-                    <div id='adatok_patch'>Maximum frekvencia:{actionMindenhezKellAdat?.MaxFrekvencia}</div>
-                    <div id='adatok_patch'>Memória típus:{actionMindenhezKellAdat?.MemoriaTipusa}</div>
-                    <div id='adatok_patch'>Lapkakészlet:{actionMindenhezKellAdat?.Lapkakeszlet}</div>
-                    <div id='adatok_patch'>Slot szám:{actionMindenhezKellAdat?.SlotSzam}</div>
-                    <div id='adatok_patch'>Hangkártya:{actionMindenhezKellAdat?.Hangkartya}</div>      
+                    <div className='adatok_patch'>Név:{actionMindenhezKellAdat?.Nev}</div>
+                    <div className='adatok_patch'>Processzor foglalat:{actionMindenhezKellAdat?.CpuFoglalat}</div>
+                    <div className='adatok_patch'>Alaplap formátum:{actionMindenhezKellAdat?.AlaplapFormatum}</div>
+                    <div className='adatok_patch'>Maximum frekvencia:{actionMindenhezKellAdat?.MaxFrekvencia}</div>
+                    <div className='adatok_patch'>Memória típus:{actionMindenhezKellAdat?.MemoriaTipusa}</div>
+                    <div className='adatok_patch'>Lapkakészlet:{actionMindenhezKellAdat?.Lapkakeszlet}</div>
+                    <div className='adatok_patch'>Slot szám:{actionMindenhezKellAdat?.SlotSzam}</div>
+                    <div className='adatok_patch'>Hangkártya:{actionMindenhezKellAdat?.Hangkartya}</div>      
                  </div>
 
                     <div id='buttons_content'>
-                        <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                        <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button></div>
-                        <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
+                        <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                        <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
+                        <div className='pagechangebutton'><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/></div>
                     </div>
             </div> : <div></div>}
 
@@ -541,7 +541,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                   </div>
                  <div id='buttons_content'>
                      <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
                      <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                   </div>
             </div> : <div></div>}
@@ -549,10 +549,10 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             {actionHardver==="Memória" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
                     <form id='post_form'>
-                        <p id='post_titles'>Név:</p><input type="text" id='MemoriaPost1' className='beviteli_mezok'/>
-                        <p id='post_titles'>Memória típus:</p><input type="text" id='MemoriaPost2' className='beviteli_mezok'/>
-                        <p id='post_titles'>Frekvencia:</p><input type="number" id='MemoriaPost3' className='beviteli_mezok'/>
-                        <p id='post_titles'>Méret:</p><input type="number" id='MemoriaPost4' className='beviteli_mezok'/>
+                        <p className='post_titles'>Név:</p><input type="text" id='MemoriaPost1' className='beviteli_mezok'/>
+                        <p className='post_titles'>Memória típus:</p><input type="text" id='MemoriaPost2' className='beviteli_mezok'/>
+                        <p className='post_titles'>Frekvencia:</p><input type="number" id='MemoriaPost3' className='beviteli_mezok'/>
+                        <p className='post_titles'>Méret:</p><input type="number" id='MemoriaPost4' className='beviteli_mezok'/>
                          
                         <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                         <span className="filename" id='post_img_link'>{fileName}</span>
@@ -563,36 +563,36 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                  <div id='buttons_content_post'>
-                     <div><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
-                     <div><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                   </div>
             </div> : <div></div>}
 
             {actionHardver==="Memória" && actionButtons==="Patch" ? <div className='body'>
                  <div className='inputok'>
                     <form id='patch_form'>
-                        <p id='patch_titles'>Név:</p>
+                        <p className='patch_titles'>Név:</p>
                         <select className="combi_patch" onChange={(v)=>setActionKivalasztottRamNev(v.target.value)} value={actionKivalaszottRamNev}>
                            <option id="legordulos_option">Válassz egyet</option>
                            {[...new Set(mindenAdat['memoriak'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulos_option">{nev}</option>))}
                         </select>
 
-                        <p id='patch_titles'>Frekvencia:</p>
+                        <p className='patch_titles'>Frekvencia:</p>
                         <select className="combi_patch" onChange={(e)=>setActionSelectedRamFrekvencia(e.target.value)} >
                            <option id="legordulos_option">Válassz egyet</option>
                            {actionSzurtRamFrekvencia.map((Frekvencia)=>(<option value={Frekvencia} key={Frekvencia} id="legordulos_option">{Frekvencia}</option>))}
                         </select>
 
 
-                        <p id='patch_titles'>Méret:</p>
+                        <p className='patch_titles'>Méret:</p>
                         <select className="combi_patch" onChange={(e)=>setActionSelectedRamMeret(e.target.value)} >
                            <option id="legordulos_option">Válassz egyet</option>
                            {actionSzurtRamMeret.map((Meret)=>(<option value={Meret} key={Meret} id="legordulos_option">{Meret}</option>))}
                         </select>
 
                         <button className='buttons' id='adatlekerogomb' type='button' onClick={(e)=>adatRamLekeres(e,actionKivalaszottRamNev,actionSelectedRamMeret,actionSelectedRamFrekvencia)}>Adatok lekérése</button><br/>
-                        <p id='patch_titles'>Memória típus:<br/><input type="text" id='RamPatch1' className='patchbeviteli_mezok'/></p>    
+                        <p className='patch_titles'>Memória típus:<br/><input type="text" id='RamPatch1' className='patchbeviteli_mezok'/></p>    
                          
                         <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                         <span className="filename" id='patch_img_link'>{fileName}</span>
@@ -610,29 +610,29 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                   <div id='buttons_content'>
-                     <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button></div>
-                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/></div>
                   </div>
                 </div> : <div></div>}
 
             {actionHardver==="Memória" && actionButtons==="Delete" ? <div className='body'>
                  <div className='inputok'>
                     <form>
-                        <p id='titles_delete'>Név:</p>
+                        <p className='titles_delete'>Név:</p>
                         <select className="combi_delete" onChange={(v)=>setActionKivalasztottRamNev(v.target.value)} value={actionKivalaszottRamNev}>
                            <option id="legordulos_option">Válassz egyet</option>
                            {[...new Set(mindenAdat['memoriak'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulos_option">{nev}</option>))}
                         </select>
 
-                        <p id='titles_delete'>Frekvencia:</p>
+                        <p className='titles_delete'>Frekvencia:</p>
                         <select className="combi_delete" onChange={(e)=>setActionSelectedRamFrekvencia(e.target.value)} >
                            <option id="legordulos_option">Válassz egyet</option>
                            {actionSzurtRamFrekvencia.map((Frekvencia)=>(<option value={Frekvencia} key={Frekvencia} id="legordulos_option">{Frekvencia}</option>))}
                         </select>
 
 
-                        <p id='titles_delete'>Méret:</p>
+                        <p className='titles_delete'>Méret:</p>
                         <select className="combi_delete" onChange={(e)=>setActionSelectedRamMeret(e.target.value)} >
                            <option id="legordulos_option">Válassz egyet</option>
                            {actionSzurtRamMeret.map((Meret)=>(<option value={Meret} key={Meret} id="legordulos_option">{Meret}</option>))}
@@ -646,15 +646,15 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
                  
                  <div id='contents'>
-                    <div id='adatok_delete'>Név:{actionMindenhezKellAdat?.Nev}</div>
-                    <div id='adatok_delete'>Memória típus:{actionMindenhezKellAdat?.MemoriaTipus}</div>
-                    <div id='adatok_delete'>Frekvencia:{actionMindenhezKellAdat?.Frekvencia}</div>
-                    <div id='adatok_delete'>Méret:{actionMindenhezKellAdat?.Meret}</div>       
+                    <div className='adatok_delete'>Név:{actionMindenhezKellAdat?.Nev}</div>
+                    <div className='adatok_delete'>Memória típus:{actionMindenhezKellAdat?.MemoriaTipus}</div>
+                    <div className='adatok_delete'>Frekvencia:{actionMindenhezKellAdat?.Frekvencia}</div>
+                    <div className='adatok_delete'>Méret:{actionMindenhezKellAdat?.Meret}</div>       
                  </div>
 
                     <div id='buttons_content'>
                         <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                        <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button></div>
+                        <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
                         <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                     </div>
 
@@ -663,17 +663,17 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             {actionHardver==="Processzor" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
                      <form id='post_form'>
-                        <p id='post_titles'>Név:</p><input type="text" id='ProcPost1' className='beviteli_mezok'/>
-                        <p id='post_titles'>Alap frekvencia:</p><input type="number"id='ProcPost2' className='beviteli_mezok'/>
-                        <p id='post_titles'>Maximum frekvencia:</p><input type="number"id='ProcPost3' className='beviteli_mezok'/> 
-                        <p id='post_titles'>Alaplap foglalat:</p><input type="text"id='ProcPost4' className='beviteli_mezok'/>
-                        <p id='post_titles'>Szálak száma:</p><input type="number"id='ProcPost5' className='beviteli_mezok'/>
-                        <p id='post_titles'>Támogatott memória típus:</p><input type="text"id='ProcPost6' className='beviteli_mezok'/>
-                        <p id='post_titles'>Processzormagok száma:</p><input type="number"id='ProcPost7' className='beviteli_mezok'/>           
-                        <p id='post_titles'>Gyártó:</p><input type="text"id='ProcPost8' className='beviteli_mezok'/>
-                        <p id='post_titles'>Ajánlott tápegység:</p><input type="number"id='ProcPost9' className='beviteli_mezok'/>
+                        <p className='post_titles'>Név:</p><input type="text" id='ProcPost1' className='beviteli_mezok'/>
+                        <p className='post_titles'>Alap frekvencia:</p><input type="number"id='ProcPost2' className='beviteli_mezok'/>
+                        <p className='post_titles'>Maximum frekvencia:</p><input type="number"id='ProcPost3' className='beviteli_mezok'/> 
+                        <p className='post_titles'>Alaplap foglalat:</p><input type="text"id='ProcPost4' className='beviteli_mezok'/>
+                        <p className='post_titles'>Szálak száma:</p><input type="number"id='ProcPost5' className='beviteli_mezok'/>
+                        <p className='post_titles'>Támogatott memória típus:</p><input type="text"id='ProcPost6' className='beviteli_mezok'/>
+                        <p className='post_titles'>Processzormagok száma:</p><input type="number"id='ProcPost7' className='beviteli_mezok'/>           
+                        <p className='post_titles'>Gyártó:</p><input type="text"id='ProcPost8' className='beviteli_mezok'/>
+                        <p className='post_titles'>Ajánlott tápegység:</p><input type="number"id='ProcPost9' className='beviteli_mezok'/>
 
-                        <p id='post_titles'>Integrált videókártya:</p>
+                        <p className='post_titles'>Integrált videókártya:</p>
 
                         <div id="radiobtn">
                         <input type="radio" id="ProcPost10" name="ivk_true" value="True" checked={actionIvkRadiobt==='Jeloltradiogomb'}onChange={()=>setActionIvkRadiobt('Jeloltradiogomb')}></input>
@@ -703,7 +703,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             {actionHardver==="Processzor" && actionButtons==="Patch" ? <div className='body'>
                  <div className='inputok'>
                     <form id='patch_form'>
-                            <p id='patch_titles'>Név:</p>
+                            <p className='patch_titles'>Név:</p>
                             <select className="combi_patch" onChange={(an)=>setActionKivalasztottProcesszorNev(an.target.value)} value={actionKivalasztottProcesszorNev}>
                               <option  id="legordulos_option">Válassz egyet</option>
                               {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>( <option key={nev} value={nev}  id="legordulos_option">{nev}</option>))}
@@ -711,16 +711,16 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
                            <button className='buttons' id='adatlekerogomb'  type='button' onClick={(e)=>adatProcesszorLekeres(e, actionKivalasztottProcesszorNev)}>Adatok lekérése</button>
 
-                           <p id='patch_titles'>Frekvencia:</p><input type="number" id='ProcPatch1' className='patchbeviteli_mezok'/>
-                           <p id='patch_titles'>Maximum frekvencia:</p><input type="number" id='ProcPatch2' className='patchbeviteli_mezok'/>
-                           <p id='patch_titles'>Alaplap foglalat:</p><input type="text" id='ProcPatch3' className='patchbeviteli_mezok'/>
-                           <p id='patch_titles'>Szálak száma:</p><input type="number" id='ProcPatch4' className='patchbeviteli_mezok'/>
-                           <p id='patch_titles'>Támogatott memória típus:</p><input type="text" id='ProcPatch5' className='patchbeviteli_mezok'/>
-                           <p id='patch_titles'>Processzormegok száma:</p><input type="number" id='ProcPatch6' className='patchbeviteli_mezok'/>         
-                           <p id='patch_titles'>Gyártó:</p><input type="text" id='ProcPatch7' className='patchbeviteli_mezok'/>
-                           <p id='patch_titles'>Ajánlott tápegység:</p><input type="number" id='ProcPatch8' className='patchbeviteli_mezok'/>
+                           <p className='patch_titles'>Frekvencia:</p><input type="number" id='ProcPatch1' className='patchbeviteli_mezok'/>
+                           <p className='patch_titles'>Maximum frekvencia:</p><input type="number" id='ProcPatch2' className='patchbeviteli_mezok'/>
+                           <p className='patch_titles'>Alaplap foglalat:</p><input type="text" id='ProcPatch3' className='patchbeviteli_mezok'/>
+                           <p className='patch_titles'>Szálak száma:</p><input type="number" id='ProcPatch4' className='patchbeviteli_mezok'/>
+                           <p className='patch_titles'>Támogatott memória típus:</p><input type="text" id='ProcPatch5' className='patchbeviteli_mezok'/>
+                           <p className='patch_titles'>Processzormegok száma:</p><input type="number" id='ProcPatch6' className='patchbeviteli_mezok'/>         
+                           <p className='patch_titles'>Gyártó:</p><input type="text" id='ProcPatch7' className='patchbeviteli_mezok'/>
+                           <p className='patch_titles'>Ajánlott tápegység:</p><input type="number" id='ProcPatch8' className='patchbeviteli_mezok'/>
 
-                           <p id='patch_titles'>Integrált videókártya:</p>
+                           <p className='patch_titles'>Integrált videókártya:</p>
                            <div id="radiobtn_patch">
                            <input type="radio" id="ProcPatch9" name="ivk_true" value="True" checked={actionHgkRadiobf==='Nemjeloltradiogomb'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogomb')}></input>
                            <label htmlFor="ivk_true">Tartalmaz integrált videókártyát.</label><br/>
@@ -739,22 +739,22 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                  <div id='contents_patch'>
-                 <div id='adatok_patch'>Név:{actionMindenhezKellAdat?.Nev}</div>
-                 <div id='adatok_patch'>Gyártó:{actionMindenhezKellAdat?.Gyarto}</div>
-                 <div id='adatok_patch'>Frekvencia:{actionMindenhezKellAdat?.ProcesszorFrekvencia}</div>
-                 <div id='adatok_patch'>Szálak száma:{actionMindenhezKellAdat?.SzalakSzama}</div>
-                 <div id='adatok_patch'>Alaplap foglalat:{actionMindenhezKellAdat?.AlaplapFoglalat}</div>
-                 <div id='adatok_patch'>Ajánlott tápegység:{actionMindenhezKellAdat?.AjanlottTapegyseg}</div>
-                 <div id='adatok_patch'>Integrált videókártya:{actionMindenhezKellAdat?.IntegraltVideokartya}</div>
-                 <div id='adatok_patch'>Maximum frekvencia:{actionMindenhezKellAdat?.BProcesszorFrekvencia}</div> 
-                 <div id='adatok_patch'>Processzormegok száma:{actionMindenhezKellAdat?.ProcesszormagokSzama}</div> 
-                 <div id='adatok_patch'>Támogatott memória típus:{actionMindenhezKellAdat?.TamogatottMemoriatipus}</div>
+                 <div className='adatok_patch'>Név:{actionMindenhezKellAdat?.Nev}</div>
+                 <div className='adatok_patch'>Gyártó:{actionMindenhezKellAdat?.Gyarto}</div>
+                 <div className='adatok_patch'>Frekvencia:{actionMindenhezKellAdat?.ProcesszorFrekvencia}</div>
+                 <div className='adatok_patch'>Szálak száma:{actionMindenhezKellAdat?.SzalakSzama}</div>
+                 <div className='adatok_patch'>Alaplap foglalat:{actionMindenhezKellAdat?.AlaplapFoglalat}</div>
+                 <div className='adatok_patch'>Ajánlott tápegység:{actionMindenhezKellAdat?.AjanlottTapegyseg}</div>
+                 <div className='adatok_patch'>Integrált videókártya:{actionMindenhezKellAdat?.IntegraltVideokartya}</div>
+                 <div className='adatok_patch'>Maximum frekvencia:{actionMindenhezKellAdat?.BProcesszorFrekvencia}</div> 
+                 <div className='adatok_patch'>Processzormegok száma:{actionMindenhezKellAdat?.ProcesszormagokSzama}</div> 
+                 <div className='adatok_patch'>Támogatott memória típus:{actionMindenhezKellAdat?.TamogatottMemoriatipus}</div>
                  </div>
 
                     <div id='buttons_content'>
-                        <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                        <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button></div>
-                        <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
+                        <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
+                        <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
+                        <div className='pagechangebutton'><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/></div>
                     </div>
 
             </div> : <div></div>}
@@ -762,7 +762,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             {actionHardver==="Processzor" && actionButtons==="Delete" ? <div className='body'>
                  <div className='inputok'>
                     <form>
-                    <p id='titles_delete'>Név:</p>
+                    <p className='titles_delete'>Név:</p>
                             <select className="combi_delete" onChange={(an)=>setActionKivalasztottProcesszorNev(an.target.value)} value={actionKivalasztottProcesszorNev}>
                               <option id="legordulos_option" >Válassz egyet</option>
                               {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>(
@@ -780,21 +780,21 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                  <div id='contents'>
-                 <div id='adatok_delete'>Név:{actionMindenhezKellAdat?.Nev}</div>
-                 <div id='adatok_delete'>Frekvencia:{actionMindenhezKellAdat?.ProcesszorFrekvencia}</div>
-                 <div id='adatok_delete'>Maximum frekvencia:{actionMindenhezKellAdat?.BProcesszorFrekvencia}</div>
-                 <div id='adatok_delete'>Alaplap foglalat:{actionMindenhezKellAdat?.AlaplapFoglalat}</div>
-                 <div id='adatok_delete'>Szálak száma:{actionMindenhezKellAdat?.SzalakSzama}</div>
-                 <div id='adatok_delete'>Támogatott memória típus:{actionMindenhezKellAdat?.TamogatottMemoriatipus}</div>
-                 <div id='adatok_delete'>Processzormegok száma:{actionMindenhezKellAdat?.ProcesszormagokSzama}</div>
-                 <div id='adatok_delete'>Gyártó:{actionMindenhezKellAdat?.Gyarto}</div>
-                 <div id='adatok_delete'>Ajánlott tápegység:{actionMindenhezKellAdat?.AjanlottTapegyseg}</div>
-                 <div id='adatok_delete'>Integrált videókártya:{actionMindenhezKellAdat?.IntegraltVideokartya}</div>
+                 <div className='adatok_delete'>Név:{actionMindenhezKellAdat?.Nev}</div>
+                 <div className='adatok_delete'>Frekvencia:{actionMindenhezKellAdat?.ProcesszorFrekvencia}</div>
+                 <div className='adatok_delete'>Maximum frekvencia:{actionMindenhezKellAdat?.BProcesszorFrekvencia}</div>
+                 <div className='adatok_delete'>Alaplap foglalat:{actionMindenhezKellAdat?.AlaplapFoglalat}</div>
+                 <div className='adatok_delete'>Szálak száma:{actionMindenhezKellAdat?.SzalakSzama}</div>
+                 <div className='adatok_delete'>Támogatott memória típus:{actionMindenhezKellAdat?.TamogatottMemoriatipus}</div>
+                 <div className='adatok_delete'>Processzormegok száma:{actionMindenhezKellAdat?.ProcesszormagokSzama}</div>
+                 <div className='adatok_delete'>Gyártó:{actionMindenhezKellAdat?.Gyarto}</div>
+                 <div className='adatok_delete'>Ajánlott tápegység:{actionMindenhezKellAdat?.AjanlottTapegyseg}</div>
+                 <div className='adatok_delete'>Integrált videókártya:{actionMindenhezKellAdat?.IntegraltVideokartya}</div>
                  </div>
 
                   <div id='contents'>
                      <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")}}>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
                      <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
                  </div>
             </div> : <div></div>}

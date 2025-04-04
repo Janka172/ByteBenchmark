@@ -27,7 +27,7 @@
     display: block;
 
   }
-#patch_titles
+.patch_titles
 {
     text-align: left;
     font-size: 1.5vw;
@@ -76,7 +76,7 @@ table {
     width: 100%;
 }
 
-#adatok_patch
+.adatok_patch
 {
   border-bottom: 10px solid transparent;
   padding: 15px;

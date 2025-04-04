@@ -8,7 +8,7 @@
     text-align-last: center; 
     display: block;
 }
-#titles_delete
+.titles_delete
 {
     text-align: left;
     font-size: 1.5vw;
@@ -28,7 +28,7 @@
     margin-left: 25px
 
 }
-#adatok_delete
+.adatok_delete
 {
   border-bottom: 10px solid transparent;
   padding: 15px;
