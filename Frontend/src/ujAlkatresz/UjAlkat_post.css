@@ -107,7 +107,7 @@
     flex-direction: column;
     margin-left: 15vw;
     float: right;
-    align-items: flex-end;
+    /*align-items: flex-end;*/
   }
   
 
@@ -258,10 +258,12 @@ input[type="radio"] {
       margin-left: 18%;
       border:black 1px solid;
     }
+    /*
     .delete
     {
       margin-top: 50px;
     }
+    */
     .select_buttons
     {
       width: 90%;

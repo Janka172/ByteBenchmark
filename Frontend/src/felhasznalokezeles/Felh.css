@@ -421,6 +421,13 @@ select{
     width: 50%;
 }
 
+.imgbutton{
+  font-size: 1vw;
+  border-radius: 0% 30%;
+  background-color: rgba(194, 52, 52, 0.8);
+  color: black;
+}
+
 
 @media (max-width: 767px){
     .bejMenu{
