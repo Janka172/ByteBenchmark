@@ -3,15 +3,52 @@ import './UjAlkat_post.css';
 import './UjAlkat_patch.css';
 import './UjAlkat_delete.css';
 import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP, RequestVideokPatch, RequestAlaplapPatch, RequestProcesszorPatch, RequestRamPatch, RequestVideokDelete, RequestAlaplapDelete, RequestProcesszorDelete, RequestRamDelete} from './Request';
-{/*Összes adat tárolására*/}
-const mindenAdat={ 
-   videokartyak : [],
-   processzorok : [],
-   alaplapok : [],
-   memoriak : [],
-   alaplapCsatlakozok : [] 
-}
+
 function UjAlkat() {
+   {/*Összes adat tárolására*/}
+   const [mindenAdat,setMindenAdat]=useState({ 
+      videokartyak : [],
+      processzorok : [],
+      alaplapok : [],
+      memoriak : [],
+      alaplapCsatlakozok : [] 
+   })
+
+   
+
+   const fetchAdat = async () => {
+      {/* A backendben lévő elérési útvonalak*/}
+      const backEleresiUtvonal={
+         'videokartyak': "https://localhost:44316/api/Videokartya",
+      'processzorok': "https://localhost:44316/api/Processzor",
+      'memoriak': "https://localhost:44316/api/Ram",
+      'alaplapok': "https://localhost:44316/api/Alaplap",
+      'alaplapCsatlakozok': "https://localhost:44316/api/Csatlakozo"
+      }
+      {/*A fetchAdat beolvassa az adatbázisból az adatokat backenden keresztül.*/}
+      try
+      {
+         const adatLekeres={};
+         for(var item in backEleresiUtvonal)
+         {
+            const response= await fetch(backEleresiUtvonal[item]);
+            if (response.ok)
+            {
+               const adat= await response.json();
+               adatLekeres[item]=adat;
+            }
+            else{throw new Error(`Hiba a ${item} lekérésekor: ${response.status}`);}           
+         }
+         setMindenAdat(adatLekeres)
+      } catch (error)
+      {
+         console.error("Hiba történt! Hiba: ", error)
+      }
+   }
+   useEffect(()=>{
+      fetchAdat(); 
+   },[])
+
    {/*Minden adathoz használva van! */}
    const [actionMindenhezKellAdat, setActionMindenhezKellAdat] = useState(null);
 
@@ -169,37 +206,6 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
    }
    {/*............................................................................................................................. */}
-   useEffect(()=>{
-      {/* A backendben lévő elérési útvonalak*/}
-      const backEleresiUtvonal={
-         'videokartyak': "https://localhost:44316/api/Videokartya",
-        'processzorok': "https://localhost:44316/api/Processzor",
-        'memoriak': "https://localhost:44316/api/Ram",
-        'alaplapok': "https://localhost:44316/api/Alaplap",
-        'alaplapCsatlakozok': "https://localhost:44316/api/Csatlakozo"
-      }
-      {/*A fetchAdat beolvassa az adatbázisból az adatokat backenden keresztül.*/}
-      const fetchAdat= async ()=>{
-         try
-         {
-            for(var item in backEleresiUtvonal)
-            {
-               const response= await fetch(backEleresiUtvonal[item]);
-               if (response.ok)
-               {
-                  const adat= await response.json();
-                  mindenAdat[item]=adat;
-               }
-               else{throw new Error(`Hiba a ${item} lekérésekor: ${response.status}`);}           
-            }
-            
-         } catch (error)
-         {
-            console.error("Hiba történt! Hiba: ", error)
-         }
-      }
-      fetchAdat(); 
-   },[])
 
     const handleUploadAndPost = async (event) => {
       event.preventDefault();
@@ -318,9 +324,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                   <div id='buttons_content_post'>
-                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
-                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
                   </div>
 
             </div> : <div></div>}
@@ -370,9 +376,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                  <div id='buttons_content_patch'>
-                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
-                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/></div>
+                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button><br/></div>
                  </div>
             </div> : <div></div>}
 
@@ -408,9 +414,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
 
                   <div id='buttons_content'>
-                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
-                     <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
+                     <div><button className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()}}>Új elem hozzáadása</button></div>
+                     <div><button disabled className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
                   </div>
 
             </div> : <div></div>}
@@ -451,9 +457,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                  <div id='buttons_content_post'>
-                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
-                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
                   </div>
             </div> : <div></div>}
 
@@ -507,9 +513,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                     <div id='buttons_content'>
-                        <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                        <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
-                        <div className='pagechangebutton'><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/></div>
+                        <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
+                        <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
+                        <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button><br/></div>
                     </div>
             </div> : <div></div>}
 
@@ -540,9 +546,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                      <div id="adatok_delete">Hangkártya:{actionMindenhezKellAdat?.Hangkartya}</div>      
                   </div>
                  <div id='buttons_content'>
-                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
-                     <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
+                     <div><button className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
+                     <div><button disabled className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
                   </div>
             </div> : <div></div>}
             {/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
@@ -563,9 +569,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                  <div id='buttons_content_post'>
-                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
-                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
                   </div>
             </div> : <div></div>}
 
@@ -610,9 +616,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                   <div id='buttons_content'>
-                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
-                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/></div>
+                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button><br/></div>
                   </div>
                 </div> : <div></div>}
 
@@ -653,9 +659,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                     <div id='buttons_content'>
-                        <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                        <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
-                        <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
+                        <div><button className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
+                        <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
+                        <div><button disabled className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
                     </div>
 
             </div> : <div></div>}
@@ -694,9 +700,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                  <div id='buttons_content_post'>
-                     <div><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
-                     <div><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
+                     <div><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
+                     <div><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
+                     <div><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
                   </div>
             </div> : <div></div>}
 
@@ -752,9 +758,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                     <div id='buttons_content'>
-                        <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                        <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
-                        <div className='pagechangebutton'><button className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button><br/></div>
+                        <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
+                        <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
+                        <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button><br/></div>
                     </div>
 
             </div> : <div></div>}
@@ -793,9 +799,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                   <div id='contents'>
-                     <div><button className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch")}}>Elem adatainak frissítése</button></div>
-                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post")} }>Új elem hozzáadása</button></div>
-                     <div><button disabled className='buttons positions' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete")}}>Elem törlése</button></div>
+                     <div><button className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
+                     <div><button disabled className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
                  </div>
             </div> : <div></div>}
             </div>
