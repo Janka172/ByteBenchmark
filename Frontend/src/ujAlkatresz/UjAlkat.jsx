@@ -509,7 +509,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                     <div className='adatok_patch'>Memória típus:{actionMindenhezKellAdat?.MemoriaTipusa}</div>
                     <div className='adatok_patch'>Lapkakészlet:{actionMindenhezKellAdat?.Lapkakeszlet}</div>
                     <div className='adatok_patch'>Slot szám:{actionMindenhezKellAdat?.SlotSzam}</div>
-                    <div className='adatok_patch'>Hangkártya:{actionMindenhezKellAdat?.Hangkartya}</div>      
+                    <div className='adatok_patch'>Hangkártya:{actionMindenhezKellAdat?.Hangkartya? "van":"nincs"}</div>      
                  </div>
 
                     <div id='buttons_content'>
@@ -543,7 +543,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                      <div id="adatok_delete">Memória típus:{actionMindenhezKellAdat?.MemoriaTipusa}</div>
                      <div id="adatok_delete">Lapkakészlet:{actionMindenhezKellAdat?.Lapkakeszlet}</div>
                      <div id="adatok_delete">Slot szám:{actionMindenhezKellAdat?.SlotSzam}</div>
-                     <div id="adatok_delete">Hangkártya:{actionMindenhezKellAdat?.Hangkartya}</div>      
+                     <div id="adatok_delete">Hangkártya:{actionMindenhezKellAdat?.Hangkartya? "van":"nincs"}</div>      
                   </div>
                  <div id='buttons_content'>
                      <div><button className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
@@ -751,10 +751,10 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  <div className='adatok_patch'>Szálak száma:{actionMindenhezKellAdat?.SzalakSzama}</div>
                  <div className='adatok_patch'>Alaplap foglalat:{actionMindenhezKellAdat?.AlaplapFoglalat}</div>
                  <div className='adatok_patch'>Ajánlott tápegység:{actionMindenhezKellAdat?.AjanlottTapegyseg}</div>
-                 <div className='adatok_patch'>Integrált videókártya:{actionMindenhezKellAdat?.IntegraltVideokartya}</div>
                  <div className='adatok_patch'>Maximum frekvencia:{actionMindenhezKellAdat?.BProcesszorFrekvencia}</div> 
                  <div className='adatok_patch'>Processzormegok száma:{actionMindenhezKellAdat?.ProcesszormagokSzama}</div> 
                  <div className='adatok_patch'>Támogatott memória típus:{actionMindenhezKellAdat?.TamogatottMemoriatipus}</div>
+                 <div className='adatok_patch'>Integrált videókártya:{actionMindenhezKellAdat?.IntegraltVideokartya?"van":"nincs"}</div>
                  </div>
 
                     <div id='buttons_content'>
@@ -795,7 +795,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  <div className='adatok_delete'>Processzormegok száma:{actionMindenhezKellAdat?.ProcesszormagokSzama}</div>
                  <div className='adatok_delete'>Gyártó:{actionMindenhezKellAdat?.Gyarto}</div>
                  <div className='adatok_delete'>Ajánlott tápegység:{actionMindenhezKellAdat?.AjanlottTapegyseg}</div>
-                 <div className='adatok_delete'>Integrált videókártya:{actionMindenhezKellAdat?.IntegraltVideokartya}</div>
+                 <div className='adatok_delete'>Integrált videókártya:{actionMindenhezKellAdat?.IntegraltVideokartya? "van":"nincs"}</div>
                  </div>
 
                   <div id='contents'>
