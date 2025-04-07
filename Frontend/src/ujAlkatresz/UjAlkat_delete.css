@@ -37,3 +37,91 @@
   width: 18vw;
   margin-left: 5vw;
 }
+/*-------------------------RESZPONZIVITÁS @MEDIA-VAL-------------------------------------*/
+@media (max-width: 767px)
+{
+
+  #delete_form
+  {
+  flex-direction: column;
+  width: 50%;
+  }
+
+  #legordulos_option
+  {
+    font-size: large;
+    font-weight: bold;
+  }
+
+  .combi_delete
+  {
+    width: 100%;
+    margin-top: 1%;
+    font-size: medium;
+    border-radius: 20px;
+    height: 4vw;
+    text-align: center;
+    text-align-last: center; 
+  }
+  .titles_delete
+  {
+    text-align: left;
+    font-size: 3vw;
+    width: max-content;
+  }
+
+  #delete_adatlekerogomb
+  {
+    padding: 3%;
+    font-size: medium;
+    width: 60%;
+    margin-top: 5%;
+    margin-bottom: 1.5vw;
+    margin-left: 17%;
+}
+
+#delete_adatkezelogomb
+  {
+    padding: 5%;
+    font-size: medium;
+    width:90%;
+    margin-left: 5%;
+  }
+  /*-------------------------KILISTÁZOTT ADATOK CSS RÉSZE------------------------*/
+  #contents
+  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .adatok_delete
+{
+  border-bottom: 10px solid transparent;
+  padding: 15px;
+  border-image: url(border.png) 30 round;
+  font-size: large;
+  width: 50%;
+}
+/*-----------------------------HÁROM GOMB--------------------------------------*/
+}
+
+#buttons_content
+{
+  display: flex;
+  flex-direction: row;
+  margin-top: 5%;
+}
+@media (min-width: 768px)
+{
+
+}
+
+@media (min-width: 1500px)
+{
+
+}
+
+@media (min-width: 2500px)
+{
+
+}

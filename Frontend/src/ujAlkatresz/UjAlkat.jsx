@@ -383,39 +383,39 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
             {actionHardver==="Videókártya" && actionButtons==="Delete" ? <div className='body'>
                  <div className='inputok'>
-                    <form> 
+                    <form id='delete_form'> 
                     <p className='titles_delete'>Név:</p>
                         <select  className="combi_delete" onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
                            <option >Válassz egyet</option>
                            {[...new Set(mindenAdat['videokartyak'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulos_option">{nev}</option>))}
-                        </select><br/>
+                        </select>
 
                      <p id="titles_delete">Vram:</p>
                         <select className="combi_delete" onChange={(e)=>setActionSelectedVram(e.target.value)} >
                            <option id="legordulos_option">Válassz egyet</option>
                            {actionSzurtVram.map((vram)=>(<option value={vram} key={vram} id="legordulos_option">{vram}</option>))}
-                        </select><br/>
+                        </select>
 
                         <button className='buttons' id='delete_adatlekerogomb' type='button' onClick={(e)=>adatLekeres(e, actionSelectedVram, actionKivalasztottNev)}>Adatok lekérése</button>
 
-                    <button className='buttons' type='button' onClick={(e)=>handleDelete(e)}>Alkatrész eltávolítása</button>
+                    <button className='buttons' type='button' id='delete_adatkezelogomb' onClick={(e)=>handleDelete(e)}>Alkatrész eltávolítása</button>
                     </form>
                  </div>
 
                  <div id='contents'>
-                    <div id="adatok_delete">Név: {actionMindenhezKellAdat?.Nev}</div>
-                    <div id="adatok_delete">Vram: {actionMindenhezKellAdat?.vram}</div>
-                    <div id="adatok_delete">Chip gyártója: {actionMindenhezKellAdat?.chipGyartoja}</div>  
-                    <div id="adatok_delete">Ajánlott tápegység: {actionMindenhezKellAdat?.ajanlottTapegyseg}</div>                 
-                    <div id="adatok_delete">Monitor csatlakozás: {actionMindenhezKellAdat?.monitorCsatlakozas}</div> 
-                    <div id="adatok_delete">Alaplapi csatlakozás: {actionMindenhezKellAdat?.alaplapiCsatlakozas}</div>
+                    <div className="adatok_delete">Név: {actionMindenhezKellAdat?.Nev}</div>
+                    <div className="adatok_delete">Vram: {actionMindenhezKellAdat?.vram}</div>
+                    <div className="adatok_delete">Chip gyártója: {actionMindenhezKellAdat?.chipGyartoja}</div>  
+                    <div className="adatok_delete">Ajánlott tápegység: {actionMindenhezKellAdat?.ajanlottTapegyseg}</div>                 
+                    <div className="adatok_delete">Monitor csatlakozás: {actionMindenhezKellAdat?.monitorCsatlakozas}</div> 
+                    <div className="adatok_delete">Alaplapi csatlakozás: {actionMindenhezKellAdat?.alaplapiCsatlakozas}</div>
                  </div>
 
 
                   <div id='buttons_content'>
-                     <div className='pagechangebutton'><button className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
-                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()}}>Új elem hozzáadása</button></div>
-                     <div className='pagechangebutton'><button disabled className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
+                     <div className='pagechangebutton'><button className='buttons select_buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons ' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()}}>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button disabled className='buttons select_buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
                   </div>
 
             </div> : <div></div>}
@@ -509,7 +509,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                     <div className='adatok_patch'>Hangkártya:{actionMindenhezKellAdat?.Hangkartya? "van":"nincs"}</div>      
                  </div>
 
-                    <div id='buttons_content'>
+                    <div id='buttons_content_patch'>
                         <div className='pagechangebutton'><button disabled className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
                         <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
                         <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
@@ -526,24 +526,24 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         </select>
                         <button className='buttons' id='delete_adatlekerogomb' type='button' onClick={(e)=>adatAlaplapLekeres(e, actionKivalasztottAlaplapNev)}>Adatok lekérése</button>
 
-                    <button className='buttons' type='button' onClick={(e)=>handleDelete(e)}>Alkatrész eltávolítása</button>
+                    <button className='buttons' type='button' id='delete_adatkezelogomb' onClick={(e)=>handleDelete(e)}>Alkatrész eltávolítása</button>
                     </form>
                  </div>
 
                   <div id='contents'>
-                     <div id="adatok_delete">Név:{actionMindenhezKellAdat?.Nev}</div>
-                     <div id="adatok_delete">Processzor foglalat:{actionMindenhezKellAdat?.CpuFoglalat}</div>
-                     <div id="adatok_delete">Alaplap formátum:{actionMindenhezKellAdat?.AlaplapFormatum}</div>
-                     <div id="adatok_delete">Maximum frekvencia:{actionMindenhezKellAdat?.MaxFrekvencia}</div>
-                     <div id="adatok_delete">Memória típus:{actionMindenhezKellAdat?.MemoriaTipusa}</div>
-                     <div id="adatok_delete">Lapkakészlet:{actionMindenhezKellAdat?.Lapkakeszlet}</div>
-                     <div id="adatok_delete">Slot szám:{actionMindenhezKellAdat?.SlotSzam}</div>
-                     <div id="adatok_delete">Hangkártya:{actionMindenhezKellAdat?.Hangkartya? "van":"nincs"}</div>      
+                     <div className="adatok_delete">Név:{actionMindenhezKellAdat?.Nev}</div>
+                     <div className="adatok_delete">Processzor foglalat:{actionMindenhezKellAdat?.CpuFoglalat}</div>
+                     <div className="adatok_delete">Alaplap formátum:{actionMindenhezKellAdat?.AlaplapFormatum}</div>
+                     <div className="adatok_delete">Maximum frekvencia:{actionMindenhezKellAdat?.MaxFrekvencia}</div>
+                     <div className="adatok_delete">Memória típus:{actionMindenhezKellAdat?.MemoriaTipusa}</div>
+                     <div className="adatok_delete">Lapkakészlet:{actionMindenhezKellAdat?.Lapkakeszlet}</div>
+                     <div className="adatok_delete">Slot szám:{actionMindenhezKellAdat?.SlotSzam}</div>
+                     <div className="adatok_delete">Hangkártya:{actionMindenhezKellAdat?.Hangkartya? "van":"nincs"}</div>      
                   </div>
                  <div id='buttons_content'>
-                     <div className='pagechangebutton'><button className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button className='buttons select_buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
                      <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
-                     <div className='pagechangebutton'><button disabled className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
+                     <div className='pagechangebutton'><button disabled className='buttons select_buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
                   </div>
             </div> : <div></div>}
             {/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
@@ -632,7 +632,6 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                            {actionSzurtRamFrekvencia.map((Frekvencia)=>(<option value={Frekvencia} key={Frekvencia} id="legordulos_option">{Frekvencia}</option>))}
                         </select>
 
-
                         <p className='titles_delete'>Méret:</p>
                         <select className="combi_delete" onChange={(e)=>setActionSelectedRamMeret(e.target.value)} >
                            <option id="legordulos_option">Válassz egyet</option>
@@ -640,9 +639,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         </select>
 
                         <button className='buttons' id='delete_adatlekerogomb' type='button' onClick={(e)=>adatRamLekeres(e,actionKivalaszottRamNev,actionSelectedRamMeret,actionSelectedRamFrekvencia)}>Adatok lekérése</button>
-
-
-                    <button className='buttons' type='button' onClick={(e)=>handleDelete(e)}>Alkatrész eltávolítása</button>
+                        <button className='buttons' type='button' id='delete_adatkezelogomb'  onClick={(e)=>handleDelete(e)}>Alkatrész eltávolítása</button>
                     </form>
                  </div>
                  
@@ -654,9 +651,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                     <div id='buttons_content'>
-                        <div className='pagechangebutton'><button className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
+                        <div className='pagechangebutton'><button className='buttons select_buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
                         <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
-                        <div className='pagechangebutton'><button disabled className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
+                        <div className='pagechangebutton'><button disabled className='buttons select_buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
                     </div>
 
             </div> : <div></div>}
@@ -766,17 +763,12 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                     <p className='titles_delete'>Név:</p>
                             <select className="combi_delete" onChange={(an)=>setActionKivalasztottProcesszorNev(an.target.value)} value={actionKivalasztottProcesszorNev}>
                               <option id="legordulos_option" >Válassz egyet</option>
-                              {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>(
-                                 <option key={nev} value={nev} id="legordulos_option">{nev}</option>
-                              ))}
+                              {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulos_option">{nev}</option>))}
                            </select>
 
-                           <button className='buttons' id='delete_adatlekerogomb' type='button' onClick={(e)=>adatProcesszorLekeres(e, actionKivalasztottProcesszorNev)}>Adatok lekérése</button>
+                     <button className='buttons' id='delete_adatlekerogomb' type='button' onClick={(e)=>adatProcesszorLekeres(e, actionKivalasztottProcesszorNev)}>Adatok lekérése</button>
 
-                     <button className='buttons' type='button' onClick={(e)=>{
-                           handleDelete(e);
-                           
-                     }}>Alkatrész eltávolítása</button>                
+                     <button className='buttons' id='delete_adatkezelogomb' type='button' onClick={(e)=>{handleDelete(e);}}>Alkatrész eltávolítása</button>                
                     </form>
                  </div>
 
@@ -793,10 +785,10 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  <div className='adatok_delete'>Integrált videókártya:{actionMindenhezKellAdat?.IntegraltVideokartya? "van":"nincs"}</div>
                  </div>
 
-                  <div id='contents'>
-                     <div className='pagechangebutton'><button className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
+                  <div id='buttons_content'>
+                     <div className='pagechangebutton'><button className='buttons select_buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
                      <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
-                     <div className='pagechangebutton'><button disabled className='buttons positions' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
+                     <div className='pagechangebutton'><button disabled className='buttons select_buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
                  </div>
             </div> : <div></div>}
             </div>
