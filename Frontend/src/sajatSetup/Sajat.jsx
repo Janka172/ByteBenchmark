@@ -317,12 +317,12 @@ function Sajat() {
   }, [kivVideokartya, kivProcesszor, kivOpRendszer, kivRam, kivAlaplap])
 
   function gorgosKattKezeles(e, adat){
-    if (e.button == 1 && adat.tipus=='app') {
+    if (e.button == 1 && adat.oldalTipus=='app') {
       e.preventDefault();
       navigate("/oldalak/AlkalmazasReszletek", { state: adat });
-    } else if (e.button == 1 && adat.tipus=='aresz') {
+    } else if (e.button == 1 && adat.oldalTipus=='aresz') {
       e.preventDefault();
-      navigate("/oldalak/AlkalmazasReszletek", { state: adat });
+      navigate("/oldalak/AlkatreszReszletek", { state: adat });
     }
   }
 
@@ -341,7 +341,7 @@ function Sajat() {
         ujMind = szurtApp.map((app, i) => {
           let kepUrl = `/IMAGE/logo.${app.KepeleresiUtja}`;
           if(app.KepeleresiUtja == '') kepUrl = `/IMAGE/logo.hiany.jpg`;
-          const adat = { nev: app.Nev, tipus: 'app' };
+          const adat = { 'nev': app.Nev, 'oldalTipus': 'app' };
           return (
             <div className="korKepKeret" key={i}>
               <img src={kepUrl} className="korKepS" alt="App kép" />
@@ -577,7 +577,9 @@ function Sajat() {
             {betoltA ? (<option>Betöltés...</option>) : alaplapBetoltes()}
           </select>
           <button className='sajGomb' onClick={kivalasztAlaplap}>Hozzáadás</button>
-          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'a', 'id':aktuAlaplap}}><button className='sajGomb'>További részletek</button></Link>
+          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'a', 'id':aktuAlaplap}}>
+            <button className='sajGomb' onMouseDown={(e) => gorgosKattKezeles(e, {'tipus':'a', 'id':aktuAlaplap, 'oldalTipus':'aresz'})}>További részletek</button>
+          </Link>
         </div>
 
         <div className='kivSor' style={{display: vanAlap}}>
@@ -586,7 +588,9 @@ function Sajat() {
             {betoltV ? (<option>Betöltés...</option>) : videokartyaBetoltes()}
           </select>
           <button className='sajGomb' onClick={kivalasztVidk}>Hozzáadás</button>
-          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'v', 'id':aktuVideokartya}}><button className='sajGomb'>További részletek</button></Link>
+          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'v', 'id':aktuVideokartya}}>
+            <button className='sajGomb'onMouseDown={(e) => gorgosKattKezeles(e, {'tipus':'v', 'id':aktuVideokartya, 'oldalTipus':'aresz'})}>További részletek</button>
+          </Link>
         </div>
 
         <div className='kivSor' style={{display: vanAlap}}>
@@ -595,7 +599,9 @@ function Sajat() {
             {betoltP ? (<option>Betöltés...</option>) : processzorBetoltes()}
           </select>
           <button className='sajGomb' onClick={kivalasztProc}>Hozzáadás</button>
-          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'p', 'id':aktuProcesszor}} style={{display: vanProci, textDecoration: 'none'}}><button className='sajGomb'>További részletek</button></Link>
+          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'p', 'id':aktuProcesszor}} style={{display: vanProci, textDecoration: 'none'}}>
+            <button className='sajGomb' onMouseDown={(e) => gorgosKattKezeles(e, {'tipus':'p', 'id':aktuProcesszor, 'oldalTipus':'aresz'})}>További részletek</button>
+          </Link>
         </div>
 
         <div className='kivSor' style={{display: vanAlap}}>
@@ -604,7 +610,9 @@ function Sajat() {
             {betoltR ? (<option>Betöltés...</option>) : ramBetoltes()}
           </select>
           <button className='sajGomb' onClick={kivalasztRam}>Hozzáadás</button>
-          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'r', 'id':aktuRam}} style={{display: vanRam, textDecoration: 'none'}}><button className='sajGomb'>További részletek</button></Link>
+          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'r', 'id':aktuRam}} style={{display: vanRam, textDecoration: 'none'}}>
+            <button className='sajGomb' onMouseDown={(e) => gorgosKattKezeles(e, {'tipus':'r', 'id':aktuRam, 'oldalTipus':'aresz'})}>További részletek</button>
+          </Link>
         </div>
 
         <div className='kivSor' style={{display: vanAlap}}>
@@ -613,7 +621,9 @@ function Sajat() {
             {betoltO ? (<option>Betöltés...</option>) : opRendszerBetoltes()}
           </select>
           <button className='sajGomb' onClick={kivalasztOpRend}>Hozzáadás</button>
-          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'o', 'id':aktuOpRendszer}}><button className='sajGomb'>További részletek</button></Link>
+          <Link to='/oldalak/AlkatreszReszletek' state={{'tipus':'o', 'id':aktuOpRendszer}}>
+            <button className='sajGomb' onMouseDown={(e) => gorgosKattKezeles(e, {'tipus':'o', 'id':aktuOpRendszer, 'oldalTipus':'aresz'})}>További részletek</button>
+          </Link>
         </div>
 
       </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AlkikStilus from './Alkik.css';
 
 function Alkik(){
@@ -7,6 +7,7 @@ function Alkik(){
     const [betoltA, setBetoltA] = useState(true);
     const [randomIndexek, setRandomIndexek] = useState([]);
     const [betoltAlk, setBetoltAlk] = useState(true);
+    const navigate = useNavigate();
 
     async function getMindenApp() {
         try {
@@ -38,6 +39,13 @@ function Alkik(){
         return randomIndexek;
     }
 
+    function gorgosKattKezeles(e, adat){
+        if (e.button == 1) {
+          e.preventDefault();
+          navigate("/oldalak/AlkalmazasReszletek", { state: adat });
+        }
+      }
+
     useEffect(() => {
         if(!betoltA) appokMegjelenitese();
     }, [randomIndexek]);
@@ -50,7 +58,7 @@ function Alkik(){
             let kepUrl = `/IMAGE/logo.${mindenApp[randomIndexek[i]].KepeleresiUtja}`;
             ujAlkCont.push(
                 <Link key={i} to='/oldalak/AlkalmazasReszletek' state={{'nev' : mindenApp[randomIndexek[i]].Nev}}>
-                    <div className={`kezdoIkon${i} kezdoKepKeret`}>
+                    <div className={`kezdoIkon${i} kezdoKepKeret`} onMouseDown={(e) => gorgosKattKezeles(e, {'nev' : mindenApp[randomIndexek[i]].Nev})}>
                         <img src={kepUrl} className='kisKep' alt="App" />
                         <h4 className="kezd">{ mindenApp[randomIndexek[i]].Nev}</h4>
                     </div>
