@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import SajatStilus from './Sajat.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function Sajat() {
@@ -31,6 +31,8 @@ function Sajat() {
   const [aktuOpRendszer, setAktuOpRendszer] = useState(mindenOpRendszer[0]);
   const [aktuRam, setAktuRam] = useState(mindenRam[0]);
   const [aktuAlaplap, setAktuAlaplap] = useState(mindenAlaplap[0]);
+
+  const navigate = useNavigate();
 
   // A vidókártya adatok lekérése
   async function getMindenVideokartya() {
@@ -314,6 +316,16 @@ function Sajat() {
     }
   }, [kivVideokartya, kivProcesszor, kivOpRendszer, kivRam, kivAlaplap])
 
+  function gorgosKattKezeles(e, adat){
+    if (e.button == 1 && adat.tipus=='app') {
+      e.preventDefault();
+      navigate("/oldalak/AlkalmazasReszletek", { state: adat });
+    } else if (e.button == 1 && adat.tipus=='aresz') {
+      e.preventDefault();
+      navigate("/oldalak/AlkalmazasReszletek", { state: adat });
+    }
+  }
+
   const [Mind, setMind] = useState([]);
   const [ottVanVagyNem, setOttVanVagyNem] = useState('none');
 
@@ -329,13 +341,13 @@ function Sajat() {
         ujMind = szurtApp.map((app, i) => {
           let kepUrl = `/IMAGE/logo.${app.KepeleresiUtja}`;
           if(app.KepeleresiUtja == '') kepUrl = `/IMAGE/logo.hiany.jpg`;
-          const adat = { nev: app.Nev };
+          const adat = { nev: app.Nev, tipus: 'app' };
           return (
             <div className="korKepKeret" key={i}>
               <img src={kepUrl} className="korKepS" alt="App kép" />
               <h4 className="appNeve">{app.Nev}</h4>
               <Link to='/oldalak/AlkalmazasReszletek' state={adat}>
-                <button className='reszletGomb'>További részletek</button>
+                <button className='reszletGomb' onMouseDown={(e) => gorgosKattKezeles(e, adat)}>További részletek</button>
               </Link>
             </div>
           );

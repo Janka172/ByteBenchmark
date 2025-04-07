@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import KovetelmenyStilus from './Kovetelmeny.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Kovetelmeny(adatok) {
   var adat=adatok.adatok;
   var cimsor='';
   if(adat.Gepigeny=='min') cimsor='Minimális követelmények';
   else cimsor='Optimális követelmények';
+  const navigate = useNavigate();
 
   var [videokartya, setVideokartya] = useState('');
   var [betoltveV, setBetoltveV] = useState(true);
@@ -86,6 +87,13 @@ function Kovetelmeny(adatok) {
   }
   useEffect(() => { if(adat != '-') getAlaplap(); }, [adat]);
 
+  function gorgosKattKezeles(e, adat){
+    if (e.button == 1) {
+      e.preventDefault();
+      navigate("/oldalak/AlkatreszReszletek", { state: adat });
+    }
+  }
+
   var [megjelenes, setMegjelenes] = useState('none'); 
   function gombMegjelito(){
     if(!(betoltveV && betoltveP && betoltveR && betoltveO && betoltveA)){
@@ -117,7 +125,7 @@ function Kovetelmeny(adatok) {
         <h2 className='megnev'>{adat.VidekortyaNev} - {adat.VideokartyaVram}GB</h2>
         {videokartya && (
           <Link to="/oldalak/AlkatreszReszletek" state={{ 'tipus': vidk, 'id': videokartya }}>
-            <button className='tovabbi'>További részletek</button>
+            <button className='tovabbi' onMouseDown={(e) => gorgosKattKezeles(e, { 'tipus': vidk, 'id': videokartya })}>További részletek</button>
           </Link>
         )}
       </div>
@@ -127,7 +135,7 @@ function Kovetelmeny(adatok) {
         <h2 className='megnev'>{adat.ProcesszorNev}</h2>
         {processzor && (
           <Link to="/oldalak/AlkatreszReszletek" state={{ 'tipus': proc, 'id': processzor }}>
-            <button className='tovabbi'>További részletek</button>
+            <button className='tovabbi' onMouseDown={(e) => gorgosKattKezeles(e, { 'tipus': vidk, 'id': processzor })}>További részletek</button>
           </Link>
         )}
       </div>
@@ -137,7 +145,7 @@ function Kovetelmeny(adatok) {
         <h2 className='megnev'>{adat.RamNeve} - {adat.RamMeret}GB</h2>
         {ramAdat && (
           <Link to="/oldalak/AlkatreszReszletek" state={{ 'tipus': ram, 'id': ramAdat }}>
-            <button className='tovabbi'>További részletek</button>
+            <button className='tovabbi' onMouseDown={(e) => gorgosKattKezeles(e, { 'tipus': vidk, 'id': ramAdat })}>További részletek</button>
           </Link>
         )}
       </div>
@@ -147,7 +155,7 @@ function Kovetelmeny(adatok) {
         <h2 className='megnev'>{adat.OprendszerNev}</h2>
         {oprendszer && (
           <Link to="/oldalak/AlkatreszReszletek" state={{ 'tipus': opre, 'id': oprendszer }}>
-            <button className='tovabbi'>További részletek</button>
+            <button className='tovabbi' onMouseDown={(e) => gorgosKattKezeles(e, { 'tipus': vidk, 'id': oprendszer })}>További részletek</button>
           </Link>
         )}
       </div>
@@ -157,7 +165,7 @@ function Kovetelmeny(adatok) {
         <h2 className='megnev'>{adat.AlaplapNeve}</h2>
         {alaplap && (
           <Link to="/oldalak/AlkatreszReszletek" state={{ 'tipus': alap, 'id': alaplap }}>
-            <button className='tovabbi'>További részletek</button>
+            <button className='tovabbi' onMouseDown={(e) => gorgosKattKezeles(e, { 'tipus': vidk, 'id': alaplap })}>További részletek</button>
           </Link>
         )}
       </div>

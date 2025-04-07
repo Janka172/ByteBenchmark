@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useKeresesiAdatok } from './KeresesiAdatokContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AppListaStilus from './AppLista.css';
 
 function AppLista() {  
@@ -9,6 +9,7 @@ function AppLista() {
   const [betoltA, setBetoltA] = useState(true);
   const [setup, setSetup] = useState([]);
   const [betoltS, setBetoltS] = useState(true);
+  const navigate = useNavigate();
 
   const  feltetel  = useKeresesiAdatok();
   useEffect(() => {
@@ -61,12 +62,19 @@ function AppLista() {
           <img src={kepUrl} className="kartyaLogo" />
           <h4 className="appNeve">{szurtApp[i].Nev}</h4>
           <Link to="/oldalak/AlkalmazasReszletek" state={adat}>
-            <button className="reszletG">További részletek</button>
+            <button className="reszletG" onMouseDown={(e) => gorgosKattKezeles(e, adat)}>További részletek</button>
           </Link>
         </div>
       );
     }
     return Mind.map((x) => x);
+  }
+
+  function gorgosKattKezeles(e, adat){
+    if(e.button == 1){
+      e.preventDefault();
+      navigate("/oldalak/AlkalmazasReszletek", { state: adat });
+    }
   }
 
   //Szűrés név szerint
