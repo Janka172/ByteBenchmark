@@ -227,6 +227,7 @@ label
   
     .body
     {
+      display: flex;
       flex-direction: column;
 
     }
@@ -249,6 +250,7 @@ label
     .post_titles
     {
       font-size: 20px;
+      margin-top: 5px;
     }
     #post_form
     {

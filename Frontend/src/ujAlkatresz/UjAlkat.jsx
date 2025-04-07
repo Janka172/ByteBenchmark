@@ -355,7 +355,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                     <p className='patch_titles'>Monitor csatlakozás:</p><input type='text' id='VideokPatch3' className='patchbeviteli_mezok'/>
                     <p className='patch_titles'>Chip  gyártója:</p><input type='text' id='VideokPatch4' className='patchbeviteli_mezok'/>
 
-                    <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
+                     <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                      <span className="filename" id='patch_img_link'>{fileName}</span>
                      <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
 
@@ -779,6 +779,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                      }}>Alkatrész eltávolítása</button>                
                     </form>
                  </div>
+
                  <div id='contents'>
                  <div className='adatok_delete'>Név:{actionMindenhezKellAdat?.Nev}</div>
                  <div className='adatok_delete'>Frekvencia:{actionMindenhezKellAdat?.ProcesszorFrekvencia}</div>
