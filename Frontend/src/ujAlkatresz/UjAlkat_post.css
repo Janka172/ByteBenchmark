@@ -262,9 +262,11 @@ label
     #buttons_content_post
     {
       flex-direction: row;
+      
     }
     .select_buttons
     {
+      padding: 8%;
       width: 100%;
       height: 60px;
       text-align: center;
@@ -275,9 +277,8 @@ label
       width: 60%;
       font-size: medium;
       height: 5%;
-      padding-top: 3%;
-      padding-bottom: 3%;
-      margin-left: 7%;
+      padding: 3%;
+      margin-left: 20%;
       margin-bottom: 8%;
     }
     /*fájl feltöltés*/
@@ -305,7 +306,7 @@ label
     /*Select*/
     #AlaplapPost8
     {
-    width: max-content;
+    width: 100%;
     text-align: left;
     height: 10%;
     appearance: none;

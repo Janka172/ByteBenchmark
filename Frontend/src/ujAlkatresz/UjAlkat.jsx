@@ -593,7 +593,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         </select>
 
                         <button className='buttons' id='adatlekerogomb' type='button' onClick={(e)=>adatRamLekeres(e,actionKivalaszottRamNev,actionSelectedRamMeret,actionSelectedRamFrekvencia)}>Adatok lekérése</button>
-                        <p className='patch_titles'>Memória típus:<br/><input type="text" id='RamPatch1' className='patchbeviteli_mezok'/></p>    
+                        <p className='patch_titles'>Memória típus:</p> <input type="text" id='RamPatch1' className='patchbeviteli_mezok'/>   
                          
                         <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                         <span className="filename" id='patch_img_link'>{fileName}</span>
@@ -604,13 +604,13 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                  <div id='contents_patch'>
-                    <div id="adatok_patch">Név:{actionMindenhezKellAdat?.Nev}</div>
-                    <div id="adatok_patch">Méret:{actionMindenhezKellAdat?.Meret}</div> 
-                    <div id="adatok_patch">Frekvencia:{actionMindenhezKellAdat?.Frekvencia}</div>
-                    <div id="adatok_patch">Memória típus:{actionMindenhezKellAdat?.MemoriaTipus}</div>
+                    <div className="adatok_patch">Név:{actionMindenhezKellAdat?.Nev}</div>
+                    <div className="adatok_patch">Méret:{actionMindenhezKellAdat?.Meret}</div> 
+                    <div className="adatok_patch">Frekvencia:{actionMindenhezKellAdat?.Frekvencia}</div>
+                    <div className="adatok_patch">Memória típus:{actionMindenhezKellAdat?.MemoriaTipus}</div>
                  </div>
 
-                  <div id='buttons_content'>
+                  <div id='buttons_content_patch'>
                      <div className='pagechangebutton'><button disabled className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
                      <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
                      <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
@@ -752,7 +752,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  <div className='adatok_patch'>Integrált videókártya:{actionMindenhezKellAdat?.IntegraltVideokartya?"van":"nincs"}</div>
                  </div>
 
-                    <div id='buttons_content'>
+                    <div id='buttons_content_patch'>
                         <div className='pagechangebutton'><button disabled className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
                         <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
                         <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
