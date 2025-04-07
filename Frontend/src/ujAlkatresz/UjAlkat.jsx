@@ -678,7 +678,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
                         <div id="radiobtn">
                         <input type="radio" id="ProcPost10" name="ivk_true" value="True" checked={actionIvkRadiobt==='Jeloltradiogomb'}onChange={()=>setActionIvkRadiobt('Jeloltradiogomb')}></input>
-                        <label htmlFor="ProcPost11">Tartalmaz integrált videókártyát.</label><br/>
+                        <label htmlFor="ProcPost11">Tartalmaz integrált videókártyát.</label>
                         </div>
 
                         <div id="radiobtn">
@@ -686,7 +686,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label>
                         </div>
 
-                        <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/><br/>
+                        <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                         <span className="filename" id='post_img_link'>{fileName}</span>
                         <label htmlFor="imginput" className="imgbutton" id='post_img'>📁 Fájl kiválasztása</label>
 
@@ -724,7 +724,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                            <p className='patch_titles'>Integrált videókártya:</p>
                            <div id="radiobtn_patch">
                            <input type="radio" id="ProcPatch9" name="ivk_true" value="True" checked={actionHgkRadiobf==='Nemjeloltradiogomb'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogomb')}></input>
-                           <label htmlFor="ivk_true">Tartalmaz integrált videókártyát.</label><br/>
+                           <label htmlFor="ivk_true">Tartalmaz integrált videókártyát.</label>
                            </div>
                            <div id="radiobtn_patch">
                            <input type="radio" id="ProcPatch10" name="ivk_true" value="False" checked={actionHgkRadiobf==='Nemjeloltradiogombak'} onChange={()=>setActionHgkRadiobf('Nemjeloltradiogombak')}></input>
@@ -755,7 +755,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                     <div id='buttons_content'>
                         <div className='pagechangebutton'><button disabled className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
                         <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
-                        <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button><br/></div>
+                        <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
                     </div>
 
             </div> : <div></div>}
@@ -769,9 +769,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                               {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>(
                                  <option key={nev} value={nev} id="legordulos_option">{nev}</option>
                               ))}
-                           </select><br/>
+                           </select>
 
-                           <button className='buttons' id='delete_adatlekerogomb' type='button' onClick={(e)=>adatProcesszorLekeres(e, actionKivalasztottProcesszorNev)}>Adatok lekérése</button><br/>
+                           <button className='buttons' id='delete_adatlekerogomb' type='button' onClick={(e)=>adatProcesszorLekeres(e, actionKivalasztottProcesszorNev)}>Adatok lekérése</button>
 
                      <button className='buttons' type='button' onClick={(e)=>{
                            handleDelete(e);
@@ -779,7 +779,6 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                      }}>Alkatrész eltávolítása</button>                
                     </form>
                  </div>
-
                  <div id='contents'>
                  <div className='adatok_delete'>Név:{actionMindenhezKellAdat?.Nev}</div>
                  <div className='adatok_delete'>Frekvencia:{actionMindenhezKellAdat?.ProcesszorFrekvencia}</div>
