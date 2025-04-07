@@ -73,7 +73,6 @@ function Szuro() {
 
   const [hatter, setHatter] = useState('rgba(196, 84, 84, 0.8)');
   const [displ, setDispl] = useState('none');
-  const [megnyitva, setMegnyitva] = useState(true);
   const [feltDisp, setFeltDisp] = useState('none');
   const [mentDisp, setMentDisp] = useState('none');
   const [gombDisp, setGombDisp] = useState('grid');
@@ -83,27 +82,13 @@ function Szuro() {
 
   useEffect(() => {
     if (kicsie) {
-      setMegnyitva(false);
       setDispl('none');
       setHatter('rgba(196, 84, 84, 0)');
     } else {
-      setMegnyitva(true);
       setDispl('block');
       setHatter('rgba(201, 95, 95, 0)');
     }
   }, [kicsie]);
-
-  function menuMegnyitas() {
-    if (!megnyitva) {
-      setMegnyitva(true);
-      setDispl('block');
-      setHatter('rgba(201, 95, 95, 0.8)');
-    } else {
-      setMegnyitva(false);
-      setDispl('none');
-      setHatter('rgba(196, 84, 84, 0)');
-    }
-  }
 
   function mezokTorlese() {
     setNev('');
@@ -123,7 +108,6 @@ function Szuro() {
     };
     setKeresesiAdatok(adatok);
 
-    if(kicsie) menuMegnyitas();
     setFeltDisp('none');
     setGombDisp('grid');
     setHatter('rgba(201, 95, 95, 0)');
@@ -143,7 +127,9 @@ function Szuro() {
   }
 
   function feltetelMegadas(){
-    if(!kicsie) setHatter('rgba(201, 95, 95, 0.8)');
+    setHatter('rgba(201, 95, 95, 0.8)');
+    setDispl('block');
+    setHatter('rgba(201, 95, 95, 0.8)');
     setFeltDisp('grid');
     setGombDisp('none');
   }
@@ -217,9 +203,7 @@ console.log()
           <div className='nagyMeret'>
             <h1 className='szuroCimsor'>Szűrő beállítások</h1>
           </div>
-          <div className='kisMeret'>
-            <button className='bezaros' onClick={menuMegnyitas}>Szűrő beállítások</button>
-          </div>
+          
         </div>
 
         <div className='mezo' style={{ display: displ }}>
