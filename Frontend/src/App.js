@@ -66,38 +66,39 @@ function App() {
   
 
   return (
-  <main>
-    <BrowserRouter>
-        <div id='fent'></div>
-        <ImageWithText></ImageWithText>
-        <Sidebar></Sidebar> 
-        <Fekvo></Fekvo> 
-    
-        <>
-          <Routes>
+    <main>
+      <BrowserRouter>
+          <div id='fent'></div>
+          <ImageWithText></ImageWithText>
+          <Sidebar></Sidebar> 
+          <Fekvo></Fekvo> 
+      
+          <>
+            <Routes>
 
-            <Route path='/' index element={<Kezdolap />} />
-            <Route path='/oldalak/Alkalmazasok' index element={<Alkalmazasok />} />
-            <Route path='/oldalak/Alkatreszek' index element={<Alkatreszek />} />
-            <Route path='/oldalak/AlkalmazasReszletek' index element={<AlkalmazasReszletek />} />
-            <Route path='/oldalak/AlkatreszReszletek' index element={<AlkatreszReszletek />} />
-            <Route path='/oldalak/SajatSetup' index element={<Sajat />} />
-            <Route path='/oldalak/Profil' index element={<Profil />} />
-            <Route path='/oldalak/Reg' index element={<Reg />} />
-            <Route path="/oldalak/Rolunk" element={<Rolunk />} />
-            <Route path="/oldalak/Kontakt" element={<Kontakt />} />
-            <Route path='/oldalak/UjAlkalmazas' index element={<UjAlkalmazas />} />
-            <Route path='/oldalak/UjAlkatresz' index element={<UjAlkatresz />} />
-            
-          </Routes>
-        </>
+              <Route path='/' index element={<Kezdolap />} />
+              <Route path='/oldalak/Alkalmazasok' index element={<Alkalmazasok />} />
+              <Route path='/oldalak/Alkatreszek' index element={<Alkatreszek />} />
+              <Route path='/oldalak/AlkalmazasReszletek' index element={<AlkalmazasReszletek />} />
+              <Route path='/oldalak/AlkatreszReszletek' index element={<AlkatreszReszletek />} />
+              <Route path='/oldalak/SajatSetup' index element={<Sajat />} />
+              <Route path='/oldalak/Profil' index element={<Profil />} />
+              <Route path='/oldalak/Reg' index element={<Reg />} />
+              <Route path="/oldalak/Rolunk" element={<Rolunk />} />
+              <Route path="/oldalak/Kontakt" element={<Kontakt />} />
+              <Route path='/oldalak/UjAlkalmazas' index element={<UjAlkalmazas />} />
+              <Route path='/oldalak/UjAlkatresz' index element={<UjAlkatresz />} />
+              
+            </Routes>
+          </>
 
-        <div className='marginBottom'></div>
-        
-         
-        <Footer></Footer>
-      </BrowserRouter>
-  </main>
+          <img src='/BB.logo.png' id='rogzitettLogo'></img>
+          
+          <div className='marginBottom'></div>
+          
+          <Footer></Footer>
+        </BrowserRouter>
+    </main>
     
   );
 }

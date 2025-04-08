@@ -53,6 +53,14 @@ input {
   transition: background-color 1s, border-color 1s;
 }
 
+#rogzitettLogo{
+  position: fixed;
+  bottom: 5vw;
+  width: 10%;
+  right: 1px;
+  z-index: 999;
+}
+
 @media (max-width: 767px){
   .Tartalmak{
     margin: auto;
@@ -62,6 +70,11 @@ input {
 
   .marginBottom{
     margin-bottom: 10vw;
+  }
+
+  #rogzitettLogo{
+    bottom: 8.5vw;
+    width: 8%;
   }
 }
 
@@ -79,6 +92,11 @@ input {
   .marginBottom{
     margin-bottom: 6vw;
   }
+
+  #rogzitettLogo{
+    bottom: 5vw;
+    width: 9%;
+  }
 }
 
 @media (min-width: 1500px){
@@ -91,10 +109,20 @@ input {
   .marginBottom{
     margin-bottom: 3vw;
   }
+
+  #rogzitettLogo{
+    bottom: 3vw;
+    width: 5%;
+  }
 }
 
 @media (min-width: 2500px){
   input, select{
     border-radius: 0 0.5vw;
-}
+  }
+
+  #rogzitettLogo{
+    bottom: 1vw;
+    width: 5%;
+  }
 }

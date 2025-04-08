@@ -88,7 +88,6 @@ function AdminMenu() {
     if(altNyitva == 'none') setAltNyitva('grid');
     else{
       setAltNyitva('none');
-      beallitasMenuApaphelyzetbe();
     }
   }
   
@@ -96,7 +95,6 @@ function AdminMenu() {
     if(jelszoNyitva == 'none') setJelszoNyitva('grid');
     else {
       setJelszoNyitva('none');
-      beallitasMenuApaphelyzetbe();
     }
   }
 
@@ -104,7 +102,6 @@ function AdminMenu() {
     if(torlesNyitva == 'none') setTorlesNyitva('grid');
     else {
       setTorlesNyitva('none');
-      beallitasMenuApaphelyzetbe();
     }
   }
 
@@ -123,6 +120,9 @@ function AdminMenu() {
   }
 
   function reszletekBetoltese(kivId){
+    setAltNyitva('none');
+    setJelszoNyitva('none');
+    setTorlesNyitva('none');
     setTablDisp('none');
     setReszletDisp('grid');
     setKivalaszt(kivId);
