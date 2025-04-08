@@ -177,20 +177,12 @@ function Gorgeto({ tema }) {
     if (!reszletNyitva) {
       setReszTartalom({ display: 'block' });
       setReszletNyitva(true);
-    } else {
-      setReszTartalom({ display: 'none' });
-      setReszletNyitva(false);
     }
   }
   function bezar(){
-    setReszletNyitva(!reszletNyitva);
-    if (!reszletNyitva) {
-      setReszTartalom({ display: 'block' });
-      setReszletNyitva(true);
-    } else {
-      setReszTartalom({ display: 'none' });
-      setReszletNyitva(false);
-    }
+    setReszletNyitva(false);
+    setReszTartalom({ display: 'none' });
+    setReszletNyitva(false);
   }
 
   var [keresettNev, setKeresettNev] = useState('');
@@ -225,7 +217,7 @@ function Gorgeto({ tema }) {
 
       if(adat.tipus=='v'){
         Mind.push(
-          <div className="korKepKeret" key={i}>
+          <div className="alkatreszKartya" key={i}>
             <img src={kepEleres} className="korKep" alt="Kép" />
             <h4 className="alkatNeve">{alkat.Nev}</h4>
             <h4 className="alkatReszlet">VRAM: {szurtAlk[i].vram} GB</h4>
@@ -235,7 +227,7 @@ function Gorgeto({ tema }) {
       }
       else if(adat.tipus=='r'){
         Mind.push(
-          <div className="korKepKeret" key={i}>
+          <div className="alkatreszKartya" key={i}>
             <img src={kepEleres} className="korKep" alt="Kép" />
             <h4 className="alkatNeve">{alkat.Nev}</h4>
             <h4 className="alkatReszlet">Frekvencia: {szurtAlk[i].Frekvencia} Hz</h4>
@@ -245,7 +237,7 @@ function Gorgeto({ tema }) {
       }
       else{
         Mind.push(
-          <div className="korKepKeret" key={i}>
+          <div className="alkatreszKartya" key={i}>
             <img src={kepEleres} className="korKep" alt="Kép" />
             <h4 className="alkatNeve">{alkat.Nev}</h4>
             <button className='reszletGomb' onClick={() => reszletMenu(alkat)}>{tartalom}</button>
