@@ -44,7 +44,15 @@ export function RequestVideokP(fileUrl){
                         throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                     }
                 }
-                else alert("Sikeres feltöltés!");
+                else{
+                    alert("Sikeres feltöltés!");
+                    document.getElementById('VideoPost1').value="";
+                    document.getElementById('VideoPost2').value="";
+                    document.getElementById('VideoPost3').value="";
+                    document.getElementById('VideoPost4').value="";
+                    document.getElementById('VideoPost5').value="";
+                    document.getElementById('VideoPost6').value="";
+                }
                 
                 return response.json()
             })
@@ -276,7 +284,13 @@ export function RequestVideokPatch(fileName, videokName, vram,)
                     throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                 }
             }
-            else alert("Sikeres feltöltés!");
+            else{
+                alert("Sikeres feltöltés!");
+                document.getElementById('VideokPatch1').value="";
+                document.getElementById('VideokPatch2').value="";
+                document.getElementById('VideokPatch3').value="";
+                document.getElementById('VideokPatch4').value="";
+            }
                 
             return response.json()
         })
@@ -439,9 +453,9 @@ export function RequestRamPatch(fileName, ramNev, ramFrekvencia, ramMeret)
         });
 }
 //------------DELETE----------------------------------------------
-export function RequestVideokDelete(videokName, vram)
+export async function RequestVideokDelete(videokName, vram)
 {
-    fetch (`https://localhost:44316/api/Videokartya/0?name=${videokName}&vram=${vram}`, {
+    await fetch (`https://localhost:44316/api/Videokartya/0?name=${videokName}&vram=${vram}`, {
         method: "DELETE",
     })
     .then((response) => {
@@ -461,9 +475,9 @@ export function RequestVideokDelete(videokName, vram)
         alert("Server hiba. Kérlek próbált meg később!");
     });
 }
-export function RequestAlaplapDelete(alaplapnev)
+export async function RequestAlaplapDelete(alaplapnev)
 {
-    fetch (`https://localhost:44316/api/Alaplap/0?name=${alaplapnev}`, {
+    await fetch (`https://localhost:44316/api/Alaplap/0?name=${alaplapnev}`, {
         method: "DELETE",
     })
     .then((response) => {
@@ -483,9 +497,9 @@ export function RequestAlaplapDelete(alaplapnev)
         alert("Server hiba. Kérlek próbált meg később!");
     });
 }
-export function RequestProcesszorDelete(procNev)
+export async function RequestProcesszorDelete(procNev)
 {
-    fetch (`https://localhost:44316/api/Processzor/0?name=${procNev}`, {
+    await fetch (`https://localhost:44316/api/Processzor/0?name=${procNev}`, {
         method: "DELETE",
     })
     .then((response) => {
@@ -505,9 +519,9 @@ export function RequestProcesszorDelete(procNev)
         alert("Server hiba. Kérlek próbált meg később!");
     });
 }
-export function RequestRamDelete(ramNev, ramFrekvencia, ramMeret)
+export async function RequestRamDelete(ramNev, ramFrekvencia, ramMeret)
 {
-    fetch (`https://localhost:44316/api/Ram/0?name=${ramNev}&frekvencia=${ramFrekvencia}&meret=${ramMeret}`, {
+    await fetch (`https://localhost:44316/api/Ram/0?name=${ramNev}&frekvencia=${ramFrekvencia}&meret=${ramMeret}`, {
         method: "DELETE",
     })
     .then((response) => {
