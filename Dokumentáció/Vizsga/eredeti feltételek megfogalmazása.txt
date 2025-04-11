@@ -1,0 +1,12 @@
+Szükség lesz egy Visual Studio Code-ra.
+Szükség lesz egy python extension letöltésére a Visual Studio Code-ban.
+Le kell tölteni, a python 3.13.2 versiont.
+Paracssorba az alábbi két parancsot kell lefuttatni: 
+	py -m pip install Flask
+	py -m pip install Flask-Cors
+Rendelkezni kell egy adatbázis kezelő programmal, ami a 3306-os porton fut.
+Ha már rendelkezik adatbázis kezelő programmal, importálja be az SQL filet. A file-ban benne van a tábla létrehozása, illetve ha rendelkezik már egy nevezetü adatbázissal, akkor azt törli.
+Szükség lesz egy Visul Studio 2019 vagy 22-re.
+A Frontendet egyszerre kell futtatni, a pythonnal.
+Ha a python nem indul el, akkor az alábbi parancsot kell lefuttatni:
+	Set-ExecutionPolicy Unrestriced -Scope CurrentUser -Force 
