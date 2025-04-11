@@ -474,7 +474,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                     <form id='patch_form'>
                         <p className='patch_titles'>Név:</p>
                         <select className="combi_patch" onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
-                           <option id="legordulos_option">Válassz egyet</option>
+                           <option id="legordulos_option" value="">Válassz egyet</option>
                            {[...new Set(mindenAdat['alaplapok'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulos_option">{nev}</option>))}
                         </select>
 

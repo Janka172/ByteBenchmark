@@ -116,7 +116,17 @@ export function RequestAlaplapP(fileUrl){
                         throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                     }
                 }
-                else alert("Sikeres feltöltés!");
+                else{
+                    alert("Sikeres feltöltés!");
+                    document.getElementById('AlaplapPost1').value="";
+                    document.getElementById('AlaplapPost2').value="";
+                    document.getElementById('AlaplapPost3').value="";
+                    document.getElementById('AlaplapPost4').value="";
+                    document.getElementById('AlaplapPost5').value="";
+                    document.getElementById('AlaplapPost6').value="";
+                    document.getElementById('AlaplapPost7').value="";
+                    document.getElementById('AlaplapPost8').value="";
+                }
                 
                 return response.json()
             })
@@ -167,7 +177,13 @@ export function RequestMemoriaP(fileUrl){
                         throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                     }
                 }
-                else alert("Sikeres feltöltés!");
+                else{
+                    alert("Sikeres feltöltés!");
+                    document.getElementById('MemoriaPost1').value=""
+                    document.getElementById('MemoriaPost2').value=""
+                    document.getElementById('MemoriaPost3').value=""
+                    document.getElementById('MemoriaPost4').value=""
+                }
                 
                 return response.json()
             })
@@ -231,7 +247,18 @@ export function RequestProcesszorP(fileUrl){
                         throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                     }
                 }
-                else alert("Sikeres feltöltés!");
+                else{
+                    alert("Sikeres feltöltés!");
+                    document.getElementById('ProcPost1').value="";
+                    document.getElementById('ProcPost2').value="";
+                    document.getElementById('ProcPost3').value="";
+                    document.getElementById('ProcPost4').value="";
+                    document.getElementById('ProcPost5').value="";
+                    document.getElementById('ProcPost6').value="";
+                    document.getElementById('ProcPost7').value="";
+                    document.getElementById('ProcPost8').value="";
+                    document.getElementById('ProcPost9').value="";
+                }
                 
                 return response.json()
             })
@@ -307,8 +334,16 @@ export function RequestAlaplapPatch(fileName, alaplapnev)
     var memoriaTipus = document.getElementById('AlaplapPatch4').value;
     var lapkakeszlet=document.getElementById('AlaplapPatch5').value;
     var slotSzam=document.getElementById('AlaplapPatch6').value;
-    var aHangkartya=document.querySelector('input[name="hgk_true"]:checked').value;
+    const aHangkartya=document.querySelector('input[name="ivk_true"]:checked').value;
     var kepneve=String(fileName);
+
+    console.log(processzorFoglalat);
+    console.log(alaplapFormatum);
+    console.log(maxFrekvencia);
+    console.log(memoriaTipus);
+    console.log(lapkakeszlet);
+    console.log(slotSzam);
+    console.log(aHangkartya);
 
     const neLegyenWhiteSpace=/[a-zA-Z]/;
     if(processzorFoglalat=="" || !neLegyenWhiteSpace.test(processzorFoglalat))processzorFoglalat=null;
@@ -344,7 +379,15 @@ export function RequestAlaplapPatch(fileName, alaplapnev)
                     throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                 }
             }
-            else alert("Sikeres feltöltés!");
+            else{
+                alert("Sikeres feltöltés!");
+                document.getElementById('AlaplapPatch1').value="";
+                document.getElementById('AlaplapPatch2').value="";
+                document.getElementById('AlaplapPatch3').value="";
+                document.getElementById('AlaplapPatch4').value="";
+                document.getElementById('AlaplapPatch5').value="";
+                document.getElementById('AlaplapPatch6').value="";
+            }
                 
             return response.json()
         })
@@ -405,7 +448,17 @@ export function RequestProcesszorPatch(fileName, procNev)
                     throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                 }
             }
-            else alert("Sikeres feltöltés!");
+            else{
+                alert("Sikeres feltöltés!");
+                document.getElementById('ProcPatch1').value="";
+                document.getElementById('ProcPatch2').value="";
+                document.getElementById('ProcPatch3').value="";
+                document.getElementById('ProcPatch4').value="";
+                document.getElementById('ProcPatch5').value="";
+                document.getElementById('ProcPatch6').value="";
+                document.getElementById('ProcPatch7').value="";
+                document.getElementById('ProcPatch8').value="";
+            }
                 
             return response.json()
         })
@@ -443,7 +496,10 @@ export function RequestRamPatch(fileName, ramNev, ramFrekvencia, ramMeret)
                     throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                 }
             }
-            else alert("Sikeres feltöltés!");
+            else{
+                alert("Sikeres feltöltés!");
+                document.getElementById('RamPatch1').value="";
+            }
                 
             return response.json()
         })
