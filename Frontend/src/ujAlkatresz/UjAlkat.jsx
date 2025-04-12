@@ -501,7 +501,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                            <span className="filename" id='patch_img_link'>{fileName}</span>
                            <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
 
-                        <button className='buttons' id='patch_datkezelogomb' type='button' onClick={(e)=>handleUploadAndPost(e)}>Módosítások mentése</button>
+                        <button className='buttons' id='patch_datkezelogomb' type='button' onClick={(e)=>{handleUploadAndPost(e);setActionKivalasztottAlaplapNev("");setActionMindenhezKellAdat(null)}}>Módosítások mentése</button>
                     </form>
                  </div>
 
@@ -533,7 +533,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         </select>
                         <button className='buttons' id='delete_adatlekerogomb' type='button' onClick={(e)=>adatAlaplapLekeres(e, actionKivalasztottAlaplapNev)}>Adatok lekérése</button>
 
-                    <button className='buttons' type='button' id='delete_adatkezelogomb' onClick={(e)=>handleDelete(e)}>Alkatrész eltávolítása</button>
+                    <button className='buttons' type='button' id='delete_adatkezelogomb' onClick={async(e)=>{await handleDelete(e);await fetchAdat();setActionKivalasztottAlaplapNev("");setActionMindenhezKellAdat(null)}}>Alkatrész eltávolítása</button>
                     </form>
                  </div>
 
@@ -606,7 +606,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <span className="filename" id='patch_img_link'>{fileName}</span>
                         <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
 
-                        <button className='buttons' id='patch_datkezelogomb'  type='button' onClick={(e)=>handleUploadAndPost(e)}>Módosítások mentése</button>
+                        <button className='buttons' id='patch_datkezelogomb'  type='button' onClick={(e)=>{handleUploadAndPost(e);setActionKivalasztottRamNev("");setActionMindenhezKellAdat(null);setActionSzurtRamFrekvencia([])}}>Módosítások mentése</button>
                     </form>
                  </div>
 
@@ -646,7 +646,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         </select>
 
                         <button className='buttons' id='delete_adatlekerogomb' type='button' onClick={(e)=>adatRamLekeres(e,actionKivalaszottRamNev,actionSelectedRamMeret,actionSelectedRamFrekvencia)}>Adatok lekérése</button>
-                        <button className='buttons' type='button' id='delete_adatkezelogomb'  onClick={(e)=>handleDelete(e)}>Alkatrész eltávolítása</button>
+                        <button className='buttons' type='button' id='delete_adatkezelogomb'  onClick={async(e)=>{await handleDelete(e);await fetchAdat();setActionKivalasztottRamNev("");setActionMindenhezKellAdat(null);setActionSzurtRamFrekvencia([])}}>Alkatrész eltávolítása</button>
                     </form>
                  </div>
                  
@@ -739,7 +739,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                            <span className="filename" id='patch_img_link'>{fileName}</span>
                            <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
 
-                           <button className='buttons'  id='patch_datkezelogomb' type='button' onClick={(e)=>handleUploadAndPost(e)}>Módosítások mentése</button> 
+                           <button className='buttons'  id='patch_datkezelogomb' type='button' onClick={(e)=>{handleUploadAndPost(e);setActionKivalasztottProcesszorNev("")}}>Módosítások mentése</button> 
                      </form>
                  </div>
 
@@ -775,7 +775,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
                      <button className='buttons' id='delete_adatlekerogomb' type='button' onClick={(e)=>adatProcesszorLekeres(e, actionKivalasztottProcesszorNev)}>Adatok lekérése</button>
 
-                     <button className='buttons' id='delete_adatkezelogomb' type='button' onClick={(e)=>{handleDelete(e);}}>Alkatrész eltávolítása</button>                
+                     <button className='buttons' id='delete_adatkezelogomb' type='button' onClick={async(e)=>{await handleDelete(e);await fetchAdat();setActionKivalasztottProcesszorNev("")}}>Alkatrész eltávolítása</button>                
                     </form>
                  </div>
 
