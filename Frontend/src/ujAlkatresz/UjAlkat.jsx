@@ -2,6 +2,7 @@ import {useState, useEffect, use } from 'react';
 import './UjAlkat_post.css';
 import './UjAlkat_patch.css';
 import './UjAlkat_delete.css';
+import './UjAlkat_post_media.css'
 import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP, RequestVideokPatch, RequestAlaplapPatch, RequestProcesszorPatch, RequestRamPatch, RequestVideokDelete, RequestAlaplapDelete, RequestProcesszorDelete, RequestRamDelete} from './Request';
 
 function UjAlkat() {
@@ -56,7 +57,7 @@ function UjAlkat() {
 
 
     const [actionHardver, setActionHardver] =useState("Videókártya")
-    const [actionButtons, setActionButtons] =useState("Post")
+    const [actionButtons, setActionButtons] =useState("Post")    
 
    {/*Arra kell hogy egy rádiógomb alapértelmezetten ki legyen választva az oldal betöltésekor */}
    const [actionIvkRadiobt, setActionIvkRadiobt] = useState("Jeloltradiogomb"); //processzor rádiógombjainál van
