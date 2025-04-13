@@ -2,7 +2,8 @@ import {useState, useEffect, use } from 'react';
 import './UjAlkat_post.css';
 import './UjAlkat_patch.css';
 import './UjAlkat_delete.css';
-import './UjAlkat_post_media.css'
+import './UjAlkat_post_media.css';
+import EgyediAlert from '../Alert/egyediAlert.jsx';
 import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP, RequestVideokPatch, RequestAlaplapPatch, RequestProcesszorPatch, RequestRamPatch, RequestVideokDelete, RequestAlaplapDelete, RequestProcesszorDelete, RequestRamDelete} from './Request';
 
 function UjAlkat() {
@@ -327,6 +328,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                      <label htmlFor="imginput" className="imgbutton" id='post_img'>📁 Fájl kiválasztása</label>
 
                         <button type='button' className='buttons' id='post_adatkezelogomb' onClick={handleUploadAndPost}>Adatok feltöltése</button>
+                        <EgyediAlert/>
                     </form>
                  </div>
 

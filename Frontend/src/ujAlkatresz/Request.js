@@ -1,3 +1,7 @@
+import {addHiba,showHiba} from '../Alert/alertService.js'
+
+var errors=[];
+
 export function RequestVideokP(fileUrl){
     var nevElem = document.getElementById('VideoPost1').value;
     var aCsatlakozasElem = document.getElementById('VideoPost2').value;
@@ -16,8 +20,17 @@ export function RequestVideokP(fileUrl){
     console.log(cGyartoElem);
 
     const neLegyenWhiteSpace=/[a-zA-Z]/;
-    if (nevElem!=null || neLegyenWhiteSpace.test(nevElem) || aCsatlakozasElem!=null || neLegyenWhiteSpace.test(aCsatlakozasElem) || atapegysegElem!=null || mCsatlakozasElem!=null || neLegyenWhiteSpace.test(mCsatlakozasElem) || cGyartoElem!=null || neLegyenWhiteSpace.test(cGyartoElem) || vramElem!=null)    
-        {
+    if(nevElem==null)errors.push("Név nem lehet üres");
+    if(!neLegyenWhiteSpace.test(nevElem))errors.push("A névnek tartalmaznia kell legalább egy betüt");
+    if(aCsatlakozasElem==null)errors.push("Alaplap csatlakozás nem lehet üres");
+    if(!neLegyenWhiteSpace.test(aCsatlakozasElem))errors.push("Alaplap csatlakozásnak tartalmaznia kell legalább egy betüt");
+    if(atapegysegElem<4 || atapegysegElem>500)errors.push("Ajánlott tápegység mértéke nem lehet 4W-nál és 500W-nál nagyobb");
+    if(mCsatlakozasElem==null)errors.push("Monitor csatlakozás nem lehet üres");
+    if(!neLegyenWhiteSpace.test(mCsatlakozasElem))errors.push("Monitor csatlakozásnak tartalmaznia kell legalább egy betüt");
+    if(cGyartoElem==null)errors.push("Chip gyártó nem lehet üres");
+    if(!neLegyenWhiteSpace.test(cGyartoElem))errors.push("Chip gyártónak tartalmaznia kell legalább egy betüt");
+    if(vramElem==null)errors.push("Vram nem lehet üres");
+    if (errors.length == 0){ 
             fetch ("https://localhost:44316/api/Videokartya", {
                 method: "POST",
                 headers: {
@@ -38,14 +51,14 @@ export function RequestVideokP(fileUrl){
                 if (!response.ok) {
                     //409
                     if(response.status === 409){
-                        alert("Ez a videokártya már szerepel ezzel a vram konfigurácioval.")
+                        showHiba("Ez a videokártya már szerepel ezzel a vram konfigurácioval.",false);
                     }
                     else{
                         throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                     }
                 }
                 else{
-                    alert("Sikeres feltöltés!");
+                    showHiba("Sikeres feltöltés!",true);
                     document.getElementById('VideoPost1').value="";
                     document.getElementById('VideoPost2').value="";
                     document.getElementById('VideoPost3').value="";
@@ -58,13 +71,19 @@ export function RequestVideokP(fileUrl){
             })
             .catch((error) => {
                 console.error("Hiba történt:", error)
-                alert("Server hiba. Kérlek próbált meg később!");
+                showHiba("Server hiba. Kérlek próbált meg később!",false);
             });
         }
-        else
-        {
-            alert("kuka")
-        }
+    else
+    {
+        errors.forEach((error)=>{
+            addHiba(error);
+            console.log(error);
+        });
+        showHiba("Hiba történt",false);
+        errors.length = 0;
+        
+    }
 
 }
 
