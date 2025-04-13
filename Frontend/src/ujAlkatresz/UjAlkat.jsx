@@ -429,40 +429,40 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             {/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
             {actionHardver==="Alaplap" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
-                    <form id='post_form'>
-                        <p className='post_titles'>Név:</p><input type="text" id='AlaplapPost1' className='beviteli_mezok'/>
-                        <p className='post_titles'>Processzor foglalat:</p><input type="text" id='AlaplapPost2' className='beviteli_mezok'/>
-                        <p className='post_titles'>Alaplap formátum:</p><input type="text" id='AlaplapPost3' className='beviteli_mezok'/>
-                        <p className='post_titles'>Maximum frekvencia:</p><input type="number" id='AlaplapPost4' className='beviteli_mezok'/>
-                        <p className='post_titles'>Memória típus:</p><input type="text" id='AlaplapPost5' className='beviteli_mezok'/>
-                        <p className='post_titles'>Lapkakészlet:</p><input type="text" id='AlaplapPost6' className='beviteli_mezok'/>
-                        <p className='post_titles'>Slot szám:</p><input type="number" id='AlaplapPost7' className='beviteli_mezok'/>
-                        <p className='post_titles'>Csatlakozók:</p>
+                    <form id='post_form_alaplap'>
+                        <p className='post_titles_alaplap'>Név:</p><input type="text" id='AlaplapPost1' className='beviteli_mezok_alaplap'/>
+                        <p className='post_titles_alaplap'>Processzor foglalat:</p><input type="text" id='AlaplapPost2' className='beviteli_mezok_alaplap'/>
+                        <p className='post_titles_alaplap'>Alaplap formátum:</p><input type="text" id='AlaplapPost3' className='beviteli_mezok_alaplap'/>
+                        <p className='post_titles_alaplap'>Maximum frekvencia:</p><input type="number" id='AlaplapPost4' className='beviteli_mezok_alaplap'/>
+                        <p className='post_titles_alaplap'>Memória típus:</p><input type="text" id='AlaplapPost5' className='beviteli_mezok_alaplap'/>
+                        <p className='post_titles_alaplap'>Lapkakészlet:</p><input type="text" id='AlaplapPost6' className='beviteli_mezok_alaplap'/>
+                        <p className='post_titles_alaplap'>Slot szám:</p><input type="number" id='AlaplapPost7' className='beviteli_mezok_alaplap'/>
+                        <p className='post_titles_alaplap'>Csatlakozók:</p>
                         {/*Ez egy listbox az alaplap csatlakozóinak neveivel */}
                         <select id='AlaplapPost8' multiple>
                            {[...new Set(mindenAdat['alaplapCsatlakozok'].map(i=>i.Nev))].map((nev)=>(<option value={nev} key={nev} id='csatik'>{nev}</option>))}
                         </select>
                         
-                        <p className='post_titles'>Hangkártya:</p>
-                        <div id="radiobtn">
+                        <p className='post_titles_alaplap'>Hangkártya:</p>
+                        <div id="radiobtn_alaplap">
                         <input type="radio" id="AlaplapPost9" className='radiobtn_post' name="hgk_true" value="True" checked={actionHgkRadiobf === 'Nemjeloltradiogomb'} onChange={() => setActionHgkRadiobf('Nemjeloltradiogomb')}/>
                         <label htmlFor="AlaplapPost9">Tartalmaz hangkártyát.</label>
                         </div>
 
-                        <div id="radiobtn">
+                        <div id="radiobtn_alaplap">
                         <input type="radio" id="AlaplapPost10" className='radiobtn_post' name="hgk_true" value="False" checked={actionHgkRadiobf === 'Nemjeloltradiogombak'} onChange={() => setActionHgkRadiobf('Nemjeloltradiogombak')}/>
                         <label htmlFor="AlaplapPost10">Nem tartalmaz hangkártyát.</label>
                         </div>
 
                         <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
-                        <span className="filename" id='post_img_link'>{fileName}</span>
-                        <label htmlFor="imginput" className="imgbutton" id='post_img'>📁 Fájl kiválasztása</label>
+                        <span className="filename" id='post_img_link_alaplap'>{fileName}</span>
+                        <label htmlFor="imginput" className="imgbutton" id='post_img_alaplap'>📁 Fájl kiválasztása</label>
 
-                        <button type='button' className='buttons' id='post_adatkezelogomb' onClick={handleUploadAndPost}>Adatok feltöltése</button>
+                        <button type='button' className='buttons' id='post_adatkezelogomb_alaplap' onClick={handleUploadAndPost}>Adatok feltöltése</button>
                     </form>
                  </div>
 
-                 <div id='buttons_content_post'>
+                 <div id='buttons_content_post_alaplap'>
                      <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
                      <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
                      <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
