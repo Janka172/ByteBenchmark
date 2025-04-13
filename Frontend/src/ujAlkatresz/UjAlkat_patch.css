@@ -94,10 +94,11 @@
 {
 margin-bottom: 10px;
 }
-/*-------------------------RESZPONZIVITÁS @MEDIA-VAL-------------------------------------*/
-@media (max-width: 767px)
-{
 
+/*-------------------------RESZPONZIVITÁS @MEDIA-VAL-------------------------------------*/
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) 
+{
   #patch_form
   {
   flex-direction: column;
@@ -167,7 +168,6 @@ margin-bottom: 10px;
     padding: 5%;
     font-size: medium;
     width:fit-content;
-    margin-left: 18%;
   }
   /*-------------------------KILISTÁZOTT ADATOK CSS RÉSZE------------------------*/
   #contents_patch
@@ -196,20 +196,29 @@ margin-bottom: 10px;
   flex-direction: row;
   margin-top: 5%;
 }
+
 }
 
-
-@media (min-width: 768px)
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) 
 {
 
 }
 
-@media (min-width: 1500px)
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) 
 {
 
 }
 
-@media (min-width: 2500px)
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) 
+{
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) 
 {
 
 }
