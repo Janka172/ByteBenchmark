@@ -1,0 +1,62 @@
+.alert_kontener {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.alertdoboz {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.alertdoboz.hiba h2,
+.alertdoboz.hiba li {
+    color: #d32f2f;
+}
+
+.alertdoboz.sikeres h2 {
+    color: #2e7d32;
+}
+
+.alertdoboz p {
+    margin: 10px 0;
+}
+
+.alertdoboz ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.alertdoboz button {
+    background: #d32f2f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.alertdoboz.sikeres button {
+    background: #2e7d32;
+}
+
+.alertdoboz button:hover {
+    background: #b71c1c;
+}
+
+.alertdoboz.sikeres button:hover {
+    background: #1b5e20;
+}
