@@ -318,20 +318,22 @@ export function RequestProcesszorP(fileUrl){
 //------------PATCH----------------------------------------------
 export function RequestVideokPatch(fileName, videokName, vram,)
 {
+    errors.length=0;
     var aCsatlakozasElem = document.getElementById('VideokPatch1').value;
     var atapegysegElem = document.getElementById('VideokPatch2').value;
     var mCsatlakozasElem = document.getElementById('VideokPatch3').value;  
     var cGyartoElem = document.getElementById('VideokPatch4').value;
     var kepneve=String(fileName);
 
-    const neLegyenWhiteSpace=/[a-zA-Z]/;
+    if(videokName=="")errors.push("Ki kell választani egy videokártya nevet!");
+    if(vram=="")errors.push("Ki kell választani egy videokártya vramot");
     if(aCsatlakozasElem=="" || !neLegyenWhiteSpace.test(aCsatlakozasElem))aCsatlakozasElem=null;
     if(atapegysegElem==0)atapegysegElem=null;
     if(mCsatlakozasElem=="" || !neLegyenWhiteSpace.test(mCsatlakozasElem))mCsatlakozasElem=null;
     if(cGyartoElem=="" || !neLegyenWhiteSpace.test(cGyartoElem))cGyartoElem=null;
     if(kepneve=="")kepneve=null;
 
-
+    if(errors.length==0){
         fetch (`https://localhost:44316/api/Videokartya/0?name=${videokName}&vram=${vram}`, {
             method: "PATCH",
             headers: {"Content-Type": "application/json"},
@@ -348,14 +350,14 @@ export function RequestVideokPatch(fileName, videokName, vram,)
             if (!response.ok) {
                 //409
                 if(response.status === 409){
-                    alert("Ez a videokártya már szerepel ezzel a vram konfigurácioval.")
+                    showHiba("Ez a videokártya már szerepel ezzel a vram konfigurácioval.",false)
                 }
                 else{
                     throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                 }
             }
             else{
-                alert("Sikeres feltöltés!");
+                showHiba("Sikeres feltöltés!",true);
                 document.getElementById('VideokPatch1').value="";
                 document.getElementById('VideokPatch2').value="";
                 document.getElementById('VideokPatch3').value="";
@@ -366,11 +368,22 @@ export function RequestVideokPatch(fileName, videokName, vram,)
         })
         .catch((error) => {
             console.error("Hiba történt:", error)
-            alert("Server hiba. Kérlek próbált meg később!");
+            showHiba("Server hiba. Kérlek próbált meg később!");
         });
+    }
+    else{
+        errors.forEach((error)=>{
+            addHiba(error);
+            console.log(error);
+        });
+        showHiba("Hiba történt",false);
+        errors.length = 0;
+    }
+        
 }
 export function RequestAlaplapPatch(fileName, alaplapnev)
 {
+    errors.length=0;
     var processzorFoglalat = document.getElementById('AlaplapPatch1').value;
     var alaplapFormatum = document.getElementById('AlaplapPatch2').value;
     var maxFrekvencia = document.getElementById('AlaplapPatch3').value;  
@@ -380,15 +393,7 @@ export function RequestAlaplapPatch(fileName, alaplapnev)
     const aHangkartya=document.querySelector('input[name="ivk_true"]:checked').value;
     var kepneve=String(fileName);
 
-    console.log(processzorFoglalat);
-    console.log(alaplapFormatum);
-    console.log(maxFrekvencia);
-    console.log(memoriaTipus);
-    console.log(lapkakeszlet);
-    console.log(slotSzam);
-    console.log(aHangkartya);
-
-    const neLegyenWhiteSpace=/[a-zA-Z]/;
+    if(alaplapnev=="")errors.push("Ki kell választani egy alaplap nevet");
     if(processzorFoglalat=="" || !neLegyenWhiteSpace.test(processzorFoglalat))processzorFoglalat=null;
     if(alaplapFormatum=="" || !neLegyenWhiteSpace.test(alaplapFormatum))alaplapFormatum=null;
     if(maxFrekvencia==0)maxFrekvencia=null;
@@ -397,6 +402,7 @@ export function RequestAlaplapPatch(fileName, alaplapnev)
     if(slotSzam==0)slotSzam=null;
     if(kepneve=="")kepneve=null;
 
+    if(errors.length==0){
         fetch (`https://localhost:44316/api/Alaplap/0?name=${alaplapnev}`, {
             method: "PATCH",
             headers: {"Content-Type": "application/json"},
@@ -416,14 +422,14 @@ export function RequestAlaplapPatch(fileName, alaplapnev)
             if (!response.ok) {
                 //409
                 if(response.status === 409){
-                    alert("Ez a videokártya már szerepel ezzel a vram konfigurácioval.")
+                    showHiba("Ez a videokártya már szerepel ezzel a vram konfigurácioval.",false)
                 }
                 else{
                     throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                 }
             }
             else{
-                alert("Sikeres feltöltés!");
+                showHiba("Sikeres feltöltés!",true);
                 document.getElementById('AlaplapPatch1').value="";
                 document.getElementById('AlaplapPatch2').value="";
                 document.getElementById('AlaplapPatch3').value="";
@@ -436,11 +442,22 @@ export function RequestAlaplapPatch(fileName, alaplapnev)
         })
         .catch((error) => {
             console.error("Hiba történt:", error)
-            alert("Server hiba. Kérlek próbált meg később!");
+            showHiba("Server hiba. Kérlek próbált meg később!",false);
         });
+    }
+    else{
+        errors.forEach((error)=>{
+            addHiba(error);
+            console.log(error);
+        });
+        showHiba("Hiba történt",false);
+        errors.length = 0;
+    }
+        
 }
 export function RequestProcesszorPatch(fileName, procNev)
 {
+    errors.length=0;
     var frekvencia = document.getElementById('ProcPatch1').value; 
     var bFrekvencia = document.getElementById('ProcPatch2').value;
     var alaplapFoglalat = document.getElementById('ProcPatch3').value;
@@ -451,9 +468,8 @@ export function RequestProcesszorPatch(fileName, procNev)
     var ajanlottTapegyseg = document.getElementById('ProcPatch8').value;
     const integraltVideokartya = document.querySelector('input[name="ivk_true"]:checked').value;
     var kepneve=String(fileName);
-    console.log(procNev);
 
-    const neLegyenWhiteSpace=/[a-zA-z]/;
+    if(procNev=="")errors.push("Ki kell választani egy processzor nevet ")
     if(frekvencia==0)frekvencia=null;
     if(bFrekvencia==0)bFrekvencia=null;
     if(alaplapFoglalat=="" || !neLegyenWhiteSpace.test(alaplapFoglalat))alaplapFoglalat=null;
@@ -463,7 +479,7 @@ export function RequestProcesszorPatch(fileName, procNev)
     if(gyarto=="" || !neLegyenWhiteSpace.test(gyarto))gyarto=null;
     if(ajanlottTapegyseg==0)ajanlottTapegyseg=null;
     if(kepneve=="")kepneve=null;
-
+    if(errors.length==0){
         fetch (`https://localhost:44316/api/Processzor/0?name=${procNev}`, {
             method: "PATCH",
             headers: {"Content-Type": "application/json"},
@@ -485,14 +501,14 @@ export function RequestProcesszorPatch(fileName, procNev)
             if (!response.ok) {
                 //409
                 if(response.status === 409){
-                    alert("Ez a processzor már szerepel ezzel a névvel.")
+                    showHiba("Ez a processzor már szerepel ezzel a névvel.",false)
                 }
                 else{
                     throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                 }
             }
             else{
-                alert("Sikeres feltöltés!");
+                showHiba("Sikeres feltöltés!",true);
                 document.getElementById('ProcPatch1').value="";
                 document.getElementById('ProcPatch2').value="";
                 document.getElementById('ProcPatch3').value="";
@@ -507,19 +523,30 @@ export function RequestProcesszorPatch(fileName, procNev)
         })
         .catch((error) => {
             console.error("Hiba történt:", error)
-            alert("Server hiba. Kérlek próbált meg később!");
+            showHiba("Server hiba. Kérlek próbált meg később!",false);
         });
+    }
+    else{
+        errors.forEach((error)=>{
+            addHiba(error);
+            console.log(error);
+        });
+        showHiba("Hiba történt",false);
+        errors.length = 0;
+    }
 }
 export function RequestRamPatch(fileName, ramNev, ramFrekvencia, ramMeret)
 {
+    errors.length=0;
     var memoriaTipus = document.getElementById('RamPatch1').value;
     var kepneve=String(fileName);
 
-    const neLegyenWhiteSpace=/[a-zA-Z]/;
-
+    if(ramNev=="")errors.push("Ki kell választani egy nevet")
+    if(ramFrekvencia=="")errors.push("Ki kell választani egy frekvenciát")
+    if(ramMeret=="")errors.push("Ki kell választani egy méretet")
     if(memoriaTipus=="" && !neLegyenWhiteSpace.test(memoriaTipus))memoriaTipus=null;
     if(kepneve=="")kepneve=null;
-
+    if(errors.length==0){
         fetch (`https://localhost:44316/api/Ram/0?name=${ramNev}&frekvencia=${ramFrekvencia}&meret=${ramMeret}`, {
             method: "PATCH",
             headers: {"Content-Type": "application/json"},
@@ -533,14 +560,14 @@ export function RequestRamPatch(fileName, ramNev, ramFrekvencia, ramMeret)
             if (!response.ok) {
                 //409
                 if(response.status === 409){
-                    alert("Ez a memória már szerepel ezzel a konfigurácioval.")
+                    showHiba("Ez a memória már szerepel ezzel a konfigurácioval.",false)
                 }
                 else{
                     throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                 }
             }
             else{
-                alert("Sikeres feltöltés!");
+                showHiba("Sikeres feltöltés!",true);
                 document.getElementById('RamPatch1').value="";
             }
                 
@@ -548,95 +575,160 @@ export function RequestRamPatch(fileName, ramNev, ramFrekvencia, ramMeret)
         })
         .catch((error) => {
             console.error("Hiba történt:", error)
-            alert("Server hiba. Kérlek próbált meg később!");
+            showHiba("Server hiba. Kérlek próbált meg később!",false);
         });
+    }
+    else{
+        errors.forEach((error)=>{
+            addHiba(error);
+            console.log(error);
+        });
+        showHiba("Hiba történt",false);
+        errors.length = 0;
+    }
+        
 }
 //------------DELETE----------------------------------------------
 export async function RequestVideokDelete(videokName, vram)
 {
-    await fetch (`https://localhost:44316/api/Videokartya/0?name=${videokName}&vram=${vram}`, {
-        method: "DELETE",
-    })
-    .then((response) => {
-        console.log(response.status)
-        if (!response.ok) {
-            if(response.status === 404){
-                alert("Ez a videokártya nem található.")
+    errors.length=0;
+    if(videokName=="")errors.push("Ki kell választani egy nevet")
+    if(vram=="")errors.push("Ki kell választani a videokártya vramját")
+    if(errors.length==0){
+        await fetch (`https://localhost:44316/api/Videokartya/0?name=${videokName}&vram=${vram}`, {
+            method: "DELETE",
+        })
+        .then((response) => {
+            console.log(response.status)
+            if (!response.ok) {
+                if(response.status === 404){
+                    showHiba("Ez a videokártya nem található.",false)
+                }
+                throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
             }
-            throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
-        }
-        else alert("Sikeres törlés!");
-            
-        return response.json()
-    })
-    .catch((error) => {
-        console.error("Hiba történt:", error)
-        alert("Server hiba. Kérlek próbált meg később!");
-    });
+            else showHiba("Sikeres törlés!",true);
+                
+            return response.json()
+        })
+        .catch((error) => {
+            console.error("Hiba történt:", error)
+            showHiba("Server hiba. Kérlek próbált meg később!",false);
+        });
+    }
+    else{
+        errors.forEach((error)=>{
+            addHiba(error);
+            console.log(error);
+        });
+        showHiba("Hiba történt",false);
+        errors.length = 0;
+    }
+    
 }
 export async function RequestAlaplapDelete(alaplapnev)
 {
-    await fetch (`https://localhost:44316/api/Alaplap/0?name=${alaplapnev}`, {
-        method: "DELETE",
-    })
-    .then((response) => {
-        console.log(response.status)
-        if (!response.ok) {
-            if(response.status === 404){
-                alert("Ez az alaplap nem található.")
+    errors.length=0;
+    if(alaplapnev=="")errors.push("Ki kell választani egy nevet")
+    if(errors.length==0){
+        await fetch (`https://localhost:44316/api/Alaplap/0?name=${alaplapnev}`, {
+            method: "DELETE",
+        })
+        .then((response) => {
+            console.log(response.status)
+            if (!response.ok) {
+                if(response.status === 404){
+                    showHiba("Ez az alaplap nem található.",false)
+                }
+                throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
             }
-            throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
-        }
-        else alert("Sikeres törlés!");
-            
-        return response.json()
-    })
-    .catch((error) => {
-        console.error("Hiba történt:", error)
-        alert("Server hiba. Kérlek próbált meg később!");
-    });
+            else showHiba("Sikeres törlés!",true);
+                
+            return response.json()
+        })
+        .catch((error) => {
+            console.error("Hiba történt:", error)
+            showHiba("Server hiba. Kérlek próbált meg később!",false);
+        });
+    }
+    else{
+        errors.forEach((error)=>{
+            addHiba(error);
+            console.log(error);
+        });
+        showHiba("Hiba történt",false);
+        errors.length = 0;
+    }
+    
 }
 export async function RequestProcesszorDelete(procNev)
 {
-    await fetch (`https://localhost:44316/api/Processzor/0?name=${procNev}`, {
-        method: "DELETE",
-    })
-    .then((response) => {
-        console.log(response.status)
-        if (!response.ok) {
-            if(response.status === 404){
-                alert("Ez a processzor nem található.")
+    errors.length=0;
+    if(procNev=="")errors.length("Ki kell választani egy nevet")
+    if(errors.length==0){
+        await fetch (`https://localhost:44316/api/Processzor/0?name=${procNev}`, {
+            method: "DELETE",
+        })
+        .then((response) => {
+            console.log(response.status)
+            if (!response.ok) {
+                if(response.status === 404){
+                    showHiba("Ez a processzor nem található.",false)
+                }
+                throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
             }
-            throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
-        }
-        else alert("Sikeres törlés!");
-            
-        return response.json()
-    })
-    .catch((error) => {
-        console.error("Hiba történt:", error)
-        alert("Server hiba. Kérlek próbált meg később!");
-    });
+            else showHiba("Sikeres törlés!",true);
+                
+            return response.json()
+        })
+        .catch((error) => {
+            console.error("Hiba történt:", error)
+            showHiba("Server hiba. Kérlek próbált meg később!",false);
+        });
+    }
+    else{
+        errors.forEach((error)=>{
+            addHiba(error);
+            console.log(error);
+        });
+        showHiba("Hiba történt",false);
+        errors.length = 0;
+    }
+    
 }
 export async function RequestRamDelete(ramNev, ramFrekvencia, ramMeret)
 {
-    await fetch (`https://localhost:44316/api/Ram/0?name=${ramNev}&frekvencia=${ramFrekvencia}&meret=${ramMeret}`, {
-        method: "DELETE",
-    })
-    .then((response) => {
-        console.log(response.status)
-        if (!response.ok) {
-            if(response.status === 404){
-                alert("Ez a memória nem található.")
+    errors.length=0;
+    if(ramNev=="")errors.push("Ki kell választani egy nevet")
+    if(ramFrekvencia=="")errors.push("Ki kell választani egy ram frekvenciát")
+    if(ramMeret=="")errors.push("Ki kell választani egy meretet")
+    if(errors.length==0){
+        await fetch (`https://localhost:44316/api/Ram/0?name=${ramNev}&frekvencia=${ramFrekvencia}&meret=${ramMeret}`, {
+            method: "DELETE",
+        })
+        .then((response) => {
+            console.log(response.status)
+            if (!response.ok) {
+                if(response.status === 404){
+                    showHiba("Ez a memória nem található.",false)
+                }
+                throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
             }
-            throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
-        }
-        else alert("Sikeres törlés!");
-            
-        return response.json()
-    })
-    .catch((error) => {
-        console.error("Hiba történt:", error)
-        alert("Server hiba. Kérlek próbált meg később!");
-    });
+            else showHiba("Sikeres törlés!",true);
+                
+            return response.json()
+        })
+        .catch((error) => {
+            console.error("Hiba történt:", error)
+            showHiba("Server hiba. Kérlek próbált meg később!",false);
+        });
+    }
+    else{
+        errors.forEach((error)=>{
+            addHiba(error);
+            console.log(error);
+        });
+        showHiba("Hiba történt",false);
+        errors.length = 0;
+    }
+    
 }
