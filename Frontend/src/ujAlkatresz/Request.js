@@ -13,6 +13,7 @@ export function RequestVideokP(fileUrl){
     var cGyartoElem = document.getElementById('VideoPost6').value;
 
     var kepneve=String(fileUrl);
+    console.log(kepneve);
 
     if(!neLegyenWhiteSpace.test(nevElem))errors.push("A névnek tartalmaznia kell legalább egy betüt");
     if(!neLegyenWhiteSpace.test(aCsatlakozasElem))errors.push("Alaplap csatlakozásnak tartalmaznia kell legalább egy betüt");
