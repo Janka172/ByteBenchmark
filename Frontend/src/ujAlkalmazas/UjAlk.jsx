@@ -117,27 +117,35 @@ function UjAlk()
              </nav>
 
              {actionButtons==="Post" ? <div id='Alk_post_torzs'>
-                    <div id='Felso'></div>
-                    <form id='inputs_post'>
-                        <p className='alkTitles'>Alkalmazás neve:</p><input type="text" id="alkNamePost"/>
-                        <p className='alkTitles'>Alkalmazás mérete:</p><input type="number" id="alkSizePost"/>
+                <div id='Felso'>
+                    <div className='inputs'>
+                        <form id='inputs_post'>
+                            <p className='alkTitles'>Alkalmazás neve:</p><input type="text" id="alkNamePost" className='inputStyle'/>
+                            <p className='alkTitles'>Alkalmazás mérete:</p><input type="number" id="alkSizePost" className='inputStyle'/>
+                        </form> 
+                    </div>
+                    <div className='inputs'>
+                        <form id='comboImage'>
+                            <p className='alkTitles'>Kategória</p>
+                            <div id='combobox'>
+                                <select id="comboboxCategory" onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
+                                    <option className="comboboxAlkPost" value="">Válassz egyet</option>
+                                    {[...new Set(mindenAdat['kategoriak'].map(i=>i.Nev))].map((nev)=>(<option className="comboboxAlkPost" key={nev} value={nev}>{nev}</option>))}
+                                </select>
 
-                        <p className='alkTitles'>Kategória</p>
-                        <div id='combobox'>
-                            <select id="comboboxCategory" onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
-                                <option className="comboboxAlkPost" value="">Válassz egyet</option>
-                                {[...new Set(mindenAdat['kategoriak'].map(i=>i.Nev))].map((nev)=>(<option className="comboboxAlkPost" key={nev} value={nev}>{nev}</option>))}
-                            </select>
-
-                        </div>
-                        <p className='alkTitles'>Kép feltöltése</p>
-                        <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
-                        <span className="filename" id='patch_img_link'>{fileName}</span>
-                        <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
-                    </form>
-
+                            </div>
+                            <p className='alkTitles'>Kép feltöltése</p>
+                            <div className='imageUpload'>
+                                <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
+                                <span className="AlkFilename" id='alkImgLinkPost'>{fileName}</span>
+                                <label htmlFor="imginput" className="AlkImgButton" id='alkImgPost'>📁 Fájl kiválasztása</label>
+                            </div>
+                        </form>
+                    </div>
+                        
+                </div>
                     <div id='Also'>
-                        <div>
+                        <div id='minSetup'>
                             <p className='patch_titles'>Videókártya neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_patch" onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
@@ -171,8 +179,7 @@ function UjAlk()
                            </div>
                         </div>
 
-                        <div>
-                        <div>
+                        <div id='maxSetup'>
                             <p className='patch_titles'>Videókártya neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_patch" onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
@@ -206,7 +213,6 @@ function UjAlk()
                            </div>
                         </div>
                     </div>
-                </div>
             </div> : <div></div>}
         </div>
     );

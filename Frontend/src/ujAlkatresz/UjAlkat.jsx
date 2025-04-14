@@ -370,7 +370,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                      <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
 
 
-                    <button className='buttons' id='patch_datkezelogomb' type='button' onClick={(e)=>{handleUploadAndPost(e);setActionKivalasztottNev("");setActionMindenhezKellAdat(null)}}>Módosítások mentése</button>
+                    <button className='buttons' id='patch_datkezelogomb' type='button' onClick={(e)=>{handleUploadAndPost(e);setActionKivalasztottNev("");setActionMindenhezKellAdat(null)}}>Módosítások mentése</button>                    
                     </form>
                  </div>
 
@@ -571,6 +571,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <label htmlFor="imginput" className="imgbutton" id='post_img'>📁 Fájl kiválasztása</label>
 
                         <button className='buttons' type='button'id='post_adatkezelogomb' onClick={handleUploadAndPost}>Adatok feltöltése</button>
+                        <EgyediAlert/>
                     </form>
                  </div>
 
@@ -699,6 +700,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <label htmlFor="imginput" className="imgbutton" id='post_img'>📁 Fájl kiválasztása</label>
 
                         <button type='button' className='buttons' id='post_adatkezelogomb' onClick={handleUploadAndPost}>Adatok feltöltése</button>
+                        <EgyediAlert/>
                     </form>
                  </div>
 
