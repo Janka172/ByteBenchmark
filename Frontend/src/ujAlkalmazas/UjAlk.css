@@ -1,5 +1,77 @@
-#comboboxes
+#Alk_post_torzs
 {
     display: flex;
     flex-direction: column;
+}
+
+#Also
+{
+    display: flex;
+    flex-direction: row;
+}
+
+#Felso
+{
+    display: flex;
+    flex-direction: row;
+    margin:auto;
+}
+#inputs
+{
+    display: flex;
+    flex-direction: row;
+}
+.inputStyle
+{
+    width: 100%;
+    font-size: medium;
+}
+#comboImage
+{
+    margin-left :25%;
+    width: max-content;
+}
+.AlkImgButton
+{
+    padding: 0.5vw 1vw;
+    padding-left: none;
+    margin-right: 1%;
+    margin-left: none;
+    margin-top: 1vw;
+    margin-bottom: 0.3vw;
+    font-size: 1vw;
+    border-radius: 0% 30%;
+    background-color: rgba(194, 52, 52, 0.8);
+    color: black;
+    word-break: normal;
+  }
+.AlkFilename
+{
+padding: 0.5vw 1vw;
+  margin-right: 1%;
+  margin-top: 1vw;
+  margin-bottom: 0.3vw;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 1vw 0vw;
+  font-size: 1.5vw;
+}
+#alkImgPost
+{
+    width: 150px;
+  font-size: large;
+  height: 1.8vw;
+  padding-right: 1vw;
+  padding-top: 1vw;
+}
+#alkImgLinkPost
+{
+    width: 100%;
+  font-size: medium;
+  height: 1.8vw;
+  padding-right: 0vw;
+}
+.imageUpload
+{
+    display: flex;
+    flex-direction: row;
 }
