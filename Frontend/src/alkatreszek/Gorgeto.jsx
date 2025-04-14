@@ -188,13 +188,23 @@ function Gorgeto({ tema }) {
   var [keresettNev, setKeresettNev] = useState('');
   function nevSzures() {
     setSzurtAlk([]);
-    if (keresettNev != '') {
-      const nevreSzurt = sajatAdatok.filter(x => x.Nev.toLocaleLowerCase().includes(keresettNev.toLocaleLowerCase()));
+    if (keresettNev !== '') {
+      let bevittSzoveg = keresettNev.toLocaleLowerCase();
+  
+      const nevreSzurt = sajatAdatok.filter(x => {
+        let nev = x.Nev.toLocaleLowerCase();
+        for (let karakter of bevittSzoveg) {
+          if (!nev.includes(karakter)) return false;
+        }
+        return true;
+      });
+  
       setSzurtAlk(nevreSzurt);
     } else {
       setSzurtAlk(sajatAdatok);
     }
   }
+  
   useEffect(() => {
     nevSzures();
   }, [keresettNev]);

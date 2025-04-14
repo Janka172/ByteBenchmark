@@ -84,7 +84,7 @@
 .szuroMenu{
     background-color: rgba(190, 90, 90, 0.7);
     margin-top: 1vw;
-    padding: 3vw;
+    padding: 1vw 4vw 3vw 4vw;
     border-radius: 3vw 3vw 0vw 0vw;
 }
 
@@ -198,6 +198,8 @@ h2{
     grid-template-rows: 0.5fr 1fr 0.3fr;
     align-items: center;
     justify-content: center;
+    height: auto;
+    width: 15vw;
 }
 
 @media (max-width: 767px){
