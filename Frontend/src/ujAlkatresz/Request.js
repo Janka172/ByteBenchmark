@@ -368,7 +368,7 @@ export function RequestVideokPatch(fileName, videokName, vram,)
         })
         .catch((error) => {
             console.error("Hiba történt:", error)
-            showHiba("Server hiba. Kérlek próbált meg később!");
+            showHiba("Server hiba. Kérlek próbált meg később!",false);
         });
     }
     else{
