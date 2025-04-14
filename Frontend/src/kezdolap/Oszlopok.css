@@ -31,6 +31,10 @@
   padding: 2vw;
 }
 
+.szoveg{
+  padding: 1.5vw;
+}
+
 
 @media (max-width: 767px) {
   .ketOszlop {
