@@ -17,7 +17,7 @@ export function RequestVideokP(fileUrl){
 
     if(!neLegyenWhiteSpace.test(nevElem))errors.push("A névnek tartalmaznia kell legalább egy betüt");
     if(!neLegyenWhiteSpace.test(aCsatlakozasElem))errors.push("Alaplap csatlakozásnak tartalmaznia kell legalább egy betüt");
-    if(atapegysegElem<4 || atapegysegElem>500)errors.push("Ajánlott tápegység mértéke nem lehet 4W-nál és 500W-nál nagyobb");
+    if(atapegysegElem<4 || atapegysegElem>800)errors.push("Ajánlott tápegység mértéke nem lehet 4W-nál és 500W-nál nagyobb");
     if(!neLegyenWhiteSpace.test(mCsatlakozasElem))errors.push("Monitor csatlakozásnak tartalmaznia kell legalább egy betüt");
     if(!neLegyenWhiteSpace.test(cGyartoElem))errors.push("Chip gyártónak tartalmaznia kell legalább egy betüt");
     if(vramElem==null)errors.push("Vram nem lehet üres");
