@@ -1989,7 +1989,6 @@ C:\Users\szm_info2005a1\Documents\TeljesProjekt\Backend\webapiproj\webapiproj\ob
 C:\Users\szm_info2005a1\Documents\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.csproj.Up2Date
 C:\Users\szm_info2005a1\Documents\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.dll
 C:\Users\szm_info2005a1\Documents\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.pdb
-C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.csproj.CopyComplete
 C:\Users\hj_info2005a2\Documents\GitHub\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.csproj.CopyComplete
 C:\Users\hj_info2005a2\Documents\GitHub\aTeljesProjekt\Backend\webapiproj\webapiproj\bin\webapiproj.dll.config
 C:\Users\hj_info2005a2\Documents\GitHub\aTeljesProjekt\Backend\webapiproj\webapiproj\bin\webapiproj.dll
@@ -2098,3 +2097,4 @@ C:\Users\hj_info2005a2\Documents\GitHub\aTeljesProjekt\Backend\webapiproj\webapi
 C:\Users\hj_info2005a2\Documents\GitHub\aTeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.csproj.CopyComplete
 C:\Users\hj_info2005a2\Documents\GitHub\aTeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.dll
 C:\Users\hj_info2005a2\Documents\GitHub\aTeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.pdb
+C:\Users\szm_info2005a1\Documents\GitHub\TeljesProjekt\Backend\webapiproj\webapiproj\obj\Debug\webapiproj.csproj.Up2Date
