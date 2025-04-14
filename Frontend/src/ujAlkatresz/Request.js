@@ -3,6 +3,7 @@ import {addHiba,showHiba} from '../Alert/alertService.js'
 var errors=[];
 
 export function RequestVideokP(fileUrl){
+    errors.length=0;
     var nevElem = document.getElementById('VideoPost1').value;
     var aCsatlakozasElem = document.getElementById('VideoPost2').value;
     var atapegysegElem = document.getElementById('VideoPost3').value;
@@ -88,6 +89,7 @@ export function RequestVideokP(fileUrl){
 }
 
 export function RequestAlaplapP(fileUrl){
+    errors.length=0;
     var aNevElem = document.getElementById('AlaplapPost1').value;
     var processzorFoglalatElem = document.getElementById('AlaplapPost2').value;
     var alaplapFormatumElem = document.getElementById('AlaplapPost3').value;
@@ -103,7 +105,20 @@ export function RequestAlaplapP(fileUrl){
     console.log(selectKivalaszottCsat);
 
     const neLegyenWhiteSpace=/[a-zA-Z]/;
-    if (aNevElem!=null || neLegyenWhiteSpace.test(aNevElem)|| processzorFoglalatElem!=null || neLegyenWhiteSpace.test(processzorFoglalatElem)|| alaplapFormatumElem!=null || neLegyenWhiteSpace.test(alaplapFormatumElem)|| maxFrekvenciaElem!=null || memoriaTipusElem!=null || neLegyenWhiteSpace.test(memoriaTipusElem)|| lapkaKeszletElem!=null || neLegyenWhiteSpace.test(lapkaKeszletElem) || slotSzamElem!=null) 
+
+    if(aNevElem==null)errors.push("Név nem lehet üres");
+    if(!neLegyenWhiteSpace.test(aNevElem))errors.push("A névnek tartalmaznia kell legalább egy betüt!");
+    if(processzorFoglalatElem==null)errors.push("A processzorFoglalat nem lehet üres");
+    if(!neLegyenWhiteSpace.test(processzorFoglalatElem))errors.push("A Proceszorfoglalatnak tartalmaznia kell legalább egy betüt!");
+    if(alaplapFormatumElem==null)errors.push("Az alaplap formátum nem lehet üres");
+    if(!neLegyenWhiteSpace.test(alaplapFormatumElem))errors.push("Az alaplapformátumnak tartalmazni kell legalább egy betüt");
+    if(maxFrekvenciaElem<600 || maxFrekvenciaElem>5000)errors.push("A Frekvenciának 600Hz és 5000Hz között kell lenni");
+    if(memoriaTipusElem==null)errors.push("A memoria tipus nem lehet üres");
+    if(!neLegyenWhiteSpace.test(memoriaTipusElem))errors.push("A memoria tipusnak tartalmazni kell legalább egy betüt");
+    if(lapkaKeszletElem==null)errors.push("A lapkakészlet nem lehet üres");
+    if(!neLegyenWhiteSpace.test(lapkaKeszletElem))errors.push("A lapkakészletnek tartalmazni kell legalább egy betüt");
+    if(slotSzamElem<1 || slotSzamElem>25)errors.push("A slotszám nem lehet kevesebb 1-nél illetve nem lehet több 25-nél")
+    if (errors.length==0) 
         {
             fetch ("https://localhost:44316/api/Alaplap", {
                 method: "POST",
@@ -129,14 +144,14 @@ export function RequestAlaplapP(fileUrl){
                 if (!response.ok) {
                     //409
                     if(response.status === 409){
-                        alert("Ez az alaplap már szerepel ezzel a konfigurácioval.")
+                        showHiba("Ez az alaplap már szerepel ezzel a konfigurácioval.",false)
                     }
                     else{
                         throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                     }
                 }
                 else{
-                    alert("Sikeres feltöltés!");
+                    showHiba("Sikeres feltöltés!",true);
                     document.getElementById('AlaplapPost1').value="";
                     document.getElementById('AlaplapPost2').value="";
                     document.getElementById('AlaplapPost3').value="";
@@ -151,12 +166,17 @@ export function RequestAlaplapP(fileUrl){
             })
             .catch((error) => {
                 console.error("Hiba történt:", error)
-                alert("Server hiba. Kérlek próbált meg később!");
+                showHiba("Server hiba. Kérlek próbált meg később!",false);
             });
         }
         else
         {
-            alert("kuka")
+            errors.forEach((error)=>{
+                addHiba(error);
+                console.log(error);
+            });
+            showHiba("Hiba történt",false);
+            errors.length = 0;
         }
 
 }
@@ -213,7 +233,12 @@ export function RequestMemoriaP(fileUrl){
         }
         else
         {
-            alert("kuka")
+            errors.forEach((error)=>{
+                addHiba(error);
+                console.log(error);
+            });
+            showHiba("Hiba történt",false);
+            errors.length = 0;
         }
     
 }

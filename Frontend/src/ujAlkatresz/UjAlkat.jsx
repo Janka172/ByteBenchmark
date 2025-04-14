@@ -462,6 +462,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <label htmlFor="imginput" className="imgbutton" id='post_img_alaplap'>📁 Fájl kiválasztása</label>
 
                         <button type='button' className='buttons' id='post_adatkezelogomb_alaplap' onClick={handleUploadAndPost}>Adatok feltöltése</button>
+                        <EgyediAlert/>
                     </form>
                  </div>
 
