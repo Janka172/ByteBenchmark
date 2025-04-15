@@ -297,6 +297,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
     const handleFileChange = (event) => {
       if (event.target.files.length > 0) {
+         console.log(event.target.files[0].name)
          setFileName(event.target.files[0].name);
          setSelectedFile(event.target.files[0])
        } else {
@@ -323,7 +324,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                      <p className='post_titles'>Vram:</p><input type='number' className='beviteli_mezok' id='VideoPost5'/>        
                      <p className='post_titles'>Chip  gyártója:</p><input type='text' className='beviteli_mezok' id='VideoPost6'/>
      
-                     <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
+                     <input key={fileName} type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                      <span className="filename" id='post_img_link'>{fileName}</span>
                      <label htmlFor="imginput" className="imgbutton" id='post_img'>📁 Fájl kiválasztása</label>
 
@@ -366,7 +367,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                     <p className='patch_titles'>Monitor csatlakozás:</p><input type='text' id='VideokPatch3' className='patchbeviteli_mezok'/>
                     <p className='patch_titles'>Chip  gyártója:</p><input type='text' id='VideokPatch4' className='patchbeviteli_mezok'/>
 
-                     <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
+                     <input key={fileName} type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                      <span className="filename" id='patch_img_link'>{fileName}</span>
                      <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
 
@@ -459,7 +460,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <label htmlFor="AlaplapPost10">Nem tartalmaz hangkártyát.</label>
                         </div>
 
-                        <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
+                        <input key={fileName} type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                         <span className="filename" id='post_img_link_alaplap'>{fileName}</span>
                         <label htmlFor="imginput" className="imgbutton" id='post_img_alaplap'>📁 Fájl kiválasztása</label>
 
@@ -503,7 +504,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                            <label htmlFor="ivk_false">Nem tartalmaz hangkártyát.</label>
                             </div>
 
-                            <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
+                            <input key={fileName} type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                            <span className="filename" id='patch_img_link'>{fileName}</span>
                            <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
 
@@ -612,7 +613,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <button className='buttons' id='adatlekerogomb' type='button' onClick={(e)=>adatRamLekeres(e,actionKivalaszottRamNev,actionSelectedRamMeret,actionSelectedRamFrekvencia)}>Adatok lekérése</button>
                         <p className='patch_titles'>Memória típus:</p> <input type="text" id='RamPatch1' className='patchbeviteli_mezok'/>   
                          
-                        <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
+                        <input key={fileName} type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                         <span className="filename" id='patch_img_link'>{fileName}</span>
                         <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
 
@@ -703,7 +704,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label>
                         </div>
 
-                        <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
+                        <input key={fileName} type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                         <span className="filename" id='post_img_link'>{fileName}</span>
                         <label htmlFor="imginput" className="imgbutton" id='post_img'>📁 Fájl kiválasztása</label>
 
@@ -749,7 +750,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                            <label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label>
                             </div>
 
-                            <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
+                            <input key={fileName} type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                            <span className="filename" id='patch_img_link'>{fileName}</span>
                            <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
 
