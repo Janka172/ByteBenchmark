@@ -854,7 +854,7 @@
   {
     width: 100%;
     padding: 5%;
-    margin-left: 28%;
+    margin-left: 16%;
   }
   .select_buttons
   {
@@ -888,7 +888,7 @@
   /*Beviteli mezők formázása*/
   .beviteli_mezok
   {
-    width: 180%;
+    width: 280px;
     font-size: medium;
     margin-top: 1%;
     height: 1.8vw;
@@ -938,7 +938,7 @@
     font-size: medium;
     margin-top: 1vw;
     margin-right: 1%;
-    margin-left: 28%;
+    margin-left: 16%;
     margin-bottom: 0.3vw;
     border: 1px black solid;
     border-radius: 0% 30%;
@@ -949,11 +949,11 @@
   /*Ahol megjelenik a kép neve!!!!*/
   #post_img_link
   {
-    width: 180%;
+    width: 275px;
     font-size: large;
     height: 1.8vw;
     padding-right: 0vw;
-    margin-left: 28%;
+    margin-left: 16%;
     border: 1px black solid;
   }
   
