@@ -307,11 +307,11 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
     return (
         <div>
              <nav className='navbars'> {/*Navigációs menü*/}
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Videókártya"); setActionButtons("Post");setActionMindenhezKellAdat(null)}}>Videókártya</a>
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Alaplap"); setActionButtons("Post");setActionMindenhezKellAdat(null)}}>Alaplap</a>
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Memória"); setActionButtons("Post");setActionMindenhezKellAdat(null)}}>Memória</a>
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Processzor"); setActionButtons("Post");setActionMindenhezKellAdat(null)}}>Processzor</a>
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Alaplapi Csatlakozo"); setActionButtons("Post");setActionMindenhezKellAdat(null)}}>Alaplapi Csatlakozo</a>
+                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Videókártya"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Videókártya</a>
+                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Alaplap"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Alaplap</a>
+                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Memória"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Memória</a>
+                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Processzor"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Processzor</a>
+                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Alaplapi Csatlakozo"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Alaplapi Csatlakozo</a>
              </nav> 
              {actionHardver==="Videókártya" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
@@ -333,9 +333,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                   <div id='buttons_content_post'>
-                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat();setActionKivalasztottNev("");setActionMindenhezKellAdat(null);}}>Elem adatainak frissítése</button></div>
-                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat();setActionKivalasztottNev("");setActionMindenhezKellAdat(null)} }>Új elem hozzáadása</button></div>
-                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat();setActionKivalasztottNev("");setActionMindenhezKellAdat(null)}}>Elem törlése</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat();setActionKivalasztottNev("");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat();setActionKivalasztottNev("");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")} }>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat();setActionKivalasztottNev("");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Elem törlése</button></div>
                   </div>
 
             </div> : <div></div>}
@@ -371,7 +371,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                      <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
 
 
-                    <button className='buttons' id='patch_datkezelogomb' type='button' onClick={(e)=>{handleUploadAndPost(e);setActionKivalasztottNev("");setActionMindenhezKellAdat(null)}}>Módosítások mentése</button>                    
+                    <button className='buttons' id='patch_datkezelogomb' type='button' onClick={(e)=>{handleUploadAndPost(e);setActionKivalasztottNev("");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Módosítások mentése</button>                    
                     </form>
                  </div>
 
@@ -386,9 +386,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                  <div id='buttons_content_patch'>
-                     <div className='pagechangebutton'><button disabled className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat();setActionKivalasztottNev("");setActionMindenhezKellAdat(null)}}>Elem adatainak frissítése</button></div>
-                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat();setActionKivalasztottNev("");setActionMindenhezKellAdat(null)} }>Új elem hozzáadása</button></div>
-                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat();setActionKivalasztottNev("");setActionMindenhezKellAdat(null)}}>Elem törlése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat();setActionKivalasztottNev("");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat();setActionKivalasztottNev("");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")} }>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat();setActionKivalasztottNev("");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Elem törlése</button></div>
                  </div>
             </div> : <div></div>}
 
@@ -463,15 +463,15 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <span className="filename" id='post_img_link_alaplap'>{fileName}</span>
                         <label htmlFor="imginput" className="imgbutton" id='post_img_alaplap'>📁 Fájl kiválasztása</label>
 
-                        <button type='button' className='buttons' id='post_adatkezelogomb_alaplap' onClick={handleUploadAndPost}>Adatok feltöltése</button>
+                        <button type='button' className='buttons' id='post_adatkezelogomb_alaplap' onClick={async(e)=>{handleUploadAndPost(e);await setFileName("Nincs fájl kiválasztva")}}>Adatok feltöltése</button>
                         <EgyediAlert/>
                     </form>
                  </div>
 
                  <div id='buttons_content_post_alaplap'>
-                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
-                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
-                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat();setFileName("Nincs fájl kiválasztva")}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat();setFileName("Nincs fájl kiválasztva")} }>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat();setFileName("Nincs fájl kiválasztva")}}>Elem törlése</button></div>
                   </div>
             </div> : <div></div>}
 
@@ -507,7 +507,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                            <span className="filename" id='patch_img_link'>{fileName}</span>
                            <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
 
-                        <button className='buttons' id='patch_datkezelogomb' type='button' onClick={(e)=>{handleUploadAndPost(e);setActionKivalasztottAlaplapNev("");setActionMindenhezKellAdat(null)}}>Módosítások mentése</button>
+                        <button className='buttons' id='patch_datkezelogomb' type='button' onClick={(e)=>{handleUploadAndPost(e);setActionKivalasztottAlaplapNev("");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Módosítások mentése</button>
                         <EgyediAlert/>
 
                     </form>
@@ -525,9 +525,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                     <div id='buttons_content_patch'>
-                        <div className='pagechangebutton'><button disabled className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
-                        <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
-                        <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
+                        <div className='pagechangebutton'><button disabled className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat();setFileName("Nincs fájl kiválasztva")}}>Elem adatainak frissítése</button></div>
+                        <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat();setFileName("Nincs fájl kiválasztva")} }>Új elem hozzáadása</button></div>
+                        <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat();setFileName("Nincs fájl kiválasztva")}}>Elem törlése</button></div>
                     </div>
             </div> : <div></div>}
 
@@ -575,15 +575,15 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <span className="filename" id='post_img_link'>{fileName}</span>
                         <label htmlFor="imginput" className="imgbutton" id='post_img'>📁 Fájl kiválasztása</label>
 
-                        <button className='buttons' type='button'id='post_adatkezelogomb' onClick={handleUploadAndPost}>Adatok feltöltése</button>
+                        <button className='buttons' type='button'id='post_adatkezelogomb' onClick={async(e)=>{handleUploadAndPost(e);setFileName("Nincs fájl kiválasztva")}}>Adatok feltöltése</button>
                         <EgyediAlert/>
                     </form>
                  </div>
 
                  <div id='buttons_content_post'>
-                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
-                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
-                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat();setFileName("Nincs fájl kiválasztva")}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat();setFileName("Nincs fájl kiválasztva")} }>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat();setFileName("Nincs fájl kiválasztva")}}>Elem törlése</button></div>
                   </div>
             </div> : <div></div>}
 
@@ -616,7 +616,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <span className="filename" id='patch_img_link'>{fileName}</span>
                         <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
 
-                        <button className='buttons' id='patch_datkezelogomb'  type='button' onClick={(e)=>{handleUploadAndPost(e);setActionKivalasztottRamNev("");setActionMindenhezKellAdat(null);setActionSzurtRamFrekvencia([])}}>Módosítások mentése</button>
+                        <button className='buttons' id='patch_datkezelogomb'  type='button' onClick={(e)=>{handleUploadAndPost(e);setActionKivalasztottRamNev("");setActionMindenhezKellAdat(null);setActionSzurtRamFrekvencia([]);setFileName("Nincs fájl kiválasztva")}}>Módosítások mentése</button>
                         <EgyediAlert/>
                         
                     </form>
@@ -630,9 +630,9 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                  </div>
 
                   <div id='buttons_content_patch'>
-                     <div className='pagechangebutton'><button disabled className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
-                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
-                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat();setFileName("Nincs fájl kiválasztva")}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat();setFileName("Nincs fájl kiválasztva")} }>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat();setFileName("Nincs fájl kiválasztva")}}>Elem törlése</button></div>
                   </div>
                 </div> : <div></div>}
 
@@ -707,15 +707,15 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <span className="filename" id='post_img_link'>{fileName}</span>
                         <label htmlFor="imginput" className="imgbutton" id='post_img'>📁 Fájl kiválasztása</label>
 
-                        <button type='button' className='buttons' id='post_adatkezelogomb' onClick={handleUploadAndPost}>Adatok feltöltése</button>
+                        <button type='button' className='buttons' id='post_adatkezelogomb' onClick={async(e)=>{handleUploadAndPost(e);setFileName("Nincs fájl kiválasztva")}}>Adatok feltöltése</button>
                         <EgyediAlert/>
                     </form>
                  </div>
 
                  <div id='buttons_content_post'>
-                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat()}}>Elem adatainak frissítése</button></div>
-                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat()} }>Új elem hozzáadása</button></div>
-                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat()}}>Elem törlése</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Patch");await fetchAdat();setFileName("Nincs fájl kiválasztva")}}>Elem adatainak frissítése</button></div>
+                     <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat();setFileName("Nincs fájl kiválasztva")} }>Új elem hozzáadása</button></div>
+                     <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat();setFileName("Nincs fájl kiválasztva")}}>Elem törlése</button></div>
                   </div>
             </div> : <div></div>}
 
@@ -753,7 +753,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                            <span className="filename" id='patch_img_link'>{fileName}</span>
                            <label htmlFor="imginput" className="imgbutton" id='patch_img'>📁 Fájl kiválasztása</label>
 
-                           <button className='buttons'  id='patch_datkezelogomb' type='button' onClick={(e)=>{handleUploadAndPost(e);setActionKivalasztottProcesszorNev("")}}>Módosítások mentése</button>
+                           <button className='buttons'  id='patch_datkezelogomb' type='button' onClick={(e)=>{handleUploadAndPost(e);setActionKivalasztottProcesszorNev("");setFileName("Nincs fájl kiválasztva")}}>Módosítások mentése</button>
                            <EgyediAlert/>
 
                      </form>

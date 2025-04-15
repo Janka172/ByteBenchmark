@@ -130,32 +130,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 17,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 5,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TestDbSet.cs",
-              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestDbSet.cs",
-              "RelativeDocumentMoniker": "UnitTestProject\\TestDbSet.cs",
-              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestDbSet.cs",
-              "RelativeToolTip": "UnitTestProject\\TestDbSet.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACgAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T10:15:54.038Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ApplikacioController.cs",
-              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\ApplikacioController.cs",
-              "RelativeDocumentMoniker": "webapiproj\\Controllers\\ApplikacioController.cs",
-              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\ApplikacioController.cs",
-              "RelativeToolTip": "webapiproj\\Controllers\\ApplikacioController.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAMwEUAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T09:29:19.099Z"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 8,
@@ -218,6 +194,43 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Web.config",
+              "RelativeDocumentMoniker": "webapiproj\\Web.config",
+              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Web.config",
+              "RelativeToolTip": "webapiproj\\Web.config",
+              "ViewState": "AgIAACQAAAAAAAAAAAAkwC0AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-04-01T08:24:39.023Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ApplikacioController.cs",
+              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\ApplikacioController.cs",
+              "RelativeDocumentMoniker": "webapiproj\\Controllers\\ApplikacioController.cs",
+              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Controllers\\ApplikacioController.cs",
+              "RelativeToolTip": "webapiproj\\Controllers\\ApplikacioController.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAMwEUAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T09:29:19.099Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TestDbSet.cs",
+              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestDbSet.cs",
+              "RelativeDocumentMoniker": "UnitTestProject\\TestDbSet.cs",
+              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestDbSet.cs",
+              "RelativeToolTip": "UnitTestProject\\TestDbSet.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACgAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T10:15:54.038Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 7,
               "Title": "TestAlaplap_CsatlakozoController.cs",
               "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\UnitTestProject\\TestController\\TestAlaplap_CsatlakozoController.cs",
@@ -227,19 +240,6 @@
               "ViewState": "AgIAAEAAAAAAAAAAAADwv0YAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-02T10:01:36.062Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Web.config",
-              "DocumentMoniker": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Web.config",
-              "RelativeDocumentMoniker": "webapiproj\\Web.config",
-              "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Web.config",
-              "RelativeToolTip": "webapiproj\\Web.config",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAAD8AAABvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-04-01T08:24:39.023Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
