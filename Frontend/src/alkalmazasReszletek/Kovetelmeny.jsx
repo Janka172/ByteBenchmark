@@ -114,7 +114,7 @@ function Kovetelmeny(adatok) {
 
   useEffect(() => { gombMegjelito(); }, [ ])
   useEffect(() => { gombMegjelito(); }, [ betoltveV, betoltveP, betoltveR, betoltveO, betoltveA ])
- 
+ console.log(adat)
 
   return (
     <div className="kovetelm">
