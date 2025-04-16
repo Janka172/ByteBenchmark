@@ -960,7 +960,7 @@
   /*Az alaplap összes szelektora, mert ezt külön kell formáznom*/
     .beviteli_mezok_alaplap
     { 
-      width: 94%;
+      width: 100%;
       font-size: medium;
       margin-top: 1%;
       height: 1.8vw;
@@ -969,9 +969,9 @@
     {
       display: flex;
       flex-direction: column;
-      margin-left: 45%;
+      margin-left: 75%;
       margin-top: 2%;
-      width: 100%;
+      width: 270px;
     }
     .post_titles_alaplap
     {
@@ -979,10 +979,9 @@
       text-align: left;
       font-size: medium;
       font-weight: bold;
-      margin-top: 2%;
-      margin-right: 0vw; 
-      margin-bottom: 0vw;
-      padding:0vw;
+      margin-top: 5%;
+      margin-right: 0vw;
+      padding: 0vw;
     }
     /*-----------------OPTION SZELEKTORAI----------------------*/
     /*Alaplapnál a csatlakozó kiválasztó select*/
@@ -994,6 +993,7 @@
       appearance: none;
       margin-top: 0.5vw;
       border-radius: 10px;
+      width: 270px;
     }
     /*Az option betűmérete*/
     #csatik
@@ -1036,11 +1036,12 @@
   /*Ahol megjelenik a kép neve!!!!*/
   #post_img_link_alaplap
   {
-    width: 94%;
+    width: 100%;
     font-size: large;
     height: 1.8vw;
     padding-right: 0vw;
     border: 1px black solid;
+    margin-left: 0px;
   }
   #post_adatkezelogomb_alaplap
   {
@@ -1055,9 +1056,11 @@
   {
     display: flex;
     flex-direction: column;
-    float: left;
-    margin-left: 34%;
+    width: max-content;
+    margin-left: 40%;
     margin-top: 3%;
+    padding: 0;
+    float: right;
   }
   }
   
