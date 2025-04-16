@@ -733,3 +733,97 @@ export async function RequestRamDelete(ramNev, ramFrekvencia, ramMeret)
     }
     
 }
+
+export async function RequseAlaplapCsatlakozo(anev) {
+    errors.length=0;
+    var selectCsatlakozokElem = document.getElementById('AlaplapPost8');
+    var selectKivalaszottCsat=Array.from(selectCsatlakozokElem.selectedOptions).map(option => option.value);
+    if(anev=="" )errors.push("Nem választottak ki alaplapot!");
+    if(selectKivalaszottCsat.length==0)errors.push("Nem választottak ki csatlakozót!");
+    if (errors.length==0) 
+        {
+            fetch ("https://localhost:44316/api/Alaplap_Csatlakozok", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    AlaplapNev: anev,
+                    Csatlakozok: selectKivalaszottCsat,
+                }),
+            })
+            .then((response) => {
+                console.log(response.status)
+                if (!response.ok) {
+                    //409
+                    if(response.status === 409){
+                        showHiba("Ez az alaplap már szerepel ezzel a konfigurácioval.",false)
+                    }
+                    else{
+                        throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
+                    }
+                }
+                else{
+                    showHiba("Sikeres feltöltés!",true);
+                }
+                
+                return response.json()
+            })
+            .catch((error) => {
+                console.error("Hiba történt:", error)
+                showHiba("Server hiba. Kérlek próbált meg később!",false);
+            });
+        }
+        else
+        {
+            errors.forEach((error)=>{
+                addHiba(error);
+                console.log(error);
+            });
+            showHiba("Hiba történt",false);
+            errors.length = 0;
+        }
+}
+
+export async function RequestAlaplapCsatlakozodelete(anev,csatlakozo) {
+    errors.length=0;
+    if(anev=="" )errors.push("Nem választottak ki alaplapot!");
+    if(csatlakozo=="" )errors.push("Nem választottak ki csatlakozót!");
+    if (errors.length==0) 
+        {
+            fetch (`https://localhost:44316/api/Alaplap_Csatlakozok/0?AlaplapNeve=${anev}&CsatlakozoNev=${csatlakozo}`, {
+                method: "DELETE",
+            })
+            .then((response) => {
+                console.log(response.status)
+                if (!response.ok) {
+                    //409
+                    if(response.status === 404){
+                        showHiba("Megadott csatlakozók egyike sem kapcsolódik az alaplaphoz.",false)
+                    }
+                    else{
+                        throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
+                    }
+                }
+                else{
+                    showHiba("Sikeres törlés!",true);
+                }
+                
+                return response.json()
+            })
+            .catch((error) => {
+                console.error("Hiba történt:", error)
+                showHiba("Server hiba. Kérlek próbált meg később!",false);
+            });
+        }
+    else
+    {
+        errors.forEach((error)=>{
+            addHiba(error);
+            console.log(error);
+        });
+        showHiba("Hiba történt",false);
+        errors.length = 0;
+        
+    }
+}

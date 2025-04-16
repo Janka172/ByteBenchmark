@@ -42,6 +42,7 @@ namespace webapiproj.Controllers
         public string OprendszerNev { get; set; }
         public string RamNeve { get; set; }
         public double RamFrekvencia { get; set; }
+        public int RamMeret{ get; set; }
         public string AlaplapNeve { get; set; }
     }
     public class SetupPatchModel
@@ -52,6 +53,7 @@ namespace webapiproj.Controllers
         public string OprendszerNev { get; set; }
         public string RamNeve { get; set; }
         public double RamFrekvencia { get; set; }
+        public int RamMeret { get; set; }
         public string AlaplapNeve { get; set; }
     }
     public class SetupController : ApiController
@@ -132,7 +134,7 @@ namespace webapiproj.Controllers
             if (ProcesszorId == 0) return Content(HttpStatusCode.NotFound, "Nincs ilyen Processzor");
             var OprendszerId = ctx.Oprendszerek.Where(x => x.Nev == value.OprendszerNev).Select(x => x.Id).FirstOrDefault();
             if (OprendszerId == 0) return Content(HttpStatusCode.NotFound, "Nincs ilyen Operácios rendszer");
-            var RamoId = ctx.Ramok.Where(x => x.Nev == value.RamNeve && x.Frekvencia==value.RamFrekvencia).Select(x => x.Id).FirstOrDefault();
+            var RamoId = ctx.Ramok.Where(x => x.Nev == value.RamNeve && x.Frekvencia==value.RamFrekvencia && x.Meret==value.RamMeret).Select(x => x.Id).FirstOrDefault();
             if (RamoId == 0) return Content(HttpStatusCode.NotFound, "Nincs ilyen Ram");
             var AlaplapId = ctx.Alaplapok.Where(x => x.Nev == value.AlaplapNeve).Select(x => x.Id).FirstOrDefault();
             if (AlaplapId == 0) return Content(HttpStatusCode.NotFound, "Nincs ilyen Alaplap");
@@ -174,7 +176,7 @@ namespace webapiproj.Controllers
                 if (value.VidekortyaNev != null) result.VidkaId = ctx.Videokartyak.Where(x => x.Nev == value.VidekortyaNev &&x.Vram==value.Vram).Select(x => x.Id).FirstOrDefault();
                 if (value.OprendszerNev != null) result.OpId = ctx.Oprendszerek.Where(x => x.Nev == value.OprendszerNev).Select(x => x.Id).FirstOrDefault(); 
                 if (value.ProcesszorNev != null) result.ProcId = ctx.Processzorok.Where(x => x.Nev == value.ProcesszorNev).Select(x => x.Id).FirstOrDefault();
-                if (value.RamNeve != null) result.RamId = ctx.Ramok.Where(x => x.Nev == value.RamNeve && x.Frekvencia==value.RamFrekvencia).Select(x => x.Id).FirstOrDefault();
+                if (value.RamNeve != null) result.RamId = ctx.Ramok.Where(x => x.Nev == value.RamNeve && x.Frekvencia==value.RamFrekvencia && x.Meret==value.RamMeret).Select(x => x.Id).FirstOrDefault();
 
                 ctx.SaveChanges();
                 return Ok(result);
