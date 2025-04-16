@@ -130,8 +130,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 17,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 8,
@@ -200,7 +204,7 @@
               "RelativeDocumentMoniker": "webapiproj\\Web.config",
               "ToolTip": "C:\\Users\\szm_info2005a1\\Documents\\GitHub\\TeljesProjekt\\Backend\\webapiproj\\webapiproj\\Web.config",
               "RelativeToolTip": "webapiproj\\Web.config",
-              "ViewState": "AgIAACQAAAAAAAAAAAAkwC0AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAkwD8AAABvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2025-04-01T08:24:39.023Z",
               "EditorCaption": ""
