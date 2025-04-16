@@ -956,9 +956,9 @@
     
   #post_adatkezelogomb
   {
-    width: 100%;
+    width:200px;
     padding: 5%;
-    margin-left: 16%;
+    margin-left: 14%;
   }
   .select_buttons
   {
@@ -1042,7 +1042,7 @@
     font-size: medium;
     margin-top: 1vw;
     margin-right: 1%;
-    margin-left: 16%;
+    margin-left: 14%;
     margin-bottom: 0.3vw;
     border: 1px black solid;
     border-radius: 0% 30%;
@@ -1057,14 +1057,14 @@
     font-size: large;
     height: 1.8vw;
     padding-right: 0vw;
-    margin-left: 16%;
+    margin-left: 14%;
     border: 1px black solid;
   }
   
   /*Az alaplap összes szelektora, mert ezt külön kell formáznom*/
     .beviteli_mezok_alaplap
     { 
-      width: 100%;
+      width: 105%;
       font-size: medium;
       margin-top: 1%;
       height: 1.8vw;
@@ -1073,9 +1073,9 @@
     {
       display: flex;
       flex-direction: column;
-      margin-left: 75%;
+      margin-left: 68%;
       margin-top: 2%;
-      width: 270px;
+      width: 280px;
     }
     .post_titles_alaplap
     {
