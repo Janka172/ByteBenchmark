@@ -2,7 +2,8 @@
 /* Extra small devices (phones, 600px and down) */
 @media screen and (max-width: 600px) {
     .body
-    {background: red;
+    {
+      background: red;
       display: flex;
       flex-direction: column;
     }
@@ -24,37 +25,35 @@
       }
       .post_titles
       {
-        font-size: 20px;
+        font-size: 15px;
+        font-weight: bold;
         margin-top: 5px;
       }
       #post_form
       {
         display: flex;
         flex-direction: column;
-        width: 50%;
+        width: 300px;
       }
   
-      #buttons_content_post
-      {
-        flex-direction: row;
-        
-      }
+      #buttons_content_post{flex-direction: row;}
       .select_buttons
       {
         padding: 8%;
         width: 100%;
-        height: 60px;
+        height: 50px;
         text-align: center;
-        font-size: medium;
+        font-size: small;
       }
       #post_adatkezelogomb
       {
-        width: 68%;
+        width: 100%;
         font-size: medium;
         height: 5%;
         padding-top: 3%;
         padding-bottom: 3%;
         padding: 3%;
+        margin-top: 10%;
         margin-left: 7%;
         margin-bottom: 8%;
       }
@@ -87,16 +86,6 @@
       {
         margin-right: 5%;
       } 
-      #AlaplapPost8
-      {
-      width: 50px;
-      width: 75%;
-      text-align: left;
-      height: 20px;
-      appearance: none;
-      margin-top: 0.5vw;
-      border-radius: 10px;
-      }
       #radiobtn
       {
         margin-top: 5px;
@@ -110,17 +99,20 @@
         font-size: medium;
         border-color: black;
         margin-top: 0;
+        margin-bottom: 5px;
     }
     #post_form_alaplap
     {
       display: flex;
       flex-direction: column;
-      margin-left: 25%;
+      width: 300px;
+      margin-left: 10%;
   
     }
     .post_titles_alaplap
     {
-      font-size: 20px;
+      font-size: 15px;
+      font-weight: bold;
       margin-top: 1.5vw;
       margin-bottom: 0;
     }
@@ -129,10 +121,11 @@
     #AlaplapPost8
     {
       text-align: left;
-      margin-left: 0;
-      height: 5vw;
-      appearance: none;
       margin-top: 0.5vw;
+      margin-left: 0;
+      height: 15vw;
+      width: 100%;
+      appearance: none;
       border-radius: 10px;
     }
     /*Az option betűmérete*/
@@ -176,20 +169,21 @@
   /*Ahol megjelenik a kép neve!!!!*/
   #post_img_link_alaplap
   {
-    width: 75%;
+    width: 95%;
     font-size: medium;
     height: 10%;
     border: 1px black solid;
   }
   #post_adatkezelogomb_alaplap
   {
-      width: 200px;
-      font-size: medium;
-      height: 5%;
-      padding-top: 3%;
-      padding-bottom: 3%;
-      padding: 3%;
-      margin-bottom: 1%;
+    width: 100%;
+    font-size: medium;
+    height: 5%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding: 3%;
+    margin-top: 10%;
+    margin-bottom: 8%;
   }
   
   #buttons_content_post_alaplap
@@ -268,7 +262,6 @@
       accent-color: rgba(194, 52, 52, 0.8);
     }
     
-  
     .inputok
       {
         flex-direction: column;
