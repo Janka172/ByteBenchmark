@@ -470,13 +470,13 @@
       flex-direction: row;
     }
     #post_form
-  {
-    display: flex;
-    flex-direction: column;
-    margin-left: 50%;
-    margin-top: 2%;
-    width: 100%;
-  }
+    {
+      display: flex;
+      flex-direction: column;
+      margin-left: 50%;
+      margin-top: 2%;
+      width: 100%;
+    }
     .buttons
     {
       padding: 5%;
@@ -506,9 +506,9 @@
     
   #post_adatkezelogomb
   {
-    width: 100%;
+    width:200px;
     padding: 5%;
-    margin-left: 18%;
+    margin-left: 12%;
   }
   .select_buttons
   {
@@ -542,12 +542,11 @@
   /*Beviteli mezők formázása*/
   .beviteli_mezok
   {
-    width: 180%;
+    width: 280px;
     font-size: medium;
     margin-top: 1%;
     height: 1.8vw;
   }
-  
   .post_titles
   {
     width: max-content;
@@ -560,27 +559,6 @@
     padding:0vw;
   
   }
-    /*-----------------OPTION SZELEKTORAI----------------------*/
-    /*Alaplapnál a csatlakozó kiválasztó select*/
-    #AlaplapPost8
-    {
-      width: max-content;
-      text-align: left;
-      margin-left:3.7vw;
-      height: 5vw;
-      appearance: none;
-      margin-top: 0.5vw;
-      border-radius: 10px;
-    }
-    /*Az option betűmérete*/
-    #csatik
-    {
-      font-size: large;
-    }
-    #csatik:hover
-    {
-      background-color: rgba(221, 114, 114, 0.8);
-    }
   
     /*------------------------KÉPFELTÖLTÉS-------------------------------*/
   /*A képfeltöltő gomb és a mellettelévő tartalom formázása*/
@@ -614,7 +592,7 @@
     font-size: medium;
     margin-top: 1vw;
     margin-right: 1%;
-    margin-left: 18%;
+    margin-left: 12%;
     margin-bottom: 0.3vw;
     border: 1px black solid;
     border-radius: 0% 30%;
@@ -625,12 +603,119 @@
   /*Ahol megjelenik a kép neve!!!!*/
   #post_img_link
   {
-    width: 180%;
+    width: 270px;
     font-size: large;
     height: 1.8vw;
     padding-right: 0vw;
-    margin-left: 18%;
+    margin-left: 12%;
     border: 1px black solid;
+  }
+  
+  /*Az alaplap összes szelektora, mert ezt külön kell formáznom*/
+    .beviteli_mezok_alaplap
+    { 
+      width: 105%;
+      font-size: medium;
+      margin-top: 1%;
+      height: 1.8vw;
+    }
+    #post_form_alaplap
+    {
+      display: flex;
+      flex-direction: column;
+      margin-left: 60%;
+      margin-top: 2%;
+      width: 280px;
+    }
+    .post_titles_alaplap
+    {
+      width: max-content;
+      text-align: left;
+      font-size: medium;
+      font-weight: bold;
+      margin-top: 5%;
+      margin-right: 0vw;
+      padding: 0vw;
+    }
+    /*-----------------OPTION SZELEKTORAI----------------------*/
+    /*Alaplapnál a csatlakozó kiválasztó select*/
+    #AlaplapPost8
+    {
+      text-align: left;
+      margin-left: 0;
+      margin-right: 0%;
+      height: 5vw;
+      appearance: none;
+      margin-top: 0.5vw;
+      border-radius: 10px;
+      width: 295px;
+    }
+    /*Az option betűmérete*/
+    #csatik
+    {
+      font-size: large;
+    }
+    #csatik:hover
+    {
+      background-color: rgba(221, 114, 114, 0.8);
+    }
+    #radiobtn_alaplap
+    {
+      display: "flex";
+      flex-direction: "row";
+      align-items: "center";
+      gap: "8px";
+    }
+    /* Alapértelmezett rádiógomb */
+    input[type="radio"]
+    {
+      accent-color: rgba(194, 52, 52, 0.8);
+    }
+    #post_img_alaplap
+    {
+      width: 150px;
+      height: 5%;
+      padding: 3%;
+      padding-right: 1vw;
+      padding-left: none;
+      font-size: medium;
+      margin-top: 1vw;
+      margin-right: 1%;
+      margin-bottom: 0.3vw;
+      border: 1px black solid;
+      border-radius: 0% 30%;
+      background-color: rgba(194, 52, 52, 0.8);
+      color: black;
+      word-break: normal; 
+  }
+  /*Ahol megjelenik a kép neve!!!!*/
+  #post_img_link_alaplap
+  {
+    width: 100%;
+    font-size: large;
+    height: 1.8vw;
+    padding-right: 0vw;
+    border: 1px black solid;
+    margin-left: 0px;
+  }
+  #post_adatkezelogomb_alaplap
+  {
+      width: 200px;
+      height: 5%;
+      padding: 3%;
+      padding-right: 1vw;
+      margin-left: 0%;
+  }
+  
+  #buttons_content_post_alaplap
+  {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    margin-left: 40%;
+    margin-top: 3%;
+    padding: 0;
+    float: right;
   }
   } 
   
@@ -646,8 +731,9 @@
     {
       display: flex;
       flex-direction: column;
+      margin-left: 50%;
       margin-top: 2%;
-      width: 250px;
+      width: 100%;
     }
     .buttons
     {
@@ -676,12 +762,12 @@
       margin-top: 3%;
     }
     
-    #post_adatkezelogomb
-    {
-      width: 100%;
-      padding: 5%;
-      margin-left: 18%;
-    }
+  #post_adatkezelogomb
+  {
+    width:200px;
+    padding: 5%;
+    margin-left: 14%;
+  }
   .select_buttons
   {
     display: flex;
@@ -708,18 +794,17 @@
   {
     display: flex;
     flex-direction: row;
-    width: 300px;
+    width: max-content;
   }
   
   /*Beviteli mezők formázása*/
   .beviteli_mezok
   {
-    width: 100%;
+    width: 280px;
     font-size: medium;
     margin-top: 1%;
     height: 1.8vw;
   }
-  
   .post_titles
   {
     width: max-content;
@@ -732,27 +817,6 @@
     padding:0vw;
   
   }
-    /*-----------------OPTION SZELEKTORAI----------------------*/
-    /*Alaplapnál a csatlakozó kiválasztó select*/
-    #AlaplapPost8
-    {
-      width: max-content;
-      text-align: left;
-      margin-left:3.7vw;
-      height: 5vw;
-      appearance: none;
-      margin-top: 0.5vw;
-      border-radius: 10px;
-    }
-    /*Az option betűmérete*/
-    #csatik
-    {
-      font-size: large;
-    }
-    #csatik:hover
-    {
-      background-color: rgba(221, 114, 114, 0.8);
-    }
   
     /*------------------------KÉPFELTÖLTÉS-------------------------------*/
   /*A képfeltöltő gomb és a mellettelévő tartalom formázása*/
@@ -786,7 +850,7 @@
     font-size: medium;
     margin-top: 1vw;
     margin-right: 1%;
-    margin-left: 18%;
+    margin-left: 14%;
     margin-bottom: 0.3vw;
     border: 1px black solid;
     border-radius: 0% 30%;
@@ -797,118 +861,120 @@
   /*Ahol megjelenik a kép neve!!!!*/
   #post_img_link
   {
-    width: 180%;
+    width: 275px;
     font-size: large;
     height: 1.8vw;
     padding-right: 0vw;
-    margin-left: 18%;
+    margin-left: 14%;
     border: 1px black solid;
   }
-
+  
   /*Az alaplap összes szelektora, mert ezt külön kell formáznom*/
-  .beviteli_mezok_alaplap
-  { 
-    width: 100%;
-    font-size: medium;
-    margin-top: 1%;
-    height: 1.8vw;
+    .beviteli_mezok_alaplap
+    { 
+      width: 105%;
+      font-size: medium;
+      margin-top: 1%;
+      height: 1.8vw;
+    }
+    #post_form_alaplap
+    {
+      display: flex;
+      flex-direction: column;
+      margin-left: 68%;
+      margin-top: 2%;
+      width: 280px;
+    }
+    .post_titles_alaplap
+    {
+      width: max-content;
+      text-align: left;
+      font-size: medium;
+      font-weight: bold;
+      margin-top: 5%;
+      margin-right: 0vw;
+      padding: 0vw;
+    }
+    /*-----------------OPTION SZELEKTORAI----------------------*/
+    /*Alaplapnál a csatlakozó kiválasztó select*/
+    #AlaplapPost8
+    {
+      text-align: left;
+      margin-left: 0;
+      height: 5vw;
+      appearance: none;
+      margin-top: 0.5vw;
+      border-radius: 10px;
+      width: 270px;
+    }
+    /*Az option betűmérete*/
+    #csatik
+    {
+      font-size: large;
+    }
+    #csatik:hover
+    {
+      background-color: rgba(221, 114, 114, 0.8);
+    }
+    #radiobtn_alaplap
+    {
+      display: "flex";
+      flex-direction: "row";
+      align-items: "center";
+      gap: "8px";
+    }
+    /* Alapértelmezett rádiógomb */
+    input[type="radio"]
+    {
+      accent-color: rgba(194, 52, 52, 0.8);
+    }
+    #post_img_alaplap
+    {
+      width: 150px;
+      height: 5%;
+      padding: 3%;
+      padding-right: 1vw;
+      padding-left: none;
+      font-size: medium;
+      margin-top: 1vw;
+      margin-right: 1%;
+      margin-bottom: 0.3vw;
+      border: 1px black solid;
+      border-radius: 0% 30%;
+      background-color: rgba(194, 52, 52, 0.8);
+      color: black;
+      word-break: normal; 
   }
-  #post_form_alaplap
+  /*Ahol megjelenik a kép neve!!!!*/
+  #post_img_link_alaplap
+  {
+    width: 100%;
+    font-size: large;
+    height: 1.8vw;
+    padding-right: 0vw;
+    border: 1px black solid;
+    margin-left: 0px;
+  }
+  #post_adatkezelogomb_alaplap
+  {
+      width: 200px;
+      height: 5%;
+      padding: 3%;
+      padding-right: 1vw;
+      margin-left: 0%;
+  }
+  
+  #buttons_content_post_alaplap
   {
     display: flex;
     flex-direction: column;
-    margin-top: 2%;
-    width: 250px;
-  }
-  .post_titles_alaplap
-  {
     width: max-content;
-    text-align: left;
-    font-size: medium;
-    font-weight: bold;
-    margin-top: 5%;
-    margin-right: 0vw;
-    padding: 0vw;
+    margin-left: 40%;
+    margin-top: 3%;
+    padding: 0;
+    float: right;
   }
-  /*-----------------OPTION SZELEKTORAI----------------------*/
-  /*Alaplapnál a csatlakozó kiválasztó select*/
-  #AlaplapPost8
-  {
-    text-align: left;
-    margin-left: 0;
-    height: 5vw;
-    appearance: none;
-    margin-top: 0.5vw;
-    border-radius: 10px;
-    width: 270px;
-  }
-  /*Az option betűmérete*/
-  #csatik
-  {
-    font-size: large;
-  }
-  #csatik:hover
-  {
-    background-color: rgba(221, 114, 114, 0.8);
-  }
-  #radiobtn_alaplap
-  {
-    display: "flex";
-    flex-direction: "row";
-    align-items: "center";
-    gap: "8px";
-  }
-  /* Alapértelmezett rádiógomb */
-  input[type="radio"]
-  {
-    accent-color: rgba(194, 52, 52, 0.8);
-  }
-  #post_img_alaplap
-  {
-    width: 150px;
-    height: 5%;
-    padding: 3%;
-    padding-right: 1vw;
-    padding-left: none;
-    font-size: medium;
-    margin-top: 1vw;
-    margin-right: 1%;
-    margin-bottom: 0.3vw;
-    border: 1px black solid;
-    border-radius: 0% 30%;
-    background-color: rgba(194, 52, 52, 0.8);
-    color: black;
-    word-break: normal; 
-}
-/*Ahol megjelenik a kép neve!!!!*/
-#post_img_link_alaplap
-{
-  width: 100%;
-  font-size: large;
-  height: 1.8vw;
-  padding-right: 0vw;
-  border: 1px black solid;
-  margin-left: 0px;
-}
-#post_adatkezelogomb_alaplap
-{
-    width: 200px;
-    height: 5%;
-    padding: 3%;
-    padding-right: 1vw;
-    margin-left: 0%;
-}
-
-#buttons_content_post_alaplap
-{
-  display: flex;
-  flex-direction: column;
-  width: max-content;
-  margin-left: 40%;
-  margin-top: 3%;
-  padding: 0;
-  float: right;
-}
+    
   } 
   
   /* Extra large devices (large laptops and desktops, 1200px and up) */
