@@ -2,7 +2,7 @@ import {useState, useEffect, use } from 'react';
 import './UjAlkat_post.css';
 import './UjAlkat_patch.css';
 import './UjAlkat_delete.css';
-import './UjAlkat_post_media.css';
+import './UjAlkat_patch_media.css';
 import EgyediAlert from '../Alert/egyediAlert.jsx';
 import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP, RequestVideokPatch, RequestAlaplapPatch, RequestProcesszorPatch, RequestRamPatch, RequestVideokDelete, RequestAlaplapDelete, RequestProcesszorDelete, RequestRamDelete, RequseAlaplapCsatlakozo,RequestAlaplapCsatlakozodelete} from './Request';
 
@@ -15,9 +15,6 @@ function UjAlkat() {
       memoriak : [],
       alaplapCsatlakozok : [] 
    })
-
-   
-
    const fetchAdat = async () => {
       {/* A backendben lévő elérési útvonalak*/}
       const backEleresiUtvonal={
@@ -32,8 +29,7 @@ function UjAlkat() {
       {
          const adatLekeres={};
          for(var item in backEleresiUtvonal)
-         {
-            const response= await fetch(backEleresiUtvonal[item]);
+         {const response= await fetch(backEleresiUtvonal[item]);
             if (response.ok)
             {
                const adat= await response.json();
@@ -43,45 +39,35 @@ function UjAlkat() {
          }
          setMindenAdat(adatLekeres)
          console.log("Frissítve mindenAdat:", adatLekeres['videokartyak']);
-      } catch (error)
-      {
-         console.error("Hiba történt! Hiba: ", error)
-      }
-      
+      } catch (error){console.error("Hiba történt! Hiba: ", error)}
    }
-   useEffect(()=>{
-      fetchAdat(); 
-   },[])
+   useEffect(()=>{ fetchAdat();},[])
 
    {/*Minden adathoz használva van! */}
    const [actionMindenhezKellAdat, setActionMindenhezKellAdat] = useState(null);
-
-   
-    const [actionHardver, setActionHardver] =useState("Videókártya")
-    const [actionButtons, setActionButtons] =useState("Post")    
+   const [actionHardver, setActionHardver] =useState("Videókártya")
+   const [actionButtons, setActionButtons] =useState("Post")    
 
    {/*Arra kell hogy egy rádiógomb alapértelmezetten ki legyen választva az oldal betöltésekor */}
    const [actionIvkRadiobt, setActionIvkRadiobt] = useState("Jeloltradiogomb"); //processzor rádiógombjainál van
    const [actionHgkRadiobf, setActionHgkRadiobf] = useState("Nemjeloltradiogomb"); //alaplap rádiógombjainál van
+   const [selectedFile, setSelectedFile] = useState(null);
+   const [fileUrl, setFileUrl] = useState("");
 
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [fileUrl, setFileUrl] = useState("");
-
-    {/*Videókártya PATCH/PUT részéhez szükséges dolgok */}
-      const [actionKivalasztottNev, setActionKivalasztottNev] = useState("");
-      const [actionSzurtVram, setActionSzurtVram] = useState([]);
-      const [actionSelectedVram, setActionSelectedVram]=useState("");
-      useEffect(()=>{
-         if (actionKivalasztottNev)
-         {
-            const vramok=mindenAdat['videokartyak'].filter((i)=>i.Nev===actionKivalasztottNev).map((i)=>i.vram);
-            setActionSzurtVram(vramok);
-         }
-         else{
-            setActionSzurtVram([]);
-            setActionSelectedVram("");
-         }
-      },[actionKivalasztottNev]);
+   {/*Videókártya PATCH/PUT részéhez szükséges dolgok */}
+   const [actionKivalasztottNev, setActionKivalasztottNev] = useState("");
+   const [actionSzurtVram, setActionSzurtVram] = useState([]);
+   const [actionSelectedVram, setActionSelectedVram]=useState("");
+   useEffect(()=>{
+      if (actionKivalasztottNev)
+      {
+         const vramok=mindenAdat['videokartyak'].filter((i)=>i.Nev===actionKivalasztottNev).map((i)=>i.vram);
+         setActionSzurtVram(vramok);
+      }
+      else{
+         setActionSzurtVram([]);
+         setActionSelectedVram("");
+      }},[actionKivalasztottNev]);
 
    var datak=null;
    async function adatLekeres(event, vram, nev)
@@ -92,10 +78,7 @@ function UjAlkat() {
          var lekertadatok=await fetch(`https://localhost:44316/api/Videokartya/0?name=${nev}&vram=${vram}`);
          if (!lekertadatok.ok)
          {    
-            if (lekertadatok.status===400) {
-               console.error("Nem található ilyen elem az adatbázisban!");
-               
-            }
+            if (lekertadatok.status===400) {console.error("Nem található ilyen elem az adatbázisban!");}
          }
          else
          {
@@ -116,10 +99,7 @@ function UjAlkat() {
          var lekertadatok=await fetch(`https://localhost:44316/api/Alaplap/0?name=${nev}`);
          if (!lekertadatok.ok)
          {    
-            if (lekertadatok.status===400) {
-               console.error("Nem található ilyen elem az adatbázisban!");
-               
-            }
+            if (lekertadatok.status===400) {console.error("Nem található ilyen elem az adatbázisban!");}
          }
          else
          {
@@ -138,10 +118,7 @@ function UjAlkat() {
          var lekertadatok=await fetch(`https://localhost:44316/api/Alaplap_Csatlakozok/0?name=${nev}`);
          if (!lekertadatok.ok)
          {    
-            if (lekertadatok.status===400) {
-               console.error("Nem található ilyen elem az adatbázisban!");
-               
-            }
+            if (lekertadatok.status===400) {console.error("Nem található ilyen elem az adatbázisban!");}
          }
          else
          {
@@ -174,10 +151,8 @@ function UjAlkat() {
    {/*............................................................................................................................. */}
    {/*Memória PATCH részéhez szükséges dolgok */}
    const [actionKivalaszottRamNev, setActionKivalasztottRamNev]=useState("");
-
    const [actionSzurtRamMeret, setActionSzurtRamMeret]=useState([]);
    const [actionSelectedRamMeret, setActionSelectedRamMeret]=useState("");
-
    const [actionSzurtRamFrekvencia, setActionSzurtRamFrekvencia]=useState([]);
    const [actionSelectedRamFrekvencia, setActionSelectedRamFrekvencia]=useState("");
 
@@ -186,8 +161,7 @@ function UjAlkat() {
       {
          const ramFrekvencia=[...new Set(mindenAdat['memoriak'].filter((i)=>i.Nev===actionKivalaszottRamNev).map((i)=>i.Frekvencia))];
          setActionSzurtRamFrekvencia(ramFrekvencia);
-      }
-   },[actionKivalaszottRamNev]);
+      }},[actionKivalaszottRamNev]);
 
    useEffect(()=>{
       if (actionSelectedRamFrekvencia)
@@ -196,11 +170,8 @@ function UjAlkat() {
          console.log(actionSelectedRamFrekvencia);
          const ramMeret=mindenAdat["memoriak"].filter((x)=>x.Nev===actionKivalaszottRamNev && x.Frekvencia==actionSelectedRamFrekvencia).map((y)=>y.Meret)
          console.log(ramMeret)
-         setActionSzurtRamMeret(ramMeret);
-         
-      }
-   },[actionKivalaszottRamNev, actionSelectedRamFrekvencia]);
-
+         setActionSzurtRamMeret(ramMeret);  
+      }},[actionKivalaszottRamNev, actionSelectedRamFrekvencia]);
 
 var datak=null;
 async function adatRamLekeres(event, nev, meret, frekvencia)
@@ -212,10 +183,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
       var lekertadatok=await fetch(`https://localhost:44316/api/Ram/0?name=${nev}&meret=${meret}&frekvencia=${frekvencia}`);
       if (!lekertadatok.ok)
       {    
-         if (lekertadatok.status===400) {
-            console.error("Nem található ilyen elem az adatbázisban!");
-            
-         }
+         if (lekertadatok.status===400) {console.error("Nem található ilyen elem az adatbázisban!");}
       }
       else
       {
@@ -224,7 +192,6 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
          console.log(datak);
       }       
    }
-
    {/*............................................................................................................................. */}
     async function handleDelete(event)
    {
@@ -234,7 +201,6 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
     if(actionHardver==="Memória" && actionButtons==="Delete")await RequestRamDelete(actionKivalaszottRamNev, actionSelectedRamFrekvencia,actionSelectedRamMeret); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
     if(actionHardver==="Processzor" && actionButtons==="Delete")await RequestProcesszorDelete(actionKivalasztottProcesszorNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
     if(actionHardver==="AlaplapiCsatlakozo" && actionButtons==="Delete")await RequestAlaplapCsatlakozodelete(actionKivalasztottAlaplapNev,actionSelectedAlaplapCsatlakozo); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
-
    }
    {/*............................................................................................................................. */}
    async function handleAlaplapCsatlakozo(event) {
@@ -248,44 +214,24 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
          if (!selectedFile) {
             //------------------------Post---------------------
-            if(actionHardver==="Videókártya" && actionButtons==="Post"){
-               RequestVideokP("GPUALTALANOS.png"); 
-            }
-            else if(actionHardver==="Alaplap" && actionButtons==="Post"){
-               RequestAlaplapP("ALAPLAPALTALANOS.png");
-            }
-            else if(actionHardver==="Memória" && actionButtons==="Post"){
-               RequestMemoriaP("MEMORIAALTALANOS.png");
-            }
-            else if(actionHardver==="Processzor" && actionButtons==="Post"){
-               RequestProcesszorP("PROCESSZORALTALANOS.png");
-            }
+            if(actionHardver==="Videókártya" && actionButtons==="Post"){RequestVideokP("GPUALTALANOS.png"); }
+            else if(actionHardver==="Alaplap" && actionButtons==="Post"){RequestAlaplapP("ALAPLAPALTALANOS.png");}
+            else if(actionHardver==="Memória" && actionButtons==="Post"){RequestMemoriaP("MEMORIAALTALANOS.png");}
+            else if(actionHardver==="Processzor" && actionButtons==="Post"){RequestProcesszorP("PROCESSZORALTALANOS.png");}
             //----------------------Patch/Put---------------------
-            if(actionHardver==="Videókártya" && actionButtons==="Patch"){
-               RequestVideokPatch("",actionKivalasztottNev, actionSelectedVram); 
-            }
-            else if(actionHardver==="Alaplap" && actionButtons==="Patch"){
-               RequestAlaplapPatch("",actionKivalasztottAlaplapNev);
-            }
-            else if(actionHardver==="Memória" && actionButtons==="Patch"){
-               RequestRamPatch("", actionKivalaszottRamNev, actionSelectedRamFrekvencia, actionSelectedRamMeret);
-            }
-            else if(actionHardver==="Processzor" && actionButtons==="Patch"){
-               RequestProcesszorPatch("", actionKivalasztottProcesszorNev);
-            }
-            
+            if(actionHardver==="Videókártya" && actionButtons==="Patch"){RequestVideokPatch("",actionKivalasztottNev, actionSelectedVram); }
+            else if(actionHardver==="Alaplap" && actionButtons==="Patch"){RequestAlaplapPatch("",actionKivalasztottAlaplapNev);}
+            else if(actionHardver==="Memória" && actionButtons==="Patch"){RequestRamPatch("", actionKivalaszottRamNev, actionSelectedRamFrekvencia, actionSelectedRamMeret);}
+            else if(actionHardver==="Processzor" && actionButtons==="Patch"){RequestProcesszorPatch("", actionKivalasztottProcesszorNev);}     
          }
          else if(selectedFile){
             const formData = new FormData();
             formData.append("file", selectedFile);
-    
             try {
                   const response = await fetch("http://127.0.0.1:5000/upload", {
                      method: "POST",
                      body: formData,
-                     headers: {
-                        "Accept": "application/json",
-                     },
+                     headers: {"Accept": "application/json",},
                      mode: "cors",
                   });
             
@@ -297,30 +243,21 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                      if(actionHardver==="Memória" && actionButtons==="Post")RequestMemoriaP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                      if(actionHardver==="Processzor" && actionButtons==="Post")RequestProcesszorP(data.file_name); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                
-               
                      {/*PATCH/PUT része */}
                      if(actionHardver==="Videókártya" && actionButtons==="Patch")RequestVideokPatch(data.file_name, actionKivalasztottNev, actionSelectedVram); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                      if(actionHardver==="Alaplap" && actionButtons==="Patch")RequestAlaplapPatch(data.file_name, actionKivalasztottAlaplapNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                      if(actionHardver==="Memória" && actionButtons==="Patch")RequestMemoriaP(data.file_name, actionKivalaszottRamNev, actionSelectedRamFrekvencia, actionSelectedRamMeret); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                      if(actionHardver==="Processzor" && actionButtons==="Patch")RequestProcesszorPatch(data.file_name, actionKivalasztottProcesszorNev); {/*Akkor történik  a küldés, amikor visszatér a fálj nevével */}
                      setFileUrl(data.file_name);
-                  } else {
-                     console.error("Hiba történt:", data.message);
-                  }
-            } catch (error) {
-                  console.error("Hálózati hiba:", error);
-            }
+                  } 
+                  else {console.error("Hiba történt:", data.message);}
+            } catch (error) {console.error("Hálózati hiba:", error);}
          };
-         
       }
-    
-        
+
     const url="/IMAGE/"+fileUrl;
 
-    function NeFrissuljon(event)
-    {
-        event.preventDefault()
-    }
+    function NeFrissuljon(event){event.preventDefault();}
     const [fileName, setFileName] = useState("Nincs fájl kiválasztva");
 
     const handleFileChange = (event) => {
@@ -328,9 +265,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
          console.log(event.target.files[0].name)
          setFileName(event.target.files[0].name);
          setSelectedFile(event.target.files[0])
-       } else {
-         setFileName("Nincs fájl kiválasztva");
-       }
+       } else {setFileName("Nincs fájl kiválasztva");}
     };
 
     return (
@@ -724,12 +659,12 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
                         <div id="radiobtn">
                         <input type="radio" id="ProcPost10" name="ivk_true" value="True" checked={actionIvkRadiobt==='Jeloltradiogomb'}onChange={()=>setActionIvkRadiobt('Jeloltradiogomb')}></input>
-                        <label htmlFor="ProcPost11">Tartalmaz integrált videókártyát.</label>
+                        <label htmlFor="ProcPost10">Tartalmaz integrált videókártyát.</label>
                         </div>
 
                         <div id="radiobtn">
                         <input type="radio" id="ProcPost11" name="ivk_true" value="False" checked={actionIvkRadiobt==='Jeloltradiogombocska'} onChange={()=>setActionIvkRadiobt('Jeloltradiogombocska')}></input>
-                        <label htmlFor="ivk_false">Nem tartalmaz integrált videókártyát.</label>
+                        <label htmlFor="ProcPost11">Nem tartalmaz integrált videókártyát.</label>
                         </div>
 
                         <input key={fileName} type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>

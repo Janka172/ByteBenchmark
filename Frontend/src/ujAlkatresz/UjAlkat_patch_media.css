@@ -1,0 +1,136 @@
+/*-------------------------RESZPONZIVITÁS @MEDIA-VAL-------------------------------------*/
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) 
+{
+  #patch_form
+  {
+  flex-direction: column;
+  width: 50%;
+  }
+
+  #legordulos_option
+  {
+    font-size: large;
+    font-weight: bold;
+  }
+
+  .combi_patch
+  {
+    width: 100%;
+    margin-top: 1%;
+    font-size: medium;
+    border-radius: 20px;
+    height: 4vw;
+    text-align: center;
+    text-align-last: center; 
+  }
+  .patch_titles
+  {
+    text-align: left;
+    font-size: 3vw;
+    width: max-content;
+  }
+
+.patchbeviteli_mezok
+{
+  width: 100%;
+  font-size: medium;
+  padding: 3%;
+  margin-bottom: 5%;
+}
+
+#adatlekerogomb
+{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 18%;
+    height: 5%;
+    font-size: medium;
+}
+
+  #patch_img
+  {
+    font-size: medium;
+    height: 5%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    margin-bottom: 2%;
+    border: 1px solid black;
+    text-align: center;
+}
+  #patch_img_link
+  {
+    border: 1px black solid;
+    width: 100%;
+    font-size: medium;
+    height: 10%;
+  }
+
+  #patch_datkezelogomb
+  {
+    padding: 5%;
+    font-size: medium;
+    width:fit-content;
+  }
+  /*-------------------------KILISTÁZOTT ADATOK CSS RÉSZE------------------------*/
+  #contents_patch
+  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .adatok_patch
+{
+  border-bottom: 10px solid transparent;
+  padding: 15px;
+  border-image: url(border.png) 30 round;
+  font-size: large;
+  width: 50%;
+}
+#contents_patch
+{
+  display: flex;
+  flex-direction: column;
+}
+/*-----------------------------HÁROM GOMB--------------------------------------*/
+#buttons_content_patch
+{
+  display: flex;
+  flex-direction: row;
+  margin-top: 5%;
+}
+#adatlekerogomb
+{
+    width: 60%;
+    margin-bottom: 1.5vw;
+    margin-left: 0px;
+}
+
+}
+
+
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) 
+{
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) 
+{
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) 
+{
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) 
+{
+
+}

@@ -111,7 +111,7 @@ namespace webapiproj.Controllers
 
                 var csatlakId = ctx.Csatlakozok.Where(x => x.Nev==CsatlakozoNev).Select(x=>x.Id).FirstOrDefault();
 
-                if(csatlakId==0) return Content(HttpStatusCode.NotFound, "Nem található  csatlakozo");
+                if(csatlakId==0) return Content(HttpStatusCode.NotFound, "Nem található csatlakozó");
 
                 var kapcsaolat = ctx.Alaplap_Csatlakozok.Where(x => x.AlaplapId == AlaplapId && x.CsatlakozoId==csatlakId).ToList();
 
@@ -120,7 +120,7 @@ namespace webapiproj.Controllers
                 ctx.Alaplap_Csatlakozok.RemoveRange(kapcsaolat); //több rekordot tud törölmi
                 ctx.SaveChanges();
 
-                return Ok("A törlés sikeresen megtörtént");
+                return Ok("A törlés sikeresen megtörtént!");
             }
             catch (Exception ex)
             {
