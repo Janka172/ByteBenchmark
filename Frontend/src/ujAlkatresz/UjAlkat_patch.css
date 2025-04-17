@@ -1,9 +1,4 @@
-#adatlekerogomb
-{
-    width: 60%;
-    margin-bottom: 1.5vw;
-    margin-left: 0px;
-}
+
 #legordulos_option
 {
     margin-top: 10px;
@@ -18,13 +13,11 @@
 }
 .combi_patch
   {
-    font-size: large;
     border-radius: 20px;
     height: 2vw;
     width: 50%;
     text-align: center;
     text-align-last: center; 
-    display: block;
   }
 .patch_titles
 {
