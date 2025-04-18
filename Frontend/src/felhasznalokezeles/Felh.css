@@ -489,7 +489,7 @@ select{
         font-size: 1vw;
     }
 
-    .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve, #hibaUz, .menuElem input, .menuElem select{
+    .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .hibaUzi, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve, #hibaUz, .menuElem input, .menuElem select{
         font-size: 1.35vw;
     }
 
@@ -512,7 +512,7 @@ select{
         font-size: 0.8vw;
     }
 
-    .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve, .profilSor div, #hibaUz, .menuElem input, .bevitelNeve, .menuElem select, option{
+    .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .hibaUzi, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve, .profilSor div, #hibaUz, .menuElem input, .bevitelNeve, .menuElem select, option{
         font-size: 0.75vw;
     }
 
