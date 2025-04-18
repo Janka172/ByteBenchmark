@@ -1,4 +1,3 @@
-
 #legordulos_option
 {
     margin-top: 10px;
@@ -84,3 +83,500 @@
   align-items: flex-start;
 }
 #radiobtn_patch{margin-bottom: 10px;}
+/*-------------------------RESZPONZIVITÁS @MEDIA-VAL-------------------------------------*/
+/* Extra small devices (phones, 600px and down) */
+@media screen and (max-width: 600px) 
+{
+    #patch_form
+    {
+    flex-direction: column;
+    width: 300px;
+    }
+  
+    #legordulos_option
+    {
+      font-size: small;
+      font-weight: bold;
+    }
+  
+    .combi_patch
+    {
+      width: 100%;
+      margin-top: 1%;
+      font-size: medium;
+      border-radius: 20px;
+      height: 4vw;
+      text-align: center;
+      text-align-last: center; 
+    }
+    .patch_titles
+    {
+      text-align: left;
+      font-size: 3vw;
+      font-weight: bold;
+      width: max-content;
+    }
+  .patchbeviteli_mezok
+  {
+    width: 100%;
+    font-size: medium;
+    padding: 3%;
+    margin-bottom: 5%;
+  }
+  
+  #adatlekerogomb
+  {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    height: 5%;
+    font-size: medium;
+    margin-left: 60px;
+    width: 60%;
+  }
+    
+  #patch_img
+  {
+    font-size: medium;
+    height: 5%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    margin-bottom: 2%;
+    border: 1px solid black;
+    text-align: center;
+  }
+  #patch_img_link
+  {
+    border: 1px black solid;
+    width: 100%;
+    font-size: medium;
+    height: 10%;
+  }
+  /*-------------------------KILISTÁZOTT ADATOK CSS RÉSZE------------------------*/
+  #contents_patch
+  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .adatok_patch
+  {
+    border-bottom: 10px solid transparent;
+    padding: 15px;
+    border-image: url(border.png) 30 round;
+    font-size: large;
+    width: 50%;
+  }
+  
+  #patch_img
+  {
+    font-size: medium;
+    height: 5%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    margin-bottom: 2%;
+    border: 1px solid black;
+    text-align: center;
+  }
+  #patch_img_link
+  {
+    border: 1px black solid;
+    width: 100%;
+    font-size: medium;
+    height: 10%;
+  }
+  
+    #patch_datkezelogomb
+    {
+      padding: 5%;
+      font-size: medium;
+      width: 100%;
+
+    }
+  /*-----------------------------HÁROM GOMB--------------------------------------*/
+  #buttons_content_patch
+  {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) 
+{
+  #patch_form
+    {
+    flex-direction: column;
+    width: 300px;
+    }
+  
+    #legordulos_option
+    {
+      font-size: small;
+      font-weight: bold;
+    }
+  
+    .combi_patch
+    {
+      width: 100%;
+      margin-top: 1%;
+      font-size: medium;
+      border-radius: 20px;
+      height: 4vw;
+      text-align: center;
+      text-align-last: center; 
+    }
+    .patch_titles
+    {
+      text-align: left;
+      font-size: 3vw;
+      width: max-content;
+    }
+  
+  .patchbeviteli_mezok
+  {
+    width: 100%;
+    font-size: medium;
+    padding: 3%;
+    margin-bottom: 5%;
+  }
+  
+  #adatlekerogomb
+  {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    height: 5%;
+    font-size: medium;
+    margin-left: 60px;
+    width: 60%;
+  }
+  
+    #patch_img
+    {
+      font-size: medium;
+      height: 5%;
+      padding-top: 3%;
+      padding-bottom: 3%;
+      margin-bottom: 2%;
+      border: 1px solid black;
+      text-align: center;
+  }
+    #patch_img_link
+    {
+      border: 1px black solid;
+      width: 100%;
+      font-size: medium;
+      height: 10%;
+    }
+  
+    #patch_datkezelogomb
+    {
+      padding: 5%;
+      font-size: medium;
+      width: 100%;
+
+    }
+    /*-------------------------KILISTÁZOTT ADATOK CSS RÉSZE------------------------*/
+    #contents_patch
+    {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .adatok_patch
+  {
+    border-bottom: 10px solid transparent;
+    padding: 15px;
+    border-image: url(border.png) 30 round;
+    font-size: large;
+    width: 50%;
+  }
+  /*-----------------------------HÁROM GOMB--------------------------------------*/
+  #buttons_content_patch
+  {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) 
+{
+
+#legordulos_option
+{
+  margin-top: 10px;
+  font-size: large;
+  font-weight: bold;
+
+}
+.patchbeviteli_mezok
+{
+    width: 300px;
+    font-size: large;
+    height: 1.8vw;
+}
+.combi_patch
+  {
+    border-radius: 20px;
+    height: 3vw;
+    text-align: center;
+    text-align-last: center; 
+  }
+.patch_titles
+{
+    text-align: left;
+    font-size: medium;
+    margin-top: 0vw;
+    margin-bottom: 0vw;
+    margin-right: 0vw;  
+    padding:0vw;
+    font-weight: bold;
+}
+#patch_datkezelogomb
+{
+    margin-left:0px;
+}
+#patch_img
+{
+  width: 150px;
+  font-size: large;
+  height: 1.8vw;
+  padding-right: 1vw;
+  padding-top: 1vw;
+  margin-bottom: 1.5vw;
+  border: 1px solid black;
+}
+#patch_img_link
+{
+  width: 280px;
+  font-size: large;
+  height: 1.8vw;
+  padding-right: 0vw;
+  margin-left: 0px;
+  margin-top: 1.5vw;
+}
+#patch_form
+{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+  width: 300px;
+  padding-left: 20%;
+} 
+
+.adatok_patch
+{
+  border-bottom: 10px solid transparent;
+  padding: 15px;
+  border-image: url(border.png) 30 round;
+  font-size: large;
+  width: 200px;
+
+}
+#buttons_content_patch
+{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+padding-left: 5%;
+  margin-top: 3%;
+}
+#contents_patch
+{
+  display: flex;
+  flex-direction: column;
+  float: left;
+  align-items: flex-start;
+  padding-left: 10%;
+}
+#radiobtn_patch{margin-bottom: 10px;}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) 
+{
+  #legordulos_option
+{
+  margin-top: 10px;
+  font-size: large;
+  font-weight: bold;
+
+}
+.patchbeviteli_mezok
+{
+    width: 300px;
+    font-size: large;
+    height: 1.8vw;
+}
+.combi_patch
+  {
+    border-radius: 20px;
+    height: 3vw;
+    text-align: center;
+    text-align-last: center; 
+  }
+.patch_titles
+{
+    text-align: left;
+    font-size: medium;
+    margin-top: 0vw;
+    margin-bottom: 0vw;
+    margin-right: 0vw;  
+    padding:0vw;
+    font-weight: bold;
+}
+#patch_datkezelogomb
+{
+    margin-left:0px;
+}
+#patch_img
+{
+  width: 150px;
+  font-size: large;
+  height: 1.8vw;
+  padding-right: 1vw;
+  padding-top: 1vw;
+  margin-bottom: 1.5vw;
+  border: 1px solid black;
+}
+#patch_img_link
+{
+  width: 280px;
+  font-size: large;
+  height: 1.8vw;
+  padding-right: 0vw;
+  margin-left: 0px;
+  margin-top: 1.5vw;
+}
+#patch_form
+{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+  width: 300px;
+  padding-left: 20%;
+} 
+
+.adatok_patch
+{
+  border-bottom: 10px solid transparent;
+  padding: 15px;
+  border-image: url(border.png) 30 round;
+  font-size: large;
+  width: 200px;
+
+}
+#buttons_content_patch
+{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+padding-left: 5%;
+  margin-top: 3%;
+}
+#contents_patch
+{
+  display: flex;
+  flex-direction: column;
+  float: left;
+  align-items: flex-start;
+  padding-left: 10%;
+}
+#radiobtn_patch{margin-bottom: 10px;}
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) 
+{
+  #legordulos_option
+{
+  margin-top: 10px;
+  font-size: large;
+  font-weight: bold;
+
+}
+.patchbeviteli_mezok
+{
+    width: 300px;
+    font-size: large;
+    height: 1.8vw;
+}
+.combi_patch
+  {
+    border-radius: 20px;
+    height: 1.5vw;
+    text-align: center;
+    text-align-last: center; 
+  }
+.patch_titles
+{
+    text-align: left;
+    font-size: medium;
+    margin-top: 0vw;
+    margin-bottom: 0vw;
+    margin-right: 0vw;  
+    padding:0vw;
+    font-weight: bold;
+}
+#patch_datkezelogomb
+{
+    margin-left:0px;
+}
+#patch_img
+{
+  width: 150px;
+  font-size: large;
+  height: 1.8vw;
+  padding-right: 1vw;
+  padding-top: 1vw;
+  margin-bottom: 1.5vw;
+  border: 1px solid black;
+}
+#patch_img_link
+{
+  width: 280px;
+  font-size: large;
+  height: 1.8vw;
+  padding-right: 0vw;
+  margin-left: 0px;
+  margin-top: 1.5vw;
+}
+#patch_form
+{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+  width: 300px;
+  padding-left: 20%;
+} 
+
+.adatok_patch
+{
+  border-bottom: 10px solid transparent;
+  padding: 15px;
+  border-image: url(border.png) 30 round;
+  font-size: large;
+  width: 200px;
+
+}
+#buttons_content_patch
+{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-left: 10%;
+  margin-top: 1.5%;
+}
+#contents_patch
+{
+  display: flex;
+  flex-direction: column;
+  float: left;
+  align-items: flex-start;
+  padding-left: 10%;
+}
+#radiobtn_patch{margin-bottom: 10px;}
+
+}

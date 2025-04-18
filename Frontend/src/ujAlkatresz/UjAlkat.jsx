@@ -838,8 +838,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <div className='pagechangebutton'><button disabled className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat();setActionKivalasztottAlaplapNev("");}}>Új csatlakozo hozzáadása</button></div>
                         <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat();setActionKivalasztottAlaplapNev("");} }>csatlakozo törlése</button></div>
                    </div>
-            </div> : <div></div>}
-            
+            </div> : <div></div>}  
             </div>
     );
   }
