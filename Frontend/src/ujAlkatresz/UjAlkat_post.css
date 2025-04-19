@@ -227,7 +227,6 @@ label
 @media screen and (max-width: 600px) {
     .body
     {
-      background: red;
       display: flex;
       flex-direction: column;
     }
@@ -427,7 +426,6 @@ label
   @media screen and (min-width: 600px) {
     .body
     {
-      background: green;
       display: flex;
       flex-direction: column;
     }
@@ -680,7 +678,6 @@ label
   /* Medium devices (landscape tablets, 768px and up) */
   @media screen and (min-width: 768px) {
     .body{
-      background: blue;
       display: flex;
       flex-direction: row;
     }
@@ -939,7 +936,6 @@ label
   @media screen and (min-width: 992px) {
     .body 
     {
-      background: orange;
       display: flex;
       flex-direction: row;
     }
@@ -1197,7 +1193,6 @@ label
   @media screen and (min-width: 1200px) {
     .body 
     {
-      background: pink;
       display: flex;
       flex-direction: row;
     }

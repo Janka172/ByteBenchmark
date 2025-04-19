@@ -3,6 +3,7 @@ import React from 'react';
 import './UjAlk.css';
 function UjAlk()
 {
+    const[actionNavigation, setActionNavigation]=useState("Post"); 
     {/*Összes adat tárolására*/}
     const [mindenAdat,setMindenAdat]=useState({ 
         videokartyak : [],
@@ -47,24 +48,52 @@ function UjAlk()
         }
         
     }
-    useEffect(()=>{
-        fetchAdat(); 
-    },[])
+    useEffect(()=>{ fetchAdat(); },[])
 
     const [actionMindenhezKellAdat, setActionMindenhezKellAdat] = useState(null);
     const [actionButtons, setActionButtons] =useState("Post")
     const [actionKivalasztottNev, setActionKivalasztottNev] = useState("");
-
     const [actionKivalasztottAlaplapNev, setActionKivalasztottAlaplapNev] = useState("");
-    const [actionKivalaszottRamNev, setActionKivalasztottRamNev]=useState("");
     const [actionKivalasztottProcesszorNev, setActionKivalasztottProcesszorNev] = useState("");
-
     const [selectedFile, setSelectedFile] = useState(null);
     const [fileUrl, setFileUrl] = useState("");
+    const [actionSzurtVram, setActionSzurtVram] = useState([]);
+    const [actionSelectedVram, setActionSelectedVram]=useState("");
+    const [actionKivalaszottRamNev, setActionKivalasztottRamNev]=useState("");
+    const [actionSzurtRamMeret, setActionSzurtRamMeret]=useState([]);
+    const [actionSelectedRamMeret, setActionSelectedRamMeret]=useState("");
+    const [actionSzurtRamFrekvencia, setActionSzurtRamFrekvencia]=useState([]);
+    const [actionSelectedRamFrekvencia, setActionSelectedRamFrekvencia]=useState("");
+ 
+    useEffect(()=>{
+       if (actionKivalaszottRamNev)
+       {
+          const ramFrekvencia=[...new Set(mindenAdat['memoriak'].filter((i)=>i.Nev===actionKivalaszottRamNev).map((i)=>i.Frekvencia))];
+          setActionSzurtRamFrekvencia(ramFrekvencia);
+       }},[actionKivalaszottRamNev]);
+ 
+    useEffect(()=>{
+       if (actionSelectedRamFrekvencia)
+       {
+          console.log(actionKivalaszottRamNev);
+          console.log(actionSelectedRamFrekvencia);
+          const ramMeret=mindenAdat["memoriak"].filter((x)=>x.Nev===actionKivalaszottRamNev && x.Frekvencia==actionSelectedRamFrekvencia).map((y)=>y.Meret)
+          console.log(ramMeret)
+          setActionSzurtRamMeret(ramMeret);  
+       }},[actionKivalaszottRamNev, actionSelectedRamFrekvencia]);
 
+   useEffect(()=>{
+      if (actionKivalasztottNev)
+      {
+         const vramok=mindenAdat['videokartyak'].filter((i)=>i.Nev===actionKivalasztottNev).map((i)=>i.vram);
+         setActionSzurtVram(vramok);
+      }
+      else{
+         setActionSzurtVram([]);
+         setActionSelectedVram("");
+      }},[actionKivalasztottNev]);
 
     function NeFrissuljon(event){event.preventDefault()}
-
 
     const [fileName, setFileName] = useState("Nincs fájl kiválasztva");
     const handleFileChange = (event) =>
@@ -111,9 +140,9 @@ function UjAlk()
     return (
         <div id='torzs'>
             <nav className='navbars'> {/*Navigációs menü*/}
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post");setActionMindenhezKellAdat(null)}}>Feltöltés</a>
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch");setActionMindenhezKellAdat(null)}}>Módosítás</a>
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete");setActionMindenhezKellAdat(null)}}>Eltávoltítás</a>
+                <a href='' className={actionNavigation==="Post"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post");setActionMindenhezKellAdat(null); setActionNavigation("Post")}}>Feltöltés</a>
+                <a href='' className={actionNavigation==="Patch"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch");setActionMindenhezKellAdat(null); setActionNavigation("Patch")}}>Módosítás</a>
+                <a href='' className={actionNavigation==="Delete"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete");setActionMindenhezKellAdat(null); setActionNavigation("Delete")}}>Eltávolítás</a>
              </nav>
 
              {actionButtons==="Post" ? <div id='Alk_post_torzs'>
@@ -126,7 +155,7 @@ function UjAlk()
                     </div>
                     <div className='inputs'>
                         <form id='comboImage'>
-                            <p className='alkTitles'>Kategória</p>
+                            <p className='alkTitles'>Kategória:</p>
                             <div id='combobox'>
                                 <select id="comboboxCategory" onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
                                     <option className="comboboxAlkPost" value="">Válassz egyet</option>
@@ -134,12 +163,12 @@ function UjAlk()
                                 </select>
 
                             </div>
-                            <p className='alkTitles'>Kép feltöltése</p>
+                            <p className='alkTitles'>Kép feltöltése:</p>
                             <div className='imageUpload'>
-                                <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
+                                <input type="file" className="elrejtes" onChange={handleFileChange}/>
                                 <span className="AlkFilename" id='alkImgLinkPost'>{fileName}</span>
-                                <label htmlFor="imginput" className="AlkImgButton" id='alkImgPost'>📁 Fájl kiválasztása</label>
                             </div>
+                            <label htmlFor="imginput" className="AlkImgButton" id='alkImgPost'>📁 Fájl kiválasztása</label>
                         </form>
                     </div>
                         
@@ -148,33 +177,57 @@ function UjAlk()
                         <div id='minSetup'>
                             <p className='patch_titles'>Videókártya neve:</p>
                             <div className='comboboxes'>
-                                <select className="combi_patch" onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
-                                    <option id="legordulos_option" value="">Válassz egyet</option>
-                                    {[...new Set(mindenAdat['videokartyak'].map(i=>i.Nev))].map((nev)=>(<option id="legordulos_option" key={nev} value={nev}>{nev}</option>))}
+                                <select className="combi_min" onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
+                                    <option id="legordulosOptionMin" value="">Válassz egyet</option>
+                                    {[...new Set(mindenAdat['videokartyak'].map(i=>i.Nev))].map((nev)=>(<option id="legordulosOptionMin" key={nev} value={nev}>{nev}</option>))}
+                                </select>
+                            </div>
+
+                            <p className='patch_titles'>Videókártya Vram:</p>
+                            <div className='comboboxes'>
+                                <select className="combi_min" onChange={(e)=>setActionSelectedVram(e.target.value)} >
+                                    <option id="legordulosOptionMin" value="">Válassz egyet</option>
+                                    {actionSzurtVram.map((vram)=>(<option id="legordulosOptionMin" value={vram} key={vram}>{vram}</option>))}
                                 </select>
                             </div>
 
                             <p className='patch_titles'>Alaplap neve:</p>
                             <div className='comboboxes'>
-                                <select className="combi_patch" onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
-                                    <option id="legordulos_option" value="">Válassz egyet</option>
-                                    {[...new Set(mindenAdat['alaplapok'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulos_option">{nev}</option>))}
+                                <select className="combi_min" onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
+                                    <option id="legordulosOptionMin" value="">Válassz egyet</option>
+                                    {[...new Set(mindenAdat['alaplapok'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulosOptionMin">{nev}</option>))}
                                 </select>
                             </div>
 
                             <p className='patch_titles'>Memória neve:</p>
                             <div className='comboboxes'>
-                                <select className="combi_patch" onChange={(v)=>setActionKivalasztottRamNev(v.target.value)} value={actionKivalaszottRamNev}>
-                                    <option id="legordulos_option">Válassz egyet</option>
-                                    {[...new Set(mindenAdat['memoriak'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulos_option">{nev}</option>))}
+                                <select className="combi_min" onChange={(v)=>setActionKivalasztottRamNev(v.target.value)} value={actionKivalaszottRamNev}>
+                                    <option id="legordulosOptionMin">Válassz egyet</option>
+                                    {[...new Set(mindenAdat['memoriak'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulosOptionMin">{nev}</option>))}
+                                </select>
+                            </div>
+
+                            <p className='patch_titles'>Memória frekvencia:</p>
+                            <div className='comboboxes'>
+                                <select className="combi_min" onChange={(e)=>setActionSelectedRamFrekvencia(e.target.value)} >
+                                    <option id="legordulosOptionMin">Válassz egyet</option>
+                                    {actionSzurtRamFrekvencia.map((Frekvencia)=>(<option value={Frekvencia} key={Frekvencia} id="legordulosOptionMin">{Frekvencia}</option>))}
+                                </select>
+                            </div>
+
+                            <p className='patch_titles'>Memória méret:</p>
+                            <div className='comboboxes'>
+                                <select className="combi_min" onChange={(e)=>setActionSelectedRamMeret(e.target.value)} >
+                                    <option id="legordulosOptionMin">Válassz egyet</option>
+                                    {actionSzurtRamMeret.map((Meret)=>(<option value={Meret} key={Meret} id="legordulosOptionMin">{Meret}</option>))}
                                 </select>
                             </div>
 
                             <p className='patch_titles'>Processzor neve:</p>
                             <div className='comboboxes'>
-                                <select className="combi_patch" onChange={(an)=>setActionKivalasztottProcesszorNev(an.target.value)} value={actionKivalasztottProcesszorNev}>
-                                    <option  id="legordulos_option">Válassz egyet</option>
-                                    {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>( <option key={nev} value={nev}  id="legordulos_option">{nev}</option>))}
+                                <select className="combi_min" onChange={(an)=>setActionKivalasztottProcesszorNev(an.target.value)} value={actionKivalasztottProcesszorNev}>
+                                    <option  id="legordulosOptionMin">Válassz egyet</option>
+                                    {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>( <option key={nev} value={nev}  id="legordulosOptionMin">{nev}</option>))}
                                 </select>
                            </div>
                         </div>
@@ -182,33 +235,57 @@ function UjAlk()
                         <div id='maxSetup'>
                             <p className='patch_titles'>Videókártya neve:</p>
                             <div className='comboboxes'>
-                                <select className="combi_patch" onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
-                                    <option id="legordulos_option" value="">Válassz egyet</option>
-                                    {[...new Set(mindenAdat['videokartyak'].map(i=>i.Nev))].map((nev)=>(<option id="legordulos_option" key={nev} value={nev}>{nev}</option>))}
+                                <select className="combi_max" onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
+                                    <option id="legordulosOptionMax" value="">Válassz egyet</option>
+                                    {[...new Set(mindenAdat['videokartyak'].map(i=>i.Nev))].map((nev)=>(<option id="legordulosOptionMax" key={nev} value={nev}>{nev}</option>))}
+                                </select>
+                            </div>
+
+                            <p className='patch_titles'>Videókártya Vram:</p>
+                            <div className='comboboxes'>
+                                <select className="combi_max" onChange={(e)=>setActionSelectedVram(e.target.value)} >
+                                    <option id="legordulosOptionMax" value="">Válassz egyet</option>
+                                    {actionSzurtVram.map((vram)=>(<option id="legordulosOptionMax" value={vram} key={vram}>{vram}</option>))}
                                 </select>
                             </div>
 
                             <p className='patch_titles'>Alaplap neve:</p>
                             <div className='comboboxes'>
-                                <select className="combi_patch" onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
-                                    <option id="legordulos_option" value="">Válassz egyet</option>
-                                    {[...new Set(mindenAdat['alaplapok'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulos_option">{nev}</option>))}
+                                <select className="combi_max" onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
+                                    <option id="legordulosOptionMax" value="">Válassz egyet</option>
+                                    {[...new Set(mindenAdat['alaplapok'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulosOptionMax">{nev}</option>))}
                                 </select>
                             </div>
 
                             <p className='patch_titles'>Memória neve:</p>
                             <div className='comboboxes'>
-                                <select className="combi_patch" onChange={(v)=>setActionKivalasztottRamNev(v.target.value)} value={actionKivalaszottRamNev}>
-                                    <option id="legordulos_option">Válassz egyet</option>
-                                    {[...new Set(mindenAdat['memoriak'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulos_option">{nev}</option>))}
+                                <select className="combi_max" onChange={(v)=>setActionKivalasztottRamNev(v.target.value)} value={actionKivalaszottRamNev}>
+                                    <option id="legordulosOptionMax">Válassz egyet</option>
+                                    {[...new Set(mindenAdat['memoriak'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulosOptionMax">{nev}</option>))}
+                                </select>
+                            </div>
+
+                            <p className='patch_titles'>Memória frekvencia:</p>
+                            <div className='comboboxes'>
+                                <select className="combi_max" onChange={(e)=>setActionSelectedRamFrekvencia(e.target.value)} >
+                                    <option id="legordulosOptionMax">Válassz egyet</option>
+                                    {actionSzurtRamFrekvencia.map((Frekvencia)=>(<option value={Frekvencia} key={Frekvencia} id="legordulosOptionMax">{Frekvencia}</option>))}
+                                </select>
+                            </div>
+
+                            <p className='patch_titles'>Memória méret:</p>
+                            <div className='comboboxes'>
+                                <select className="combi_max" onChange={(e)=>setActionSelectedRamMeret(e.target.value)} >
+                                    <option id="legordulosOptionMax">Válassz egyet</option>
+                                    {actionSzurtRamMeret.map((Meret)=>(<option value={Meret} key={Meret} id="legordulosOptionMax">{Meret}</option>))}
                                 </select>
                             </div>
 
                             <p className='patch_titles'>Processzor neve:</p>
                             <div className='comboboxes'>
-                                <select className="combi_patch" onChange={(an)=>setActionKivalasztottProcesszorNev(an.target.value)} value={actionKivalasztottProcesszorNev}>
-                                    <option  id="legordulos_option">Válassz egyet</option>
-                                    {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>( <option key={nev} value={nev}  id="legordulos_option">{nev}</option>))}
+                                <select className="combi_max" onChange={(an)=>setActionKivalasztottProcesszorNev(an.target.value)} value={actionKivalasztottProcesszorNev}>
+                                    <option  id="legordulosOptionMax">Válassz egyet</option>
+                                    {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>( <option key={nev} value={nev}  id="legordulosOptionMax">{nev}</option>))}
                                 </select>
                            </div>
                         </div>
