@@ -2,7 +2,6 @@ import {useState, useEffect, use } from 'react';
 import './UjAlkat_post.css';
 import './UjAlkat_patch.css';
 import './UjAlkat_delete.css';
-import './UjAlkat_patch_media.css';
 import EgyediAlert from '../Alert/egyediAlert.jsx';
 import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP, RequestVideokPatch, RequestAlaplapPatch, RequestProcesszorPatch, RequestRamPatch, RequestVideokDelete, RequestAlaplapDelete, RequestProcesszorDelete, RequestRamDelete, RequseAlaplapCsatlakozo,RequestAlaplapCsatlakozodelete} from './Request';
 
