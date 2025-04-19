@@ -1,7 +1,7 @@
 import React from 'react';
 import FooterStilus from './Footer.css';
 import { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Kijelentkezes from '../felhasznalokezeles/Kijelentkezes';
 
 function Footer() {
@@ -33,13 +33,13 @@ function Footer() {
           </div>
           <div className="footMenu">
             <Kijelentkezes></Kijelentkezes>
-            <a href="/oldalak/Profil">Beállítások</a>
+            <Link to="/oldalak/Profil">Beállítások</Link>
           </div>
         </div>
         : 
         <div className="footer-links">
-          <a href="/">Bejelentkezés</a>
-          <a href="/oldalak/Reg">Regisztráció</a>
+          <Link to="/">Bejelentkezés</Link>
+          <Link to="/oldalak/Reg">Regisztráció</Link>
         </div>
         }  
     </footer>

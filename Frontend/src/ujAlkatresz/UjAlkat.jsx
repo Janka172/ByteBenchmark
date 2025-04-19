@@ -2,6 +2,7 @@ import {useState, useEffect, use } from 'react';
 import './UjAlkat_post.css';
 import './UjAlkat_patch.css';
 import './UjAlkat_delete.css';
+import './UjAlkat_menu.css';
 import EgyediAlert from '../Alert/egyediAlert.jsx';
 import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP, RequestVideokPatch, RequestAlaplapPatch, RequestProcesszorPatch, RequestRamPatch, RequestVideokDelete, RequestAlaplapDelete, RequestProcesszorDelete, RequestRamDelete, RequseAlaplapCsatlakozo,RequestAlaplapCsatlakozodelete} from './Request';
 
@@ -21,10 +22,10 @@ function UjAlkat() {
       {/* A backendben lévő elérési útvonalak*/}
       const backEleresiUtvonal={
          'videokartyak': "https://localhost:44316/api/Videokartya",
-      'processzorok': "https://localhost:44316/api/Processzor",
-      'memoriak': "https://localhost:44316/api/Ram",
-      'alaplapok': "https://localhost:44316/api/Alaplap",
-      'alaplapCsatlakozok': "https://localhost:44316/api/Csatlakozo"
+         'processzorok': "https://localhost:44316/api/Processzor",
+         'memoriak': "https://localhost:44316/api/Ram",
+         'alaplapok': "https://localhost:44316/api/Alaplap",
+         'alaplapCsatlakozok': "https://localhost:44316/api/Csatlakozo"
       }
       {/*A fetchAdat beolvassa az adatbázisból az adatokat backenden keresztül.*/}
       try
@@ -269,15 +270,43 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
          setSelectedFile(event.target.files[0])
        } else {setFileName("Nincs fájl kiválasztva");}
     };
+
+   //Hamburger menü
+   const [menuNyitva, setMenuNyitva] = useState(false);
+   const open = () => setMenuNyitva(true);
+   const close = () => setMenuNyitva(false);
+   const [kicsie, setKicsie] = useState(window.innerWidth <= 600);
+
+   useEffect(() => {
+      const handleResize = () => {
+        //console.log("Window resized:", window.innerWidth, window.innerHeight);
+        setKicsie(window.innerWidth <= 600);
+        if(window.innerWidth <= 600){
+         console.log('kicsi')
+         close();
+        }
+        else {
+         console.log('nagy')
+         open();
+        }
+      };
+      window.addEventListener("resize", handleResize);
+    }, []);
+
     return (
         <div>
-             <nav className='navbars'> {/*Navigációs menü*/}
+             <nav className='navbars' style={{ display: !menuNyitva ? 'none' : 'flex' }}> {/*Navigációs menü*/}
+                <button className="menuVisszaGomb" onClick={close} style={{ display: window.innerWidth <= 600 ? 'flex' : 'none' }}>X</button>
                 <a href='' className={actionNavigation==="Videókártya"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionHardver("Videókártya"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva");setActionNavigation("Videókártya")}}>Videókártya</a>
                 <a href='' className={actionNavigation==="Alaplap"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionHardver("Alaplap"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva"); setActionNavigation("Alaplap")}}>Alaplap</a>
                 <a href='' className={actionNavigation==="Memória"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionHardver("Memória"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva"); setActionNavigation("Memória")}}>Memória</a>
                 <a href='' className={actionNavigation==="Processzor"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionHardver("Processzor"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva"); setActionNavigation("Processzor")}}>Processzor</a>
-                <a href='' className={actionNavigation==="AlaplapiCsatlakozo"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionHardver("AlaplapiCsatlakozo"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva"); setActionNavigation("AlaplapiCsatlakozo")}}>Alaplapi Csatlakozo</a>
-             </nav> 
+                <a href='' className={actionNavigation==="AlaplapiCsatlakozo"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionHardver("AlaplapiCsatlakozo"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva"); setActionNavigation("AlaplapiCsatlakozo")}}>Alaplapi Csatlakozó</a>
+             </nav>
+             <div style={{ display: menuNyitva ? 'none' : 'flex' }}>
+               <button className="menuGomb" onClick={open}>&#9776;</button>
+             </div>
+
              {actionHardver==="Videókártya" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
                     <form id='post_form'>

@@ -1,4 +1,5 @@
 import Stilus from './Felh.css';
+import { Link } from 'react-router-dom';
 
 function Kijelentkezes() {
 
@@ -8,7 +9,7 @@ function Kijelentkezes() {
     window.location.href = "/";
   };
 
-  return <button onClick={kilep} className='kijGomb'>Kijelentkezés</button>;
+  return <Link onClick={kilep} className='kijGomb'>Kijelentkezés</Link>;
 }
 
 export default Kijelentkezes;

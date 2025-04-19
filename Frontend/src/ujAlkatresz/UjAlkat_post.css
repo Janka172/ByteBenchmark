@@ -24,6 +24,7 @@
     width: auto;
     -ms-zoom-animation: 1000;
     z-index: 1000;
+    margin: 0.5vw 0 0 0;
   }
   .color
   {
@@ -228,6 +229,10 @@ label
     .body
     {
       background: red;
+      display: flex;
+      flex-direction: column;
+    }
+    .navbars{
       display: flex;
       flex-direction: column;
     }

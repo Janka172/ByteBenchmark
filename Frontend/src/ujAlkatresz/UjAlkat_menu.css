@@ -1,0 +1,17 @@
+.menuGomb{
+    margin: 1vw 0;
+    padding: 0.5vw;
+    width: 100%;
+    background-color: #c45454;
+    border-left: none;
+    border-right: none;
+    font-size: 1em;
+}
+
+.menuVisszaGomb{
+    border: none;
+    background-color: rgba(255, 0, 0, 0);
+    text-align: center;
+    margin: none;
+    padding: 1vw 50%;
+}
