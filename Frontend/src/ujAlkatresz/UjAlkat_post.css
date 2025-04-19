@@ -25,6 +25,10 @@
     -ms-zoom-animation: 1000;
     z-index: 1000;
   }
+  .color
+  {
+    background-color: rgb(194, 40, 40);
+  }
   
   .navbars a {
     text-decoration: none;
@@ -35,9 +39,7 @@
     border-radius: 0.5em; 
   }
   
-  .navbars a:hover {
-    background-color: #d1d1d1;
-  }
+  .navbars a:hover {background-color: #ffa1a1;}
   
   @media (max-width: 767px) {
     .navbars {

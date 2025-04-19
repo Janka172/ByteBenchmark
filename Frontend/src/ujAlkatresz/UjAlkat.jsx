@@ -6,6 +6,9 @@ import EgyediAlert from '../Alert/egyediAlert.jsx';
 import {RequestAlaplapP, RequestVideokP,RequestMemoriaP, RequestProcesszorP, RequestVideokPatch, RequestAlaplapPatch, RequestProcesszorPatch, RequestRamPatch, RequestVideokDelete, RequestAlaplapDelete, RequestProcesszorDelete, RequestRamDelete, RequseAlaplapCsatlakozo,RequestAlaplapCsatlakozodelete} from './Request';
 
 function UjAlkat() {
+
+   const[actionNavigation, setActionNavigation]=useState("Videókártya"); 
+
    {/*Összes adat tárolására*/}
    const [mindenAdat,setMindenAdat]=useState({ 
       videokartyak : [],
@@ -266,15 +269,14 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
          setSelectedFile(event.target.files[0])
        } else {setFileName("Nincs fájl kiválasztva");}
     };
-
     return (
         <div>
              <nav className='navbars'> {/*Navigációs menü*/}
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Videókártya"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Videókártya</a>
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Alaplap"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Alaplap</a>
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Memória"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Memória</a>
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("Processzor"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Processzor</a>
-                <a href='' onClick={(event)=>{NeFrissuljon(event); setActionHardver("AlaplapiCsatlakozo"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Alaplapi Csatlakozo</a>
+                <a href='' className={actionNavigation==="Videókártya"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionHardver("Videókártya"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva");setActionNavigation("Videókártya")}}>Videókártya</a>
+                <a href='' className={actionNavigation==="Alaplap"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionHardver("Alaplap"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva"); setActionNavigation("Alaplap")}}>Alaplap</a>
+                <a href='' className={actionNavigation==="Memória"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionHardver("Memória"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva"); setActionNavigation("Memória")}}>Memória</a>
+                <a href='' className={actionNavigation==="Processzor"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionHardver("Processzor"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva"); setActionNavigation("Processzor")}}>Processzor</a>
+                <a href='' className={actionNavigation==="AlaplapiCsatlakozo"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionHardver("AlaplapiCsatlakozo"); setActionButtons("Post");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva"); setActionNavigation("AlaplapiCsatlakozo")}}>Alaplapi Csatlakozo</a>
              </nav> 
              {actionHardver==="Videókártya" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
@@ -364,7 +366,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                            {[...new Set(mindenAdat['videokartyak'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulos_option">{nev}</option>))}
                         </select>
 
-                     <p id="titles_delete">Vram:</p>
+                     <p className="titles_delete">Vram:</p>
                         <select className="combi_delete" onChange={(e)=>setActionSelectedVram(e.target.value)} >
                            <option id="legordulos_option">Válassz egyet</option>
                            {actionSzurtVram.map((vram)=>(<option value={vram} key={vram} id="legordulos_option">{vram}</option>))}
@@ -496,8 +498,8 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
             {actionHardver==="Alaplap" && actionButtons==="Delete" ? <div className='body'>
                  <div className='inputok'>
-                    <form>
-                    <p id="titles_delete">Név:</p>
+                    <form id='delete_form'>
+                    <p className="titles_delete">Név:</p>
                     <select className="combi_delete" onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
                            <option id="legordulos_option">Válassz egyet</option>
                            {[...new Set(mindenAdat['alaplapok'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulos_option">{nev}</option>))}
@@ -601,7 +603,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
             {actionHardver==="Memória" && actionButtons==="Delete" ? <div className='body'>
                  <div className='inputok'>
-                    <form>
+                    <form id='delete_form'>
                         <p className='titles_delete'>Név:</p>
                         <select className="combi_delete" onChange={(v)=>setActionKivalasztottRamNev(v.target.value)} value={actionKivalaszottRamNev}>
                            <option id="legordulos_option">Válassz egyet</option>
@@ -745,7 +747,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
             {actionHardver==="Processzor" && actionButtons==="Delete" ? <div className='body'>
                  <div className='inputok'>
-                    <form>
+                    <form id='delete_form'>
                     <p className='titles_delete'>Név:</p>
                             <select className="combi_delete" onChange={(an)=>setActionKivalasztottProcesszorNev(an.target.value)} value={actionKivalasztottProcesszorNev}>
                               <option id="legordulos_option" >Válassz egyet</option>
@@ -841,5 +843,4 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             </div>
     );
   }
-  
   export default UjAlkat;
