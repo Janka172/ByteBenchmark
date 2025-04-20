@@ -21,7 +21,7 @@ namespace webapiproj.Controllers
         public int? ProcesszorSzalakSzama { get; set; }
         public int ProcesszorMagokSzama { get; set; }
         public double? ProcesszorFrekvencia { get; set; }
-        public double? RamFrekvencia { get; set; }
+        public int? RamFrekvencia { get; set; }
         public int? RamMeret { get; set; }
         public string OprendszerNev { get; set; }
         public int Tarhely { get; set; }
@@ -41,7 +41,7 @@ namespace webapiproj.Controllers
         public string ProcesszorNev { get; set; }
         public string OprendszerNev { get; set; }
         public string RamNeve { get; set; }
-        public double RamFrekvencia { get; set; }
+        public int RamFrekvencia { get; set; }
         public int RamMeret{ get; set; }
         public string AlaplapNeve { get; set; }
     }
@@ -52,7 +52,7 @@ namespace webapiproj.Controllers
         public string ProcesszorNev { get; set; }
         public string OprendszerNev { get; set; }
         public string RamNeve { get; set; }
-        public double RamFrekvencia { get; set; }
+        public int RamFrekvencia { get; set; }
         public int RamMeret { get; set; }
         public string AlaplapNeve { get; set; }
     }

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import React from 'react';
 import './UjAlk.css';
+import EgyediAlert from '../Alert/egyediAlert.jsx';
+import {Ellenorzes} from "./AlkalmazasRequest.js";
 function UjAlk()
 {
     const[actionNavigation, setActionNavigation]=useState("Post"); 
@@ -52,6 +54,7 @@ function UjAlk()
 
     const [actionMindenhezKellAdat, setActionMindenhezKellAdat] = useState(null);
     const [actionButtons, setActionButtons] =useState("Post")
+    const [actionKivalasztottCategoria, setActionKivalasztottCategoria] = useState("");
     const [actionKivalasztottNev, setActionKivalasztottNev] = useState({
         minimumNev: "",
         maximumNev: ""
@@ -94,6 +97,10 @@ function UjAlk()
     const [actionSelectedRamFrekvencia, setActionSelectedRamFrekvencia]=useState({
         minimumFrekvencia: "",
         maximumFrekvencia: ""
+    });
+    const [actionOprendszer, setActionOprendszer]=useState({
+        minimumOprendszer: "",
+        maximumOprendszer: ""
     });
  
     useEffect(()=>{
@@ -165,7 +172,9 @@ function UjAlk()
     const handleUploadAndPost = async (event) => {
           event.preventDefault();
     
-             if (!selectedFile) {}
+             if (!selectedFile) {
+                if(actionButtons==="Post"){Ellenorzes("",actionKivalasztottCategoria,actionKivalasztottNev.minimumNev,actionSelectedVram.minimumVram,actionKivalasztottAlaplapNev.minimumAlapNev,actionKivalaszottRamNev.minimumRamNev,actionSelectedRamFrekvencia.minimumFrekvencia,actionSelectedRamMeret.minimumMeret,actionKivalasztottProcesszorNev.minimumProcesszorNev,actionOprendszer.minimumOprendszer,actionKivalasztottNev.maximumNev,actionSelectedVram.maximumVram,actionKivalasztottAlaplapNev.maximumAlapNev,actionKivalaszottRamNev.maximumRamNev,actionSelectedRamFrekvencia.maximumFrekvencia,actionSelectedRamMeret.maximumMeret,actionKivalasztottProcesszorNev.maximumProcesszorNev,actionOprendszer.maximumOprendszer); }
+             }
              else if(selectedFile){
                 const formData = new FormData();
                 formData.append("file", selectedFile);
@@ -215,7 +224,7 @@ function UjAlk()
                         <form id='comboImage'>
                             <p className='alkTitles'>Kategória:</p>
                             <div id='combobox'>
-                                <select id="comboboxCategory" onChange={(v)=>setActionKivalasztottNev(v.target.value)} value={actionKivalasztottNev}>
+                                <select id="comboboxCategory" onChange={(v)=>setActionKivalasztottCategoria(v.target.value)} value={actionKivalasztottCategoria}>
                                     <option className="comboboxAlkPost" value="">Válassz egyet</option>
                                     {[...new Set(mindenAdat['kategoriak'].map(i=>i.Nev))].map((nev)=>(<option className="comboboxAlkPost" key={nev} value={nev}>{nev}</option>))}
                                 </select>
@@ -230,7 +239,8 @@ function UjAlk()
                         </form>
                     </div>
                     <div>
-                    <button className='buttons' id='patch_datkezelogomb' type='button' onClick={(e)=>{handleUploadAndPost(e);setActionKivalasztottNev("");setActionMindenhezKellAdat(null);setFileName("Nincs fájl kiválasztva")}}>Módosítások mentése</button>                    
+                    <button className='buttons' id='patch_datkezelogomb' type='button' onClick={(e)=>{handleUploadAndPost(e)}}>Módosítások mentése</button> 
+                    <EgyediAlert/>                   
                     </div>
                 </div>
                     <div id='Also'>
@@ -291,6 +301,13 @@ function UjAlk()
                                     {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>( <option key={nev} value={nev}  id="legordulosOptionMin">{nev}</option>))}
                                 </select>
                            </div>
+                           <p className='patch_titles'>Operációs rendszer:</p>
+                            <div className='comboboxes'>
+                                <select className="combi_min" onChange={(an)=>setActionOprendszer({...actionOprendszer,minimumOprendszer:an.target.value})} value={actionOprendszer.minimumOprendszer}>
+                                    <option  id="legordulosOptionMin">Válassz egyet</option>
+                                    {[...new Set(mindenAdat['oprendszerek'].map(i=>i.Nev))].map((nev)=>( <option key={nev} value={nev}  id="legordulosOptionMin">{nev}</option>))}
+                                </select>
+                           </div>
                         </div>
 
                         <div id='maxSetup'>
@@ -348,6 +365,13 @@ function UjAlk()
                                 <select className="combi_max" onChange={(an)=>setActionKivalasztottProcesszorNev({...actionKivalasztottProcesszorNev,maximumProcesszorNev:an.target.value})} value={actionKivalasztottProcesszorNev.maximumProcesszorNev}>
                                     <option  id="legordulosOptionMax">Válassz egyet</option>
                                     {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>( <option key={nev} value={nev}  id="legordulosOptionMax">{nev}</option>))}
+                                </select>
+                           </div>
+                           <p className='patch_titles'>Operációs rendszer:</p>
+                            <div className='comboboxes'>
+                                <select className="combi_min" onChange={(an)=>setActionOprendszer({...actionOprendszer,maximumOprendszer:an.target.value})} value={actionOprendszer.maximumOprendszer}>
+                                    <option  id="legordulosOptionMin">Válassz egyet</option>
+                                    {[...new Set(mindenAdat['oprendszerek'].map(i=>i.Nev))].map((nev)=>( <option key={nev} value={nev}  id="legordulosOptionMin">{nev}</option>))}
                                 </select>
                            </div>
                         </div>
