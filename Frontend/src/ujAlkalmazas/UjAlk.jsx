@@ -173,7 +173,7 @@ function UjAlk()
           event.preventDefault();
     
              if (!selectedFile) {
-                if(actionButtons==="Post"){Ellenorzes("",actionKivalasztottCategoria,actionKivalasztottNev.minimumNev,actionSelectedVram.minimumVram,actionKivalasztottAlaplapNev.minimumAlapNev,actionKivalaszottRamNev.minimumRamNev,actionSelectedRamFrekvencia.minimumFrekvencia,actionSelectedRamMeret.minimumMeret,actionKivalasztottProcesszorNev.minimumProcesszorNev,actionOprendszer.minimumOprendszer,actionKivalasztottNev.maximumNev,actionSelectedVram.maximumVram,actionKivalasztottAlaplapNev.maximumAlapNev,actionKivalaszottRamNev.maximumRamNev,actionSelectedRamFrekvencia.maximumFrekvencia,actionSelectedRamMeret.maximumMeret,actionKivalasztottProcesszorNev.maximumProcesszorNev,actionOprendszer.maximumOprendszer); }
+                if(actionButtons==="Post"){await Ellenorzes("",actionKivalasztottCategoria,actionKivalasztottNev.minimumNev,actionSelectedVram.minimumVram,actionKivalasztottAlaplapNev.minimumAlapNev,actionKivalaszottRamNev.minimumRamNev,actionSelectedRamFrekvencia.minimumFrekvencia,actionSelectedRamMeret.minimumMeret,actionKivalasztottProcesszorNev.minimumProcesszorNev,actionOprendszer.minimumOprendszer,actionKivalasztottNev.maximumNev,actionSelectedVram.maximumVram,actionKivalasztottAlaplapNev.maximumAlapNev,actionKivalaszottRamNev.maximumRamNev,actionSelectedRamFrekvencia.maximumFrekvencia,actionSelectedRamMeret.maximumMeret,actionKivalasztottProcesszorNev.maximumProcesszorNev,actionOprendszer.maximumOprendszer); }
              }
              else if(selectedFile){
                 const formData = new FormData();
