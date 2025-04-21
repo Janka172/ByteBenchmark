@@ -78,10 +78,17 @@ function Beallitasok() {
   const kepValasztas = (e) => {
     const file = e.target.files[0];
     if (file) {
+      if (!file.type.startsWith('image/')) {
+        document.getElementById('hibaU').style.display = 'grid';
+        document.getElementById('hibaSzoveg').innerText = 'Csak képfájl tölthető fel !';
+        return;
+      }
+  
       setSelectedFile(file);
       setAtmKep(URL.createObjectURL(file));
     }
   };
+  
 
   // Kép vágása
   const getCroppedImage = () => {
@@ -131,6 +138,7 @@ function Beallitasok() {
   async function altalanosModositasa() {
     let croppedImage = getCroppedImage();
     let logoEleresiUtja = await uploadCroppedImage(croppedImage);
+    document.getElementById('hibaU').style.display = 'none';
 
     let nev = JSON.parse(localStorage.getItem("loggedInUser")).Felhasznalonev;
 
@@ -141,12 +149,50 @@ function Beallitasok() {
 
     let felhNev = null;
     if (document.getElementById('felhNInp') && document.getElementById('felhNInp').value !== '') {
-      felhNev = document.getElementById('felhNInp').value;
+      if(document.getElementById('felhNInp').value == JSON.parse(localStorage.getItem('loggedInUser')).Felhasznalonev){
+        document.getElementById('hibaU').style.display = 'grid';
+        document.getElementById('hibaSzoveg').innerText = 'Jelenleg ezt a felhasználónevet használja !';
+        return;
+      }
+      let foglalt = false;
+      JSON.parse(localStorage.getItem("users")).map(x =>{
+        if( x.Felhasznalonev==document.getElementById('felhNInp').value ) foglalt = true;
+      })
+      if(!foglalt) felhNev = document.getElementById('felhNInp').value;
+      else{
+        document.getElementById('hibaU').style.display = 'grid';
+        document.getElementById('hibaSzoveg').innerText = 'A felhasználónév már foglalt !';
+        return;
+      }
     }
 
     let email = null;
-    if (document.getElementById('emailNInp') && document.getElementById('emailNInp').value !== ('' || JSON.parse(localStorage.getItem('loggedInUser')).Email)) {
-      email = document.getElementById('emailNInp').value;
+    if (document.getElementById('emailInp') && document.getElementById('emailInp').value != '' ) {
+      if(document.getElementById('emailInp').value == JSON.parse(localStorage.getItem('loggedInUser')).Email){
+        document.getElementById('hibaU').style.display = 'grid';
+        document.getElementById('hibaSzoveg').innerText = 'Jelenleg ezt az e-mail címet használja !';
+        return;
+      }
+      let foglalt = false;
+      JSON.parse(localStorage.getItem("users")).map(x =>{
+        if( x.Email==document.getElementById('emailInp').value ) foglalt=true;
+      })
+      if(!foglalt) {
+        const minta = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        if(minta.test(document.getElementById('emailInp').value)){
+          email = document.getElementById('emailInp').value;
+        }
+        else{
+          document.getElementById('hibaU').style.display = 'grid';
+          document.getElementById('hibaSzoveg').innerText = 'A cím formátuma nem megfelelő !\nTartalmaznia kell:\n\t- Egy @ karaktert\n\t- Legalább egy .-ot, amit követnie kell a TLD-nek';
+          return;
+        }
+      }
+      else{
+        document.getElementById('hibaU').style.display = 'grid';
+        document.getElementById('hibaSzoveg').innerText = 'Az e-mail cím már foglalt !';
+        return;
+      }
     }
 
     // Profiladatok frissítése
@@ -193,7 +239,7 @@ function Beallitasok() {
 
         <div className='altalanos' style={{ display: altDisp }}>
           <div className='profilEsCim'>
-            <p className='altBeCim'>Általános Profil Beállitások</p>
+            <p className='altBeCim'>Általános Profil Beállítások</p>
             <img src={profilUrl} className='profilkepBeall' />
           </div>
 
@@ -204,7 +250,7 @@ function Beallitasok() {
 
           <div className='menuEle'>
             <p className='beallitasNeve'>E-mail cím:</p>
-            <input type='text' id='emailInp'></input>
+            <input type='email' id='emailInp'></input>
           </div>
 
           <div className='menuEle'>
@@ -217,7 +263,7 @@ function Beallitasok() {
 
           <div className="menuEle">
             <p className='beallitasNeve'>Profilkép:</p>
-            <input type="file" accept="*" onChange={kepValasztas} />
+            <input type="file" accept="image/*" onChange={kepValasztas} />
             {atmKep && (
               <div className="mt-2">
                 <p className="beallitasNeve">Vágás:</p>

@@ -1,2 +1,4 @@
 
 nkKép: Képarány: 16:9
+
+!! Nincsenek videókártyák 

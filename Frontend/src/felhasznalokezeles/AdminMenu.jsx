@@ -148,8 +148,40 @@ function AdminMenu() {
     let email = null;
     let jog = null;
     
-    if(document.getElementById('felnInp').value != '') felhNev = document.getElementById('felnInp').value;
-    if(document.getElementById('emailIn').value != '') email = document.getElementById('emailIn').value;
+    if(document.getElementById('felnInp').value != '') {
+      let foglalt = false;
+      JSON.parse(localStorage.getItem("users")).map(x =>{
+        if( x.Felhasznalonev==document.getElementById('felnInp').value ) foglalt = true;
+      })
+      if(!foglalt) felhNev = document.getElementById('felnInp').value
+      else{
+        hibaKiiratas('A felhasználónév már foglalt !');
+        return;
+      }
+    };
+    
+    if(document.getElementById('emailIn').value != ''){
+      let foglalt = false;
+      JSON.parse(localStorage.getItem("users")).map(x =>{
+        if( x.Email==document.getElementById('emailIn').value ) foglalt = true;
+      })
+      if(!foglalt){
+        const minta = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        if(minta.test(document.getElementById('emailIn').value)){
+          email = document.getElementById('emailIn').value;
+        }
+        else{
+          document.getElementById('hibaU').style.display = 'grid';
+          document.getElementById('hibaSzoveg').innerText = 'A cím formátuma nem megfelelő !\nTartalmaznia kell:\n\t- Egy @ karaktert\n\t- Legalább egy .-ot, amit követnie kell a TLD-nek';
+          return;
+        }
+      }
+      else{
+        hibaKiiratas('Az e-mail cím már foglalt !');
+        return;
+      }
+    }
+
     if(document.getElementById('jogC').value != 'skip') jog = document.getElementById('jogC').value;
   
     // Profiladatok frissítése
@@ -189,7 +221,7 @@ function AdminMenu() {
       console.error("Hiba történt a profil módosítása során.");
     }
   }
-  
+
   async function getProfilok() {
     try {
       const response = await fetch(`https://localhost:44316/api/Profil`);
@@ -228,7 +260,7 @@ function AdminMenu() {
       hibaKiiratas('A két jelszó nem egyezik !');
     } 
     else if (!minta.test(jelszo1)) {
-      hibaKiiratas('A jelszó nem elég erős !')
+      hibaKiiratas('A jelszó nem elég erős !\nA regisztrációhoz erős jelszóra van szükség.\n- Legalább 8 karakeres hosszúság,\n- Legalább 1 nagy betűt-\n- Legalább egy speciális karaktert-\n- Legalább egy számot\ntartalmaznia kell !')
     }
     else{
       frissitFetch(kivalasztott.Id, kivalasztott.Email, jelszo1);
@@ -288,6 +320,9 @@ function AdminMenu() {
       <div className='profReszletek' style={{ display: reszletDisp }}>
         <div className='reszletKeret' key='egyetlenKeret'>
           <div className='visszaGomb' onClick={visszaTablahoz}>Vissza</div>
+          <div id='hibaUz'>
+            <div id='hibaSzov'></div>
+          </div>
           {fejlec == '' ? console.log() : fejlec.map((x, index) => <div key={index}>{x}</div>)}
 
 
@@ -309,7 +344,7 @@ function AdminMenu() {
 
             <div className='modSor'>
               <div className='baNeve'>E-mail cím:</div>
-              <input type='text' id='emailIn'></input>
+              <input type='email' id='emailIn'></input>
             </div>
 
             <button className='altalnosMentes' onClick={() => modositas(JSON.parse(localStorage.getItem('users')).find(x => x.Id==kivalasz).Felhasznalonev)}>Mentés</button>
@@ -317,9 +352,6 @@ function AdminMenu() {
 
           <div className='lenyitosMenu' onClick={jelszomLenyitas}>Jelszó beállítása</div>
           <div className='modCont' style={{ display: jelszoNyitva }}>
-            <div id='hibaUz'>
-              <div id='hibaSzov'></div>
-            </div>
             <div className='modSor'>
                 <p className='beallitasNeve'>Módosított Jelszó:</p>
                 <input type='password' id='mJel1'></input>

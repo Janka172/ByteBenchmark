@@ -24,7 +24,7 @@ function JelszoModosito() {
       hibaKiiratas('A két jelszó nem egyezik !');
     } 
     else if (!minta.test(jelszo1)) {
-      hibaKiiratas('A jelszó nem elég erős !')
+      hibaKiiratas('A jelszó nem elég erős !\nA regisztrációhoz erős jelszóra van szükség.\n- Legalább 8 karakeres hosszúság,\n- Legalább 1 nagy betűt-\n- Legalább egy speciális karaktert-\n- Legalább egy számot\ntartalmaznia kell !')
     }
     else{
       frissitFetch(JSON.parse(localStorage.getItem('loggedInUser')).Id,JSON.parse(localStorage.getItem('loggedInUser')).Email, jelszo1);

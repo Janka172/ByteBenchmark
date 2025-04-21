@@ -313,7 +313,7 @@ function SetupBeallitasok() {
                 <select id='prociCombo' className='combo' onChange={valtozoProc} key={`PmodCombo-${setupNeve}`}>
                     <option value='-' key='P-'>-</option>
                     { szurtProci.map(x => {
-                        if(x.Nev!=kivalasztottSetup.ProcesszorNev) return <option value={x.Nev} key={x.Nev}>{x.Nev}</option>
+                        return <option value={x.Nev} key={x.Nev}>{x.Nev}</option>
                     })}
                 </select>
             </div>
@@ -327,7 +327,7 @@ function SetupBeallitasok() {
                 <select id='vidkCombo' className='combo' onChange={valtozoVidk} key={`VmodCombo-${setupNeve}`}>
                     <option value='-' key='V-'>-</option>
                     { szurtVidiKartyak.map((x, index) => {
-                        if(x.Nev!=kivalasztottSetup.VidekortyaNev) return <option value={`${x.Nev}-${x.vram}`} key={`${x.Nev}-${index}`}>{x.Nev} - {x.vram}GB</option>
+                        return <option value={`${x.Nev}-${x.vram}`} key={`${x.Nev}-${index}`}>{x.Nev} - {x.vram}GB</option>
                     })}
                 </select>
             </div>
@@ -341,7 +341,7 @@ function SetupBeallitasok() {
                 <select id='ramCombo' className='combo' onChange={valtozoRam} key={`RmodCombo-${setupNeve}`}>
                     <option value='-' key='R-'>-</option>
                     { szurtRam.map((x, index) => {
-                        if(x.Nev!=kivalasztottSetup.RamNeve) return <option value={`${x.Nev}-${x.Frekvencia}`} key={`${x.Nev}-${index}`}>{x.Nev} - {x.Frekvencia}Hz - {x.Meret}GB</option>
+                        return <option value={`${x.Nev}-${x.Frekvencia}`} key={`${x.Nev}-${index}`}>{x.Nev} - {x.Frekvencia}Hz - {x.Meret}GB</option>
                     })}
                 </select>
             </div>
@@ -354,7 +354,7 @@ function SetupBeallitasok() {
                 <select id='oprCombo' className='combo' onChange={valtozoOpRend} key={`OmodCombo-${setupNeve}`}>
                     <option value='-' key='O-'>-</option>
                     { oprk.map(x => {
-                        if(x.Nev!=kivalasztottSetup.OprendszerNev) return <option value={x.Nev} key={x.Nev}>{x.Nev}</option>
+                        return <option value={x.Nev} key={x.Nev}>{x.Nev}</option>
                     })}
                 </select>
             </div>
@@ -379,6 +379,10 @@ function SetupBeallitasok() {
             if(document.getElementById('alaplapCombo').value != '-' && document.getElementById('prociCombo').value != '-' && document.getElementById('vidkCombo').value != '-' && document.getElementById('ramCombo').value != '-' && document.getElementById('oprCombo').value != '-'){
                 document.getElementById('setMentes').style.backgroundColor='';
                 document.getElementById('setMentes').style.cursor='';
+            }
+            else if(document.getElementById('prociCombo').value != '-' && document.getElementById('vidkCombo').value != '-' && document.getElementById('ramCombo').value != '-' && document.getElementById('oprCombo').value != '-') {
+                document.getElementById('setMentes').style.backgroundColor = 'gray';
+                document.getElementById('setMentes').style.cursor = 'not-allowed';
             }
         }
         catch{}
