@@ -136,6 +136,7 @@ namespace UnitTestProject.TestController
             var setupList = result.Content.ToList();
             Assert.AreEqual(1, setupList.Count);
         }
+        [TestMethod]
         public void Get_EgySetup()
         {
 
@@ -167,13 +168,14 @@ namespace UnitTestProject.TestController
             var model = new SetupPostModel
             {
                 ApplikacioNeve= "Cyberpunk 2077",
-                Gepigeny="mmin",
+                Gepigeny="min",
                 VidekortyaNev= "NVIDIA GTX 1080",
                 Vram=8,
                 ProcesszorNev= "Intel i7-9700K",
                 OprendszerNev= "Windows 10",
                 RamNeve= "Corsair Vengeance",
                 RamFrekvencia= 3200,
+                RamMeret=16,
                 AlaplapNeve= "ASUS ROG Strix",
             };
             var result = await controller.Post(model).ExecuteAsync(new System.Threading.CancellationToken());

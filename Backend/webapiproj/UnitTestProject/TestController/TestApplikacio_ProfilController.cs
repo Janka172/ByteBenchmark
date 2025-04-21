@@ -82,28 +82,5 @@ namespace UnitTestProject.TestController
             Assert.AreEqual("Ferike", contentresult.ApplikacioNeve);
             Assert.AreEqual("Demo1", contentresult.UserName);
         }
-        //[TestMethod]
-        //public async Task Post_EgyApplikacio_Profil()
-        //{
-        //    var ctx = new TestProjektContext();
-        //    FillTestDatabase(ctx);
-        //    var controller = new Applikacio_ProfilController(ctx)
-        //    {
-        //        Request = new HttpRequestMessage(),
-        //        Configuration = new HttpConfiguration()
-        //    };
-
-        //    var model = new ApplikacioProfilModel
-        //    {
-        //        ApplikacioNeve= "Ferike",
-        //        UserName= "Demo1"
-
-
-        //    };
-        //    var result = await controller.Post(model).ExecuteAsync(new System.Threading.CancellationToken());
-        //    Assert.IsNotNull(result);
-        //    Assert.AreEqual(HttpStatusCode.Created, result.StatusCode);
-        //}
-
     }
 }
