@@ -1238,9 +1238,9 @@ label
     
   #post_adatkezelogomb
   {
-    width:200px;
+    width:100%;
     padding: 5%;
-    margin-left: 14%;
+
   }
   .select_buttons
   {
@@ -1324,7 +1324,7 @@ label
     font-size: medium;
     margin-top: 1vw;
     margin-right: 1%;
-    margin-left: 14%;
+    margin-left: 20%;
     margin-bottom: 0.3vw;
     border: 1px black solid;
     border-radius: 0% 30%;
@@ -1339,7 +1339,7 @@ label
     font-size: large;
     height: 1.8vw;
     padding-right: 0vw;
-    margin-left: 14%;
+    margin-left: 20%;
     border: 1px black solid;
   }
   

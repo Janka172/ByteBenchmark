@@ -310,12 +310,12 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
              {actionHardver==="Videókártya" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
                     <form id='post_form'>
-                     <p className='post_titles'>Név:</p><input type='text' className='beviteli_mezok' id='VideoPost1' placeholder='jj'/>               
-                     <p className='post_titles'>Alaplapi csatlakozás:</p><input type='text' className='beviteli_mezok' id='VideoPost2' placeholder='jj'/>
-                     <p className='post_titles'>Ajánlott tápegység:</p><input type='number' className='beviteli_mezok' id='VideoPost3' placeholder='55'/>
-                     <p className='post_titles'>Monitor csatlakozás:</p><input type='text' className='beviteli_mezok' id='VideoPost4' placeholder='jj'/>
-                     <p className='post_titles'>Vram:</p><input type='number' className='beviteli_mezok' id='VideoPost5' placeholder='5gb'/>        
-                     <p className='post_titles'>Chip  gyártója:</p><input type='text' className='beviteli_mezok' id='VideoPost6' placeholder='asd'/>
+                     <p className='post_titles'>Név:</p><input type='text' className='beviteli_mezok' id='VideoPost1' placeholder='Pl. Geforce ...'/>               
+                     <p className='post_titles'>Alaplapi csatlakozás:</p><input type='text' className='beviteli_mezok' id='VideoPost2' placeholder='Pl. PCIe'/>
+                     <p className='post_titles'>Ajánlott tápegység:</p><input type='number' className='beviteli_mezok' id='VideoPost3' placeholder='Pl. 500'/>
+                     <p className='post_titles'>Monitor csatlakozás:</p><input type='text' className='beviteli_mezok' id='VideoPost4' placeholder='Pl. HDMI, DisplayPort'/>
+                     <p className='post_titles'>Vram:</p><input type='number' className='beviteli_mezok' id='VideoPost5' placeholder='Pl. 5'/>        
+                     <p className='post_titles'>Chip  gyártója:</p><input type='text' className='beviteli_mezok' id='VideoPost6' placeholder='Pl. NVIDIA'/>
      
                      <input key={fileName} type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                      <span className="filename" id='post_img_link'>{fileName}</span>
