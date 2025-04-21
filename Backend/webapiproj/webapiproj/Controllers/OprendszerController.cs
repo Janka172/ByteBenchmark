@@ -81,7 +81,8 @@ namespace webapiproj.Controllers
             }
             catch (Exception ex)
             {
-                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "Ezzel a névvel és buildszámmal már létezik Operácios rendszer.");
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.")
+                    return Content(HttpStatusCode.Conflict, "Ezzel a névvel és buildszámmal már létezik Operácios rendszer.");
                 return InternalServerError(ex);
             }
 
@@ -105,7 +106,8 @@ namespace webapiproj.Controllers
             }
             catch (Exception ex)
             {
-                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "Ezzel a névvel és buildszámmal már létezik Operácios rendszer.");
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.")
+                    return Content(HttpStatusCode.Conflict, "Ezzel a névvel és buildszámmal már létezik Operácios rendszer.");
                 return InternalServerError(ex);
             }
         }
@@ -121,7 +123,6 @@ namespace webapiproj.Controllers
             {
                 item.OpId = null;
             }
-
 
             var result = ctx.Oprendszerek.Where(x => x.Nev == name).FirstOrDefault();
             if (result != null)

@@ -180,8 +180,6 @@ namespace webapiproj.Controllers
                 if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "Már szerepel ezzel a névvel alaplap");
                 return InternalServerError(ex);
             }
-           
-
         }
 
         // DELETE api/<controller>/5

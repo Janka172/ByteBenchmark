@@ -70,7 +70,8 @@ namespace webapiproj.Controllers
             }
             catch (Exception ex)
             {
-                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "Ez a csatlakozo már létezik.");
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.")
+                    return Content(HttpStatusCode.Conflict, "Ez a csatlakozo már létezik.");
                 return InternalServerError(ex);
             }
         }

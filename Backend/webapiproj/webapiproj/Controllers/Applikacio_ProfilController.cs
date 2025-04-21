@@ -49,6 +49,7 @@ namespace webapiproj.Controllers
                 UserName = x.Profil.Felhasznalonev,
                 ApplikacioNeve = x.Applikacio.Nev
             }).FirstOrDefault();
+            if (result == null) return NotFound();
             return Ok(result);
         }
 
@@ -61,7 +62,7 @@ namespace webapiproj.Controllers
 
         // PUT api/<controller>/5
         [ResponseType(typeof(ApplikacioProfilModel))]
-        public IHttpActionResult Patch(int id, [FromBody] string value)
+        public IHttpActionResult Put(int id, [FromBody] string value)
         {
            return  StatusCode(HttpStatusCode.NotImplemented);
         }

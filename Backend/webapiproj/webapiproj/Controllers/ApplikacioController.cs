@@ -79,11 +79,11 @@ namespace webapiproj.Controllers
                 ctx.SaveChanges();
 
                 return Content(HttpStatusCode.Created,"");
-                //return Created($"api/Applikacio/{result}", result);
             }
             catch (Exception ex)
             {
-                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "már szerepel ez az applikáció");
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.")
+                    return Content(HttpStatusCode.Conflict, "már szerepel ez az applikáció");
                 return BadRequest("Applikacio feltoltese sikertelen");
             }
         }

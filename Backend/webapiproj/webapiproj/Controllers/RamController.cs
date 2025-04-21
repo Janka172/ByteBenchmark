@@ -113,9 +113,11 @@ namespace webapiproj.Controllers
         }
 
         // DELETE api/<controller>/5
+        [ResponseType(typeof(RamModel))]
         public IHttpActionResult Delete(int id,string name, int frekvencia, int meret)
         {
-            var ramId = ctx.Ramok.Where(x=>x.Nev==name && x.Frekvencia==frekvencia && x.Meret==meret).Select(x => x.Id).FirstOrDefault();
+            var ramId = ctx.Ramok.Where(x=>x.Nev==name && x.Frekvencia==frekvencia && x.Meret==meret)
+                .Select(x => x.Id).FirstOrDefault();
             var set = ctx.Setupok.Where(x => x.RamId == ramId).ToList();
 
             foreach (var item in set)
@@ -123,8 +125,8 @@ namespace webapiproj.Controllers
                 item.RamId = null;
             }
 
-
-            var result = ctx.Ramok.Where(x => x.Nev == name && x.Frekvencia == frekvencia && x.Meret == meret).FirstOrDefault();
+            var result = ctx.Ramok.Where(x => x.Nev == name && x.Frekvencia == frekvencia && x.Meret == meret)
+                .FirstOrDefault();
             if (result != null)
             {
                 ctx.Ramok.Remove(result);

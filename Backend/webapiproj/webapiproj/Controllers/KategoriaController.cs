@@ -104,7 +104,6 @@ namespace webapiproj.Controllers
                 item.KatId = null;
             }
 
-
             var result = ctx.Kategoriak.Where(x => x.Nev == name).FirstOrDefault();
             if (result != null)
             {

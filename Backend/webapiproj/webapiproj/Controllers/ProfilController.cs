@@ -92,6 +92,7 @@ namespace webapiproj.Controllers
                 Tema = x.Tema,
                 LogoEleresiUtja = x.LogoEleresiUtja
             }).FirstOrDefault();
+            if (result == null) return NotFound();
             return Ok(result);
         }
 
@@ -124,16 +125,9 @@ namespace webapiproj.Controllers
             {
                 var result = ctx.Profilok.Where(x => x.Felhasznalonev == name).FirstOrDefault();
                 if (result == null) return NotFound();
-                //if (!PasswdManager.VerifyEmail(value.Email, result.Email)) return Unauthorized();
 
                 if(value.Felhasznalonev!=null) result.Felhasznalonev = value.Felhasznalonev;
                 if(value.Email!=null) result.Email = value.Email;
-                //if (value.UjJelszo != null)
-                //{
-                //    PasswdManager.CreatePasswordHash(value.UjJelszo, out byte[] hash, out byte[] salt);
-                //    result.Jelszo = salt;
-                //    result.JelszoUjra = hash;
-                //}
                 if(value.Jogosultsag!=-1) result.Jogosultsag = value.Jogosultsag;
                 if(value.Tema!=null) result.Tema = value.Tema;
                 if(value.LogoEleresiUtja!=null) result.LogoEleresiUtja = value.LogoEleresiUtja;
@@ -142,12 +136,14 @@ namespace webapiproj.Controllers
             }
             catch (Exception ex)
             {
-                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "Ezzel a felhasználoval vagy emaillal már regisztráltak");
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.")
+                    return Content(HttpStatusCode.Conflict, "Ezzel a felhasználoval vagy emaillal már regisztráltak");
                 return InternalServerError(ex);
             }
         }
 
         // DELETE api/<controller>/5
+        [ResponseType(typeof(ProfilResponseModel))]
         public IHttpActionResult Delete(int id,string name)
         {
             var felhasznalo = ctx.Profilok.Where(x=>x.Felhasznalonev==name).FirstOrDefault();
@@ -185,7 +181,7 @@ namespace webapiproj.Controllers
             try
             {
                 var result = ctx.Profilok.Where(x => x.Email == email).FirstOrDefault();
-                if (result == null) return Content(HttpStatusCode.NotFound,"Nem található felhasználó ezzel az emaillal"); ;
+                if (result == null) return Content(HttpStatusCode.NotFound,"Nem található felhasználó ezzel az emaillal");
                 if (!PasswdManager.VerifyEmail(email, result.Email)) return Unauthorized();
 
                 if (value.UjJelszo != null)

@@ -106,12 +106,11 @@ namespace webapiproj.Controllers
                 });
                 ctx.SaveChanges();
 
-
                 return Content(HttpStatusCode.Created, result);
             }
             catch (Exception ex)
             {
-                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.") return Content(HttpStatusCode.Conflict, "Ezzel a névvel már létezik processzor");
+                if (ex.Message == "An error occurred while updating the entries. See the inner exception for details.")return Content(HttpStatusCode.Conflict, "Ezzel a névvel már létezik processzor");
                 return InternalServerError(ex);
             }
 
@@ -158,7 +157,6 @@ namespace webapiproj.Controllers
             {
                 item.ProcId = null;
             }
-
 
             var result = ctx.Processzorok.Where(x => x.Nev == name).FirstOrDefault();
             if (result != null)
