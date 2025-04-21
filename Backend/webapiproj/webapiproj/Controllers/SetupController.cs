@@ -120,10 +120,12 @@ namespace webapiproj.Controllers
                 AlaplapMemoriaMaxFrekvencia = x.Alaplap.MaxFrekvencia,
                 AlaplapRamTipusa = x.Alaplap.MemoriaTipusa
             }).ToList();
+            if (result == null) return NotFound();
             return Ok(result);
         }
 
         // POST api/<controller>
+        [ResponseType(typeof(SetupPostModel))]
         public IHttpActionResult Post([FromBody] SetupPostModel value)
         {
             var ApplikacioId = ctx.Applikaciok.Where(x => x.Nev == value.ApplikacioNeve).Select(x => x.Id).FirstOrDefault();
@@ -138,7 +140,6 @@ namespace webapiproj.Controllers
             if (RamoId == 0) return Content(HttpStatusCode.NotFound, "Nincs ilyen Ram");
             var AlaplapId = ctx.Alaplapok.Where(x => x.Nev == value.AlaplapNeve).Select(x => x.Id).FirstOrDefault();
             if (AlaplapId == 0) return Content(HttpStatusCode.NotFound, "Nincs ilyen Alaplap");
-
 
             try
             {
@@ -158,12 +159,12 @@ namespace webapiproj.Controllers
             }
             catch (Exception ex)
             {
-
                 return InternalServerError(ex);
             }
         }
 
         // PUT api/<controller>/5
+        [ResponseType(typeof(SetupPatchModel))]
         public IHttpActionResult Patch(int id,string applikacionev,string igeny, [FromBody] SetupPatchModel value)
         {
             try
@@ -180,7 +181,6 @@ namespace webapiproj.Controllers
 
                 ctx.SaveChanges();
                 return Ok(result);
-                //return Ok(result);
             }
             catch (Exception ex)
             {
@@ -189,6 +189,7 @@ namespace webapiproj.Controllers
         }
 
         // DELETE api/<controller>/5
+        [ResponseType(typeof(SetupModel))]
         public IHttpActionResult Delete(int id,string applikacionev,string igeny)
         {
             var ApplikacioId = ctx.Applikaciok.Where(x => x.Nev == applikacionev).Select(x => x.Id).FirstOrDefault();
