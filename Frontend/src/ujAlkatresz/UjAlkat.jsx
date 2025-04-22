@@ -831,7 +831,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                    </div>
             </div> : <div></div>}
 
-            {actionHardver==="AlaplapiCsatlakozo" && actionButtons==="Delete" ? <div className='body'>
+            {actionHardver==="AlaplapiCsatlakozo" && actionButtons==="Delete" ? <div className='body torzscsati'>
                    <div className='inputok'>
                      <form id='delete_form_csati'>
                         <p className='delete_titles_csati'>Alaplap neve:</p>
@@ -854,18 +854,13 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                      <div className='adatok_delete'>Név: {actionKivalasztottAlaplapNev}</div>
                      {actionMindenhezKellAdat && actionMindenhezKellAdat.length > 0 ? (
                         <>
-                           {actionMindenhezKellAdat.map(csatlakozo => (
-                              <div className='adatok_delete'>Csatlakozó neve: {csatlakozo.CsatlakozoNev}</div>
-                           ))}
+                           {actionMindenhezKellAdat.map(csatlakozo => (<div className='adatok_delete'>Csatlakozó neve: {csatlakozo.CsatlakozoNev}</div>))}
                         </>
-                     ) : (
-                        
-                        <div className='adatok_delete'>Csatlakozó neve:</div>
-                     )}
+                     ) : (<div className='adatok_delete'>Csatlakozó neve:</div>)}
                   </div>
-                   <div id='buttons_content_csati'>
-                        <div className='pagechangebutton'><button disabled className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat();setActionKivalasztottAlaplapNev("");}}>Új csatlakozo hozzáadása</button></div>
-                        <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat();setActionKivalasztottAlaplapNev("");} }>csatlakozo törlése</button></div>
+                   <div id='buttons_content_csati_delete'>
+                        <div className='pagechangebutton'><button className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat();setActionKivalasztottAlaplapNev("");}}>Új csatlakozó hozzáadása</button></div>
+                        <div className='pagechangebutton'><button disabled className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat();setActionKivalasztottAlaplapNev("");} }>Csatlakozó törlése</button></div>
                    </div>
             </div> : <div></div>}  
             </div>

@@ -312,7 +312,7 @@
 }
 .patchbeviteli_mezok
 {
-    width: 300px;
+    width: 250px;
     font-size: large;
     height: 1.8vw;
 }
@@ -320,6 +320,7 @@
   {
     border-radius: 20px;
     height: 3vw;
+    width: 250px;
     text-align: center;
     text-align-last: center; 
   }
@@ -378,8 +379,8 @@
 {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-padding-left: 5%;
+  align-items: flex-start;
+  padding-left: 3%;
   margin-top: 3%;
 }
 #contents_patch
@@ -394,7 +395,7 @@ padding-left: 5%;
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) 
+@media screen and (min-width: 992px) 
 {
   #legordulos_option
 {
@@ -433,10 +434,9 @@ padding-left: 5%;
 #patch_img
 {
   width: 150px;
+  padding: 5%;
   font-size: large;
   height: 1.8vw;
-  padding-right: 1vw;
-  padding-top: 1vw;
   margin-bottom: 1.5vw;
   border: 1px solid black;
 }

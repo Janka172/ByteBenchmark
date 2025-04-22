@@ -38,8 +38,7 @@
 }
 /*-------------------------RESZPONZIVITÁS @MEDIA-VAL-------------------------------------*/
 /* Extra small devices (phones, 600px and down) */
-@media screen and (max-width: 600px) 
-{
+@media screen and (max-width: 600px) {
     .combi_delete
     {
         font-size: large;
@@ -121,18 +120,83 @@
       width: 50%;
     }
     /*-----------------------------HÁROM GOMB--------------------------------------*/
-
-    
     #buttons_content
     {
       display: flex;
       flex-direction: row;
       margin-top: 5%;
     }
+             /*-----------ALAPLAP CSATLAKOZÓK------------------------*/
+  .delete_titles_csati
+  {
+    width: max-content;
+    text-align: left;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 2%;
+    margin-right: 0vw; 
+    margin-bottom: 0vw;
+    padding:0vw;
+  }
+  .combi_delete_csati
+  {
+    width: 280px;
+    margin-top: 1%;
+    font-size: medium;
+    border-radius: 20px;
+    height: 5vw;
+    text-align: center;
+    text-align-last: center; 
+  }
+
+  #delete_adatkezelogomb_csati
+  {
+    width: 140%;
+    height: 5%;
+    padding-right: 1vw;
+    margin-left: 0%;
+    padding: 7%;
+    margin-right: 1%;
+    margin-top: 2vw;
+    font-size: medium;
+    border-radius: 0% 30%;
+    background-color: rgba(194, 52, 52, 0.8);
+    color: black;
+  }
+  #delete_adatlekerogomb_csati
+  {
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 1.5vw;
+    margin-left: 35%;
+    font-size: medium;
+    width: max-content;
+  }
+  #delete_form_csati
+  {
+    flex-direction: column;
+    width: 200px;
+    margin-top: 5%;
+  }
+  #contentsCsati
+  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 5%;
+    width:100%;
+    margin-top: 6%;
+  }
+  #buttons_content_csati_delete
+  {
+    display: flex;
+    flex-direction: row;
+    margin-top: 7%;
+    padding-left: 30%;
+  }
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media screen and (min-width: 600px) 
-{
+@media screen and (min-width: 600px) {
     .combi_delete
     {
         font-size: large;
@@ -216,18 +280,84 @@
     }
     /*-----------------------------HÁROM GOMB--------------------------------------*/
 
-    
     #buttons_content
     {
       display: flex;
       flex-direction: row;
       margin-top: 5%;
     }
+         /*-----------ALAPLAP CSATLAKOZÓK------------------------*/
+  .delete_titles_csati
+  {
+    width: max-content;
+    text-align: left;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 2%;
+    margin-right: 0vw; 
+    margin-bottom: 0vw;
+    padding:0vw;
+  }
+  .combi_delete_csati
+  {
+    width: 280px;
+    margin-top: 1%;
+    font-size: medium;
+    border-radius: 20px;
+    height: 5vw;
+    text-align: center;
+    text-align-last: center; 
+  }
+
+  #delete_adatkezelogomb_csati
+  {
+    width: 140%;
+    height: 5%;
+    padding-right: 1vw;
+    margin-left: 0%;
+    padding: 7%;
+    margin-right: 1%;
+    margin-top: 2vw;
+    font-size: medium;
+    border-radius: 0% 30%;
+    background-color: rgba(194, 52, 52, 0.8);
+    color: black;
+  }
+  #delete_adatlekerogomb_csati
+  {
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 1.5vw;
+    margin-left: 35%;
+    font-size: medium;
+    width: max-content;
+  }
+  #delete_form_csati
+  {
+    flex-direction: column;
+    width: 200px;
+    margin-top: 5%;
+  }
+  #contentsCsati
+  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 5%;
+    width:100%;
+    margin-top: 6%;
+  }
+  #buttons_content_csati_delete
+  {
+    display: flex;
+    flex-direction: row;
+    margin-top: 7%;
+    padding-left: 30%;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media screen and (min-width: 768px) 
-{
+@media screen and (min-width: 768px) {
     .titles_delete
     {
         width: 100%;
@@ -308,11 +438,83 @@
       margin-top: 5%;
       padding-left: 10%;
     }
+      /*-----------ALAPLAP CSATLAKOZÓK------------------------*/
+  .delete_titles_csati
+  {
+    width: max-content;
+    text-align: left;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 2%;
+    margin-right: 0vw; 
+    margin-bottom: 0vw;
+    padding:0vw;
+  }
+  .combi_delete_csati
+  {
+    width: 250px;
+    margin-top: 1%;
+    font-size: large;
+    border-radius: 20px;
+    height: 3vw;
+    text-align: center;
+    text-align-last: center; 
+  }
+
+  #delete_adatkezelogomb_csati
+  {
+    width: 125%;
+    height: 5%;
+    padding-right: 1vw;
+    margin-left: 0%;
+    padding: 7%;
+    margin-right: 1%;
+    margin-top: 2vw;
+    font-size: medium;
+    border-radius: 0% 30%;
+    background-color: rgba(194, 52, 52, 0.8);
+    color: black;
+  }
+  #delete_adatlekerogomb_csati
+  {
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 1.5vw;
+    margin-left:25%;
+    font-size: medium;
+    width: max-content;
+  }
+  #delete_form_csati
+  {
+    flex-direction: column;
+    width: 200px;
+    margin-top: 30%;
+  }
+  #contentsCsati
+  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 5%;
+    width:35%;
+    margin-top: 6%;
+  }
+  #buttons_content_csati_delete
+  {
+    display: flex;
+    flex-direction: column;
+    margin-top: 7%;
+    margin-left: 0%;
+    padding-left: 10%;
+  }
+  .torzscsati
+  {
+    margin-top: 10%;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media screen and (min-width: 992px) 
-{
+@media screen and (min-width: 992px) {
     .titles_delete
     {
         width: 100%;
@@ -392,11 +594,84 @@
       margin-top: 5%;
       padding-left: 10%;
     }
+
+    /*-----------ALAPLAP CSATLAKOZÓK------------------------*/
+  .delete_titles_csati
+  {
+    width: max-content;
+    text-align: left;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 2%;
+    margin-right: 0vw; 
+    margin-bottom: 0vw;
+    padding:0vw;
+  }
+  .combi_delete_csati
+  {
+    width: 250px;
+    margin-top: 1%;
+    font-size: large;
+    border-radius: 20px;
+    height: 3vw;
+    text-align: center;
+    text-align-last: center; 
+  }
+
+  #delete_adatkezelogomb_csati
+  {
+    width: 125%;
+    height: 5%;
+    padding-right: 1vw;
+    margin-left: 0%;
+    padding: 7%;
+    margin-right: 1%;
+    margin-top: 2vw;
+    font-size: medium;
+    border-radius: 0% 30%;
+    background-color: rgba(194, 52, 52, 0.8);
+    color: black;
+  }
+  #delete_adatlekerogomb_csati
+  {
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 1.5vw;
+    margin-left:25%;
+    font-size: medium;
+    width: max-content;
+  }
+  #delete_form_csati
+  {
+    flex-direction: column;
+    width: 200px;
+    margin-top: 30%;
+  }
+  #contentsCsati
+  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 5%;
+    width:35%;
+    margin-top: 6%;
+  }
+  #buttons_content_csati_delete
+  {
+    display: flex;
+    flex-direction: column;
+    margin-top: 7%;
+    margin-left: 0%;
+    padding-left: 10%;
+  }
+  .torzscsati
+  {
+    margin-top: 10%;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media screen and (min-width: 1200px) 
-{
+@media screen and (min-width: 1200px) {
     .titles_delete
     {
         width: 100%;
@@ -497,7 +772,7 @@
     margin-top: 1%;
     font-size: large;
     border-radius: 20px;
-    height: 4vw;
+    height: 3vw;
     text-align: center;
     text-align-last: center; 
   }
@@ -508,7 +783,7 @@
     height: 5%;
     padding-right: 1vw;
     margin-left: 0%;
-    padding: 5%;
+    padding: 7%;
     margin-right: 1%;
     margin-top: 2vw;
     font-size: medium;
@@ -537,6 +812,15 @@
     flex-direction: column;
     align-items: center;
     padding-left: 5%;
+    width:30%;
     margin-top: 5%;
+  }
+  #buttons_content_csati_delete
+  {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-left: 0%;
+    padding-left: 5%;
   }
 }
