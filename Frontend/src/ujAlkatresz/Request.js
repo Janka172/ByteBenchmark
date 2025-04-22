@@ -17,7 +17,7 @@ export function RequestVideokP(fileUrl){
 
     if(!neLegyenWhiteSpace.test(nevElem))errors.push("A névnek tartalmaznia kell legalább egy betüt");
     if(!neLegyenWhiteSpace.test(aCsatlakozasElem))errors.push("Alaplap csatlakozásnak tartalmaznia kell legalább egy betűt");
-    if(atapegysegElem<4 || atapegysegElem>800)errors.push("Ajánlott tápegység mértéke nem lehet 4W-nál kisebb és 500W-nál nagyobb");
+    if(atapegysegElem<4 || atapegysegElem>1500)errors.push("Ajánlott tápegység mértéke nem lehet 4W-nál kisebb és 1500W-nál nagyobb");
     if(!neLegyenWhiteSpace.test(mCsatlakozasElem))errors.push("Monitor csatlakozásnak tartalmaznia kell legalább egy betűt");
     if(!neLegyenWhiteSpace.test(cGyartoElem))errors.push("Chip gyártónak tartalmaznia kell legalább egy betűt");
     if(vramElem==null)errors.push("Vram nem lehet üres");
@@ -736,7 +736,7 @@ export async function RequestRamDelete(ramNev, ramFrekvencia, ramMeret)
 
 export async function RequseAlaplapCsatlakozo(anev) {
     errors.length=0;
-    var selectCsatlakozokElem = document.getElementById('AlaplapPost8');
+    var selectCsatlakozokElem = document.getElementById('csati');
     var selectKivalaszottCsat=Array.from(selectCsatlakozokElem.selectedOptions).map(option => option.value);
     if(anev=="" )errors.push("Nem választottak ki alaplapot!");
     if(selectKivalaszottCsat.length==0)errors.push("Nem választottak ki csatlakozót!");

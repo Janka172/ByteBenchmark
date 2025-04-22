@@ -811,45 +811,46 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             {/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
             {actionHardver==="AlaplapiCsatlakozo" && actionButtons==="Post" ? <div className='body'>
                    <div className='inputok'>
-                     <form id='post_form'>
-                        <p className='post_titles'>Alaplap neve</p>
-                        <select className="combi_patch" onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
-                           <option id="legordulos_option" value="">Válassz egyet</option>
+                     <form id='post_form_csati'>
+                        <p className='post_titles_csati'>Alaplap neve:</p>
+                        <select className="combi_csati" onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
+                           <option id="legordulos_option_csati" value="">Válassz egyet</option>
                            {[...new Set(mindenAdat['alaplapok'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulos_option">{nev}</option>))}
                         </select>
-                        <p>Csatlakozok</p>
-                        <select id='AlaplapPost8' multiple>
+                        <p className='post_titles_csati'>Csatlakozók:</p>
+                        <select id='csati' multiple>
                            {[...new Set(mindenAdat['alaplapCsatlakozok'].map(i=>i.Nev))].map((nev)=>(<option value={nev} key={nev} id='csatik'>{nev}</option>))}
                         </select>
-                        <button type='button' className='buttons' id='post_adatkezelogomb_alaplap' onClick={async(e)=>{handleAlaplapCsatlakozo(e);setActionKivalasztottAlaplapNev("");}}>Adatok feltöltése</button>
+                        <button type='button' className='buttons' id='post_adatkezelogomb_csati' onClick={async(e)=>{handleAlaplapCsatlakozo(e);setActionKivalasztottAlaplapNev("");}}>Adatok feltöltése</button>
                         <EgyediAlert/>
                     </form>
                    </div>
-                   <div id='buttons_content_patch'>
-                        <div className='pagechangebutton'><button disabled className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat();setActionKivalasztottAlaplapNev("");}}>Új csatlakozo hozzáadása</button></div>
-                        <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat();setActionKivalasztottAlaplapNev("");} }>csatlakozo törlése</button></div>
+                   <div id='buttons_content_csati'>
+                        <div className='pagechangebutton'><button disabled className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat();setActionKivalasztottAlaplapNev("");}}>Új csatlakozó hozzáadása</button></div>
+                        <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat();setActionKivalasztottAlaplapNev("");} }>Csatlakozó törlése</button></div>
                    </div>
             </div> : <div></div>}
+
             {actionHardver==="AlaplapiCsatlakozo" && actionButtons==="Delete" ? <div className='body'>
                    <div className='inputok'>
-                     <form id='post_form'>
-                        <p className='post_titles'>Alaplap neve</p>
-                        <select className="combi_patch" onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
-                           <option id="legordulos_option" >Válassz egyet</option>
+                     <form id='delete_form_csati'>
+                        <p className='delete_titles_csati'>Alaplap neve:</p>
+                        <select className="combi_delete_csati" onChange={(an)=>setActionKivalasztottAlaplapNev(an.target.value)} value={actionKivalasztottAlaplapNev}>
+                           <option id="legordulos_option_csati" >Válassz egyet</option>
                            {[...new Set(mindenAdat['alaplapok'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulos_option">{nev}</option>))}
                         </select>
-                        <button className='buttons' id='delete_adatlekerogomb' type='button' onClick={(e)=>adatAlaplapCsatlakozoLekeres(e, actionKivalasztottAlaplapNev)}>Adatok lekérése</button>
-                        <p>Csatlakozok</p>
-                        <select id='AlaplapPost8' onChange={(an=>setActionSelectedAlaplapCsatlakozo(an.target.value))} value={actionSelectedAlaplapCsatlakozo}>
-                           <option id="legordulos_option" >Válassz egyet</option>
+                        <button className='buttons' id='delete_adatlekerogomb_csati' type='button' onClick={(e)=>adatAlaplapCsatlakozoLekeres(e, actionKivalasztottAlaplapNev)}>Adatok lekérése</button>
+                        <p className='delete_titles_csati'>Csatlakozók:</p>
+                        <select className='combi_delete_csati' onChange={(an=>setActionSelectedAlaplapCsatlakozo(an.target.value))} value={actionSelectedAlaplapCsatlakozo}>
+                           <option id="legordulos_option_csati" >Válassz egyet</option>
                            {[...new Set(mindenAdat['alaplapCsatlakozok'].map(i=>i.Nev))].map((nev)=>(<option value={nev} key={nev} id='csatik'>{nev}</option>))}
                         </select>
-                        <button type='button' className='buttons' id='post_adatkezelogomb_alaplap' onClick={async(e)=>{await handleDelete(e);await fetchAdat();setActionKivalasztottAlaplapNev("");setActionSelectedAlaplapCsatlakozo("");setActionMindenhezKellAdat(null)}}>Adatok feltöltése</button>
+                        <button type='button' className='buttons' id='delete_adatkezelogomb_csati' onClick={async(e)=>{await handleDelete(e);await fetchAdat();setActionKivalasztottAlaplapNev("");setActionSelectedAlaplapCsatlakozo("");setActionMindenhezKellAdat(null)}}>Adatok feltöltése</button>
                         <EgyediAlert/>
                     </form>
                    </div>
 
-                  <div>
+                  <div id='contentsCsati'>
                      <div className='adatok_delete'>Név: {actionKivalasztottAlaplapNev}</div>
                      {actionMindenhezKellAdat && actionMindenhezKellAdat.length > 0 ? (
                         <>
@@ -862,7 +863,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         <div className='adatok_delete'>Csatlakozó neve:</div>
                      )}
                   </div>
-                   <div id='buttons_content_patch'>
+                   <div id='buttons_content_csati'>
                         <div className='pagechangebutton'><button disabled className='select_buttons  buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Post");await fetchAdat();setActionKivalasztottAlaplapNev("");}}>Új csatlakozo hozzáadása</button></div>
                         <div className='pagechangebutton'><button className='select_buttons buttons' onClick={async(event)=>{NeFrissuljon(event); setActionButtons("Delete");await fetchAdat();setActionKivalasztottAlaplapNev("");} }>csatlakozo törlése</button></div>
                    </div>

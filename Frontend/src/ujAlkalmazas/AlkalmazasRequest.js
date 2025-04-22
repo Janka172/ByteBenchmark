@@ -217,7 +217,7 @@ export function RequstAlkalmazasPatch(fileUrl,categoria,alkNev,alkMeret){
     if(categoria==="")categoria=null;
     return new Promise((resolve, reject) => {
         var kepneve = String(fileUrl);
-        if(fileUrl==="")fileUrl=null;
+        if(fileUrl==="")kepneve=null;
         fetch(`https://localhost:44316/api/Applikacio/0?name=${alkNev}`, {
             method: "PATCH",
             headers: {

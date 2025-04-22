@@ -102,7 +102,6 @@ function UjAlk()
         maximumOprendszer: ""
     });
     const [actionAlkalmazasNev, setActionAlkalmazasNev]=useState("");
- 
     useEffect(()=>{
        if (actionKivalaszottRamNev.minimumRamNev)
        {
@@ -321,17 +320,15 @@ function UjAlk()
                             </div>
                             <p className='alkTitles'>Kép feltöltése:</p>
                             <div className='imageUpload'>
-                                <input type="file" className="elrejtes" onChange={handleFileChange}/>
-                                <span className="AlkFilename" id='alkImgLinkPost'>{fileName}</span>
+                                <input key={fileName} type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
+                                <span className="filename" id='post_img_link_alaplap'>{fileName}</span>
+                                <label htmlFor="imginput" className="imgbutton" id='post_img_alaplap'>📁 Fájl kiválasztása</label>
                             </div>
-                            <label htmlFor="imginput" className="AlkImgButton" id='alkImgPost'>📁 Fájl kiválasztása</label>
                         </form>
                     </div>
-                    <div>
-                    <button className='buttons' id='patch_datkezelogomb' type='button' onClick={async(e)=>{handleUploadAndPost(e);await fetchAdat();setFileName("Nincs fájl kiválasztva");setActionKivalasztottCategoria("");setActionKivalasztottNev({ minimumNev: "", maximumNev: "" });setActionSelectedVram({ minimumVram: "", maximumVram: "" });setActionKivalasztottAlaplapNev({ minimumAlapNev: "", maximumAlapNev: "" });setActionKivalasztottRamNev({ minimumRamNev: "", maximumRamNev: "" });setActionSelectedRamFrekvencia({ minimumFrekvencia: "", maximumFrekvencia: "" });setActionSelectedRamMeret({ minimumMeret: "", maximumMeret: "" });setActionKivalasztottProcesszorNev({ minimumProcesszorNev: "", maximumProcesszorNev: "" });setActionOprendszer({ minimumOprendszer: "", maximumOprendszer: "" });}}>Módosítások mentése</button> 
-                    <EgyediAlert/>                   
-                    </div>
                 </div>
+                    <button className='buttons' id='Alk_post' type='button' onClick={async(e)=>{handleUploadAndPost(e);await fetchAdat();setFileName("Nincs fájl kiválasztva");setActionKivalasztottCategoria("");setActionKivalasztottNev({ minimumNev: "", maximumNev: "" });setActionSelectedVram({ minimumVram: "", maximumVram: "" });setActionKivalasztottAlaplapNev({ minimumAlapNev: "", maximumAlapNev: "" });setActionKivalasztottRamNev({ minimumRamNev: "", maximumRamNev: "" });setActionSelectedRamFrekvencia({ minimumFrekvencia: "", maximumFrekvencia: "" });setActionSelectedRamMeret({ minimumMeret: "", maximumMeret: "" });setActionKivalasztottProcesszorNev({ minimumProcesszorNev: "", maximumProcesszorNev: "" });setActionOprendszer({ minimumOprendszer: "", maximumOprendszer: "" });}}>Adatok feltöltése</button> 
+                    <EgyediAlert/>
                     <div id='Also'>
                         <div id='minSetup'>
                             <h2>Minimum setup</h2>

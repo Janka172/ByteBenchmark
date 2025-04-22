@@ -35,7 +35,7 @@
     text-decoration: none;
     color: black;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: large;
     padding: 0.5em 1em;
     border-radius: 0.5em; 
   }
@@ -425,6 +425,73 @@ label
     text-align: center;
     font-size: medium;
   }
+
+  /*-----------ALAPLAP CSATLAKOZÓK------------------------*/
+  .post_titles_csati
+  {
+    width: max-content;
+    text-align: left;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 2%;
+    margin-right: 0vw; 
+    margin-bottom: 0vw;
+    padding:0vw;
+  }
+  .combi_csati
+  {
+    width: 300px;
+    margin-top: 1%;
+    font-size:small;
+    border-radius: 20px;
+    height: 6vw;
+    text-align: center;
+    text-align-last: center; 
+  }
+  #legordulos_option_csati
+  {
+      font-size: medium;
+      font-weight: bold;
+  }
+  #csati
+  {
+    text-align: left;
+    margin-left: 0;
+    height: 18vw;
+    appearance: none;
+    margin-top: 0.5vw;
+    border-radius: 5px;
+    width: 300px;
+  }
+  #post_adatkezelogomb_csati
+  {
+    width: 100%;
+    height: 5%;
+    padding-right: 1vw;
+    margin-left: 3%;
+    padding: 5%;
+    margin-right: 1%;
+    margin-top: 10%;
+    font-size: medium;
+    border-radius: 0% 30%;
+    background-color: rgba(194, 52, 52, 0.8);
+    color: black;
+  }
+  #post_form_csati
+  {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20%;
+    width: 280px;
+  }
+
+  #buttons_content_csati
+  {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20%;
+    margin-top: 5%;
+  }
   }
   
   /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -678,6 +745,72 @@ label
     text-align: center;
     font-size: medium;
   }
+    /*-----------ALAPLAP CSATLAKOZÓK------------------------*/
+    .post_titles_csati
+    {
+      width: max-content;
+      text-align: left;
+      font-size: large;
+      font-weight: bold;
+      margin-top: 2%;
+      margin-right: 0vw; 
+      margin-bottom: 0vw;
+      padding:0vw;
+    }
+    .combi_csati
+    {
+      width: 300px;
+      margin-top: 1%;
+      font-size:small;
+      border-radius: 20px;
+      height: 6vw;
+      text-align: center;
+      text-align-last: center; 
+    }
+    #legordulos_option_csati
+    {
+        font-size: medium;
+        font-weight: bold;
+    }
+    #csati
+    {
+      text-align: left;
+      margin-left: 0;
+      height: 15vw;
+      appearance: none;
+      margin-top: 0.5vw;
+      border-radius: 5px;
+      width: 300px;
+    }
+    #post_adatkezelogomb_csati
+    {
+      width: 100%;
+      height: 5%;
+      padding-right: 1vw;
+      margin-left: 3%;
+      padding: 5%;
+      margin-right: 1%;
+      margin-top: 10%;
+      font-size: medium;
+      border-radius: 0% 30%;
+      background-color: rgba(194, 52, 52, 0.8);
+      color: black;
+    }
+    #post_form_csati
+    {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10%;
+      width: 280px;
+    }
+  
+    #buttons_content_csati
+    {
+      display: flex;
+      flex-direction: row;
+      margin-left: 28%;
+      margin-top: 5%;
+    }
   }
   
   /* Medium devices (landscape tablets, 768px and up) */
@@ -934,6 +1067,74 @@ label
     margin-top: 3%;
     padding: 0;
     float: right;
+  }
+
+  /*-----------ALAPLAP CSATLAKOZÓK------------------------*/
+  .post_titles_csati
+  {
+    width: max-content;
+    text-align: left;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 2%;
+    margin-right: 0vw; 
+    margin-bottom: 0vw;
+    padding:0vw;
+  }
+  .combi_csati
+  {
+    width: 300px;
+    margin-top: 1%;
+    font-size: large;
+    border-radius: 20px;
+    height: 6vw;
+    text-align: center;
+    text-align-last: center; 
+  }
+  #legordulos_option_csati
+  {
+      font-size: medium;
+      font-weight: bold;
+  }
+  #csati
+  {
+    text-align: left;
+    margin-left: 0;
+    height: 12vw;
+    appearance: none;
+    margin-top: 0.5vw;
+    border-radius: 5px;
+    width: 300px;
+  }
+  #post_adatkezelogomb_csati
+  {
+    width: 100%;
+    height: 5%;
+    padding-right: 1vw;
+    margin-left: 3%;
+    padding: 5%;
+    margin-right: 1%;
+    margin-top: 1vw;
+    font-size: medium;
+    border-radius: 0% 30%;
+    background-color: rgba(194, 52, 52, 0.8);
+    color: black;
+  }
+  #post_form_csati
+  {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60%;
+    width: 280px;
+  }
+
+  #buttons_content_csati
+  {
+    display: flex;
+    flex-direction: column;
+    float: left;
+    margin-left: 20%;
+    margin-top: 20%;
   }
   } 
   
@@ -1192,6 +1393,74 @@ label
     float: right;
   }
     
+  /*-----------ALAPLAP CSATLAKOZÓK------------------------*/
+  .post_titles_csati
+  {
+    width: max-content;
+    text-align: left;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 2%;
+    margin-right: 0vw; 
+    margin-bottom: 0vw;
+    padding:0vw;
+  }
+  .combi_csati
+  {
+    width: 300px;
+    margin-top: 1%;
+    font-size: large;
+    border-radius: 20px;
+    height: 6vw;
+    text-align: center;
+    text-align-last: center; 
+  }
+  #legordulos_option_csati
+  {
+      font-size: medium;
+      font-weight: bold;
+  }
+  #csati
+  {
+    text-align: left;
+    margin-left: 0;
+    height: 8vw;
+    appearance: none;
+    margin-top: 0.5vw;
+    border-radius: 5px;
+    width: 300px;
+  }
+  #post_adatkezelogomb_csati
+  {
+    width: 100%;
+    height: 5%;
+    padding-right: 1vw;
+    padding: 5%;
+    margin-left: 4%;
+    margin-right: 1%;
+    margin-top: 5%;
+    font-size: medium;
+    border-radius: 0% 30%;
+    background-color: rgba(194, 52, 52, 0.8);
+    color: black;
+  }
+
+  #post_form_csati
+  {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30%;
+    width: 280px;
+  }
+  #buttons_content_csati
+  {
+    display: flex;
+    flex-direction: column;
+    float: left;
+    margin-left: 20%;
+    margin-top: 10%;
+
+  }
   } 
   
   /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -1289,7 +1558,6 @@ label
     margin-right: 0vw; 
     margin-bottom: 0vw;
     padding:0vw;
-  
   }
   
     /*------------------------KÉPFELTÖLTÉS-------------------------------*/
@@ -1340,6 +1608,7 @@ label
     height: 1.8vw;
     padding-right: 0vw;
     margin-left: 20%;
+    margin-top: 0vw;
     border: 1px black solid;
   }
   
@@ -1428,14 +1697,21 @@ label
     padding-right: 0vw;
     border: 1px black solid;
     margin-left: 0px;
+    margin-top: 0vw;
   }
   #post_adatkezelogomb_alaplap
   {
-      width: 200px;
+      width: 100%;
       height: 5%;
-      padding: 3%;
       padding-right: 1vw;
       margin-left: 0%;
+      padding: 5%;
+      margin-right: 1%;
+      margin-top: 1vw;
+      font-size: medium;
+      border-radius: 0% 30%;
+      background-color: rgba(194, 52, 52, 0.8);
+      color: black;
   }
   
   #buttons_content_post_alaplap
@@ -1448,6 +1724,71 @@ label
     padding: 0;
     float: right;
   }
+/*-----------ALAPLAP CSATLAKOZÓK------------------------*/
+  .post_titles_csati
+  {
+    width: max-content;
+    text-align: left;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 2%;
+    margin-right: 0vw; 
+    margin-bottom: 0vw;
+    padding:0vw;
   }
-  
+  .combi_csati
+  {
+    width: 300px;
+    margin-top: 1%;
+    font-size: large;
+    border-radius: 20px;
+    height: 4vw;
+    text-align: center;
+    text-align-last: center; 
+  }
+  #legordulos_option_csati
+  {
+      font-size: medium;
+      font-weight: bold;
+  }
+  #csati
+  {
+    text-align: left;
+    margin-left: 0;
+    height: 7.5vw;
+    appearance: none;
+    margin-top: 0.5vw;
+    border-radius: 5px;
+    width: 300px;
+  }
 
+  #post_adatkezelogomb_csati
+  {
+    width: 100%;
+    height: 5%;
+    padding-right: 1vw;
+    margin-left: 4%;
+    padding: 5%;
+    margin-right: 1%;
+    margin-top: 1vw;
+    font-size: medium;
+    border-radius: 0% 30%;
+    background-color: rgba(194, 52, 52, 0.8);
+    color: black;
+  }
+  #post_form_csati
+  {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40%;
+    width: 280px;
+  }
+  #buttons_content_csati
+  {
+    display: flex;
+    flex-direction: column;
+    float: left;
+    margin-left: 20%;
+
+  }
+}
