@@ -469,15 +469,13 @@ function UjAlk()
             {actionButtons==="Patch" ? <div id='Alk_post_torzs'>
                 <div id='Felso'>
                     <div className='inputs'>
-                    <p className='patch_titles'>Alkalmazás neve:</p>
+                        <p className='patch_titles'>Alkalmazás neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(v)=>setActionAlkalmazasNev(v.target.value)} value={actionAlkalmazasNev}>
                                     <option id="legordulosOptionMin" value="">Válassz egyet</option>
                                     {[...new Set(mindenAdat['alkalmazasok'].map(i=>i.Nev))].map((nev)=>(<option id="legordulosOptionMin" key={nev} value={nev}>{nev}</option>))}
                                 </select>
                             </div>
-                    </div>
-                    <div className='inputs'>
                         <form id='inputs_post'>
                             <p className='alkTitles'>Alkalmazás mérete:</p><input type="number" id="alkSizePost" className='inputStyle'/>
                         </form> 
