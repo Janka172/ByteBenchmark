@@ -77,7 +77,7 @@ function AppReszlet() {
                     </div>
                 </div>
                 <div className='jobOSzlop'>
-                    <img src={kepUrl} className='nagyKep'></img>
+                    <img src={kepUrl} className='nagyKep' onError={() => { setKepUrl(`/IMAGE/logo.${appAdat.KepeleresiUtja}`); }}></img>
                 </div>
             </div>
             
