@@ -49,7 +49,8 @@ namespace webapiproj.Controllers
         public IHttpActionResult Get(int id, string name)
         {
             IEnumerable<AlaplapCsatlakozModel> result = null;
-            result = ctx.Alaplap_Csatlakozok.Include(x => x.Csatlakozo).Include(x => x.Alaplap).Where(x => x.Alaplap.Nev == name).Select(x => new AlaplapCsatlakozModel
+            result = ctx.Alaplap_Csatlakozok.Include(x => x.Csatlakozo).Include(x => x.Alaplap).Where(x => x.Alaplap.Nev == name)
+                .Select(x => new AlaplapCsatlakozModel
             {
                 AlaplapNev = x.Alaplap.Nev,
                 CsatlakozoNev = x.Csatlakozo.Nev
@@ -68,7 +69,6 @@ namespace webapiproj.Controllers
             
             try
             {
-
                 foreach (var item in value.Csatlakozok)
                 {
                     A.Add(ctx.Csatlakozok.Where(x => x.Nev == item).Select(x => x.Id).FirstOrDefault());
@@ -104,7 +104,6 @@ namespace webapiproj.Controllers
         {
             try
             {
-
                 var AlaplapId = ctx.Alaplapok.Where(x => x.Nev == AlaplapNeve).Select(x => x.Id).FirstOrDefault();
 
                 if (AlaplapId == 0) return Content(HttpStatusCode.NotFound, "Nem található ilyen alaplap");
@@ -124,7 +123,6 @@ namespace webapiproj.Controllers
             }
             catch (Exception ex)
             {
-
                 return InternalServerError(ex);
             }
         }
