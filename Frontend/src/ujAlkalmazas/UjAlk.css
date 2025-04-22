@@ -1,317 +1,750 @@
 
 
-@media screen and (max-width: 600px) {}
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media screen and (min-width: 600px) {}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media screen and (min-width: 768px) 
-{
+@media screen and (max-width: 600px) {
     #Alk_post_torzs
     {
-        background-color: fuchsia;
         display: flex;
         flex-direction: column;
         margin-bottom: 5%;
     }
-    
 /*---------------------------------Felső rész---------------------------------------*/
-    #Felso
-    {
-        display: flex;
-        flex-direction: row;
-        margin:auto;
-        margin-bottom: 2%;
-    }
-    .alkTitles
-    {
-        font-size: medium;
-        margin-bottom: 0.3vw;
-        float: left;
-        font-weight: bold;
-    }
-    #inputs
-    {
-        display: flex;
-        flex-direction: row;
-    }
-    .inputStyle
-    {
-        width: 80%;
-        font-size: 1.3vw;
-        height: 2vw;
-    }
-    #inputs_post
-    {
-        width: 300px;
-    }
-    #comboImage
-    {
-        display: flex;
-        flex-direction: column;
-        margin-left :30%;
-        width: 300px;
+#Felso
+{
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    margin-bottom: 2%;
+}
+.alkTitles
+{
+    font-size: medium;
+    margin-bottom: 0.3vw;
+    float: left;
+    font-weight: bold;
+}
+#inputs
+{
+    display: flex;
+    flex-direction: row;
+}
+.inputStyle
+{
+    width: 100%;
+    font-size: 2vw;
+    height: 4vw;
+}
+#inputs_post
+{
+    width: 250px;
+}
+#comboImage
+{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
 
-    }
-    #comboboxCategory
-    {
-        border-radius: 20px;
-        height: 2vw;
-        width: 80%;
-        text-align: center;
-        text-align-last: center;
-        font-size: medium; 
-    }
-    .elrejtes {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        opacity: 0;
-        overflow: hidden;
-    }
-    .AlkImgButton
-    {
-        padding: 0.5vw 1vw;
-        margin-top: 1vw;
-        margin-bottom: 0.3vw;
-        border-radius: 0% 30%;
-        border: 1px black solid;
-        background-color: rgba(194, 52, 52, 0.8);
-        color: black;
-        word-break: normal;
-        width: max-content;
-        font-size: medium;
-        height: 1.8vw;
-    }
-    
-    .AlkFilename
-    {
-        background-color: rgba(255, 255, 255, 0.1);
-        margin-right: 1%;
-        margin-bottom: 0.3vw;
-        padding-left: 1vw;
-        padding-top: 0.5vw;
-        padding-bottom: 0;
-        border-radius: 1vw 0vw;
-        border:1px black solid;
-        font-size: medium;
-        height: 1.5vw;
-        width: 80%;
-    }
-    .imageUpload
-    {
-        display: flex;
-        flex-direction: row;
-    }
+}
+#comboboxCategory
+{
+    border-radius: 20px;
+    height: 5vw;
+    width: 100%;
+    text-align: center;
+    text-align-last: center;
+    font-size: medium; 
+}
+.elrejtes {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+}
+.AlkImgButton
+{
+    padding: 2vw 2vw 4vw 3vw;
+    margin-top: 1vw;
+    border-radius: 0% 30%;
+    border: 1px black solid;
+    background-color: rgba(194, 52, 52, 0.8);
+    color: black;
+    word-break: normal;
+    width: max-content;
+    font-size: medium;
+    height: 1.8vw;
+}
+
+.AlkFilename
+{
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-right: 1%;
+    margin-bottom: 0.3vw;
+    padding-left: 1vw;
+    padding-top: 1vw;
+    padding-bottom: 2.5vw;
+    border-radius: 1vw 0vw;
+    border:1px black solid;
+    font-size: medium;
+    height: 1.5vw;
+    width: 100%;
+}
+.imageUpload
+{
+    display: flex;
+    flex-direction: row;
+}
+#Alk_post
+{
+    width: 40%;
+    padding:2% 1% 2% 1%;
+    margin-bottom: 10px;
+    font-size: medium;
+}
+#upload_button
+{
+    width: 100%;
+    align-items: center;
+    padding-left: 30%;
+    border-bottom: 15px solid transparent;
+    border-image: url(border.png) 30 round;
+}
 /*---------------------------------Alsó rész---------------------------------------*/
-    #Also
-    {
-        display: flex;
-        flex-direction: row;
-    }
+#Also
+{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
 
-    #minSetup
+#minSetup
+{
+    display: flex;
+    flex-direction: column;
+    padding-left: 3%;
+    width: 100%;
+    border-bottom: 15px solid transparent;
+    border-image: url(border.png) 30 round;
+}
+#maxSetup
+{
+    display: flex;
+    flex-direction: column;
+    padding-left: 3%;
+    width: 100%;
+}
+.combi_min
+{
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+    height: 5vw;
+    width: 90%;
+    text-align: center;
+    text-align-last: center; 
+    font-size: medium;
+}
+ #legordulosOptionMin
+ {
+    font-size: medium;
+    font-weight: bold;
+ }
+.combi_max
+{
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+    height: 5vw;
+    width: 90%;
+    text-align: center;
+    text-align-last: center;
+    font-size: medium; 
+}
+#legordulosOptionMax
+ {
+    font-size: medium;
+    font-weight: bold;
+ }
+h2
+{
+    font-size:25px;
+    margin-left: 30%;
+    margin-top:5%;
+    margin-bottom: 0%;
+    font-weight: bold;
+}
+.comboboxes
+{   display: flex;
+    flex-direction: row;
+}
+.patch_titles_setup
+{
+    font-size: 20px;
+    margin-bottom: 1%;
+    font-weight: bold;
+    float: left;
+}
+#alja
+{
+    margin-bottom: 3%;
+}
+
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media screen and (min-width: 600px) {
+    #Alk_post_torzs
     {
         display: flex;
         flex-direction: column;
-        padding-left: 15%;
-        width: 50%;
+        margin-bottom: 5%;
     }
-    #maxSetup
+/*---------------------------------Felső rész---------------------------------------*/
+#Felso
+{
+    display: flex;
+    flex-direction: row;
+    margin:auto;
+    margin-bottom: 2%;
+}
+.alkTitles
+{
+    font-size: medium;
+    margin-bottom: 0.3vw;
+    float: left;
+    font-weight: bold;
+}
+#inputs
+{
+    display: flex;
+    flex-direction: row;
+}
+.inputStyle
+{
+    width: 80%;
+    font-size: 2vw;
+    height: 3vw;
+}
+#inputs_post
+{
+    width: 250px;
+}
+#comboImage
+{
+    display: flex;
+    flex-direction: column;
+    margin-left :30%;
+    width: 250px;
+
+}
+#comboboxCategory
+{
+    border-radius: 20px;
+    height: 3vw;
+    width: 80%;
+    text-align: center;
+    text-align-last: center;
+    font-size: medium; 
+}
+.elrejtes {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+}
+.AlkImgButton
+{
+    padding: 0.5vw 1.5vw 1.5vw 1.5vw;
+    margin-top: 1vw;
+    border-radius: 0% 30%;
+    border: 1px black solid;
+    background-color: rgba(194, 52, 52, 0.8);
+    color: black;
+    word-break: normal;
+    width: max-content;
+    font-size: medium;
+    height: 1.8vw;
+}
+
+.AlkFilename
+{
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-right: 1%;
+    margin-bottom: 0.3vw;
+    padding-left: 1vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    border-radius: 1vw 0vw;
+    border:1px black solid;
+    font-size: medium;
+    height: 1.5vw;
+    width: 75%;
+}
+.imageUpload
+{
+    display: flex;
+    flex-direction: row;
+}
+#Alk_post
+{
+    width: 30%;
+    padding:1% 0.5% 1% 0.5%;
+    margin-bottom: 10px;
+    font-size: medium;
+}
+#upload_button
+{
+    width: 100%;
+    align-items: center;
+    padding-left: 35%;
+    border-bottom: 15px solid transparent;
+    border-image: url(border.png) 30 round;
+}
+/*---------------------------------Alsó rész---------------------------------------*/
+#Also
+{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+}
+
+#minSetup
+{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+    width: 40%;
+}
+#maxSetup
+{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+    width: 40%;
+}
+.combi_min
+{
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+    height: 3vw;
+    width: 100%;
+    text-align: center;
+    text-align-last: center; 
+    font-size: medium;
+}
+ #legordulosOptionMin
+ {
+    font-size: medium;
+    font-weight: bold;
+ }
+.combi_max
+{
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+    height: 3vw;
+    width: 100%;
+    text-align: center;
+    text-align-last: center;
+    font-size: medium; 
+}
+#legordulosOptionMax
+ {
+    font-size: medium;
+    font-weight: bold;
+ }
+h2
+{
+    font-size:30px;
+    margin: auto;
+    font-weight: bold;
+}
+.comboboxes
+{   display: flex;
+    flex-direction: row;
+}
+.patch_titles_setup
+{
+    font-size: 20px;
+    margin-bottom: 1%;
+    font-weight: bold;
+    float: left;
+}
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media screen and (min-width: 768px) {
+    #Alk_post_torzs
     {
         display: flex;
         flex-direction: column;
-        padding-left: 10%;
-        width: 50%;
+        margin-bottom: 5%;
     }
-    .combi_min
-    {
-        border-radius: 20px;
-        height: 2vw;
-        width: 50%;
-        text-align: center;
-        text-align-last: center; 
-        font-size: medium;
-    }
-     #legordulosOptionMin
-     {
-        font-size: medium;
-        font-weight: bold;
-     }
-    .combi_max
-    {
-        border-radius: 20px;
-        height: 2vw;
-        width: 50%;
-        text-align: center;
-        text-align-last: center;
-        font-size: medium; 
-    }
-    #legordulosOptionMax
-     {
-        font-size: medium;
-        font-weight: bold;
-     }
+/*---------------------------------Felső rész---------------------------------------*/
+#Felso
+{
+    display: flex;
+    flex-direction: row;
+    margin:auto;
+    margin-bottom: 2%;
+}
+.alkTitles
+{
+    font-size: medium;
+    margin-bottom: 0.3vw;
+    float: left;
+    font-weight: bold;
+}
+#inputs
+{
+    display: flex;
+    flex-direction: row;
+}
+.inputStyle
+{
+    width: 80%;
+    font-size: 2vw;
+    height: 3vw;
+}
+#inputs_post
+{
+    width: 250px;
+}
+#comboImage
+{
+    display: flex;
+    flex-direction: column;
+    margin-left :30%;
+    width: 250px;
+
+}
+#comboboxCategory
+{
+    border-radius: 20px;
+    height: 3vw;
+    width: 80%;
+    text-align: center;
+    text-align-last: center;
+    font-size: medium; 
+}
+.elrejtes {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+}
+.AlkImgButton
+{
+    padding: 0.5vw 1.5vw 1.5vw 1.5vw;
+    margin-top: 1vw;
+    border-radius: 0% 30%;
+    border: 1px black solid;
+    background-color: rgba(194, 52, 52, 0.8);
+    color: black;
+    word-break: normal;
+    width: max-content;
+    font-size: medium;
+    height: 1.8vw;
+}
+
+.AlkFilename
+{
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-right: 1%;
+    margin-bottom: 0.3vw;
+    padding-left: 1vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    border-radius: 1vw 0vw;
+    border:1px black solid;
+    font-size: medium;
+    height: 1.5vw;
+    width: 75%;
+}
+.imageUpload
+{
+    display: flex;
+    flex-direction: row;
+}
+#Alk_post
+{
+    width: 30%;
+    padding:1% 0.5% 1% 0.5%;
+    margin-bottom: 10px;
+}
+#upload_button
+{
+    width: 100%;
+    align-items: center;
+    padding-left: 35%;
+    border-bottom: 15px solid transparent;
+    border-image: url(border.png) 30 round;
+}
+/*---------------------------------Alsó rész---------------------------------------*/
+#Also
+{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+}
+
+#minSetup
+{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+    width: 40%;
+}
+#maxSetup
+{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+    width: 40%;
+}
+.combi_min
+{
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+    height: 3vw;
+    width: 80%;
+    text-align: center;
+    text-align-last: center; 
+    font-size: medium;
+}
+ #legordulosOptionMin
+ {
+    font-size: medium;
+    font-weight: bold;
+ }
+.combi_max
+{
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+    height: 3vw;
+    width: 80%;
+    text-align: center;
+    text-align-last: center;
+    font-size: medium; 
+}
+#legordulosOptionMax
+ {
+    font-size: medium;
+    font-weight: bold;
+ }
+h2
+{
+    font-size:30px;
+    margin: auto;
+    font-weight: bold;
+}
+.comboboxes
+{   display: flex;
+    flex-direction: row;
+}
+.patch_titles_setup
+{
+    font-size: 20px;
+    margin-left: 25%;
+    margin-bottom: 1%;
+    font-weight: bold;
+    float: left;
+}
     
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media screen and (min-width: 992px) 
-{
+@media screen and (min-width: 992px) {
     #Alk_post_torzs
     {
-        background-color: yellowgreen;
         display: flex;
         flex-direction: column;
         margin-bottom: 5%;
     }
     
 /*---------------------------------Felső rész---------------------------------------*/
-    #Felso
-    {
-        display: flex;
-        flex-direction: row;
-        margin:auto;
-        margin-bottom: 2%;
-    }
-    .alkTitles
-    {
-        font-size: medium;
-        margin-bottom: 0.3vw;
-        float: left;
-        font-weight: bold;
-    }
-    #inputs
-    {
-        display: flex;
-        flex-direction: row;
-    }
-    .inputStyle
-    {
-        width: 80%;
-        font-size: 1.3vw;
-        height: 2vw;
-    }
-    #inputs_post
-    {
-        width: 300px;
-    }
-    #comboImage
-    {
-        display: flex;
-        flex-direction: column;
-        margin-left :30%;
-        width: 300px;
+#Felso
+{
+    display: flex;
+    flex-direction: row;
+    margin:auto;
+    margin-bottom: 2%;
+}
+.alkTitles
+{
+    font-size: large;
+    margin-bottom: 0.3vw;
+    float: left;
+    font-weight: bold;
+}
+#inputs
+{
+    display: flex;
+    flex-direction: row;
+}
+.inputStyle
+{
+    width: 100%;
+    font-size: 1.5vw;
+    height: 2vw;
+}
+#inputs_post
+{
+    width: 300px;
+}
+#comboImage
+{
+    display: flex;
+    flex-direction: column;
+    margin-left :30%;
+    width: 300px;
 
-    }
-    #comboboxCategory
-    {
-        border-radius: 20px;
-        height: 2vw;
-        width: 80%;
-        text-align: center;
-        text-align-last: center;
-        font-size: medium; 
-    }
-    .elrejtes {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        opacity: 0;
-        overflow: hidden;
-    }
-    .AlkImgButton
-    {
-        padding: 0.5vw 1vw;
-        margin-top: 1vw;
-        margin-bottom: 0.3vw;
-        border-radius: 0% 30%;
-        border: 1px black solid;
-        background-color: rgba(194, 52, 52, 0.8);
-        color: black;
-        word-break: normal;
-        width: max-content;
-        font-size: medium;
-        height: 1.8vw;
-    }
-    
-    .AlkFilename
-    {
-        background-color: rgba(255, 255, 255, 0.1);
-        margin-right: 1%;
-        margin-bottom: 0.3vw;
-        padding-left: 1vw;
-        padding-top: 0.5vw;
-        padding-bottom: 0;
-        border-radius: 1vw 0vw;
-        border:1px black solid;
-        font-size: medium;
-        height: 1.5vw;
-        width: 80%;
-    }
-    .imageUpload
-    {
-        display: flex;
-        flex-direction: row;
-    }
+}
+#comboboxCategory
+{
+    border-radius: 20px;
+    height: 2vw;
+    width: 100%;
+    text-align: center;
+    text-align-last: center;
+    font-size: medium; 
+}
+.elrejtes {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+}
+.AlkImgButton
+{
+    padding: 0.5vw 1vw;
+    margin-top: 1vw;
+    border-radius: 0% 30%;
+    border: 1px black solid;
+    background-color: rgba(194, 52, 52, 0.8);
+    color: black;
+    word-break: normal;
+    width: max-content;
+    font-size: medium;
+    height: 1.8vw;
+}
+
+.AlkFilename
+{
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-right: 1%;
+    margin-bottom: 0.3vw;
+    padding-left: 1vw;
+    padding-top: 0.5vw;
+    padding-bottom: 0;
+    border-radius: 1vw 0vw;
+    border:1px black solid;
+    font-size: medium;
+    height: 1.5vw;
+    width: 100%;
+}
+.imageUpload
+{
+    display: flex;
+    flex-direction: row;
+}
+#Alk_post
+{
+    width: 20%;
+    padding:1% 0.5% 1% 0.5%;
+    margin-bottom: 10px;
+}
+#upload_button
+{
+    width: 100%;
+    align-items: center;
+    padding-left: 40%;
+    border-bottom: 10px solid transparent;
+    border-image: url(border.png) 30 round;
+}
 /*---------------------------------Alsó rész---------------------------------------*/
-    #Also
-    {
-        display: flex;
-        flex-direction: row;
-    }
+#Also
+{
+    display: flex;
+    flex-direction: row;
+}
 
-    #minSetup
-    {
-        display: flex;
-        flex-direction: column;
-        padding-left: 15%;
-        width: 50%;
-    }
-    #maxSetup
-    {
-        display: flex;
-        flex-direction: column;
-        padding-left: 10%;
-        width: 50%;
-    }
-    .combi_min
-    {
-        border-radius: 20px;
-        height: 2vw;
-        width: 50%;
-        text-align: center;
-        text-align-last: center; 
-        font-size: medium;
-    }
-     #legordulosOptionMin
-     {
-        font-size: medium;
-        font-weight: bold;
-     }
-    .combi_max
-    {
-        border-radius: 20px;
-        height: 2vw;
-        width: 50%;
-        text-align: center;
-        text-align-last: center;
-        font-size: medium; 
-    }
-    #legordulosOptionMax
-     {
-        font-size: medium;
-        font-weight: bold;
-     }
-    
+#minSetup
+{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+    width: 40%;
+}
+#maxSetup
+{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+    width: 40%;
+}
+.combi_min
+{
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+    height: 3vw;
+    width: 60%;
+    text-align: center;
+    text-align-last: center; 
+    font-size: medium;
+}
+ #legordulosOptionMin
+ {
+    font-size: medium;
+    font-weight: bold;
+ }
+.combi_max
+{
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+    height: 3vw;
+    width: 60%;
+    text-align: center;
+    text-align-last: center;
+    font-size: medium; 
+}
+#legordulosOptionMax
+ {
+    font-size: medium;
+    font-weight: bold;
+ }
+h2
+{
+    font-size:30px;
+    margin: auto;
+    font-weight: bold;
+}
+.comboboxes
+{   display: flex;
+    flex-direction: row;
+}
+.patch_titles_setup
+{
+    font-size: 20px;
+    margin-left: 25%;
+    margin-bottom: 1%;
+    font-weight: bold;
+    float: left;
+}
+
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media screen and (min-width: 1200px) 
-{
+@media screen and (min-width: 1200px) {
     #Alk_post_torzs
     {
-        background-color: royalblue;
         display: flex;
         flex-direction: column;
         margin-bottom: 5%;
@@ -327,8 +760,7 @@
     }
     .alkTitles
     {
-        font-size: medium;
-
+        font-size: large;
         margin-bottom: 0.3vw;
         float: left;
         font-weight: bold;
@@ -376,7 +808,6 @@
     {
         padding: 0.5vw 1vw;
         margin-top: 1vw;
-        margin-bottom: 0.3vw;
         border-radius: 0% 30%;
         border: 1px black solid;
         background-color: rgba(194, 52, 52, 0.8);
@@ -406,6 +837,20 @@
         display: flex;
         flex-direction: row;
     }
+    #Alk_post
+    {
+        width: 20%;
+        padding:1% 0.5% 1% 0.5%;
+        margin-bottom: 10px;
+    }
+    #upload_button
+    {
+        width: 100%;
+        align-items: center;
+        padding-left: 40%;
+        border-bottom: 10px solid transparent;
+        border-image: url(border.png) 30 round;
+    }
 /*---------------------------------Alsó rész---------------------------------------*/
     #Also
     {
@@ -429,6 +874,8 @@
     }
     .combi_min
     {
+        display: block;
+        margin: 0 auto;
         border-radius: 20px;
         height: 2vw;
         width: 50%;
@@ -443,6 +890,8 @@
      }
     .combi_max
     {
+        display: block;
+        margin: 0 auto;
         border-radius: 20px;
         height: 2vw;
         width: 50%;
@@ -455,5 +904,23 @@
         font-size: medium;
         font-weight: bold;
      }
+    h2
+    {
+        font-size:30px;
+        margin: auto;
+        font-weight: bold;
+    }
+    .comboboxes
+    {   display: flex;
+        flex-direction: row;
+    }
+    .patch_titles_setup
+    {
+        font-size: 20px;
+        margin-left: 25%;
+        margin-bottom: 1%;
+        font-weight: bold;
+        float: left;
+    }
     
 }
