@@ -279,17 +279,15 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
    useEffect(() => {
       const handleResize = () => {
-        //console.log("Window resized:", window.innerWidth, window.innerHeight);
         setKicsie(window.innerWidth <= 600);
         if(window.innerWidth <= 600){
-         console.log('kicsi')
          close();
         }
         else {
-         console.log('nagy')
          open();
         }
       };
+      handleResize();
       window.addEventListener("resize", handleResize);
     }, []);
 
