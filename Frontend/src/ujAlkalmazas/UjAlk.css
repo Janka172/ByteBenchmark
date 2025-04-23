@@ -172,7 +172,7 @@
     font-size: medium;
     font-weight: bold;
  }
-h2
+ .title
 {
     font-size:25px;
     margin-left: 30%;
@@ -368,7 +368,7 @@ h2
     font-size: medium;
     font-weight: bold;
  }
-h2
+ .title
 {
     font-size:30px;
     margin: auto;
@@ -559,7 +559,7 @@ h2
     font-size: medium;
     font-weight: bold;
  }
-h2
+ .title
 {
     font-size:30px;
     margin: auto;
@@ -751,7 +751,7 @@ h2
     font-size: medium;
     font-weight: bold;
  }
-h2
+ .title
 {
     font-size:30px;
     margin: auto;
@@ -944,7 +944,7 @@ h2
         font-size: medium;
         font-weight: bold;
      }
-    h2
+     .title
     {
         font-size:30px;
         margin: auto;
