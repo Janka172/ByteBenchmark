@@ -50,7 +50,8 @@
   height: 1.8vw;
   padding-right: 0vw;
   margin-left: 0px;
-  margin-top: 1.5vw;
+  margin-top: 0;
+
 }
 #patch_form
 {
@@ -150,6 +151,7 @@
     width: 100%;
     font-size: medium;
     height: 10%;
+    margin-top: 0;
   }
   /*-------------------------KILISTÁZOTT ADATOK CSS RÉSZE------------------------*/
   #contents_patch
@@ -183,6 +185,7 @@
     width: 100%;
     font-size: medium;
     height: 10%;
+    margin-top: 0;
   }
   
     #patch_datkezelogomb
@@ -201,7 +204,7 @@
   }
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) 
+@media screen and (min-width: 600px) 
 {
   #patch_form
     {
@@ -266,6 +269,7 @@
       width: 100%;
       font-size: medium;
       height: 10%;
+      margin-top: 0;
     }
   
     #patch_datkezelogomb
@@ -300,7 +304,7 @@
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) 
+@media screen and (min-width: 768px) 
 {
 
 #legordulos_option
@@ -355,7 +359,7 @@
   height: 1.8vw;
   padding-right: 0vw;
   margin-left: 0px;
-  margin-top: 1.5vw;
+  margin-top: 0;
 }
 #patch_form
 {
@@ -447,7 +451,8 @@
   height: 1.8vw;
   padding-right: 0vw;
   margin-left: 0px;
-  margin-top: 1.5vw;
+  margin-top: 0;
+
 }
 #patch_form
 {
@@ -488,7 +493,7 @@ padding-left: 5%;
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) 
+@media screen and (min-width: 1200px) 
 {
   #legordulos_option
 {
@@ -530,8 +535,9 @@ padding-left: 5%;
   font-size: large;
   height: 1.8vw;
   padding-right: 1vw;
-  padding-top: 1vw;
-  margin-bottom: 1.5vw;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  margin-bottom: 1vw;
   border: 1px solid black;
 }
 #patch_img_link
@@ -541,7 +547,7 @@ padding-left: 5%;
   height: 1.8vw;
   padding-right: 0vw;
   margin-left: 0px;
-  margin-top: 1.5vw;
+  margin-top: 0;
 }
 #patch_form
 {

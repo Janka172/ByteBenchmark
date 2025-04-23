@@ -677,7 +677,7 @@
         width: 100%;
         text-align: left;
         padding:0vw;
-        font-size: 1.5vw;
+        font-size: 1vw;
         font-weight: bold;
 
     }
@@ -713,7 +713,7 @@
     
       .combi_delete
       {
-        width: 100%;
+        width: 120%;
         margin-top: 1%;
         font-size: medium;
         border-radius: 20px;
