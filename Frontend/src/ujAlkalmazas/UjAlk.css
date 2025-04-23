@@ -15,12 +15,20 @@
     margin:auto;
     margin-bottom: 2%;
 }
-.alkTitles
+.alkTitlesFelso
 {
-    font-size: medium;
+    font-size: large;
     margin-bottom: 0.3vw;
     float: left;
     font-weight: bold;
+}
+
+.alkTitles
+{
+    font-size: large;
+    margin-bottom: 0.3vw;
+    font-weight: bold;
+    margin-left: 5%;
 }
 #inputs
 {
@@ -93,7 +101,7 @@
     display: flex;
     flex-direction: row;
 }
-#Alk_post
+#AlkButton
 {
     width: 40%;
     padding:2% 1% 2% 1%;
@@ -205,11 +213,18 @@ h2
     margin:auto;
     margin-bottom: 2%;
 }
-.alkTitles
+.alkTitlesFelso
 {
-    font-size: medium;
+    font-size: large;
     margin-bottom: 0.3vw;
     float: left;
+    font-weight: bold;
+}
+
+.alkTitles
+{
+    font-size: large;
+    margin-bottom: 0.3vw;
     font-weight: bold;
 }
 #inputs
@@ -284,7 +299,7 @@ h2
     display: flex;
     flex-direction: row;
 }
-#Alk_post
+#AlkButton
 {
     width: 30%;
     padding:1% 0.5% 1% 0.5%;
@@ -389,12 +404,20 @@ h2
     margin:auto;
     margin-bottom: 2%;
 }
-.alkTitles
+.alkTitlesFelso
 {
-    font-size: medium;
+    font-size: large;
     margin-bottom: 0.3vw;
     float: left;
     font-weight: bold;
+}
+
+.alkTitles
+{
+    font-size: large;
+    margin-bottom: 0.3vw;
+    font-weight: bold;
+    margin-left: 12%;
 }
 #inputs
 {
@@ -468,7 +491,7 @@ h2
     display: flex;
     flex-direction: row;
 }
-#Alk_post
+#AlkButton
 {
     width: 30%;
     padding:1% 0.5% 1% 0.5%;
@@ -574,12 +597,20 @@ h2
     margin:auto;
     margin-bottom: 2%;
 }
-.alkTitles
+.alkTitlesFelso
 {
     font-size: large;
     margin-bottom: 0.3vw;
     float: left;
     font-weight: bold;
+}
+
+.alkTitles
+{
+    font-size: large;
+    margin-bottom: 0.3vw;
+    font-weight: bold;
+    margin-left: 20%;
 }
 #inputs
 {
@@ -653,7 +684,7 @@ h2
     display: flex;
     flex-direction: row;
 }
-#Alk_post
+#AlkButton
 {
     width: 20%;
     padding:1% 0.5% 1% 0.5%;
@@ -758,13 +789,22 @@ h2
         margin:auto;
         margin-bottom: 2%;
     }
-    .alkTitles
+    .alkTitlesFelso
     {
         font-size: large;
         margin-bottom: 0.3vw;
         float: left;
         font-weight: bold;
     }
+
+    .alkTitles
+    {
+        font-size: large;
+        margin-bottom: 0.3vw;
+        font-weight: bold;
+        margin-left: 25%;
+    }
+
     #inputs
     {
         display: flex;
@@ -837,7 +877,7 @@ h2
         display: flex;
         flex-direction: row;
     }
-    #Alk_post
+    #AlkButton
     {
         width: 20%;
         padding:1% 0.5% 1% 0.5%;
@@ -923,4 +963,5 @@ h2
         float: left;
     }
     
+    /*-------------------------------PATCH-------------------------------------*/
 }

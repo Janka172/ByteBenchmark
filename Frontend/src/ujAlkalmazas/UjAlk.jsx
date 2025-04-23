@@ -304,13 +304,13 @@ function UjAlk()
                 <div id='Felso'>
                     <div className='inputs'>
                         <form id='inputs_post'>
-                            <p className='alkTitles'>Alkalmazás neve:</p><input type="text" id="alkNamePost" className='inputStyle'/>
-                            <p className='alkTitles'>Alkalmazás mérete:</p><input type="number" id="alkSizePost" className='inputStyle'/>
+                            <p className='alkTitlesFelso'>Alkalmazás neve:</p><input type="text" id="alkNamePost" className='inputStyle'/>
+                            <p className='alkTitlesFelso'>Alkalmazás mérete:</p><input type="number" id="alkSizePost" className='inputStyle'/>
                         </form> 
                     </div>
                     <div className='inputs'>
                         <form id='comboImage'>
-                            <p className='alkTitles'>Kategória:</p>
+                            <p className='alkTitlesFelso'>Kategória:</p>
                             <div id='combobox'>
                                 <select id="comboboxCategory" onChange={(v)=>setActionKivalasztottCategoria(v.target.value)} value={actionKivalasztottCategoria}>
                                     <option className="comboboxAlkPost" value="">Válassz egyet</option>
@@ -318,7 +318,7 @@ function UjAlk()
                                 </select>
 
                             </div>
-                            <p className='alkTitles'>Kép feltöltése:</p>
+                            <p className='alkTitlesFelso'>Kép feltöltése:</p>
                             <div className='imageUpload'>
                                 <input key={fileName} type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                                 <span className="AlkFilename">{fileName}</span>
@@ -327,12 +327,12 @@ function UjAlk()
                         </form>
                     </div>
                 </div>
-                    <div id='upload_button'><button className='buttons' id='Alk_post' type='button' onClick={async(e)=>{handleUploadAndPost(e);await fetchAdat();setFileName("Nincs fájl kiválasztva");setActionKivalasztottCategoria("");setActionKivalasztottNev({ minimumNev: "", maximumNev: "" });setActionSelectedVram({ minimumVram: "", maximumVram: "" });setActionKivalasztottAlaplapNev({ minimumAlapNev: "", maximumAlapNev: "" });setActionKivalasztottRamNev({ minimumRamNev: "", maximumRamNev: "" });setActionSelectedRamFrekvencia({ minimumFrekvencia: "", maximumFrekvencia: "" });setActionSelectedRamMeret({ minimumMeret: "", maximumMeret: "" });setActionKivalasztottProcesszorNev({ minimumProcesszorNev: "", maximumProcesszorNev: "" });setActionOprendszer({ minimumOprendszer: "", maximumOprendszer: "" });}}>Adatok feltöltése</button> </div>
+                    <div id='upload_button'><button className='buttons' id='AlkButton' type='button' onClick={async(e)=>{handleUploadAndPost(e);await fetchAdat();setFileName("Nincs fájl kiválasztva");setActionKivalasztottCategoria("");setActionKivalasztottNev({ minimumNev: "", maximumNev: "" });setActionSelectedVram({ minimumVram: "", maximumVram: "" });setActionKivalasztottAlaplapNev({ minimumAlapNev: "", maximumAlapNev: "" });setActionKivalasztottRamNev({ minimumRamNev: "", maximumRamNev: "" });setActionSelectedRamFrekvencia({ minimumFrekvencia: "", maximumFrekvencia: "" });setActionSelectedRamMeret({ minimumMeret: "", maximumMeret: "" });setActionKivalasztottProcesszorNev({ minimumProcesszorNev: "", maximumProcesszorNev: "" });setActionOprendszer({ minimumOprendszer: "", maximumOprendszer: "" });}}>Adatok feltöltése</button> </div>
                     <EgyediAlert/>
                     <div id='Also'>
                         <div id='minSetup'>
                             <h2>Minimum setup</h2>
-                            <p className='patch_titles_setup'>Videókártya neve:</p>
+                            <p className='alkTitles'>Videókártya neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(v)=>setActionKivalasztottNev({...actionKivalasztottNev,minimumNev:v.target.value})} value={actionKivalasztottNev.minimumNev}>
                                     <option id="legordulosOptionMin" value="">Válassz egyet</option>
@@ -340,7 +340,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Videókártya Vram:</p>
+                            <p className='alkTitles'>Videókártya Vram:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(e)=>setActionSelectedVram({...actionSelectedVram,minimumVram:e.target.value})} value={actionSelectedVram.minimumVram} >
                                     <option id="legordulosOptionMin" value="">Válassz egyet</option>
@@ -348,7 +348,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Alaplap neve:</p>
+                            <p className='alkTitles'>Alaplap neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(an)=>setActionKivalasztottAlaplapNev({...actionKivalasztottAlaplapNev,minimumAlapNev:an.target.value})} value={actionKivalasztottAlaplapNev.minimumAlapNev}>
                                     <option id="legordulosOptionMin" value="">Válassz egyet</option>
@@ -356,7 +356,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Memória neve:</p>
+                            <p className='alkTitles'>Memória neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(v)=>setActionKivalasztottRamNev({...actionKivalaszottRamNev,minimumRamNev:v.target.value})} value={actionKivalaszottRamNev.minimumRamNev}>
                                     <option id="legordulosOptionMin">Válassz egyet</option>
@@ -364,7 +364,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Memória frekvencia:</p>
+                            <p className='alkTitles'>Memória frekvencia:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(e)=>setActionSelectedRamFrekvencia({...actionSelectedRamFrekvencia,minimumFrekvencia:e.target.value})} value={actionSelectedRamFrekvencia.minimumFrekvencia}>
                                     <option id="legordulosOptionMin">Válassz egyet</option>
@@ -372,7 +372,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Memória méret:</p>
+                            <p className='alkTitles'>Memória méret:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(e)=>setActionSelectedRamMeret({...actionSelectedRamMeret,minimumMeret:e.target.value})} value={actionSelectedRamMeret.minimumMeret} >
                                     <option id="legordulosOptionMin">Válassz egyet</option>
@@ -380,16 +380,16 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Processzor neve:</p>
+                            <p className='alkTitles'>Processzor neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(an)=>setActionKivalasztottProcesszorNev({...actionKivalasztottProcesszorNev,minimumProcesszorNev:an.target.value})} value={actionKivalasztottProcesszorNev.minimumProcesszorNev}>
                                     <option id="legordulosOptionMin">Válassz egyet</option>
                                     {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulosOptionMin">{nev}</option>))}
                                 </select>
                            </div>
-                           <p className='patch_titles_setup'>Operációs rendszer:</p>
+                           <p className='alkTitles'>Operációs rendszer:</p>
                             <div className='comboboxes'>
-                                <select className="combi_min" id='alja'onChange={(an)=>setActionOprendszer({...actionOprendszer,minimumOprendszer:an.target.value})} value={actionOprendszer.minimumOprendszer}>
+                                <select className="combi_min" id='alja' onChange={(an)=>setActionOprendszer({...actionOprendszer,minimumOprendszer:an.target.value})} value={actionOprendszer.minimumOprendszer}>
                                     <option id="legordulosOptionMin">Válassz egyet</option>
                                     {[...new Set(mindenAdat['oprendszerek'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulosOptionMin">{nev}</option>))}
                                 </select>
@@ -398,7 +398,7 @@ function UjAlk()
 
                         <div id='maxSetup'>
                             <h2>Maximum setup</h2>
-                            <p className='patch_titles_setup'>Videókártya neve:</p>
+                            <p className='alkTitles'>Videókártya neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_max" onChange={(v)=>setActionKivalasztottNev({...actionKivalasztottNev,maximumNev:v.target.value})} value={actionKivalasztottNev.maximumNev}>
                                     <option id="legordulosOptionMax" value="">Válassz egyet</option>
@@ -406,7 +406,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Videókártya Vram:</p>
+                            <p className='alkTitles'>Videókártya Vram:</p>
                             <div className='comboboxes'>
                                 <select className="combi_max" onChange={(e)=>setActionSelectedVram({...actionSelectedVram,maximumVram:e.target.value})} value={actionSelectedVram.maximumVram}>
                                     <option id="legordulosOptionMax" value="">Válassz egyet</option>
@@ -414,7 +414,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Alaplap neve:</p>
+                            <p className='alkTitles'>Alaplap neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_max" onChange={(an)=>setActionKivalasztottAlaplapNev({...actionKivalasztottAlaplapNev,maximumAlapNev:an.target.value})} value={actionKivalasztottAlaplapNev.maximumAlapNev}>
                                     <option id="legordulosOptionMax" value="">Válassz egyet</option>
@@ -422,7 +422,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Memória neve:</p>
+                            <p className='alkTitles'>Memória neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_max" onChange={(v)=>setActionKivalasztottRamNev({...actionKivalaszottRamNev,maximumRamNev:v.target.value})} value={actionKivalaszottRamNev.maximumRamNev}>
                                     <option id="legordulosOptionMax">Válassz egyet</option>
@@ -430,7 +430,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Memória frekvencia:</p>
+                            <p className='alkTitles'>Memória frekvencia:</p>
                             <div className='comboboxes'>
                                 <select className="combi_max" onChange={(e)=>setActionSelectedRamFrekvencia({...actionSelectedRamFrekvencia,maximumFrekvencia:e.target.value})} value={actionSelectedRamFrekvencia.maximumFrekvencia}>
                                     <option id="legordulosOptionMax">Válassz egyet</option>
@@ -438,7 +438,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Memória méret:</p>
+                            <p className='alkTitles'>Memória méret:</p>
                             <div className='comboboxes'>
                                 <select className="combi_max" onChange={(e)=>setActionSelectedRamMeret({...actionSelectedRamMeret,maximumMeret:e.target.value})} value={actionSelectedRamMeret.maximumMeret}>
                                     <option id="legordulosOptionMax">Válassz egyet</option>
@@ -446,16 +446,16 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Processzor neve:</p>
+                            <p className='alkTitles'>Processzor neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_max" onChange={(an)=>setActionKivalasztottProcesszorNev({...actionKivalasztottProcesszorNev,maximumProcesszorNev:an.target.value})} value={actionKivalasztottProcesszorNev.maximumProcesszorNev}>
                                     <option id="legordulosOptionMax">Válassz egyet</option>
                                     {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulosOptionMax">{nev}</option>))}
                                 </select>
                            </div>
-                           <p className='patch_titles_setup'>Operációs rendszer:</p>
+                           <p className='alkTitles'>Operációs rendszer:</p>
                             <div className='comboboxes'>
-                                <select className="combi_min" onChange={(an)=>setActionOprendszer({...actionOprendszer,maximumOprendszer:an.target.value})} value={actionOprendszer.maximumOprendszer}>
+                                <select className="combi_max" onChange={(an)=>setActionOprendszer({...actionOprendszer,maximumOprendszer:an.target.value})} value={actionOprendszer.maximumOprendszer}>
                                     <option id="legordulosOptionMin">Válassz egyet</option>
                                     {[...new Set(mindenAdat['oprendszerek'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulosOptionMin">{nev}</option>))}
                                 </select>
@@ -463,23 +463,22 @@ function UjAlk()
                         </div>
                     </div>
             </div> : <div></div>}
+{/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/}
             {actionButtons==="Patch" ? <div id='Alk_post_torzs'>
                 <div id='Felso'>
                     <div className='inputs'>
-                        <p className='patch_titles_setup'>Alkalmazás neve:</p>
-                            <div className='comboboxes'>
-                                <select className="combi_min" onChange={(v)=>setActionAlkalmazasNev(v.target.value)} value={actionAlkalmazasNev}>
+                        <form id='inputs_post'>
+                            <p className='alkTitlesFelso'>Alkalmazás neve:</p>
+                                <select id='comboboxCategory' onChange={(v)=>setActionAlkalmazasNev(v.target.value)} value={actionAlkalmazasNev}>
                                     <option id="legordulosOptionMin" value="">Válassz egyet</option>
                                     {[...new Set(mindenAdat['alkalmazasok'].map(i=>i.Nev))].map((nev)=>(<option id="legordulosOptionMin" key={nev} value={nev}>{nev}</option>))}
                                 </select>
-                            </div>
-                        <form id='inputs_post'>
-                            <p className='alkTitles'>Alkalmazás mérete:</p><input type="number" id="alkSizePost" className='inputStyle'/>
+                            <p className='alkTitlesFelso'>Alkalmazás mérete:</p><input type="number" id="alkSizePost" className='inputStyle'/>
                         </form> 
                     </div>
                     <div className='inputs'>
                         <form id='comboImage'>
-                            <p className='alkTitles'>Kategória:</p>
+                            <p className='alkTitlesFelso'>Kategória:</p>
                             <div id='combobox'>
                                 <select id="comboboxCategory" onChange={(v)=>setActionKivalasztottCategoria(v.target.value)} value={actionKivalasztottCategoria}>
                                     <option className="comboboxAlkPost" value="">Válassz egyet</option>
@@ -487,7 +486,7 @@ function UjAlk()
                                 </select>
 
                             </div>
-                            <p className='alkTitles'>Kép feltöltése:</p>
+                            <p className='alkTitlesFelso'>Kép feltöltése:</p>
                             <div className='imageUpload'>
                                 <input type="file" className="elrejtes" onChange={handleFileChange}/>
                                 <span className="AlkFilename" id='alkImgLinkPost'>{fileName}</span>
@@ -495,15 +494,15 @@ function UjAlk()
                             <label htmlFor="imginput" className="AlkImgButton" id='alkImgPost'>📁 Fájl kiválasztása</label>
                         </form>
                     </div>
-                    <div>
-                    <button className='buttons' id='patch_datkezelogomb' type='button' onClick={async(e)=>{handleUploadAndPost(e);await fetchAdat();setActionAlkalmazasNev("");setFileName("Nincs fájl kiválasztva");setActionKivalasztottCategoria("");setActionKivalasztottNev({ minimumNev: "", maximumNev: "" });setActionSelectedVram({ minimumVram: "", maximumVram: "" });setActionKivalasztottAlaplapNev({ minimumAlapNev: "", maximumAlapNev: "" });setActionKivalasztottRamNev({ minimumRamNev: "", maximumRamNev: "" });setActionSelectedRamFrekvencia({ minimumFrekvencia: "", maximumFrekvencia: "" });setActionSelectedRamMeret({ minimumMeret: "", maximumMeret: "" });setActionKivalasztottProcesszorNev({ minimumProcesszorNev: "", maximumProcesszorNev: "" });setActionOprendszer({ minimumOprendszer: "", maximumOprendszer: "" });}}>Módosítások mentése</button> 
+                    <div>               
                     <EgyediAlert/>                   
                     </div>
                 </div>
+                <div id='upload_button'><button className='buttons' id='AlkButton' type='button' onClick={async(e)=>{handleUploadAndPost(e);await fetchAdat();setActionAlkalmazasNev("");setFileName("Nincs fájl kiválasztva");setActionKivalasztottCategoria("");setActionKivalasztottNev({ minimumNev: "", maximumNev: "" });setActionSelectedVram({ minimumVram: "", maximumVram: "" });setActionKivalasztottAlaplapNev({ minimumAlapNev: "", maximumAlapNev: "" });setActionKivalasztottRamNev({ minimumRamNev: "", maximumRamNev: "" });setActionSelectedRamFrekvencia({ minimumFrekvencia: "", maximumFrekvencia: "" });setActionSelectedRamMeret({ minimumMeret: "", maximumMeret: "" });setActionKivalasztottProcesszorNev({ minimumProcesszorNev: "", maximumProcesszorNev: "" });setActionOprendszer({ minimumOprendszer: "", maximumOprendszer: "" });}}>Módosítások mentése</button> </div>
                     <div id='Also'>
                         <div id='minSetup'>
                             <h2>Minimum setup</h2>
-                            <p className='patch_titles_setup'>Videókártya neve:</p>
+                            <p className='alkTitles'>Videókártya neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(v)=>setActionKivalasztottNev({...actionKivalasztottNev,minimumNev:v.target.value})} value={actionKivalasztottNev.minimumNev}>
                                     <option id="legordulosOptionMin" value="">Válassz egyet</option>
@@ -511,7 +510,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Videókártya Vram:</p>
+                            <p className='alkTitles'>Videókártya Vram:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(e)=>setActionSelectedVram({...actionSelectedVram,minimumVram:e.target.value})} value={actionSelectedVram.minimumVram} >
                                     <option id="legordulosOptionMin" value="">Válassz egyet</option>
@@ -519,7 +518,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Alaplap neve:</p>
+                            <p className='alkTitles'>Alaplap neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(an)=>setActionKivalasztottAlaplapNev({...actionKivalasztottAlaplapNev,minimumAlapNev:an.target.value})} value={actionKivalasztottAlaplapNev.minimumAlapNev}>
                                     <option id="legordulosOptionMin" value="">Válassz egyet</option>
@@ -527,7 +526,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Memória neve:</p>
+                            <p className='alkTitles'>Memória neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(v)=>setActionKivalasztottRamNev({...actionKivalaszottRamNev,minimumRamNev:v.target.value})} value={actionKivalaszottRamNev.minimumRamNev}>
                                     <option id="legordulosOptionMin">Válassz egyet</option>
@@ -535,7 +534,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Memória frekvencia:</p>
+                            <p className='alkTitles'>Memória frekvencia:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(e)=>setActionSelectedRamFrekvencia({...actionSelectedRamFrekvencia,minimumFrekvencia:e.target.value})} value={actionSelectedRamFrekvencia.minimumFrekvencia}>
                                     <option id="legordulosOptionMin">Válassz egyet</option>
@@ -543,7 +542,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Memória méret:</p>
+                            <p className='alkTitles'>Memória méret:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(e)=>setActionSelectedRamMeret({...actionSelectedRamMeret,minimumMeret:e.target.value})} value={actionSelectedRamMeret.minimumMeret} >
                                     <option id="legordulosOptionMin">Válassz egyet</option>
@@ -551,16 +550,16 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Processzor neve:</p>
+                            <p className='alkTitles'>Processzor neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(an)=>setActionKivalasztottProcesszorNev({...actionKivalasztottProcesszorNev,minimumProcesszorNev:an.target.value})} value={actionKivalasztottProcesszorNev.minimumProcesszorNev}>
                                     <option id="legordulosOptionMin">Válassz egyet</option>
                                     {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulosOptionMin">{nev}</option>))}
                                 </select>
                            </div>
-                           <p className='patch_titles_setup'>Operációs rendszer:</p>
+                           <p className='alkTitles'>Operációs rendszer:</p>
                             <div className='comboboxes'>
-                                <select className="combi_min" onChange={(an)=>setActionOprendszer({...actionOprendszer,minimumOprendszer:an.target.value})} value={actionOprendszer.minimumOprendszer}>
+                                <select className="combi_min" id='alja' onChange={(an)=>setActionOprendszer({...actionOprendszer,minimumOprendszer:an.target.value})} value={actionOprendszer.minimumOprendszer}>
                                     <option id="legordulosOptionMin">Válassz egyet</option>
                                     {[...new Set(mindenAdat['oprendszerek'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulosOptionMin">{nev}</option>))}
                                 </select>
@@ -569,7 +568,7 @@ function UjAlk()
 
                         <div id='maxSetup'>
                             <h2>Maximum setup</h2>
-                            <p className='patch_titles_setup'>Videókártya neve:</p>
+                            <p className='alkTitles'>Videókártya neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_max" onChange={(v)=>setActionKivalasztottNev({...actionKivalasztottNev,maximumNev:v.target.value})} value={actionKivalasztottNev.maximumNev}>
                                     <option id="legordulosOptionMax" value="">Válassz egyet</option>
@@ -577,7 +576,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Videókártya Vram:</p>
+                            <p className='alkTitles'>Videókártya Vram:</p>
                             <div className='comboboxes'>
                                 <select className="combi_max" onChange={(e)=>setActionSelectedVram({...actionSelectedVram,maximumVram:e.target.value})} value={actionSelectedVram.maximumVram}>
                                     <option id="legordulosOptionMax" value="">Válassz egyet</option>
@@ -585,7 +584,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Alaplap neve:</p>
+                            <p className='alkTitles'>Alaplap neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_max" onChange={(an)=>setActionKivalasztottAlaplapNev({...actionKivalasztottAlaplapNev,maximumAlapNev:an.target.value})} value={actionKivalasztottAlaplapNev.maximumAlapNev}>
                                     <option id="legordulosOptionMax" value="">Válassz egyet</option>
@@ -593,7 +592,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Memória neve:</p>
+                            <p className='alkTitles'>Memória neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_max" onChange={(v)=>setActionKivalasztottRamNev({...actionKivalaszottRamNev,maximumRamNev:v.target.value})} value={actionKivalaszottRamNev.maximumRamNev}>
                                     <option id="legordulosOptionMax">Válassz egyet</option>
@@ -601,7 +600,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Memória frekvencia:</p>
+                            <p className='alkTitles'>Memória frekvencia:</p>
                             <div className='comboboxes'>
                                 <select className="combi_max" onChange={(e)=>setActionSelectedRamFrekvencia({...actionSelectedRamFrekvencia,maximumFrekvencia:e.target.value})} value={actionSelectedRamFrekvencia.maximumFrekvencia}>
                                     <option id="legordulosOptionMax">Válassz egyet</option>
@@ -609,7 +608,7 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Memória méret:</p>
+                            <p className='alkTitles'>Memória méret:</p>
                             <div className='comboboxes'>
                                 <select className="combi_max" onChange={(e)=>setActionSelectedRamMeret({...actionSelectedRamMeret,maximumMeret:e.target.value})} value={actionSelectedRamMeret.maximumMeret}>
                                     <option id="legordulosOptionMax">Válassz egyet</option>
@@ -617,16 +616,16 @@ function UjAlk()
                                 </select>
                             </div>
 
-                            <p className='patch_titles_setup'>Processzor neve:</p>
+                            <p className='alkTitles'>Processzor neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_max" onChange={(an)=>setActionKivalasztottProcesszorNev({...actionKivalasztottProcesszorNev,maximumProcesszorNev:an.target.value})} value={actionKivalasztottProcesszorNev.maximumProcesszorNev}>
                                     <option id="legordulosOptionMax">Válassz egyet</option>
                                     {[...new Set(mindenAdat['processzorok'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulosOptionMax">{nev}</option>))}
                                 </select>
                            </div>
-                           <p className='patch_titles_setup'>Operációs rendszer:</p>
+                           <p className='alkTitles'>Operációs rendszer:</p>
                             <div className='comboboxes'>
-                                <select className="combi_min" onChange={(an)=>setActionOprendszer({...actionOprendszer,maximumOprendszer:an.target.value})} value={actionOprendszer.maximumOprendszer}>
+                                <select className="combi_max" onChange={(an)=>setActionOprendszer({...actionOprendszer,maximumOprendszer:an.target.value})} value={actionOprendszer.maximumOprendszer}>
                                     <option id="legordulosOptionMin">Válassz egyet</option>
                                     {[...new Set(mindenAdat['oprendszerek'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulosOptionMin">{nev}</option>))}
                                 </select>
