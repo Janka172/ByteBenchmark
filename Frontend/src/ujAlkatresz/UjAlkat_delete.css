@@ -21,10 +21,10 @@
 {
     display: flex;
     flex-direction: column;
-    width: 12vw;
+    width: 100%;
 
     margin-bottom: 1.5vw;
-    margin-left: 25px
+    /*margin-left: 25px*/
 
 }
 .adatok_delete
@@ -58,7 +58,7 @@
     }
     #delete_adatlekerogomb
     {
-        width: 60%;
+      width: 100%;
         padding: 2%;
         margin-top: 5%;
         margin-bottom: 1.5vw;
@@ -170,7 +170,7 @@
     margin-bottom: 1.5vw;
     margin-left: 35%;
     font-size: medium;
-    width: max-content;
+    width: 100%;
   }
   #delete_form_csati
   {
@@ -216,11 +216,11 @@
     }
     #delete_adatlekerogomb
     {
-        width: 60%;
+      width: 100%;
         padding: 2%;
         margin-top: 5%;
         margin-bottom: 1.5vw;
-        margin-left: 17%;
+        /*margin-left: 17%;*/
         font-size: medium;
     
     }
@@ -330,7 +330,7 @@
     margin-bottom: 1.5vw;
     margin-left: 35%;
     font-size: medium;
-    width: max-content;
+    width: 100%;
   }
   #delete_form_csati
   {
@@ -372,6 +372,7 @@
         margin-top: 5%;
         margin-bottom: 1.5vw;
         font-size: 1.5vw;
+        width: 100%;
     
     }
     .adatok_delete
@@ -482,7 +483,7 @@
     margin-bottom: 1.5vw;
     margin-left:25%;
     font-size: medium;
-    width: max-content;
+    width: 100%;
   }
   #delete_form_csati
   {
@@ -529,6 +530,7 @@
         margin-top: 5%;
         margin-bottom: 1.5vw;
         font-size: 1.5vw;
+        width: 100%;
     
     }
     .adatok_delete
@@ -639,7 +641,7 @@
     margin-bottom: 1.5vw;
     margin-left:25%;
     font-size: medium;
-    width: max-content;
+    width: 100%;
   }
   #delete_form_csati
   {
@@ -687,7 +689,7 @@
         margin-top: 5%;
         margin-bottom: 1.5vw;
         font-size: medium;
-        width: max-content;
+        width: 100%;
     
     }
     .adatok_delete
@@ -798,7 +800,7 @@
     margin-bottom: 1.5vw;
     margin-left:40%;
     font-size: medium;
-    width: max-content;
+    width: 100%;
   }
   #delete_form_csati
   {
