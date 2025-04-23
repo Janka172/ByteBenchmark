@@ -338,7 +338,7 @@ function UjAlk()
                     <EgyediAlert/>
                     <div id='Also'>
                         <div id='minSetup'>
-                            <h2>Minimum setup</h2>
+                            <p className='title'>Minimum setup</p>
                             <p className='alkTitles'>Videókártya neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(v)=>setActionKivalasztottNev({...actionKivalasztottNev,minimumNev:v.target.value})} value={actionKivalasztottNev.minimumNev}>
@@ -404,7 +404,7 @@ function UjAlk()
                         </div>
 
                         <div id='maxSetup'>
-                            <h2>Maximum setup</h2>
+                            <p className='title'>Maximum setup</p>
                             <p className='alkTitles'>Videókártya neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_max" onChange={(v)=>setActionKivalasztottNev({...actionKivalasztottNev,maximumNev:v.target.value})} value={actionKivalasztottNev.maximumNev}>
@@ -508,7 +508,7 @@ function UjAlk()
                 <div id='upload_button'><button className='buttons' id='AlkButton' type='button' onClick={async(e)=>{handleUploadAndPost(e);await fetchAdat();setActionAlkalmazasNev("");setFileName("Nincs fájl kiválasztva");setActionKivalasztottCategoria("");setActionKivalasztottNev({ minimumNev: "", maximumNev: "" });setActionSelectedVram({ minimumVram: "", maximumVram: "" });setActionKivalasztottAlaplapNev({ minimumAlapNev: "", maximumAlapNev: "" });setActionKivalasztottRamNev({ minimumRamNev: "", maximumRamNev: "" });setActionSelectedRamFrekvencia({ minimumFrekvencia: "", maximumFrekvencia: "" });setActionSelectedRamMeret({ minimumMeret: "", maximumMeret: "" });setActionKivalasztottProcesszorNev({ minimumProcesszorNev: "", maximumProcesszorNev: "" });setActionOprendszer({ minimumOprendszer: "", maximumOprendszer: "" });}}>Módosítások mentése</button> </div>
                     <div id='Also'>
                         <div id='minSetup'>
-                            <h2>Minimum setup</h2>
+                            <p className='title'>Minimum setup</p>
                             <p className='alkTitles'>Videókártya neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_min" onChange={(v)=>setActionKivalasztottNev({...actionKivalasztottNev,minimumNev:v.target.value})} value={actionKivalasztottNev.minimumNev}>
@@ -574,7 +574,7 @@ function UjAlk()
                         </div>
 
                         <div id='maxSetup'>
-                            <h2>Maximum setup</h2>
+                            <p className='title'>Maximum setup</p>
                             <p className='alkTitles'>Videókártya neve:</p>
                             <div className='comboboxes'>
                                 <select className="combi_max" onChange={(v)=>setActionKivalasztottNev({...actionKivalasztottNev,maximumNev:v.target.value})} value={actionKivalasztottNev.maximumNev}>
@@ -667,7 +667,7 @@ function UjAlk()
                 <EgyediAlert/>  
                     <div id='Also'>
                         <div id='minSetup'>
-                            <h2>Minimum setup</h2>
+                            <p className='title'>Minimum setup</p>
                             <p className='alkTitles'>Videókártya neve:</p>
                             <div className='comboboxes'>
                                 <input type="text" className='combi_min' value={actionKivalasztottNev.minimumNev} readOnly/>
@@ -709,7 +709,7 @@ function UjAlk()
                         </div>
 
                         <div id='maxSetup'>
-                            <h2>Maximum setup</h2>
+                            <p className='title'>Maximum setup</p>
                             <p className='alkTitles'>Videókártya neve:</p>
                             <div className='comboboxes'>
                                 <input type="text" className='combi_max' value={actionKivalasztottNev.maximumNev} readOnly/>
