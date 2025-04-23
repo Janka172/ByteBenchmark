@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import './UjAlk.css';
 import EgyediAlert from '../Alert/egyediAlert.jsx';
-import {Ellenorzes,PatchEllenorzes} from "./AlkalmazasRequest.js";
+import {Ellenorzes,PatchEllenorzes,DeleteEllenorzes} from "./AlkalmazasRequest.js";
 function UjAlk()
 {
     const[actionNavigation, setActionNavigation]=useState("Post"); 
@@ -255,6 +255,12 @@ function UjAlk()
          setSelectedFile(event.target.files[0])
        } else {setFileName("Nincs fájl kiválasztva");}
     }
+    async function handleDelete(event)
+    {
+        event.preventDefault();
+        if(actionButtons==="Delete") await DeleteEllenorzes(actionAlkalmazasNev);
+    }
+
 
     const handleUploadAndPost = async (event) => {
           event.preventDefault();
@@ -283,6 +289,7 @@ function UjAlk()
                          {/*PATCH része */}
                          if(actionButtons==="Patch")await PatchEllenorzes(data.file_name,actionAlkalmazasNev,actionKivalasztottCategoria,actionKivalasztottNev.minimumNev,actionSelectedVram.minimumVram,actionKivalasztottAlaplapNev.minimumAlapNev,actionKivalaszottRamNev.minimumRamNev,actionSelectedRamFrekvencia.minimumFrekvencia,actionSelectedRamMeret.minimumMeret,actionKivalasztottProcesszorNev.minimumProcesszorNev,actionOprendszer.minimumOprendszer,actionKivalasztottNev.maximumNev,actionSelectedVram.maximumVram,actionKivalasztottAlaplapNev.maximumAlapNev,actionKivalaszottRamNev.maximumRamNev,actionSelectedRamFrekvencia.maximumFrekvencia,actionSelectedRamMeret.maximumMeret,actionKivalasztottProcesszorNev.maximumProcesszorNev,actionOprendszer.maximumOprendszer);
                          setFileUrl(data.file_name);
+                         setSelectedFile(null);
                       } else {
                          console.error("Hiba történt:", data.message);
                       }
@@ -629,6 +636,117 @@ function UjAlk()
                                     <option id="legordulosOptionMin">Válassz egyet</option>
                                     {[...new Set(mindenAdat['oprendszerek'].map(i=>i.Nev))].map((nev)=>(<option key={nev} value={nev} id="legordulosOptionMin">{nev}</option>))}
                                 </select>
+                           </div>
+                        </div>
+                    </div>
+            </div> : <div></div>}
+            {actionButtons==="Delete" ? <div id='Alk_post_torzs'>
+                <div id='Felso'>
+                    <div className='inputs'>
+                        <form id='inputs_post'>
+                            <p className='alkTitlesFelso'>Alkalmazás neve:</p>
+                                <select id='comboboxCategory' onChange={(v)=>setActionAlkalmazasNev(v.target.value)} value={actionAlkalmazasNev}>
+                                    <option id="legordulosOptionMin" value="">Válassz egyet</option>
+                                    {[...new Set(mindenAdat['alkalmazasok'].map(i=>i.Nev))].map((nev)=>(<option id="legordulosOptionMin" key={nev} value={nev}>{nev}</option>))}
+                                </select>
+                            <p className='alkTitlesFelso'>Alkalmazás mérete:</p><input type="number" id="alkSizePost" className='inputStyle' readOnly/>
+                        </form> 
+                    </div>
+                    <div className='inputs'>
+                        <form id='comboImage'>
+                            <p className='alkTitlesFelso'>Kategória:</p>
+                            <div id='combobox'>
+                                <input type="comboboxCategory" value={actionKivalasztottCategoria} readOnly/>
+                            </div>
+                        </form>
+                    </div>
+                    <div>                               
+                    </div>
+                </div>
+                <div id='upload_button'><button className='buttons' id='AlkButton' type='button' onClick={async(e)=>{handleDelete(e);await fetchAdat();setActionAlkalmazasNev("");setActionKivalasztottCategoria("");setActionKivalasztottNev({ minimumNev: "", maximumNev: "" });setActionSelectedVram({ minimumVram: "", maximumVram: "" });setActionKivalasztottAlaplapNev({ minimumAlapNev: "", maximumAlapNev: "" });setActionKivalasztottRamNev({ minimumRamNev: "", maximumRamNev: "" });setActionSelectedRamFrekvencia({ minimumFrekvencia: "", maximumFrekvencia: "" });setActionSelectedRamMeret({ minimumMeret: "", maximumMeret: "" });setActionKivalasztottProcesszorNev({ minimumProcesszorNev: "", maximumProcesszorNev: "" });setActionOprendszer({ minimumOprendszer: "", maximumOprendszer: "" });}}>Törlés</button></div>
+                <EgyediAlert/>  
+                    <div id='Also'>
+                        <div id='minSetup'>
+                            <h2>Minimum setup</h2>
+                            <p className='alkTitles'>Videókártya neve:</p>
+                            <div className='comboboxes'>
+                                <input type="text" className='combi_min' value={actionKivalasztottNev.minimumNev} readOnly/>
+                            </div>
+
+                            <p className='alkTitles'>Videókártya Vram:</p>
+                            <div className='comboboxes'>
+                                <input type="text" className='combi_min' value={actionSelectedVram.minimumVram} readOnly/>
+                            </div>
+
+                            <p className='alkTitles'>Alaplap neve:</p>
+                            <div className='comboboxes'>
+                                <input type="text" className='combi_min' value={actionKivalasztottAlaplapNev.minimumAlapNev} readOnly/>
+                            </div>
+
+                            <p className='alkTitles'>Memória neve:</p>
+                            <div className='comboboxes'>
+                                <input type="text" className='combi_min' value={actionKivalaszottRamNev.minimumRamNev} readOnly/>
+                            </div>
+
+                            <p className='alkTitles'>Memória frekvencia:</p>
+                            <div className='comboboxes'>
+                                <input type="text" className='combi_min' value={actionSelectedRamFrekvencia.minimumFrekvencia} readOnly/>
+                            </div>
+
+                            <p className='alkTitles'>Memória méret:</p>
+                            <div className='comboboxes'>
+                                <input type="text" className='combi_min' value={actionSelectedRamMeret.minimumMeret} readOnly/>
+                            </div>
+
+                            <p className='alkTitles'>Processzor neve:</p>
+                            <div className='comboboxes'>
+                                <input type="text" className='combi_min' value={actionKivalasztottProcesszorNev.minimumProcesszorNev} readOnly/>
+                           </div>
+                           <p className='alkTitles'>Operációs rendszer:</p>
+                            <div className='comboboxes'>
+                                <input type="text" className='combi_min' value={actionOprendszer.minimumOprendszer} readOnly/>
+                           </div>
+                        </div>
+
+                        <div id='maxSetup'>
+                            <h2>Maximum setup</h2>
+                            <p className='alkTitles'>Videókártya neve:</p>
+                            <div className='comboboxes'>
+                                <input type="text" className='combi_max' value={actionKivalasztottNev.maximumNev} readOnly/>
+                            </div>
+
+                            <p className='alkTitles'>Videókártya Vram:</p>
+                            <div className='comboboxes'>
+                                <input type="text" className='combi_max' value={actionSelectedVram.maximumVram} readOnly/>
+                            </div>
+
+                            <p className='alkTitles'>Alaplap neve:</p>
+                            <div className='comboboxes'>
+                                <input type="text" className='combi_max' value={actionKivalasztottAlaplapNev.maximumAlapNev} readOnly/>
+                            </div>
+
+                            <p className='alkTitles'>Memória neve:</p>
+                            <div className='comboboxes'>
+                                <input type="text" className='combi_max' value={actionKivalaszottRamNev.maximumRamNev} readOnly/>
+                            </div>
+
+                            <p className='alkTitles'>Memória frekvencia:</p>
+                            <div className='comboboxes'>
+                                <input type="text" className="combi_max" value={actionSelectedRamFrekvencia.maximumFrekvencia} readOnly/>
+                            </div>
+
+                            <p className='alkTitles'>Memória méret:</p>
+                            <div className='comboboxes'>
+                                <input type="text" className="combi_max" value={actionSelectedRamMeret.maximumMeret} readOnly/>
+                            </div>
+
+                            <p className='alkTitles'>Processzor neve:</p>
+                            <div className='comboboxes'>
+                                <input type="text" className="combi_max" value={actionKivalasztottProcesszorNev.maximumProcesszorNev} readOnly/>
+                           </div>
+                           <p className='alkTitles'>Operációs rendszer:</p>
+                            <div className='comboboxes'>
+                                <input type="text" className="combi_max" value={actionOprendszer.maximumOprendszer} readOnly/>
                            </div>
                         </div>
                     </div>
