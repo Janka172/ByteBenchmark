@@ -245,8 +245,8 @@ export function RequestProcesszorP(fileUrl){
     var kepneve=String(fileUrl);
 
     if(!neLegyenWhiteSpace.test(pNevElem))errors.push("A névnek tartalmaznia kell legalább egy betüt");
-    if(frekvenciaElem<0,1 || frekvenciaElem>8)errors.push("A processzor gyári frekvenciájának 0,1 és 8Ghz között kell lennie");
-    if(bFrekvenciaElem<0,5 || bFrekvenciaElem>25)errors.push("A processzor boostolt frekvenciájának 0,5 és 25Ghz között kell lennie");
+    if(frekvenciaElem<0.1 || frekvenciaElem>8)errors.push("A processzor gyári frekvenciájának 0.1 és 8Ghz között kell lennie");
+    if(bFrekvenciaElem<0.5 || bFrekvenciaElem>25)errors.push("A processzor boostolt frekvenciájának 0.5 és 25Ghz között kell lennie");
     if(frekvenciaElem>bFrekvenciaElem)errors.push("A processzor gyári frekvenciája nem lehet magasabb mint a boostolt frekvencia");
     if(!neLegyenWhiteSpace.test(alaplapFoglalatElem))errors.push("Az alaplap foglalatnak tartalmaznia kell legalább egy betüt");
     if(szalakSzamaElem<1)errors.push("A processzorban a szálak száma nem lehet kisebb mint egy");
@@ -489,8 +489,8 @@ export function RequestProcesszorPatch(fileName, procNev)
                 SzalakSzama: parseInt(szalakSzama),
                 TamogatottMemoriatipus: tamogatottMemoriaTipus,
                 ProcesszormagokSzama: parseInt(processzormagokSzama),
-                ProcesszorFrekvencia: parseInt(frekvencia),
-                BProcesszorFrekvencia: parseInt(bFrekvencia),
+                ProcesszorFrekvencia: parseFloat(frekvencia),
+                BProcesszorFrekvencia: parseFloat(bFrekvencia),
                 Gyarto: gyarto,
                 AjanlottTapegyseg : parseInt(ajanlottTapegyseg),
                 IntegraltVideokartya: integraltVideokartya,
