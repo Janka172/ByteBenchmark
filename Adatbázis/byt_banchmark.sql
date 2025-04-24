@@ -315,7 +315,7 @@ INSERT INTO `processzor` (`Id`, `Nev`, `AlaplapFoglalat`, `SzalakSzama`, `Tamoga
 (8, 'Ryzen AI 9 HX 370', 'FP8', 24, 'DDR5/LPDDR5X', 12, '0', 28, 1, 3.3, 5.0, 'PROCESSZORALTALANOS.png'),
 (9, 'Ryzen 9 9900X', 'AM5', 24, 'DDR5', 12, '0', 120, 1, 4.4, 6.0, 'PROCESSZORALTALANOS.png'),
 (10, 'Ryzen 7 9800X3D', 'AM5', 16, 'DDR5', 8, '0', 120, 1, 4.7, 5.0, 'PROCESSZORALTALANOS.png'),
-(17, ' Intel Core i5-12400', ' LGA1700', 12, 'DDR5', 6, 'Intel', 117, 1, 2.5, 4.4, 'PROCESSZORALTALANOS.png');
+(17, ' Intel Core i5-12400', 'LGA1700', 12, 'DDR5', 6, 'Intel', 117, 1, 2.5, 4.4, 'PROCESSZORALTALANOS.png');
 
 -- --------------------------------------------------------
 
