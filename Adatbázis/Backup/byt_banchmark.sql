@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Ápr 22. 18:33
+-- Létrehozás ideje: 2025. Ápr 24. 10:50
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -25,7 +25,6 @@ CREATE DATABASE byt_banchmark
 CHARACTER SET utf8
 COLLATE utf8_hungarian_ci;
 USE byt_banchmark;
-
 -- --------------------------------------------------------
 
 --
@@ -73,6 +72,73 @@ CREATE TABLE `alaplap_csatlakozo` (
   `AlaplapId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `alaplap_csatlakozo`
+--
+
+INSERT INTO `alaplap_csatlakozo` (`CsatlakozoId`, `AlaplapId`) VALUES
+(12, 1),
+(13, 1),
+(14, 1),
+(17, 1),
+(18, 1),
+(19, 1),
+(20, 1),
+(23, 1),
+(24, 1),
+(25, 1),
+(30, 1),
+(19, 2),
+(20, 2),
+(21, 2),
+(23, 2),
+(14, 3),
+(17, 3),
+(19, 3),
+(20, 3),
+(22, 3),
+(26, 3),
+(14, 3),
+(17, 3),
+(19, 3),
+(20, 3),
+(22, 3),
+(26, 3),
+(14, 6),
+(17, 6),
+(19, 6),
+(20, 6),
+(22, 6),
+(26, 6),
+(30, 6),
+(15, 10),
+(16, 10),
+(22, 10),
+(30, 10),
+(12, 9),
+(13, 9),
+(18, 9),
+(23, 9),
+(25, 9),
+(30, 9),
+(14, 8),
+(15, 8),
+(16, 8),
+(17, 8),
+(22, 8),
+(30, 8),
+(15, 7),
+(16, 7),
+(17, 7),
+(19, 7),
+(20, 7),
+(22, 7),
+(26, 7),
+(30, 7),
+(19, 6),
+(23, 6),
+(21, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -92,9 +158,9 @@ CREATE TABLE `applikacio` (
 --
 
 INSERT INTO `applikacio` (`Id`, `Nev`, `Tarhely`, `KatId`, `Kepeleresiutja`) VALUES
-(1, 'Star Stable Online', 30, 1, ''),
-(2, 'ARK: Survival Evolved', 60, 1, ''),
-(3, 'The Witcher 3', 50, 1, ''),
+(1, 'Star Stable Online', 30, 1, 'sso.jpg'),
+(2, 'ARK: Survival Evolved', 60, 1, 'ark.jpg'),
+(3, 'The Witcher 3', 50, 1, 'theWitcher3.jpg'),
 (4, 'Grand Theft Auto V', 65, 1, 'gta5.jpg'),
 (5, 'Red Dead Redemption 2', 120, 1, 'rdrd2.jpg'),
 (6, 'Doom Eternal', 50, 1, 'doom.jpg'),
@@ -110,19 +176,16 @@ INSERT INTO `applikacio` (`Id`, `Nev`, `Tarhely`, `KatId`, `Kepeleresiutja`) VAL
 (16, 'Microsoft Edge', 90, 2, 'edge.png'),
 (17, 'Opera', 70, 2, 'opera.png'),
 (18, 'Safari', 120, 2, 'safari.png'),
-(19, 'Adobe Premiere Pro', 2000, 3, 'adobe.jpg'),
-(20, 'Final Cut Pro', 2500, 3, 'finalcut.png'),
-(21, 'DaVinci Resolve', 3000, 3, 'dvr.jpg'),
-(22, 'Sony Vegas Pro', 1500, 3, 'svp.jpg'),
-(23, 'HitFilm Express', 1000, 3, 'hitfilm.jpg'),
-(24, 'Adobe Photoshop', 2000, 4, 'aph.jpg'),
+(19, 'Adobe Premiere Pro', 200, 3, 'adobe.jpg'),
+(20, 'Final Cut Pro', 250, 3, 'finalcut.png'),
+(21, 'DaVinci Resolve', 300, 3, 'dvr.jpg'),
+(22, 'Sony Vegas Pro', 150, 3, 'svp.jpg'),
+(23, 'HitFilm Express', 100, 3, 'hitfilm.jpg'),
+(24, 'Adobe Photoshop', 200, 4, 'aph.jpg'),
 (25, 'GIMP', 500, 4, 'gimp.jpg'),
-(26, 'CorelDRAW', 1500, 4, 'corel.jpg'),
-(27, 'Affinity Photo', 1000, 4, 'affiph.jpg'),
-(28, 'Paint.NET', 200, 4, 'paintnet.jpg'),
-(172, 'sajat', 0, 1, 'nincs.png'),
-(173, 'string', 0, 6, 'string'),
-(174, 'fasf', 45, 4, '');
+(26, 'CorelDRAW', 150, 4, 'corel.jpg'),
+(27, 'Affinity Photo', 100, 4, 'affiph.jpg'),
+(28, 'Paint.NET', 200, 4, 'paintnet.jpg');
 
 -- --------------------------------------------------------
 
@@ -154,16 +217,16 @@ INSERT INTO `csatlakozo` (`Id`, `Nev`) VALUES
 (20, 'DisplayPort'),
 (21, 'DVI'),
 (19, 'HDMI'),
-(23, 'Jack (fejhallgató (zöld) )'),
-(27, 'Jack (hátsó hangszóró (fekete) )'),
-(26, 'Jack (mélynyomoo/középső (narancssárga) )'),
-(24, 'Jack (mikrofon (rózsaszín) )'),
-(28, 'Jack (oldalsó hangszóró (szürke) )'),
-(25, 'Jack (vonalbemenet (kék) )'),
+(23, 'Jack (fejhallgató)'),
+(27, 'Jack (hátsó hangszóró)'),
+(26, 'Jack (mélynyomo)'),
+(24, 'Jack (mikrofon)'),
+(28, 'Jack (oldalsó hangszóró)'),
+(25, 'Jack (vonalbemenet)'),
 (13, 'M.2'),
 (18, 'RJ-45'),
 (12, 'SATA 3.0'),
-(29, 'string'),
+(30, 'USB'),
 (14, 'USB 2.0 '),
 (15, 'USB 3.0 '),
 (16, 'USB 3.2 '),
@@ -189,7 +252,6 @@ INSERT INTO `kategoria` (`Id`, `Nev`) VALUES
 (2, 'Böngésző'),
 (1, 'Játék'),
 (4, 'Képszerkesztő'),
-(6, 'string'),
 (3, 'Videószerkesztő');
 
 -- --------------------------------------------------------
@@ -215,8 +277,7 @@ INSERT INTO `operaciosrendszer` (`Id`, `Nev`, `BuildSzam`, `Verzio`, `kepnev`) V
 (2, 'Windows 11', '22000', '21H2', 'logo.win11.jpg'),
 (3, 'Ubuntu', '20.04', 'Focal Fossa', 'logo.unubtu.png'),
 (4, 'macOS', '11.0', 'Big Sur', 'logo.macos.png'),
-(5, 'Linux Mint', '20.1', 'Ulyssa', 'logo.linuxMint.png'),
-(6, 'string', 'string', 'string', 'string');
+(5, 'Linux Mint', '20.1', 'Ulyssa', 'logo.linuxMint.png');
 
 -- --------------------------------------------------------
 
@@ -235,7 +296,7 @@ CREATE TABLE `processzor` (
   `AjanlottTapegyseg` int(11) NOT NULL,
   `IntegraltVideokartya` tinyint(1) NOT NULL,
   `ProcesszorFrekvencia` double NOT NULL,
-  `BFrekvencia` int(11) NOT NULL,
+  `BFrekvencia` double(5,1) NOT NULL,
   `kepnev` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -244,16 +305,17 @@ CREATE TABLE `processzor` (
 --
 
 INSERT INTO `processzor` (`Id`, `Nev`, `AlaplapFoglalat`, `SzalakSzama`, `TamogatottMemoriatipus`, `ProcesszormagokSzama`, `Gyarto`, `AjanlottTapegyseg`, `IntegraltVideokartya`, `ProcesszorFrekvencia`, `BFrekvencia`, `kepnev`) VALUES
-(1, 'Ryzen 3 1200', 'AM4', 4, 'DDR4', 4, '0', 65, 0, 3.1, 3, 'PROCESSZORALTALANOS.png'),
-(2, 'Ryzen 3 1300X', 'AM4', 4, 'DDR4', 4, '0', 65, 0, 3.5, 4, 'PROCESSZORALTALANOS.png'),
-(3, 'Ryzen 5 1400', 'AM4', 8, 'DDR4', 4, '0', 65, 0, 3.2, 3, 'PROCESSZORALTALANOS.png'),
-(4, 'Ryzen 5 1500X', 'AM4', 8, 'DDR4', 4, '0', 65, 0, 3.5, 4, 'PROCESSZORALTALANOS.png'),
-(5, 'Ryzen 5 1600', 'AM4', 12, 'DDR4', 6, '0', 65, 0, 3.2, 4, 'PROCESSZORALTALANOS.png'),
-(6, 'Ryzen 5 PRO 8600G', 'AM5', 12, 'DDR5', 6, '0', 65, 1, 4.3, 5, 'PROCESSZORALTALANOS.png'),
-(7, 'Ryzen 7 PRO 8840U', 'FP7/FP7r2', 16, 'DDR5/LPDDR5X', 8, '0', 28, 1, 3.3, 5, 'PROCESSZORALTALANOS.png'),
-(8, 'Ryzen AI 9 HX 370', 'FP8', 24, 'DDR5/LPDDR5X', 12, '0', 28, 1, 3.3, 5, 'PROCESSZORALTALANOS.png'),
-(9, 'Ryzen 9 9900X', 'AM5', 24, 'DDR5', 12, '0', 120, 1, 4.4, 6, 'PROCESSZORALTALANOS.png'),
-(10, 'Ryzen 7 9800X3D', 'AM5', 16, 'DDR5', 8, '0', 120, 1, 4.7, 5, 'PROCESSZORALTALANOS.png');
+(1, 'Ryzen 3 1200', 'AM4', 4, 'DDR4', 4, '0', 65, 0, 3.1, 3.0, 'PROCESSZORALTALANOS.png'),
+(2, 'Ryzen 3 1300X', 'AM4', 4, 'DDR4', 4, '0', 65, 0, 3.5, 4.0, 'PROCESSZORALTALANOS.png'),
+(3, 'Ryzen 5 1400', 'AM4', 8, 'DDR4', 4, '0', 65, 0, 3.2, 3.0, 'PROCESSZORALTALANOS.png'),
+(4, 'Ryzen 5 1500X', 'AM4', 8, 'DDR4', 4, '0', 65, 0, 3.5, 4.0, 'PROCESSZORALTALANOS.png'),
+(5, 'Ryzen 5 1600', 'AM4', 12, 'DDR4', 6, '0', 65, 0, 3.2, 4.0, 'PROCESSZORALTALANOS.png'),
+(6, 'Ryzen 5 PRO 8600G', 'AM5', 12, 'DDR5', 6, '0', 65, 1, 4.3, 5.0, 'PROCESSZORALTALANOS.png'),
+(7, 'Ryzen 7 PRO 8840U', 'FP7/FP7r2', 16, 'DDR5/LPDDR5X', 8, '0', 28, 1, 3.3, 5.0, 'PROCESSZORALTALANOS.png'),
+(8, 'Ryzen AI 9 HX 370', 'FP8', 24, 'DDR5/LPDDR5X', 12, '0', 28, 1, 3.3, 5.0, 'PROCESSZORALTALANOS.png'),
+(9, 'Ryzen 9 9900X', 'AM5', 24, 'DDR5', 12, '0', 120, 1, 4.4, 6.0, 'PROCESSZORALTALANOS.png'),
+(10, 'Ryzen 7 9800X3D', 'AM5', 16, 'DDR5', 8, '0', 120, 1, 4.7, 5.0, 'PROCESSZORALTALANOS.png'),
+(17, ' Intel Core i5-12400', ' LGA1700', 12, 'DDR5', 6, 'Intel', 117, 1, 2.5, 4.4, 'PROCESSZORALTALANOS.png');
 
 -- --------------------------------------------------------
 
@@ -282,13 +344,10 @@ INSERT INTO `profil` (`Id`, `Felhasznalonev`, `Jogosultsag`, `Email`, `Tema`, `L
 (3, 'Felhasznalo03', 0, 'flh3@teszt.hu', 'light', 'PenelopeGarcia_20250331_155229.png', 0xcf4218d411cf76a8c49110456a77be07e60d79936877b94057a65eb565525540d8e446eb2cbd40ae86722e3b0fab296bb7b7b59137c10ff44b8673f5a56426a69f9d5751067faa56c8297ecff846206f723c1e4481317ac8742e324b017275aa677fced0d30595e0a4fbb549523f648d5b7d6181418f85732b916f5a16426e44, 0xdc7093462ebfdf41280c282b8120dc66739d6e1e1390a2c14696bf276e70ee9b55befb224068ac8d60faccc30bb0ca5aa58baec329ab6295500db9780ad59968),
 (4, 'Felhasznalo04', 0, 'flh4@teszt.hu', 'dark', 'AaronHotchner_20250331_155353.png', 0xd9d23ba16c1e1e8b865aadabbff275cf906478ec8e8cfabc0129e202cf051fad0e352c0ab43b388900b7b2380fa9af2efb2861c0e884fa9d9129a4924709a0998e4e12c9ea71b9d7cccceeb31dc1535de993c84242a26b9a421bc190921fce515a562fc855d82f9eb6c26e8adc488fc8a0592158e9fa488f8dbafa2e0127d49b, 0xb7c2dc015dcbc8c98a6df1981123252eef58909c1580d0f52b09b38e965d4b47dbf38609b5e006fff2cd6e17cc588f76dcf7337fef0008b27ad2a076b1823eb6),
 (5, 'Felhasznalo05', 0, 'flh5@teszt.hu', 'light', 'EmilyPrentiss_20250331_155300.png', 0xb35a402983b0dae4d55599b924ca637a9ad800cb7285335c068a623cb9d0789b0528d26d6d65afc5836256dcce2ebbeaa9a48dd31c7d1a417a10df2c5b075d343f50ea0bfc839dba14144a9c9df6e53dfa7981f9d8a53a78b20fa1ac3e0126be7964aa78f3741c74bc0f3a3ba7a6911eb54c4b0d10af7647c022949e5d52ece5, 0x46231cdc35c7dfa204a1a57a6211b075b6730aba8f08c1622641005e791f36b0dd6e821c933dc046212e30f5aa58364e5ecd81a388659ccfb73c6b19c3ea64bf),
-(7, 'Mate', 0, 'mateszabo9784@gmail.com', 'string', 'profil.hiany.jpg', 0xf0959242684a1bed959c797e85497e6a1bd81cc24267f8f8ab3efac2858870bb0cd40592da86a0fb920db47263e6990864f131f8860fead2a918726f85bf294c66c6941f7a379f887079e4921bf9761ae91100dde5770c5a55ade70e602fe161c7ead67e7f246fdf7896db6ce0123dc62740d0c6ef757a3910c4fc37f956334b, 0xdc0df50ba01983c449b13fa0f31f372097f22b6045acb375e7f1331dfe2ae679082bdd7602fc5525c3016ce58dee3d9707c7d10d1a06c3e5c539d2c6053cb56f),
-(8, 'MateHun130', 0, 'mateszabo789@gmail.com', 'string', 'profil.hiany.jpg', 0xe7d0335528f04f58c85bf80a02e35ef272f6ace21d0847f0a9d030b821cd2b2505a090ceae609379e86040cd18fb455e82c74846a69dd4b59b45c1909a9ca90e9e9c10aa018d88d35810cce66d0bfec4b40983d641e5f16072c4bcd5ac40783645d2c4e3213cd407faae9cce0fbf05b8f177defd6f3851000fb0c62c7bb9df2d, 0x14941aba4f82847b9e25dc5482ea8f74908ddffe8bfd85c990ddf438597a484fa9cdd2ba48bfe3b6dacc1dd257439d6cad08bc570b8c1e13b33895bdad21ef04),
 (9, 'Janka', 1, 'jankahegedus872@gmail.com', 'dark', 'EzKbEnVagyok.jpg', 0x9031b956e35bb5f402a8fc3f2b33f3fd44177669a964136b40f6a7ce9f201256be5ae8046903efddd96d5fc2f0bf2f58f8c479459c9511b5b1c4b1dadaaaa97ea8f6c1b36bd007324470df06df3b45e6eca87842c0eaf2a6b3634e964811086e48f2b6885b8be5ef6a11f7c24de91e2526b866c1d445f1761d0ed47d7a3ac6b3, 0xdbb25e6fc9f00f4ecea668b920bd469ca4315c0cd4b42ba8447ebc645395a9ae76c8da5c6baf887ddff99321b6fcdc529dae4e6d66e4396948ffa484685c0815),
 (10, 'JankaV', 1, 'jankahegedus172@gmail.com', 'light', 'enVagyok.png', 0x06a33bed8a49152c6017121725110c5f12657f506612e42869da14be727d2de24c5e292b51a78e403428bca880f5b4cc1ba2395b74f7bfcb88fbe314301c2c015eed5651238e11e6159ade69b22eec24098282806350328ef0fa0b3683261f5ca0649ec0fa5548168a4dd0f9c6e0a98fbc08c696ee91ea31722d4fd9ef5571e8, 0x09d4f9faf3c8e7e2538f147869785fc6d6451339f3693349ece9f086d01f6b324a43f37cb44e774569faf896a42cbb4b05bc20da09bc6ab22c9e17ff85289d26),
 (11, 'Szindi', 1, 'szindi05@gmail.com', 'dark', 'profil.hiany.jpg', 0x9b79f73d40785ebb7f01adc981d2087b05792c037777f779fdde0c4a5591bc3b34a2a6d59d0cdedda88b1bb28b59cec176f61583e565198ac81e853a622b2f09ceda42b01c953d422b85740895d2419e177be79cd9b809ce008440c44326e4a48bf58e20e92b4233cd00fddf993368d1c1f29dbe2b7bee0ebeca94e8b2831db0, 0x57ef8be86a2f1e69153721a8fb4373f823255068628366854ba563a509bbeed9ec0100a6b36aa19bab7bd70f128fd05bac6d6c41b454b9a9ce2d16a811b80e55),
-(12, 'aa', 1, 'aa@gmail.com', 'dark', 'profil.hiany.jpg', 0x5d013500b21aecac3717c7eb22e8df770fe70a3d7559284d9825851e0558dbf83413bdf2b39290d9f611625d4488953c590412d07245af2549fe54a45d04e20cf7022e384ba7b9dc6f1aa089b850ba5e211a1c2b74700137681e4d636759dbe7a112260bb5457fb679809d2654aed3223ac4b6deb4c25909204c59d66069725c, 0x129426c97691322664900452ab68ee5b7bc11a5f69695e6f0887d99bd9879288e16f1042ec801249f9e1ec3001d8701c3c7a951eb945bf1c188808e5b29a64a1),
-(13, 'string', 0, 'string', 'string', 'string', 0x15450f00064d7ec0657423fc7fce0a9b05c7b3951f0472970937eecd8273b6683e14d2f444c2c44dd308ab8cc5fd229aacce81d6c4461ab112a22524ca2b49ece83aca1147ca4f282ff9f3bd9decd3428fe6e42bff7f4f02ff8bdc56d734d3f90548b90177df1338625999c2a83e524643da927c48ec5781cc65314107deff6b, 0x23e18714c5058530841f04974ec65803e903aa2edea96e601306b9c117913e00161806048cf48cb1424008a919d41de9391673df3f94a31f525bd01d34000e42);
+(12, 'aa', 1, 'aa@gmail.com', 'dark', 'profil.hiany.jpg', 0x5d013500b21aecac3717c7eb22e8df770fe70a3d7559284d9825851e0558dbf83413bdf2b39290d9f611625d4488953c590412d07245af2549fe54a45d04e20cf7022e384ba7b9dc6f1aa089b850ba5e211a1c2b74700137681e4d636759dbe7a112260bb5457fb679809d2654aed3223ac4b6deb4c25909204c59d66069725c, 0x129426c97691322664900452ab68ee5b7bc11a5f69695e6f0887d99bd9879288e16f1042ec801249f9e1ec3001d8701c3c7a951eb945bf1c188808e5b29a64a1);
 
 -- --------------------------------------------------------
 
@@ -367,71 +426,62 @@ CREATE TABLE `setup` (
 --
 
 INSERT INTO `setup` (`Id`, `VidkaId`, `ProcId`, `RamId`, `OpId`, `AlaplId`, `ApplikacioId`, `Gp`) VALUES
-(1, 85, 1, 6, 1, 1, 1, 'min'),
-(2, 86, 5, 16, 2, 2, 1, 'opt'),
-(3, NULL, 5, 16, 2, 2, 13, 'min'),
-(4, NULL, 9, 30, 2, 5, 13, 'opt'),
+(1, 85, 17, 6, 1, 1, 1, 'min'),
+(2, 86, 17, 16, 2, 2, 1, 'opt'),
+(3, 68, 5, 16, 2, 2, 13, 'min'),
+(4, 74, 9, 30, 2, 5, 13, 'opt'),
 (5, 88, 4, 8, 1, 1, 3, 'min'),
 (6, 89, 6, 16, 2, 3, 3, 'opt'),
 (7, NULL, 4, 8, 1, 1, 4, 'min'),
 (8, NULL, 7, 16, 2, 4, 4, 'opt'),
 (9, NULL, 5, 8, 1, 2, 5, 'min'),
 (10, NULL, 8, 32, 2, 6, 5, 'opt'),
-(11, NULL, 3, 1, 1, 1, 6, 'min'),
-(12, NULL, 5, 12, 2, 2, 6, 'opt'),
-(13, NULL, 1, 6, 1, 1, 14, 'min'),
-(14, NULL, 1, 8, 1, 1, 15, 'min'),
-(15, NULL, 1, 8, 1, 1, 16, 'min'),
-(16, NULL, 1, 6, 1, 1, 17, 'min'),
-(17, NULL, 1, 8, 1, 1, 18, 'min'),
-(18, NULL, 4, 16, 1, 1, 19, 'min'),
-(19, NULL, 5, 32, 2, 2, 20, 'min'),
-(20, NULL, 6, 32, 1, 3, 21, 'min'),
-(21, NULL, 4, 16, 1, 3, 22, 'min'),
-(22, NULL, 5, 16, 1, 4, 23, 'min'),
-(23, NULL, 3, 16, 1, 1, 24, 'min'),
-(24, NULL, 2, 8, 1, 1, 25, 'min'),
-(25, NULL, 5, 16, 1, 2, 26, 'min'),
-(26, NULL, 4, 8, 1, 3, 27, 'min'),
-(27, NULL, 3, 8, 1, 1, 28, 'min'),
-(28, NULL, 4, 16, 1, 1, 14, 'opt'),
-(29, NULL, 4, 16, 1, 1, 15, 'opt'),
-(30, NULL, 4, 16, 1, 1, 16, 'opt'),
-(31, NULL, 3, 8, 1, 1, 17, 'opt'),
-(32, NULL, 4, 16, 1, 1, 18, 'opt'),
-(33, NULL, 6, 2, 1, 1, 19, 'opt'),
-(34, NULL, 6, 3, 2, 2, 20, 'opt'),
-(35, NULL, 6, 3, 1, 3, 21, 'opt'),
-(36, NULL, 5, 2, 1, 3, 22, 'opt'),
-(37, NULL, 6, 2, 1, 4, 23, 'opt'),
-(38, NULL, 6, 32, 1, 1, 24, 'opt'),
-(39, NULL, 4, 16, 1, 1, 25, 'opt'),
-(40, NULL, 6, 32, 1, 2, 26, 'opt'),
-(41, NULL, 6, 32, 1, 3, 27, 'opt'),
-(42, NULL, 5, 16, 1, 1, 28, 'opt'),
-(43, NULL, 5, 16, 1, 1, 7, 'min'),
-(44, NULL, 5, 16, 1, 2, 8, 'min'),
-(45, NULL, 4, 16, 1, 3, 9, 'min'),
-(46, NULL, 2, 8, 1, 1, 10, 'min'),
-(47, NULL, 3, 8, 1, 1, 11, 'min'),
-(48, NULL, 3, 8, 1, 1, 12, 'min'),
-(50, NULL, 7, 32, 1, 1, 7, 'opt'),
-(51, NULL, 7, 32, 1, 2, 8, 'opt'),
-(52, NULL, 6, 32, 1, 3, 9, 'opt'),
-(53, NULL, 4, 16, 1, 1, 10, 'opt'),
-(54, NULL, 4, 16, 1, 1, 11, 'opt'),
-(55, NULL, 4, 16, 1, 1, 12, 'opt'),
+(11, 67, 3, 1, 1, 1, 6, 'min'),
+(12, 68, 5, 12, 2, 2, 6, 'opt'),
+(13, 85, 1, 6, 1, 1, 14, 'min'),
+(14, 86, 1, 8, 1, 9, 15, 'min'),
+(15, 86, 1, 8, 1, 1, 16, 'min'),
+(16, 85, 1, 6, 1, 1, 17, 'min'),
+(17, 88, 1, 8, 1, 1, 18, 'min'),
+(18, 88, 4, 16, 1, 1, 19, 'min'),
+(19, 82, 5, 32, 2, 2, 20, 'min'),
+(20, 67, 6, 32, 1, 3, 21, 'min'),
+(21, 89, 4, 16, 1, 3, 22, 'min'),
+(22, 66, 5, 16, 1, 4, 23, 'min'),
+(23, 89, 3, 16, 1, 1, 24, 'min'),
+(24, 85, 2, 8, 1, 1, 25, 'min'),
+(25, 88, 5, 16, 1, 2, 26, 'min'),
+(26, 79, 4, 8, 1, 3, 27, 'min'),
+(27, 76, 3, 8, 1, 1, 28, 'min'),
+(28, 86, 4, 16, 1, 1, 14, 'opt'),
+(29, 86, 4, 16, 1, 1, 15, 'opt'),
+(30, 86, 4, 16, 1, 1, 16, 'opt'),
+(31, 84, 3, 8, 1, 1, 17, 'opt'),
+(32, 87, 4, 16, 1, 1, 18, 'opt'),
+(33, 89, 6, 2, 1, 1, 19, 'opt'),
+(34, 81, 6, 3, 2, 2, 20, 'opt'),
+(35, 75, 6, 3, 1, 3, 21, 'opt'),
+(36, 67, 5, 2, 1, 3, 22, 'opt'),
+(37, 68, 6, 2, 1, 4, 23, 'opt'),
+(38, 68, 6, 32, 1, 1, 24, 'opt'),
+(39, 89, 4, 16, 1, 1, 25, 'opt'),
+(40, 87, 6, 32, 1, 2, 26, 'opt'),
+(41, 80, 6, 32, 1, 3, 27, 'opt'),
+(42, 74, 5, 16, 1, 1, 28, 'opt'),
+(43, 82, 5, 16, 1, 1, 7, 'min'),
+(44, 83, 5, 16, 1, 2, 8, 'min'),
+(45, 84, 4, 16, 1, 3, 9, 'min'),
+(46, 85, 2, 8, 1, 1, 10, 'min'),
+(47, 85, 3, 8, 1, 1, 11, 'min'),
+(48, 84, 3, 8, 1, 1, 12, 'min'),
+(50, 83, 7, 32, 1, 1, 7, 'opt'),
+(51, 72, 7, 32, 1, 2, 8, 'opt'),
+(52, 77, 6, 32, 1, 3, 9, 'opt'),
+(53, 87, 4, 16, 1, 1, 10, 'opt'),
+(54, 86, 4, 16, 1, 1, 11, 'opt'),
+(55, 77, 4, 16, 1, 1, 12, 'opt'),
 (56, 87, 4, 6, 1, 7, 2, 'min'),
-(57, 87, 4, 6, 1, 7, 2, 'opt'),
-(131, NULL, 1, 1, 1, 2, 172, '9.Set1'),
-(132, NULL, 9, 10, 1, 7, 172, '9.Set2'),
-(133, NULL, 1, 1, 1, 9, 172, '9.Set3'),
-(134, NULL, 1, 1, 1, 9, 172, '9.Set4'),
-(135, NULL, 1, 1, 1, 2, 172, '9.Set5'),
-(136, NULL, 10, 10, 3, 2, 172, '10.Set1'),
-(147, NULL, 10, 10, 2, 2, 172, '9.Set6'),
-(148, 67, 9, 8, 2, 3, 174, 'min'),
-(149, 69, 9, 32, 4, 6, 174, 'opt');
+(57, 87, 4, 6, 1, 7, 2, 'opt');
 
 -- --------------------------------------------------------
 
@@ -594,7 +644,7 @@ ALTER TABLE `applikacio`
 -- AUTO_INCREMENT a táblához `csatlakozo`
 --
 ALTER TABLE `csatlakozo`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT a táblához `kategoria`
@@ -612,7 +662,7 @@ ALTER TABLE `operaciosrendszer`
 -- AUTO_INCREMENT a táblához `processzor`
 --
 ALTER TABLE `processzor`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT a táblához `profil`

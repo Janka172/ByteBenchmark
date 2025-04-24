@@ -19,11 +19,14 @@ namespace UnitTestProject.TestController
        public void FillTestDatabase(TestProjektContext ctx)
        {
            ctx.Videokartyak.Add(
-               new Videokartya { Id = 1, Nev="Demo1", AlaplapiCsatlakozas="Pci1",AjanlottTapegyseg=500,MonitorCsatlakozas="Valami,Valami2",ChipGyartoja="NVIIDA",Vram=5,KepNev="semmi"});
+               new Videokartya { Id = 1, Nev="Demo1", AlaplapiCsatlakozas="Pci1",AjanlottTapegyseg=500,
+                   MonitorCsatlakozas="Valami,Valami2",ChipGyartoja="NVIIDA",Vram=5,KepNev="semmi"});
             ctx.Videokartyak.Add(
-              new Videokartya { Id = 2, Nev = "Demo2", AlaplapiCsatlakozas = "Pci2", AjanlottTapegyseg = 400, MonitorCsatlakozas = "Valami,Valami2", ChipGyartoja = "MAS", Vram = 9 ,KepNev = "semmi" });
+              new Videokartya { Id = 2, Nev = "Demo2", AlaplapiCsatlakozas = "Pci2", AjanlottTapegyseg = 400,
+                  MonitorCsatlakozas = "Valami,Valami2", ChipGyartoja = "MAS", Vram = 9 ,KepNev = "semmi" });
             ctx.Videokartyak.Add(
-              new Videokartya { Id = 3, Nev = "Demo3", AlaplapiCsatlakozas = "Pci3", AjanlottTapegyseg = 550, MonitorCsatlakozas = "Valami,Valami2", ChipGyartoja = "NVIIDA", Vram = 5 ,KepNev = "semmi" });
+              new Videokartya { Id = 3, Nev = "Demo3", AlaplapiCsatlakozas = "Pci3", AjanlottTapegyseg = 550,
+                  MonitorCsatlakozas = "Valami,Valami2", ChipGyartoja = "NVIIDA", Vram = 5 ,KepNev = "semmi" });
             ctx.SaveChanges();
        }
        [TestMethod]
@@ -99,7 +102,8 @@ namespace UnitTestProject.TestController
                 chipGyartoja = "NVIDIA",
                 kepnev = "fasfsaff.jpg"
             };
-            var result = await controller.Patch(1,"Demo1",5,model).ExecuteAsync(new System.Threading.CancellationToken());
+            var result = await controller.Patch(1,"Demo1",5,model)
+                .ExecuteAsync(new System.Threading.CancellationToken());
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
