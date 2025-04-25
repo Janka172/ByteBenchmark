@@ -114,7 +114,7 @@ function Kovetelmeny(adatok) {
 
   useEffect(() => { gombMegjelito(); }, [ ])
   useEffect(() => { gombMegjelito(); }, [ betoltveV, betoltveP, betoltveR, betoltveO, betoltveA ])
-
+console.log(adat)
   return (
     <div className="kovetelm">
       <h1>{cimsor}</h1>
@@ -141,7 +141,7 @@ function Kovetelmeny(adatok) {
 
       <div className='sor'>
         <h2 className='sorfCime'>RAM: </h2>
-        <h2 className='megnev'>{adat.RamNeve} - {adat.RamMeret}GB</h2>
+        <h2 className='megnev'>{adat.RamNeve} - {adat.RamMeret}GB - {adat.RamFrekvencia}Hz</h2>
         {ramAdat && (
           <Link to="/oldalak/AlkatreszReszletek" state={{ 'tipus': ram, 'id': ramAdat }}>
             <button className='tovabbi' onMouseDown={(e) => gorgosKattKezeles(e, { 'tipus': vidk, 'id': ramAdat })}>További részletek</button>

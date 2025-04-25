@@ -483,6 +483,7 @@ function Sajat() {
           OprendszerNev: kivOpRendszer.Nev,
           RamNeve: kivRam.Nev,
           RamFrekvencia: kivRam.Frekvencia,
+          RamMeret: kivRam.Meret,
           AlaplapNeve: kivAlaplap.Nev,
           Gepigeny: gp
         }),

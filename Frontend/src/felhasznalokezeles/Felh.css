@@ -513,7 +513,7 @@ select{
     }
 
     .subGomb, .biztSzoveg, .jelszoMentes, .jelszoInfoGomb, .regHiba, .hibaUzi, .bevitelNeve, .jelszoInfoSzoveg, .beallitasNeve, .menuEle select, .menuEle input, .baNeve, .profilSor div, #hibaUz, .menuElem input, .bevitelNeve, .menuElem select, option{
-        font-size: 0.75vw;
+        font-size: 1.1vw;
     }
 
     .submitGomb{
@@ -521,11 +521,11 @@ select{
     }
 
     .oszlopElem{
-        font-size: 0.75vw;
+        font-size: 1.1vw;
     }
 
     .altBeCim, .lenyitosMenu, .altalnosMentes, .biztGomOK *, .jelszoModCim, .bejCim, .cimsorFelhnev, .visszaGomb, .torlCim, .torlesGomb, .szuroCim, .profCimsor div, .regCim, .keresesSor p, .keresesSor input, .keresesSor select, .keresesSor option, .modSor option{
-        font-size: 1vw;
+        font-size: 1.25vw;
     }
 
     .profilkepBeall, .profilkepAM{
