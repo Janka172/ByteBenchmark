@@ -508,13 +508,14 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
                  <div id='contents_patch'>
                     <div className='adatok_patch'>Név:{actionMindenhezKellAdat?.Nev}</div>
-                    <div className='adatok_patch'>Processzor foglalat:{actionMindenhezKellAdat?.CpuFoglalat}</div>
-                    <div className='adatok_patch'>Alaplap formátum:{actionMindenhezKellAdat?.AlaplapFormatum}</div>
-                    <div className='adatok_patch'>Maximum frekvencia:{actionMindenhezKellAdat?.MaxFrekvencia}</div>
-                    <div className='adatok_patch'>Memória típus:{actionMindenhezKellAdat?.MemoriaTipusa}</div>
-                    <div className='adatok_patch'>Lapkakészlet:{actionMindenhezKellAdat?.Lapkakeszlet}</div>
                     <div className='adatok_patch'>Slot szám:{actionMindenhezKellAdat?.SlotSzam}</div>
-                    <div className='adatok_patch'>Hangkártya:{actionMindenhezKellAdat?.Hangkartya? "van":"nincs"}</div>      
+                    <div className='adatok_patch'>Hangkártya:{actionMindenhezKellAdat?.Hangkartya? "van":"nincs"}</div>   
+                    <div className='adatok_patch'>Lapkakészlet:{actionMindenhezKellAdat?.Lapkakeszlet}</div>
+                    <div className='adatok_patch'>Memória típus:{actionMindenhezKellAdat?.MemoriaTipusa}</div>
+                    <div className='adatok_patch'>Alaplap formátum:{actionMindenhezKellAdat?.AlaplapFormatum}</div>
+                    <div className='adatok_patch'>Processzor foglalat:{actionMindenhezKellAdat?.CpuFoglalat}</div>
+                    <div className='adatok_patch'>Maximum frekvencia:{actionMindenhezKellAdat?.MaxFrekvencia}</div>
+   
                  </div>
 
                     <div id='buttons_content_patch'>
@@ -810,7 +811,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             </div> : <div></div>}
 
             {/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-            {actionHardver==="AlaplapiCsatlakozo" && actionButtons==="Post" ? <div className='body'>
+            {actionHardver==="AlaplapiCsatlakozo" && actionButtons==="Post" ? <div className='body torzscsati'>
                    <div className='inputok'>
                      <form id='post_form_csati'>
                         <p className='post_titles_csati'>Alaplap neve:</p>
@@ -846,7 +847,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                            <option id="legordulos_option_csati" >Válassz egyet</option>
                            {[...new Set(mindenAdat['alaplapCsatlakozok'].map(i=>i.Nev))].map((nev)=>(<option value={nev} key={nev} id='csatik'>{nev}</option>))}
                         </select>
-                        <button type='button' className='buttons' id='delete_adatkezelogomb_csati' onClick={async(e)=>{await handleDelete(e);await fetchAdat();setActionKivalasztottAlaplapNev("");setActionSelectedAlaplapCsatlakozo("");setActionMindenhezKellAdat(null)}}>Adatok feltöltése</button>
+                        <button type='button' className='buttons' id='delete_adatkezelogomb_csati' onClick={async(e)=>{await handleDelete(e);await fetchAdat();setActionKivalasztottAlaplapNev("");setActionSelectedAlaplapCsatlakozo("");setActionMindenhezKellAdat(null)}}>Kiválasztott adat törlése</button>
                         <EgyediAlert/>
                     </form>
                    </div>

@@ -655,15 +655,15 @@ function UjAlk()
                     <div className='inputs'>
                         <form id='comboImage'>
                             <p className='alkTitlesFelso'>Kategória:</p>
-                            <div id='combobox'>
-                                <input type="comboboxCategory" value={actionKivalasztottCategoria} readOnly/>
+                            <div id='comboboxes'>
+                                <input type="comboboxCategory" className='inputStyle' value={actionKivalasztottCategoria} readOnly/>
                             </div>
                         </form>
                     </div>
                     <div>                               
                     </div>
                 </div>
-                <div id='upload_button'><button className='buttons' id='AlkButton' type='button' onClick={async(e)=>{handleDelete(e);await fetchAdat();setActionAlkalmazasNev("");setActionKivalasztottCategoria("");setActionKivalasztottNev({ minimumNev: "", maximumNev: "" });setActionSelectedVram({ minimumVram: "", maximumVram: "" });setActionKivalasztottAlaplapNev({ minimumAlapNev: "", maximumAlapNev: "" });setActionKivalasztottRamNev({ minimumRamNev: "", maximumRamNev: "" });setActionSelectedRamFrekvencia({ minimumFrekvencia: "", maximumFrekvencia: "" });setActionSelectedRamMeret({ minimumMeret: "", maximumMeret: "" });setActionKivalasztottProcesszorNev({ minimumProcesszorNev: "", maximumProcesszorNev: "" });setActionOprendszer({ minimumOprendszer: "", maximumOprendszer: "" });}}>Törlés</button></div>
+                <div id='upload_button'><button className='buttons' id='AlkButton' type='button' onClick={async(e)=>{handleDelete(e);await fetchAdat();setActionAlkalmazasNev("");setActionKivalasztottCategoria("");setActionKivalasztottNev({ minimumNev: "", maximumNev: "" });setActionSelectedVram({ minimumVram: "", maximumVram: "" });setActionKivalasztottAlaplapNev({ minimumAlapNev: "", maximumAlapNev: "" });setActionKivalasztottRamNev({ minimumRamNev: "", maximumRamNev: "" });setActionSelectedRamFrekvencia({ minimumFrekvencia: "", maximumFrekvencia: "" });setActionSelectedRamMeret({ minimumMeret: "", maximumMeret: "" });setActionKivalasztottProcesszorNev({ minimumProcesszorNev: "", maximumProcesszorNev: "" });setActionOprendszer({ minimumOprendszer: "", maximumOprendszer: "" });}}>Alkalmazás törlése</button></div>
                 <EgyediAlert/>  
                     <div id='Also'>
                         <div id='minSetup'>

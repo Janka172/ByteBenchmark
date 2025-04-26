@@ -508,10 +508,10 @@
     margin-left: 0%;
     padding-left: 10%;
   }
-  .torzscsati
+  /*.torzscsati
   {
     margin-top: 10%;
-  }
+  }*/
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -666,10 +666,10 @@
     margin-left: 0%;
     padding-left: 10%;
   }
-  .torzscsati
+  /*.torzscsati
   {
     margin-top: 10%;
-  }
+  }*/
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -726,8 +726,8 @@
     
     #delete_adatkezelogomb
       {
-        width: 100%;
-        padding: 5%;
+        width: 120%;
+        padding: 8%;
         font-size: medium;
         margin-left: 0%;
       }
@@ -752,7 +752,7 @@
     {
       display: flex;
       flex-direction: column;
-      margin-top: 5%;
+      margin-top: 3%;
       padding-left: 10%;
     }
 
@@ -798,9 +798,8 @@
     padding: 7%;
     margin-top: 5%;
     margin-bottom: 1.5vw;
-    margin-left:40%;
+    margin-left:25%;
     font-size: medium;
-    width: 100%;
   }
   #delete_form_csati
   {

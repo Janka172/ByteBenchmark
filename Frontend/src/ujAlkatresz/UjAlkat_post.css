@@ -1588,11 +1588,11 @@ label
     height: 5%;
     padding: 3%;
     padding-right: 1vw;
-    padding-left: none;
+    padding-left: 0px;
     font-size: medium;
-    margin-top: 1vw;
+    margin-top: 0.5vw;
     margin-right: 1%;
-    margin-left: 20%;
+    margin-left: 18%;
     margin-bottom: 0.3vw;
     border: 1px black solid;
     border-radius: 0% 30%;
@@ -1607,7 +1607,7 @@ label
     font-size: large;
     height: 1.8vw;
     padding-right: 0vw;
-    margin-left: 20%;
+    margin-left: 18%;
     margin-top: 0vw;
     border: 1px black solid;
   }
@@ -1679,7 +1679,7 @@ label
       padding-right: 1vw;
       padding-left: none;
       font-size: medium;
-      margin-top: 1vw;
+      margin-top: 0.5vw;
       margin-right: 1%;
       margin-bottom: 0.3vw;
       border: 1px black solid;
@@ -1780,7 +1780,6 @@ label
   {
     display: flex;
     flex-direction: column;
-    margin-top: 40%;
     width: 280px;
   }
   #buttons_content_csati
@@ -1789,6 +1788,8 @@ label
     flex-direction: column;
     float: left;
     margin-left: 20%;
+    margin-top: 6%;
 
   }
+  .torzscsati{margin-top: 0%;}
 }

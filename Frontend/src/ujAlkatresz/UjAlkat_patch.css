@@ -86,8 +86,7 @@
 #radiobtn_patch{margin-bottom: 10px;}
 /*-------------------------RESZPONZIVITÁS @MEDIA-VAL-------------------------------------*/
 /* Extra small devices (phones, 600px and down) */
-@media screen and (max-width: 600px) 
-{
+@media screen and (max-width: 600px) {
     #patch_form
     {
     flex-direction: column;
@@ -204,8 +203,7 @@
   }
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media screen and (min-width: 600px) 
-{
+@media screen and (min-width: 600px) {
   #patch_form
     {
     flex-direction: column;
@@ -304,8 +302,7 @@
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media screen and (min-width: 768px) 
-{
+@media screen and (min-width: 768px) {
 
 #legordulos_option
 {
@@ -399,8 +396,7 @@
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media screen and (min-width: 992px) 
-{
+@media screen and (min-width: 992px) {
   #legordulos_option
 {
   margin-top: 10px;
@@ -495,6 +491,10 @@ padding-left: 5%;
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media screen and (min-width: 1200px) 
 {
+  .body
+  {
+    margin-top: 1%;
+  }
   #legordulos_option
 {
   margin-top: 10px;
@@ -510,6 +510,7 @@ padding-left: 5%;
 }
 .combi_patch
   {
+    width: 100%;
     border-radius: 20px;
     height: 1.5vw;
     text-align: center;
@@ -542,7 +543,7 @@ padding-left: 5%;
 }
 #patch_img_link
 {
-  width: 280px;
+  width: 290px;
   font-size: large;
   height: 1.8vw;
   padding-right: 0vw;
@@ -581,8 +582,17 @@ padding-left: 5%;
   flex-direction: column;
   float: left;
   align-items: flex-start;
-  padding-left: 10%;
+  padding-left: 15%;
 }
 #radiobtn_patch{margin-bottom: 10px;}
+#adatlekerogomb
+{
+  margin-top: 5%;
+  margin-bottom: 5%;
+  height: 5%;
+  font-size: medium;
+  margin-left: 60px;
+  width: 60%;
+}
 
 }
