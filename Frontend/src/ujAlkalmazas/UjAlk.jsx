@@ -285,13 +285,13 @@ function UjAlk()
                 
                       const data = await response.json();
                       if (response.ok) {
-                         if(actionButtons==="Post")await Ellenorzes(data.file_name,actionKivalasztottCategoria,actionKivalasztottNev.minimumNev,actionSelectedVram.minimumVram,actionKivalasztottAlaplapNev.minimumAlapNev,actionKivalaszottRamNev.minimumRamNev,actionSelectedRamFrekvencia.minimumFrekvencia,actionSelectedRamMeret.minimumMeret,actionKivalasztottProcesszorNev.minimumProcesszorNev,actionOprendszer.minimumOprendszer,actionKivalasztottNev.maximumNev,actionSelectedVram.maximumVram,actionKivalasztottAlaplapNev.maximumAlapNev,actionKivalaszottRamNev.maximumRamNev,actionSelectedRamFrekvencia.maximumFrekvencia,actionSelectedRamMeret.maximumMeret,actionKivalasztottProcesszorNev.maximumProcesszorNev,actionOprendszer.maximumOprendszer);
-                         {/*PATCH része */}
-                         if(actionButtons==="Patch")await PatchEllenorzes(data.file_name,actionAlkalmazasNev,actionKivalasztottCategoria,actionKivalasztottNev.minimumNev,actionSelectedVram.minimumVram,actionKivalasztottAlaplapNev.minimumAlapNev,actionKivalaszottRamNev.minimumRamNev,actionSelectedRamFrekvencia.minimumFrekvencia,actionSelectedRamMeret.minimumMeret,actionKivalasztottProcesszorNev.minimumProcesszorNev,actionOprendszer.minimumOprendszer,actionKivalasztottNev.maximumNev,actionSelectedVram.maximumVram,actionKivalasztottAlaplapNev.maximumAlapNev,actionKivalaszottRamNev.maximumRamNev,actionSelectedRamFrekvencia.maximumFrekvencia,actionSelectedRamMeret.maximumMeret,actionKivalasztottProcesszorNev.maximumProcesszorNev,actionOprendszer.maximumOprendszer);
-                         setFileUrl(data.file_name);
-                         setSelectedFile(null);
+                        if(actionButtons==="Post")await Ellenorzes(data.file_name,actionKivalasztottCategoria,actionKivalasztottNev.minimumNev,actionSelectedVram.minimumVram,actionKivalasztottAlaplapNev.minimumAlapNev,actionKivalaszottRamNev.minimumRamNev,actionSelectedRamFrekvencia.minimumFrekvencia,actionSelectedRamMeret.minimumMeret,actionKivalasztottProcesszorNev.minimumProcesszorNev,actionOprendszer.minimumOprendszer,actionKivalasztottNev.maximumNev,actionSelectedVram.maximumVram,actionKivalasztottAlaplapNev.maximumAlapNev,actionKivalaszottRamNev.maximumRamNev,actionSelectedRamFrekvencia.maximumFrekvencia,actionSelectedRamMeret.maximumMeret,actionKivalasztottProcesszorNev.maximumProcesszorNev,actionOprendszer.maximumOprendszer);
+                        {/*PATCH része */}
+                        if(actionButtons==="Patch")await PatchEllenorzes(data.file_name,actionAlkalmazasNev,actionKivalasztottCategoria,actionKivalasztottNev.minimumNev,actionSelectedVram.minimumVram,actionKivalasztottAlaplapNev.minimumAlapNev,actionKivalaszottRamNev.minimumRamNev,actionSelectedRamFrekvencia.minimumFrekvencia,actionSelectedRamMeret.minimumMeret,actionKivalasztottProcesszorNev.minimumProcesszorNev,actionOprendszer.minimumOprendszer,actionKivalasztottNev.maximumNev,actionSelectedVram.maximumVram,actionKivalasztottAlaplapNev.maximumAlapNev,actionKivalaszottRamNev.maximumRamNev,actionSelectedRamFrekvencia.maximumFrekvencia,actionSelectedRamMeret.maximumMeret,actionKivalasztottProcesszorNev.maximumProcesszorNev,actionOprendszer.maximumOprendszer);
+                        setFileUrl(data.file_name);
+                        setSelectedFile(null);
                       } else {
-                         console.error("Hiba történt:", data.message);
+                        console.error("Hiba történt:", data.message);
                       }
                 } catch (error) {
                       console.error("Hálózati hiba:", error);
@@ -299,13 +299,37 @@ function UjAlk()
              };       
           }
 
+    //Hamburger menü
+    const [menuNyitva, setMenuNyitva] = useState(false);
+    const open = () => setMenuNyitva(true);
+    const close = () => setMenuNyitva(false);
+    const [kicsie, setKicsie] = useState(window.innerWidth <= 600);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setKicsie(window.innerWidth <= 600);
+            if(window.innerWidth <= 600){
+                close();
+            }
+            else {
+                open();
+            }
+        };
+        handleResize();
+        window.addEventListener("resize", handleResize);
+    }, []);
+
     return (
         <div id='torzs'>
-            <nav className='navbars'> {/*Navigációs menü*/}
+            <nav className='navbars' style={{ display: !menuNyitva ? 'none' : 'flex' }}> {/*Navigációs menü*/}
+                <button className="menuVisszaGomb" onClick={close} style={{ display: window.innerWidth <= 600 ? 'flex' : 'none' }}>X</button>
                 <a href='' className={actionNavigation==="Post"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionButtons("Post");setActionMindenhezKellAdat(null); setActionNavigation("Post");setFileName("Nincs fájl kiválasztva");setActionKivalasztottCategoria("");setActionKivalasztottNev({ minimumNev: "", maximumNev: "" });setActionSelectedVram({ minimumVram: "", maximumVram: "" });setActionKivalasztottAlaplapNev({ minimumAlapNev: "", maximumAlapNev: "" });setActionKivalasztottRamNev({ minimumRamNev: "", maximumRamNev: "" });setActionSelectedRamFrekvencia({ minimumFrekvencia: "", maximumFrekvencia: "" });setActionSelectedRamMeret({ minimumMeret: "", maximumMeret: "" });setActionKivalasztottProcesszorNev({ minimumProcesszorNev: "", maximumProcesszorNev: "" });setActionOprendszer({ minimumOprendszer: "", maximumOprendszer: "" });setActionAlkalmazasNev("")}}>Feltöltés</a>
                 <a href='' className={actionNavigation==="Patch"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionButtons("Patch");setActionMindenhezKellAdat(null); setActionNavigation("Patch");setFileName("Nincs fájl kiválasztva");setActionKivalasztottCategoria("");setActionKivalasztottNev({ minimumNev: "", maximumNev: "" });setActionSelectedVram({ minimumVram: "", maximumVram: "" });setActionKivalasztottAlaplapNev({ minimumAlapNev: "", maximumAlapNev: "" });setActionKivalasztottRamNev({ minimumRamNev: "", maximumRamNev: "" });setActionSelectedRamFrekvencia({ minimumFrekvencia: "", maximumFrekvencia: "" });setActionSelectedRamMeret({ minimumMeret: "", maximumMeret: "" });setActionKivalasztottProcesszorNev({ minimumProcesszorNev: "", maximumProcesszorNev: "" });setActionOprendszer({ minimumOprendszer: "", maximumOprendszer: "" });setActionAlkalmazasNev("")}}>Módosítás</a>
                 <a href='' className={actionNavigation==="Delete"?"color":""} onClick={(event)=>{NeFrissuljon(event); setActionButtons("Delete");setActionMindenhezKellAdat(null); setActionNavigation("Delete");setFileName("Nincs fájl kiválasztva");setActionKivalasztottCategoria("");setActionKivalasztottNev({ minimumNev: "", maximumNev: "" });setActionSelectedVram({ minimumVram: "", maximumVram: "" });setActionKivalasztottAlaplapNev({ minimumAlapNev: "", maximumAlapNev: "" });setActionKivalasztottRamNev({ minimumRamNev: "", maximumRamNev: "" });setActionSelectedRamFrekvencia({ minimumFrekvencia: "", maximumFrekvencia: "" });setActionSelectedRamMeret({ minimumMeret: "", maximumMeret: "" });setActionKivalasztottProcesszorNev({ minimumProcesszorNev: "", maximumProcesszorNev: "" });setActionOprendszer({ minimumOprendszer: "", maximumOprendszer: "" });setActionAlkalmazasNev("")}}>Eltávolítás</a>
              </nav>
+             <div style={{ display: menuNyitva ? 'none' : 'flex' }}>
+               <button className="menuGomb" onClick={open}>&#9776;</button>
+             </div>
 
              {actionButtons==="Post" ? <div id='Alk_post_torzs'>
                 <div id='Felso'>
