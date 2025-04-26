@@ -55,11 +55,11 @@ function AppLista() {
     let AppIndex = szurtApp.length;
     for (let i = 0; i < AppIndex; i++) {
       let kepUrl = `/IMAGE/logo.${szurtApp[i].KepeleresiUtja}`;
-      if(szurtApp[i].KepeleresiUtja == '') kepUrl = `/IMAGE/logo.hiany.jpg`;
+      if(szurtApp[i].KepeleresiUtja == '') kepUrl = `/IMAGE/hiany.png`;
       const adat = { nev: szurtApp[i].Nev };
       Mind.push(
         <div className="kartyaKeret" key={i}>
-          <img src={kepUrl} className="kartyaLogo" />
+          <img src={kepUrl} className="kartyaLogo" onError={(e) => { e.target.src = `/IMAGE/hiany.png`; }}/>
           <h4 className="appNeve">{szurtApp[i].Nev}</h4>
           <Link to="/oldalak/AlkalmazasReszletek" state={adat}>
             <button className="reszletG" onMouseDown={(e) => gorgosKattKezeles(e, adat)}>További részletek</button>

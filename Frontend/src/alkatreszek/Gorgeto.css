@@ -24,7 +24,7 @@
 }
 
 .korKep {
-    width: 90%;
+    width: 8vw;
     border-radius: 10%;
     border: 1px black solid;
     margin: auto;
@@ -203,10 +203,6 @@ h2{
 }
 
 @media (max-width: 767px){
-    .korKep {
-      height: auto;
-    }
-
     .alkatNeve {
       font-size: 4vw;
     }
