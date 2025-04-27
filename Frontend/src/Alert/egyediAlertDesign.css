@@ -12,7 +12,7 @@
 }
 
 .alertdoboz {
-    background: white;
+    background: gray;
     padding: 20px;
     border-radius: 8px;
     max-width: 400px;
@@ -20,14 +20,10 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.alertdoboz.hiba h2,
 .alertdoboz.hiba li {
     color: #d32f2f;
 }
 
-.alertdoboz.sikeres h2 {
-    color: #2e7d32;
-}
 
 .alertdoboz p {
     margin: 10px 0;
@@ -59,4 +55,13 @@
 
 .alertdoboz.sikeres button:hover {
     background: #1b5e20;
+}
+#hibacim
+{
+    font-size: 20px;
+}
+#hibafejlec
+{
+    font-size: 25px;
+    font-weight: bold;
 }

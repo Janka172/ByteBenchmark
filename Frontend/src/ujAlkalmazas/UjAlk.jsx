@@ -335,8 +335,8 @@ function UjAlk()
                 <div id='Felso'>
                     <div className='inputs'>
                         <form id='inputs_post'>
-                            <p className='alkTitlesFelso'>Alkalmazás neve:</p><input type="text" id="alkNamePost" className='inputStyle'/>
-                            <p className='alkTitlesFelso'>Alkalmazás mérete:</p><input type="number" id="alkSizePost" className='inputStyle'/>
+                            <p className='alkTitlesFelso'>Alkalmazás neve:</p><input type="text" id="alkNamePost" className='inputStyle' placeholder='Pl. Call of Duty...'/>
+                            <p className='alkTitlesFelso'>Alkalmazás mérete:</p><input type="number" id="alkSizePost" className='inputStyle' placeholder='Pl. 150'/>
                         </form> 
                     </div>
                     <div className='inputs'>

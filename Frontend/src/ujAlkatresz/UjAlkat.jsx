@@ -428,13 +428,13 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             {actionHardver==="Alaplap" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
                     <form id='post_form_alaplap'>
-                        <p className='post_titles_alaplap'>Név:</p><input type="text" id='AlaplapPost1' className='beviteli_mezok_alaplap'/>
-                        <p className='post_titles_alaplap'>Processzor foglalat:</p><input type="text" id='AlaplapPost2' className='beviteli_mezok_alaplap'/>
-                        <p className='post_titles_alaplap'>Alaplap formátum:</p><input type="text" id='AlaplapPost3' className='beviteli_mezok_alaplap'/>
-                        <p className='post_titles_alaplap'>Maximum frekvencia:</p><input type="number" id='AlaplapPost4' className='beviteli_mezok_alaplap'/>
-                        <p className='post_titles_alaplap'>Memória típus:</p><input type="text" id='AlaplapPost5' className='beviteli_mezok_alaplap'/>
-                        <p className='post_titles_alaplap'>Lapkakészlet:</p><input type="text" id='AlaplapPost6' className='beviteli_mezok_alaplap'/>
-                        <p className='post_titles_alaplap'>Slot szám:</p><input type="number" id='AlaplapPost7' className='beviteli_mezok_alaplap'/>
+                        <p className='post_titles_alaplap'>Név:</p><input type="text" id='AlaplapPost1' className='beviteli_mezok_alaplap' placeholder='Pl. ASUS...'/>
+                        <p className='post_titles_alaplap'>Processzor foglalat:</p><input type="text" id='AlaplapPost2' className='beviteli_mezok_alaplap' placeholder='Pl. AM4'/>
+                        <p className='post_titles_alaplap'>Alaplap formátum:</p><input type="text" id='AlaplapPost3' className='beviteli_mezok_alaplap' placeholder='Pl. ATX'/>
+                        <p className='post_titles_alaplap'>Maximum frekvencia:</p><input type="number" id='AlaplapPost4' className='beviteli_mezok_alaplap' placeholder='Pl. 2800'/>
+                        <p className='post_titles_alaplap'>Memória típus:</p><input type="text" id='AlaplapPost5' className='beviteli_mezok_alaplap' placeholder='Pl. DDR4'/>
+                        <p className='post_titles_alaplap'>Lapkakészlet:</p><input type="text" id='AlaplapPost6' className='beviteli_mezok_alaplap' placeholder='Pl. AMD B650'/>
+                        <p className='post_titles_alaplap'>Slot szám:</p><input type="number" id='AlaplapPost7' className='beviteli_mezok_alaplap' placeholder='Pl. 4'/>
                         <p className='post_titles_alaplap'>Csatlakozók:</p>
                         {/*Ez egy listbox az alaplap csatlakozóinak neveivel */}
                         <select id='AlaplapPost8' multiple>
@@ -479,12 +479,12 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
                         <button className='buttons' id='adatlekerogomb' type='button' onClick={(e)=>adatAlaplapLekeres(e, actionKivalasztottAlaplapNev)}>Adatok lekérése</button>
                         
-                        <p className='patch_titles'>Processzor foglalat:</p><input type="text" id="AlaplapPatch1" className='patchbeviteli_mezok'/>
-                        <p className='patch_titles'>Alaplap formátum:</p><input type="text" id="AlaplapPatch2" className='patchbeviteli_mezok'/>
-                        <p className='patch_titles'>Maximum frekvencia:</p><input type="number" id="AlaplapPatch3" className='patchbeviteli_mezok'/>
-                        <p className='patch_titles'>Memória típus:</p><input type="text" id="AlaplapPatch4" className='patchbeviteli_mezok'/>
-                        <p className='patch_titles'>Lapkakészlet:</p><input type="text" id="AlaplapPatch5" className='patchbeviteli_mezok'/>
-                        <p className='patch_titles'>Slot szám:</p><input type="number" id="AlaplapPatch6" className='patchbeviteli_mezok'/>
+                        <p className='patch_titles'>Processzor foglalat:</p><input type="text" id="AlaplapPatch1" className='patchbeviteli_mezok' placeholder='Pl. AM4'/>
+                        <p className='patch_titles'>Alaplap formátum:</p><input type="text" id="AlaplapPatch2" className='patchbeviteli_mezok' placeholder='Pl. ATX'/>
+                        <p className='patch_titles'>Maximum frekvencia:</p><input type="number" id="AlaplapPatch3" className='patchbeviteli_mezok' placeholder='Pl. 2800'/>
+                        <p className='patch_titles'>Memória típus:</p><input type="text" id="AlaplapPatch4" className='patchbeviteli_mezok' placeholder='Pl. DDR4'/>
+                        <p className='patch_titles'>Lapkakészlet:</p><input type="text" id="AlaplapPatch5" className='patchbeviteli_mezok' placeholder='Pl. AMD B650'/>
+                        <p className='patch_titles'>Slot szám:</p><input type="number" id="AlaplapPatch6" className='patchbeviteli_mezok' placeholder='Pl. 4'/>
 
                         <p className='patch_titles'>Hangkártya:</p>
                            <div id="radiobtn_patch">
@@ -560,10 +560,10 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             {actionHardver==="Memória" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
                     <form id='post_form'>
-                        <p className='post_titles'>Név:</p><input type="text" id='MemoriaPost1' className='beviteli_mezok'/>
-                        <p className='post_titles'>Memória típus:</p><input type="text" id='MemoriaPost2' className='beviteli_mezok'/>
-                        <p className='post_titles'>Frekvencia:</p><input type="number" id='MemoriaPost3' className='beviteli_mezok'/>
-                        <p className='post_titles'>Méret:</p><input type="number" id='MemoriaPost4' className='beviteli_mezok'/>
+                        <p className='post_titles'>Név:</p><input type="text" id='MemoriaPost1' className='beviteli_mezok' placeholder='Pl. Kingston FURY...'/>
+                        <p className='post_titles'>Memória típus:</p><input type="text" id='MemoriaPost2' className='beviteli_mezok' placeholder='Pl. DDR5'/>
+                        <p className='post_titles'>Frekvencia:</p><input type="number" id='MemoriaPost3' className='beviteli_mezok' placeholder='Pl. 1600'/>
+                        <p className='post_titles'>Méret:</p><input type="number" id='MemoriaPost4' className='beviteli_mezok' placeholder='Pl. 16'/>
                         <p className='post_titles'>Kép feltöltése:</p>
                         <input type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                         <span className="filename" id='post_img_link'>{fileName}</span>
@@ -604,7 +604,7 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
                         </select>
 
                         <button className='buttons' id='adatlekerogomb' type='button' onClick={(e)=>adatRamLekeres(e,actionKivalaszottRamNev,actionSelectedRamMeret,actionSelectedRamFrekvencia)}>Adatok lekérése</button>
-                        <p className='patch_titles'>Memória típus:</p> <input type="text" id='RamPatch1' className='patchbeviteli_mezok'/>   
+                        <p className='patch_titles'>Memória típus:</p> <input type="text" id='RamPatch1' className='patchbeviteli_mezok' placeholder='Pl. DDR5'/>   
                         <p className='patch_titles'>Kép feltöltése:</p>
                         <input key={fileName} type="file" id="imginput" className="elrejtes" onChange={handleFileChange}/>
                         <span className="filename" id='patch_img_link'>{fileName}</span>
@@ -675,15 +675,15 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
             {actionHardver==="Processzor" && actionButtons==="Post" ? <div className='body'>
                  <div className='inputok'>
                      <form id='post_form'>
-                        <p className='post_titles'>Név:</p><input type="text" id='ProcPost1' className='beviteli_mezok'/>
-                        <p className='post_titles'>Alap frekvencia:</p><input type="number"id='ProcPost2' className='beviteli_mezok'/>
-                        <p className='post_titles'>Maximum frekvencia:</p><input type="number"id='ProcPost3' className='beviteli_mezok'/> 
-                        <p className='post_titles'>Alaplap foglalat:</p><input type="text"id='ProcPost4' className='beviteli_mezok'/>
-                        <p className='post_titles'>Szálak száma:</p><input type="number"id='ProcPost5' className='beviteli_mezok'/>
-                        <p className='post_titles'>Támogatott memória típus:</p><input type="text"id='ProcPost6' className='beviteli_mezok'/>
-                        <p className='post_titles'>Processzormagok száma:</p><input type="number"id='ProcPost7' className='beviteli_mezok'/>           
-                        <p className='post_titles'>Gyártó:</p><input type="text"id='ProcPost8' className='beviteli_mezok'/>
-                        <p className='post_titles'>Ajánlott tápegység:</p><input type="number"id='ProcPost9' className='beviteli_mezok'/>
+                        <p className='post_titles'>Név:</p><input type="text" id='ProcPost1' className='beviteli_mezok' placeholder='Pl. AMD Ryzen...'/>
+                        <p className='post_titles'>Alap frekvencia:</p><input type="number"id='ProcPost2' className='beviteli_mezok' placeholder='Pl. 3.5'/>
+                        <p className='post_titles'>Maximum frekvencia:</p><input type="number"id='ProcPost3' className='beviteli_mezok' placeholder='Pl. 4.0'/> 
+                        <p className='post_titles'>Alaplap foglalat:</p><input type="text"id='ProcPost4' className='beviteli_mezok' placeholder='Pl. AM4'/>
+                        <p className='post_titles'>Szálak száma:</p><input type="number"id='ProcPost5' className='beviteli_mezok' placeholder='Pl. 4'/>
+                        <p className='post_titles'>Támogatott memória típus:</p><input type="text"id='ProcPost6' className='beviteli_mezok' placeholder='Pl. DDR4'/>
+                        <p className='post_titles'>Processzormagok száma:</p><input type="number"id='ProcPost7' className='beviteli_mezok' placeholder='Pl. 4'/>           
+                        <p className='post_titles'>Gyártó:</p><input type="text"id='ProcPost8' className='beviteli_mezok' placeholder='Pl. AMD'/>
+                        <p className='post_titles'>Ajánlott tápegység:</p><input type="number"id='ProcPost9' className='beviteli_mezok' placeholder='Pl. 65'/>
 
                         <p className='post_titles'>Integrált videókártya:</p>
 
@@ -724,14 +724,14 @@ async function adatRamLekeres(event, nev, meret, frekvencia)
 
                            <button className='buttons' id='adatlekerogomb'  type='button' onClick={(e)=>adatProcesszorLekeres(e, actionKivalasztottProcesszorNev)}>Adatok lekérése</button>
 
-                           <p className='patch_titles'>Frekvencia:</p><input type="number" id='ProcPatch1' className='patchbeviteli_mezok'/>
-                           <p className='patch_titles'>Maximum frekvencia:</p><input type="number" id='ProcPatch2' className='patchbeviteli_mezok'/>
-                           <p className='patch_titles'>Alaplap foglalat:</p><input type="text" id='ProcPatch3' className='patchbeviteli_mezok'/>
-                           <p className='patch_titles'>Szálak száma:</p><input type="number" id='ProcPatch4' className='patchbeviteli_mezok'/>
-                           <p className='patch_titles'>Támogatott memória típus:</p><input type="text" id='ProcPatch5' className='patchbeviteli_mezok'/>
-                           <p className='patch_titles'>Processzormegok száma:</p><input type="number" id='ProcPatch6' className='patchbeviteli_mezok'/>         
-                           <p className='patch_titles'>Gyártó:</p><input type="text" id='ProcPatch7' className='patchbeviteli_mezok'/>
-                           <p className='patch_titles'>Ajánlott tápegység:</p><input type="number" id='ProcPatch8' className='patchbeviteli_mezok'/>
+                           <p className='patch_titles'>Frekvencia:</p><input type="number" id='ProcPatch1' className='patchbeviteli_mezok' placeholder='Pl. 3.5'/>
+                           <p className='patch_titles'>Maximum frekvencia:</p><input type="number" id='ProcPatch2' className='patchbeviteli_mezok' placeholder='Pl. 4.0'/>
+                           <p className='patch_titles'>Alaplap foglalat:</p><input type="text" id='ProcPatch3' className='patchbeviteli_mezok' placeholder='Pl. AM4'/>
+                           <p className='patch_titles'>Szálak száma:</p><input type="number" id='ProcPatch4' className='patchbeviteli_mezok' placeholder='Pl. 4'/>
+                           <p className='patch_titles'>Támogatott memória típus:</p><input type="text" id='ProcPatch5' className='patchbeviteli_mezok' placeholder='Pl. DDR4'/>
+                           <p className='patch_titles'>Processzormegok száma:</p><input type="number" id='ProcPatch6' className='patchbeviteli_mezok' placeholder='Pl. 4'/>         
+                           <p className='patch_titles'>Gyártó:</p><input type="text" id='ProcPatch7' className='patchbeviteli_mezok' placeholder='Pl. AMD'/>
+                           <p className='patch_titles'>Ajánlott tápegység:</p><input type="number" id='ProcPatch8' className='patchbeviteli_mezok' placeholder='Pl. 65'/>
 
                            <p className='patch_titles'>Integrált videókártya:</p>
                            <div id="radiobtn_patch">

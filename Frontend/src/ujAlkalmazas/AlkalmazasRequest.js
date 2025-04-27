@@ -177,7 +177,7 @@ export async function PatchEllenorzes(fileUrl,alkNev,categoria,minVideokartyaNev
     errors.length=0;
     var alkMeret=document.getElementById("alkSizePost").value
 
-    if(!neLegyenWhiteSpace.test(alkNev))errors.push("Ki kell választani az Alkallmazást");
+    if(!neLegyenWhiteSpace.test(alkNev))errors.push("Ki kell választani az Alkalmazást");
     if(errors.length==0){
         if(alkMeret<0.05 || alkMeret>900)errors.push("A méretnek 0.05 és 900Gb között kell lennie");
         if(minVideokartyaNev=="")errors.push("Ki kell választani a minimum Videokártya nevét");

@@ -35,11 +35,10 @@ export default function EgyediAlert(){
         console.log(errorList),
         <div className="alert_kontener">
             <div className={`alertdoboz ${sikeres ? "sikeres" : "hiba"}`}>
-                <h1>{sikeres? "Sikeres":"Hiba"}</h1>
-                <p>{message}</p>
+                <p id="hibafejlec">{sikeres? "Sikeres a művelet!":"Hiba történt a folyamat közben!"}</p>
                 {errorList.length > 0 && (
                     <div className="alert_hiba_lista">
-                        <h2>Hibák:</h2>
+                        <p id="hibacim">Hibák:</p>
                         <ul>
                             {errorList.map((hiba, index) => (
                                 <li key={index}>{hiba}</li>
