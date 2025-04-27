@@ -8,25 +8,25 @@ export async function Ellenorzes(fileUrl,categoria,minVideokartyaNev,minVideokar
     var alkNev=document.getElementById("alkNamePost") .value
     var alkMeret=document.getElementById("alkSizePost").value
 
-    if(!neLegyenWhiteSpace.test(alkNev))errors.push("A névnek tartalmaznia kell legalább egy betüt");
-    if(alkMeret<0.05 || alkMeret>900)errors.push("A méretnek 0.05 és 900Gb között kell lennie");
-    if(categoria=="")errors.push("Ki kell választani a kategóriát");
-    if(minVideokartyaNev=="")errors.push("Ki kell választani a minimum Videokártya nevét");
-    if(minVideokartyaVram=="")errors.push("Ki kell választani a minimum Videokártya Vram értékét");
-    if(minAlaplapNev=="")errors.push("Ki kell választani a minimum Alaplap nevét");
-    if(minMemoriaNev=="")errors.push("Ki kell választani a minimum Memória nevét");
-    if(minMemoriaFrekvencia=="")errors.push("Ki kell választani a minimum Memória Frekvenciát");
-    if(minMemoriaMeret=="")errors.push("Ki kell választani a minimum Memória Méretet");
-    if(minProcesszorNev=="")errors.push("Ki kell választani a minimum Processzor nevét");
-    if(minOprendszerNev=="")errors.push("Ki kell választani a minimum Operációs rendszer nevét");
-    if(maxVideokartyaNev=="")errors.push("Ki kell választani a maximum Videokártya nevét");
-    if(maxVideokartyaVram=="")errors.push("Ki kell választani a maximum Videokártya Vram értékét");
-    if(maxAlaplapNev=="")errors.push("Ki kell választani a maximum Alaplap nevét");
-    if(maxMemoriaNev=="")errors.push("Ki kell választani a maximum Memória nevét");
-    if(maxMemoriaFrekvencia=="")errors.push("Ki kell választani a maximum Memória Frekvenciát");
-    if(maxMemoriaMeret=="")errors.push("Ki kell választani a maximum Memória Méretet");
-    if(maxProcesszorNev=="")errors.push("Ki kell választani a maximum Processzor nevét");
-    if(maxOprendszerNev=="")errors.push("Ki kell választani a maximum Operációs rendszer nevét");
+    if(!neLegyenWhiteSpace.test(alkNev))errors.push("A névnek tartalmaznia kell legalább egy betűt!");
+    if(alkMeret<0.05 || alkMeret>900)errors.push("A méretnek 0.05 és 900Gb között kell lennie!");
+    if(categoria=="")errors.push("Ki kell választani a kategóriát!");
+    if(minVideokartyaNev=="")errors.push("Ki kell választani a minimum Videókártya nevét!");
+    if(minVideokartyaVram=="")errors.push("Ki kell választani a minimum Videókártya Vram értékét!");
+    if(minAlaplapNev=="")errors.push("Ki kell választani a minimum Alaplap nevét!");
+    if(minMemoriaNev=="")errors.push("Ki kell választani a minimum Memória nevét!");
+    if(minMemoriaFrekvencia=="")errors.push("Ki kell választani a minimum Memória Frekvenciáját!");
+    if(minMemoriaMeret=="")errors.push("Ki kell választani a minimum Memória Méretét!");
+    if(minProcesszorNev=="")errors.push("Ki kell választani a minimum Processzor nevét!");
+    if(minOprendszerNev=="")errors.push("Ki kell választani a minimum Operációs rendszer nevét!");
+    if(maxVideokartyaNev=="")errors.push("Ki kell választani a maximum Videókártya nevét!");
+    if(maxVideokartyaVram=="")errors.push("Ki kell választani a maximum Videókártya Vram értékét!");
+    if(maxAlaplapNev=="")errors.push("Ki kell választani a maximum Alaplap nevét!");
+    if(maxMemoriaNev=="")errors.push("Ki kell választani a maximum Memória nevét!");
+    if(maxMemoriaFrekvencia=="")errors.push("Ki kell választani a maximum Memória Frekvenciáját!");
+    if(maxMemoriaMeret=="")errors.push("Ki kell választani a maximum Memória Méretét!");
+    if(maxProcesszorNev=="")errors.push("Ki kell választani a maximum Processzor nevét!");
+    if(maxOprendszerNev=="")errors.push("Ki kell választani a maximum Operációs rendszer nevét!");
 
     if(errors.length==0){
             await RequstAlkalmazasP(fileUrl,categoria,alkNev,alkMeret)
@@ -64,16 +64,16 @@ export function RequstAlkalmazasP(fileUrl,categoria,alkNev,alkMeret){
         .then((response) => {
             if (response.status > 299) {
                 if (response.status === 409) {
-                    showHiba("Már létezik ilyen nevű alkalmazás", false);
+                    addHiba("Már létezik ilyen nevű alkalmazás");
                     reject(new Error("Már létezik ilyen nevű alkalmazás"));
                 } else if (response.status === 400) {
-                    showHiba("Sikertelen feltöltés", false);
+                    addHiba("Sikertelen feltöltés", false);
                     reject(new Error("Sikertelen feltöltés"));
                 } else {
                     throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                 }
+                showHiba("Hiba történt:",false);
             } else {
-                showHiba("Sikeres feltöltés", true);
                 resolve();
             }
         })
@@ -108,16 +108,16 @@ export function RequstMinSetupP(alkNev,minVideokartyaNev,minVideokartyaVram,minA
         .then((response) => {
             if (response.status > 299) {
                 if (response.status === 400) {
-                    showHiba(`${response.statusText}`, false);
+                    addHiba(`${response.statusText}`);
                     reject(new Error(response.statusText));
                 } else if (response.status === 500) {
-                    showHiba("Hiba lépett fel a szerveren", false);
+                    addHiba("Hiba lépett fel a szerveren");
                     reject(new Error("Hiba lépett fel a szerveren"));
                 } else {
                     throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                 }
+                showHiba("Hiba történt:",false);
             } else {
-                showHiba("Sikeres feltöltés", true);
                 resolve();
             }
         })
@@ -151,16 +151,16 @@ export function RequstMaxSetupP(alkNev,maxVideokartyaNev,maxVideokartyaVram,maxA
         .then((response) => {
             if (response.status > 299) {
                 if (response.status === 400) {
-                    showHiba(`${response.statusText}`, false);
+                    addHiba(`${response.statusText}`);
                     reject(new Error(response.statusText));
                 } else if (response.status === 500) {
-                    showHiba("Hiba lépett fel a szerveren", false);
+                    addHiba("Hiba lépett fel a szerveren", false);
                     reject(new Error("Hiba lépett fel a szerveren"));
                 } else {
                     throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                 }
+                showHiba("Hiba történt:",false);
             } else {
-                showHiba("Sikeres feltöltés", true);
                 resolve();
             }
         })
@@ -177,25 +177,25 @@ export async function PatchEllenorzes(fileUrl,alkNev,categoria,minVideokartyaNev
     errors.length=0;
     var alkMeret=document.getElementById("alkSizePost").value
 
-    if(!neLegyenWhiteSpace.test(alkNev))errors.push("Ki kell választani az Alkalmazást");
+    if(!neLegyenWhiteSpace.test(alkNev))errors.push("Ki kell választani az Alkalmazást!");
     if(errors.length==0){
-        if(alkMeret<0.05 || alkMeret>900)errors.push("A méretnek 0.05 és 900Gb között kell lennie");
-        if(minVideokartyaNev=="")errors.push("Ki kell választani a minimum Videokártya nevét");
-        if(minVideokartyaVram=="")errors.push("Ki kell választani a minimum Videokártya Vram értékét");
-        if(minAlaplapNev=="")errors.push("Ki kell választani a minimum Alaplap nevét");
-        if(minMemoriaNev=="")errors.push("Ki kell választani a minimum Memória nevét");
-        if(minMemoriaFrekvencia=="")errors.push("Ki kell választani a minimum Memória Frekvenciát");
-        if(minMemoriaMeret=="")errors.push("Ki kell választani a minimum Memória Méretet");
-        if(minProcesszorNev=="")errors.push("Ki kell választani a minimum Processzor nevét");
-        if(minOprendszerNev=="")errors.push("Ki kell választani a minimum Operációs rendszer nevét");
-        if(maxVideokartyaNev=="")errors.push("Ki kell választani a maximum Videokártya nevét");
-        if(maxVideokartyaVram=="")errors.push("Ki kell választani a maximum Videokártya Vram értékét");
-        if(maxAlaplapNev=="")errors.push("Ki kell választani a maximum Alaplap nevét");
-        if(maxMemoriaNev=="")errors.push("Ki kell választani a maximum Memória nevét");
-        if(maxMemoriaFrekvencia=="")errors.push("Ki kell választani a maximum Memória Frekvenciát");
-        if(maxMemoriaMeret=="")errors.push("Ki kell választani a maximum Memória Méretet");
-        if(maxProcesszorNev=="")errors.push("Ki kell választani a maximum Processzor nevét");
-        if(maxOprendszerNev=="")errors.push("Ki kell választani a maximum Operációs rendszer nevét");
+        if(alkMeret<0.05 || alkMeret>900)errors.push("A méretnek 0.05 és 900Gb ökzött kell lennie!");
+        if(minVideokartyaNev=="")errors.push("Ki kell választani a minimum Videókártya nevét!");
+        if(minVideokartyaVram=="")errors.push("Ki kell választani a minimum Videókártya Vram értékét!");
+        if(minAlaplapNev=="")errors.push("Ki kell választani a minimum Alaplap nevét!");
+        if(minMemoriaNev=="")errors.push("Ki kell választani a minimum Memória nevét!");
+        if(minMemoriaFrekvencia=="")errors.push("Ki kell választani a minimum Memória Frekvenciáját!");
+        if(minMemoriaMeret=="")errors.push("Ki kell választani a minimum Memória Méretét!");
+        if(minProcesszorNev=="")errors.push("Ki kell választani a minimum Processzor nevét!");
+        if(minOprendszerNev=="")errors.push("Ki kell választani a minimum Operációs rendszer nevét!");
+        if(maxVideokartyaNev=="")errors.push("Ki kell választani a maximum Videókártya nevét!");
+        if(maxVideokartyaVram=="")errors.push("Ki kell választani a maximum Videókártya Vram értékét!");
+        if(maxAlaplapNev=="")errors.push("Ki kell választani a maximum Alaplap nevét!");
+        if(maxMemoriaNev=="")errors.push("Ki kell választani a maximum Memória nevét!");
+        if(maxMemoriaFrekvencia=="")errors.push("Ki kell választani a maximum Memória Frekvenciáját!");
+        if(maxMemoriaMeret=="")errors.push("Ki kell választani a maximum Memória Méretét!");
+        if(maxProcesszorNev=="")errors.push("Ki kell választani a maximum Processzor nevét!");
+        if(maxOprendszerNev=="")errors.push("Ki kell választani a maximum Operációs rendszer nevét!");
     }
     if(errors.length==0){
             await RequstAlkalmazasPatch(fileUrl,categoria,alkNev,alkMeret)
@@ -234,16 +234,16 @@ export function RequstAlkalmazasPatch(fileUrl,categoria,alkNev,alkMeret){
         .then((response) => {
             if (response.status > 299) {
                 if (response.status === 409) {
-                    showHiba("Már létezik ilyen nevű alkalmazás", false);
-                    reject(new Error("Már létezik ilyen nevű alkalmazás"));
+                    addHiba("Már létezik ilyen nevű alkalmazás.");
+                    reject(new Error("Már létezik ilyen nevű alkalmazás."));
                 } else if (response.status === 400) {
-                    showHiba("Sikertelen feltöltés", false);
-                    reject(new Error("Sikertelen feltöltés"));
+                    addHiba("Sikertelen feltöltés.");
+                    reject(new Error("Sikertelen feltöltés."));
                 } else {
                     throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                 }
+                showHiba("Hiba történt:",false);
             } else {
-                showHiba("Sikeres feltöltés", true);
                 resolve();
             }
         })
@@ -277,16 +277,16 @@ export function RequstMinSetupPatch(alkNev,minVideokartyaNev,minVideokartyaVram,
         .then((response) => {
             if (response.status > 299) {
                 if (response.status === 400) {
-                    showHiba(`${response.statusText}`, false);
+                    addHiba(`${response.statusText}`);
                     reject(new Error(response.statusText));
                 } else if (response.status === 500) {
-                    showHiba("Hiba lépett fel a szerveren", false);
-                    reject(new Error("Hiba lépett fel a szerveren"));
+                    addHiba("Hiba lépett fel a szerveren.");
+                    reject(new Error("Hiba lépett fel a szerveren."));
                 } else {
                     throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                 }
+                showHiba("Hiba történt:",false);
             } else {
-                showHiba("Sikeres feltöltés", true);
                 resolve();
             }
         })
@@ -320,16 +320,16 @@ export function RequstMaxSetupPatch(alkNev,maxVideokartyaNev,maxVideokartyaVram,
         .then((response) => {
             if (response.status > 299) {
                 if (response.status === 400) {
-                    showHiba(`${response.statusText}`, false);
+                    addHiba(`${response.statusText}`);
                     reject(new Error(response.statusText));
                 } else if (response.status === 500) {
-                    showHiba("Hiba lépett fel a szerveren", false);
-                    reject(new Error("Hiba lépett fel a szerveren"));
+                    addHiba("Hiba lépett fel a szerveren.");
+                    reject(new Error("Hiba lépett fel a szerveren."));
                 } else {
                     throw new Error(`HTTP hiba! Státuszkód: ${response.status}`);
                 }
+                showHiba("Hiba történt:",false);
             } else {
-                showHiba("Sikeres feltöltés", true);
                 resolve();
             }
         })
@@ -343,7 +343,7 @@ export function RequstMaxSetupPatch(alkNev,maxVideokartyaNev,maxVideokartyaVram,
 
 export async function DeleteEllenorzes(alkNev){
     errors.length=0;
-    if(!neLegyenWhiteSpace.test(alkNev))errors.push("Ki kell választani az Alkallmazást");
+    if(!neLegyenWhiteSpace.test(alkNev))errors.push("Ki kell választani az Alkalmazást!");
     if(errors.length==0){
             await RequstAlkalmazasDelete(alkNev)
             document.getElementById("alkSizePost").value="";
@@ -353,7 +353,7 @@ export async function DeleteEllenorzes(alkNev){
             addHiba(error);
             console.log(error);
         });
-        showHiba("Hiba történt",false);
+        showHiba("Hiba történt.",false);
         errors.length = 0;
     }
     
@@ -366,12 +366,11 @@ export function RequstAlkalmazasDelete(alkNev){
         .then((response) => {
             if (response.status > 299) {
                 if (response.status === 404) {
-                    showHiba("Nem található ilyen Alkallmazás", false);
+                    addHiba("Nem található ilyen Alkalmazás.");
                 }else {
                     throw new Error(`HTTP hiba! Státuszkód:  ${response.status}`);
                 }
-            } else {
-                showHiba("Sikeres törlés", true);
+                showHiba("Hiba történt:",false);
             }
         })
         .catch((error) => {
