@@ -1,5 +1,0 @@
-py app.py  => ezzel lehet elinditani
-
-
-egyszerre kell futtatni a react-ot és a pythont kettő külön cmd-ben
-:)

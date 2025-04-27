@@ -15,14 +15,14 @@ function KontaktComp() {
         {
             Nev: 'Szabó Máté',
             KepEleres: 'MateProfil.jpg',
-            Insta: '',
-            InstaLink: ''
+            InstaNev: 'szabo_mate_2005',
+            InstaLink: 'https://www.instagram.com/szabo_mate_2005/'
         },
         {
             Nev: 'Salamon Szindi',
             KepEleres: 'SzindiProfil.jpg',
-            Insta: '',
-            InstaLink: ''
+            InstaNev: 'salamon__szindy_14',
+            InstaLink: 'https://www.instagram.com/salamon__szindy_14/'
         }
     ]
 
